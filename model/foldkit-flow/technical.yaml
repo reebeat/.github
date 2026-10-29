@@ -22,19 +22,21 @@ elements:
     tier: library
     title: packages/flow (the library)
     statement: >-
-      The reusable library, published as `@reebeat/flow` (pre-releases under the reebeat npm org; the repository stays
-      `foldkit-flow`): the graph Model, update, view and Mounts, with peers on Effect and Foldkit. If Foldkit adopts it,
-      the project publishes `@foldkit/flow` and deprecates `@reebeat/flow`.
+      The reusable library, to be published as `@reebeat/flow` once the name is cleared (pre-releases under the reebeat npm
+      org; the first publish is paused, log line 113; the repository stays `foldkit-flow`): the graph Model, update, view
+      and Mounts, with peers on Effect and Foldkit. If Foldkit adopts it, the project publishes `@foldkit/flow` and
+      deprecates `@reebeat/flow`.
     status: decided
     source:
       - log:105
+      - log:113
       - foldkit-flow:AGENTS.md:25
       - foldkit-flow:README.md:5
       - foldkit-flow:packages/flow/src/index.ts:1-39
     package: "@reebeat/flow"
     repo: foldkit-flow
     licence: MIT
-    pricing: free
+    proposedPricing: free
     links:
       part-of: [comp-flow-product]
       serves: [goal-flow-generic-library]

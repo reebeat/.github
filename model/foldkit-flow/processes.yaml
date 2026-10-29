@@ -273,13 +273,14 @@ elements:
     category: supporting
     title: Publish the package
     statement: >-
-      The project publishes pre-releases of the library to npm as `@reebeat/flow`, under the reebeat org and through the
-      org's publish process. If Foldkit adopts the library, the project publishes `@foldkit/flow` and deprecates
-      `@reebeat/flow`.
+      Once the name is cleared (the first npm publish is paused, log line 113), the project publishes pre-releases of the
+      library to npm as `@reebeat/flow`, under the reebeat org and through the org's publish process. If Foldkit adopts
+      the library, the project publishes `@foldkit/flow` and deprecates `@reebeat/flow`.
     status: decided
     source:
       - log:49
       - log:105
+      - log:113
       - foldkit-flow:README.md:5
     canvas: [channels]
     links:

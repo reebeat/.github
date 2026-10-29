@@ -4,7 +4,6 @@ name	75	constraint-reebeat-working-name
 org-D1	76	rule-org-open-core-needs-no-server
 agent-protocol	77	concept-org-agent-tool-protocol
 agent-protocol	77	comp-studio-tool-protocol
-agent-protocol	77	req-studio-agent-tools
 agent-protocol	77	comp-studio-reference-server
 agent-protocol	77	req-studio-extensible-agents
 ffmpeg	78	problem-reebeat-ffmpeg-gpl
@@ -25,14 +24,11 @@ reebeat-D4	83	rule-reebeat-explicit-element-ids
 reebeat-D4	83	opportunity-reebeat-identity-diff-motion
 reebeat-D5	84	problem-reebeat-transition-lines-positional
 reebeat-D6	85	concept-reebeat-ir
-reebeat-D6	85	req-reebeat-state-machines
 reebeat-D7	86	problem-reebeat-extension-points-open
 reebeat-D7	86	req-reebeat-renderer-capabilities
 reebeat-D7	86	rule-reebeat-capability-fail-planning
 reebeat-D8	87	req-reebeat-interaction-declaration
 reebeat-D8	87	opportunity-reebeat-one-declaration-many-surfaces
-reebeat-D8	87	req-reebeat-website-artifact
-reebeat-D8	87	comp-reebeat-website-renderer
 reebeat-D9	88	problem-reebeat-no-incremental-render
 reebeat-D9	88	req-reebeat-render-segment-cache
 reebeat-D9	88	rule-reebeat-cache-identical-to-cold
@@ -66,14 +62,8 @@ studio-D7	99	rule-studio-agent-scope
 studio-D7	99	req-studio-agent-scopes
 studio-D7	99	goal-studio-lens-agent-panel
 studio-D7	99	comp-studio-lens-agent-panel
-studio-D7	99	goal-studio-human-control
-studio-D7	99	rule-studio-suggestions-need-human-accept
-studio-D7	99	concept-studio-suggestion
-studio-D7	99	process-studio-review-suggestion
 studio-D8	100	problem-studio-merge-semantics-open
 studio-D8	100	rule-studio-keyed-by-uid
-studio-D9	101	resource-studio-cloudflare
-studio-D9	101	concept-studio-sync-room
 studio-D9	101	problem-studio-do-unmeasured
 studio-D10	102	req-studio-undo-restores
 studio-D10	102	process-studio-undo-edit

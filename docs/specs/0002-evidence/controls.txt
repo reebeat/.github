@@ -1,7 +1,7 @@
 == baseline: the model passes (it holds decided problems that keep a gap)
    command: bun tools/intent/src/cli.ts check
    exit:    0
-   first finding: [21:37:58.390] INFO (#2): Model clean: 658 elements, 23 tracked items.
+   first finding: [21:51:03.957] INFO (#2): Model clean: 658 elements, 23 tracked items.
 == baseline: F2 and F3 pass
    command: env BASE=HEAD bash docs/specs/0002-evidence/verify.sh
    exit:    0
@@ -18,6 +18,14 @@
    command: bun tools/intent/src/cli.ts check
    exit:    1
    first finding: TRIAGE-UNKNOWN-ID goal-org-nowhere: model/triage.yaml advises on an element that does not exist
+== P1 a decided mark where no pricing line is cited
+   command: bun tools/intent/src/cli.ts check
+   exit:    1
+   first finding: PRICING-UNDECIDED comp-studio-cloud-render: pricing: paid is a decided mark, but no decided element citing a pricing line of the log carries it (element is decided); use proposedPricing
+== P2 a decided mark on a proposed element
+   command: bun tools/intent/src/cli.ts check
+   exit:    1
+   first finding: PRICING-UNDECIDED comp-reebeat-core: pricing: free is a decided mark, but no decided element citing a pricing line of the log carries it (element is proposed); use proposedPricing
 == F2 one status moves that no answer covers
    command: env BASE=HEAD bash docs/specs/0002-evidence/verify.sh
    exit:    1
@@ -33,4 +41,4 @@
 == after restore: the model passes again
    command: bun tools/intent/src/cli.ts check
    exit:    0
-   first finding: [21:38:12.042] INFO (#2): Model clean: 658 elements, 23 tracked items.
+   first finding: [21:51:12.696] INFO (#2): Model clean: 658 elements, 23 tracked items.

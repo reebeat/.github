@@ -9,6 +9,8 @@ The lifecycle below is specified in [`docs/specs/0000-intent-model.md`](docs/spe
 `model/` is the only hand-written source. `profile/README.md` and everything under `docs/` except `docs/specs/` are generated from it by `bun run generate`: never edit them. To change a statement, edit the YAML, run `bun run model:check` and `bun run generate`, and commit both. A test fails when a committed generated document differs from the generator's output.
 
 - **Status is earned.** `decided` needs a source that shows the operator decided it: a line of `sources/operator-decisions-2026-10.md` (`log:N`) or a repository line that records the decision (`record:...`). Everything inferred is `proposed` with a `rationale`; a known gap or question is `open`. `sources/operator-decisions-2026-10.md` is the operator's log: it is replaced by a byte-for-byte copy of the operator's file when the operator adds lines, and never edited here.
+- **A free or paid mark is earned separately.** An element can be `decided` while its mark is only a proposal. `pricing` is a decided mark: the element is decided and cites a line listed in `pricingDecisions` of `model/sources.yaml`. Every other mark is `proposedPricing`. `PRICING-UNDECIDED` fails otherwise.
+- **An answer decides what it says.** Cite a log line only for the part it decides; do not carry the rest of an old statement into a decided element. Elements that an answer does not settle keep their status.
 - **Cite exact lines.** File sources cite a commit pinned in `model/sources.yaml`. Run `bun run sources:verify --show` where the product repositories are checked out, and read the lines you cite.
 - **Name problems.** Licences, blockers and unmeasured demand belong in the model.
 - **Plain English.** Short sentences, active voice.

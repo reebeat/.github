@@ -1,6 +1,6 @@
-[21:38:14.129] INFO (#2): against origin/main: 119 status changes, 2 added, 0 removed
-[21:38:14.134] INFO (#2): added: problem-flow-licence-scan-missing, problem-flow-library-applies-deletion
-[21:38:14.137] ERROR (#2): CheckFailed: 119 status change(s)
+[21:50:50.181] INFO (#2): against origin/main: 109 status changes, 2 added, 0 removed
+[21:50:50.184] INFO (#2): added: problem-flow-licence-scan-missing, problem-flow-library-applies-deletion
+[21:50:50.185] ERROR (#2): CheckFailed: 109 status change(s)
 concept-org-agent-tool-protocol: proposed -> decided
 problem-org-demand-unmeasured: open -> decided
 problem-org-lifecycle-copies: open -> decided
@@ -30,26 +30,19 @@ rule-reebeat-narration-text-equal: proposed -> decided
 rule-reebeat-explicit-element-ids: proposed -> decided
 rule-reebeat-cache-identical-to-cold: proposed -> decided
 rule-reebeat-capability-fail-planning: proposed -> decided
-comp-reebeat-website-renderer: proposed -> decided
-req-reebeat-state-machines: proposed -> decided
 req-reebeat-readable-subtitles: proposed -> decided
 req-reebeat-language-variants: proposed -> decided
 req-reebeat-render-segment-cache: proposed -> decided
-req-reebeat-website-artifact: proposed -> decided
 req-reebeat-interaction-declaration: proposed -> decided
 req-reebeat-renderer-capabilities: proposed -> decided
 req-reebeat-encoder-reproducible: proposed -> decided
 req-reebeat-nfr-reproducibility: proposed -> decided
 req-reebeat-nfr-incremental: proposed -> decided
 req-reebeat-nfr-portability: open -> decided
-resource-studio-cloudflare: proposed -> decided
 resource-studio-story-file: proposed -> decided
-concept-studio-suggestion: proposed -> decided
-concept-studio-sync-room: proposed -> decided
 concept-studio-peer: proposed -> decided
 concept-studio-agent-scope: proposed -> decided
 goal-studio-preview-fidelity: proposed -> decided
-goal-studio-human-control: proposed -> decided
 goal-studio-lens-agent-panel: proposed -> decided
 problem-studio-no-licence: open -> decided
 problem-studio-do-unmeasured: open -> decided
@@ -59,9 +52,7 @@ problem-studio-preview-may-diverge: proposed -> decided
 opportunity-studio-preview-is-video-page: proposed -> decided
 process-studio-scrub-preview: proposed -> decided
 process-studio-undo-edit: proposed -> decided
-process-studio-review-suggestion: proposed -> decided
 rule-studio-keyed-by-uid: proposed -> decided
-rule-studio-suggestions-need-human-accept: proposed -> decided
 rule-studio-agent-scope: proposed -> decided
 rule-studio-narration-drives-or-follows: proposed -> decided
 rule-studio-no-narration-cycles: proposed -> decided
@@ -74,7 +65,6 @@ comp-studio-hosted-speech: proposed -> decided
 comp-studio-cloud-render: proposed -> decided
 req-studio-scrub-frame: proposed -> decided
 req-studio-undo-restores: proposed -> decided
-req-studio-agent-tools: proposed -> decided
 req-studio-agent-scopes: proposed -> decided
 req-studio-preview-equals-video: proposed -> decided
 req-studio-licence-clear: open -> decided
@@ -149,26 +139,19 @@ rule-reebeat-narration-text-equal: proposed -> decided
 rule-reebeat-explicit-element-ids: proposed -> decided
 rule-reebeat-cache-identical-to-cold: proposed -> decided
 rule-reebeat-capability-fail-planning: proposed -> decided
-comp-reebeat-website-renderer: proposed -> decided
-req-reebeat-state-machines: proposed -> decided
 req-reebeat-readable-subtitles: proposed -> decided
 req-reebeat-language-variants: proposed -> decided
 req-reebeat-render-segment-cache: proposed -> decided
-req-reebeat-website-artifact: proposed -> decided
 req-reebeat-interaction-declaration: proposed -> decided
 req-reebeat-renderer-capabilities: proposed -> decided
 req-reebeat-encoder-reproducible: proposed -> decided
 req-reebeat-nfr-reproducibility: proposed -> decided
 req-reebeat-nfr-incremental: proposed -> decided
 req-reebeat-nfr-portability: open -> decided
-resource-studio-cloudflare: proposed -> decided
 resource-studio-story-file: proposed -> decided
-concept-studio-suggestion: proposed -> decided
-concept-studio-sync-room: proposed -> decided
 concept-studio-peer: proposed -> decided
 concept-studio-agent-scope: proposed -> decided
 goal-studio-preview-fidelity: proposed -> decided
-goal-studio-human-control: proposed -> decided
 goal-studio-lens-agent-panel: proposed -> decided
 problem-studio-no-licence: open -> decided
 problem-studio-do-unmeasured: open -> decided
@@ -178,9 +161,7 @@ problem-studio-preview-may-diverge: proposed -> decided
 opportunity-studio-preview-is-video-page: proposed -> decided
 process-studio-scrub-preview: proposed -> decided
 process-studio-undo-edit: proposed -> decided
-process-studio-review-suggestion: proposed -> decided
 rule-studio-keyed-by-uid: proposed -> decided
-rule-studio-suggestions-need-human-accept: proposed -> decided
 rule-studio-agent-scope: proposed -> decided
 rule-studio-narration-drives-or-follows: proposed -> decided
 rule-studio-no-narration-cycles: proposed -> decided
@@ -193,7 +174,6 @@ comp-studio-hosted-speech: proposed -> decided
 comp-studio-cloud-render: proposed -> decided
 req-studio-scrub-frame: proposed -> decided
 req-studio-undo-restores: proposed -> decided
-req-studio-agent-tools: proposed -> decided
 req-studio-agent-scopes: proposed -> decided
 req-studio-preview-equals-video: proposed -> decided
 req-studio-licence-clear: open -> decided

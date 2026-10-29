@@ -160,9 +160,14 @@ elements:
     title: People decide on what agents and others suggest
     statement: >-
       An edit suggested by an agent or a collaborator waits for a person to accept or reject it. Studio keeps who proposed
-      it and who accepted it. The suggest preset of an agent's action set gives this limit.
-    status: decided
-    source: [studio:docs/design/lenses.md:67, record:studio:docs/specs/0002-collaboration-spike.md:198, log:99]
+      it and who accepted it.
+    status: proposed
+    rationale: >-
+      The operator decided that a repair is offered as a proposal and never applied without a person (spec 0002 line 198).
+      The lenses note extends this to all suggestions (Review lens). That wider goal is the lens design, not a recorded
+      decision.
+      The operator should confirm the wider goal for all suggestions.
+    source: [studio:docs/design/lenses.md:67, record:studio:docs/specs/0002-collaboration-spike.md:198]
     links:
       subgoal-of: [goal-studio-people-and-agents]
 

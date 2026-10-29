@@ -66,7 +66,7 @@ elements:
     kind: concept
     title: JSON Patch
     statement: >-
-      A JSON Patch describes an edit, for agents' tool calls, review and proposals. It is not what peers exchange.
+      A JSON Patch describes an edit, for agents' tool calls, review, proposals and undo. It is not what peers exchange.
     relations:
       - {type: relates, to: concept-studio-loro-update, label: describes the edit of}
     status: decided
@@ -120,8 +120,7 @@ elements:
     kind: concept
     title: Suggestion
     statement: >-
-      A suggestion is an edit proposed under the suggest preset by an agent or a collaborator that is not yet applied. It
-      carries who proposed it.
+      A suggestion is an edit proposed by an agent or a collaborator that is not yet applied. It carries who proposed it.
     attributes:
       - author (agent or person)
       - patch that describes the edit
@@ -129,23 +128,31 @@ elements:
     relations:
       - {type: relates, to: concept-studio-json-patch, label: applies as}
       - {type: relates, to: concept-studio-repair-proposal, label: a repair is one kind}
-    status: decided
-    source: [studio:docs/design/lenses.md:67, log:99]
+    status: proposed
+    rationale: >-
+      Spec plan: the lenses note designs suggestion mode. The operator decided only the repair proposal.
+      The operator should confirm the general suggestion and attribution semantics.
+    source: [studio:docs/design/lenses.md:67]
 
   - id: concept-studio-sync-room
     kind: concept
     title: Sync room
     statement: >-
-      The sync room is planned as one Cloudflare Durable Object for each story. It uses WebSocket hibernation, keeps an update
-      log in SQLite and compacts it to a snapshot, and a small measured spike on the real edge comes before it is built.
+      The sync room is one Cloudflare Durable Object for each story. It uses WebSocket hibernation, keeps an update log in
+      SQLite and compacts it to a snapshot.
     attributes:
       - one object per story
       - update log compacted to a snapshot
       - snapshots over 2 MB are chunked
     relations:
       - {type: relates, to: concept-studio-keyed-document, label: holds the shared copy of}
-    status: decided
-    source: [studio:docs/specs/0002-collaboration-spike.md:28, studio:docs/specs/0002-collaboration-spike.md:192, log:101]
+    status: proposed
+    rationale: >-
+      Spec plan: the operator decided a sync server with a gate, which is the Durable Object (log:47 and spec 0002 line
+      198). One object per story, hibernation, the SQLite log and chunking are the spike's recommendation, run only on
+      local workerd.
+      The operator should confirm these room-design details.
+    source: [studio:docs/specs/0002-collaboration-spike.md:28, studio:docs/specs/0002-collaboration-spike.md:192]
 
   - id: concept-studio-peer
     kind: concept

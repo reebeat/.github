@@ -171,13 +171,15 @@ elements:
     kind: goal
     title: Publish the package for others to use
     statement: >-
-      The project publishes pre-releases of the library as `@reebeat/flow` under the reebeat npm organisation, so other
-      applications can install it. The repository stays `foldkit-flow`. If Foldkit adopts the library, the project
-      publishes `@foldkit/flow` and deprecates `@reebeat/flow`.
+      Once the name is cleared (the first npm publish is paused, log line 113), the project publishes pre-releases of the
+      library as `@reebeat/flow` under the reebeat npm organisation, so other applications can install it. The repository
+      stays `foldkit-flow`. If Foldkit adopts the library, the project publishes `@foldkit/flow` and deprecates
+      `@reebeat/flow`.
     status: decided
     source:
       - log:49
       - log:105
+      - log:113
       - foldkit-flow:README.md:5
       - foldkit-flow:packages/flow/package.json:4
     canvas: [channels]
@@ -207,10 +209,12 @@ elements:
     statement: >-
       The operator decided to publish `@reebeat/flow` pre-releases under the npm org. Nothing is published yet: the
       library package is private at version 0.0.0 and still named `foldkit-flow`, and the README says it is not
-      published yet.
+      published yet. The first npm publish is paused until a Norwegian IP advisor has given an opinion on the name
+      (log line 113).
     status: decided
     source:
       - log:105
+      - log:113
       - foldkit-flow:README.md:5
       - foldkit-flow:packages/flow/package.json:4
     gap:
@@ -244,15 +248,16 @@ elements:
     kind: problem
     title: The library applies a deletion itself
     statement: >-
-      The operator decided that the library reports outcomes and the application applies graph changes, including
-      delete. Today the Flow removes the deleted nodes and edges from its own Model and then reports them.
+      The operator decided that the library reports outcomes and the app applies graph changes (log line 109). For a
+      deletion, the Flow removes the deleted nodes and edges from its own Model and then reports them.
     status: open
     source:
       - log:109
       - foldkit-flow:packages/flow/src/update.ts:289-343
     rationale: >-
-      update.ts lines 289 to 343 remove the nodes and edges and report both sets. The Flow sits inside the
-      application's Model, so whether this breaks the decision depends on how the operator reads "the app applies".
+      update.ts lines 289 to 343 remove the nodes and edges and report both sets. The log line does not say whether a
+      deletion counts as a graph change that the app applies, or whether the Flow's own Model is the app's. The operator
+      must say how "the app applies" reads for a deletion.
     gap:
       repo: foldkit-flow
       fix: Report a deletion as an outcome that the application applies, or record that the Flow's own Model is the application's.

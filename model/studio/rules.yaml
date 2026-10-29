@@ -74,7 +74,8 @@ elements:
     ruleType: constraint
     title: Peers exchange Loro updates, not JSON Patches
     statement: >-
-      The replicated unit is the Loro update. A JSON Patch only describes an edit, for tool calls, review and proposals.
+      The replicated unit is the Loro update. A JSON Patch only describes an edit, for tool calls, review, proposals and
+      undo.
     status: decided
     source: [record:studio:docs/specs/0001-first-felt-journey.md:172, log:47, studio:docs/specs/0002-collaboration-spike.md:27, studio:docs/specs/0002-collaboration-spike.md:194]
     links:
@@ -131,12 +132,16 @@ elements:
     ruleType: constraint
     title: A suggestion needs a human to accept it
     statement: >-
-      An edit proposed under the suggest preset by an agent or a collaborator is not applied. It appears with the name of its
-      author, and a person accepts or rejects it. An accepted suggestion applies as the same patch.
-    when: An agent or a collaborator proposes an edit under the suggest preset
+      An edit proposed by an agent or a collaborator is not applied. It appears with the name of its author, and a person
+      accepts or rejects it. An accepted suggestion applies as the same patch.
+    when: An agent or a collaborator proposes an edit
     then: The edit waits as a named proposal until a person accepts or rejects it
-    status: decided
-    source: [studio:docs/design/lenses.md:66-67, record:studio:docs/specs/0002-collaboration-spike.md:198, log:99]
+    status: proposed
+    rationale: >-
+      The lenses note designs suggestion mode. The operator decided the same for repairs only (spec 0002 line 198), so the
+      general rule needs confirmation.
+      The operator should confirm the general rule for suggestions.
+    source: [studio:docs/design/lenses.md:66-67, record:studio:docs/specs/0002-collaboration-spike.md:198]
     links:
       serves: [goal-studio-human-control]
       triggers: [process-studio-review-suggestion]
@@ -367,8 +372,8 @@ elements:
     ruleType: constraint
     title: Studio is proprietary, all rights reserved
     statement: >-
-      Studio is proprietary, all rights reserved. Its LICENSE file and its third-party notices state this, and third-party
-      code keeps its own licence.
+      Studio is proprietary, all rights reserved. A LICENSE file and third-party notices are to state this (neither exists
+      yet), and third-party code keeps its own licence.
     when: Studio code or a binary is shared
     then: The LICENSE file states proprietary, all rights reserved, and the third-party notices list bundled code
     status: decided

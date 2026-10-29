@@ -17,6 +17,7 @@ elements:
       - log:7
       - log:60
       - log:44
+      - log:43
       - record:reebeat:docs/design/open-core-boundary.md:21
       - record:reebeat:docs/design/open-core-boundary.md:39-44
     canvas: [value-propositions]
@@ -30,7 +31,7 @@ elements:
     tier: library
     package: "@reebeat/core"
     licence: Apache-2.0
-    pricing: free
+    proposedPricing: free
     title: core, from screenplay to Plan and Timeline
     statement: >-
       Pure code that parses a Fountain screenplay into a Story, runs the identity diff, builds the Plan, schedules the
@@ -56,7 +57,7 @@ elements:
     tier: library
     package: "@reebeat/subtitles"
     licence: Apache-2.0
-    pricing: free
+    proposedPricing: free
     title: subtitles, WebVTT and SubRip writers
     statement: >-
       Pure code that writes the narration of a scheduled Plan as WebVTT and SubRip, and reads WebVTT back into cues.
@@ -79,7 +80,7 @@ elements:
     tier: library
     package: "@reebeat/lint"
     licence: Apache-2.0
-    pricing: free
+    proposedPricing: free
     title: lint, pure rules over a Plan
     statement: >-
       Pure rules that return diagnostics for a Plan: every absolute time needs a reason, contrast, and agreement of
@@ -104,7 +105,7 @@ elements:
     tier: service
     package: "@reebeat/services"
     licence: Apache-2.0
-    pricing: free
+    proposedPricing: free
     title: services, the seven contracts
     statement: >-
       The seven Effect service tags with their request types, tagged errors, the one cache key and the one selection
@@ -135,7 +136,7 @@ elements:
     tier: program
     package: "@reebeat/pipeline"
     licence: Apache-2.0
-    pricing: free
+    proposedPricing: free
     title: pipeline, the build program
     statement: >-
       One Effect program over the seven services, from the story to a finished build directory, with the manifest schema. It
@@ -160,7 +161,7 @@ elements:
     tier: integration
     package: "@reebeat/speech-kokoro"
     licence: Apache-2.0
-    pricing: free
+    proposedPricing: free
     title: speech-kokoro, local speech synthesis
     statement: >-
       The SpeechSynthesizer adapter on `kokoro-js`. It runs locally, declares no egress, and has a silent stand-in.
@@ -183,7 +184,7 @@ elements:
     tier: integration
     package: "@reebeat/align-whisper"
     licence: Apache-2.0
-    pricing: free
+    proposedPricing: free
     title: align-whisper, word alignment
     statement: >-
       The WordAligner adapter on whisper.cpp. It gives word times for the narration, runs locally, and has an even-spread
@@ -212,7 +213,7 @@ elements:
     tier: integration
     package: "@reebeat/sounds-synth"
     licence: Apache-2.0
-    pricing: free
+    proposedPricing: free
     title: sounds-synth, built-in sound effects
     statement: >-
       The SoundLibrary adapter that synthesises `pop`, `whoosh` and `ding` in TypeScript. It uses no recorded sample, so
@@ -236,7 +237,7 @@ elements:
     tier: integration
     package: "@reebeat/render-reveal"
     licence: Apache-2.0
-    pricing: free
+    proposedPricing: free
     title: render-reveal, the Deck renderer
     statement: >-
       The Renderer adapter that turns a scheduled Plan into a reveal.js page. It declares the renderer's lifecycle timing,
@@ -266,7 +267,7 @@ elements:
     tier: integration
     package: "@reebeat/capture-chromium"
     licence: Apache-2.0
-    pricing: free
+    proposedPricing: free
     title: capture-chromium, frame capture
     statement: >-
       The FrameCapturer adapter. It opens the Deck in Chromium under a virtual clock, steps it to the scheduled frames,
@@ -294,7 +295,7 @@ elements:
     tier: integration
     package: "@reebeat/encode-ffmpeg"
     licence: Apache-2.0
-    pricing: free
+    proposedPricing: free
     title: encode-ffmpeg, mix and mux
     statement: >-
       The Encoder adapter on ffmpeg: lossless audio, the mix, the mux and the media probes that verify uses. It runs ffmpeg
@@ -318,7 +319,7 @@ elements:
     tier: integration
     package: "@reebeat/cache-fs"
     licence: Apache-2.0
-    pricing: free
+    proposedPricing: free
     title: cache-fs, the content-addressed cache
     statement: >-
       The AssetCache adapter on a directory. It stores files by content key, writes the provenance record last, and checks
@@ -343,7 +344,7 @@ elements:
     tier: tool
     package: "@reebeat/verify"
     licence: Apache-2.0
-    pricing: free
+    proposedPricing: free
     title: verify, the output-side checks
     statement: >-
       The checks of the falsifiers on a build directory, the table that prints their verdicts and the exit code. It reads
@@ -376,7 +377,7 @@ elements:
     tier: tool
     package: "@reebeat/cli"
     licence: Apache-2.0
-    pricing: free
+    proposedPricing: free
     title: cli, the reebeat command
     statement: >-
       The `reebeat` command with `plan`, `lint`, `build`, `check` and `journey`. It is the only place that chooses and
@@ -413,7 +414,7 @@ elements:
   - id: comp-reebeat-quality-gates
     kind: component
     tier: tool
-    pricing: free
+    proposedPricing: free
     title: quality gates, the repository checks
     statement: >-
       The scripts in `tools/quality`: the tier gate, the exception registry check, the Effect family check, the licence
@@ -435,7 +436,7 @@ elements:
   - id: comp-reebeat-statechart-xstate
     kind: component
     tier: integration
-    pricing: free
+    proposedPricing: free
     title: statechart-xstate, the build-time interpreter
     statement: >-
       A planned integration package. It turns the resolved statechart into XState machine data and reads back a total order
@@ -458,16 +459,17 @@ elements:
   - id: comp-reebeat-website-renderer
     kind: component
     tier: integration
-    pricing: free
+    proposedPricing: free
     title: website renderer, a planned artifact renderer
     statement: >-
       A planned Renderer that emits a static website: a folder of HTML, CSS and JavaScript that any static host serves,
-      with the viewer controlling the pace. It declares which interactions it realises, and planning fails for its output
-      when a required interaction is unsupported, unless the author wrote a fallback or a flag bypasses the failure.
-    status: decided
+      with the viewer controlling the pace.
+    status: proposed
+    rationale: >-
+      Issue #19 proposes it and says its spec follows the IR work and an extension architecture ADR. The operator decided
+      that websites become an artifact type (log:36) but no renderer exists or is specified.
     source:
       - log:36
-      - log:87
       - issue:reebeat#19
     refs: ["issue:reebeat#19"]
     links:
@@ -477,6 +479,7 @@ elements:
       serves: [goal-reebeat-interactive-website]
 
   # ------------------------------------------------------ artifacts, assets
+
   - id: comp-reebeat-plan-json
     kind: component
     tier: artifact
@@ -700,7 +703,7 @@ elements:
   - id: req-reebeat-plan
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: Print a reviewable Plan
     statement: >-
       `reebeat plan` prints every Scene, Element, effect and identity decision, with the written intent and the resolved
@@ -719,7 +722,7 @@ elements:
   - id: req-reebeat-deck
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: Build a Deck from the Plan
     statement: >-
       The Deck is a reveal.js page. Narration is in the speaker notes, show and focus effects are fragments in time order,
@@ -738,7 +741,7 @@ elements:
   - id: req-reebeat-video
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: Build a narrated Video from the Plan
     statement: >-
       The Video is the same page captured frame by frame on a controlled clock, muxed with narration, sound effects, WebVTT
@@ -756,7 +759,7 @@ elements:
   - id: req-reebeat-fountain-artifact-renderer
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: Write a story as a Fountain screenplay
     statement: >-
       A story becomes a Fountain screenplay, a static artifact. The importer already reads a screenplay into a story; this
@@ -776,7 +779,7 @@ elements:
   - id: req-reebeat-check
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: Check a build against its source
     statement: >-
       `reebeat check` reads a written build and the source, gives one verdict per falsifier, and reports for every effect
@@ -795,7 +798,7 @@ elements:
   - id: req-reebeat-lint
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: Lint a story and say the fix
     statement: >-
       `reebeat lint` prints every problem with its line and the fix, and lists every absolute time.
@@ -812,7 +815,7 @@ elements:
   - id: req-reebeat-selection
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: Select adapters by configuration
     statement: >-
       A config file beside the story or a flag names one adapter per service. A flag wins over the file, local adapters are
@@ -830,7 +833,7 @@ elements:
   - id: req-reebeat-speech-cache
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: Cache speech by content
     statement: >-
       Each Line's audio and word times are cached under a key made from its narration text and the adapter settings. A cache
@@ -851,7 +854,7 @@ elements:
   - id: req-reebeat-journey
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: One command runs the whole road
     statement: >-
       `reebeat journey` builds a story, checks it, builds it again and compares the two builds.
@@ -868,7 +871,7 @@ elements:
   - id: req-reebeat-renderer-lifecycle
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: A renderer declares its lifecycle timing
     statement: >-
       Each Renderer declares, as plain data, when an Element's motion starts and ends and its easing. The schedule reads it
@@ -899,14 +902,17 @@ elements:
   - id: req-reebeat-state-machines
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: Explicit state machines and timing combinators
     statement: >-
       The compiler declares presence, position, style, effect, slide and Beat lifecycles as machines. It stores exact time
-      as flicks, generates the JSON Schema from the Effect Schema, and rejects timing cycles and nonsense; the Model itself
-      may contain cycles. The story IR is public and versioned. The timeline IR is an unstable build artifact.
-    status: decided
-    source: ["pr:reebeat#17", "log:24", "log:62", "log:85"]
+      as flicks, generates the JSON Schema from the Effect Schema, and rejects cycles and nonsense.
+    status: proposed
+    rationale: >-
+      Read from the body of PR #17 (spec 0004), which is open and unmerged. The PR records two review rounds, both with
+      verdict "changes", so it has not passed review. Its body still says no review rounds yet, which is out of date. Parts
+      of it, such as the nearest-frame rule, are marked as operator decisions there, so confirm them.
+    source: ["pr:reebeat#17", "log:24"]
     refs: ["pr:reebeat#17"]
     links:
       serves: [goal-reebeat-statechart-model]
@@ -914,7 +920,7 @@ elements:
   - id: req-reebeat-accessible-variants
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: Generate captions, audio description and reduced motion
     statement: >-
       The compiler generates SDH captions from narration and sound metadata, audio description from Element tags and state
@@ -932,7 +938,7 @@ elements:
   - id: req-reebeat-readable-subtitles
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: Subtitles stay readable
     statement: >-
       The compiler checks subtitle speed, duration, line length and line count against one cited guideline. Narration,
@@ -947,7 +953,7 @@ elements:
   - id: req-reebeat-language-variants
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: Build one story in several narration languages
     statement: >-
       A story builds with a narration in each language, and anchors tied to words and events retime on their own. Word
@@ -962,7 +968,7 @@ elements:
   - id: req-reebeat-render-segment-cache
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: Cache render segments
     statement: >-
       The build caches render segments by state pair, transition program and time window, as tasks of the incremental build
@@ -977,15 +983,17 @@ elements:
   - id: req-reebeat-website-artifact
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: Emit a static interactive website
     statement: >-
       The compiler emits a folder of static HTML, CSS and JavaScript from the same IR as the Video and the Deck. The viewer
       steps by Beat or scrubs the timeline, and narration, captions and sounds follow. It is keyboard accessible and
-      supports reduced motion and transcripts. An interaction the website cannot realise fails at plan time for that output.
-      Reproducible means byte-identical files, not identical sessions.
-    status: decided
-    source: ["issue:reebeat#19", "log:36", "log:65", "log:87"]
+      supports reduced motion and transcripts.
+    status: proposed
+    rationale: >-
+      Issue #19 proposes it. The operator decided that websites become an artifact type (log:36), but the relation to the
+      Deck and the reproducibility definition remain open in the issue.
+    source: ["issue:reebeat#19", "log:36", "log:65"]
     refs: ["issue:reebeat#19"]
     links:
       serves: [goal-reebeat-interactive-website]
@@ -993,7 +1001,7 @@ elements:
   - id: req-reebeat-interaction-declaration
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: One interaction declaration for every surface
     statement: >-
       An interaction is a declared event-raising element with a payload schema and a label, declared once for every surface.
@@ -1010,7 +1018,7 @@ elements:
   - id: req-reebeat-renderer-capabilities
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: Renderers declare what they can realise
     statement: >-
       A renderer declares whether its artifact is static or dynamic, which interaction kinds it can realise and which
@@ -1026,7 +1034,7 @@ elements:
   - id: req-reebeat-teaching-lint
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: Lint temporal contiguity, signalling, redundancy and coherence
     statement: >-
       Lint rules read the semantic tags on Elements and check the four principles. Each threshold is set from its primary
@@ -1041,7 +1049,7 @@ elements:
   - id: req-reebeat-npm-prerelease
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: Publish only built, audited packages
     statement: >-
       A release stages only built JavaScript, types, docs and the licence, enforces peer ranges for unstable Effect APIs,
@@ -1058,7 +1066,7 @@ elements:
   - id: req-reebeat-encoder-reproducible
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: Any chosen encoder keeps decoded output identical
     statement: >-
       Whichever encoder is used, now ffmpeg with libx264 and in future others behind an adapter, two builds with the pinned
@@ -1073,7 +1081,7 @@ elements:
   - id: req-reebeat-exception-directives
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: The exception gate counts @effect-diagnostics comments
     statement: >-
       The exception gate recognises both `@effect-diagnostics` and `@effect-diagnostics-next-line`, has a negative control,
@@ -1088,7 +1096,7 @@ elements:
   - id: req-reebeat-pin-bun
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: Pin the package manager to the devenv Bun
     statement: >-
       `devEngines.packageManager` names the exact Bun version of devenv, and a check shows that both report the same

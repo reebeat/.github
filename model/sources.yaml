@@ -1,6 +1,11 @@
 # Where the model's evidence lives. Source strings in model/*.yaml cite files of these repositories at these commits
 # (the heads of `main` on 2026-10-29), so a cited line number stays true after the repository moves on.
 decisionLog: sources/operator-decisions-2026-10.md
+# The log lines that decide a free or paid mark: line 43 (a free tier for basic features; multiplayer collaboration and
+# heavily integrated AI agents are paid) and line 91 (hosted-AI fixes are paid). Line 79 says tiers are designed after demand
+# is validated. An element may carry `pricing` only when it is decided and cites one of these lines; every other mark is
+# `proposedPricing`.
+pricingDecisions: [43, 91]
 repos:
   reebeat: 82ee66f8806558460917b33ad9ad8d21c47a9a5b
   studio: d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8

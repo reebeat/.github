@@ -47,7 +47,7 @@ control() {
   echo "== $name"
   echo "   command: $*"
   echo "   exit:    $code"
-  echo "   first finding: $({ echo "$out" | grep -E 'TRIAGE-|PROBLEM'; echo "$out" | grep -E 'Model clean|pinned log|the changed set equals'; } | head -1 | cut -c1-260)"
+  echo "   first finding: $({ echo "$out" | grep -E 'TRIAGE-|PRICING-|PROBLEM'; echo "$out" | grep -E 'Model clean|pinned log|the changed set equals'; } | head -1 | cut -c1-260)"
 }
 
 restore() {
@@ -67,6 +67,16 @@ restore model/triage.yaml
 printf '  - id: goal-org-nowhere\n    advice: "Recommended: confirm"\n' >>model/triage.yaml
 control "T2 triage advice for an unknown id" $cli check
 restore model/triage.yaml
+
+# P1: a decided mark on a decided element whose log line decides no mark (the cloud render cites the ffmpeg pick, line 78).
+sed -i '/id: comp-studio-cloud-render$/,/proposedPricing/s/proposedPricing/pricing/' model/studio/technical.yaml
+control "P1 a decided mark where no pricing line is cited" $cli check
+restore model/studio/technical.yaml
+
+# P2: a decided mark on an element that is only proposed.
+sed -i '/id: comp-reebeat-core$/,/proposedPricing/s/proposedPricing/pricing/' model/reebeat/technical.yaml
+control "P2 a decided mark on a proposed element" $cli check
+restore model/reebeat/technical.yaml
 
 # F2: one more status moves than the operator answered.
 sed -i '0,/^    status: proposed$/s//    status: decided/' model/org/actors.yaml

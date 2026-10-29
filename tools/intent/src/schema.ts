@@ -24,7 +24,10 @@ const baseFields = {
   ),
   id: Id,
   links: Schema.optionalKey(Links),
+  /** A free or paid mark that the operator decided: the element is `decided` and cites a line of `pricingDecisions`. */
   pricing: Schema.optionalKey(Schema.Literals(["free", "paid"])),
+  /** A free or paid mark that is only proposed. Never on the same element as `pricing`. */
+  proposedPricing: Schema.optionalKey(Schema.Literals(["free", "paid"])),
   rationale: Schema.optionalKey(Text),
   refs: Schema.optionalKey(Schema.NonEmptyArray(Text)),
   source: Schema.NonEmptyArray(Text),
@@ -188,6 +191,8 @@ const Sha = Schema.String.check(Schema.isPattern(/^[0-9a-f]{40}$/u));
 
 const SourcesSchema = Schema.Struct({
   decisionLog: Text,
+  /** The lines of the decision log that decide a free or paid mark: only an element that cites one may carry `pricing`. */
+  pricingDecisions: Schema.NonEmptyArray(Schema.Int),
   repos: Schema.Struct({
     "foldkit-flow": Sha,
     reebeat: Sha,

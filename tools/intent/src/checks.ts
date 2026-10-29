@@ -508,8 +508,48 @@ const checkTriage = (model: Model): readonly Finding[] => {
   });
 };
 
+/** A log source of the element that covers a line which decides a free or paid mark. */
+const citesPricingDecision = (item: Item, model: Model): boolean =>
+  Arr.some(item.source, (text) =>
+    Option.match(parseSource(text), {
+      onNone: () => false,
+      onSome: (source) =>
+        source.kind === "log" &&
+        Arr.some(
+          model.sources.pricingDecisions,
+          (line) => source.from <= line && line <= source.to
+        ),
+    })
+  );
+
+/** A decided free or paid mark exists only where a line of the log decides one; every other mark is `proposedPricing`. */
+const checkPricing = (model: Model): readonly Finding[] =>
+  Arr.flatMap(model.items, (item) => {
+    if (item.pricing !== undefined && item.proposedPricing !== undefined) {
+      return [
+        finding(
+          "PRICING-BOTH",
+          item.id,
+          "pricing and proposedPricing are both set; a mark is decided or proposed, not both"
+        ),
+      ];
+    }
+
+    return item.pricing !== undefined &&
+      !(item.status === "decided" && citesPricingDecision(item, model))
+      ? [
+          finding(
+            "PRICING-UNDECIDED",
+            item.id,
+            `pricing: ${item.pricing} is a decided mark, but no decided element citing a pricing line of the log carries it (element is ${item.status}); use proposedPricing`
+          ),
+        ]
+      : [];
+  });
+
 export const checkModel = (model: Model): readonly Finding[] => [
   ...checkTriage(model),
+  ...checkPricing(model),
   ...checkText(model),
   ...checkIds(model),
   ...checkLinks(model),

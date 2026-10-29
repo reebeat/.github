@@ -236,6 +236,58 @@ describe("a decided problem that keeps a gap", () => {
   });
 });
 
+describe("pricing marks", () => {
+  it("passes a decided mark on a decided element that cites a pricing line", () => {
+    const model = withChange("comp-org-c", (element) => ({
+      ...element,
+      pricing: "free",
+      source: ["log:7"],
+    }));
+
+    assert.notInclude(codes(model), "PRICING-UNDECIDED");
+  });
+
+  it("passes a proposed mark on a decided element", () => {
+    const model = withChange("comp-org-c", (element) => ({
+      ...element,
+      proposedPricing: "paid",
+    }));
+
+    assert.deepStrictEqual(checkModel(model), []);
+  });
+
+  it("fails a decided mark on a decided element that cites no pricing line", () => {
+    const model = withChange("comp-org-c", (element) => ({
+      ...element,
+      pricing: "paid",
+      source: ["log:8"],
+    }));
+
+    assert.include(codes(model), "PRICING-UNDECIDED");
+  });
+
+  it("fails a decided mark on an element that is only proposed", () => {
+    const model = withChange("comp-org-c", (element) => ({
+      ...element,
+      pricing: "free",
+      rationale: "Waits for the operator.",
+      status: "proposed",
+    }));
+
+    assert.include(codes(model), "PRICING-UNDECIDED");
+  });
+
+  it("fails an element with both marks", () => {
+    const model = withChange("comp-org-c", (element) => ({
+      ...element,
+      pricing: "free",
+      proposedPricing: "paid",
+    }));
+
+    assert.include(codes(model), "PRICING-BOTH");
+  });
+});
+
 describe("triage advice", () => {
   it("passes advice on an element that waits", () => {
     const model = advised("goal-org-g", (element) => ({

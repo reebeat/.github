@@ -88,6 +88,7 @@ export const modelOf = (files: readonly RawFile[]): Model =>
     logLines: 10,
     sources: {
       decisionLog: "sources/operator-decisions-2026-10.md",
+      pricingDecisions: [7],
       repos: {
         "foldkit-flow": Str.repeat(40)("a"),
         reebeat: Str.repeat(40)("b"),

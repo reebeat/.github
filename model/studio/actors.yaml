@@ -254,11 +254,13 @@ elements:
     resourceType: service
     title: Cloudflare Workers and Durable Objects
     statement: >-
-      The planned sync server and the web editor run on Cloudflare. Alchemy declares the resources. A small measured spike on
-      the real edge comes before the sync room is built: a gate inside a Durable Object, with bundle size, cold start,
-      sockets and cost per story-hour measured.
-    status: decided
-    source: [studio:docs/specs/0002-collaboration-spike.md:28, studio:docs/specs/0002-collaboration-spike.md:66, pr:studio#6, log:101]
+      The planned sync server and the web editor run on Cloudflare. Alchemy declares the resources.
+    status: proposed
+    rationale: >-
+      Spec plan: the operator's record names the sync server as the Durable Object (spec 0002 line 198). The web editor
+      deploy is PR 6's design and the one-object-per-story layout is the spike's recommendation. The operator must confirm
+      them.
+    source: [studio:docs/specs/0002-collaboration-spike.md:28, studio:docs/specs/0002-collaboration-spike.md:66, pr:studio#6]
     links:
       serves: [goal-studio-collaboration]
     canvas: [key-partners, cost-structure]
