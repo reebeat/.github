@@ -4,7 +4,7 @@ Lifecycle: build
 
 Now:
 
-Spec 0000 (the intent model and its generated documents) is merged. Spec 0001 (model corrections: cut text, the Fountain decision, new pins) is in review as PR 2. Spec 0002 (the operator's answers of 2026-10-29: 36 decisions, 119 elements now `decided`) is built on top of it. The model in `model/` covers the organisation and the three products in the six 4EM sub-models; `profile/` and `docs/` are generated from it; CI checks the model and the drift of the generated documents.
+Spec 0000 (the intent model and its generated documents) is merged. Spec 0001 (model corrections: cut text, the Fountain decision, new pins) is in review as PR 2. Spec 0002 (the operator's answers of 2026-10-29: 37 answers, 119 elements now `decided`) is built on top of it. The model in `model/` covers the organisation and the three products in the six 4EM sub-models; `profile/` and `docs/` are generated from it; CI checks the model and the drift of the generated documents.
 
 Next:
 

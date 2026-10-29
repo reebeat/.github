@@ -1,16 +1,16 @@
-# 0002 The operator's answers: 36 decisions become `decided`
+# 0002 The operator's answers: 119 elements become `decided`
 
-Status: **spec** (frozen when its PR opens). Date: 2026-10-29. Decided by: the operator's answers to the 36 consequential decisions of the triage, recorded in lines 75 to 111 of the decision log, and the name decision after the clearance check (line 113). Binding for: the PR that carries this file. Builds on [spec 0000](0000-intent-model.md) and [spec 0001](0001-model-corrections.md).
+Status: **spec** (frozen when its PR opens). Date: 2026-10-29. Decided by: the operator's answers to the consequential decisions of the triage, recorded in lines 75 to 111 of the decision log (37 lines), and the name decision after the clearance check (line 113). Binding for: the PR that carries this file. Builds on [spec 0000](0000-intent-model.md) and [spec 0001](0001-model-corrections.md).
 
 ## Goal
 
 Make the model say what the operator decided, and nothing more.
 
-1. **Every element of an answered decision is `decided`.** It cites the log line of its decision (`log:N`), and its statement says the option the operator picked, with the operator's own notes. The waiting rationale is gone. 119 elements in 36 decisions: 9 in the organisation, 32 in reebeat, 40 in studio, 38 in foldkit-flow.
+1. **Every element of an answered decision is `decided`.** It cites the log line of its decision (`log:N`), and its statement says the option the operator picked, with the operator's own notes. The waiting rationale is gone. 119 elements in 37 answers (lines 75 to 111; `counts.txt`): 9 in the organisation, 32 in reebeat, 40 in studio, 38 in foldkit-flow.
 2. **The advice that is not an answer stays advice.** The triage put 342 more elements into "standard" (confirm in bulk) and "configuration" (confirm a default). The operator has not answered those. They stay `proposed` or `open`. Their advice moves out of the lead's files into `model/triage.yaml`, and `docs/confirm.md` prints it beside each element in a new column.
 3. **The name decision after clearance (line 113).** The clearance check found a registered EU mark REBEAT and an active Norwegian registration FREEBEAT. The operator paused the first npm publish until a Norwegian IP advisor has answered, and keeps `reebeat` as the working name. The two name elements and the publish process say so.
 
-No status of an element outside the 36 decisions changes. A status moves only after the operator decides.
+No status of an element outside the 37 answers changes. A status moves only after the operator decides.
 
 ## Journey
 

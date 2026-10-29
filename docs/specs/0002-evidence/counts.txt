@@ -1,0 +1,7 @@
+answered decisions: 37
+answered elements: 119
+answered elements per scope: {"org":9,"reebeat":32,"studio":40,"foldkit-flow":38}
+answered problems that keep a gap: 16
+triage advice entries: 342
+all elements by status: {"decided":276,"proposed":336,"open":46}
+decided elements with no log line among their sources (repository record only): 34
