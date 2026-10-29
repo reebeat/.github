@@ -5,7 +5,17 @@
 # The raw output of the run on the PR head is in controls.txt.
 set -u
 root=$(pwd)
-log=/srv/share/projects/reebeat-intent-sources/operator-decisions-2026-10.md
+# The operator's log has grown since spec 0001 (it is replaced by a byte-for-byte copy when lines are added), so the control pins the
+# SHA-256 of the 69-line log that spec 0001 copied on 2026-10-29 instead of comparing with the live file.
+logsha=75560c44dc88f84371f2d35102c53bb6622e34e52836ce3af42b57320d6abb81
+logcopy_is_pinned() {
+  if [ "$(sha256sum sources/operator-decisions-2026-10.md | cut -d' ' -f1)" = "$logsha" ]; then
+    echo "pinned log: the copy matches"
+  else
+    echo "pinned log: the copy differs"
+    return 1
+  fi
+}
 scratch=$(mktemp -d)
 trap 'rm -rf "$scratch"' EXIT
 for entry in model tools sources package.json tsconfig.json vite.config.ts; do cp -r "$entry" "$scratch/"; done
@@ -25,7 +35,7 @@ control() {
   echo "== $name"
   echo "   command: $*"
   echo "   exit:    $code"
-  echo "   first finding: $(echo "$out" | grep -E 'is cut at|TEXT-DANGLING|status change|differ|Model clean|resolves|against main|against HEAD' | head -1 | cut -c1-260)"
+  echo "   first finding: $(echo "$out" | grep -E 'is cut at|TEXT-DANGLING|status change|differ|Model clean|resolves|against main|against HEAD|pinned log' | head -1 | cut -c1-260)"
 }
 
 restore() {
@@ -33,7 +43,7 @@ restore() {
 }
 
 control "baseline: the model passes" $cli check
-control "F5 baseline: the log copy equals the operator's file" cmp sources/operator-decisions-2026-10.md "$log"
+control "F5 baseline: the log copy equals the log of 2026-10-29" logcopy_is_pinned
 
 # F2: a plain scalar with " #" is cut by the YAML parser; the loader refuses it.
 sed -i '0,/^    rationale: "Issue #14 reports it,/s//    rationale: Issue #14 reports it,/' model/reebeat/goals.yaml
@@ -53,10 +63,14 @@ control "F4 baseline: no status differs from the base" $cli status-diff --ref HE
 sed -i '0,/^    status: proposed$/s//    status: decided/' model/org/goals.yaml
 control "F4 one status moved from proposed to decided" $cli status-diff --ref HEAD
 restore model/org/goals.yaml
+printf '  - id: goal-org-added-as-decided\n    status: decided\n' >>model/org/goals.yaml
+control "F4 one element added as decided" $cli status-diff --ref HEAD
+control "F4 the same, with --allow-added-decided" $cli status-diff --ref HEAD --allow-added-decided
+restore model/org/goals.yaml
 
-# F5: the log copy differs from the operator's file by one character.
+# F5: the log copy differs from the log of 2026-10-29 by one character.
 sed -i '0,/Declarative/s//Declaratife/' sources/operator-decisions-2026-10.md
-control "F5 log copy edited by one character" cmp sources/operator-decisions-2026-10.md "$log"
+control "F5 log copy edited by one character" logcopy_is_pinned
 restore sources/operator-decisions-2026-10.md
 
 control "after restore: the model passes again" $cli check

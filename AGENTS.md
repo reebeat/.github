@@ -45,7 +45,7 @@ Every gate is a root script in `package.json`; `bun run ready` runs them in this
 | Duplication | `bun run cpd` | `ready`, CI | copy-paste (threshold 0) | paste a 40-token block twice |
 | Secrets, history | `bun run secrets` | `ready`, CI | a secret anywhere in the git history | commit a fake key on a scratch branch |
 
-Not in CI: `bun run sources:verify` (needs checkouts of the product repositories at the pinned commits; reviewers run it), `bun run tracker:refresh` (needs `gh` and the network; run it when cited issues or pull requests change, then `generate`) and `bun run status:diff` (compares every status with `main`; a PR that says "no status changed" shows its output).
+Not in CI: `bun run sources:verify` (needs checkouts of the product repositories at the pinned commits; reviewers run it), `bun run tracker:refresh` (needs `gh` and the network; run it when cited issues or pull requests change, then `generate`) and `bun run status:diff` (compares every status with `main`; it also fails on an element added as `decided`, unless `--allow-added-decided` is given and the PR says why; a PR that says "no status changed" shows its output).
 
 ## Effect
 

@@ -38,6 +38,8 @@ export const statusesOfText = (
 
 export interface StatusDiff {
   readonly added: readonly string[];
+  /** Added elements that arrive as `decided`: a decision cannot be created by adding an element. */
+  readonly addedDecided: readonly string[];
   readonly changed: readonly string[];
   readonly removed: readonly string[];
 }
@@ -45,17 +47,22 @@ export interface StatusDiff {
 export const diffStatuses = (
   before: Readonly<Record<string, string>>,
   after: Readonly<Record<string, string>>
-): StatusDiff => ({
-  added: Arr.filter(Rec.keys(after), (id) => !(id in before)),
-  changed: Arr.map(
-    Arr.filter(
-      Rec.keys(after),
-      (id) => id in before && before[id] !== after[id]
+): StatusDiff => {
+  const added = Arr.filter(Rec.keys(after), (id) => !(id in before));
+
+  return {
+    added,
+    addedDecided: Arr.filter(added, (id) => after[id] === "decided"),
+    changed: Arr.map(
+      Arr.filter(
+        Rec.keys(after),
+        (id) => id in before && before[id] !== after[id]
+      ),
+      (id) => `${id}: ${before[id] ?? ""} -> ${after[id] ?? ""}`
     ),
-    (id) => `${id}: ${before[id] ?? ""} -> ${after[id] ?? ""}`
-  ),
-  removed: Arr.filter(Rec.keys(before), (id) => !(id in after)),
-});
+    removed: Arr.filter(Rec.keys(before), (id) => !(id in after)),
+  };
+};
 
 const modelFile = new RegExp(
   `^model/(${Arr.join(scopes, "|")})/[^/]+\\.yaml$`,

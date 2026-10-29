@@ -1,19 +1,15 @@
-• Running devenv:files:cleanup
-✓ Running devenv:files:cleanup in 15.2ms
-• Running devenv:enterShell
-✓ Running devenv:enterShell in 14.1ms
 == baseline: the model passes
    command: bun tools/intent/src/cli.ts check
    exit:    0
-   first finding: [21:11:37.540] INFO (#2): Model clean: 656 elements, 23 tracked items.
-== F5 baseline: the log copy equals the operator's file
-   command: cmp sources/operator-decisions-2026-10.md /srv/share/projects/reebeat-intent-sources/operator-decisions-2026-10.md
+   first finding: [21:26:28.385] INFO (#2): Model clean: 656 elements, 23 tracked items.
+== F5 baseline: the log copy equals the log of 2026-10-29
+   command: logcopy_is_pinned
    exit:    0
-   first finding: 
+   first finding: pinned log: the copy matches
 == F2 plain rationale with ' #' (cut by the parser)
    command: bun tools/intent/src/cli.ts check
    exit:    1
-   first finding: [21:11:38.151] ERROR (#2): ModelLoadError: model/reebeat/goals.yaml: line 349: the value "Issue" is cut at " #"; the parser dropped "14 reports it, found in a foldkit-flow review. The fix and its negative control are proposed there."". Quote the value or use a
+   first finding: [21:26:29.115] ERROR (#2): ModelLoadError: model/reebeat/goals.yaml: line 349: the value "Issue" is cut at " #"; the parser dropped "14 reports it, found in a foldkit-flow review. The fix and its negative control are proposed there."". Quote the value or use a
 == F3 rationale that ends at the word Issue
    command: bun tools/intent/src/cli.ts check
    exit:    1
@@ -21,16 +17,24 @@
 == F4 baseline: no status differs from the base
    command: bun tools/intent/src/cli.ts status-diff --ref HEAD
    exit:    0
-   first finding: [21:11:39.824] INFO (#2): against HEAD: 0 status changes, 0 added, 0 removed
+   first finding: [21:26:31.113] INFO (#2): against HEAD: 0 status changes, 0 added, 0 removed
 == F4 one status moved from proposed to decided
    command: bun tools/intent/src/cli.ts status-diff --ref HEAD
    exit:    1
-   first finding: [21:11:40.869] INFO (#2): against HEAD: 1 status changes, 0 added, 0 removed
-== F5 log copy edited by one character
-   command: cmp sources/operator-decisions-2026-10.md /srv/share/projects/reebeat-intent-sources/operator-decisions-2026-10.md
+   first finding: [21:26:32.205] INFO (#2): against HEAD: 1 status changes, 0 added, 0 removed
+== F4 one element added as decided
+   command: bun tools/intent/src/cli.ts status-diff --ref HEAD
    exit:    1
-   first finding: sources/operator-decisions-2026-10.md /srv/share/projects/reebeat-intent-sources/operator-decisions-2026-10.md differ: byte 585, line 7
+   first finding: [21:26:33.406] INFO (#2): against HEAD: 0 status changes, 1 added, 0 removed
+== F4 the same, with --allow-added-decided
+   command: bun tools/intent/src/cli.ts status-diff --ref HEAD --allow-added-decided
+   exit:    0
+   first finding: [21:26:34.661] INFO (#2): against HEAD: 0 status changes, 1 added, 0 removed
+== F5 log copy edited by one character
+   command: logcopy_is_pinned
+   exit:    1
+   first finding: pinned log: the copy differs
 == after restore: the model passes again
    command: bun tools/intent/src/cli.ts check
    exit:    0
-   first finding: [21:11:41.734] INFO (#2): Model clean: 656 elements, 23 tracked items.
+   first finding: [21:26:36.360] INFO (#2): Model clean: 656 elements, 23 tracked items.

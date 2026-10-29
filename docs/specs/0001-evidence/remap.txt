@@ -1,0 +1,24 @@
+== reebeat 0bccf42 -> 82ee66f
+renumbered 191, unchanged 212, reported 10
+CHANGED org/actors.yaml:24 actor-contributor-agent reebeat:AGENTS.md:15-17
+CHANGED org/processes.yaml:101 process-org-ship-change reebeat:AGENTS.md:9-17
+CHANGED org/rules.yaml:129 rule-org-spec-code-pr reebeat:AGENTS.md:9-17
+CHANGED reebeat/actors.yaml:334 resource-reebeat-licence-inventory reebeat:docs/design/third-party.md:33
+CHANGED reebeat/goals.yaml:525 problem-reebeat-packages-private reebeat:packages/core/package.json:4
+CHANGED reebeat/goals.yaml:527 problem-reebeat-packages-private reebeat:packages/services/package.json:4
+CHANGED reebeat/goals.yaml:528 problem-reebeat-packages-private reebeat:packages/pipeline/package.json:4
+CHANGED reebeat/goals.yaml:530 problem-reebeat-packages-private reebeat:docs/design/open-core-boundary.md:26
+CHANGED reebeat/technical.yaml:46 comp-reebeat-core reebeat:packages/core/package.json:4
+CHANGED reebeat/technical.yaml:120 comp-reebeat-services reebeat:packages/services/package.json:18
+== foldkit-flow 5dd44a9 -> 8124d5b
+renumbered 64, unchanged 91, reported 10
+CHANGED foldkit-flow/actors.yaml:255 resource-flow-state-file foldkit-flow:STATE.md:1-17
+CHANGED foldkit-flow/goals.yaml:63 goal-flow-first-journey foldkit-flow:README.md:5
+CHANGED foldkit-flow/goals.yaml:172 goal-flow-publish foldkit-flow:README.md:5
+CHANGED foldkit-flow/goals.yaml:209 problem-flow-unpublished foldkit-flow:README.md:5
+CHANGED foldkit-flow/goals.yaml:228 problem-flow-canvas-unmerged foldkit-flow:README.md:5
+CHANGED foldkit-flow/goals.yaml:246 problem-flow-goals-undocumented foldkit-flow:README.md:3-7
+CHANGED foldkit-flow/goals.yaml:248 problem-flow-goals-undocumented foldkit-flow:STATE.md:7
+CHANGED foldkit-flow/goals.yaml:379 problem-flow-demand-unmeasured foldkit-flow:README.md:5
+CHANGED foldkit-flow/processes.yaml:252 process-flow-publish-package foldkit-flow:README.md:5
+CHANGED foldkit-flow/technical.yaml:31 comp-flow-library foldkit-flow:README.md:5

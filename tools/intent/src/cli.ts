@@ -131,9 +131,16 @@ const statusDiff = Effect.gen(function* statusDiffCommand() {
     yield* Effect.log(`removed: ${Arr.join(diff.removed, ", ")}`);
   }
 
-  return Arr.isReadonlyArrayNonEmpty(diff.changed)
+  const blocked = [
+    ...diff.changed,
+    ...(args.includes("--allow-added-decided")
+      ? []
+      : Arr.map(diff.addedDecided, (id) => `${id}: added as decided`)),
+  ];
+
+  return Arr.isReadonlyArrayNonEmpty(blocked)
     ? yield* new CheckFailed({
-        message: `${diff.changed.length} status change(s)\n${Arr.join(diff.changed, "\n")}`,
+        message: `${blocked.length} status change(s)\n${Arr.join(blocked, "\n")}`,
       })
     : undefined;
 });

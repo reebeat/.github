@@ -35,9 +35,20 @@ describe("diffStatuses", () => {
 
     assert.deepStrictEqual(diffStatuses(same, same), {
       added: [],
+      addedDecided: [],
       changed: [],
       removed: [],
     });
+  });
+
+  it("names an element that is added as decided", () => {
+    const diff = diffStatuses(
+      { "goal-a-a": "proposed" },
+      { "goal-a-a": "proposed", "goal-a-b": "decided", "goal-a-c": "open" }
+    );
+
+    assert.deepStrictEqual(diff.addedDecided, ["goal-a-b"]);
+    assert.deepStrictEqual(diff.added, ["goal-a-b", "goal-a-c"]);
   });
 });
 

@@ -1,0 +1,39 @@
+== date -u +%FT%TZ
+2026-10-29T20:25:42Z
+   exit: 0
+== npm view foldkit@0.170.0 version peerDependencies --json
+{
+  "version": "0.170.0",
+  "peerDependencies": {
+    "effect": "~4.1.0",
+    "@effect/platform-browser": "~4.1.0"
+  }
+}
+   exit: 0
+== npm view @foldkit/vite-plugin@0.29.0 version peerDependencies --json
+{
+  "version": "0.29.0",
+  "peerDependencies": {
+    "vite": "^8.0.0",
+    "effect": "~4.1.0",
+    "foldkit": ">=0.167.0"
+  }
+}
+   exit: 0
+== npm view effect@4.1.0 version
+4.1.0
+   exit: 0
+== npm view @reebeat/core name version
+npm error code E404
+npm error 404 Not Found - GET https://registry.npmjs.org/@reebeat%2fcore - Not found
+npm error 404
+npm error 404  The requested resource '@reebeat/core@*' could not be found or you do not have permission to access it.
+npm error 404
+npm error 404 Note that you can also install from a
+npm error 404 tarball, folder, http url, or git url.
+npm error A complete log of this run can be found in: /home/nori/.npm/_logs/2026-10-29T20_25_43_659Z-debug-0.log
+   exit: 1
+== @foldkit/vite-plugin@0.29.0 dist/index.js line 2
+import { SecureRandom } from 'effect/crypto';
+== effect@4.1.0 package.json mentions the ./crypto export (count of matching lines)
+1

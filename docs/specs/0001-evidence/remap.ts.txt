@@ -1,0 +1,97 @@
+// Used once for spec 0001 (kept as .txt so it is not linted as source): move file citations of model/*/*.yaml from the old pin
+// to the new pin of one repository. A citation whose cited lines are untouched between the pins is renumbered; otherwise it is
+// reported and left alone. Usage: MODEL_ROOT=<dir with org/ reebeat/ studio/ foldkit-flow/> bun remap.ts <repo> <checkout> <old> <new> [write]
+import { readFileSync, readdirSync, writeFileSync } from "node:fs";
+import { execFileSync } from "node:child_process";
+
+const [repoKey, checkout, oldSha, newSha, write] = process.argv.slice(2);
+const root = process.env["MODEL_ROOT"] ?? "model";
+const git = (...args: string[]): string => {
+  try {
+    return execFileSync("git", ["-C", checkout, ...args], { encoding: "utf8", maxBuffer: 1 << 28 });
+  } catch {
+    return "\u0000FAIL";
+  }
+};
+
+type Hunk = { a: number; b: number; c: number; d: number };
+const hunkCache = new Map<string, Hunk[] | "missing">();
+
+const hunksOf = (path: string): Hunk[] | "missing" => {
+  const cached = hunkCache.get(path);
+  if (cached !== undefined) return cached;
+  const existsNew = git("cat-file", "-e", `${newSha}:${path}`) !== "\u0000FAIL";
+  const existsOld = git("cat-file", "-e", `${oldSha}:${path}`) !== "\u0000FAIL";
+  let result: Hunk[] | "missing";
+  if (!existsNew || !existsOld) {
+    result = "missing";
+  } else {
+    const out = git("diff", "-U0", "--no-renames", oldSha, newSha, "--", path);
+    const hunks: Hunk[] = [];
+    for (const m of out.matchAll(/^@@ -(\d+)(?:,(\d+))? \+(\d+)(?:,(\d+))? @@/gmu)) {
+      hunks.push({ a: Number(m[1]), b: m[2] === undefined ? 1 : Number(m[2]), c: Number(m[3]), d: m[4] === undefined ? 1 : Number(m[4]) });
+    }
+    result = hunks;
+  }
+  hunkCache.set(path, result);
+  return result;
+};
+
+/** New line number of old line `n`, or null when the line was changed or removed. */
+const mapLine = (hunks: Hunk[], n: number): number | null => {
+  let delta = 0;
+  for (const h of hunks) {
+    const start = h.b === 0 ? h.a + 1 : h.a; // pure insertion after line h.a
+    if (h.b === 0) {
+      if (h.a < n) delta += h.d;
+      continue;
+    }
+    if (n >= start && n < start + h.b) return null;
+    if (start + h.b <= n) delta += h.d - h.b;
+  }
+  return n + delta;
+};
+
+const pattern = new RegExp(`(record:)?\\b(${repoKey}):([^:\\s,\\]"']+):(\\d+)(?:-(\\d+))?`, "gu");
+const report: string[] = [];
+let renumbered = 0;
+let same = 0;
+
+for (const scope of readdirSync(root)) {
+  if (!/^(org|reebeat|studio|foldkit-flow)$/u.test(scope)) continue;
+  for (const file of readdirSync(`${root}/${scope}`)) {
+    const full = `${root}/${scope}/${file}`;
+    const lines = readFileSync(full, "utf8").split("\n");
+    let currentId = "";
+    const out = lines.map((line, index) => {
+      const idMatch = /^\s*- id: (\S+)/u.exec(line);
+      if (idMatch !== null) currentId = idMatch[1] ?? "";
+      return line.replace(pattern, (whole, rec: string | undefined, _repo: string, path: string, from: string, to: string | undefined) => {
+        const hunks = hunksOf(path);
+        const a = Number(from);
+        const b = to === undefined ? a : Number(to);
+        if (hunks === "missing") {
+          report.push(`MISSING ${scope}/${file}:${index + 1} ${currentId} ${whole}`);
+          return whole;
+        }
+        const na = mapLine(hunks, a);
+        const nb = mapLine(hunks, b);
+        let inner = true;
+        for (let n = a; n <= b && inner; n++) if (mapLine(hunks, n) === null) inner = false;
+        if (na === null || nb === null || !inner) {
+          report.push(`CHANGED ${scope}/${file}:${index + 1} ${currentId} ${whole}`);
+          return whole;
+        }
+        if (na === a && nb === b) {
+          same++;
+          return whole;
+        }
+        renumbered++;
+        return `${rec ?? ""}${repoKey}:${path}:${na}${to === undefined ? "" : `-${nb}`}`;
+      });
+    });
+    if (write === "write") writeFileSync(full, out.join("\n"));
+  }
+}
+console.log(`renumbered ${renumbered}, unchanged ${same}, reported ${report.length}`);
+console.log(report.join("\n"));
