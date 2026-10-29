@@ -3,6 +3,7 @@
 //   generate [--check]              write the generated documents, or fail when they differ from the committed ones
 //   tracker-refresh                 rewrite model/tracker.yaml from GitHub (needs `gh`)
 //   verify-sources [--show]         check file sources against local checkouts (base directory: --base, default /srv/share/projects)
+//   status-diff [--ref <ref>]      fail when an element's status differs from its status at <ref> (default main)
 import { NodeRuntime } from "@effect/platform-node";
 import { Array as Arr, Effect, Path, Record as Rec, Schema } from "effect";
 import { TaggedError as TaggedErrorClass } from "effect/Schema";
@@ -16,6 +17,7 @@ import {
 } from "./generate.ts";
 import { loadModel } from "./load.ts";
 import { nodeServices } from "./platform.ts";
+import { statusDiffAgainst } from "./statusDiff.ts";
 import { refreshTracker } from "./tracker.ts";
 import { defaultRoots, verifySources } from "./verifySources.ts";
 
@@ -112,6 +114,30 @@ const trackerRefresh = Effect.gen(function* trackerRefreshCommand() {
   return yield* Effect.log(`Tracker refreshed: ${count} items.`);
 });
 
+const statusDiff = Effect.gen(function* statusDiffCommand() {
+  const path = yield* Path.Path;
+  const ref = flagValue("--ref") ?? "main";
+  const diff = yield* statusDiffAgainst(path.resolve(repoRoot), ref);
+
+  yield* Effect.log(
+    `against ${ref}: ${diff.changed.length} status changes, ${diff.added.length} added, ${diff.removed.length} removed`
+  );
+
+  if (diff.added.length > 0) {
+    yield* Effect.log(`added: ${Arr.join(diff.added, ", ")}`);
+  }
+
+  if (diff.removed.length > 0) {
+    yield* Effect.log(`removed: ${Arr.join(diff.removed, ", ")}`);
+  }
+
+  return Arr.isReadonlyArrayNonEmpty(diff.changed)
+    ? yield* new CheckFailed({
+        message: `${diff.changed.length} status change(s)\n${Arr.join(diff.changed, "\n")}`,
+      })
+    : undefined;
+});
+
 const [command = ""] = args;
 
 const program = Effect.gen(function* main() {
@@ -130,6 +156,10 @@ const program = Effect.gen(function* main() {
 
     case "verify-sources": {
       return yield* verify;
+    }
+
+    case "status-diff": {
+      return yield* statusDiff;
     }
 
     default: {

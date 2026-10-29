@@ -468,7 +468,31 @@ const checkCanvas = (model: Model): readonly Finding[] =>
         ]
   );
 
+const danglingEnd = /(?:^|\s)(?:issue|pr|pull request|spec|#)$/iu;
+
+/** A statement or rationale that stops at the word "issue" or at "#" lost its tail (a text cut, or a truncated edit). */
+const checkText = (model: Model): readonly Finding[] =>
+  Arr.flatMap(model.items, (item) =>
+    Arr.flatMap(
+      [
+        ["statement", item.statement],
+        ["rationale", item.rationale ?? ""],
+      ] as const,
+      ([field, text]) =>
+        danglingEnd.test(Str.trimEnd(text))
+          ? [
+              finding(
+                "TEXT-DANGLING",
+                item.id,
+                `${field} ends at "issue", "pr", "spec" or "#": the tail of the text is missing`
+              ),
+            ]
+          : []
+    )
+  );
+
 export const checkModel = (model: Model): readonly Finding[] => [
+  ...checkText(model),
   ...checkIds(model),
   ...checkLinks(model),
   ...checkFieldRules(model),

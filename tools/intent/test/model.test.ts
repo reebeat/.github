@@ -11,7 +11,7 @@ import {
 } from "effect";
 
 import { checkModel, formatFinding } from "../src/checks.ts";
-import { driftOf, generateAll } from "../src/generate.ts";
+import { driftOf, generateAll, writeGenerated } from "../src/generate.ts";
 import { loadModel } from "../src/load.ts";
 import { nodeServices } from "../src/platform.ts";
 
@@ -51,14 +51,7 @@ describe("the generated documents", () => {
         const files = generateAll(model);
         const dir = yield* fs.makeTempDirectoryScoped();
 
-        yield* Effect.forEach(Rec.toEntries(files), ([file, text]) =>
-          Effect.gen(function* write() {
-            yield* fs.makeDirectory(path.dirname(path.join(dir, file)), {
-              recursive: true,
-            });
-            yield* fs.writeFileString(path.join(dir, file), text);
-          })
-        );
+        yield* writeGenerated(dir, files);
 
         assert.deepStrictEqual(yield* driftOf(dir, files), []);
 

@@ -200,6 +200,37 @@ describe("links", () => {
   });
 });
 
+describe("text cut short", () => {
+  it("fails when a rationale ends at the word Issue", () => {
+    const model = withChange("goal-org-g", (element) => ({
+      ...element,
+      rationale: "Issue",
+      status: "proposed",
+    }));
+
+    assert.include(codes(model), "TEXT-DANGLING");
+  });
+
+  it("fails when a statement ends at a hash sign", () => {
+    const model = withChange("goal-org-g", (element) => ({
+      ...element,
+      statement: "Proposed in issue #",
+    }));
+
+    assert.include(codes(model), "TEXT-DANGLING");
+  });
+
+  it("passes a rationale that mentions an issue and goes on", () => {
+    const model = withChange("goal-org-g", (element) => ({
+      ...element,
+      rationale: "Issue #14 reports it.",
+      status: "proposed",
+    }));
+
+    assert.notInclude(codes(model), "TEXT-DANGLING");
+  });
+});
+
 describe("identity and structure", () => {
   it("fails for an id that begins with the prefix of another kind", () => {
     const model = withChange("concept-org-c", (element) => ({

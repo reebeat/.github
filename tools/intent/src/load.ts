@@ -16,6 +16,7 @@ import { parse } from "yaml";
 import { buildModel } from "./model.ts";
 import { decodeModelFile, decodeSources, decodeTracker } from "./schema.ts";
 import { scopes } from "./vocabulary.ts";
+import { cutValues, describeCut } from "./yamlText.ts";
 
 class ModelLoadError extends TaggedErrorClass<
   ModelLoadError,
@@ -37,15 +38,28 @@ const fromResult = <A, E extends { readonly message: string }>(
 const decodeJson = Schema.decodeUnknownResult(Schema.Json);
 
 /** Parses YAML text into plain data; the result is decoded by the schema of the file that holds it. */
-const parseYaml = (path: string, text: string) =>
-  Effect.try({
-    catch: (error) =>
-      new ModelLoadError({
-        message: error instanceof Error ? error.message : "invalid YAML",
+export const parseYaml = (path: string, text: string) =>
+  Effect.gen(function* parseYamlText() {
+    const cuts = cutValues(text);
+
+    if (Arr.isReadonlyArrayNonEmpty(cuts)) {
+      return yield* new ModelLoadError({
+        message: `${path}: ${Arr.join(Arr.map(cuts, describeCut), "; ")}`,
         path,
-      }),
-    try: () => decodeJson(parse(text)),
-  }).pipe(Effect.flatMap((result) => fromResult(path, result)));
+      });
+    }
+
+    const parsed = yield* Effect.try({
+      catch: (error) =>
+        new ModelLoadError({
+          message: error instanceof Error ? error.message : "invalid YAML",
+          path,
+        }),
+      try: () => decodeJson(parse(text)),
+    });
+
+    return yield* fromResult(path, parsed);
+  });
 
 const decisionLogPath = "sources/operator-decisions-2026-10.md";
 
