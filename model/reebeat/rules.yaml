@@ -185,16 +185,14 @@ elements:
     ruleType: derivation
     title: Narration, subtitles and notes are one string
     statement: >-
-      The narration text of a Line is its dialogue. Subtitles and speaker notes carry exactly that string, and the
-      dialogue holds no annotations.
-    status: proposed
-    rationale: >-
-      Spec plan: spec 0002 and spec 0001 set out that narration text, subtitles and notes are one string. The operator
-      decided that dialogue stays pure prose (spec 0002 line 161), so confirm the rest.
+      The narration text of a Line is its dialogue. Narration, subtitles and speaker notes stay one string, and the dialogue
+      holds no annotations. SDH captions and the transcript are separate generated tracks that may add sound descriptions.
+    status: decided
     source:
       - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:82
       - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:48
       - reebeat:GLOSSARY.md:31-33
+      - log:94
     links:
       serves: [goal-reebeat-screenplay-first, goal-reebeat-accessible-artifacts]
       constrains: [comp-reebeat-subtitles, comp-reebeat-render-reveal]
@@ -364,16 +362,14 @@ elements:
     ruleType: constraint
     title: Element ids are explicit, never by content
     statement: >-
-      Every Element has an id written down, unique in its Scene. The same id carries identity between Keyframes. In
-      release 1, matching across Scenes happens only where a transition says so.
-    status: proposed
-    rationale: >-
-      Spec plan: spec 0001 requires explicit ids. The operator decided that the same id is the same entity across Scenes
-      (log:23), and release 1 matches ids only across a transition that says so, so confirm the rule.
+      Every Element has an id written down, never matched by content. Element ids are story-global: one id is one entity in
+      the whole story, enforced by a lint. The same id carries identity between Keyframes. Until spec 0005, motion is
+      derived only between adjacent Scenes.
+    status: decided
     source:
       - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:60
-      - reebeat:GLOSSARY.md:61-63
       - log:23
+      - log:83
     links:
       serves: [goal-reebeat-statechart-model, goal-reebeat-explicit-source]
       constrains: [comp-reebeat-core]
@@ -501,12 +497,10 @@ elements:
     ruleType: constraint
     title: A cached build equals a cold build
     statement: >-
-      Cached render segments must give output byte-identical to a cold build. Cached output is never an approximation.
-    status: proposed
-    rationale: >-
-      Issue #9 states it for the planned segment cache and ties it to determinism F6. The operator has not decided the
-      segment cache.
-    source: ["issue:reebeat#9"]
+      A cached build equals a cold build. The build engine runs a cold build through the same tasks as a cached one, so the
+      output is the same to the standard of the reproducibility promise. Cached output is never an approximation.
+    status: decided
+    source: ["issue:reebeat#9", "log:81", "log:88"]
     refs: ["issue:reebeat#9"]
     links:
       serves: [goal-reebeat-incremental-builds, goal-reebeat-reproducible-builds]
@@ -516,15 +510,16 @@ elements:
     ruleType: event-action
     title: Planning fails if a renderer cannot comply
     statement: >-
-      A renderer declares which interaction kinds it can realise. Planning fails when a required one is unsupported,
-      unless the author declared a fallback.
+      Each artifact declares which interaction kinds it realises. Planning fails for that output when a required one is
+      unsupported, unless the author wrote an explicit fallback. A flag may bypass the failure for a specific output, so
+      the drift is silent but explicit (a declared opt-out, never a default).
     when: A Plan needs an interaction that the chosen renderer does not declare.
-    then: Planning fails and names the interaction and the renderer.
-    status: proposed
-    rationale: >-
-      Proposed in comments on issue #19, which say it requires an extension architecture ADR that does not exist yet. The
-      operator has not decided it.
-    source: ["issue:reebeat#19@6503203735"]
+    then: Planning fails for that output and names the interaction and the renderer.
+    status: decided
+    source:
+      - issue:reebeat#19@6503203735
+      - log:86
+      - log:87
     refs: ["issue:reebeat#19"]
     links:
       serves: [goal-reebeat-multi-renderer, goal-reebeat-interactive-website]

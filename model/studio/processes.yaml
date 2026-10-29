@@ -12,7 +12,7 @@ elements:
       Spec 0001 plans the journey as a design. At the pinned commit it is blocked on reebeat. The operator should confirm
       the journey.
     source: [studio:docs/specs/0001-first-felt-journey.md:11-22]
-    pricing: free
+    proposedPricing: free
     refs: ["studio:docs/specs/0001-first-felt-journey.md:1"]
     links:
       serves: [goal-studio-first-felt-journey]
@@ -23,13 +23,14 @@ elements:
     category: primary
     title: Open a story
     statement: >-
-      The editor opens a story IR JSON file, the committed source of reebeat, and checks it against the story schema.
+      The editor opens a story from the browser's private storage, after an import of an IR JSON file, or from a local file
+      where the browser has the File System Access API. It checks the story against the story schema.
     status: proposed
     rationale: >-
       Step 1 of the journey in spec 0001. It depends on reebeat spec 0006. The operator should confirm this open-and-validate
       workflow.
     source: [studio:docs/specs/0001-first-felt-journey.md:16, studio:docs/specs/0001-first-felt-journey.md:36]
-    pricing: free
+    proposedPricing: free
     links:
       serves: [goal-studio-first-felt-journey]
       part-of: [process-studio-first-journey]
@@ -47,7 +48,7 @@ elements:
       Step 2 of the journey in spec 0001. Falsifier F1 says the graph must equal the engine's graph. The operator should
       confirm the graph and timeline presentation.
     source: [studio:docs/specs/0001-first-felt-journey.md:17, studio:docs/specs/0001-first-felt-journey.md:131]
-    pricing: free
+    proposedPricing: free
     links:
       serves: [goal-studio-first-felt-journey]
       part-of: [process-studio-first-journey]
@@ -59,13 +60,10 @@ elements:
     category: primary
     title: Scrub the preview
     statement: >-
-      The person drags the playhead and the preview shows that frame and its narration word.
-    status: proposed
-    rationale: >-
-      Step 3 of the journey in spec 0001. A frame-exact scrub needs a seekable Deck page from reebeat. The operator should
-      confirm the Deck preview and scrub experience.
-    source: [studio:docs/specs/0001-first-felt-journey.md:18, studio:docs/specs/0001-first-felt-journey.md:39]
-    pricing: free
+      The person drags the playhead, and the Deck in the preview iframe seeks to that frame and shows its narration word.
+    status: decided
+    source: [studio:docs/specs/0001-first-felt-journey.md:18, studio:docs/specs/0001-first-felt-journey.md:39, log:97]
+    proposedPricing: free
     links:
       serves: [goal-studio-preview-fidelity]
       part-of: [process-studio-first-journey]
@@ -84,7 +82,7 @@ elements:
       Steps 4 and 5 of the journey in spec 0001, with falsifiers F3 and F4. The operator should confirm the edit and
       validation behaviour.
     source: [studio:docs/specs/0001-first-felt-journey.md:19-21, studio:docs/specs/0001-first-felt-journey.md:133-134]
-    pricing: free
+    proposedPricing: free
     links:
       serves: [goal-studio-first-felt-journey]
       part-of: [process-studio-first-journey]
@@ -96,13 +94,11 @@ elements:
     category: primary
     title: Undo an edit
     statement: >-
-      Undo restores the old story byte for byte. The inverse of an edit is computed, not stored by hand.
-    status: proposed
-    rationale: >-
-      Spec 0001 plans undo as the computed inverse of the patch, and falsifier F6 tests the patch laws. The operator should
-      confirm the undo behaviour and the inverse design.
-    source: [studio:docs/specs/0001-first-felt-journey.md:20-21, studio:docs/specs/0001-first-felt-journey.md:93, studio:docs/specs/0001-first-felt-journey.md:136]
-    pricing: free
+      Undo reverts the person's own last change per peer, through Loro's UndoManager. It gives back the exact story when
+      nobody else edited meanwhile.
+    status: decided
+    source: [studio:docs/specs/0001-first-felt-journey.md:20-21, studio:docs/specs/0001-first-felt-journey.md:93, studio:docs/specs/0001-first-felt-journey.md:136, log:102]
+    proposedPricing: free
     links:
       serves: [goal-studio-first-felt-journey]
       part-of: [process-studio-first-journey]

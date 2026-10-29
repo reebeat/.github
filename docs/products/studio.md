@@ -4,11 +4,11 @@
 
 > The collaborative editor for reebeat stories
 
-Studio is a collaborative editor for reebeat stories, a product built on the open compiler. It ships web first and as one binary built with Bun. Its licence is not decided.
+Studio is a collaborative editor for reebeat stories, a product built on the open compiler. It ships web first and as one binary built with Bun. It is proprietary, all rights reserved.
 
-Repository: [reebeat/studio][1]. Licence: none; all rights reserved, undecided. Status of this description: decided.
+Repository: [reebeat/studio][1]. Licence: proprietary; all rights reserved (LICENSE file and third-party notices still to be added). Status of this description: decided.
 
-199 model elements: 45 decided, 135 proposed, 19 open.
+199 model elements: 78 decided, 107 proposed, 14 open.
 
 ## Product vision board
 
@@ -16,11 +16,11 @@ After Roman Pichler's product vision board. Each cell is built from the model; c
 
 | Cell | Content |
 | --- | --- |
-| Vision | [A collaborative editor for reebeat stories](../goals.md#goal-studio-vision) (decided): reebeat studio is a collaborative editor for reebeat stories, a product built on the open compiler. Its licence is not decided. |
+| Vision | [A collaborative editor for reebeat stories](../goals.md#goal-studio-vision) (decided): reebeat studio is a collaborative editor for reebeat stories, a product built on the open compiler. It is proprietary, all rights reserved. |
 | Target group | [Agent operator](../actors-and-resources.md#actor-agent-operator) (proposed)<br/>[Presenter](../actors-and-resources.md#actor-presenter) (proposed)<br/>[Creator](../actors-and-resources.md#actor-creator) (proposed)<br/>[Story author in studio](../actors-and-resources.md#actor-studio-story-author) (proposed)<br/>[Narrator in the deck view](../actors-and-resources.md#actor-studio-narrator) (proposed)<br/>[Person who brings their own agent](../actors-and-resources.md#actor-studio-agent-owner) (proposed)<br/>[Collaborator on a shared story](../actors-and-resources.md#actor-studio-collaborator) (proposed)<br/>[The operator as owner of studio](../actors-and-resources.md#actor-studio-product-owner) (decided)<br/>[Contributor who writes a spec and its pull request](../actors-and-resources.md#actor-studio-pr-author) (proposed)<br/>[Independent reviewer](../actors-and-resources.md#actor-studio-reviewer) (proposed) |
 | Needs (jobs to be done) | When I run my own agent next to a story I am editing, I want to give the agent access to the editing tools, so that it can edit the story with me (decided)<br/>When I record the voice for a deck, I want to cut my narration into pieces and tie each piece to a beat lifecycle event, so that the pieces follow the story's beats (decided)<br/>When I want to change one Element of a story, I want to see the result at once, without a rebuild, so that I judge the change by looking at it, not by opening files (proposed) |
-| Product (key features) | [The editor app (apps/editor)](../technical-components.md#comp-studio-editor) (proposed)<br/>[In-browser Deck preview](../technical-components.md#comp-studio-preview) (proposed)<br/>[The validated edit path](../technical-components.md#comp-studio-edit-path) (proposed)<br/>[Manuscript lens](../technical-components.md#comp-studio-lens-manuscript) (proposed)<br/>[Deck and Record lens](../technical-components.md#comp-studio-lens-record) (proposed)<br/>[Story graph lens](../technical-components.md#comp-studio-lens-story-graph) (proposed)<br/>[Timeline lens](../technical-components.md#comp-studio-lens-timeline) (proposed)<br/>[Wiring lens](../technical-components.md#comp-studio-lens-wiring) (proposed)<br/>[Review lens](../technical-components.md#comp-studio-lens-review) (proposed)<br/>[Coach lens](../technical-components.md#comp-studio-lens-coach) (proposed)<br/>[Languages lens](../technical-components.md#comp-studio-lens-languages) (proposed)<br/>[Deliver lens](../technical-components.md#comp-studio-lens-deliver) (proposed)<br/>[Agent panel](../technical-components.md#comp-studio-lens-agent-panel) (proposed)<br/>[The agent tool protocol](../technical-components.md#comp-studio-tool-protocol) (proposed)<br/>[Reference tool server over a local story file](../technical-components.md#comp-studio-reference-server) (proposed)<br/>[Hosted agents](../technical-components.md#comp-studio-hosted-agent) (decided)<br/>[Hosted alignment, speech and translation](../technical-components.md#comp-studio-hosted-speech) (proposed)<br/>[Cloud rendering](../technical-components.md#comp-studio-cloud-render) (proposed)<br/>[The sync server (planned)](../technical-components.md#comp-studio-sync-server) (decided)<br/>[The document port over Loro](../technical-components.md#comp-studio-document-port) (decided)<br/>[The validation gate](../technical-components.md#comp-studio-validation-gate) (decided)<br/>[The repair function](../technical-components.md#comp-studio-repair) (decided)<br/>[The single-binary launcher](../technical-components.md#comp-studio-launcher) (proposed)<br/>[The web deploy (inert)](../technical-components.md#comp-studio-web-deploy) (proposed)<br/>[Quality tools (tools/quality)](../technical-components.md#comp-studio-quality-tools) (proposed)<br/>[CI checks workflow](../technical-components.md#comp-studio-ci) (proposed)<br/>[Review and PR creation skills](../technical-components.md#comp-studio-review-skills) (proposed)<br/>[The verify-studio skill and feature map](../technical-components.md#comp-studio-verify-skill) (proposed)<br/>[The graph is the engine's graph](../technical-components.md#req-studio-graph-matches-plan) (proposed)<br/>[The playhead seeks the preview to any frame](../technical-components.md#req-studio-scrub-frame) (proposed)<br/>[One property edit is one change](../technical-components.md#req-studio-edit-one-property) (proposed)<br/>[Undo restores the old story exactly](../technical-components.md#req-studio-undo-restores) (proposed)<br/>[Record several takes with a teleprompter](../technical-components.md#req-studio-record-takes) (proposed)<br/>[Tie cut narration pieces to beat events](../technical-components.md#req-studio-cut-narration-by-word) (decided)<br/>[The sync server refuses an invalid merge with a reason](../technical-components.md#req-studio-gate-refuses-invalid) (proposed)<br/>[Offer a repair as a proposal](../technical-components.md#req-studio-repair-proposal) (decided)<br/>[The sync room stores an update log and a snapshot](../technical-components.md#req-studio-sync-persistence) (proposed)<br/>[Agents get tools to read and edit a story](../technical-components.md#req-studio-agent-tools) (proposed)<br/>[A user can bring their own agent](../technical-components.md#req-studio-bring-your-own-agent) (decided)<br/>[Set an agent's scope per lens](../technical-components.md#req-studio-agent-scopes) (proposed)<br/>[The binary opens the editor in the user's browser](../technical-components.md#req-studio-serve-local) (proposed) |
-| Business goals | [Modular and extensible by users](../goals.md#goal-org-modular-extensible) (decided)<br/>[Correctness by construction](../goals.md#goal-org-correctness-by-construction) (decided)<br/>[Fast, incremental, reactive builds](../goals.md#goal-org-incremental-builds) (decided)<br/>[Reproducible builds](../goals.md#goal-org-reproducible-builds) (decided)<br/>[Interactive multimedia for learning](../goals.md#goal-org-interactive-multimedia) (decided)<br/>[Accessible artifacts for every audience](../goals.md#goal-org-accessible-artifacts) (decided)<br/>[Free tier for basic features, paid premium features](../goals.md#goal-studio-free-paid-split) (decided)<br/>[Paid sync and hosted agents fund the work](../goals.md#opportunity-studio-paid-sync-and-agents) (proposed)<br/>[Hosted agents](../technical-components.md#comp-studio-hosted-agent) (decided)<br/>[Hosted alignment, speech and translation](../technical-components.md#comp-studio-hosted-speech) (proposed)<br/>[Cloud rendering](../technical-components.md#comp-studio-cloud-render) (proposed)<br/>[The sync server (planned)](../technical-components.md#comp-studio-sync-server) (decided) |
+| Product (key features) | [The editor app (apps/editor)](../technical-components.md#comp-studio-editor) (proposed)<br/>[In-browser Deck preview](../technical-components.md#comp-studio-preview) (decided)<br/>[The validated edit path](../technical-components.md#comp-studio-edit-path) (proposed)<br/>[Manuscript lens](../technical-components.md#comp-studio-lens-manuscript) (proposed)<br/>[Deck and Record lens](../technical-components.md#comp-studio-lens-record) (proposed)<br/>[Story graph lens](../technical-components.md#comp-studio-lens-story-graph) (proposed)<br/>[Timeline lens](../technical-components.md#comp-studio-lens-timeline) (proposed)<br/>[Wiring lens](../technical-components.md#comp-studio-lens-wiring) (proposed)<br/>[Review lens](../technical-components.md#comp-studio-lens-review) (proposed)<br/>[Coach lens](../technical-components.md#comp-studio-lens-coach) (proposed)<br/>[Languages lens](../technical-components.md#comp-studio-lens-languages) (proposed)<br/>[Deliver lens](../technical-components.md#comp-studio-lens-deliver) (proposed)<br/>[Agent panel](../technical-components.md#comp-studio-lens-agent-panel) (decided)<br/>[The agent tool protocol](../technical-components.md#comp-studio-tool-protocol) (decided)<br/>[Reference tool server over a local story file](../technical-components.md#comp-studio-reference-server) (decided)<br/>[Hosted agents](../technical-components.md#comp-studio-hosted-agent) (decided)<br/>[Hosted alignment, speech and translation](../technical-components.md#comp-studio-hosted-speech) (decided)<br/>[Cloud rendering](../technical-components.md#comp-studio-cloud-render) (decided)<br/>[The sync server (planned)](../technical-components.md#comp-studio-sync-server) (decided)<br/>[The document port over Loro](../technical-components.md#comp-studio-document-port) (decided)<br/>[The validation gate](../technical-components.md#comp-studio-validation-gate) (decided)<br/>[The repair function](../technical-components.md#comp-studio-repair) (decided)<br/>[The single-binary launcher](../technical-components.md#comp-studio-launcher) (proposed)<br/>[The web deploy (inert)](../technical-components.md#comp-studio-web-deploy) (proposed)<br/>[Quality tools (tools/quality)](../technical-components.md#comp-studio-quality-tools) (proposed)<br/>[CI checks workflow](../technical-components.md#comp-studio-ci) (proposed)<br/>[Review and PR creation skills](../technical-components.md#comp-studio-review-skills) (proposed)<br/>[The verify-studio skill and feature map](../technical-components.md#comp-studio-verify-skill) (proposed)<br/>[The graph is the engine's graph](../technical-components.md#req-studio-graph-matches-plan) (proposed)<br/>[The playhead seeks the preview to any frame](../technical-components.md#req-studio-scrub-frame) (decided)<br/>[One property edit is one change](../technical-components.md#req-studio-edit-one-property) (proposed)<br/>[Undo reverts a person's own changes](../technical-components.md#req-studio-undo-restores) (decided)<br/>[Record several takes with a teleprompter](../technical-components.md#req-studio-record-takes) (proposed)<br/>[Tie cut narration pieces to beat events](../technical-components.md#req-studio-cut-narration-by-word) (decided)<br/>[The sync server refuses an invalid merge with a reason](../technical-components.md#req-studio-gate-refuses-invalid) (proposed)<br/>[Offer a repair as a proposal](../technical-components.md#req-studio-repair-proposal) (decided)<br/>[The sync room stores an update log and a snapshot](../technical-components.md#req-studio-sync-persistence) (proposed)<br/>[Agents get tools to read and edit a story](../technical-components.md#req-studio-agent-tools) (proposed)<br/>[A user can bring their own agent](../technical-components.md#req-studio-bring-your-own-agent) (decided)<br/>[Set an agent's action set, with presets](../technical-components.md#req-studio-agent-scopes) (decided)<br/>[The binary opens the editor in the user's browser](../technical-components.md#req-studio-serve-local) (proposed) |
+| Business goals | [Modular and extensible by users](../goals.md#goal-org-modular-extensible) (decided)<br/>[Correctness by construction](../goals.md#goal-org-correctness-by-construction) (decided)<br/>[Fast, incremental, reactive builds](../goals.md#goal-org-incremental-builds) (decided)<br/>[Reproducible builds](../goals.md#goal-org-reproducible-builds) (decided)<br/>[Interactive multimedia for learning](../goals.md#goal-org-interactive-multimedia) (decided)<br/>[Accessible artifacts for every audience](../goals.md#goal-org-accessible-artifacts) (decided)<br/>[Free tier for basic features, paid premium features](../goals.md#goal-studio-free-paid-split) (decided)<br/>[Paid sync and hosted agents fund the work](../goals.md#opportunity-studio-paid-sync-and-agents) (proposed)<br/>[Hosted agents](../technical-components.md#comp-studio-hosted-agent) (decided)<br/>[Hosted alignment, speech and translation](../technical-components.md#comp-studio-hosted-speech) (decided)<br/>[Cloud rendering](../technical-components.md#comp-studio-cloud-render) (decided)<br/>[The sync server (planned)](../technical-components.md#comp-studio-sync-server) (decided) |
 
 Scope `studio`: 199 elements.
 
@@ -31,24 +31,24 @@ Scope `studio`: 199 elements.
 | Requirement | Statement | Status | Sources |
 | --- | --- | --- | --- |
 | [The graph is the engine's graph](../technical-components.md#req-studio-graph-matches-plan) | The States and Beats the editor draws equal the ones reebeat's timing plan lists, with the same ids, count and order. | proposed | [studio:docs/specs/0001-first-felt-journey.md:17][2], [studio:docs/specs/0001-first-felt-journey.md:131][3] |
-| [The playhead seeks the preview to any frame](../technical-components.md#req-studio-scrub-frame) | Dragging the playhead shows that frame and its narration word in the preview. | proposed | [studio:docs/specs/0001-first-felt-journey.md:18][4], [studio:docs/specs/0001-first-felt-journey.md:39][5] |
-| [One property edit is one change](../technical-components.md#req-studio-edit-one-property) | Setting an Element property changes the story by exactly one replace. An invalid result is refused with a reason and leaves the story unchanged. | proposed | [studio:docs/specs/0001-first-felt-journey.md:19-21][6], [studio:docs/specs/0001-first-felt-journey.md:133-134][7] |
-| [Undo restores the old story exactly](../technical-components.md#req-studio-undo-restores) | Undo gives back the story byte for byte, using the computed inverse of the edit. | proposed | [studio:docs/specs/0001-first-felt-journey.md:20-21][8], [studio:docs/specs/0001-first-felt-journey.md:93][9], [studio:docs/specs/0001-first-felt-journey.md:136][10] |
-| [Record several takes with a teleprompter](../technical-components.md#req-studio-record-takes) | The presenter reads a Line from a teleprompter, keeps several takes and picks the best one. | proposed | [log L45][11], [studio:docs/design/lenses.md:38][12] |
-| [Tie cut narration pieces to beat events](../technical-components.md#req-studio-cut-narration-by-word) | Cut narration pieces are tied to beat lifecycle events. | decided | [log L45][11] |
-| [The sync server refuses an invalid merge with a reason](../technical-components.md#req-studio-gate-refuses-invalid) | The server applies a change set to a copy and keeps it only when the result decodes as a valid story. It returns the reason so the author can rebase. | proposed | [log L47][13], [studio:docs/specs/0002-collaboration-spike.md:25][14], [studio:docs/specs/0002-collaboration-spike.md:111-112][15] |
-| [Offer a repair as a proposal](../technical-components.md#req-studio-repair-proposal) | When a repair is offered for an invalid merge, it applies only after a person accepts. | decided | [record studio:docs/specs/0002-collaboration-spike.md:198][16] |
-| [The sync room stores an update log and a snapshot](../technical-components.md#req-studio-sync-persistence) | The room appends each update to storage, compacts the log to a snapshot and chunks a snapshot over 2 MB. A new object started from storage returns the same document. | proposed | [studio:docs/specs/0002-collaboration-spike.md:28][17], [studio:docs/specs/0002-collaboration-spike.md:56][18], [studio:docs/specs/0002-collaboration-spike.md:66][19] |
-| [Agents get tools to read and edit a story](../technical-components.md#req-studio-agent-tools) | Tools let an agent read the story, read the schema, plan timing, apply a patch, set a property by Element id and render a frame. They return the same typed errors the editor shows. | proposed | [studio:docs/specs/0001-first-felt-journey.md:95-108][20] |
-| [A user can bring their own agent](../technical-components.md#req-studio-bring-your-own-agent) | A user connects an agent of their choice and gives it access to the editing tools. | decided | [log L43][21] |
-| [Set an agent's scope per lens](../technical-components.md#req-studio-agent-scopes) | A person sets read, suggest or apply for each agent, and the scope can differ for each lens. | proposed | [studio:docs/design/lenses.md:91-99][22] |
-| [The binary opens the editor in the user's browser](../technical-components.md#req-studio-serve-local) | Running the binary starts a local server and opens the browser on a loopback address and port. | proposed | [pr studio#6][23], [log L46][24] |
+| [The playhead seeks the preview to any frame](../technical-components.md#req-studio-scrub-frame) | Dragging the playhead seeks the Deck in the preview iframe to that frame and shows its narration word. It needs a seekable Deck page from reebeat. | decided | [studio:docs/specs/0001-first-felt-journey.md:18][4], [studio:docs/specs/0001-first-felt-journey.md:39][5], [log L97][6] |
+| [One property edit is one change](../technical-components.md#req-studio-edit-one-property) | Setting an Element property changes the story by exactly one replace. An invalid result is refused with a reason and leaves the story unchanged. | proposed | [studio:docs/specs/0001-first-felt-journey.md:19-21][7], [studio:docs/specs/0001-first-felt-journey.md:133-134][8] |
+| [Undo reverts a person's own changes](../technical-components.md#req-studio-undo-restores) | Undo reverts one's own changes per peer, through Loro's UndoManager. It gives back the exact story only when nobody else edited meanwhile. | decided | [studio:docs/specs/0001-first-felt-journey.md:20-21][9], [studio:docs/specs/0001-first-felt-journey.md:93][10], [studio:docs/specs/0001-first-felt-journey.md:136][11], [log L102][12] |
+| [Record several takes with a teleprompter](../technical-components.md#req-studio-record-takes) | The presenter reads a Line from a teleprompter, keeps several takes and picks the best one. | proposed | [log L45][13], [studio:docs/design/lenses.md:38][14] |
+| [Tie cut narration pieces to beat events](../technical-components.md#req-studio-cut-narration-by-word) | Cut narration pieces are tied to beat lifecycle events. | decided | [log L45][13] |
+| [The sync server refuses an invalid merge with a reason](../technical-components.md#req-studio-gate-refuses-invalid) | The server applies a change set to a copy and keeps it only when the result decodes as a valid story. It returns the reason so the author can rebase. | proposed | [log L47][15], [studio:docs/specs/0002-collaboration-spike.md:25][16], [studio:docs/specs/0002-collaboration-spike.md:111-112][17] |
+| [Offer a repair as a proposal](../technical-components.md#req-studio-repair-proposal) | When a repair is offered for an invalid merge, it applies only after a person accepts. | decided | [record studio:docs/specs/0002-collaboration-spike.md:198][18] |
+| [The sync room stores an update log and a snapshot](../technical-components.md#req-studio-sync-persistence) | The room appends each update to storage, compacts the log to a snapshot and chunks a snapshot over 2 MB. A new object started from storage returns the same document. | proposed | [studio:docs/specs/0002-collaboration-spike.md:28][19], [studio:docs/specs/0002-collaboration-spike.md:56][20], [studio:docs/specs/0002-collaboration-spike.md:66][21] |
+| [Agents get tools to read and edit a story](../technical-components.md#req-studio-agent-tools) | Tools let an agent read the story, read the schema, plan timing, apply a patch, set a property by Element id and render a frame. They return the same typed errors the editor shows. | proposed | [studio:docs/specs/0001-first-felt-journey.md:95-108][22] |
+| [A user can bring their own agent](../technical-components.md#req-studio-bring-your-own-agent) | A user connects an agent of their choice and gives it access to the editing tools. | decided | [log L43][23] |
+| [Set an agent's action set, with presets](../technical-components.md#req-studio-agent-scopes) | A person sets what each agent may do as an action set on resources, declared in code. Read, suggest and apply are named presets, and each lens has a default preset in the panel. | decided | [studio:docs/design/lenses.md:91-99][24], [log L99][25] |
+| [The binary opens the editor in the user's browser](../technical-components.md#req-studio-serve-local) | Running the binary starts a local server and opens the browser on a loopback address and port. | proposed | [pr studio#6][26], [log L46][27] |
 
 ### 1.2 Quality goals
 
 | Quality | Goal | Scenario | Status |
 | --- | --- | --- | --- |
-| correctness | [A preview frame equals the Video frame](../technical-components.md#req-studio-preview-equals-video): The in-browser preview at a frame equals the Video's frame at the same time. | For the first frame, a mid-transition frame, a frame inside a focus ring and the last frame of the same-id story, the preview at seek(frame) and the Video frame are byte for byte equal after PNG decode, on the same Chromium build. | proposed |
+| correctness | [A preview frame equals the Video frame](../technical-components.md#req-studio-preview-equals-video): The in-browser preview at a frame equals the Video's frame at the same time. Gate F2 checks it with byte-equal frames on the same Chromium build. Other browsers may differ, and if F2 fails the differences become part of the spec. | For the first frame, a mid-transition frame, a frame inside a focus ring and the last frame of the same-id story, the preview at seek(frame) and the Video frame are byte for byte equal after PNG decode, on the same Chromium build. | decided |
 | reliability | [The free journey works offline](../technical-components.md#req-studio-offline-free-tier): With the network off, the free journey still works and the page requests nothing but its own static files. | With the network off and the static assets served, a person opens a story, sees the graph and timeline, scrubs, edits one property and undoes it. The page makes no request except for its own files. | proposed |
 | accessibility | [Every editor region has an accessible name](../technical-components.md#req-studio-accessible-regions): The editor has one h1, and each region and the inspector has an accessible name. The inspector button exposes its state with aria-expanded. | A screen reader user lists the landmarks and finds Story graph, Preview, Timeline and Inspector by name. The Hide inspector button reports aria-expanded true while the inspector shows, and false when it is hidden. | proposed |
 | correctness | [A merged story is valid or refused](../technical-components.md#req-studio-validity-under-merge): After any merge, the shared story is a valid story. No merge stores an invalid one. | Two peers edit a story at the same time and then merge. If the merged document does not decode as a valid story, the server refuses it and names the reason. Over the 66 valid spike outcomes, it refused none. | proposed |
@@ -56,9 +56,9 @@ Scope `studio`: 199 elements.
 | performance | [Edit latency and edge cost are not yet measured](../technical-components.md#req-studio-performance-unmeasured): An edit must show in the preview within a latency budget, and the sync gate must start and run within a measured size. At the pinned commit neither number exists. | Milestone M0 measures the compile and render time of the same-id story in a browser and sets the budget for one edit. A Cloudflare edge run measures the gate's bundle size, cold start and load with many sockets. | open |
 | security | [The binary serves only on loopback and only reads](../technical-components.md#req-studio-binary-loopback-readonly): The binary binds a loopback address, answers GET and HEAD only and refuses a path outside its embedded files. | A client on a non-loopback address of the same machine cannot connect. A POST returns 405. A request path with dot-dot segments reaches no file outside the embedded set, although a normalised path can answer with an embedded file. | proposed |
 | portability | [The binary runs on five targets](../technical-components.md#req-studio-binary-portable): The release builds binaries for Linux x64 and arm64, macOS arm64 and x64, and Windows x64. No Linux binary names a path in the Nix store. | On the runners that run the full smoke (Linux x64 and arm64, macOS arm64 and x64), the binary starts, serves and exits cleanly on a stop signal. On Windows only the start-and-check step runs. A file-type check fails any Linux binary that names /nix/store. | proposed |
-| licensing | [Every distributed artifact has a known licence](../technical-components.md#req-studio-licence-clear): Before studio distributes a binary, the licence of studio and of any bundled third-party code is known. At the pinned commit studio's licence is undecided, and its binary does not bundle ffmpeg. | Before a release, the operator has chosen a licence and added a LICENSE file. A binary that bundles ffmpeg with libx264 has had its GPL terms reviewed. | open |
+| licensing | [Every distributed artifact has a known licence](../technical-components.md#req-studio-licence-clear): Studio is proprietary, all rights reserved, with a LICENSE file and third-party notices. Before studio distributes a binary, its terms and the licence of any bundled third-party code are known, and the binary does not bundle ffmpeg. | Before a release, the repository has a LICENSE file and third-party notices, and binary users have terms. No binary bundles ffmpeg. If a product ever bundles ffmpeg with libx264, the GPL terms for that binary are met. | decided |
 | maintainability | [One command runs every gate](../technical-components.md#req-studio-maintainable-gates): The ready command runs format, lint, types, the exception check, tests, build, dead code, duplication and secret scans. CI runs the same gates. | On a clean tree, the ready command exits 0. Adding a lint suppression with no registry entry makes the exception check fail and name the file and line. | proposed |
-| extensibility | [Users extend studio with their own agents and plugins](../technical-components.md#req-studio-extensible-agents): Studio stays modular so users add agents and plugins without changing studio's code. | A user connects an agent that studio did not ship, through the published tool protocol, and the agent edits a story with the same tools the editor uses. | proposed |
+| extensibility | [Users extend studio with their own agents and plugins](../technical-components.md#req-studio-extensible-agents): Studio stays modular so users add agents and plugins without changing studio's code. They use the tool protocol, declared once, with MCP as its first adapter. | A user connects an agent that studio did not ship, through the MCP adapter of the published tool protocol, and the agent edits a story with the same tools the editor uses. | decided |
 
 ### 1.3 Stakeholders
 
@@ -68,7 +68,7 @@ Scope `studio`: 199 elements.
 | [Narrator in the deck view](../actors-and-resources.md#actor-studio-narrator) | A person who records the voice of a story, picks the best take and ties the cut pieces to beat events. This is the presenter persona at work in studio. | proposed |
 | [Person who brings their own agent](../actors-and-resources.md#actor-studio-agent-owner) | A person who connects an agent of their choice to studio's editing tools and sets what the agent may do. This is the agent operator persona at work in studio. | proposed |
 | [Collaborator on a shared story](../actors-and-resources.md#actor-studio-collaborator) | A person who edits the same story as others through the sync server. Their suggested edits wait for a person's decision. | proposed |
-| [The operator as owner of studio](../actors-and-resources.md#actor-studio-product-owner) | The operator made the studio repository public and has not decided its licence. | decided |
+| [The operator as owner of studio](../actors-and-resources.md#actor-studio-product-owner) | The operator made the studio repository public and decided that studio is proprietary, all rights reserved. | decided |
 | [Contributor who writes a spec and its pull request](../actors-and-resources.md#actor-studio-pr-author) | A human or an agent who writes a spec, builds it on its own branch and opens one pull request. | proposed |
 | [Independent reviewer](../actors-and-resources.md#actor-studio-reviewer) | A reviewer judges the plan, the code and their agreement, and runs the verify skill for the changed behaviour. A reviewer is never the author of the head. | proposed |
 | [An agent that runs on the user's side](../actors-and-resources.md#actor-studio-own-agent) | An agent that the user brings. The user gives it access to the editing tools. | decided |
@@ -77,7 +77,7 @@ Scope `studio`: 199 elements.
 
 ## Problems and constraints
 
-- [Studio has no LICENSE file](../goals.md#problem-studio-no-licence) (open): At the pinned commit, the repository is public but has no licence file. Studio's own material is not licensed for reuse, because the operator has not decided a licence. Third-party code keeps its own licence.
+- [Studio has no LICENSE file](../goals.md#problem-studio-no-licence) (decided): Studio is proprietary, all rights reserved, with a LICENSE file and third-party notices. At the pinned commit the repository is public but has no licence file, so the file and the notices are still to be added.
 - [Studio has no glossary of its own](../goals.md#problem-studio-no-glossary) (open): At the pinned commit, studio uses reebeat's words (State, Beat, Scene, effect) but has no GLOSSARY.md. It points readers to reebeat's glossary.
 - [The README does not state product goals](../goals.md#problem-studio-goals-not-in-readme) (open): At the pinned commit, the README gives a one-line purpose and the status of a placeholder shell. It does not state the product goals, the free and paid split or the roadmap.
 - [The first journey waits for the reebeat story IR](../goals.md#problem-studio-first-journey-blocked) (open): At the pinned commit, spec 0001 is blocked on reebeat specs 0004 and 0006, and needs spec 0005 for story-wide identity. Until the IR is stable, studio builds no editing feature.
@@ -85,17 +85,17 @@ Scope `studio`: 199 elements.
 - [The Foldkit Vite plugin is still off in studio](../goals.md#problem-studio-foldkit-vite-plugin) (open): At the pinned commit, studio keeps the Foldkit Vite plugin off, so the dev tools bridge and model-preserving reload are off. The cause is fixed upstream: @foldkit/vite-plugin 0.29.0 (npm, 2026-10-29) imports SecureRandom from effect/crypto and peers effect ~4.1.0. Studio has not bumped, and issue 4 is open.
 - [The web deploy waits for an Alchemy release](../goals.md#problem-studio-alchemy-release) (open): At the pinned commit, the current Alchemy release imports an Effect module that Effect 4.1 does not have. The fix, alchemy-run/alchemy#2754, was merged but not released, so pull request 6 was a draft.
 - [The exception check misses effect-diagnostics comments](../goals.md#problem-studio-exceptions-miss-diagnostics) (open): At the pinned commit, the suppression pattern in tools/quality does not match effect-diagnostics comments. Such a comment can silence a rule with no registry entry.
-- [The Durable Object room is unmeasured at the edge](../goals.md#problem-studio-do-unmeasured) (open): The room ran only on local workerd, without the validation gate. Nobody measured the real Cloudflare edge, load, many sockets, or the gate's bundle size and cold start.
+- [The Durable Object room is unmeasured at the edge](../goals.md#problem-studio-do-unmeasured) (decided): A small measured spike on the real Cloudflare edge comes first. It runs the gate inside a Durable Object and measures bundle size, cold start, sockets and cost per story-hour, and the sync spec follows the numbers. So far the room ran only on local workerd, without the gate.
 - [Demand and willingness to pay are not measured](../goals.md#problem-studio-demand-unmeasured) (open): The free and paid split follows running cost. No source measures whether people want studio or would pay for sync or hosted agents.
-- [ffmpeg with libx264 is GPL](../goals.md#problem-studio-ffmpeg-gpl) (open): A studio binary that bundles ffmpeg with libx264 would carry GPL terms. The operator wants this reviewed before any such binary is distributed.
+- [ffmpeg with libx264 is GPL](../goals.md#problem-studio-ffmpeg-gpl) (decided): Studio keeps libx264 and never bundles ffmpeg. The user's own ffmpeg or devenv supplies it, as now, and a hosted service does not distribute it. This holds for now; in future multiple encoders sit behind an adapter. If a product ever bundles ffmpeg, it complies with the GPL for that binary.
 - [The binaries are not signed](../goals.md#problem-studio-unsigned-binaries) (open): The macOS and Windows binaries are not signed or notarised, so those systems warn the user.
 - [STATE.md still says spec 0003 is in review](../goals.md#problem-studio-stale-state) (open): At the pinned commit, STATE.md says the review and verify skills are in review and lists their review as the next step. PR 5 has merged. The branch of PR 6 rewrites both lines to say 0003 has merged, so the text is wrong on main until PR 6 merges.
-- [Merge rule for positions and curve points is open](../goals.md#problem-studio-merge-semantics-open) (open): Two people can move one Element along different axes. A property-wise merge gives a position nobody chose. An atomic merge keeps one whole position. The operator has not chosen.
+- [Composite values merge atomically](../goals.md#problem-studio-merge-semantics-open) (decided): Composite values, a position and a curve point, merge atomically: the schema declares them atomic, and a whole value wins or loses together. The other properties merge property-wise. One concurrent edit of a single axis can be lost.
 - [Lens order and shared lens state are undecided](../goals.md#problem-studio-lens-order-open) (open): The lenses note does not decide the build order of lenses after spec 0001, whether the playhead is shared between collaborators, or how lenses use Foldkit Submodels.
 - [A merge can break the story](../goals.md#problem-studio-invalid-merges) (proposed): In the spike, 31 of 57 runs on a naive IR-shaped document merged to an invalid story, and 17 of 57 on a keyed one. A repair made 15 of the 17 valid and could not fix the other two (one left an Element hidden and never revealed).
 - [A patch addressed by array index can edit the wrong item](../goals.md#problem-studio-index-patch-unsafe) (proposed): Effect's JSON Patch compares arrays by position. In the spike, one inserted effect became 26 operations that rewrite the next effects field by field, and applied to a document that moved on, that patch gave an invalid story. A one-operation patch applied by index to a document that moved on edited the wrong effect, and the story stayed valid.
-- [The preview may differ from the Video](../goals.md#problem-studio-preview-may-diverge) (proposed): The in-browser preview could differ from the rendered Video where audio or the browser build differ. Spec 0001 answers this with a falsifier, not trust.
-- [Public repository, all rights reserved, licence undecided](../goals.md#constraint-studio-licence-undecided) (decided): The studio licence is not decided. The README carries a copyright notice that reserves all rights, and no licence file is present on purpose.
+- [The preview may differ from the Video](../goals.md#problem-studio-preview-may-diverge) (decided): The in-browser preview could differ from the rendered Video where audio or the browser build differ. The decision is a hybrid: the Deck in an iframe, gated by byte-equal frames (F2) on the same Chromium build. Other browsers may differ, and if F2 fails the differences become part of the spec.
+- [Public repository, all rights reserved](../goals.md#constraint-studio-licence-undecided) (decided): Studio is proprietary, all rights reserved. The repository is public, but nothing in it is licensed for reuse, and third-party code keeps its own licence.
 - [A public repository holds no secret or private material](../goals.md#constraint-studio-public-repo-hygiene) (proposed): The operator made the studio repository public. So it never holds a secret, personal data or course-private material.
 - [No editing feature before the reebeat IR is stable](../goals.md#constraint-studio-ir-stability) (proposed): Studio builds no editing feature against the story IR until reebeat specs 0004 to 0006 stabilise it. The shell, toolchain and docs are allowed.
 - [Effect 4.1.0 runs against Foldkit 0.169.0's peer](../goals.md#constraint-studio-effect-foldkit-peer) (proposed): Foldkit 0.169.0 declares a peer of effect 4.0.0, and studio runs 4.1.0 with it at the pinned commit. Bun prints warnings. The tests, build and a browser run pass on 4.1.0, and a boot test guards the mismatch. Foldkit 0.170.0 (2026-10-29) peers effect ~4.1.0, so the mismatch holds only while studio stays on 0.169.0.
@@ -121,7 +121,7 @@ flowchart BT
     goal_studio_lenses("Organise the editor by<br/>lenses"):::decided
     goal_studio_first_felt_journey("Edit one thing and see it at<br/>once"):::proposed
     goal_studio_offline_free_journey("The free journey needs no<br/>server or account"):::proposed
-    goal_studio_preview_fidelity("The preview shows what the<br/>Video will show"):::proposed
+    goal_studio_preview_fidelity("The preview shows what the<br/>Video will show"):::decided
     goal_studio_human_control("People decide on what agents<br/>and others suggest"):::proposed
     goal_studio_checked_change("Every change passes the same<br/>gates"):::proposed
     goal_studio_lens_manuscript("Manuscript lens, read the<br/>story as text"):::decided
@@ -132,8 +132,8 @@ flowchart BT
     goal_studio_lens_review("Review lens, compare<br/>versions and accept<br/>suggestions"):::proposed
     goal_studio_lens_coach("Coach lens, lint for<br/>teaching quality"):::proposed
     goal_studio_lens_languages("Languages lens, one story in<br/>several narrations"):::proposed
-    goal_studio_lens_agent_panel("Agent panel in every lens"):::proposed
-    problem_studio_no_licence{{"Studio has no LICENSE file"}}:::open
+    goal_studio_lens_agent_panel("Agent panel in every lens"):::decided
+    problem_studio_no_licence{{"Studio has no LICENSE file"}}:::decided
     problem_studio_no_glossary{{"Studio has no glossary of<br/>its own"}}:::open
     problem_studio_goals_not_in_readme{{"The README does not state<br/>product goals"}}:::open
     problem_studio_first_journey_blocked{{"The first journey waits for<br/>the reebeat story IR"}}:::open
@@ -141,17 +141,17 @@ flowchart BT
     problem_studio_foldkit_vite_plugin{{"The Foldkit Vite plugin is<br/>still off in studio"}}:::open
     problem_studio_alchemy_release{{"The web deploy waits for an<br/>Alchemy release"}}:::open
     problem_studio_exceptions_miss_diagnostics{{"The exception check misses<br/>effect-diagnostics comments"}}:::open
-    problem_studio_do_unmeasured{{"The Durable Object room is<br/>unmeasured at the edge"}}:::open
+    problem_studio_do_unmeasured{{"The Durable Object room is<br/>unmeasured at the edge"}}:::decided
     problem_studio_demand_unmeasured{{"Demand and willingness to<br/>pay are not measured"}}:::open
-    problem_studio_ffmpeg_gpl{{"ffmpeg with libx264 is GPL"}}:::open
+    problem_studio_ffmpeg_gpl{{"ffmpeg with libx264 is GPL"}}:::decided
     problem_studio_unsigned_binaries{{"The binaries are not signed"}}:::open
     problem_studio_stale_state{{"STATE.md still says spec<br/>0003 is in review"}}:::open
-    problem_studio_merge_semantics_open{{"Merge rule for positions and<br/>curve points is open"}}:::open
+    problem_studio_merge_semantics_open{{"Composite values merge<br/>atomically"}}:::decided
     problem_studio_lens_order_open{{"Lens order and shared lens<br/>state are undecided"}}:::open
     problem_studio_invalid_merges{{"A merge can break the story"}}:::proposed
     problem_studio_index_patch_unsafe{{"A patch addressed by array<br/>index can edit the wrong<br/>item"}}:::proposed
-    problem_studio_preview_may_diverge{{"The preview may differ from<br/>the Video"}}:::proposed
-    constraint_studio_licence_undecided[/"Public repository, all<br/>rights reserved, licence<br/>undecided"/]:::decided
+    problem_studio_preview_may_diverge{{"The preview may differ from<br/>the Video"}}:::decided
+    constraint_studio_licence_undecided[/"Public repository, all<br/>rights reserved"/]:::decided
     constraint_studio_public_repo_hygiene[/"A public repository holds no<br/>secret or private material"/]:::proposed
     constraint_studio_ir_stability[/"No editing feature before<br/>the reebeat IR is stable"/]:::proposed
     constraint_studio_effect_foldkit_peer[/"Effect 4.1.0 runs against<br/>Foldkit 0.169.0's peer"/]:::proposed
@@ -161,7 +161,7 @@ flowchart BT
     opportunity_studio_paid_sync_and_agents(["Paid sync and hosted agents<br/>fund the work"]):::proposed
     opportunity_studio_byo_agents_and_plugins(["Users bring their own<br/>agents, and likely write<br/>plugins"]):::decided
     opportunity_studio_loro_attribution(["Loro gives cheap authorship<br/>and proposal branches"]):::proposed
-    opportunity_studio_preview_is_video_page(["The Deck preview can be the<br/>Video's own page"]):::proposed
+    opportunity_studio_preview_is_video_page(["The Deck preview can be the<br/>Video's own page"]):::decided
     opportunity_studio_offline_binary(["One binary gives an offline<br/>local studio"]):::proposed
     opportunity_studio_foldkit_flow_graph(["The story graph lens could<br/>use foldkit-flow"]):::proposed
     goal_org_product_family("A family of products on the<br/>open core"):::outside
@@ -238,9 +238,9 @@ flowchart LR
     process_studio_first_journey["The first felt journey"]:::proposed
     process_studio_open_story["Open a story"]:::proposed
     process_studio_inspect_story["See the graph and the<br/>timeline"]:::proposed
-    process_studio_scrub_preview["Scrub the preview"]:::proposed
+    process_studio_scrub_preview["Scrub the preview"]:::decided
     process_studio_edit_property["Edit one Element property"]:::proposed
-    process_studio_undo_edit["Undo an edit"]:::proposed
+    process_studio_undo_edit["Undo an edit"]:::decided
     process_studio_record_narration["Record narration against the<br/>Deck"]:::proposed
     process_studio_cut_narration["Cut narration and tie it to<br/>beat events"]:::proposed
     process_studio_collaborate_merge["Collaborate and merge edits"]:::decided
@@ -283,15 +283,15 @@ Full tables and diagrams: [Business Rules Model](../business-rules.md).
 - [Free means it costs the project nothing to run](../business-rules.md#rule-studio-free-costs-nothing) (business rule, proposed)
 - [Every edit goes through one validated path](../business-rules.md#rule-studio-single-edit-path) (business rule, proposed)
 - [Edit by Element id, not by array index](../business-rules.md#rule-studio-edit-by-element-id) (business rule, proposed)
-- [Objects with an id are keyed by an immutable uid](../business-rules.md#rule-studio-keyed-by-uid) (business rule, proposed)
+- [Objects with an id are keyed by an immutable uid](../business-rules.md#rule-studio-keyed-by-uid) (business rule, decided)
 - [Peers exchange Loro updates, not JSON Patches](../business-rules.md#rule-studio-replicate-updates-not-patches) (business rule, decided)
 - [The gate refuses a merge that is not a valid story](../business-rules.md#rule-studio-gate-refuses-invalid-merge) (business rule, proposed)
 - [A repair is a proposal, never applied silently](../business-rules.md#rule-studio-repair-is-proposal) (business rule, decided)
 - [Hash the projected IR text, not CRDT bytes](../business-rules.md#rule-studio-hash-projected-ir) (business rule, proposed)
 - [A suggestion needs a human to accept it](../business-rules.md#rule-studio-suggestions-need-human-accept) (business rule, proposed)
-- [Each agent has a read, suggest or apply scope per lens](../business-rules.md#rule-studio-agent-scope) (business rule, proposed)
-- [A narration piece drives timing or follows an event](../business-rules.md#rule-studio-narration-drives-or-follows) (business rule, proposed)
-- [A narration cycle is reported, not resolved](../business-rules.md#rule-studio-no-narration-cycles) (business rule, proposed)
+- [An agent's permissions are action sets on resources](../business-rules.md#rule-studio-agent-scope) (business rule, decided)
+- [Studio states no narration timing rule](../business-rules.md#rule-studio-narration-drives-or-follows) (business rule, decided)
+- [The Wiring lens shows reebeat's cycle diagnostics](../business-rules.md#rule-studio-no-narration-cycles) (business rule, decided)
 - [Retiming changes the offset from the anchor](../business-rules.md#rule-studio-retime-by-offset) (business rule, proposed)
 - [Switching lens never changes the story](../business-rules.md#rule-studio-lens-switch-never-mutates) (business rule, proposed)
 - [A late compile never replaces a newer one](../business-rules.md#rule-studio-stale-result-dropped) (business rule, proposed)
@@ -303,7 +303,7 @@ Full tables and diagrams: [Business Rules Model](../business-rules.md).
 - [A reviewer is never the author of the head](../business-rules.md#rule-studio-reviewer-not-author) (business rule, proposed)
 - [A user-visible change updates the verify skill](../business-rules.md#rule-studio-verify-skill-maintenance) (business rule, proposed)
 - [A heavy job needs machine headroom first](../business-rules.md#rule-studio-heavy-job-headroom) (business rule, decided)
-- [Do not add a LICENSE file until the operator decides](../business-rules.md#rule-studio-no-licence-file) (business rule, proposed)
+- [Studio is proprietary, all rights reserved](../business-rules.md#rule-studio-no-licence-file) (business rule, decided)
 
 ## Actors and resources
 
@@ -328,7 +328,7 @@ Full tables and diagrams: [Actors and Resources Model](../actors-and-resources.m
 - [Cloudflare Workers and Durable Objects](../actors-and-resources.md#resource-studio-cloudflare) (resource, proposed)
 - [Alchemy v2](../actors-and-resources.md#resource-studio-alchemy) (resource, proposed)
 - [Bun, the runtime and compiler](../actors-and-resources.md#resource-studio-bun) (resource, decided)
-- [A story IR file](../actors-and-resources.md#resource-studio-story-file) (resource, proposed)
+- [A story IR file](../actors-and-resources.md#resource-studio-story-file) (resource, decided)
 - [Narration speech cache](../actors-and-resources.md#resource-studio-speech-cache) (resource, proposed)
 - [Specs and the lenses design note](../actors-and-resources.md#resource-studio-specs) (resource, proposed)
 - [The collaboration spike code](../actors-and-resources.md#resource-studio-spike-code) (resource, proposed)
@@ -342,7 +342,7 @@ Full tables and diagrams: [Technical Components and Requirements Model](../techn
 
 - [reebeat studio](../technical-components.md#comp-studio-product) (technical component, decided)
 - [The editor app (apps/editor)](../technical-components.md#comp-studio-editor) (technical component, proposed)
-- [In-browser Deck preview](../technical-components.md#comp-studio-preview) (technical component, proposed)
+- [In-browser Deck preview](../technical-components.md#comp-studio-preview) (technical component, decided)
 - [The validated edit path](../technical-components.md#comp-studio-edit-path) (technical component, proposed)
 - [Manuscript lens](../technical-components.md#comp-studio-lens-manuscript) (technical component, proposed)
 - [Deck and Record lens](../technical-components.md#comp-studio-lens-record) (technical component, proposed)
@@ -353,12 +353,12 @@ Full tables and diagrams: [Technical Components and Requirements Model](../techn
 - [Coach lens](../technical-components.md#comp-studio-lens-coach) (technical component, proposed)
 - [Languages lens](../technical-components.md#comp-studio-lens-languages) (technical component, proposed)
 - [Deliver lens](../technical-components.md#comp-studio-lens-deliver) (technical component, proposed)
-- [Agent panel](../technical-components.md#comp-studio-lens-agent-panel) (technical component, proposed)
-- [The agent tool protocol](../technical-components.md#comp-studio-tool-protocol) (technical component, proposed)
-- [Reference tool server over a local story file](../technical-components.md#comp-studio-reference-server) (technical component, proposed)
+- [Agent panel](../technical-components.md#comp-studio-lens-agent-panel) (technical component, decided)
+- [The agent tool protocol](../technical-components.md#comp-studio-tool-protocol) (technical component, decided)
+- [Reference tool server over a local story file](../technical-components.md#comp-studio-reference-server) (technical component, decided)
 - [Hosted agents](../technical-components.md#comp-studio-hosted-agent) (technical component, decided)
-- [Hosted alignment, speech and translation](../technical-components.md#comp-studio-hosted-speech) (technical component, proposed)
-- [Cloud rendering](../technical-components.md#comp-studio-cloud-render) (technical component, proposed)
+- [Hosted alignment, speech and translation](../technical-components.md#comp-studio-hosted-speech) (technical component, decided)
+- [Cloud rendering](../technical-components.md#comp-studio-cloud-render) (technical component, decided)
 - [The sync server (planned)](../technical-components.md#comp-studio-sync-server) (technical component, decided)
 - [The document port over Loro](../technical-components.md#comp-studio-document-port) (technical component, decided)
 - [The validation gate](../technical-components.md#comp-studio-validation-gate) (technical component, decided)
@@ -370,9 +370,9 @@ Full tables and diagrams: [Technical Components and Requirements Model](../techn
 - [Review and PR creation skills](../technical-components.md#comp-studio-review-skills) (technical component, proposed)
 - [The verify-studio skill and feature map](../technical-components.md#comp-studio-verify-skill) (technical component, proposed)
 - [The graph is the engine's graph](../technical-components.md#req-studio-graph-matches-plan) (requirement, proposed)
-- [The playhead seeks the preview to any frame](../technical-components.md#req-studio-scrub-frame) (requirement, proposed)
+- [The playhead seeks the preview to any frame](../technical-components.md#req-studio-scrub-frame) (requirement, decided)
 - [One property edit is one change](../technical-components.md#req-studio-edit-one-property) (requirement, proposed)
-- [Undo restores the old story exactly](../technical-components.md#req-studio-undo-restores) (requirement, proposed)
+- [Undo reverts a person's own changes](../technical-components.md#req-studio-undo-restores) (requirement, decided)
 - [Record several takes with a teleprompter](../technical-components.md#req-studio-record-takes) (requirement, proposed)
 - [Tie cut narration pieces to beat events](../technical-components.md#req-studio-cut-narration-by-word) (requirement, decided)
 - [The sync server refuses an invalid merge with a reason](../technical-components.md#req-studio-gate-refuses-invalid) (requirement, proposed)
@@ -380,9 +380,9 @@ Full tables and diagrams: [Technical Components and Requirements Model](../techn
 - [The sync room stores an update log and a snapshot](../technical-components.md#req-studio-sync-persistence) (requirement, proposed)
 - [Agents get tools to read and edit a story](../technical-components.md#req-studio-agent-tools) (requirement, proposed)
 - [A user can bring their own agent](../technical-components.md#req-studio-bring-your-own-agent) (requirement, decided)
-- [Set an agent's scope per lens](../technical-components.md#req-studio-agent-scopes) (requirement, proposed)
+- [Set an agent's action set, with presets](../technical-components.md#req-studio-agent-scopes) (requirement, decided)
 - [The binary opens the editor in the user's browser](../technical-components.md#req-studio-serve-local) (requirement, proposed)
-- [A preview frame equals the Video frame](../technical-components.md#req-studio-preview-equals-video) (requirement, proposed)
+- [A preview frame equals the Video frame](../technical-components.md#req-studio-preview-equals-video) (requirement, decided)
 - [The free journey works offline](../technical-components.md#req-studio-offline-free-tier) (requirement, proposed)
 - [Every editor region has an accessible name](../technical-components.md#req-studio-accessible-regions) (requirement, proposed)
 - [A merged story is valid or refused](../technical-components.md#req-studio-validity-under-merge) (requirement, proposed)
@@ -390,14 +390,14 @@ Full tables and diagrams: [Technical Components and Requirements Model](../techn
 - [Edit latency and edge cost are not yet measured](../technical-components.md#req-studio-performance-unmeasured) (requirement, open)
 - [The binary serves only on loopback and only reads](../technical-components.md#req-studio-binary-loopback-readonly) (requirement, proposed)
 - [The binary runs on five targets](../technical-components.md#req-studio-binary-portable) (requirement, proposed)
-- [Every distributed artifact has a known licence](../technical-components.md#req-studio-licence-clear) (requirement, open)
+- [Every distributed artifact has a known licence](../technical-components.md#req-studio-licence-clear) (requirement, decided)
 - [One command runs every gate](../technical-components.md#req-studio-maintainable-gates) (requirement, proposed)
-- [Users extend studio with their own agents and plugins](../technical-components.md#req-studio-extensible-agents) (requirement, proposed)
+- [Users extend studio with their own agents and plugins](../technical-components.md#req-studio-extensible-agents) (requirement, decided)
 - [Every change enters through one validated path](../technical-components.md#isgoal-studio-one-edit-path) (information system goal, proposed)
 - [A validation gate guards the shared document](../technical-components.md#isgoal-studio-story-always-valid) (information system goal, decided)
-- [The system knows who made each change](../technical-components.md#isgoal-studio-attribution) (information system goal, proposed)
-- [An agent is a named peer with its own replica](../technical-components.md#isgoal-studio-agents-as-peers) (information system goal, proposed)
-- [Free features run with no server of ours](../technical-components.md#isgoal-studio-free-runs-locally) (information system goal, proposed)
+- [The system knows who made each change](../technical-components.md#isgoal-studio-attribution) (information system goal, decided)
+- [An agent is a named peer with its own replica](../technical-components.md#isgoal-studio-agents-as-peers) (information system goal, decided)
+- [Free features run with no server of ours](../technical-components.md#isgoal-studio-free-runs-locally) (information system goal, decided)
 
 ## Concepts
 
@@ -415,12 +415,12 @@ Full tables and diagrams: [Concepts Model](../concepts.md).
 - [Repair proposal](../concepts.md#concept-studio-repair-proposal) (concept, decided)
 - [Suggestion](../concepts.md#concept-studio-suggestion) (concept, proposed)
 - [Sync room](../concepts.md#concept-studio-sync-room) (concept, proposed)
-- [Peer](../concepts.md#concept-studio-peer) (concept, proposed)
+- [Peer](../concepts.md#concept-studio-peer) (concept, decided)
 - [Deck view](../concepts.md#concept-studio-deck-view) (concept, decided)
 - [Take](../concepts.md#concept-studio-take) (concept, proposed)
 - [Narration piece](../concepts.md#concept-studio-narration-piece) (concept, decided)
 - [Anchor and offset](../concepts.md#concept-studio-anchor-offset) (concept, proposed)
-- [Agent panel scope](../concepts.md#concept-studio-agent-scope) (concept, proposed)
+- [Agent panel scope](../concepts.md#concept-studio-agent-scope) (concept, decided)
 - [Feature map](../concepts.md#concept-studio-feature-map) (concept, proposed)
 
 ## Work items
@@ -456,22 +456,25 @@ Full tables and diagrams: [Concepts Model](../concepts.md).
 [3]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L131
 [4]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L18
 [5]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L39
-[6]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L19-L21
-[7]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L133-L134
-[8]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L20-L21
-[9]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L93
-[10]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L136
-[11]: ../../sources/operator-decisions-2026-10.md#L45
-[12]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L38
-[13]: ../../sources/operator-decisions-2026-10.md#L47
-[14]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L25
-[15]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L111-L112
-[16]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L198
-[17]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L28
-[18]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L56
-[19]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L66
-[20]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L95-L108
-[21]: ../../sources/operator-decisions-2026-10.md#L43
-[22]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L91-L99
-[23]: https://github.com/reebeat/studio/pull/6
-[24]: ../../sources/operator-decisions-2026-10.md#L46
+[6]: ../../sources/operator-decisions-2026-10.md#L97
+[7]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L19-L21
+[8]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L133-L134
+[9]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L20-L21
+[10]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L93
+[11]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L136
+[12]: ../../sources/operator-decisions-2026-10.md#L102
+[13]: ../../sources/operator-decisions-2026-10.md#L45
+[14]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L38
+[15]: ../../sources/operator-decisions-2026-10.md#L47
+[16]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L25
+[17]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L111-L112
+[18]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L198
+[19]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L28
+[20]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L56
+[21]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L66
+[22]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L95-L108
+[23]: ../../sources/operator-decisions-2026-10.md#L43
+[24]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L91-L99
+[25]: ../../sources/operator-decisions-2026-10.md#L99
+[26]: https://github.com/reebeat/studio/pull/6
+[27]: ../../sources/operator-decisions-2026-10.md#L46

@@ -1,0 +1,41 @@
+// Kept as .txt so it is not linted as source. counts.sh copies it to tools/intent/ (so `yaml` resolves) and runs it with bun.
+// Prints every figure that the PR body of spec 0002 quotes.
+import { readFileSync, readdirSync } from "node:fs";
+import { parse } from "yaml";
+
+type Element = { id: string; kind: string; status: string; source?: string[] | string; gap?: unknown };
+const evidence = "docs/specs/0002-evidence";
+const answers = readFileSync(`${evidence}/answers.tsv`, "utf8")
+  .split("\n")
+  .slice(1)
+  .filter((line) => line !== "")
+  .map((line) => line.split("\t"));
+const answered = new Set(answers.map((row) => row[2]));
+const decisions = new Set(answers.map((row) => row[0]));
+
+const perScope: Record<string, number> = {};
+const status: Record<string, number> = {};
+let withGap = 0;
+let recordOnly = 0;
+for (const scope of ["org", "reebeat", "studio", "foldkit-flow"]) {
+  for (const file of readdirSync(`model/${scope}`)) {
+    const doc = parse(readFileSync(`model/${scope}/${file}`, "utf8")) as { elements: Element[] };
+    for (const element of doc.elements) {
+      status[element.status] = (status[element.status] ?? 0) + 1;
+      const sources = element.source === undefined ? [] : Array.isArray(element.source) ? element.source : [element.source];
+      if (element.status === "decided" && !sources.some((s) => s.startsWith("log:"))) recordOnly++;
+      if (answered.has(element.id)) {
+        perScope[scope] = (perScope[scope] ?? 0) + 1;
+        if (element.kind === "problem" && element.gap !== undefined) withGap++;
+      }
+    }
+  }
+}
+const triage = parse(readFileSync("model/triage.yaml", "utf8")) as { advice: unknown[] };
+console.log(`answered decisions: ${decisions.size}`);
+console.log(`answered elements: ${answered.size}`);
+console.log(`answered elements per scope: ${JSON.stringify(perScope)}`);
+console.log(`answered problems that keep a gap: ${withGap}`);
+console.log(`triage advice entries: ${triage.advice.length}`);
+console.log(`all elements by status: ${JSON.stringify(status)}`);
+console.log(`decided elements with no log line among their sources (repository record only): ${recordOnly}`);

@@ -1,0 +1,12 @@
+== F2 status changes against origin/main: 109
+the changed set equals the answered set
+== F3 each answered element is decided and cites its log line
+109 answered elements checked, 0 problems
+NOTE constraint-org-gpl-ffmpeg (decided) also cites log:78
+NOTE actor-studio-product-owner (decided) also cites log:95
+NOTE goal-studio-vision (decided) also cites log:95
+NOTE constraint-studio-licence-undecided (decided) also cites log:95
+NOTE comp-studio-product (decided) also cites log:95
+NOTE problem-flow-licence-scan-missing (open) also cites log:111
+NOTE problem-flow-library-applies-deletion (open) also cites log:109
+exit: 0

@@ -37,18 +37,15 @@ elements:
     title: Carry reebeat studio's story graph
     statement: >-
       The library can draw a statechart map in which Scenes contain States, so reebeat studio can use it for its story
-      graph.
-    status: proposed
+      graph. reebeat studio is an intended consumer, not a committed one: it depends on the library only once a studio
+      spec adopts it.
+    status: decided
     source:
       - log:19
+      - log:108
       - studio:docs/design/lenses.md:50-52
       - foldkit-flow:README.md:20
       - foldkit-flow:packages/flow/src/types.ts:54
-    rationale: >-
-      The log says a Scene is a compound state that groups States (line 19). Studio's story graph lens draws States,
-      Beats and Scenes as a statechart map (lenses.md 50-52). The library builds compound nodes: a node may name a
-      parent (types.ts line 54), and the example has a Compound graph of Scenes holding States (README line 20). No
-      cited line says studio will use foldkit-flow. The operator must confirm that studio is the first consumer.
     canvas: [value-propositions]
     links:
       subgoal-of: [goal-flow-vision]
@@ -85,17 +82,14 @@ elements:
     title: Keyboard-accessible graph editing
     statement: >-
       A person who uses only the keyboard can reach nodes, select, move and delete them, and hear the result announced.
-      Creating a connection by keyboard is not part of the first journey.
-    status: proposed
+      Creating a connection by keyboard is not in the 0.x releases: the README documents it as a gap, the project builds
+      it as the next spec, and 1.0 waits for it.
+    status: decided
     source:
+      - log:110
       - foldkit-flow:README.md:74-78
       - foldkit-flow:docs/specs/0001-first-felt-journey.md:87
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:3
-    rationale: >-
-      README lines 74 to 78 describe the keyboard and screen-reader behaviour of the built canvas, and spec 0001 sets
-      it as falsifier J5 (line 87). README line 78 says keyboard connect is not built. No operator line states
-      accessibility as a goal for this library; the org goal on accessible artifacts is about artifacts, not editors.
-      The operator must confirm the goal.
     refs: [pr:foldkit-flow#4]
     canvas: [value-propositions]
     jtbd:
@@ -177,17 +171,17 @@ elements:
     kind: goal
     title: Publish the package for others to use
     statement: >-
-      The project publishes the library as the package `foldkit-flow`, so other applications can install it.
-    status: proposed
+      Once the name is cleared (the first npm publish is paused, log line 113), the project publishes pre-releases of the
+      library as `@reebeat/flow` under the reebeat npm organisation, so other applications can install it. The repository
+      stays `foldkit-flow`. If Foldkit adopts the library, the project publishes `@foldkit/flow` and deprecates
+      `@reebeat/flow`.
+    status: decided
     source:
-      - foldkit-flow:AGENTS.md:3
+      - log:49
+      - log:105
+      - log:113
       - foldkit-flow:README.md:5
       - foldkit-flow:packages/flow/package.json:4
-    rationale: >-
-      AGENTS.md line 3 says the package is published as `foldkit-flow`. README line 5 says it is not published yet,
-      and packages/flow/package.json has `private: true` at version 0.0.0. The log says reebeat packages go to npm
-      under `@reebeat/*` (line 49), which differs from the name `foldkit-flow`, and STATE.md line 14 plans the name
-      `@foldkit/flow` for an offer to Foldkit. The operator must confirm the package name and when to publish.
     canvas: [channels]
     links:
       subgoal-of: [goal-flow-vision]
@@ -196,17 +190,14 @@ elements:
     kind: goal
     title: Credit and respect xyflow
     statement: >-
-      The project keeps xyflow's licence notice and credit. It shows the credit link by default and lets an
-      application hide it.
-    status: proposed
+      The project keeps xyflow's licence notice and credit. The credit link is visible by default, and an application
+      may hide it. xyflow asks its users to keep its attribution or to support the project.
+    status: decided
     source:
+      - log:106
       - foldkit-flow:NOTICE:4-17
       - foldkit-flow:README.md:86
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:34
-    rationale: >-
-      NOTICE and the README say xyflow asks its users to keep the attribution or support the project. The repository
-      documents the practice, but no operator line records it. The operator must confirm the default and the hide
-      option.
     canvas: [key-partners]
     links:
       subgoal-of: [goal-flow-vision]
@@ -216,21 +207,62 @@ elements:
     kind: problem
     title: The package is unpublished and private
     statement: >-
-      Nothing is published. The library package is marked private at version 0.0.0, and the README says it is not
-      published yet.
-    status: open
+      The operator decided to publish `@reebeat/flow` pre-releases under the npm org. Nothing is published yet: the
+      library package is private at version 0.0.0 and still named `foldkit-flow`, and the README says it is not
+      published yet. The first npm publish is paused until a Norwegian IP advisor has given an opinion on the name
+      (log line 113).
+    status: decided
     source:
+      - log:105
+      - log:113
       - foldkit-flow:README.md:5
       - foldkit-flow:packages/flow/package.json:4
-    rationale: >-
-      The library cannot yet be installed as a published npm package (a workspace or Git install is not ruled out).
-      The canvas it would publish is built (README line 5); the package name is not settled (see goal-flow-publish).
-      The operator must confirm the name and timing.
     gap:
       repo: foldkit-flow
-      fix: Publish a pre-release once the package name is settled.
+      fix: >-
+        Rename the package to `@reebeat/flow`, drop `private`, and publish a pre-release through the org's publish
+        process.
     links:
       hinders: [goal-flow-publish]
+
+  - id: problem-flow-licence-scan-missing
+    kind: problem
+    title: No licence scan of published dependencies
+    statement: >-
+      The operator decided to add a licence scan of the published dependencies, so that no copyleft licence reaches
+      `packages/`. No gate runs it: the `ready` script lists no licence check.
+    status: open
+    source:
+      - log:111
+      - foldkit-flow:package.json:13
+    rationale: >-
+      The operator decision (log line 111) adds the scan. The scripts in package.json line 13 show no licence gate at
+      the pinned commit.
+    gap:
+      repo: foldkit-flow
+      fix: Add a licence scan of the published dependencies to `ready` and CI, failing on an EPL or GPL licence.
+    links:
+      hinders: [req-flow-licence-hygiene]
+
+  - id: problem-flow-library-applies-deletion
+    kind: problem
+    title: The library applies a deletion itself
+    statement: >-
+      The operator decided that the library reports outcomes and the app applies graph changes (log line 109). For a
+      deletion, the Flow removes the deleted nodes and edges from its own Model and then reports them.
+    status: open
+    source:
+      - log:109
+      - foldkit-flow:packages/flow/src/update.ts:289-343
+    rationale: >-
+      update.ts lines 289 to 343 remove the nodes and edges and report both sets. The log line does not say whether a
+      deletion counts as a graph change that the app applies, or whether the Flow's own Model is the app's. The operator
+      must say how "the app applies" reads for a deletion.
+    gap:
+      repo: foldkit-flow
+      fix: Report a deletion as an outcome that the application applies, or record that the Flow's own Model is the application's.
+    links:
+      hinders: [comp-flow-flow-submodel]
 
   - id: problem-flow-goals-undocumented
     kind: problem
@@ -315,21 +347,20 @@ elements:
     kind: problem
     title: Keyboard users cannot create connections
     statement: >-
-      The built journey does not let a keyboard-only person connect two handles. README line 78 says keyboard connect
-      is not built, and spec 0001 lists it as an open question.
-    status: open
+      The operator decided to publish 0.x with keyboard connect documented as a gap, to build it as the next spec, and
+      to block 1.0 on it. Today the built journey does not let a keyboard-only person connect two handles: README line
+      78 says keyboard connect is not built, and spec 0001 lists it as an open question.
+    status: decided
     source:
+      - log:110
       - foldkit-flow:README.md:78
       - foldkit-flow:docs/specs/0001-first-felt-journey.md:116
       - foldkit-flow:STATE.md:11
-    rationale: >-
-      README line 78 calls keyboard connect an open question in spec 0001 (question 2, line 116), and STATE.md line 11
-      names it as a candidate next journey. Without it a keyboard-only user can move and delete nodes but not draw
-      edges.
     gap:
       repo: foldkit-flow
       fix: >-
-        Decide whether to add keyboard connect (choose a handle, then a target with arrow keys) and write its spec.
+        Write the keyboard connect spec (choose a handle, then a target with arrow keys) and build it as the next spec;
+        keep the gap in the README until then, and do not release 1.0 before it ships.
     links:
       hinders: [goal-flow-keyboard-access]
 
@@ -392,20 +423,19 @@ elements:
 
   - id: problem-flow-upstream-terms-open
     kind: problem
-    title: Details of the Foldkit offer are undecided
+    title: Terms of the Foldkit offer remain to record
     statement: >-
-      The operator decided to offer the library as `@foldkit/flow` once its API settles. Spec 0000 still asks when, and
-      under which licence header.
-    status: open
+      The operator decided to offer the library as `@foldkit/flow` once its API settles. If Foldkit adopts it, the
+      project publishes `@foldkit/flow` and deprecates `@reebeat/flow`. What counts as settled, the date and the licence
+      header are not yet recorded.
+    status: decided
     source:
+      - log:105
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:111
       - foldkit-flow:STATE.md:14
-    rationale: >-
-      STATE.md line 14 fixes the name and the condition (the API has settled). What "settled" means, the date and the
-      licence header are not recorded.
     gap:
       repo: foldkit-flow
-      fix: Record the operator's answer to open question 1 in a spec revision.
+      fix: Record what counts as a settled API, the date and the licence header in a spec revision.
     links:
       hinders: [goal-flow-upstream-offer]
 
@@ -508,15 +538,13 @@ elements:
     title: Keep xyflow's licence notice and credit
     statement: >-
       xyflow's code is MIT licensed. The project keeps its notice in NOTICE, credits it in the README and shows the
-      credit link by default.
-    status: proposed
+      credit link by default. An application may hide the link.
+    status: decided
     source:
+      - log:106
       - foldkit-flow:NOTICE:4-17
       - foldkit-flow:README.md:86
       - foldkit-flow:AGENTS.md:73
-    rationale: >-
-      The repository states the practice. Whether the credit link must be on by default is xyflow's request, not a
-      licence term, and no operator line records it. The operator must confirm.
     links:
       constrains: [comp-flow-library]
       hinders: [goal-flow-publish]
@@ -526,15 +554,14 @@ elements:
     constraintType: legal
     title: ELK stays out of the library
     statement: >-
-      ELK.js is licensed EPL-2.0 OR GPL-3.0. The library does not depend on it, and layout stays with the application.
-    status: proposed
+      ELK.js is licensed EPL-2.0 OR GPL-3.0. It stays out of `packages/`, so the library does not depend on it. A
+      private example may use it, and layout stays with the application.
+    status: decided
     source:
+      - log:111
       - foldkit-flow:AGENTS.md:31
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:35
       - foldkit-flow:README.md:7
-    rationale: >-
-      Three repository lines state the rule and its licence reason. No operator line records it. The operator must
-      confirm, and decide whether an application-owned ELK example may live in this repository.
     links:
       constrains: [comp-flow-library]
 
@@ -597,15 +624,14 @@ elements:
     constraintType: technical
     title: Pin @xyflow/system exactly
     statement: >-
-      The library depends on `@xyflow/system` 0.0.83 at an exact version, because a 0.0.x release may break.
-    status: proposed
+      The library depends on `@xyflow/system` at the exact version 0.0.83, because a 0.0.x release may break. The
+      project bumps the pin on purpose, and the journey gate decides each bump.
+    status: decided
     source:
+      - log:107
       - foldkit-flow:packages/flow/package.json:18
       - foldkit-flow:docs/specs/0001-first-felt-journey.md:42
       - foldkit-flow:docs/specs/0001-first-felt-journey.md:111
-    rationale: >-
-      The library's package.json pins `@xyflow/system` 0.0.83 exactly (line 18). Spec 0001 gives the reason (lines 42
-      and 111): a 0.0.x release may break. The operator must confirm the pin policy.
     links:
       constrains: [resource-flow-xyflow-system]
 
@@ -615,14 +641,13 @@ elements:
     title: Reuse xyflow's framework-free core
     statement: >-
       React Flow and Svelte Flow share `@xyflow/system`, which holds pan and zoom, drag, handles, edge paths and the
-      minimap. A Foldkit binding can reuse it instead of rewriting that interaction code.
-    status: proposed
+      minimap. The Foldkit binding reuses it at an exact pin that the project bumps on purpose, instead of rewriting
+      that interaction code.
+    status: decided
     source:
+      - log:107
       - foldkit-flow:README.md:86
       - foldkit-flow:NOTICE:12-15
-    rationale: >-
-      The README names the dependency and its content. No operator line chooses xyflow by name; log line 48 only says
-      "like React Flow / Svelte Flow". The operator must confirm.
     canvas: [key-partners, key-resources]
     links:
       supports: [goal-flow-first-journey]
@@ -631,15 +656,13 @@ elements:
     kind: opportunity
     title: Other Foldkit apps can use it
     statement: >-
-      A generic library with no product logic can serve any Foldkit application, and Foldkit itself may adopt it.
-    status: proposed
+      Foldkit app developers are the audience: a generic library with no product logic can serve any Foldkit
+      application, and Foldkit itself may adopt it. The example app is the only consumer for now.
+    status: decided
     source:
       - log:48
+      - log:108
       - foldkit-flow:STATE.md:14
-    rationale: >-
-      The log gives a graph UI for Foldkit (line 48) and STATE.md line 13 gives the offer. Generality for any Foldkit
-      application is an inference from the spec 0000 header's "generic library", not a decision, and no source says who
-      else needs it. See problem-flow-demand-unmeasured. The operator must confirm.
     canvas: [customer-segments]
     links:
       supports: [goal-flow-upstream-offer]

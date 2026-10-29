@@ -17,6 +17,7 @@ elements:
       - log:7
       - log:60
       - log:44
+      - log:43
       - record:reebeat:docs/design/open-core-boundary.md:21
       - record:reebeat:docs/design/open-core-boundary.md:39-44
     canvas: [value-propositions]
@@ -30,7 +31,7 @@ elements:
     tier: library
     package: "@reebeat/core"
     licence: Apache-2.0
-    pricing: free
+    proposedPricing: free
     title: core, from screenplay to Plan and Timeline
     statement: >-
       Pure code that parses a Fountain screenplay into a Story, runs the identity diff, builds the Plan, schedules the
@@ -56,7 +57,7 @@ elements:
     tier: library
     package: "@reebeat/subtitles"
     licence: Apache-2.0
-    pricing: free
+    proposedPricing: free
     title: subtitles, WebVTT and SubRip writers
     statement: >-
       Pure code that writes the narration of a scheduled Plan as WebVTT and SubRip, and reads WebVTT back into cues.
@@ -79,7 +80,7 @@ elements:
     tier: library
     package: "@reebeat/lint"
     licence: Apache-2.0
-    pricing: free
+    proposedPricing: free
     title: lint, pure rules over a Plan
     statement: >-
       Pure rules that return diagnostics for a Plan: every absolute time needs a reason, contrast, and agreement of
@@ -104,7 +105,7 @@ elements:
     tier: service
     package: "@reebeat/services"
     licence: Apache-2.0
-    pricing: free
+    proposedPricing: free
     title: services, the seven contracts
     statement: >-
       The seven Effect service tags with their request types, tagged errors, the one cache key and the one selection
@@ -135,7 +136,7 @@ elements:
     tier: program
     package: "@reebeat/pipeline"
     licence: Apache-2.0
-    pricing: free
+    proposedPricing: free
     title: pipeline, the build program
     statement: >-
       One Effect program over the seven services, from the story to a finished build directory, with the manifest schema. It
@@ -160,7 +161,7 @@ elements:
     tier: integration
     package: "@reebeat/speech-kokoro"
     licence: Apache-2.0
-    pricing: free
+    proposedPricing: free
     title: speech-kokoro, local speech synthesis
     statement: >-
       The SpeechSynthesizer adapter on `kokoro-js`. It runs locally, declares no egress, and has a silent stand-in.
@@ -183,7 +184,7 @@ elements:
     tier: integration
     package: "@reebeat/align-whisper"
     licence: Apache-2.0
-    pricing: free
+    proposedPricing: free
     title: align-whisper, word alignment
     statement: >-
       The WordAligner adapter on whisper.cpp. It gives word times for the narration, runs locally, and has an even-spread
@@ -212,7 +213,7 @@ elements:
     tier: integration
     package: "@reebeat/sounds-synth"
     licence: Apache-2.0
-    pricing: free
+    proposedPricing: free
     title: sounds-synth, built-in sound effects
     statement: >-
       The SoundLibrary adapter that synthesises `pop`, `whoosh` and `ding` in TypeScript. It uses no recorded sample, so
@@ -236,7 +237,7 @@ elements:
     tier: integration
     package: "@reebeat/render-reveal"
     licence: Apache-2.0
-    pricing: free
+    proposedPricing: free
     title: render-reveal, the Deck renderer
     statement: >-
       The Renderer adapter that turns a scheduled Plan into a reveal.js page. It declares the renderer's lifecycle timing,
@@ -266,7 +267,7 @@ elements:
     tier: integration
     package: "@reebeat/capture-chromium"
     licence: Apache-2.0
-    pricing: free
+    proposedPricing: free
     title: capture-chromium, frame capture
     statement: >-
       The FrameCapturer adapter. It opens the Deck in Chromium under a virtual clock, steps it to the scheduled frames,
@@ -294,7 +295,7 @@ elements:
     tier: integration
     package: "@reebeat/encode-ffmpeg"
     licence: Apache-2.0
-    pricing: free
+    proposedPricing: free
     title: encode-ffmpeg, mix and mux
     statement: >-
       The Encoder adapter on ffmpeg: lossless audio, the mix, the mux and the media probes that verify uses. It runs ffmpeg
@@ -318,7 +319,7 @@ elements:
     tier: integration
     package: "@reebeat/cache-fs"
     licence: Apache-2.0
-    pricing: free
+    proposedPricing: free
     title: cache-fs, the content-addressed cache
     statement: >-
       The AssetCache adapter on a directory. It stores files by content key, writes the provenance record last, and checks
@@ -343,7 +344,7 @@ elements:
     tier: tool
     package: "@reebeat/verify"
     licence: Apache-2.0
-    pricing: free
+    proposedPricing: free
     title: verify, the output-side checks
     statement: >-
       The checks of the falsifiers on a build directory, the table that prints their verdicts and the exit code. It reads
@@ -376,7 +377,7 @@ elements:
     tier: tool
     package: "@reebeat/cli"
     licence: Apache-2.0
-    pricing: free
+    proposedPricing: free
     title: cli, the reebeat command
     statement: >-
       The `reebeat` command with `plan`, `lint`, `build`, `check` and `journey`. It is the only place that chooses and
@@ -413,7 +414,7 @@ elements:
   - id: comp-reebeat-quality-gates
     kind: component
     tier: tool
-    pricing: free
+    proposedPricing: free
     title: quality gates, the repository checks
     statement: >-
       The scripts in `tools/quality`: the tier gate, the exception registry check, the Effect family check, the licence
@@ -435,7 +436,7 @@ elements:
   - id: comp-reebeat-statechart-xstate
     kind: component
     tier: integration
-    pricing: free
+    proposedPricing: free
     title: statechart-xstate, the build-time interpreter
     statement: >-
       A planned integration package. It turns the resolved statechart into XState machine data and reads back a total order
@@ -458,7 +459,7 @@ elements:
   - id: comp-reebeat-website-renderer
     kind: component
     tier: integration
-    pricing: free
+    proposedPricing: free
     title: website renderer, a planned artifact renderer
     statement: >-
       A planned Renderer that emits a static website: a folder of HTML, CSS and JavaScript that any static host serves,
@@ -478,6 +479,7 @@ elements:
       serves: [goal-reebeat-interactive-website]
 
   # ------------------------------------------------------ artifacts, assets
+
   - id: comp-reebeat-plan-json
     kind: component
     tier: artifact
@@ -701,7 +703,7 @@ elements:
   - id: req-reebeat-plan
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: Print a reviewable Plan
     statement: >-
       `reebeat plan` prints every Scene, Element, effect and identity decision, with the written intent and the resolved
@@ -720,7 +722,7 @@ elements:
   - id: req-reebeat-deck
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: Build a Deck from the Plan
     statement: >-
       The Deck is a reveal.js page. Narration is in the speaker notes, show and focus effects are fragments in time order,
@@ -739,7 +741,7 @@ elements:
   - id: req-reebeat-video
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: Build a narrated Video from the Plan
     statement: >-
       The Video is the same page captured frame by frame on a controlled clock, muxed with narration, sound effects, WebVTT
@@ -757,7 +759,7 @@ elements:
   - id: req-reebeat-fountain-artifact-renderer
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: Write a story as a Fountain screenplay
     statement: >-
       A story becomes a Fountain screenplay, a static artifact. The importer already reads a screenplay into a story; this
@@ -777,7 +779,7 @@ elements:
   - id: req-reebeat-check
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: Check a build against its source
     statement: >-
       `reebeat check` reads a written build and the source, gives one verdict per falsifier, and reports for every effect
@@ -796,7 +798,7 @@ elements:
   - id: req-reebeat-lint
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: Lint a story and say the fix
     statement: >-
       `reebeat lint` prints every problem with its line and the fix, and lists every absolute time.
@@ -813,7 +815,7 @@ elements:
   - id: req-reebeat-selection
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: Select adapters by configuration
     statement: >-
       A config file beside the story or a flag names one adapter per service. A flag wins over the file, local adapters are
@@ -831,7 +833,7 @@ elements:
   - id: req-reebeat-speech-cache
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: Cache speech by content
     statement: >-
       Each Line's audio and word times are cached under a key made from its narration text and the adapter settings. A cache
@@ -852,7 +854,7 @@ elements:
   - id: req-reebeat-journey
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: One command runs the whole road
     statement: >-
       `reebeat journey` builds a story, checks it, builds it again and compares the two builds.
@@ -869,7 +871,7 @@ elements:
   - id: req-reebeat-renderer-lifecycle
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: A renderer declares its lifecycle timing
     statement: >-
       Each Renderer declares, as plain data, when an Element's motion starts and ends and its easing. The schedule reads it
@@ -900,7 +902,7 @@ elements:
   - id: req-reebeat-state-machines
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: Explicit state machines and timing combinators
     statement: >-
       The compiler declares presence, position, style, effect, slide and Beat lifecycles as machines. It stores exact time
@@ -918,7 +920,7 @@ elements:
   - id: req-reebeat-accessible-variants
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: Generate captions, audio description and reduced motion
     statement: >-
       The compiler generates SDH captions from narration and sound metadata, audio description from Element tags and state
@@ -936,14 +938,14 @@ elements:
   - id: req-reebeat-readable-subtitles
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: Subtitles stay readable
     statement: >-
-      The compiler checks subtitle speed, duration, line length and line count against one cited guideline. The default
-      repair extends the State hold, and splitting or condensing are alternatives.
-    status: proposed
-    rationale: "Issue #12 proposes it. The operator named readable subtitles (log:27), and the guideline is still to be chosen."
-    source: ["issue:reebeat#12", "log:27"]
+      The compiler checks subtitle speed, duration, line length and line count against one cited guideline. Narration,
+      subtitles and notes stay one string, so the repair for a pace that is too fast extends the State hold. Videos can
+      slow down as a result.
+    status: decided
+    source: ["issue:reebeat#12", "log:27", "log:94"]
     refs: ["issue:reebeat#12"]
     links:
       serves: [goal-reebeat-accessible-artifacts]
@@ -951,17 +953,14 @@ elements:
   - id: req-reebeat-language-variants
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: Build one story in several narration languages
     statement: >-
-      A story builds with a narration in each language, and anchors tied to words and events retime on their own. Open
-      choices, not settled: whether subtitles and Deck notes are per language, whether the speech cache is keyed by
-      language and voice, and how word anchors map across translations.
-    status: proposed
-    rationale: >-
-      Issue #10 proposes the goal and lists those choices under "Open questions". The operator named language variants
-      (log:32). The operator must decide each open choice.
-    source: ["issue:reebeat#10", "log:32"]
+      A story builds with a narration in each language, and anchors tied to words and events retime on their own. Word
+      anchors use phrase ids declared once in a per-language phrase table, so narration stays pure prose. Not yet settled:
+      whether subtitles and Deck notes are per language, and whether the speech cache is keyed by language and voice.
+    status: decided
+    source: ["issue:reebeat#10", "log:32", "log:93"]
     refs: ["issue:reebeat#10"]
     links:
       serves: [goal-reebeat-localisation]
@@ -969,16 +968,14 @@ elements:
   - id: req-reebeat-render-segment-cache
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: Cache render segments
     statement: >-
-      The build caches render segments by state pair, transition program and time window. After a narration change it
-      retimes and reuses the later segments instead of rendering them again.
-    status: proposed
-    rationale: >-
-      Issue #9 proposes it, and it requires a timeline dependency model. The operator named incremental builds (log:10) but
-      not this design.
-    source: ["issue:reebeat#9", "log:62"]
+      The build caches render segments by state pair, transition program and time window, as tasks of the incremental build
+      engine. This comes in a later step, after stages become tasks. After a narration change it retimes and reuses the
+      later segments instead of rendering them again.
+    status: decided
+    source: ["issue:reebeat#9", "log:62", "log:88"]
     refs: ["issue:reebeat#9"]
     links:
       serves: [goal-reebeat-incremental-builds]
@@ -986,7 +983,7 @@ elements:
   - id: req-reebeat-website-artifact
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: Emit a static interactive website
     statement: >-
       The compiler emits a folder of static HTML, CSS and JavaScript from the same IR as the Video and the Deck. The viewer
@@ -1004,16 +1001,16 @@ elements:
   - id: req-reebeat-interaction-declaration
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: One interaction declaration for every surface
     statement: >-
-      An interaction is a declared event-raising element with a payload schema and a label. Static artifacts realise it at
-      build time, for example with a visible cursor in a Video. Dynamic artifacts realise it at view time.
-    status: proposed
-    rationale: >-
-      Proposed in comments on issue #19. The operator said an interaction is just another element that raises events
-      (log:38, log:65), but the declaration format is not decided.
-    source: ["issue:reebeat#19@6503203735", "log:38", "log:65"]
+      An interaction is a declared event-raising element with a payload schema and a label, declared once for every surface.
+      Each artifact declares what it realises. Static artifacts realise it at build time, for example with a visible cursor
+      in a Video. Dynamic artifacts realise it at view time. An artifact that cannot realise it fails at plan time for that
+      output, unless the author wrote an explicit fallback or a flag bypasses the failure for that output, so the drift is
+      silent but explicit (a declared opt-out, never a default).
+    status: decided
+    source: ["issue:reebeat#19@6503203735", "log:38", "log:65", "log:87"]
     refs: ["issue:reebeat#19"]
     links:
       serves: [goal-reebeat-interactive-website, goal-reebeat-multi-renderer]
@@ -1021,16 +1018,15 @@ elements:
   - id: req-reebeat-renderer-capabilities
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: Renderers declare what they can realise
     statement: >-
       A renderer declares whether its artifact is static or dynamic, which interaction kinds it can realise and which
-      surfaces it exposes. Beats between Scenes of different renderers follow declared transition rules.
-    status: proposed
-    rationale: >-
-      Proposed in comments on issue #19, and the operator asked for transition rules between renderers (log:28). No
-      extension ADR exists yet.
-    source: ["issue:reebeat#19@6503256239", "log:28"]
+      surfaces it exposes. Beats between Scenes of different renderers follow declared transition rules. The declarations
+      come through the extension ADR-0000, adopted in stages, and stay tagged unstable until a second real engine has run
+      the protocol.
+    status: decided
+    source: ["issue:reebeat#19@6503256239", "log:28", "log:86"]
     refs: ["issue:reebeat#19"]
     links:
       serves: [goal-reebeat-multi-renderer, goal-reebeat-plugin-sdk]
@@ -1038,7 +1034,7 @@ elements:
   - id: req-reebeat-teaching-lint
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: Lint temporal contiguity, signalling, redundancy and coherence
     statement: >-
       Lint rules read the semantic tags on Elements and check the four principles. Each threshold is set from its primary
@@ -1053,7 +1049,7 @@ elements:
   - id: req-reebeat-npm-prerelease
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: Publish only built, audited packages
     statement: >-
       A release stages only built JavaScript, types, docs and the licence, enforces peer ranges for unstable Effect APIs,
@@ -1070,14 +1066,14 @@ elements:
   - id: req-reebeat-encoder-reproducible
     kind: requirement
     reqType: functional
-    pricing: free
-    title: Any chosen encoder keeps builds byte-identical
+    proposedPricing: free
+    title: Any chosen encoder keeps decoded output identical
     statement: >-
-      Whichever encoder replaces or complements ffmpeg with libx264 must keep two builds byte-identical, and the determinism
-      check must be measured again.
-    status: proposed
-    rationale: "Issue #7 states it as a condition of any option. The operator has not chosen an option."
-    source: ["issue:reebeat#7"]
+      Whichever encoder is used, now ffmpeg with libx264 and in future others behind an adapter, two builds with the pinned
+      toolchain give identical decoded frames and audio samples, and container bytes are recorded. The determinism check is
+      measured again when the encoder changes.
+    status: decided
+    source: ["issue:reebeat#7", "log:78", "log:81"]
     refs: ["issue:reebeat#7"]
     links:
       serves: [goal-reebeat-reproducible-builds]
@@ -1085,7 +1081,7 @@ elements:
   - id: req-reebeat-exception-directives
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: The exception gate counts @effect-diagnostics comments
     statement: >-
       The exception gate recognises both `@effect-diagnostics` and `@effect-diagnostics-next-line`, has a negative control,
@@ -1100,7 +1096,7 @@ elements:
   - id: req-reebeat-pin-bun
     kind: requirement
     reqType: functional
-    pricing: free
+    proposedPricing: free
     title: Pin the package manager to the devenv Bun
     statement: >-
       `devEngines.packageManager` names the exact Bun version of devenv, and a check shows that both report the same
@@ -1119,18 +1115,17 @@ elements:
     quality: reproducibility
     title: Two builds are identical
     statement: >-
-      The same source and cache, built twice on the same machine, give identical decoded video frames and identical decoded
-      audio samples. Container bytes are compared and the result is recorded.
+      Text and data artifacts are byte-identical across builds. For video, the same source and cache, built twice on the
+      same machine with the pinned toolchain, give identical decoded frames and identical decoded audio samples. Container
+      bytes are compared and the result is recorded.
     scenario: >-
       A developer builds `stories/same-id` twice with the same speech cache. `reebeat journey` compares every decoded frame
       hash and the decoded audio hash. The check passes when all agree. Adding random jitter to the clock makes it fail and
       name the first differing frame.
-    status: proposed
-    rationale: >-
-      Spec plan: spec 0001 falsifier F6 sets out the same-machine frame and audio check. The operator decided that builds
-      are reproducible (log:10), not this scenario, so confirm it.
+    status: decided
     source:
       - log:10
+      - log:81
       - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:151
       - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:225
     links:
@@ -1313,15 +1308,14 @@ elements:
     quality: performance
     title: An edit rebuilds only what it changes
     statement: >-
-      After an edit, the build redoes only the work that depends on it, and the result is byte-identical to a cold build.
+      After an edit, the build redoes only the work that depends on it, and the result equals a cold build. The build
+      engine is built in steps: a build library with tasks, a trace store and early cutoff, with stages as tasks first and
+      render segments later.
     scenario: >-
       An author changes one narration line in a story. Only that Line's speech and the render segments that depend on its
       length are rebuilt. The output equals a cold build of the new story. This is planned and not built.
-    status: proposed
-    rationale: >-
-      The operator asked for fast incremental builds (log:10, log:62). The measure and the design come from issue #9, which
-      the operator has not decided.
-    source: ["log:10", "log:62", "issue:reebeat#9"]
+    status: decided
+    source: ["log:10", "log:62", "log:88", "issue:reebeat#9"]
     refs: ["issue:reebeat#9"]
     links:
       serves: [goal-reebeat-incremental-builds]
@@ -1332,16 +1326,14 @@ elements:
     quality: portability
     title: Release 1 runs on Linux inside devenv
     statement: >-
-      A build runs on Linux with the pinned devenv tools. Other systems need their own Chromium, and Windows and macOS are
-      not supported.
+      A build runs on Linux with the pinned devenv tools, for now. Others use their own Linux environment with their own
+      Chromium. Windows and macOS are not supported, and nothing is maintained for them.
     scenario: >-
       A contributor clones the repository on Linux and runs the journey inside `devenv shell`. It builds and checks the
-      story. On another system the contributor sets the Chromium path and installs the other tools by hand.
-    status: open
-    rationale: >-
-      Spec 0001 lists Windows and macOS as not in scope for release 1. Whether the supported platforms grow is the operator's
-      choice, and published packages may widen it.
+      story. On another Linux system the contributor sets the Chromium path and installs the other tools by hand.
+    status: decided
     source:
+      - log:89
       - reebeat:README.md:12
       - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:190
       - reebeat:devenv.nix:3

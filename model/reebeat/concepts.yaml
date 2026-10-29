@@ -243,15 +243,14 @@ elements:
     kind: concept
     title: Identity diff
     statement: >-
-      The comparison of two Keyframes by Element id that derives motion. An id only in the second enters, an id only in
-      the first exits, and an id in both updates.
-    status: proposed
-    rationale: >-
-      Spec plan: the operator decided reveal.js Auto-Animate as the release-1 identity diff (spec 0001 line 212) and
-      story-wide identity (log:23). The comparison algorithm comes from the glossary, so confirm it.
+      The comparison of two Keyframes by Element id that derives motion. Ids are story-global, so one id is one entity. An
+      id only in the second enters, an id only in the first exits, and an id in both updates. Until spec 0005 the
+      comparison runs between adjacent Scenes.
+    status: decided
     source:
       - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213
       - log:23
+      - log:83
       - reebeat:GLOSSARY.md:65-67
     relations:
       - type: relates
@@ -347,14 +346,13 @@ elements:
     kind: concept
     title: Story IR and Timeline IR
     statement: >-
-      reebeat's own JSON format, defined by an Effect Schema, for the story and for the timeline. PR #17 keeps the two
-      distinct and generates the JSON Schema from the Effect Schema.
-    status: proposed
-    rationale: >-
-      Observed in the repository: the operator decided that JSON is the persistent IR (log:25). The split into a story IR
-      and a timeline IR comes from open PR #17, so confirm it.
+      reebeat's own JSON format, defined by an Effect Schema, for the story and for the timeline. The story IR is public
+      and versioned. The timeline IR is an unstable build artifact, tagged unstable until the website Plan and the engine
+      protocol exist. Exact time is stored in flicks. The JSON Schema is generated from the Effect Schema.
+    status: decided
     source:
       - log:25
+      - log:85
       - reebeat:docs/specs/0007-scxml-persistent-ir-spike.md:23
       - pr:reebeat#17
     relations:

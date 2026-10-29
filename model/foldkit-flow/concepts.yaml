@@ -200,15 +200,14 @@ elements:
     kind: concept
     title: Attribution
     statement: >-
-      Attribution is the "Built with xyflow" link in the corner of the canvas. It is either Visible or Hidden, and
-      Visible is the default.
-    status: proposed
+      Attribution is the "Built with xyflow" link in the corner of the canvas. It is either Visible or Hidden. Visible is
+      the default, and an application may set it to Hidden.
+    status: decided
     source:
+      - log:106
       - foldkit-flow:README.md:86
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:53
       - foldkit-flow:packages/flow/src/attribution.ts:15-22
-    rationale: >-
-      The scaffold defines the type. No operator line decides it. The operator must confirm the vocabulary and default.
     attributes:
       - Visible or Hidden
       - link to xyflow.com
@@ -253,14 +252,13 @@ elements:
     title: Out-message (outcome)
     statement: >-
       An out-message tells the application what a gesture produced: Connected, Reconnected, Deleted, Moved or a
-      selection change. The application decides what to do with it.
-    status: proposed
+      selection change. The library only reports it, and the application decides what to do with it and applies the
+      graph change.
+    status: decided
     source:
+      - log:109
       - foldkit-flow:README.md:52
       - foldkit-flow:packages/flow/src/message.ts:67-83
-    rationale: >-
-      message.ts lines 67 to 83 define the out-messages Connected, Deleted, Moved, Reconnected and UpdatedSelection,
-      and README line 52 lists them. The operator must confirm the vocabulary.
     relations:
       - { type: relates, to: concept-flow-connection, label: reports }
 

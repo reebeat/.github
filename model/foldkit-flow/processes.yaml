@@ -5,17 +5,14 @@ elements:
     title: A Foldkit app adopts the library
     statement: >-
       A Foldkit developer adds a Flow to the application's Model, declares nodes, edges and handles, supplies the node
-      views and a connection check, and applies the outcomes the Flow reports.
-    status: proposed
+      views and a connection check, and applies the outcomes the Flow reports. The library reports outcomes, and the
+      application applies the graph changes.
+    status: decided
     source:
+      - log:109
       - foldkit-flow:README.md:3
       - foldkit-flow:README.md:24-64
       - foldkit-flow:packages/flow/src/flow.ts:14-24
-    rationale: >-
-      README lines 24 to 64 show the adoption steps: declare the rules with `Flow.defineFlow`, add `Flow.init` to the
-      application's Model, fold the Messages and out-messages, and render with `h.submodel`. The application applies
-      outcomes with `Flow.addEdge` and `Flow.reconnectEdge` (lines 53 and 54). The operator must confirm this as the
-      adoption path.
     refs: [pr:foldkit-flow#4]
     canvas: [key-activities]
     links:
@@ -213,17 +210,14 @@ elements:
     category: primary
     title: The application applies an outcome
     statement: >-
-      The application receives an outcome message and changes its graph: it adds an edge on Connected, moves one on
-      Reconnected and records a Deleted set.
-    status: proposed
+      The application receives an outcome message and applies the graph change itself: it adds an edge on Connected,
+      moves one on Reconnected and records a Deleted set. The library reports the outcome, and the application may veto
+      a change.
+    status: decided
     source:
+      - log:109
       - foldkit-flow:README.md:51-54
       - foldkit-flow:packages/flow/src/update.ts:563-604
-    rationale: >-
-      README lines 51 to 54 say the Flow does not add an edge itself: the application calls `Flow.addEdge` on
-      `Connected` and `Flow.reconnectEdge` on `Reconnected`. update.ts lines 563 to 604 define both helpers. See
-      rule-flow-outcomes-not-mutations. The operator must confirm that the application, not the library, owns these
-      changes.
     refs: [pr:foldkit-flow#4]
     links:
       serves: [goal-flow-generic-library]
@@ -279,15 +273,15 @@ elements:
     category: supporting
     title: Publish the package
     statement: >-
-      The project publishes the library to npm.
-    status: proposed
+      Once the name is cleared (the first npm publish is paused, log line 113), the project publishes pre-releases of the
+      library to npm as `@reebeat/flow`, under the reebeat org and through the org's publish process. If Foldkit adopts
+      the library, the project publishes `@foldkit/flow` and deprecates `@reebeat/flow`.
+    status: decided
     source:
-      - foldkit-flow:AGENTS.md:3
+      - log:49
+      - log:105
+      - log:113
       - foldkit-flow:README.md:5
-    rationale: >-
-      AGENTS.md line 3 says the package is published as `foldkit-flow`, but README line 5 says it is not published yet
-      and no publish step exists. The org has a publish process that this step should follow. The operator must
-      confirm name and timing.
     canvas: [channels]
     links:
       serves: [goal-flow-publish]
@@ -312,29 +306,25 @@ elements:
     kind: external-process
     title: Foldkit decides on the offer
     statement: >-
-      The Foldkit project decides whether to take the library, and under which name and licence header.
-    status: proposed
+      The Foldkit project decides whether to adopt the library, and under which licence header. If it adopts the
+      library, `@foldkit/flow` is published and `@reebeat/flow` is deprecated.
+    status: decided
     source:
+      - log:105
       - foldkit-flow:STATE.md:14
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:111
-    rationale: >-
-      The sources describe the offer but nothing about how Foldkit decides. The step is implied. The operator must
-      confirm.
 
   - id: extproc-flow-xyflow-release
     kind: external-process
     title: xyflow releases a new @xyflow/system
     statement: >-
-      The xyflow project publishes new versions of `@xyflow/system`. Versions 0.0.x may break the library, so each bump
-      needs the journey to run again.
-    status: proposed
+      The xyflow project publishes new versions of `@xyflow/system`. Versions 0.0.x may break the library, so it stays
+      on its exact pin until the project bumps it on purpose, and each bump needs the journey to run again.
+    status: decided
     source:
+      - log:107
       - foldkit-flow:packages/flow/package.json:18
       - foldkit-flow:docs/specs/0001-first-felt-journey.md:111
-      - foldkit-flow:NOTICE:4-7
-    rationale: >-
-      The library pins `@xyflow/system` 0.0.83 exactly because a 0.0.x release may break (package.json line 18; spec
-      0001 line 111). The link from a new release to the journey gate is inferred: the journey exercises every
-      controller (spec 0001 lines 83 to 88). The operator must confirm.
+      - foldkit-flow:NOTICE:4-17
     links:
       next: [process-flow-run-journey-gate]

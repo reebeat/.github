@@ -200,6 +200,125 @@ describe("links", () => {
   });
 });
 
+const advised = (id: string, change: (element: Raw) => Raw) => {
+  const model = withChange(id, change);
+
+  return {
+    ...model,
+    triage: { advice: [{ advice: "Recommended: confirm", id }] },
+  };
+};
+
+describe("a decided problem that keeps a gap", () => {
+  it("passes: the answer decides how to resolve it, the gap stays", () => {
+    const files = Arr.map(fixtureFiles(), (file) =>
+      file.scope === "org"
+        ? {
+            ...file,
+            elements: [
+              ...file.elements,
+              {
+                gap: { fix: "Add the missing file.", repo: "reebeat" },
+                id: "problem-org-p",
+                kind: "problem",
+                links: { hinders: ["goal-org-g"] },
+                source: ["log:7"],
+                statement: "The file is missing; it will be added.",
+                status: "decided",
+                title: "A missing file",
+              },
+            ],
+          }
+        : file
+    );
+
+    assert.deepStrictEqual(checkModel(modelOf(files)), []);
+  });
+});
+
+describe("pricing marks", () => {
+  it("passes a decided mark on a decided element that cites a pricing line", () => {
+    const model = withChange("comp-org-c", (element) => ({
+      ...element,
+      pricing: "free",
+      source: ["log:7"],
+    }));
+
+    assert.notInclude(codes(model), "PRICING-UNDECIDED");
+  });
+
+  it("passes a proposed mark on a decided element", () => {
+    const model = withChange("comp-org-c", (element) => ({
+      ...element,
+      proposedPricing: "paid",
+    }));
+
+    assert.deepStrictEqual(checkModel(model), []);
+  });
+
+  it("fails a decided mark on a decided element that cites no pricing line", () => {
+    const model = withChange("comp-org-c", (element) => ({
+      ...element,
+      pricing: "paid",
+      source: ["log:8"],
+    }));
+
+    assert.include(codes(model), "PRICING-UNDECIDED");
+  });
+
+  it("fails a decided mark on an element that is only proposed", () => {
+    const model = withChange("comp-org-c", (element) => ({
+      ...element,
+      pricing: "free",
+      rationale: "Waits for the operator.",
+      status: "proposed",
+    }));
+
+    assert.include(codes(model), "PRICING-UNDECIDED");
+  });
+
+  it("fails an element with both marks", () => {
+    const model = withChange("comp-org-c", (element) => ({
+      ...element,
+      pricing: "free",
+      proposedPricing: "paid",
+    }));
+
+    assert.include(codes(model), "PRICING-BOTH");
+  });
+});
+
+describe("triage advice", () => {
+  it("passes advice on an element that waits", () => {
+    const model = advised("goal-org-g", (element) => ({
+      ...element,
+      rationale: "Waits for the operator.",
+      status: "proposed",
+    }));
+
+    assert.notInclude(codes(model), "TRIAGE-DECIDED");
+    assert.notInclude(codes(model), "TRIAGE-UNKNOWN-ID");
+  });
+
+  it("fails when the advised element is decided", () => {
+    assert.include(
+      codes(advised("goal-org-g", (element) => element)),
+      "TRIAGE-DECIDED"
+    );
+  });
+
+  it("fails when the advised id does not exist", () => {
+    const model = {
+      ...withChange("goal-org-g", (element) => element),
+      triage: {
+        advice: [{ advice: "Recommended: confirm", id: "goal-org-nowhere" }],
+      },
+    };
+
+    assert.include(codes(model), "TRIAGE-UNKNOWN-ID");
+  });
+});
+
 describe("text cut short", () => {
   it("fails when a rationale ends at the word Issue", () => {
     const model = withChange("goal-org-g", (element) => ({

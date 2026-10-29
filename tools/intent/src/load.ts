@@ -14,7 +14,12 @@ import { TaggedError as TaggedErrorClass } from "effect/Schema";
 import { parse } from "yaml";
 
 import { buildModel } from "./model.ts";
-import { decodeModelFile, decodeSources, decodeTracker } from "./schema.ts";
+import {
+  decodeModelFile,
+  decodeSources,
+  decodeTracker,
+  decodeTriage,
+} from "./schema.ts";
 import { scopes } from "./vocabulary.ts";
 import { cutValues, describeCut } from "./yamlText.ts";
 
@@ -96,6 +101,10 @@ export const loadModel = Effect.fn("loadModel")(function* loadModel(
     )
   );
 
+  const triage = yield* readYaml("model/triage.yaml").pipe(
+    Effect.flatMap((raw) => fromResult("model/triage.yaml", decodeTriage(raw)))
+  );
+
   const files = yield* Effect.forEach(scopes, (scope) =>
     Effect.gen(function* scopeFiles() {
       const names = yield* fs
@@ -141,5 +150,5 @@ export const loadModel = Effect.fn("loadModel")(function* loadModel(
 
   const logLines = Arr.length(Str.split(Str.trimEnd(log), "\n"));
 
-  return buildModel({ files, logLines, sources, tracker });
+  return buildModel({ files, logLines, sources, tracker, triage });
 });

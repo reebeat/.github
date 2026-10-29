@@ -62,7 +62,10 @@ const blockTable = (model: Model, block: CanvasBlock): string => {
 };
 
 const pricingSection = (model: Model): string => {
-  const priced = Arr.filter(model.items, (item) => item.pricing !== undefined);
+  const priced = Arr.filter(
+    model.items,
+    (item) => item.pricing !== undefined || item.proposedPricing !== undefined
+  );
 
   const rule = Arr.findFirst(
     model.items,
@@ -79,21 +82,27 @@ const pricingSection = (model: Model): string => {
           `The rule ([${item.title}](${href(item, "")}), ${item.status}): ${oneLine(item.statement)}`,
       }),
       "",
-      "The operator decided the principle and two paid features: multiplayer collaboration and integrated hosted AI agents. Every other mark below is a proposal until the operator confirms it.",
+      "The operator decided the principle and two paid features: multiplayer collaboration and integrated hosted AI agents (log lines 43 and 91). Only an element that cites one of those lines carries a decided mark. Every mark marked proposed below is a proposal until the operator confirms it; tiers are designed after demand is validated (log line 79).",
       "",
       priced.length === 0
         ? "_No element carries a pricing mark yet._"
         : table(
-            ["Tier", "Element", "Scope", "Status", "Sources"],
+            ["Mark", "Mark status", "Element", "Scope", "Status", "Sources"],
             Arr.map(
               Arr.sort(
                 priced,
-                Order.mapInput(Order.Number, (item: Item) =>
-                  item.pricing === "free" ? 0 : 1
+                Order.combine(
+                  Order.mapInput(Order.Number, (item: Item) =>
+                    item.pricing === undefined ? 1 : 0
+                  ),
+                  Order.mapInput(Order.Number, (item: Item) =>
+                    (item.pricing ?? item.proposedPricing) === "free" ? 0 : 1
+                  )
                 )
               ),
               (item) => [
-                item.pricing ?? "",
+                item.pricing ?? item.proposedPricing ?? "",
+                item.pricing === undefined ? "proposed" : "decided",
                 titleLink(item, ""),
                 item.scope,
                 item.status,

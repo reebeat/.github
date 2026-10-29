@@ -166,13 +166,12 @@ elements:
     kind: problem
     title: Demand for the products is not measured
     statement: >-
-      The documents of the three repositories that were read hold no measure of demand, usage or willingness to pay. The
-      roadmap and the free and paid split rest on the operator's judgement.
-    status: open
-    rationale: >-
-      The repositories state intent and design, not market evidence. The boundary document leaves price and tiers to the
-      closed products and none of them has them.
-    source: [reebeat:docs/design/open-core-boundary.md:69]
+      Demand is validated before tiers are designed. The project publishes the roadmap, collects a waitlist for the sync
+      server and hosted agents, interviews prospective creators and sets a threshold; no pricing or billing code is
+      written before the threshold is met. The repositories read hold no measure of demand yet, so this work is still to
+      do.
+    status: decided
+    source: [log:79, reebeat:docs/design/open-core-boundary.md:69]
     links:
       hinders: [goal-org-sustainable-funding]
 
@@ -180,18 +179,16 @@ elements:
     kind: problem
     title: The lifecycle toolchain is copied into every repository
     statement: >-
-      The lifecycle toolchain (hooks, scripts and CI) was copied from one repository into the next, each copy with a
-      provenance note. A fix in one copy does not reach the others.
-    status: open
-    rationale: >-
-      The copies break the one-source rule (log line 54) by convention, not by construction. One home, such as a shared
-      template or a reusable workflow in this repository, would fix it.
-    source: [studio:PROVENANCE.md:3, foldkit-flow:PROVENANCE.md:3]
+      The four repositories keep their own copies of the lifecycle toolchain (hooks, scripts and CI), each with a
+      provenance note. A drift test in `reebeat/.github` compares blob hashes of the files that should be identical and
+      fails on a difference; unifying the copies stays manual. The test does not exist yet.
+    status: decided
+    source: [log:80, studio:PROVENANCE.md:3, foldkit-flow:PROVENANCE.md:3]
     links:
       hinders: [comp-org-lifecycle-toolchain]
     gap:
       repo: org
-      fix: Keep the toolchain in one shared home (a template or reusable workflows in this repository) and let each repository consume it.
+      fix: Add a script to reebeat/.github that compares blob hashes of the files that should be identical across the four repositories and fails on a difference.
 
   - id: problem-org-no-written-roadmap
     kind: problem
@@ -228,10 +225,10 @@ elements:
     constraintType: legal
     title: ffmpeg with libx264 is GPL
     statement: >-
-      ffmpeg with libx264 is GPL. The operator noted it for later: it must be decided before a binary is distributed
-      (issue 7).
+      ffmpeg with libx264 is GPL. The operator decided to keep libx264 and never bundle ffmpeg, so GPL duties arise only
+      if a product ever bundles it (issue 7).
     status: decided
-    source: [log:50]
+    source: [log:50, log:78]
     refs: ["issue:reebeat#7"]
     links:
       hinders: [goal-org-product-family]
@@ -239,13 +236,19 @@ elements:
   - id: constraint-org-working-name
     kind: constraint
     constraintType: organisational
-    title: The name reebeat is a working name
+    title: The name reebeat stays for now
     statement: >-
-      The name reebeat is working. The GitHub and npm organisations named reebeat are reserved. A trademark policy waits
-      for the final name.
-    status: open
-    rationale: The README and the boundary document both say the name is working; the operator has not chosen a final name.
-    source: [reebeat:README.md:42, reebeat:docs/design/open-core-boundary.md:68]
+      The name `reebeat` stays the working name. The clearance check found no register hit for REEBEAT itself, but a
+      registered EU mark REBEAT (classes 9, 35, 41, to 2034) and an active Norwegian registration FREEBEAT (classes 16,
+      28, 38, 41, 42). The operator paused the first npm publish until a Norwegian IP advisor has given an opinion. If
+      the advisor flags a conflict, the project renames before any package exists. The GitHub and npm organisations named
+      reebeat are reserved. A trademark policy follows once the name is cleared.
+    status: decided
+    source:
+      - log:75
+      - log:113
+      - reebeat:README.md:42
+      - reebeat:docs/design/open-core-boundary.md:68
 
   - id: opportunity-org-one-declaration-many-surfaces
     kind: opportunity
@@ -291,13 +294,12 @@ elements:
     constraintType: legal
     title: reebeat calls ffmpeg as a separate process
     statement: >-
-      reebeat runs ffmpeg as a separate process and does not bundle or link it, so the GPL of ffmpeg does not reach the
-      reebeat code. A product that distributes a binary with libx264 takes on GPL duties for that binary.
-    status: proposed
-    rationale: >-
-      Observed in the repository: the third-party audit of reebeat states this reading. It is not legal advice and the
-      operator has not decided how a product will distribute ffmpeg (issue 7).
-    source: [reebeat:docs/design/third-party.md:5-12]
+      For now reebeat keeps libx264 and never bundles ffmpeg: it runs the user's own ffmpeg (or the devenv one) as a
+      separate process, so the GPL of ffmpeg does not reach the reebeat code. A hosted service does not distribute ffmpeg.
+      In future, several encoders may sit behind an adapter. If a product ever bundles ffmpeg, it takes on GPL duties for
+      that binary.
+    status: decided
+    source: [log:78, reebeat:docs/design/third-party.md:5-12]
     refs: ["issue:reebeat#7"]
     links:
       hinders: [goal-org-product-family]

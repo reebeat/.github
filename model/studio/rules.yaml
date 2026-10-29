@@ -62,12 +62,10 @@ elements:
     title: Objects with an id are keyed by an immutable uid
     statement: >-
       Each object that has an id becomes a map keyed by an immutable uid, with an explicit position. References use the uid,
-      and repeated data is derived, not stored twice.
-    status: proposed
-    rationale: >-
-      Spec plan: the operator decided a merge-based keyed document (log:47). The uid, position and derived-data details are
-      the spike's recommendation. The operator must confirm them.
-    source: [log:47, studio:docs/specs/0002-collaboration-spike.md:24, studio:docs/specs/0002-collaboration-spike.md:188]
+      and repeated data is derived, not stored twice. Composite values, a position and a curve point, are declared atomic in
+      the schema and merge as whole values. The other properties merge property-wise.
+    status: decided
+    source: [log:47, log:100, studio:docs/specs/0002-collaboration-spike.md:24, studio:docs/specs/0002-collaboration-spike.md:188]
     links:
       serves: [goal-studio-valid-shared-story]
 
@@ -151,15 +149,13 @@ elements:
   - id: rule-studio-agent-scope
     kind: rule
     ruleType: constraint
-    title: Each agent has a read, suggest or apply scope per lens
+    title: An agent's permissions are action sets on resources
     statement: >-
-      A person sets a scope for each agent, and it may differ per lens. Read lets the agent read, suggest lets it propose
-      edits, and apply lets it edit directly.
-    status: proposed
-    rationale: >-
-      The lenses note designs the scopes and calls them a studio spec still to write. The operator must confirm the scope
-      levels.
-    source: [studio:docs/design/lenses.md:91-99]
+      An agent's permissions are action sets on resources (scenes, elements, effects, timing, narration), declared in code.
+      Read, suggest and apply are named presets: read lets the agent read, suggest lets it propose edits that wait for a
+      person, and apply lets it edit directly. Each lens has a default preset in the UI.
+    status: decided
+    source: [studio:docs/design/lenses.md:91-99, log:99]
     links:
       serves: [goal-studio-lens-agent-panel]
       constrains: [comp-studio-lens-agent-panel]
@@ -167,35 +163,26 @@ elements:
   - id: rule-studio-narration-drives-or-follows
     kind: rule
     ruleType: constraint
-    title: A narration piece drives timing or follows an event
+    title: Studio states no narration timing rule
     statement: >-
-      A narration piece either drives timing, so the Beats after it wait for it, or follows an event, so nothing waits for
-      it. It never does both in a loop.
-    status: proposed
-    rationale: >-
-      The lenses note states the rule. The operator log says narration produces and consumes events that the timeline
-      adjusts to (line 27), which supports the idea but does not set this rule.
-      The operator should confirm the rule.
-    source: [studio:docs/design/lenses.md:43-46, log:27]
+      Studio states no rule for how a narration piece drives timing or follows an event. Reebeat writes that rule once, in
+      its spec 0004 or 0005, and studio shows reebeat's diagnostics in the Wiring lens.
+    status: decided
+    source: [log:103, log:27]
     links:
-      serves: [goal-studio-deck-view-narration]
-      triggers: [process-studio-cut-narration]
+      serves: [goal-studio-deck-view-narration, goal-studio-lens-wiring]
 
   - id: rule-studio-no-narration-cycles
     kind: rule
     ruleType: event-action
-    title: A narration cycle is reported, not resolved
+    title: The Wiring lens shows reebeat's cycle diagnostics
     statement: >-
-      A cycle exists when a piece follows an event that waits for the same piece. It has no answer, so the lint must find it
-      and the Wiring lens must show the loop.
-    when: A narration piece follows an event that itself waits for the same piece
-    then: The reebeat lint reports the cycle and the Wiring lens shows the loop
-    status: proposed
-    rationale: >-
-      The lenses note asks reebeat's effect-cycle lint to cover narration pieces. That lint extension is not built or
-      decided.
-      The operator should confirm the lint extension and how the Wiring lens shows a cycle.
-    source: [studio:docs/design/lenses.md:48, studio:docs/design/lenses.md:60]
+      Studio states no rule on narration cycles. When reebeat's lint reports a cycle, where a piece follows an event that
+      waits for the same piece, the Wiring lens shows the loop.
+    when: Reebeat's lint reports a narration cycle
+    then: The Wiring lens shows the loop with the line it comes from
+    status: decided
+    source: [log:103, studio:docs/design/lenses.md:60]
     links:
       serves: [goal-studio-lens-wiring]
 
@@ -383,16 +370,14 @@ elements:
   - id: rule-studio-no-licence-file
     kind: rule
     ruleType: constraint
-    title: Do not add a LICENSE file until the operator decides
+    title: Studio is proprietary, all rights reserved
     statement: >-
-      The repository carries no licence file on purpose. Agents do not add one, and third-party code keeps its own licence.
-    when: An agent or contributor wants to add a licence
-    then: Do not add a LICENSE file; ask the operator
-    status: proposed
-    rationale: >-
-      Observed in the repository: AGENTS.md tells agents not to add a licence file, and the README says none is present on
-      purpose. The operator must confirm that the instruction holds until he decides.
-    source: [studio:AGENTS.md:64, studio:README.md:27, record:studio:docs/specs/0000-development-lifecycle.md:126]
+      Studio is proprietary, all rights reserved. A LICENSE file and third-party notices are to state this (neither exists
+      yet), and third-party code keeps its own licence.
+    when: Studio code or a binary is shared
+    then: The LICENSE file states proprietary, all rights reserved, and the third-party notices list bundled code
+    status: decided
+    source: [log:95, log:43]
     links:
       serves: [goal-studio-vision]
       constrains: [comp-studio-product]

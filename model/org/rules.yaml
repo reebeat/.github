@@ -30,15 +30,12 @@ elements:
   - id: rule-org-open-core-needs-no-server
     kind: rule
     ruleType: derivation
-    title: The open core never needs a server of ours
+    title: The open core never needs a project server
     statement: >-
-      Anyone can run the Apache-2.0 compiler and can build a hosted service of their own on it. The open part never needs
-      a server of the project.
-    status: proposed
-    rationale: >-
-      open-core-boundary.md derives this from the paid-when-costly rule and says it is "proposed, not confirmed by the
-      operator": the operator has not accepted that others may sell a hosted service on the compiler.
-    source: [reebeat:docs/design/open-core-boundary.md:46]
+      Anyone may run or host the open compiler under Apache-2.0, including as a hosted service of their own. The open
+      part never needs a server of the project; the project's moat is the closed products, the name and their quality.
+    status: decided
+    source: [log:76, reebeat:docs/design/open-core-boundary.md:46]
     links:
       serves: [goal-org-open-compiler]
 
