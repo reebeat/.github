@@ -1,0 +1,48 @@
+• Running devenv:files:cleanup
+✓ Running devenv:files:cleanup in 11.8ms
+• Running devenv:enterShell
+✓ Running devenv:enterShell in 13.0ms
+== baseline: the model passes
+   command: bun tools/intent/src/cli.ts check
+   exit:    0
+   first finding: [20:26:58.981] INFO (#2): Model clean: 657 elements, 22 tracked items.
+== baseline: the generated files match
+   command: bun tools/intent/src/cli.ts generate --check
+   exit:    0
+   first finding: [20:26:59.720] INFO (#2): Generated files match: 15 files.
+== F2 goal with no support
+   command: bun tools/intent/src/cli.ts check
+   exit:    1
+   first finding: GOAL-UNSUPPORTED goal-org-control-lonely: no component, process, requirement, spec, issue or pull request supports this goal
+== F3 component that serves no goal
+   command: bun tools/intent/src/cli.ts check
+   exit:    1
+   first finding: COMPONENT-NO-GOAL comp-org-control-orphan: serves no goal, directly or through a requirement or IS goal it realizes
+== F4 rule that cites no goal
+   command: bun tools/intent/src/cli.ts check
+   exit:    1
+   first finding: RULE-NO-GOAL rule-org-control-loose: cites no goal (links.serves)
+== F5 element with no source
+   command: bun tools/intent/src/cli.ts check
+   exit:    1
+   first finding:   at ["elements"][9]["source"]
+== F6 decided element whose source is not an operator decision
+   command: bun tools/intent/src/cli.ts check
+   exit:    1
+   first finding: STATUS-DECIDED-NOT-OPERATOR concept-org-control-decided: decided, but no source is an operator decision (log:N or record:...)
+== F7 generated page edited by hand
+   command: bun tools/intent/src/cli.ts generate --check
+   exit:    1
+   first finding: [20:27:03.608] ERROR (#2): GeneratedDrift: generated files differ from the committed ones (run `bun run generate`):
+== F10 source line beyond the end of the file
+   command: bun tools/intent/src/cli.ts verify-sources
+   exit:    1
+   first finding: constraint-reebeat-local-tools: reebeat:README.md:9999-9999 is beyond the 49 lines of the file
+== after restore: the model passes again
+   command: bun tools/intent/src/cli.ts check
+   exit:    0
+   first finding: [20:27:07.828] INFO (#2): Model clean: 657 elements, 22 tracked items.
+== F12 staged fake secret
+   command: bash -c cd '/tmp/tmp.VgBott3oqG' && gitleaks git --staged --redact --no-banner --config '/srv/share/projects/reebeat-org/.gitleaks.toml' 2>&1 | grep -E 'leaks found'; exit ${PIPESTATUS[0]}
+   exit:    1
+   first finding: 8:27PM WRN leaks found: 1

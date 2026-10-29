@@ -1,0 +1,390 @@
+elements:
+  # --------------------------------------------------------------- actors
+  - id: actor-reebeat-story-author
+    kind: actor
+    actorType: role
+    persona: true
+    title: Story author
+    statement: >-
+      A creator who writes one Fountain screenplay and runs `plan`, `build` and `check`. They declare the story and leave
+      the building to reebeat.
+    status: proposed
+    rationale: >-
+      The README addresses a person who writes a screenplay (README.md:3). Mapping that person to the organisation's
+      Creator persona is the model author's reading.
+    source: ["reebeat:README.md:3", "reebeat:README.md:14-19", "log:7"]
+    canvas: [customer-segments]
+    links:
+      part-of: [actor-creator]
+      performs: [process-reebeat-author-story, process-reebeat-review-plan]
+      serves: [goal-reebeat-vision]
+
+  - id: actor-reebeat-presenter
+    kind: actor
+    actorType: role
+    persona: true
+    title: Presenter
+    statement: >-
+      A speaker who steps through the Deck with the arrow keys and reads the narration as speaker notes.
+    status: proposed
+    rationale: >-
+      README.md:21 tells the reader to step through the Deck and open speaker notes. Treating this reader as the
+      organisation's Presenter persona is the model author's reading.
+    source: ["reebeat:README.md:21", "reebeat:GLOSSARY.md:78-80"]
+    canvas: [customer-segments]
+    links:
+      part-of: [actor-presenter]
+      uses: [concept-reebeat-deck]
+      serves: [goal-reebeat-deck-and-video]
+
+  - id: actor-reebeat-agent-operator
+    kind: actor
+    actorType: role
+    persona: true
+    title: Agent operator
+    statement: >-
+      A person whose own agent writes and repairs stories with the compiler's text source and its line-numbered messages.
+    status: proposed
+    rationale: >-
+      The operator decided that users can bring their own agents (log:43). That an agent works through `plan`, `lint` and
+      `check` is the model author's reading of spec 0002.
+    source: ["log:43", "reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:10"]
+    canvas: [customer-segments]
+    links:
+      part-of: [actor-agent-operator]
+      performs: [process-reebeat-author-story]
+      serves: [goal-reebeat-explicit-source]
+
+  - id: actor-reebeat-plugin-author
+    kind: actor
+    actorType: role
+    persona: true
+    title: Plugin author
+    statement: >-
+      A developer who writes an adapter for one service and proves it with the service's contract suite.
+    status: proposed
+    rationale: >-
+      Observed in the repository: open-core-boundary.md and AGENTS.md describe this role. The operator decided that
+      plugins are supported, but the adapter-and-contract shape is marked proposed there, so confirm it.
+    source:
+      - log:43
+      - reebeat:docs/design/open-core-boundary.md:24
+      - reebeat:AGENTS.md:61
+    canvas: [customer-segments]
+    links:
+      part-of: [actor-plugin-author]
+      performs: [process-reebeat-add-adapter]
+      serves: [goal-reebeat-plugin-sdk]
+
+  - id: actor-reebeat-cli
+    kind: actor
+    actorType: system
+    title: The reebeat command
+    statement: >-
+      The `reebeat` command with `plan`, `lint`, `build`, `check` and `journey`. It is the one composition root that reads
+      the selection and fills each service with an adapter.
+    status: proposed
+    rationale: >-
+      Observed in the repository: the command source lists these subcommands. The operator decided explicit selection at a
+      composition root, not the command list, so confirm it.
+    source:
+      - reebeat:packages/cli/src/cli.ts:70
+      - reebeat:packages/cli/src/cli.ts:321
+      - reebeat:AGENTS.md:58
+    canvas: [channels]
+    links:
+      performs: [process-reebeat-select-adapters, process-reebeat-run-journey]
+      responsible-for: [rule-reebeat-only-cli-composes]
+      uses: [comp-reebeat-cli]
+
+  - id: actor-reebeat-build-program
+    kind: actor
+    actorType: system
+    title: The build program
+    statement: >-
+      One Effect program over the seven services. It runs every stage from the story to a finished build directory and
+      knows no model, browser or binary.
+    status: proposed
+    rationale: >-
+      Observed in the repository: the pipeline source describes the seven-service program. The operator has not decided its
+      exact shape, so confirm it.
+    source:
+      - reebeat:packages/pipeline/src/buildProgram.ts:1-3
+    links:
+      performs:
+        - process-reebeat-parse-story
+        - process-reebeat-build-plan
+        - process-reebeat-speech-stage
+        - process-reebeat-schedule
+        - process-reebeat-render-deck
+        - process-reebeat-write-manifest
+      uses: [comp-reebeat-pipeline]
+
+  - id: actor-reebeat-local-adapters
+    kind: actor
+    actorType: system
+    title: The local adapters
+    statement: >-
+      The adapters for Kokoro, whisper.cpp, synthesised sounds, reveal.js, Chromium, ffmpeg and the file cache. Each runs
+      on the user's machine and sends nothing out.
+    status: proposed
+    rationale: >-
+      Observed in the repository: the README and spec 0001 describe the local adapters and their egress. The operator has
+      not decided this inventory, so confirm it.
+    source:
+      - reebeat:README.md:21
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:259
+    links:
+      performs: [process-reebeat-capture-frames, process-reebeat-encode-video]
+      uses: [resource-reebeat-chromium, resource-reebeat-ffmpeg, resource-reebeat-whisper-cpp]
+
+  - id: actor-reebeat-verifier
+    kind: actor
+    actorType: system
+    title: The verifier
+    statement: >-
+      The `verify` tool reads a written build and the source, and prints one verdict per falsifier. It never reads the
+      pipeline's memory.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0001 describes the output-side verifier. The operator has not decided this actor, so confirm it.
+    source:
+      - reebeat:packages/verify/src/index.ts:1-2
+    links:
+      performs: [process-reebeat-verify-build]
+      uses: [comp-reebeat-verify]
+
+  - id: actor-reebeat-reviewers
+    kind: actor
+    actorType: role
+    title: Independent reviewers and the fixer
+    statement: >-
+      A verification reviewer and a conformance reviewer judge the plan, the code and their agreement. A fixer addresses
+      the findings. Reviewers are read-only on product code.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0000 describes the reviewer and fixer roles. The operator has not decided each responsibility, so
+      confirm it.
+    source:
+      - reebeat:docs/specs/0000-development-lifecycle.md:74
+      - reebeat:docs/specs/0000-development-lifecycle.md:78
+    links:
+      part-of: [actor-contributor-agent]
+      performs: [process-reebeat-review-round]
+      serves: [goal-reebeat-correct-by-construction]
+
+  - id: actor-reebeat-maintainer
+    kind: actor
+    actorType: role
+    title: Maintainer
+    statement: >-
+      The person who owns the repository. They answer operator-owned forks, merge a pull request that has a passing
+      recorded round, and provision the npm and GitHub environment for a release.
+    status: proposed
+    rationale: >-
+      Observed in the repository: spec 0000 and AGENTS.md describe these duties. The npm provisioning duty comes from PR
+      #18. The operator has not decided this role, so confirm it.
+    source:
+      - reebeat:docs/specs/0000-development-lifecycle.md:22
+      - reebeat:AGENTS.md:73-81
+    links:
+      part-of: [actor-operator]
+      performs: [process-reebeat-release-publish]
+      responsible-for: [goal-reebeat-npm-publication]
+
+  # ------------------------------------------------------------ resources
+  - id: resource-reebeat-chromium
+    kind: resource
+    resourceType: external-tool
+    title: Chromium
+    statement: >-
+      The browser that renders the Deck page for frame capture, driven by Playwright under a virtual clock. It runs as a
+      separate process.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0001 and the third-party audit describe Chromium, Playwright and the process boundary. The operator
+      has not decided this arrangement, so confirm it.
+    source:
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:85
+      - reebeat:docs/design/third-party.md:56
+      - reebeat:AGENTS.md:87
+    canvas: [key-partners, key-resources]
+    links:
+      serves: [goal-reebeat-deck-and-video]
+
+  - id: resource-reebeat-ffmpeg
+    kind: resource
+    resourceType: external-tool
+    title: ffmpeg and ffprobe
+    statement: >-
+      The tools that encode lossless audio, mix, mux the Video and measure written files. The configured build is
+      GPL-3.0-or-later because it includes libx264.
+    status: proposed
+    rationale: >-
+      Observed in the repository: the third-party audit reads the configured build as GPL-3.0-or-later. The operator noted
+      the GPL concern for later (log:50) but has not decided this inventory, so confirm it.
+    source:
+      - reebeat:docs/design/third-party.md:57
+      - reebeat:AGENTS.md:88
+      - log:50
+    canvas: [key-partners, key-resources]
+    links:
+      serves: [goal-reebeat-deck-and-video]
+
+  - id: resource-reebeat-whisper-cpp
+    kind: resource
+    resourceType: external-tool
+    title: whisper.cpp
+    statement: >-
+      The `whisper-cli` program that gives word timestamps for the aligned narration. It is MIT licensed and runs as a
+      separate process.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0001 and the third-party audit describe whisper-cli, its MIT licence and the process boundary. The
+      operator has not decided this arrangement, so confirm it.
+    source:
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:77
+      - reebeat:docs/design/third-party.md:59
+    canvas: [key-partners, key-resources]
+    links:
+      serves: [goal-reebeat-event-timing]
+
+  - id: resource-reebeat-kokoro-model
+    kind: resource
+    resourceType: model-asset
+    title: Kokoro speech model
+    statement: >-
+      The Kokoro-82M model, with its voices, run locally through `kokoro-js`. It is Apache-2.0, is downloaded on first use,
+      and is never stored in the repository.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0001 and the third-party audit describe the Kokoro model, its licence and its download. The operator
+      has not decided this arrangement, so confirm it.
+    source:
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:77
+      - reebeat:docs/design/third-party.md:71
+    canvas: [key-partners, key-resources]
+    links:
+      serves: [goal-reebeat-deck-and-video]
+
+  - id: resource-reebeat-whisper-model
+    kind: resource
+    resourceType: model-asset
+    title: Whisper base English model
+    statement: >-
+      The `ggml-base.en` model file that whisper.cpp reads. It is MIT licensed. It is not in the repository or in devenv,
+      so the user downloads it.
+    status: proposed
+    rationale: >-
+      Observed in the repository: the third-party audit and AGENTS.md describe the whisper model file. The operator has not
+      decided this arrangement, so confirm it.
+    source:
+      - reebeat:docs/design/third-party.md:72
+      - reebeat:AGENTS.md:89
+    links:
+      serves: [goal-reebeat-event-timing]
+
+  - id: resource-reebeat-reveal-js
+    kind: resource
+    resourceType: software
+    title: reveal.js
+    statement: >-
+      The presentation framework that renders the Deck. Its Auto-Animate matches Elements by id and is the animator and the
+      identity diff in release 1. It is MIT licensed.
+    status: proposed
+    rationale: >-
+      Observed in the repository: the third-party audit gives the MIT licence. The operator decided reveal.js Auto-Animate
+      as the release-1 animator (spec 0001 line 212), not the licence detail, so confirm it.
+    source:
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:212
+      - reebeat:docs/design/third-party.md:44
+    canvas: [key-partners, key-resources]
+    links:
+      serves: [goal-reebeat-deck-and-video]
+
+  - id: resource-reebeat-fountain-format
+    kind: resource
+    resourceType: document
+    title: The Fountain screenplay format
+    statement: >-
+      The plain-text screenplay syntax, version 1.1, that a Story is written in. reebeat reads it through an existing
+      parser and defines a small fixed vocabulary on top.
+    status: proposed
+    rationale: >-
+      Spec plan: the operator decided that the source is one Fountain file (spec 0001 line 212). The version, the parser and
+      the fixed vocabulary come from the spec plan, so confirm them.
+    source:
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:212
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:31
+    links:
+      serves: [goal-reebeat-screenplay-first]
+
+  - id: resource-reebeat-licence-inventory
+    kind: resource
+    resourceType: data
+    title: The licence inventory
+    statement: >-
+      One file lists every locked npm package with its licence, taken from the package's own manifest. A test ties it to
+      the lockfile, so nothing else lists packages.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0008 describes the inventory file and its test. The operator has not decided each detail, so confirm
+      it.
+    source:
+      - reebeat:docs/design/third-party.md:33
+      - reebeat:docs/specs/0008-apache-2-licence.md:61
+    canvas: [key-resources]
+    links:
+      serves: [goal-reebeat-apache-licence]
+
+  - id: resource-reebeat-devenv
+    kind: resource
+    resourceType: external-tool
+    title: devenv shell
+    statement: >-
+      The pinned toolchain that provides Bun, Node, gitleaks, Chromium, ffmpeg and whisper.cpp for builds, hooks and CI. It
+      runs on Linux, and elsewhere the user sets the Chromium path.
+    status: proposed
+    rationale: >-
+      Observed in the repository: devenv.nix lists the tools. The operator has not decided this inventory, so confirm it.
+    source:
+      - reebeat:devenv.nix:16-23
+      - reebeat:README.md:12
+    canvas: [key-resources]
+    links:
+      serves: [goal-reebeat-reproducible-builds]
+
+  - id: resource-reebeat-same-id-story
+    kind: resource
+    resourceType: document
+    title: The story same-id
+    statement: >-
+      The one original, public story that builds end to end. It holds the screenplay and a committed speech cache, and it
+      is the subject of every journey check.
+    status: proposed
+    rationale: >-
+      Observed in the repository: the README and spec 0001 name this story and its cache. Spec 0001 leaves the committed
+      cache as an open question for the operator, so this is the current default only.
+    source:
+      - reebeat:README.md:8
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:13
+    links:
+      serves: [goal-reebeat-verified-output]
+
+  - id: resource-reebeat-speech-cache
+    kind: resource
+    resourceType: data
+    title: The speech cache
+    statement: >-
+      Content-addressed FLAC audio and word timings, keyed by the narration text and the adapter settings. It is the only
+      generated asset kept in git, so a build needs no model.
+    status: proposed
+    rationale: >-
+      Observed in the repository: the speech cache is committed. Spec 0001 asks the operator whether that is acceptable and
+      the question stays open, so this is the current default only.
+    source:
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:77
+      - reebeat:README.md:21
+    canvas: [key-resources]
+    links:
+      serves: [goal-reebeat-reproducible-builds]

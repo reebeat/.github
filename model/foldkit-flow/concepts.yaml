@@ -1,0 +1,250 @@
+elements:
+  - id: concept-flow-flow
+    kind: concept
+    title: Flow
+    statement: >-
+      A Flow is one node-based graph canvas inside a Foldkit application. It holds the nodes, edges, viewport and
+      selection, and it lives in the application's Model.
+    status: proposed
+    source:
+      - log:48
+      - foldkit-flow:README.md:3
+      - pr:foldkit-flow#4
+    rationale: >-
+      PR #4 plan: the log decides only a node-based graph UI for Foldkit (line 48). That the Flow holds nodes, edges,
+      viewport and selection in the application's Model, and its fields, come from PR #4. The operator must confirm the
+      concept.
+    attributes:
+      - id
+      - nodes
+      - edges
+      - viewport
+      - attribution option
+    relations:
+      - { type: relates, to: concept-flow-out-message, label: emits }
+
+  - id: concept-flow-node
+    kind: concept
+    title: Node
+    statement: >-
+      A node is one box on the canvas. It declares its position, size and handles, and the application draws its
+      content.
+    status: proposed
+    source:
+      - foldkit-flow:README.md:3
+      - pr:foldkit-flow#4
+    rationale: >-
+      The README names nodes. The fields come from PR #4 and are absent at the pinned commit 5dd44a9 (PR #4 has since merged; see the tracker). The operator must confirm the vocabulary.
+    attributes:
+      - id
+      - label
+      - type
+      - position
+      - width and height
+      - handles
+      - parent id
+      - clamped to parent
+    relations:
+      - { type: part-of, to: concept-flow-flow, multiplicity: many to one }
+
+  - id: concept-flow-edge
+    kind: concept
+    title: Edge
+    statement: >-
+      An edge is a line between a source handle and a target handle. It can be a bezier, smooth-step or straight line,
+      with an optional arrow.
+    status: proposed
+    source:
+      - pr:foldkit-flow#4
+    rationale: >-
+      The edge fields and kinds come from PR #4 and are absent at the pinned commit 5dd44a9 (PR #4 has since merged; see the tracker). The operator must confirm the vocabulary.
+    attributes:
+      - id
+      - source node and handle
+      - target node and handle
+      - kind
+      - arrow
+      - label
+    relations:
+      - { type: part-of, to: concept-flow-flow, multiplicity: many to one }
+      - { type: relates, to: concept-flow-handle, label: joins two, multiplicity: "2" }
+
+  - id: concept-flow-handle
+    kind: concept
+    title: Handle
+    statement: >-
+      A handle is a connection point on a node. A person drags from one handle to another to make a connection.
+    status: proposed
+    source:
+      - foldkit-flow:README.md:3
+      - pr:foldkit-flow#4
+    rationale: >-
+      The README names handles. Their declared fields (id, kind, side) come from PR #4. The operator must confirm the
+      vocabulary.
+    attributes:
+      - id
+      - kind (source or target)
+      - side
+    relations:
+      - { type: part-of, to: concept-flow-node, multiplicity: many to one }
+
+  - id: concept-flow-connection
+    kind: concept
+    title: Connection
+    statement: >-
+      A connection is a pair of handles that a person joins with a gesture. The application's check accepts or refuses
+      it, and the application turns an accepted one into an edge.
+    status: proposed
+    source:
+      - pr:foldkit-flow#4
+    rationale: >-
+      PR #4 separates a connection (a gesture result) from an edge (graph data). The operator must confirm.
+    relations:
+      - { type: relates, to: concept-flow-handle, label: from a source handle to a target handle }
+      - { type: relates, to: concept-flow-edge, label: becomes, multiplicity: zero or one }
+
+  - id: concept-flow-parent-node
+    kind: concept
+    title: Compound (parent) node
+    statement: >-
+      A parent node contains child nodes. A child positions relative to its parent and may be clamped inside it. A
+      Scene holding States is one example.
+    status: proposed
+    source:
+      - log:19
+      - pr:foldkit-flow#4
+    rationale: >-
+      The log says a Scene is a compound state that groups States, and PR #4 builds parent nodes for that shape. No
+      line names the node kind as a flow concept. The operator must confirm.
+    attributes:
+      - children
+      - clamp to parent
+    relations:
+      - { type: isa, to: concept-flow-node }
+
+  - id: concept-flow-viewport
+    kind: concept
+    title: Viewport
+    statement: >-
+      The viewport is the visible part of the canvas, given by an offset and a zoom. Pan and zoom change it and touch no
+      node.
+    status: proposed
+    source:
+      - foldkit-flow:README.md:3
+      - pr:foldkit-flow#4
+    rationale: >-
+      The README names pan and zoom. The viewport as a Model value is in PR #4. The operator must confirm.
+    attributes:
+      - x offset
+      - y offset
+      - zoom
+    relations:
+      - { type: part-of, to: concept-flow-flow, multiplicity: one to one }
+
+  - id: concept-flow-selection
+    kind: concept
+    title: Selection
+    statement: >-
+      The selection is the set of nodes and edges the person has picked by click, box or key. Delete, move and clear
+      act on it.
+    status: proposed
+    source:
+      - foldkit-flow:README.md:3
+      - pr:foldkit-flow#4
+    rationale: >-
+      The README names selecting with a box. Click, key and additive selection come from PR #4. The operator must
+      confirm.
+    relations:
+      - { type: part-of, to: concept-flow-flow, multiplicity: one to one }
+
+  - id: concept-flow-minimap
+    kind: concept
+    title: Minimap and controls
+    statement: >-
+      The minimap is a small overview of the graph that a person can drag to pan. The controls are buttons to zoom in,
+      zoom out and fit the view.
+    status: proposed
+    source:
+      - pr:foldkit-flow#4
+    rationale: >-
+      PR #4 builds both; they are absent at the pinned commit 5dd44a9 (PR #4 has since merged; see the tracker). The operator must confirm them as part of the first release.
+    relations:
+      - { type: part-of, to: concept-flow-flow }
+
+  - id: concept-flow-attribution
+    kind: concept
+    title: Attribution
+    statement: >-
+      Attribution is the "Built with xyflow" link in the corner of the canvas. It is either Visible or Hidden, and
+      Visible is the default.
+    status: proposed
+    source:
+      - foldkit-flow:README.md:21
+      - foldkit-flow:docs/specs/0000-development-lifecycle.md:53
+      - foldkit-flow:packages/flow/src/attribution.ts:15-22
+    rationale: >-
+      The scaffold defines the type. No operator line decides it. The operator must confirm the vocabulary and default.
+    attributes:
+      - Visible or Hidden
+      - link to xyflow.com
+    relations:
+      - { type: part-of, to: concept-flow-flow }
+
+  - id: concept-flow-mount
+    kind: concept
+    title: Mount
+    statement: >-
+      A Mount is a Foldkit construct that runs work when an element appears and cleans up when it goes. The library
+      uses Mounts to own its controllers.
+    status: proposed
+    source:
+      - foldkit-flow:AGENTS.md:61
+      - pr:foldkit-flow#4
+    rationale: >-
+      Mount is a Foldkit term, used here as AGENTS.md uses it. The operator must confirm that it belongs in the model.
+    relations:
+      - { type: relates, to: concept-flow-controller, label: owns the lifetime of, multiplicity: one to one }
+
+  - id: concept-flow-controller
+    kind: concept
+    title: Controller
+    statement: >-
+      A controller is an xyflow object that handles one kind of interaction: pan and zoom, node drag, handle
+      connection or the minimap.
+    status: proposed
+    source:
+      - foldkit-flow:README.md:21
+      - foldkit-flow:AGENTS.md:61
+      - pr:foldkit-flow#4
+    rationale: >-
+      The README lists xyflow's controllers. PR #4 names the four it uses. The operator must confirm.
+    relations:
+      - { type: relates, to: concept-flow-flow, label: acts on }
+
+  - id: concept-flow-out-message
+    kind: concept
+    title: Out-message (outcome)
+    statement: >-
+      An out-message tells the application what a gesture produced: Connected, Reconnected, Deleted, Moved or a
+      selection change. The application decides what to do with it.
+    status: proposed
+    source:
+      - pr:foldkit-flow#4
+    rationale: >-
+      The out-messages are named in PR #4 and are absent at the pinned commit 5dd44a9 (PR #4 has since merged; see the tracker). The operator must confirm the vocabulary.
+    relations:
+      - { type: relates, to: concept-flow-connection, label: reports }
+
+  - id: concept-flow-live-region
+    kind: concept
+    title: Live region
+    statement: >-
+      The live region is a polite status area that announces selection, moves, connections and deletions to screen
+      readers.
+    status: proposed
+    source:
+      - pr:foldkit-flow#4
+    rationale: >-
+      The PR README describes it as part of keyboard access; it is absent at the pinned commit 5dd44a9 (PR #4 has since merged; see the tracker). The operator must confirm the live region as part of the keyboard contract.
+    relations:
+      - { type: part-of, to: concept-flow-flow }

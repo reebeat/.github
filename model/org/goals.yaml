@@ -1,0 +1,301 @@
+elements:
+  - id: goal-org-vision
+    kind: goal
+    title: Multimedia that authors declare and tools rebuild
+    statement: >-
+      People make multimedia by declaring its narrative and structure. reebeat builds the artifacts, so they stay
+      accessible and reproducible and are rebuilt as the author edits.
+    tagline: "Declarative multimedia: accessible, reproducible, rebuilt as you edit."
+    intentLine: "We take care of building; you focus on creating."
+    technicalLine: >-
+      Semantically declared story beats, compiled into multimedia artifacts: statecharts for structure, functional
+      reactive time, and an incremental build graph, written in Effect.
+    elevator: >-
+      You declare the story's beats and what they mean; reebeat derives motion, timing and every artifact, reproducibly,
+      rebuilding only what an edit changes.
+    status: decided
+    source: [log:7, log:9, log:10, log:60-61]
+    canvas: [value-propositions]
+
+  - id: goal-org-declarative-creation
+    kind: goal
+    title: Declare scenes and transitions, not build steps
+    statement: >-
+      Authors declare the story: scenes, states and the transitions between them, with effects tied to events. They do
+      not write the imperative steps that build the video.
+    status: decided
+    source: [log:11, log:14, log:19]
+    canvas: [value-propositions]
+    links:
+      subgoal-of: [goal-org-vision]
+
+  - id: goal-org-accessible-artifacts
+    kind: goal
+    title: Accessible artifacts for every audience
+    statement: >-
+      Every artifact can serve hearing-impaired, visually impaired and reduced-motion audiences, and language variants
+      adjust the timing.
+    status: decided
+    source: [log:10, log:32]
+    canvas: [value-propositions]
+    links:
+      subgoal-of: [goal-org-vision]
+
+  - id: goal-org-reproducible-builds
+    kind: goal
+    title: Reproducible builds
+    statement: Builds are reproducible.
+    status: decided
+    source: [log:10]
+    canvas: [value-propositions]
+    links:
+      subgoal-of: [goal-org-vision]
+
+  - id: goal-org-incremental-builds
+    kind: goal
+    title: Fast, incremental, reactive builds
+    statement: An edit rebuilds only what it changes, fast enough that the author sees the result as they edit.
+    status: decided
+    source: [log:10, log:7]
+    canvas: [value-propositions]
+    links:
+      subgoal-of: [goal-org-vision]
+
+  - id: goal-org-interactive-multimedia
+    kind: goal
+    title: Interactive multimedia for learning
+    statement: >-
+      Interactivity is the missing multimedia dimension. Websites become an artifact type with interactive learning
+      material. Interactive lessons are deferred for later investigation.
+    status: decided
+    source: [log:36, log:37, log:38]
+    canvas: [value-propositions]
+    links:
+      subgoal-of: [goal-org-vision]
+
+  - id: goal-org-modular-extensible
+    kind: goal
+    title: Modular and extensible by users
+    statement: >-
+      The compiler gives modular contracts, components and building blocks. Users can write plugins and extensions,
+      add render engines through an SDK, and bring their own agents.
+    status: decided
+    source: [log:15, log:28, log:43]
+    canvas: [value-propositions]
+    links:
+      subgoal-of: [goal-org-vision]
+
+  - id: goal-org-open-compiler
+    kind: goal
+    title: An open compiler and open formats
+    statement: The compiler and its formats are open source under Apache-2.0, so products and plugins can build on them.
+    status: decided
+    source: [log:43, log:44]
+    canvas: [value-propositions, channels]
+    links:
+      supports: [goal-org-modular-extensible]
+
+  - id: goal-org-product-family
+    kind: goal
+    title: A family of products on the open core
+    statement: >-
+      The family has a collaborative editor, closed source and built on the open compiler, and a node-graph UI library
+      for Foldkit, in its own repository under the MIT licence.
+    status: decided
+    source: [log:43, log:45, log:48]
+    canvas: [value-propositions]
+    links:
+      subgoal-of: [goal-org-vision]
+
+  - id: goal-org-sustainable-funding
+    kind: goal
+    title: Fund the work with paid features that cost money to run
+    statement: >-
+      The editor has a free tier for basic features that cost nothing to run. Costly premium features sit behind a
+      paywall: multiplayer collaboration and deeply integrated hosted AI agents.
+    status: decided
+    source: [log:43]
+    canvas: [revenue-streams]
+    links:
+      supports: [goal-org-product-family]
+
+  - id: goal-org-correctness-by-construction
+    kind: goal
+    title: Correctness by construction
+    statement: >-
+      Make bad states unrepresentable, keep one source for every fact, and give every derived thing an explicit edge
+      back to its core.
+    status: decided
+    source: [log:54]
+    canvas: [key-activities]
+
+  - id: goal-org-stay-on-supported-stack
+    kind: goal
+    title: Stay on supported Effect APIs and fix problems upstream
+    statement: >-
+      Packages that use unstable Effect APIs cap their version range below the next minor. Upstream fixes through
+      Effect's own services are preferred to workarounds.
+    status: decided
+    source: [log:55, log:56]
+
+  - id: goal-org-written-intent
+    kind: goal
+    title: Intent written down, sourced and testable
+    statement: >-
+      Why the products exist, what they must do and what is still open is written in one model. Every element cites a
+      source, and CI fails when the model contradicts itself.
+    status: proposed
+    rationale: >-
+      The operator asked for this model in the session of 2026-10-29. The request is not a line of the decision log, so
+      the goal waits for the operator to confirm it.
+    source: [log:3]
+    canvas: [key-activities]
+
+  - id: problem-org-imperative-tools
+    kind: problem
+    title: Video tools model a video as imperative steps
+    statement: >-
+      Traditional video editors and motion-graphics tools treat a video as a sequence of imperative commands or steps.
+      The implicit state machine stays hidden.
+    status: decided
+    source: [log:14, log:19]
+    links:
+      motivates: [goal-org-declarative-creation]
+
+  - id: problem-org-demand-unmeasured
+    kind: problem
+    title: Demand for the products is not measured
+    statement: >-
+      The documents of the three repositories that were read hold no measure of demand, usage or willingness to pay. The
+      roadmap and the free and paid split rest on the operator's judgement.
+    status: open
+    rationale: >-
+      The repositories state intent and design, not market evidence. The boundary document leaves price and tiers to the
+      closed products and none of them has them.
+    source: [reebeat:docs/design/open-core-boundary.md:69]
+    links:
+      hinders: [goal-org-sustainable-funding]
+
+  - id: problem-org-lifecycle-copies
+    kind: problem
+    title: The lifecycle toolchain is copied into every repository
+    statement: >-
+      The lifecycle toolchain (hooks, scripts and CI) was copied from one repository into the next, each copy with a
+      provenance note. A fix in one copy does not reach the others.
+    status: open
+    rationale: >-
+      The copies break the one-source rule (log line 54) by convention, not by construction. One home, such as a shared
+      template or a reusable workflow in this repository, would fix it.
+    source: [studio:PROVENANCE.md:3, foldkit-flow:PROVENANCE.md:3]
+    links:
+      hinders: [comp-org-lifecycle-toolchain]
+    gap:
+      repo: org
+      fix: Keep the toolchain in one shared home (a template or reusable workflows in this repository) and let each repository consume it.
+
+  - id: problem-org-no-written-roadmap
+    kind: problem
+    title: The roadmap exists only as issues and pull requests
+    statement: >-
+      The root of the reebeat and studio repositories has no ROADMAP file. The plans that exist are issues and open
+      pull requests, so a visitor of the organisation cannot see them in one place.
+    status: open
+    rationale: >-
+      Only the two root paths were checked at the pinned commits. Issues 19 and 20 of reebeat are roadmap entries kept
+      as issues. This repository now generates a roadmap page from the model and the tracker snapshot.
+    source:
+      ["absent:reebeat:ROADMAP.md", "absent:studio:ROADMAP.md", "issue:reebeat#19", "issue:reebeat#20"]
+    gap:
+      repo: reebeat
+      fix: Link the generated roadmap of this repository from each README.
+
+  - id: constraint-org-apache-2
+    kind: constraint
+    constraintType: legal
+    title: The compiler and formats are Apache-2.0
+    statement: >-
+      The compiler and its formats are licensed under Apache-2.0. The copyright holder is the operator as an individual;
+      contributions stay with their authors under the same licence.
+    status: decided
+    source: [log:44, record:reebeat:docs/design/open-core-boundary.md:64]
+    links:
+      hinders: [goal-org-sustainable-funding]
+
+  - id: constraint-org-gpl-ffmpeg
+    kind: constraint
+    constraintType: legal
+    title: ffmpeg with libx264 is GPL
+    statement: >-
+      ffmpeg with libx264 is GPL. The operator noted it for later: it must be decided before a binary is distributed
+      (issue 7).
+    status: decided
+    source: [log:50]
+    refs: ["issue:reebeat#7"]
+    links:
+      hinders: [goal-org-product-family]
+
+  - id: constraint-org-working-name
+    kind: constraint
+    constraintType: organisational
+    title: The name reebeat is a working name
+    statement: >-
+      The name reebeat is working. The GitHub and npm organisations named reebeat are reserved. A trademark policy waits
+      for the final name.
+    status: open
+    rationale: The README and the boundary document both say the name is working; the operator has not chosen a final name.
+    source: [reebeat:README.md:41, reebeat:docs/design/open-core-boundary.md:68]
+
+  - id: opportunity-org-one-declaration-many-surfaces
+    kind: opportunity
+    title: One declaration, many surfaces
+    statement: >-
+      One declared interaction can become an agent function, a web control, a visible-cursor action in a video and a deck
+      step. Authors do not write each surface by hand.
+    status: proposed
+    rationale: >-
+      Proposed in comments on issue 19. The operator's log states the interaction model (lines 37 to 39) but not this
+      slogan or the capability negotiation it needs.
+    source: [log:37-39, "issue:reebeat#19@6503203735"]
+    links:
+      supports: [goal-org-interactive-multimedia]
+
+  - id: opportunity-org-accessibility-from-one-source
+    kind: opportunity
+    title: Accessible variants come from the same declaration
+    statement: >-
+      Captions, audio description, reduced motion and language variants can be derived from the declared story, instead
+      of being made by hand for each audience.
+    status: proposed
+    rationale: >-
+      The operator names accessibility as the project's power (log line 10). That derived variants beat hand-made ones
+      is an inference from issue 12, not an operator statement.
+    source: [log:10, "issue:reebeat#12"]
+    links:
+      supports: [goal-org-accessible-artifacts]
+
+  - id: constraint-org-novelty-claim
+    kind: constraint
+    constraintType: organisational
+    title: Claim novelty only for the combination
+    statement: >-
+      The parts are prior art: statecharts, SMIL, FRP, build systems, Effect and XState. Only their combination applied to
+      multimedia is new. The build engine may be designed generically, but it is claimed only for multimedia until it is
+      proven elsewhere.
+    status: decided
+    source: [log:63]
+
+  - id: constraint-org-ffmpeg-process-boundary
+    kind: constraint
+    constraintType: legal
+    title: reebeat calls ffmpeg as a separate process
+    statement: >-
+      reebeat runs ffmpeg as a separate process and does not bundle or link it, so the GPL of ffmpeg does not reach the
+      reebeat code. A product that distributes a binary with libx264 takes on GPL duties for that binary.
+    status: proposed
+    rationale: >-
+      Observed in the repository: the third-party audit of reebeat states this reading. It is not legal advice and the
+      operator has not decided how a product will distribute ffmpeg (issue 7).
+    source: [reebeat:docs/design/third-party.md:5-12]
+    refs: ["issue:reebeat#7"]
+    links:
+      hinders: [goal-org-product-family]

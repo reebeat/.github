@@ -1,0 +1,398 @@
+elements:
+  - id: rule-studio-free-costs-nothing
+    kind: rule
+    ruleType: derivation
+    title: Free means it costs the project nothing to run
+    statement: >-
+      A feature is free when it runs in the user's browser or on their machine and costs the project nothing. It is paid
+      when the project runs something for the user, such as an always-on server, model inference or render minutes.
+    when: A studio feature is placed in a tier
+    if: Its running cost falls on the project (a server, inference or render minutes)
+    then: The feature is paid; otherwise it is free
+    status: proposed
+    rationale: >-
+      Spec plan: the lenses note and spec 0001 state this general cost rule. The operator decided only a free tier for basic
+      non-cost features and paid premium features such as multiplayer collaboration and integrated AI agents (log:43). The
+      operator must confirm the general rule.
+    source: [log:43, studio:docs/design/lenses.md:13-15, studio:docs/specs/0001-first-felt-journey.md:112]
+    links:
+      serves: [goal-studio-free-paid-split]
+
+  - id: rule-studio-single-edit-path
+    kind: rule
+    ruleType: constraint
+    title: Every edit goes through one validated path
+    statement: >-
+      A UI action, an agent tool call and a lens all change the story through one edit path. The path checks the result
+      and keeps the old story when the result is invalid.
+    when: A person, an agent or a lens changes the story
+    then: The change is checked against the story schema and refused with a reason if the result is invalid
+    status: proposed
+    rationale: >-
+      Spec 0001 plans one edit path, one validation and one undo. Its later revision keeps the path but says the patch only
+      describes the edit and the replicated unit is the Loro update. The plan itself has no recorded operator decision.
+      The operator should confirm the single path for the UI, the tools and the lenses.
+    source: [studio:docs/specs/0001-first-felt-journey.md:19-21, studio:docs/specs/0001-first-felt-journey.md:76, studio:docs/specs/0001-first-felt-journey.md:172]
+    links:
+      serves: [goal-studio-first-felt-journey]
+      constrains: [comp-studio-edit-path]
+      triggers: [process-studio-edit-property]
+
+  - id: rule-studio-edit-by-element-id
+    kind: rule
+    ruleType: constraint
+    title: Edit by Element id, not by array index
+    statement: >-
+      Agents and the UI address an Element by its id. A raw JSON Patch is for callers that build their own pointers.
+    when: An agent or the UI edits an Element
+    then: The tool resolves the Element id, never an array position
+    status: proposed
+    rationale: >-
+      Spec 0001 plans id-addressed tools and spec 0002 shows why an index patch is unsafe. The operator decided the keyed
+      document (log line 47), which makes this natural, but no line records the rule itself.
+      The operator should confirm that edits address Elements by id.
+    source: [studio:docs/specs/0001-first-felt-journey.md:89, studio:docs/specs/0002-collaboration-spike.md:27, studio:docs/specs/0002-collaboration-spike.md:188]
+    links:
+      serves: [goal-studio-valid-shared-story]
+      constrains: [comp-studio-tool-protocol]
+
+  - id: rule-studio-keyed-by-uid
+    kind: rule
+    ruleType: constraint
+    title: Objects with an id are keyed by an immutable uid
+    statement: >-
+      Each object that has an id becomes a map keyed by an immutable uid, with an explicit position. References use the uid,
+      and repeated data is derived, not stored twice.
+    status: proposed
+    rationale: >-
+      Spec plan: the operator decided a merge-based keyed document (log:47). The uid, position and derived-data details are
+      the spike's recommendation. The operator must confirm them.
+    source: [log:47, studio:docs/specs/0002-collaboration-spike.md:24, studio:docs/specs/0002-collaboration-spike.md:188]
+    links:
+      serves: [goal-studio-valid-shared-story]
+
+  - id: rule-studio-replicate-updates-not-patches
+    kind: rule
+    ruleType: constraint
+    title: Peers exchange Loro updates, not JSON Patches
+    statement: >-
+      The replicated unit is the Loro update. A JSON Patch only describes an edit, for tool calls, review, proposals and
+      undo.
+    status: decided
+    source: [record:studio:docs/specs/0001-first-felt-journey.md:172, log:47, studio:docs/specs/0002-collaboration-spike.md:27, studio:docs/specs/0002-collaboration-spike.md:194]
+    links:
+      serves: [goal-studio-collaboration]
+
+  - id: rule-studio-gate-refuses-invalid-merge
+    kind: rule
+    ruleType: event-action
+    title: The gate refuses a merge that is not a valid story
+    statement: >-
+      The sync server decodes every merged change. It refuses a change whose result is not a valid IR and gives the reason,
+      so the author can rebase.
+    when: A change set reaches the sync server
+    if: The merged document does not decode as a valid story IR
+    then: The server refuses the change and returns the reason
+    status: proposed
+    rationale: >-
+      Spec plan: the operator decided a validation gate in the sync server (log:47). Decoding each change set and returning
+      a reason for the author to rebase is the spike's recommendation. The operator must confirm the refusal protocol.
+    source: [log:47, studio:docs/specs/0002-collaboration-spike.md:25, studio:docs/specs/0002-collaboration-spike.md:190]
+    links:
+      serves: [goal-studio-valid-shared-story]
+      triggers: [process-studio-collaborate-merge]
+
+  - id: rule-studio-repair-is-proposal
+    kind: rule
+    ruleType: constraint
+    title: A repair is a proposal, never applied silently
+    statement: >-
+      A repair for an invalid merge is offered as a proposal and is never applied without a person.
+    status: decided
+    source: [record:studio:docs/specs/0002-collaboration-spike.md:198]
+    links:
+      serves: [goal-studio-human-control]
+
+  - id: rule-studio-hash-projected-ir
+    kind: rule
+    ruleType: derivation
+    title: Hash the projected IR text, not CRDT bytes
+    statement: >-
+      A document revision is the hash of the story text projected from the document. Studio never uses a library's saved
+      bytes as a revision.
+    status: proposed
+    rationale: >-
+      Spec 0002 recommends it after 200 random replays per library gave equal IR text, while saved bytes differed for
+      Automerge and Yjs. The operator decided the library and edit model, not this hash rule.
+      The operator should confirm the hash rule.
+    source: [studio:docs/specs/0002-collaboration-spike.md:26, studio:docs/specs/0002-collaboration-spike.md:126-129, studio:docs/specs/0002-collaboration-spike.md:194]
+    links:
+      serves: [goal-studio-valid-shared-story]
+
+  - id: rule-studio-suggestions-need-human-accept
+    kind: rule
+    ruleType: constraint
+    title: A suggestion needs a human to accept it
+    statement: >-
+      An edit proposed by an agent or a collaborator is not applied. It appears with the name of its author, and a person
+      accepts or rejects it. An accepted suggestion applies as the same patch.
+    when: An agent or a collaborator proposes an edit
+    then: The edit waits as a named proposal until a person accepts or rejects it
+    status: proposed
+    rationale: >-
+      The lenses note designs suggestion mode. The operator decided the same for repairs only (spec 0002 line 198), so the
+      general rule needs confirmation.
+      The operator should confirm the general rule for suggestions.
+    source: [studio:docs/design/lenses.md:66-67, record:studio:docs/specs/0002-collaboration-spike.md:198]
+    links:
+      serves: [goal-studio-human-control]
+      triggers: [process-studio-review-suggestion]
+
+  - id: rule-studio-agent-scope
+    kind: rule
+    ruleType: constraint
+    title: Each agent has a read, suggest or apply scope per lens
+    statement: >-
+      A person sets a scope for each agent, and it may differ per lens. Read lets the agent read, suggest lets it propose
+      edits, and apply lets it edit directly.
+    status: proposed
+    rationale: >-
+      The lenses note designs the scopes and calls them a studio spec still to write. The operator must confirm the scope
+      levels.
+    source: [studio:docs/design/lenses.md:91-99]
+    links:
+      serves: [goal-studio-lens-agent-panel]
+      constrains: [comp-studio-lens-agent-panel]
+
+  - id: rule-studio-narration-drives-or-follows
+    kind: rule
+    ruleType: constraint
+    title: A narration piece drives timing or follows an event
+    statement: >-
+      A narration piece either drives timing, so the Beats after it wait for it, or follows an event, so nothing waits for
+      it. It never does both in a loop.
+    status: proposed
+    rationale: >-
+      The lenses note states the rule. The operator log says narration produces and consumes events that the timeline
+      adjusts to (line 27), which supports the idea but does not set this rule.
+      The operator should confirm the rule.
+    source: [studio:docs/design/lenses.md:43-46, log:27]
+    links:
+      serves: [goal-studio-deck-view-narration]
+      triggers: [process-studio-cut-narration]
+
+  - id: rule-studio-no-narration-cycles
+    kind: rule
+    ruleType: event-action
+    title: A narration cycle is reported, not resolved
+    statement: >-
+      A cycle exists when a piece follows an event that waits for the same piece. It has no answer, so the lint must find it
+      and the Wiring lens must show the loop.
+    when: A narration piece follows an event that itself waits for the same piece
+    then: The reebeat lint reports the cycle and the Wiring lens shows the loop
+    status: proposed
+    rationale: >-
+      The lenses note asks reebeat's effect-cycle lint to cover narration pieces. That lint extension is not built or
+      decided.
+      The operator should confirm the lint extension and how the Wiring lens shows a cycle.
+    source: [studio:docs/design/lenses.md:48, studio:docs/design/lenses.md:60]
+    links:
+      serves: [goal-studio-lens-wiring]
+
+  - id: rule-studio-retime-by-offset
+    kind: rule
+    ruleType: constraint
+    title: Retiming changes the offset from the anchor
+    statement: >-
+      Dragging an effect on the timeline writes a new offset from its anchor, not an absolute time. The story stays correct
+      when narration changes length.
+    when: An author retimes an effect on the timeline
+    then: Studio changes the offset and keeps the anchor
+    status: proposed
+    rationale: >-
+      The lenses note states it and says reebeat already requires a written reason for an absolute time. No operator line
+      records the rule.
+      The operator should confirm retiming by offset.
+    source: [studio:docs/design/lenses.md:56]
+    links:
+      serves: [goal-studio-lens-timeline]
+
+  - id: rule-studio-lens-switch-never-mutates
+    kind: rule
+    ruleType: constraint
+    title: Switching lens never changes the story
+    statement: >-
+      Switching a lens never changes the story. All lenses read and write one story, and the preview, the playhead and the
+      agent panel stay present in every lens.
+    status: proposed
+    rationale: >-
+      The lenses note states it as part of the idea of a lens. The operator directed the lens idea, but the note says each
+      lens is still design only.
+      The operator should confirm that a lens never changes the story and that these three stay present.
+    source: [studio:docs/design/lenses.md:7, studio:docs/design/lenses.md:9]
+    links:
+      serves: [goal-studio-lenses]
+
+  - id: rule-studio-stale-result-dropped
+    kind: rule
+    ruleType: constraint
+    title: A late compile never replaces a newer one
+    statement: >-
+      A compile is keyed by the story revision. A newer edit interrupts an older compile, and update drops a late result for
+      an old revision.
+    status: proposed
+    rationale: >-
+      Spec 0001 states the stale-result policy as part of its plan. It follows the operator's wish to avoid races by
+      construction, but no line records it.
+      The operator should confirm the stale-result policy.
+    source: [studio:docs/specs/0001-first-felt-journey.md:72, studio:docs/specs/0001-first-felt-journey.md:139]
+    links:
+      serves: [goal-studio-first-felt-journey]
+
+  - id: rule-studio-pure-update
+    kind: rule
+    ruleType: constraint
+    title: update and view stay pure
+    statement: >-
+      Foldkit update and view are total functions. Work leaves update only as a Command, a Subscription or a
+      ManagedResource.
+    status: proposed
+    rationale: >-
+      AGENTS.md states it and the Foldkit lint plugin enforces it. It follows the operator's wish to make bad states
+      unrepresentable, but no line records the rule as a decision.
+      The operator should confirm the rule.
+    source: [studio:AGENTS.md:53, studio:docs/specs/0000-development-lifecycle.md:81-82]
+    links:
+      serves: [goal-studio-checked-change]
+      constrains: [comp-studio-editor]
+
+  - id: rule-studio-effect-one-version
+    kind: rule
+    ruleType: constraint
+    title: Effect packages stay on one pinned version
+    statement: >-
+      The effect package and every @effect runtime package use one version, and an upgrade of Effect or Foldkit is its own
+      spec. A check on the lock file enforces it.
+    status: proposed
+    rationale: >-
+      AGENTS.md and spec 0000 state it. The operator's stack policy asks for a pinned Effect, but no line records this rule.
+      The operator should confirm the one-version rule.
+    source: [studio:AGENTS.md:34, studio:AGENTS.md:54, studio:docs/specs/0000-development-lifecycle.md:77]
+    links:
+      serves: [goal-org-stay-on-supported-stack]
+      constrains: [comp-studio-editor]
+
+  - id: rule-studio-one-spec-one-pr
+    kind: rule
+    ruleType: constraint
+    title: One spec, one branch, one pull request
+    statement: >-
+      Each change has one spec, one branch and one pull request. The plan evolves with the build, and review checks the
+      plan, the code and their agreement.
+    status: proposed
+    rationale: >-
+      Observed in the repository: spec 0000 and AGENTS.md state the lifecycle. The spec header says the operator assigned
+      the lifecycle as a whole, which does not decide each detail. The operator must confirm the rule.
+    source: [studio:docs/specs/0000-development-lifecycle.md:3, studio:AGENTS.md:13-17]
+    links:
+      serves: [goal-studio-checked-change]
+      triggers: [process-studio-pr-review-loop]
+
+  - id: rule-studio-main-protected
+    kind: rule
+    ruleType: constraint
+    title: Main needs a pull request and a passing check
+    statement: >-
+      Main requires a pull request, even for administrators. The status check named checks must pass, and force push and
+      deletion are blocked.
+    status: proposed
+    rationale: >-
+      Observed in the repository: spec 0000 builds the protection, and its header names branch protection like reebeat's
+      among the operator's assignment. No line records the exact settings as decided. The operator must confirm them.
+    source: [studio:docs/specs/0000-development-lifecycle.md:55, studio:AGENTS.md:20]
+    links:
+      serves: [goal-studio-checked-change]
+
+  - id: rule-studio-exceptions-registered
+    kind: rule
+    ruleType: constraint
+    title: Every suppression has a registry entry
+    statement: >-
+      A lint or type suppression needs an entry in the exception registry with a reason and a retirement trigger. The check
+      fails on a suppression without an entry and on an entry without a suppression. It does not yet see
+      effect-diagnostics comments (issue 7).
+    status: proposed
+    rationale: >-
+      Observed in the repository: AGENTS.md describes the registry and the check. The enforcement gap is tracked in issue 7.
+      The operator must confirm the rule.
+    source: [studio:AGENTS.md:33, studio:AGENTS.md:45, issue:studio#7]
+    links:
+      serves: [goal-studio-checked-change]
+      constrains: [comp-studio-quality-tools]
+
+  - id: rule-studio-reviewer-not-author
+    kind: rule
+    ruleType: constraint
+    title: A reviewer is never the author of the head
+    statement: >-
+      The record script refuses a pass whose author is among its reviewers. It stops the honest mistake, not forgery,
+      because names are self-declared.
+    status: proposed
+    rationale: >-
+      Spec 0003 builds this check as a lesson from two failed reviews. The operator assigned the review skills, not this
+      exact rule.
+      The operator should confirm the rule.
+    source: [studio:AGENTS.md:17, studio:docs/specs/0003-review-and-verify-skills.md:46]
+    links:
+      serves: [goal-studio-checked-change]
+      constrains: [comp-studio-review-skills]
+
+  - id: rule-studio-verify-skill-maintenance
+    kind: rule
+    ruleType: event-action
+    title: A user-visible change updates the verify skill
+    statement: >-
+      A pull request that adds or changes user-visible behaviour updates the feature map of the verify skill in the same
+      pull request. A reviewer runs the skill, and a stale map is a medium finding.
+    when: A pull request adds or changes user-visible behaviour
+    then: The same pull request updates the feature map, and a test checks that each spec has an entry or a reason
+    status: proposed
+    rationale: >-
+      Spec 0003 and AGENTS.md state the rule. The operator assigned a verification skill for each repository (spec 0003
+      line 3), but the maintenance rule is the spec's design.
+      The operator should confirm the maintenance rule.
+    source: [studio:AGENTS.md:18, studio:docs/specs/0003-review-and-verify-skills.md:3, studio:docs/specs/0003-review-and-verify-skills.md:62-68]
+    links:
+      serves: [goal-studio-checked-change]
+      constrains: [comp-studio-verify-skill]
+      triggers: [process-studio-verify-journey]
+
+  - id: rule-studio-heavy-job-headroom
+    kind: rule
+    ruleType: constraint
+    title: A heavy job needs machine headroom first
+    statement: >-
+      A heavy job, such as a build, a browser run or the full gate, runs only within the operator's four limits for memory,
+      swap-in, memory pressure and load.
+    status: decided
+    source: [record:studio:docs/specs/0003-review-and-verify-skills.md:113]
+    links:
+      serves: [goal-studio-checked-change]
+      triggers: [process-studio-verify-journey]
+
+  - id: rule-studio-no-licence-file
+    kind: rule
+    ruleType: constraint
+    title: Do not add a LICENSE file until the operator decides
+    statement: >-
+      The repository carries no licence file on purpose. Agents do not add one, and third-party code keeps its own licence.
+    when: An agent or contributor wants to add a licence
+    then: Do not add a LICENSE file; ask the operator
+    status: proposed
+    rationale: >-
+      Observed in the repository: AGENTS.md tells agents not to add a licence file, and the README says none is present on
+      purpose. The operator must confirm that the instruction holds until he decides.
+    source: [studio:AGENTS.md:64, studio:README.md:27, record:studio:docs/specs/0000-development-lifecycle.md:126]
+    links:
+      serves: [goal-studio-vision]
+      constrains: [comp-studio-product]

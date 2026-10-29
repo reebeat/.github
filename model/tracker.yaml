@@ -1,0 +1,75 @@
+# A snapshot of the GitHub issues and pull requests the model cites. Written by `bun run tracker:refresh`; do not edit.
+asOf: 2026-10-29
+items:
+  - ref: issue:foldkit-flow#3
+    state: open
+    title: vp run uses a downloaded Bun, not the devenv Bun (devEngines ^1.4.2)
+  - ref: issue:reebeat#10
+    state: open
+    title: "Localisation: one story, several narration languages"
+  - ref: issue:reebeat#12
+    state: open
+    title: "Accessible artifacts: captions, audio description, reduced motion and
+      readable subtitles"
+  - ref: issue:reebeat#14
+    state: open
+    title: check:exceptions ignores @effect-diagnostics suppression comments
+  - ref: issue:reebeat#15
+    state: open
+    title: vp run uses a downloaded Bun, not the devenv Bun (devEngines ^1.4.2)
+  - ref: issue:reebeat#19
+    state: open
+    title: "Roadmap: interactive website as an artifact type"
+  - ref: issue:reebeat#20
+    state: open
+    title: "Roadmap (deferred): interactive lessons — investigate later"
+  - ref: issue:reebeat#7
+    state: open
+    title: "ffmpeg with libx264 is GPL: decide before distributing a binary"
+  - ref: issue:reebeat#8
+    state: open
+    title: "Teaching lint: check explainer stories against multimedia-learning
+      principles"
+  - ref: issue:reebeat#9
+    state: open
+    title: "Incremental builds: cache render segments, not only speech"
+  - ref: issue:studio#4
+    state: open
+    title: Re-enable @foldkit/vite-plugin when a release supports effect 4.1.0
+  - ref: issue:studio#7
+    state: open
+    title: check:exceptions ignores @effect-diagnostics suppression comments
+  - ref: pr:foldkit-flow#4
+    state: merged
+    title: "feat: first felt journey (spec 0001)"
+  - ref: pr:reebeat#16
+    state: open
+    title: "chore: port the review loop, add verify-reebeat and its feature map
+      (spec 0010)"
+  - ref: pr:reebeat#17
+    state: open
+    title: "feat: explicit state machines and timing combinators (spec 0004)"
+  - ref: pr:reebeat#18
+    state: merged
+    title: "feat(release): publish @reebeat/* pre-releases to npm by trusted
+      publishing (spec 0009)"
+  - ref: pr:reebeat#23
+    state: open
+    title: "docs: extension architecture, ADR-0000 and spec 0012"
+  - ref: pr:reebeat#24
+    state: open
+    title: "docs: positioning, how it works and the intent of reebeat (spec 0011)"
+  - ref: pr:reebeat#3
+    state: merged
+    title: "feat: screenplay to deck and video, release 1 (spec 0001)"
+  - ref: pr:reebeat#4
+    state: merged
+    title: "feat: effects anchored to lifecycle events and an explicit syntax (spec
+      0002)"
+  - ref: pr:studio#5
+    state: merged
+    title: "feat: review, PR creation and verification skills (spec 0003)"
+  - ref: pr:studio#6
+    state: open
+    title: "feat: distribution, a single binary now and the web deploy when Alchemy
+      supports effect 4.1 (spec 0004)"

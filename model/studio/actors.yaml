@@ -1,0 +1,394 @@
+elements:
+  # ---------------------------------------------------------------- people, as used in studio
+  - id: actor-studio-story-author
+    kind: actor
+    actorType: role
+    title: Story author in studio
+    statement: >-
+      A person who opens a story in the editor, looks at its graph and timeline, and edits it. This is the creator persona
+      at work in studio.
+    status: proposed
+    rationale: >-
+      The README says people edit stories in studio. The org model names the creator persona, and the link to this role is
+      an inference. The operator must confirm the persona.
+    source: [studio:README.md:3, studio:docs/specs/0001-first-felt-journey.md:11-13]
+    links:
+      part-of: [actor-creator]
+      performs:
+        - process-studio-open-story
+        - process-studio-inspect-story
+        - process-studio-scrub-preview
+        - process-studio-edit-property
+        - process-studio-undo-edit
+        - process-studio-review-suggestion
+        - process-studio-deliver
+      serves: [goal-studio-first-felt-journey]
+    canvas: [customer-segments]
+
+  - id: actor-studio-narrator
+    kind: actor
+    actorType: role
+    title: Narrator in the deck view
+    statement: >-
+      A person who records the voice of a story, picks the best take and ties the cut pieces to beat events. This is the
+      presenter persona at work in studio.
+    status: proposed
+    rationale: >-
+      The operator named recording narration in a deck view (log line 45). Linking it to the presenter persona is an
+      inference. The operator must confirm the persona.
+    source: [log:45, studio:docs/design/lenses.md:36-41]
+    links:
+      part-of: [actor-presenter]
+      performs: [process-studio-record-narration, process-studio-cut-narration]
+      serves: [goal-studio-deck-view-narration]
+    canvas: [customer-segments]
+
+  - id: actor-studio-agent-owner
+    kind: actor
+    actorType: role
+    title: Person who brings their own agent
+    statement: >-
+      A person who connects an agent of their choice to studio's editing tools and sets what the agent may do. This is the
+      agent operator persona at work in studio.
+    status: proposed
+    rationale: >-
+      The operator wants users to bring their own agents (log line 43). The scopes they set are the lenses note's design.
+      The persona link is an inference. The operator should confirm the role mapping and the scope model.
+    source: [log:43, studio:docs/design/lenses.md:91-99]
+    links:
+      part-of: [actor-agent-operator]
+      performs: [process-studio-collaborate-merge]
+      serves: [goal-studio-people-and-agents]
+    canvas: [customer-segments]
+
+  - id: actor-studio-collaborator
+    kind: actor
+    actorType: role
+    title: Collaborator on a shared story
+    statement: >-
+      A person who edits the same story as others through the sync server. Their suggested edits wait for a person's decision.
+    status: proposed
+    rationale: >-
+      The operator wants human and human collaboration (log line 45). The role name and its suggestion flow come from the
+      lenses note. The operator should confirm the role and the suggestion flow.
+    source: [log:45, studio:docs/design/lenses.md:67-69]
+    links:
+      performs: [process-studio-collaborate-merge]
+      serves: [goal-studio-collaboration]
+    canvas: [customer-segments]
+
+  - id: actor-studio-product-owner
+    kind: actor
+    actorType: role
+    title: The operator as owner of studio
+    statement: >-
+      The operator made the studio repository public and has not decided its licence.
+    status: decided
+    source: [log:45, record:studio:docs/specs/0000-development-lifecycle.md:126]
+    links:
+      part-of: [actor-operator]
+      responsible-for: [goal-studio-vision, comp-studio-product]
+      performs: [process-studio-deploy-web]
+
+  - id: actor-studio-pr-author
+    kind: actor
+    actorType: role
+    title: Contributor who writes a spec and its pull request
+    statement: >-
+      A human or an agent who writes a spec, builds it on its own branch and opens one pull request.
+    status: proposed
+    rationale: >-
+      Observed in the repository: spec 0000 and AGENTS.md describe the contributor's steps. The spec header says the operator
+      assigned the lifecycle as a whole. The operator must confirm the role.
+    source: [studio:docs/specs/0000-development-lifecycle.md:14, studio:AGENTS.md:13]
+    links:
+      part-of: [actor-contributor-agent]
+      performs: [process-studio-pr-review-loop]
+      serves: [goal-studio-checked-change]
+
+  - id: actor-studio-reviewer
+    kind: actor
+    actorType: role
+    title: Independent reviewer
+    statement: >-
+      A reviewer judges the plan, the code and their agreement, and runs the verify skill for the changed behaviour. A
+      reviewer is never the author of the head.
+    status: proposed
+    rationale: >-
+      Observed in the repository: spec 0003 and AGENTS.md describe the reviewer's work. The spec header says the operator
+      assigned the review procedures as a whole, which does not decide this role. The operator must confirm it.
+    source: [studio:AGENTS.md:17, studio:docs/specs/0003-review-and-verify-skills.md:22-24]
+    links:
+      part-of: [actor-contributor-agent]
+      performs: [process-studio-pr-review-loop, process-studio-verify-journey]
+      responsible-for: [rule-studio-verify-skill-maintenance]
+      serves: [goal-studio-checked-change]
+
+  # ---------------------------------------------------------------- systems
+  - id: actor-studio-own-agent
+    kind: actor
+    actorType: system
+    title: An agent that runs on the user's side
+    statement: >-
+      An agent that the user brings. The user gives it access to the editing tools.
+    status: decided
+    source: [log:43, log:45]
+    links:
+      serves: [goal-studio-people-and-agents]
+      uses: [comp-studio-tool-protocol]
+
+  - id: actor-studio-hosted-agent
+    kind: actor
+    actorType: system
+    title: A hosted agent run by the project
+    statement: >-
+      A heavily integrated AI agent that the project offers is a premium feature behind the paywall.
+    status: decided
+    source: [log:43]
+    links:
+      serves: [goal-studio-free-paid-split]
+      uses: [comp-studio-tool-protocol, comp-studio-sync-server]
+
+  - id: actor-studio-sync-server
+    kind: actor
+    actorType: system
+    title: The sync server
+    statement: >-
+      The sync server holds the validation gate on the merge-based keyed document.
+    status: decided
+    source: [log:47, record:studio:docs/specs/0002-collaboration-spike.md:198]
+    links:
+      serves: [goal-studio-collaboration]
+      uses: [comp-studio-validation-gate, concept-studio-keyed-document]
+
+  # ---------------------------------------------------------------- resources
+  - id: resource-studio-repo
+    kind: resource
+    resourceType: service
+    title: The public repository reebeat/studio
+    statement: >-
+      The studio repository is public. The operator made it public.
+    status: decided
+    source: [log:45]
+    links:
+      serves: [goal-studio-vision]
+    canvas: [key-resources]
+
+  - id: resource-studio-reebeat-compiler
+    kind: resource
+    resourceType: software
+    title: The reebeat compiler and its IR
+    statement: >-
+      Reebeat owns the story IR, the vocabulary and the Deck and Video renderers. Studio consumes them and builds none of
+      them.
+    status: proposed
+    rationale: >-
+      Observed in the repository: the README and AGENTS.md state this boundary. The operator log decides that the compiler
+      and its formats are open (log:43), not the exact boundary. The operator must confirm it.
+    source: [studio:AGENTS.md:3, studio:README.md:3, log:43]
+    links:
+      serves: [goal-studio-vision]
+    canvas: [key-resources, key-partners]
+
+  - id: resource-studio-foldkit
+    kind: resource
+    resourceType: external-tool
+    title: Foldkit, the UI framework
+    statement: >-
+      Foldkit 0.169.0 is the UI framework, under the MIT licence. The editor is a Foldkit app. It installs from npm and is
+      not vendored.
+    status: proposed
+    rationale: >-
+      Observed in the repository: AGENTS.md and PROVENANCE.md state the version, licence and installation. The operator log
+      names Foldkit only for foldkit-flow (log:48). The operator must confirm Foldkit as studio's framework.
+    source: [studio:AGENTS.md:54, studio:PROVENANCE.md:42, log:48]
+    links:
+      serves: [goal-studio-vision]
+    canvas: [key-partners]
+
+  - id: resource-studio-effect
+    kind: resource
+    resourceType: software
+    title: Effect 4.1.0
+    statement: >-
+      Studio is written in native Effect, pinned at 4.1.0. Foldkit declares a peer of 4.0.0.
+    status: proposed
+    rationale: >-
+      Observed in the repository: AGENTS.md and package.json pin the version. The operator's Effect policy (log:55) caps
+      ranges below the next minor but does not set this version. The operator must confirm it.
+    source: [studio:AGENTS.md:54, studio:package.json:57, log:55]
+    links:
+      serves: [goal-org-stay-on-supported-stack]
+    canvas: [key-partners]
+
+  - id: resource-studio-loro
+    kind: resource
+    resourceType: external-tool
+    title: Loro, the CRDT library
+    statement: >-
+      Loro is the merge library, behind a ten-method document port.
+    status: decided
+    source: [log:47, record:studio:docs/specs/0002-collaboration-spike.md:198]
+    links:
+      serves: [goal-studio-collaboration]
+    canvas: [key-partners]
+
+  - id: resource-studio-loro-release
+    kind: resource
+    resourceType: software
+    title: loro-crdt 1.17.1 under the MIT licence
+    statement: >-
+      The spike used loro-crdt 1.17.1, which is under the MIT licence. It is the release the studio spec plans to use.
+    status: proposed
+    rationale: >-
+      Observed in the repository: spec 0002 pins the release and its licence. The operator chose Loro (log:47) but not a
+      release. The operator must confirm the pin.
+    source: [studio:docs/specs/0002-collaboration-spike.md:23, studio:docs/specs/0002-collaboration-spike.md:43]
+    links:
+      serves: [goal-studio-collaboration]
+
+  - id: resource-studio-cloudflare
+    kind: resource
+    resourceType: service
+    title: Cloudflare Workers and Durable Objects
+    statement: >-
+      The planned sync server and the web editor run on Cloudflare. Alchemy declares the resources.
+    status: proposed
+    rationale: >-
+      Spec plan: the operator's record names the sync server as the Durable Object (spec 0002 line 198). The web editor
+      deploy is PR 6's design and the one-object-per-story layout is the spike's recommendation. The operator must confirm
+      them.
+    source: [studio:docs/specs/0002-collaboration-spike.md:28, studio:docs/specs/0002-collaboration-spike.md:66, pr:studio#6]
+    links:
+      serves: [goal-studio-collaboration]
+    canvas: [key-partners, cost-structure]
+
+  - id: resource-studio-alchemy
+    kind: resource
+    resourceType: external-tool
+    title: Alchemy v2
+    statement: >-
+      Alchemy declares the Cloudflare resources. At the pinned commit studio does not use it yet, and the web deploy needs a
+      newer release.
+    status: proposed
+    rationale: >-
+      Spec 0000 says Alchemy v2 is not used yet and PR 6 prepares its use. The operator's stack default names Alchemy, but
+      studio's use is not decided. The operator should confirm Alchemy for the deploy.
+    source: [studio:docs/specs/0000-development-lifecycle.md:34, pr:studio#6]
+    links:
+      serves: [goal-studio-web-and-binary]
+    canvas: [key-partners]
+
+  - id: resource-studio-bun
+    kind: resource
+    resourceType: external-tool
+    title: Bun, the runtime and compiler
+    statement: >-
+      The single binary is built with Bun.
+    status: decided
+    source: [log:46]
+    links:
+      serves: [goal-studio-web-and-binary]
+    canvas: [key-partners]
+
+  - id: resource-studio-story-file
+    kind: resource
+    resourceType: data
+    title: A story IR file
+    statement: >-
+      The free journey opens a story IR JSON file. Where such files live in the free tier is an open question.
+    status: proposed
+    rationale: >-
+      Spec 0001 opens a file, and the spike's free tier keeps the document in a file. Spec 0001 asks the operator whether
+      the browser's file API or hosted storage holds it. The operator should choose between local file access and hosted
+      storage.
+    source: [studio:docs/specs/0001-first-felt-journey.md:16, studio:docs/specs/0001-first-felt-journey.md:161, studio:docs/specs/0002-collaboration-spike.md:192]
+    links:
+      serves: [goal-studio-offline-free-journey]
+
+  - id: resource-studio-speech-cache
+    kind: resource
+    resourceType: data
+    title: Narration speech cache
+    statement: >-
+      The preview uses reebeat's committed speech cache or a silent stand-in narrator. Making speech needs tools that do not
+      run in a browser.
+    status: proposed
+    rationale: >-
+      Spec 0001 states this as a stand-in for the first journey. Hosted speech may be paid, and that row is still open. The
+      operator should confirm the stand-in and settle hosted speech pricing separately.
+    source: [studio:docs/specs/0001-first-felt-journey.md:26, studio:docs/specs/0001-first-felt-journey.md:56]
+    links:
+      serves: [goal-studio-deck-view-narration]
+
+  - id: resource-studio-specs
+    kind: resource
+    resourceType: document
+    title: Specs and the lenses design note
+    statement: >-
+      The specs 0000 to 0003 and the lenses note record the plan, the evidence and the revisions. STATE.md says which spec
+      is active.
+    status: proposed
+    rationale: >-
+      Observed in the repository: the README and STATE.md name these documents. The spec header says the operator assigned
+      the lifecycle as a whole, which does not decide the inventory. The operator must confirm it.
+    source: [studio:README.md:19-21, studio:STATE.md:7]
+    links:
+      serves: [goal-studio-checked-change]
+
+  - id: resource-studio-spike-code
+    kind: resource
+    resourceType: document
+    title: The collaboration spike code
+    statement: >-
+      The throwaway measurement code and raw outputs live on the branch spike/collaboration-code. They back every number in
+      spec 0002.
+    status: proposed
+    rationale: >-
+      The branch and its commit are named in spec 0002. No line records the operator accepting it as a kept resource. The
+      operator should confirm whether the spike code stays as a resource.
+    source: [studio:docs/specs/0002-collaboration-spike.md:32]
+    links:
+      serves: [goal-studio-collaboration]
+
+  - id: resource-studio-ci
+    kind: resource
+    resourceType: service
+    title: GitHub Actions checks
+    statement: >-
+      A workflow runs each gate as its own step on every pull request and push to main. The check named checks must pass.
+    status: proposed
+    rationale: >-
+      Observed in the repository: spec 0000 builds the workflow and AGENTS.md names the check. The spec header names branch
+      protection like reebeat's among the operator's assignment, which does not decide the workflow. The operator must
+      confirm it.
+    source: [studio:.github/workflows/checks.yml:16-18, studio:AGENTS.md:20]
+    links:
+      serves: [goal-studio-checked-change]
+
+  - id: resource-studio-host-chromium
+    kind: resource
+    resourceType: external-tool
+    title: The host Chromium for browser runs
+    statement: >-
+      devenv has no browser. The verify skill and browser smoke runs use the Chromium on the host machine.
+    status: proposed
+    rationale: >-
+      The choice follows from devenv having no Chromium (itself a proposal). The verify skill says a host Chromium must be
+      on the path. The operator should confirm that the host Chromium is the intended verification dependency.
+    source: [studio:docs/specs/0000-development-lifecycle.md:120, studio:.agents/skills/verify-studio/features/README.md:25]
+    links:
+      serves: [goal-studio-checked-change]
+
+  - id: resource-studio-hosting-cost
+    kind: resource
+    resourceType: financial
+    title: Cost of servers and inference
+    statement: >-
+      Running multiplayer collaboration and heavily integrated AI agents costs money. They are the premium features behind
+      the paywall.
+    status: decided
+    source: [log:43]
+    links:
+      serves: [goal-studio-free-paid-split]
+    canvas: [cost-structure]

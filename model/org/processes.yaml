@@ -1,0 +1,131 @@
+elements:
+  - id: process-org-create-and-deliver
+    kind: process
+    category: primary
+    title: Create and deliver a multimedia artifact
+    statement: >-
+      The value stream of the product family: an author declares a story, reebeat builds the artifact, the author
+      reviews it, and the audience receives it.
+    status: proposed
+    rationale: >-
+      The operator describes declaring and building (log lines 7 and 11). The review and audience steps that complete the
+      stream are inferred; the operator should confirm them.
+    source: [log:7, log:11]
+    links:
+      serves: [goal-org-vision]
+
+  - id: process-org-declare-story
+    kind: process
+    category: primary
+    title: Declare the story
+    statement: >-
+      The creator declares scenes, states, transitions and effects tied to events, by hand, with a studio editor or
+      through an agent.
+    status: decided
+    source: [log:11, log:14, log:20, log:45]
+    links:
+      part-of: [process-org-create-and-deliver]
+      serves: [goal-org-declarative-creation]
+      next: [process-org-build-artifact]
+      uses: [concept-org-ir]
+
+  - id: process-org-build-artifact
+    kind: process
+    category: primary
+    title: Build the artifact
+    statement: >-
+      The compiler turns the declared story into the artifact. An edit rebuilds only what it changes, and the build is
+      reproducible.
+    status: decided
+    source: [log:7, log:10]
+    links:
+      part-of: [process-org-create-and-deliver]
+      serves: [goal-org-reproducible-builds, goal-org-incremental-builds]
+      next: [process-org-review-artifact]
+      produces: [concept-org-artifact]
+
+  - id: process-org-review-artifact
+    kind: process
+    category: primary
+    title: Review the artifact and the plan
+    statement: >-
+      The author reviews the plan and the artifact, and checks them against the source. They edit the story and build
+      again, or approve the result.
+    status: proposed
+    rationale: >-
+      The reebeat README describes a reviewable Plan and a check command, but the decision log does not describe an
+      author's review step; the operator should confirm it as a step of the value stream.
+    source: [reebeat:README.md:3, reebeat:README.md:12-18]
+    links:
+      part-of: [process-org-create-and-deliver]
+      next: [process-org-deliver-artifact, process-org-declare-story]
+      serves: [goal-org-reproducible-builds]
+
+  - id: process-org-deliver-artifact
+    kind: process
+    category: primary
+    title: Deliver the artifact to its audience
+    statement: >-
+      The artifact reaches its audience as a video, a presentation deck or a website, in a variant that fits the
+      audience, for example with captions, reduced motion or another language.
+    status: proposed
+    rationale: >-
+      The operator names the audiences and the artifact types (log lines 32, 36 and 37) but does not describe a delivery
+      step; the step and the examples of variants are inferred.
+    source: [log:32, log:36, log:37]
+    links:
+      part-of: [process-org-create-and-deliver]
+      serves: [goal-org-accessible-artifacts, goal-org-interactive-multimedia]
+      next: [extproc-org-audience-consumes]
+
+  - id: extproc-org-audience-consumes
+    kind: external-process
+    title: The audience watches, hears or interacts
+    statement: >-
+      Learners and viewers consume the artifact. In a dynamic artifact they step through it and raise events by interacting.
+    status: proposed
+    rationale: The audience is outside the project; the step is inferred from the interactive artifact decisions.
+    source: [log:36, log:37]
+
+  - id: process-org-ship-change
+    kind: process
+    category: governance
+    title: Ship a change through spec, code and pull request
+    statement: >-
+      Every change follows spec, then code, then pull request, one to one. It passes CI and a recorded independent review
+      round before the guarded script merges it.
+    status: proposed
+    rationale: >-
+      Spec 0000 of reebeat and studio, whose headers say the operator decided them, set this road. The operator's
+      decision log does not repeat the sequence, so the operator should confirm it as the road for every repository.
+    source: [reebeat:AGENTS.md:9-17, studio:AGENTS.md:17]
+    links:
+      serves: [goal-org-correctness-by-construction]
+      uses: [resource-github-org]
+
+  - id: process-org-publish-packages
+    kind: process
+    category: supporting
+    title: Publish packages to npm
+    statement: >-
+      The compiler's libraries and services are to be published to npm as `@reebeat/*` pre-releases, so products and
+      plugin authors can depend on them.
+    status: decided
+    source: [log:49]
+    refs: ["pr:reebeat#18"]
+    links:
+      serves: [goal-org-open-compiler, goal-org-modular-extensible]
+      uses: [resource-npm-org]
+
+  - id: process-org-upgrade-to-paid
+    kind: process
+    category: supporting
+    title: A free user becomes a paying user
+    statement: >-
+      No process, price, tier list or billing exists yet for moving a user from the free tier to a paid feature.
+    status: open
+    rationale: >-
+      The decision log fixes the principle (free for local, paid for what costs money to run) but no price or flow.
+      The open-core boundary says price and tiers belong to the closed products' repositories, and none of them has them yet.
+    source: [log:43, reebeat:docs/design/open-core-boundary.md:69]
+    canvas: [customer-relationships, revenue-streams]

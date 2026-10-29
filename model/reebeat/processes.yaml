@@ -1,0 +1,420 @@
+elements:
+  # ------------------------------------------------- the creation journey
+  - id: process-reebeat-author-story
+    kind: process
+    category: primary
+    title: Author a story
+    statement: >-
+      A creator or an agent writes one Fountain screenplay: Scenes with explicit ids, Elements, an effects block and
+      narration dialogue.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0001 and the screenplay-first revision describe this step. The operator decided that the source is
+      one Fountain file, not the effects-block syntax or the explicit-id rules, so confirm the detail.
+    source:
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:212
+      - reebeat:README.md:3
+      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:60-79
+    canvas: [key-activities]
+    links:
+      serves: [goal-reebeat-screenplay-first]
+      produces: [concept-reebeat-screenplay]
+      uses: [resource-reebeat-fountain-format]
+      next: [process-reebeat-parse-story]
+
+  - id: process-reebeat-select-adapters
+    kind: process
+    category: supporting
+    title: Select the adapters
+    statement: >-
+      Adapter selection is explicit configuration read at the composition root. It never falls back silently.
+    status: decided
+    source:
+      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:234
+      - reebeat:README.md:23
+      - reebeat:AGENTS.md:59
+      - reebeat:packages/services/src/selection.ts:1-4
+    links:
+      serves: [goal-reebeat-correct-by-construction, goal-reebeat-visible-egress]
+      uses: [concept-reebeat-selection]
+      next: [process-reebeat-parse-story]
+
+  - id: process-reebeat-parse-story
+    kind: process
+    category: primary
+    title: Parse the screenplay
+    statement: >-
+      A thin adapter turns the Fountain tokens into a decoded Story. Anything the vocabulary does not define fails with its
+      line number.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0001 sets out the parser adapter and the closed vocabulary. The operator has not decided each error
+      and line-number rule, so confirm the detail.
+    source:
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:31
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:63-65
+    canvas: [key-activities]
+    links:
+      serves: [goal-reebeat-explicit-source]
+      uses: [concept-reebeat-screenplay]
+      produces: [concept-reebeat-story]
+      next: [process-reebeat-build-plan]
+
+  - id: process-reebeat-build-plan
+    kind: process
+    category: primary
+    title: Build the Plan
+    statement: >-
+      The compiler runs the identity diff and the reference checks over the Story and writes the Plan. `reebeat plan`
+      prints it and needs no audio and no browser.
+    status: proposed
+    rationale: >-
+      Spec plan: the design names the Plan as a stage and `reebeat plan` as its output. The operator has not decided the
+      exact compilation steps, so confirm them.
+    source:
+      - reebeat:docs/design/keyframe-engine.md:1112
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:27
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:65
+    canvas: [key-activities]
+    links:
+      serves: [goal-reebeat-deck-and-video, goal-reebeat-statechart-model]
+      uses: [concept-reebeat-identity-diff]
+      produces: [concept-reebeat-plan]
+      next: [process-reebeat-review-plan, process-reebeat-speech-stage]
+
+  - id: process-reebeat-review-plan
+    kind: process
+    category: supporting
+    title: Review the Plan
+    statement: >-
+      A person or an agent reads the Plan before any media is built. It shows every Element, effect and identity decision,
+      with the author's intent and the resolved frame.
+    status: proposed
+    rationale: >-
+      Spec plan: the design and spec 0002 describe a reviewer reading the Plan before media is built. The operator has not
+      decided this review step or the fields it lists, so confirm it.
+    source:
+      - reebeat:docs/design/keyframe-engine.md:1112
+      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:122
+    links:
+      serves: [goal-reebeat-deck-and-video, goal-reebeat-verified-output]
+      uses: [concept-reebeat-plan]
+
+  - id: process-reebeat-speech-stage
+    kind: process
+    category: primary
+    title: Make or reuse the narration audio
+    statement: >-
+      For each Line the build looks in the content-addressed cache. On a hit no model loads. On a miss it synthesises
+      speech and aligns the words only when refreshing, or always for the silent stand-in narrator, and it stops if the
+      match is below 0.9. Without refreshing, a real narrator's miss fails.
+    status: proposed
+    rationale: >-
+      Spec plan and observed in the repository: spec 0001 sets out the cache lookup, the miss rule and the 0.9 threshold.
+      packages/cli/src/build.ts:26-31 at the pinned commit refills a miss when refreshing, or always for the `silent`
+      stand-in. The operator has not decided those details, so confirm them and the stand-in exception.
+    source:
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:77
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:260
+      - reebeat:packages/cli/src/build.ts:26-31
+    canvas: [key-activities]
+    links:
+      serves: [goal-reebeat-reproducible-builds, goal-reebeat-incremental-builds]
+      uses: [resource-reebeat-kokoro-model, resource-reebeat-whisper-cpp]
+      produces: [resource-reebeat-speech-cache]
+      next: [process-reebeat-schedule]
+
+  - id: process-reebeat-schedule
+    kind: process
+    category: primary
+    title: Schedule the Timeline
+    statement: >-
+      The schedule places every Line, effect, step and slide change at an integer frame, from the aligned words and the
+      renderer's declared lifecycle.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0002 describes the schedule stage. The operator picked the effects syntax, not the integer-frame
+      scheduling, so confirm the detail.
+    source:
+      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:33
+      - reebeat:packages/core/src/schedule.ts:1-8
+    canvas: [key-activities]
+    links:
+      serves: [goal-reebeat-event-timing]
+      uses: [concept-reebeat-anchor]
+      produces: [concept-reebeat-timeline]
+      next: [process-reebeat-render-deck]
+
+  - id: process-reebeat-render-deck
+    kind: process
+    category: primary
+    title: Render the Deck
+    statement: >-
+      The renderer turns the scheduled Plan into a reveal.js page: narration as speaker notes, show and focus effects as
+      fragments in time order, and sounds that ride with a step or a slide.
+    status: proposed
+    rationale: >-
+      Spec plan: the operator decided only that sounds ride along in the Deck (spec 0002 line 161). The rest of the Deck
+      rendering comes from the README and spec 0001, so confirm it.
+    source:
+      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:161
+      - reebeat:README.md:5
+      - reebeat:packages/pipeline/src/buildProgram.ts:5-7
+    canvas: [key-activities]
+    links:
+      serves: [goal-reebeat-deck-and-video]
+      uses: [resource-reebeat-reveal-js]
+      produces: [concept-reebeat-deck]
+      next: [process-reebeat-capture-frames]
+
+  - id: process-reebeat-capture-frames
+    kind: process
+    category: primary
+    title: Capture the frames
+    statement: >-
+      Chromium opens the Deck under a virtual clock, steps it to the scheduled frames and takes one screenshot per frame.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0001 and the README describe capture in Chromium on a virtual clock. The operator has not decided
+      the one-screenshot-per-frame mechanism, so confirm it.
+    source:
+      - reebeat:README.md:6
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:85
+    canvas: [key-activities]
+    links:
+      serves: [goal-reebeat-reproducible-builds, goal-reebeat-deck-and-video]
+      uses: [resource-reebeat-chromium]
+      next: [process-reebeat-encode-video]
+
+  - id: process-reebeat-encode-video
+    kind: process
+    category: primary
+    title: Encode and mux the Video
+    statement: >-
+      The encoder mixes narration at each Line's start and each sound at its fire frame, then writes the MP4 with WebVTT
+      subtitles, chapters, a title and the source hash.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0001 and the README describe the mix, subtitles, chapters, title and source hash. The operator has
+      not decided these details, so confirm them.
+    source:
+      - reebeat:README.md:6
+      - reebeat:packages/pipeline/src/buildProgram.ts:5-7
+    canvas: [key-activities]
+    links:
+      serves: [goal-reebeat-deck-and-video, goal-reebeat-accessible-artifacts]
+      uses: [resource-reebeat-ffmpeg]
+      produces: [concept-reebeat-video]
+      next: [process-reebeat-write-manifest]
+
+  - id: process-reebeat-write-manifest
+    kind: process
+    category: primary
+    title: Write the manifest and commit the build
+    statement: >-
+      The build writes `build.json` last, with each adapter, its egress, its settings and the provenance of every cached
+      asset, and then renames the partial directory in one step.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0001 describes the manifest and the final rename. The operator decided that the output manifest
+      records provenance, not the write order, so confirm the detail.
+    source:
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:262
+      - reebeat:packages/pipeline/src/buildProgram.ts:9-11
+    links:
+      serves: [goal-reebeat-visible-egress, goal-reebeat-verified-output]
+      next: [process-reebeat-verify-build]
+
+  - id: process-reebeat-verify-build
+    kind: process
+    category: supporting
+    title: Verify the written build
+    statement: >-
+      `reebeat check` reads the written files and the source and gives one verdict per falsifier: effect timing, subtitles,
+      notes, fragments, source hash, transitions, narration, chapters and provenance.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0001 lists the falsifiers that `reebeat check` reports. The operator has not decided the complete
+      list, so confirm it.
+    source:
+      - reebeat:README.md:18
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:141
+    canvas: [key-activities]
+    links:
+      serves: [goal-reebeat-verified-output]
+
+  - id: process-reebeat-run-journey
+    kind: process
+    category: supporting
+    title: Run the whole journey on one story
+    statement: >-
+      `reebeat journey` builds a story, checks the build, builds it again and compares the two for determinism. The first
+      failure stops it.
+    status: proposed
+    rationale: >-
+      Observed in the repository: the `journey` command and AGENTS.md describe this sequence. The operator has not decided
+      the command, so confirm it.
+    source:
+      - reebeat:packages/cli/src/journey.ts:1-3
+      - reebeat:AGENTS.md:38
+    links:
+      serves: [goal-reebeat-reproducible-builds, goal-reebeat-verified-output]
+      requires: [process-reebeat-verify-build]
+
+  # ------------------------------------------------------ change and ship
+  - id: process-reebeat-add-adapter
+    kind: process
+    category: supporting
+    title: Add an adapter
+    statement: >-
+      A plugin author adds the package to its tier row, implements the service's Layer with its info and its
+      unavailable error, runs the contract suite, wires the name into the selection tables, and adds the package to the
+      lint and dead-code configs.
+    status: proposed
+    rationale: >-
+      Observed in the repository: AGENTS.md lists these five steps. The operator decided that every adapter passes a
+      contract suite, not the checklist, so confirm it.
+    source:
+      - reebeat:AGENTS.md:61
+      - reebeat:docs/design/keyframe-engine.md:1225
+    links:
+      serves: [goal-reebeat-plugin-sdk]
+      uses: [concept-reebeat-contract-suite, concept-reebeat-adapter]
+
+  - id: process-reebeat-spec-lifecycle
+    kind: process
+    category: governance
+    title: Take a spec to an open pull request
+    statement: >-
+      A contributor writes or picks a spec, branches as `feat/NNNN-slug`, commits under the hooks, pushes, and opens one
+      pull request with the report. CI runs the same gates as `bun run ready`.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0000 lists this road. Its header shows the operator accepted the spec as a whole, but not each step,
+      so confirm the detail.
+    source:
+      - reebeat:docs/specs/0000-development-lifecycle.md:12-20
+      - reebeat:AGENTS.md:13-16
+    links:
+      part-of: [process-org-ship-change]
+      serves: [goal-reebeat-correct-by-construction]
+      next: [extproc-reebeat-github-ci]
+
+  - id: process-reebeat-review-round
+    kind: process
+    category: governance
+    title: Hold a recorded review round
+    statement: >-
+      Independent reviewers judge the plan, the code and their agreement. A fixer addresses findings. The lead records each
+      round on the pull request with its verdict. A pass means no open finding of medium or above and green CI.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0000 describes the reviewer roles and the pass rule. The operator has not decided each detail, so
+      confirm it.
+    source:
+      - reebeat:docs/specs/0000-development-lifecycle.md:74
+      - reebeat:docs/specs/0000-development-lifecycle.md:78
+    links:
+      part-of: [process-org-ship-change]
+      serves: [goal-reebeat-correct-by-construction]
+      next: [process-reebeat-guarded-merge]
+
+  - id: process-reebeat-guarded-merge
+    kind: process
+    category: governance
+    title: Merge only a head with a passing record
+    statement: >-
+      The merge script refuses without a passing recorded round on the current head and a green CI run. Branch protection
+      requires a pull request and the `checks` status, with no force push.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0000 describes the merge script and branch protection. The operator has not decided each condition,
+      so confirm it.
+    source:
+      - reebeat:docs/specs/0000-development-lifecycle.md:22
+      - reebeat:docs/specs/0000-development-lifecycle.md:99-100
+      - reebeat:AGENTS.md:19
+    links:
+      part-of: [process-org-ship-change]
+      serves: [goal-reebeat-correct-by-construction]
+
+  - id: process-reebeat-release-publish
+    kind: process
+    category: supporting
+    title: Publish pre-releases to npm
+    statement: >-
+      A release stages the built JavaScript, types, docs and licence of seven packages: core, subtitles, lint, services,
+      pipeline, sounds-synth and render-reveal. It checks every tarball and publishes with trusted publishing and a
+      provenance attestation. The CLI and the other runtime adapters are left out.
+    status: proposed
+    rationale: >-
+      Read from the body of PR #18. It was not part of the pinned commit and has since merged, as the tracker shows. The
+      model does not observe a real publish, the trusted-publisher match or a first live release, and the operator must
+      provision the npm and GitHub environment.
+    source: ["pr:reebeat#18", "log:49"]
+    refs: ["pr:reebeat#18"]
+    canvas: [channels]
+    links:
+      part-of: [process-org-publish-packages]
+      serves: [goal-reebeat-npm-publication]
+      uses: [resource-npm-org]
+      next: [extproc-reebeat-npm-trusted-publishing]
+
+  # -------------------------------------------------- external processes
+  - id: extproc-reebeat-github-ci
+    kind: external-process
+    title: GitHub Actions runs the gates
+    statement: >-
+      On every pull request and every push to main, the workflow installs the pinned devenv and the locked dependencies, and
+      then runs each gate as its own step.
+    status: proposed
+    rationale: >-
+      Observed in the repository: the workflow file sets these triggers and steps. The operator has not decided the exact
+      workflow, so confirm it.
+    source:
+      - reebeat:.github/workflows/checks.yml:6-9
+      - reebeat:.github/workflows/checks.yml:15
+    links:
+      next: [process-reebeat-review-round]
+
+  - id: extproc-reebeat-npm-trusted-publishing
+    kind: external-process
+    title: npm accepts a trusted-publisher release
+    statement: >-
+      GitHub issues an OIDC identity to the release workflow, and npm matches it to the trusted publisher and records a
+      provenance attestation for each package.
+    status: proposed
+    rationale: >-
+      Described in PR #18. The OIDC exchange, the trusted-publisher match and the first live release are not yet observed,
+      and the operator must provision the npm and GitHub environment.
+    source: ["pr:reebeat#18"]
+    refs: ["pr:reebeat#18"]
+
+  - id: extproc-reebeat-model-download
+    kind: external-process
+    title: Hugging Face serves the speech models
+    statement: >-
+      The Kokoro model is downloaded by `kokoro-js` on first use. The whisper model file is downloaded by the user. Neither
+      is stored in the repository.
+    status: proposed
+    rationale: >-
+      Observed in the repository: the third-party audit describes the model downloads. The operator has not decided this
+      arrangement, so confirm it.
+    source:
+      - reebeat:docs/design/third-party.md:71-72
+    links:
+      next: [process-reebeat-speech-stage]
+
+  - id: extproc-reebeat-branch-protection
+    kind: external-process
+    title: GitHub enforces branch protection on main
+    statement: >-
+      GitHub rejects a direct push to main, requires a pull request and the `checks` status, and forbids force push and
+      deletion. Administrators are included.
+    status: proposed
+    rationale: >-
+      Observed in the repository: spec 0000 and AGENTS.md describe these settings. The operator has not decided each
+      setting, and the live state is not read here, so confirm it.
+    source:
+      - reebeat:docs/specs/0000-development-lifecycle.md:52
+      - reebeat:AGENTS.md:19

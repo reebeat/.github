@@ -1,0 +1,124 @@
+elements:
+  - id: concept-org-ir
+    kind: concept
+    title: Persistent IR
+    statement: >-
+      The intermediate representation of a story: JSON owned by reebeat, with a schema for a chosen subset of SMIL,
+      SCXML and FRP constructs. It is a format authors and tools edit, not an artifact.
+    attributes:
+      - a schema for a chosen subset of SMIL, SCXML and FRP constructs
+      - isomorphic codecs where formats round-trip
+    status: decided
+    source: [log:25]
+    relations:
+      - type: relates
+        to: concept-org-artifact
+        label: is built into
+
+  - id: concept-org-artifact
+    kind: concept
+    title: Artifact
+    statement: >-
+      A produced file or site that people consume: a video, a presentation deck, or an interactive website. Artifact
+      formats are not IR formats; Fountain is an artifact format like video and revealjs decks.
+    attributes:
+      - static or dynamic interface
+      - interaction surfaces
+    status: decided
+    source: [log:25, log:37]
+
+  - id: concept-org-interaction
+    kind: concept
+    title: Interaction
+    statement: >-
+      An interaction is an element that can trigger events. It is surfaced to people and agents as a function, a tool
+      call or a web control, and in a video as a scheduled event with a visible cursor.
+    status: decided
+    source: [log:37, log:38, log:39]
+    relations:
+      - type: part-of
+        to: concept-org-artifact
+        label: a dynamic artifact exposes
+
+  - id: concept-org-tier
+    kind: concept
+    title: Free and paid tier
+    statement: >-
+      A free tier holds the basic features that cost nothing to run. Costly premium features, such as multiplayer
+      collaboration and heavily integrated hosted AI agents, sit behind a paywall.
+    attributes:
+      - feature
+      - run cost
+    status: decided
+    source: [log:43]
+
+  - id: concept-org-plugin
+    kind: concept
+    title: Plugin or extension
+    statement: >-
+      A piece written by a user that extends the compiler or a product, such as a plugin, an extension or a render
+      engine built with the SDK. It builds on the modular contracts and building blocks of the compiler.
+    status: decided
+    source: [log:28, log:43]
+    relations:
+      - type: relates
+        to: concept-org-artifact
+        label: can render
+
+  - id: concept-org-agent-tool-protocol
+    kind: concept
+    title: Agent tool protocol
+    statement: >-
+      A protocol through which an agent reads a story, applies an edit and runs the checks. A user's own agent gets the
+      same tools as a hosted one.
+    status: proposed
+    rationale: >-
+      The operator decided that bring-your-own agents get the editing tools. Which protocol, and its tool set, is open;
+      MCP is the first candidate named in the open-core boundary.
+    source: [log:43, reebeat:docs/design/open-core-boundary.md:25]
+    relations:
+      - type: relates
+        to: concept-org-ir
+        label: edits
+        multiplicity: "0..* to 1"
+
+  - id: concept-org-model
+    kind: concept
+    title: Model
+    statement: >-
+      The statechart-plus-time form of a story. It may contain cycles, such as interactive loops and repeats.
+    status: decided
+    source: [log:62]
+    relations:
+      - type: relates
+        to: concept-org-plan
+        label: is unrolled into
+
+  - id: concept-org-plan
+    kind: concept
+    title: Plan
+    statement: >-
+      The unrolling of the Model for one artifact: a timeline for video, steps for a deck, a navigable graph for a website.
+    status: decided
+    source: [log:62]
+    relations:
+      - type: relates
+        to: concept-org-build-graph
+        label: is made by
+
+  - id: concept-org-build-graph
+    kind: concept
+    title: Build graph
+    statement: >-
+      The incremental DAG of build tasks with dynamic dependencies, early cutoff and content-addressed persistent traces.
+      Only this graph is a DAG.
+    attributes:
+      - dynamic dependencies
+      - early cutoff
+      - content-addressed trace
+    status: decided
+    source: [log:62]
+    relations:
+      - type: relates
+        to: concept-org-artifact
+        label: produces

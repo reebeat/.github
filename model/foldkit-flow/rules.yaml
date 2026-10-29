@@ -1,0 +1,316 @@
+elements:
+  - id: rule-flow-outcomes-not-mutations
+    kind: rule
+    ruleType: event-action
+    title: The library reports outcomes; the app changes the graph
+    statement: >-
+      When a gesture ends in a new connection, a reconnection, a deletion, a move or a selection change, the library
+      emits an outcome message. The application applies graph-level changes such as adding or reconnecting an edge.
+    when: A connect, reconnect, delete, move or select gesture finishes.
+    then: The library emits Connected, Reconnected, Deleted, Moved or a selection message. The application adds or moves the edge.
+    status: proposed
+    source:
+      - pr:foldkit-flow#4
+    rationale: >-
+      Spec 0001 and the PR body state this split. It is absent at the pinned commit 5dd44a9 (PR #4 has since merged; see the tracker) and no operator line records it. The operator
+      must confirm that the app, not the library, owns graph changes.
+    refs: [pr:foldkit-flow#4]
+    links:
+      serves: [goal-flow-generic-library]
+      triggers: [process-flow-apply-outcome]
+
+  - id: rule-flow-controllers-in-mounts
+    kind: rule
+    ruleType: constraint
+    title: Controllers attach in Mounts and die on unmount
+    statement: >-
+      The library attaches every xyflow controller in a Foldkit Mount and destroys it when the Mount is released.
+    if: A controller is created for pan and zoom, drag, handles or the minimap.
+    then: Create it in a Mount that owns its lifetime, and destroy it on unmount.
+    status: proposed
+    source:
+      - foldkit-flow:AGENTS.md:61
+      - pr:foldkit-flow#4
+    rationale: >-
+      AGENTS.md states the rule for agents. No operator line records it. The operator must confirm it as a standing
+      rule.
+    links:
+      serves: [goal-flow-first-journey]
+      constrains: [comp-flow-mounts]
+
+  - id: rule-flow-pure-update
+    kind: rule
+    ruleType: constraint
+    title: Model, update and view stay pure
+    statement: >-
+      Model functions, update and view are total and pure. Work leaves update only as a Command, a Subscription, a
+      Mount or a managed resource.
+    status: proposed
+    source:
+      - foldkit-flow:AGENTS.md:61
+      - foldkit-flow:docs/specs/0000-development-lifecycle.md:69
+    rationale: >-
+      The rule is written in AGENTS.md and applied in the scaffold. It follows the Foldkit style. The operator must
+      confirm it.
+    links:
+      serves: [goal-flow-generic-library]
+      constrains: [comp-flow-flow-submodel]
+
+  - id: rule-flow-dependency-direction
+    kind: rule
+    ruleType: constraint
+    title: Tools, packages and apps depend one way
+    statement: >-
+      Tools depend on neither apps nor packages. The app depends on the library, never the reverse.
+    status: proposed
+    source:
+      - foldkit-flow:AGENTS.md:30
+      - foldkit-flow:AGENTS.md:21-28
+    rationale: >-
+      AGENTS.md states the direction. No check in the gate table enforces it. The operator must confirm it as a
+      standing rule.
+    links:
+      serves: [goal-flow-generic-library]
+      constrains: [comp-flow-library, comp-flow-example-app, comp-flow-quality-tools]
+
+  - id: rule-flow-no-product-logic
+    kind: rule
+    ruleType: constraint
+    title: No product logic in the library
+    statement: >-
+      The library holds no reebeat product logic. Anything specific to one product lives in that product.
+    if: A change adds code that only one product needs.
+    then: Put it in the product, not in packages/flow.
+    status: proposed
+    source:
+      - foldkit-flow:docs/specs/0000-development-lifecycle.md:35
+      - foldkit-flow:README.md:7
+    rationale: >-
+      Observed in the repository: README and spec 0000 state the rule, and the spec 0000 header says the operator's
+      assignment named a "generic library with no reebeat product logic". The decision log does not say it, and the
+      "put it in the product" placement is an inference from that wording. The operator must confirm.
+    links:
+      serves: [goal-flow-generic-library]
+      constrains: [comp-flow-library]
+
+  - id: rule-flow-layout-by-app
+    kind: rule
+    ruleType: constraint
+    title: The application owns node layout
+    statement: >-
+      Node positions come from the application. The library imports no layout engine.
+    status: proposed
+    source:
+      - foldkit-flow:README.md:7
+      - foldkit-flow:AGENTS.md:30
+      - pr:foldkit-flow#4
+    rationale: >-
+      The README and AGENTS.md say layout is the application's job. Spec 0001 says nodes declare their size and
+      position. No operator line records it. The operator must confirm.
+    links:
+      serves: [goal-flow-generic-library]
+      constrains: [comp-flow-library]
+
+  - id: rule-flow-attribution-default
+    kind: rule
+    ruleType: derivation
+    title: Credit xyflow by default
+    statement: >-
+      The "Built with xyflow" link is visible unless the application sets Attribution to Hidden.
+    if: The application does not set the attribution option.
+    then: Show the link in the corner of the canvas.
+    status: proposed
+    source:
+      - foldkit-flow:README.md:21
+      - foldkit-flow:docs/specs/0000-development-lifecycle.md:53
+      - foldkit-flow:docs/specs/0000-development-lifecycle.md:69
+    rationale: >-
+      The scaffold implements the default. No operator line records it. The operator must confirm the default and the
+      hide option.
+    links:
+      serves: [goal-flow-respect-xyflow]
+      constrains: [comp-flow-attribution]
+
+  - id: rule-flow-spec-code-pr
+    kind: rule
+    ruleType: constraint
+    title: One spec, one branch, one PR
+    statement: >-
+      Each change has one spec in docs/specs, one branch named feat/NNNN-slug and one PR. A spec that needs two PRs was
+      two specs.
+    status: proposed
+    source:
+      - foldkit-flow:AGENTS.md:13-15
+    rationale: >-
+      Observed in the repository: AGENTS.md states the rule. The log has no line on this lifecycle. The operator must
+      confirm.
+    links:
+      serves: [goal-flow-lifecycle]
+      triggers: [process-flow-ship-spec]
+
+  - id: rule-flow-pr-after-ready
+    kind: rule
+    ruleType: constraint
+    title: Open the PR only after the journey is built
+    statement: >-
+      A PR opens only when the whole journey is built and `bun run ready` passed on the head. The PR freezes the spec.
+    status: proposed
+    source:
+      - foldkit-flow:AGENTS.md:15
+    rationale: >-
+      Observed in the repository: AGENTS.md states the rule. No operator line decides it. The operator must confirm.
+    links:
+      serves: [goal-flow-lifecycle]
+
+  - id: rule-flow-main-protected
+    kind: rule
+    ruleType: constraint
+    title: Main takes PRs that pass checks
+    statement: >-
+      Main requires a pull request, even from administrators, and a passing `checks` status. No force push and no branch
+      deletion.
+    status: proposed
+    source:
+      - foldkit-flow:AGENTS.md:19
+      - foldkit-flow:docs/specs/0000-development-lifecycle.md:56
+    rationale: >-
+      Observed in the repository: AGENTS.md and spec 0000 describe the protection. Spec 0000's header says only "branch
+      protection like reebeat's". The operator must confirm the detailed settings.
+    links:
+      serves: [goal-flow-lifecycle]
+      constrains: [resource-flow-repo]
+
+  - id: rule-flow-exceptions-registered
+    kind: rule
+    ruleType: constraint
+    title: Every lint suppression has a registry entry
+    statement: >-
+      A suppression directive needs an entry in the exception registry, and an entry needs a live suppression. The
+      check fails otherwise.
+    if: A file contains a suppression directive such as oxlint-disable.
+    then: Require a registry entry with a reason and a retirement trigger.
+    status: proposed
+    source:
+      - foldkit-flow:AGENTS.md:43
+      - foldkit-flow:docs/specs/0000-development-lifecycle.md:45
+    rationale: >-
+      Observed in the repository: AGENTS.md and spec 0000 describe the registry and its check. No operator line decides
+      this rule. The operator must confirm.
+    links:
+      serves: [goal-flow-lifecycle]
+      constrains: [comp-flow-quality-tools]
+
+  - id: rule-flow-effect-range-by-stability
+    kind: rule
+    ruleType: constraint
+    title: A package accepts only the Effect versions it can trust
+    statement: >-
+      A package that uses an unstable or experimental Effect API accepts nothing above the next minor.
+    if: A package under packages/ uses an unstable or experimental Effect API.
+    then: Cap its Effect range at the next minor, for example `~4.1.0`.
+    status: decided
+    source:
+      - log:55
+      - record:foldkit-flow:AGENTS.md:63
+      - foldkit-flow:docs/specs/0000-development-lifecycle.md:63
+    links:
+      serves: [goal-org-stay-on-supported-stack]
+      constrains: [comp-flow-library]
+
+  - id: rule-flow-delete-closure
+    kind: rule
+    ruleType: derivation
+    title: Deleting a parent deletes its descendants and their edges
+    statement: >-
+      When a parent node is deleted, every descendant is deleted with it, and so is every edge that ends on any of
+      them. The library reports the full set to the application and the live region.
+    when: A selection that includes a parent node is deleted.
+    then: Remove the parent, all descendants and every edge attached to them, and report all of it.
+    status: proposed
+    source:
+      - pr:foldkit-flow#4
+    rationale: >-
+      Review round 1 of PR #4 found that deletion left child edges and a dangling grandchild. The PR says it is fixed.
+      The operator must confirm the rule.
+    refs: [pr:foldkit-flow#4]
+    links:
+      serves: [goal-flow-studio-story-graph]
+      triggers: [process-flow-delete-selection]
+
+  - id: rule-flow-invalid-connection-refused
+    kind: rule
+    ruleType: event-action
+    title: A connection the app refuses makes no edge
+    statement: >-
+      The application supplies a validation function. When a connection fails it, no Connected message is sent and no
+      edge is added.
+    when: A person drops a connection on a target.
+    if: The application's validation function rejects the connection.
+    then: Emit nothing and add no edge.
+    status: proposed
+    source:
+      - pr:foldkit-flow#4
+    rationale: >-
+      Spec 0001 states the rule and a falsifier (J3). It is absent at the pinned commit 5dd44a9 (PR #4 has since merged; see the tracker). The operator must confirm the rule.
+    refs: [pr:foldkit-flow#4]
+    links:
+      serves: [goal-flow-first-journey]
+      triggers: [process-flow-connect-handles]
+
+  - id: rule-flow-child-clamp
+    kind: rule
+    ruleType: derivation
+    title: A clamped child stays inside its parent
+    statement: >-
+      A child node positions relative to its parent. If it is clamped to the parent, a drag or key move cannot take it
+      outside.
+    if: A child node is clamped to its parent.
+    then: Limit its position to the parent's bounds.
+    status: proposed
+    source:
+      - pr:foldkit-flow#4
+    rationale: >-
+      Spec 0001 states the rule as falsifier J7. It supports compound graphs such as Scenes holding States. The operator
+      must confirm that clamping a child inside its parent is the intended behaviour.
+    refs: [pr:foldkit-flow#4]
+    links:
+      serves: [goal-flow-studio-story-graph]
+      triggers: [process-flow-drag-node]
+
+  - id: rule-flow-keyboard-actions
+    kind: rule
+    ruleType: event-action
+    title: Keys select, move, delete and clear
+    statement: >-
+      On a focused node, Enter or Space selects, arrow keys move it by a set step (Shift makes it four times larger),
+      Delete or Backspace removes the selection and Escape clears it. A live region announces the result.
+    when: A key is pressed on a focused node.
+    then: Select, move, delete or clear, and announce the result.
+    status: proposed
+    source:
+      - pr:foldkit-flow#4
+    rationale: >-
+      The PR README and spec 0001 list these keys. Ctrl or Meta add to the selection in the PR's round-1 update. The
+      operator must confirm this key contract (keys, step sizes, announcements).
+    refs: [pr:foldkit-flow#4]
+    links:
+      serves: [goal-flow-keyboard-access]
+      triggers: [process-flow-keyboard-navigate]
+
+  - id: rule-flow-memoised-views
+    kind: rule
+    ruleType: constraint
+    title: Pointer moves re-render only what changed
+    statement: >-
+      Node and edge views are keyed and memoised with simple arguments. Pan and zoom change only the viewport
+      transform, and a drag re-renders the dragged node and its edges.
+    status: proposed
+    source:
+      - pr:foldkit-flow#4
+    rationale: >-
+      PR #4 reports that a cache miss on every node gave a p50 scripting time of 21 ms per pointer move, against
+      p50 2.6 ms after the fix. The operator must confirm it as a standing rule.
+    refs: [pr:foldkit-flow#4]
+    links:
+      serves: [goal-flow-performance]
+      constrains: [comp-flow-flow-submodel]

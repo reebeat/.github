@@ -1,0 +1,653 @@
+elements:
+  # ---- components ----
+  - id: comp-flow-product
+    kind: component
+    tier: product
+    title: foldkit-flow
+    statement: >-
+      A node-based graph UI for Foldkit, like React Flow or Svelte Flow, in its own repository under the MIT licence.
+    status: decided
+    source:
+      - log:48
+      - foldkit-flow:README.md:3
+      - foldkit-flow:README.md:31
+    repo: foldkit-flow
+    licence: MIT
+    canvas: [value-propositions, key-resources]
+    links:
+      serves: [goal-flow-vision]
+
+  - id: comp-flow-library
+    kind: component
+    tier: library
+    title: packages/flow (the library)
+    statement: >-
+      The reusable library, named `foldkit-flow`. Planned content: the graph Model, update, view and Mounts, with peers on
+      Effect and Foldkit.
+    status: proposed
+    source:
+      - foldkit-flow:AGENTS.md:3
+      - foldkit-flow:AGENTS.md:25
+      - foldkit-flow:README.md:5
+      - foldkit-flow:packages/flow/package.json:2-6
+      - pr:foldkit-flow#4
+    rationale: >-
+      Observed in the repository: the pinned scaffold holds only the attribution; the canvas, nodes, edges and
+      selection arrive with spec 0001 (README line 5, PR #4 plan). The free price mark is inferred from the MIT licence
+      (log line 48); no pricing decision is recorded. The operator must confirm the content and the free mark.
+    package: foldkit-flow
+    repo: foldkit-flow
+    licence: MIT
+    pricing: free
+    links:
+      part-of: [comp-flow-product]
+      serves: [goal-flow-generic-library]
+      depends-on: [resource-flow-xyflow-system, resource-flow-foldkit, resource-flow-effect]
+
+  - id: comp-flow-example-app
+    kind: component
+    tier: app
+    title: apps/example (the example app)
+    statement: >-
+      A Foldkit app that is the library's first user. It exercises every feature and shows how an application applies
+      outcomes.
+    status: proposed
+    source:
+      - foldkit-flow:AGENTS.md:3
+      - foldkit-flow:AGENTS.md:24
+      - foldkit-flow:apps/example/package.json:17
+    rationale: >-
+      At the pin the app is only a shell; PR #4 fills it with three graphs. No operator line decides its role. The
+      operator must confirm that it stays an example and ships nothing else.
+    links:
+      part-of: [comp-flow-product]
+      serves: [goal-flow-first-journey]
+      depends-on: [comp-flow-library, resource-flow-foldkit]
+
+  - id: comp-flow-quality-tools
+    kind: component
+    tier: tool
+    title: tools/quality (repository checks)
+    statement: >-
+      Checks for the exception registry, the Effect family, the published Effect range and the Foldkit lint adapter.
+    status: proposed
+    source:
+      - foldkit-flow:AGENTS.md:26
+      - foldkit-flow:docs/specs/0000-development-lifecycle.md:45-47
+    rationale: >-
+      Observed in the repository: AGENTS.md and spec 0000 list these checks. No operator line decides this inventory.
+      The operator must confirm.
+    links:
+      part-of: [comp-flow-product]
+      realizes: [req-flow-maintain-gates, req-flow-effect-range-gated]
+
+  - id: comp-flow-oxlint-rules
+    kind: component
+    tier: tool
+    title: tools/oxlint (vendored lint rules)
+    statement: >-
+      The anti-slop Oxlint rules, copied from studio with their provenance.
+    status: proposed
+    source:
+      - foldkit-flow:AGENTS.md:27
+      - foldkit-flow:docs/specs/0000-development-lifecycle.md:48
+    rationale: >-
+      Observed in the repository: AGENTS.md and spec 0000 list this tool as copied from studio. No operator line decides
+      it. The operator must confirm.
+    links:
+      part-of: [comp-flow-product]
+      realizes: [req-flow-maintain-gates]
+
+  - id: comp-flow-journey-tool
+    kind: component
+    tier: tool
+    title: tools/journey (browser gate)
+    statement: >-
+      A tool that drives the built example in headless Chromium through the journey and measures the performance budget.
+    status: proposed
+    source:
+      - pr:foldkit-flow#4
+    rationale: >-
+      The tool is in PR #4 and is absent at the pinned commit 5dd44a9 (PR #4 has since merged; see the tracker). It runs only locally. The operator must confirm it as a standing tool.
+    refs: [pr:foldkit-flow#4]
+    links:
+      part-of: [comp-flow-product]
+      realizes: [req-flow-browser-gate, req-flow-perf-drag]
+      depends-on: [resource-flow-chromium]
+
+  - id: comp-flow-ci
+    kind: component
+    tier: process-asset
+    title: CI workflow (checks)
+    statement: >-
+      The GitHub Actions workflow that runs every gate script on each PR and on pushes to main. It has no browser.
+    status: proposed
+    source:
+      - foldkit-flow:.github/workflows/checks.yml:3-10
+      - foldkit-flow:docs/specs/0000-development-lifecycle.md:50
+    rationale: >-
+      Observed in the repository: the workflow is as described. The operator's assignment of spec 0000 asked for branch
+      protection like reebeat's, not this workflow. The operator must confirm.
+    links:
+      part-of: [comp-flow-product]
+      serves: [goal-flow-lifecycle]
+      depends-on: [resource-flow-repo, resource-flow-toolchain]
+
+  - id: comp-flow-agent-skills
+    kind: component
+    tier: process-asset
+    title: Review and PR skills
+    statement: >-
+      The agent skills `review-pr` and `pr-create`, with scripts that record a review round and refuse to merge without a
+      passing one.
+    status: proposed
+    source:
+      - foldkit-flow:docs/specs/0000-development-lifecycle.md:51
+    rationale: >-
+      Observed in the repository: spec 0000 lists these skills and scripts. Its header only says to copy the lifecycle
+      from studio. The operator must confirm.
+    links:
+      part-of: [comp-flow-product]
+      serves: [goal-flow-lifecycle]
+
+  - id: comp-flow-attribution
+    kind: component
+    tier: library
+    title: Attribution option and view
+    statement: >-
+      The Attribution type (Visible or Hidden, Visible by default) and the view that draws the "Built with xyflow" link.
+    status: proposed
+    source:
+      - foldkit-flow:docs/specs/0000-development-lifecycle.md:53
+      - foldkit-flow:packages/flow/src/attribution.ts:15-38
+    rationale: >-
+      The scaffold at the pin implements it, but no operator line decides the behaviour. The operator must confirm it.
+    links:
+      part-of: [comp-flow-library]
+      realizes: [req-flow-attribution-toggle]
+
+  - id: comp-flow-flow-submodel
+    kind: component
+    tier: library
+    title: Flow Submodel (Model, update, view)
+    statement: >-
+      The pure part of the library: the graph Model, Messages, update, and view, exposed through `defineFlow`, `init`,
+      `update` and `view`.
+    status: proposed
+    source:
+      - pr:foldkit-flow#4
+    rationale: >-
+      The API is in PR #4 and is absent at the pinned commit 5dd44a9 (PR #4 has since merged; see the tracker). The operator must confirm the API (defineFlow, init, update, view); it may still change before the offer to Foldkit.
+    refs: [pr:foldkit-flow#4]
+    links:
+      part-of: [comp-flow-library]
+      realizes: [req-flow-pan-zoom, req-flow-drag-node, req-flow-connect, req-flow-box-select, req-flow-compound-nodes, req-flow-keyboard-edit, req-flow-delete-closure, req-flow-custom-nodes, req-flow-controls-minimap, isgoal-flow-elm-boundary]
+
+  - id: comp-flow-mounts
+    kind: component
+    tier: library
+    title: Mounts that own the xyflow controllers
+    statement: >-
+      Foldkit Mounts for the pane (pan, zoom, box), nodes (drag), handles and reconnection (connect), and the minimap.
+      Each acquires a controller and destroys it on unmount.
+    status: proposed
+    source:
+      - pr:foldkit-flow#4
+      - foldkit-flow:AGENTS.md:61
+    rationale: >-
+      The Mounts are in PR #4 and are absent at the pinned commit 5dd44a9 (PR #4 has since merged; see the tracker). The rule that controllers live in Mounts is in AGENTS.md at the pin. The operator must confirm the Mount design and controller lifetimes.
+    refs: [pr:foldkit-flow#4]
+    links:
+      part-of: [comp-flow-library]
+      realizes: [req-flow-reconnect, req-flow-correct-lifetimes, isgoal-flow-reuse-controllers]
+      depends-on: [resource-flow-xyflow-system]
+
+  # ---- IS goals ----
+  - id: isgoal-flow-elm-boundary
+    kind: is-goal
+    title: The graph lives in the app's Model
+    statement: >-
+      The graph state sits in the application's Model and changes only in update. Controllers report through Messages.
+    status: proposed
+    source:
+      - pr:foldkit-flow#4
+      - foldkit-flow:AGENTS.md:61
+    rationale: >-
+      Spec 0001 names the Elm architecture as the boundary. The operator must confirm it.
+    links:
+      supports: [goal-flow-generic-library, goal-flow-first-journey]
+
+  - id: isgoal-flow-reuse-controllers
+    kind: is-goal
+    title: Reuse xyflow's controllers
+    statement: >-
+      Pan and zoom, drag, handle connection and the minimap come from xyflow's controllers, not from new code.
+    status: proposed
+    source:
+      - foldkit-flow:README.md:21
+      - pr:foldkit-flow#4
+    rationale: >-
+      The README names the dependency and PR #4 uses four controllers. No operator line chooses it. The operator must
+      confirm.
+    links:
+      supports: [goal-flow-first-journey]
+
+  - id: isgoal-flow-structural-gates
+    kind: is-goal
+    title: Gates make bad changes impossible to merge
+    statement: >-
+      A gate that can be made structural is structural. One command, `bun run ready`, runs them all, and CI runs the
+      same scripts.
+    status: proposed
+    source:
+      - foldkit-flow:docs/specs/0000-development-lifecycle.md:30-31
+      - foldkit-flow:docs/specs/0000-development-lifecycle.md:55
+    rationale: >-
+      Observed in the repository: spec 0000 states the value and the single command. The log has "correctness by
+      construction" as a value (line 54) but not this goal. The operator must confirm.
+    links:
+      supports: [goal-flow-lifecycle]
+
+  - id: isgoal-flow-measured-budget
+    kind: is-goal
+    title: Measure the performance budget
+    statement: >-
+      The performance target is measured in a real browser on every journey run, not assumed from design.
+    status: proposed
+    source:
+      - pr:foldkit-flow#4
+    rationale: >-
+      Spec 0001 sets measurement as the gate and reports numbers. The operator must confirm.
+    links:
+      supports: [goal-flow-performance]
+
+  # ---- functional requirements ----
+  - id: req-flow-pan-zoom
+    kind: requirement
+    reqType: functional
+    title: Pan and zoom by wheel and drag
+    statement: >-
+      A wheel or a drag on the empty canvas changes the viewport. No node is re-rendered.
+    status: proposed
+    source:
+      - pr:foldkit-flow#4
+    rationale: >-
+      Spec 0001, falsifier J1; absent at the pinned commit 5dd44a9 (PR #4 has since merged; see the tracker). The operator must confirm the requirement.
+    refs: [pr:foldkit-flow#4]
+    links:
+      serves: [goal-flow-first-journey]
+      requires: [concept-flow-viewport]
+
+  - id: req-flow-drag-node
+    kind: requirement
+    reqType: functional
+    title: Drag a node, edges follow
+    statement: >-
+      Dragging a node changes its position in the Model, and the edges attached to it follow.
+    status: proposed
+    source:
+      - pr:foldkit-flow#4
+    rationale: >-
+      Spec 0001, falsifier J2; absent at the pinned commit 5dd44a9 (PR #4 has since merged; see the tracker). The operator must confirm the requirement.
+    refs: [pr:foldkit-flow#4]
+    links:
+      serves: [goal-flow-first-journey]
+      requires: [concept-flow-node]
+
+  - id: req-flow-connect
+    kind: requirement
+    reqType: functional
+    title: Connect handles with validation
+    statement: >-
+      Dragging from a source handle to a target handle makes a Connected outcome. A target the application refuses makes
+      none.
+    status: proposed
+    source:
+      - pr:foldkit-flow#4
+    rationale: >-
+      Spec 0001, falsifier J3; absent at the pinned commit 5dd44a9 (PR #4 has since merged; see the tracker). The operator must confirm the requirement.
+    refs: [pr:foldkit-flow#4]
+    links:
+      serves: [goal-flow-first-journey]
+      requires: [concept-flow-connection]
+
+  - id: req-flow-reconnect
+    kind: requirement
+    reqType: functional
+    title: Reconnect an edge end
+    statement: >-
+      Dragging one end of a selected edge to another handle makes a Reconnected outcome.
+    status: proposed
+    source:
+      - pr:foldkit-flow#4
+    rationale: >-
+      Spec 0001, falsifier J3; absent at the pinned commit 5dd44a9 (PR #4 has since merged; see the tracker). The operator must confirm the requirement.
+    refs: [pr:foldkit-flow#4]
+    links:
+      serves: [goal-flow-first-journey]
+      requires: [concept-flow-edge]
+
+  - id: req-flow-box-select
+    kind: requirement
+    reqType: functional
+    title: Select with a box
+    statement: >-
+      Shift and drag on the empty canvas selects the nodes inside the box and no others. A plain drag pans.
+    status: proposed
+    source:
+      - pr:foldkit-flow#4
+    rationale: >-
+      Spec 0001, falsifier J4; absent at the pinned commit 5dd44a9 (PR #4 has since merged; see the tracker). The operator must confirm the requirement.
+    refs: [pr:foldkit-flow#4]
+    links:
+      serves: [goal-flow-first-journey]
+      requires: [concept-flow-selection]
+
+  - id: req-flow-controls-minimap
+    kind: requirement
+    reqType: functional
+    title: Controls, fit view and minimap
+    statement: >-
+      Buttons zoom in, zoom out and fit the view. A minimap shows the nodes and pans when dragged.
+    status: proposed
+    source:
+      - pr:foldkit-flow#4
+    rationale: >-
+      Spec 0001, falsifier J6; absent at the pinned commit 5dd44a9 (PR #4 has since merged; see the tracker). The operator must confirm the requirement.
+    refs: [pr:foldkit-flow#4]
+    links:
+      serves: [goal-flow-first-journey]
+      requires: [concept-flow-minimap]
+
+  - id: req-flow-compound-nodes
+    kind: requirement
+    reqType: functional
+    title: Compound nodes with relative positions
+    statement: >-
+      A child node has a position relative to its parent. Dragging the parent moves the child, and a clamped child stays
+      inside the parent.
+    status: proposed
+    source:
+      - pr:foldkit-flow#4
+      - log:19
+    rationale: >-
+      Spec 0001, falsifier J7, built so Scenes can hold States; absent at the pinned commit 5dd44a9 (PR #4 has since merged; see the tracker). The operator must confirm the requirement.
+    refs: [pr:foldkit-flow#4]
+    links:
+      serves: [goal-flow-studio-story-graph]
+      requires: [concept-flow-parent-node]
+
+  - id: req-flow-delete-closure
+    kind: requirement
+    reqType: functional
+    title: Delete a parent with its descendants and edges
+    statement: >-
+      Deleting a parent removes all its descendants and every edge attached to any of them, and reports the full sets.
+    status: proposed
+    source:
+      - pr:foldkit-flow#4
+    rationale: >-
+      Round-1 review fix in PR #4. Absent at the pinned commit 5dd44a9 (PR #4 has since merged; see the tracker). The operator must confirm the behaviour.
+    refs: [pr:foldkit-flow#4]
+    links:
+      serves: [goal-flow-studio-story-graph]
+
+  - id: req-flow-keyboard-edit
+    kind: requirement
+    reqType: functional
+    title: Edit the graph by keyboard
+    statement: >-
+      Nodes take focus. Enter or Space selects, arrow keys move (Shift makes a larger step), Delete removes, Escape
+      clears, and a live region announces each result.
+    status: proposed
+    source:
+      - pr:foldkit-flow#4
+    rationale: >-
+      Spec 0001, falsifier J5. Creating a connection by keyboard is not included (see
+      problem-flow-keyboard-connect-missing). The operator must confirm these keyboard requirements.
+    refs: [pr:foldkit-flow#4]
+    links:
+      serves: [goal-flow-keyboard-access]
+      requires: [concept-flow-live-region]
+
+  - id: req-flow-custom-nodes
+    kind: requirement
+    reqType: functional
+    title: The app draws node content
+    statement: >-
+      Nodes render through one callback that the application supplies. Handles are declared on the node. Edges come in
+      three kinds with an optional arrow.
+    status: proposed
+    source:
+      - pr:foldkit-flow#4
+    rationale: >-
+      Part of the public API in spec 0001; absent at the pinned commit 5dd44a9 (PR #4 has since merged; see the tracker). The operator must confirm the API.
+    refs: [pr:foldkit-flow#4]
+    links:
+      serves: [goal-flow-generic-library]
+
+  - id: req-flow-attribution-toggle
+    kind: requirement
+    reqType: functional
+    title: Show the xyflow credit by default, allow hiding
+    statement: >-
+      The "Built with xyflow" link shows unless the application sets Attribution to Hidden.
+    status: proposed
+    source:
+      - foldkit-flow:docs/specs/0000-development-lifecycle.md:53
+      - foldkit-flow:docs/specs/0000-development-lifecycle.md:90
+      - foldkit-flow:README.md:21
+    rationale: >-
+      Spec 0000 builds and tests it (falsifier F14). No operator line decides it. The operator must confirm.
+    links:
+      serves: [goal-flow-respect-xyflow]
+
+  - id: req-flow-browser-gate
+    kind: requirement
+    reqType: functional
+    title: A browser journey gate
+    statement: >-
+      One command drives the built example in headless Chromium with real pointer and keyboard input and fails if a
+      journey step fails.
+    status: proposed
+    source:
+      - pr:foldkit-flow#4
+    rationale: >-
+      PR #4 plan: spec 0001 specifies the gate. The PR body reports three passing runs (12 of 12 checks) on an earlier
+      head, and later states that a measurement on an overloaded host is inconclusive, not pass or fail. The gate runs
+      locally only. The operator must confirm it as the standing gate.
+    refs: [pr:foldkit-flow#4]
+    links:
+      serves: [goal-flow-browser-proof]
+
+  # ---- non-functional requirements ----
+  - id: req-flow-perf-drag
+    kind: requirement
+    reqType: non-functional
+    quality: performance
+    title: Dragging stays fast at 500 nodes and 700 edges
+    statement: >-
+      Dragging one node of 500 nodes and 700 edges has a median p95 scripting time per pointer move under 8 ms. At least
+      95 percent of frame intervals are within 33.5 ms.
+    scenario: >-
+      A person drags one node of the Large graph (500 nodes, 700 edges) for 150 pointer moves, three times, in headless
+      Chromium on the production build. The median of the three p95 scripting times per move is under 8 ms, and 95
+      percent of frame intervals are within 33.5 ms. Ten wheel steps change no node or edge.
+    status: proposed
+    source:
+      - pr:foldkit-flow#4
+    rationale: >-
+      The numbers are the gate in spec 0001 (J9). The PR reports a median of 4.31 to 5.76 ms over three runs on a loaded
+      host. They are the author's report. The operator must confirm the budget.
+    refs: [pr:foldkit-flow#4]
+    links:
+      serves: [goal-flow-performance]
+
+  - id: req-flow-a11y-keyboard
+    kind: requirement
+    reqType: non-functional
+    quality: accessibility
+    title: Keyboard-only use with announcements
+    statement: >-
+      Selecting, moving, deleting and clearing nodes works with the keyboard alone, and results are announced to
+      assistive technology. Creating or reconnecting a connection, and using the minimap, are not specified.
+    scenario: >-
+      A keyboard-only user presses Tab to reach a node, Enter to select it, an arrow key to move it by 10, Shift and an
+      arrow to move it by 40, Escape to clear, Enter again and Delete to remove it. The canvas has role application, each
+      node has role group and a name, and a polite live region says what happened.
+    status: proposed
+    source:
+      - pr:foldkit-flow#4
+    rationale: >-
+      PR #4 plan: the steps are the PR's keyboard journey and README accessibility section. Creating a connection by
+      keyboard is not built. The PR does not say that reconnecting an edge or using the minimap works by keyboard, so
+      those stay open. The operator must confirm the target.
+    refs: [pr:foldkit-flow#4]
+    canvas: [value-propositions]
+    links:
+      serves: [goal-flow-keyboard-access]
+
+  - id: req-flow-correct-lifetimes
+    kind: requirement
+    reqType: non-functional
+    quality: correctness
+    title: Controllers never leak after unmount
+    statement: >-
+      Every controller is destroyed when its Mount is released, and no listener it added remains.
+    scenario: >-
+      A test mounts the Flow, presses a handle before the drag threshold, then disposes the runtime. Every created
+      controller is destroyed once, and no document or window listener from the library remains.
+    status: proposed
+    source:
+      - pr:foldkit-flow#4
+      - foldkit-flow:AGENTS.md:61
+    rationale: >-
+      Spec 0001 sets falsifier J8 and its round-1 fix; absent at the pinned commit 5dd44a9 (PR #4 has since merged; see the tracker). The operator must confirm.
+    refs: [pr:foldkit-flow#4]
+    links:
+      serves: [goal-flow-first-journey]
+
+  - id: req-flow-maintain-gates
+    kind: requirement
+    reqType: non-functional
+    quality: maintainability
+    title: Gates catch drift, dead code and copies
+    statement: >-
+      Gates catch suppressions without a registry entry, unused code and copy-paste, and every gate runs locally and in
+      CI.
+    scenario: >-
+      A contributor pastes a 40-token block twice and `bun run cpd` fails. A contributor adds a suppression directive
+      with no registry entry and `bun run check:exceptions` fails.
+    status: proposed
+    source:
+      - foldkit-flow:AGENTS.md:43
+      - foldkit-flow:AGENTS.md:47-48
+    rationale: >-
+      Observed in the repository: AGENTS.md describes these gates. No operator line decides them. The operator must
+      confirm.
+    canvas: [key-activities]
+    links:
+      serves: [goal-flow-lifecycle]
+
+  - id: req-flow-maintain-tiers
+    kind: requirement
+    reqType: non-functional
+    quality: maintainability
+    title: Tools, packages and apps stay separate
+    statement: >-
+      Apps, packages and tools are separate workspaces. The app depends on the library and tools depend on neither.
+    scenario: >-
+      A reader lists the workspaces and finds apps, packages and tools apart. The example app declares the library as a
+      workspace dependency, and the library does not depend on the app.
+    status: proposed
+    source:
+      - foldkit-flow:AGENTS.md:21-30
+      - foldkit-flow:package.json:5-9
+      - foldkit-flow:apps/example/package.json:17
+    rationale: >-
+      The layout is the same at the pin. No gate enforces the direction, so the scenario is a reading check. The operator must
+      confirm and may add a gate.
+    links:
+      serves: [goal-flow-generic-library]
+
+  - id: req-flow-reproducible-toolchain
+    kind: requirement
+    reqType: non-functional
+    quality: reproducibility
+    title: The same Bun runs everywhere
+    statement: >-
+      `vp run` and devenv use the same Bun version.
+    scenario: >-
+      A contributor runs `vp exec -- bun --revision` and `bun --revision` in devenv. Both print the same version. The
+      check does not show that every gate gives the same result in both.
+    status: open
+    source:
+      - issue:foldkit-flow#3
+      - foldkit-flow:package.json:43-47
+    rationale: >-
+      Issue #3 proposes this check and pinning Bun exactly. It is not fixed yet.
+    refs: [issue:foldkit-flow#3]
+    links:
+      serves: [goal-org-reproducible-builds]
+
+  - id: req-flow-licence-hygiene
+    kind: requirement
+    reqType: non-functional
+    quality: licensing
+    title: MIT library, xyflow credited, no copyleft dependency
+    statement: >-
+      The library is MIT licensed with xyflow's notice kept. It does not depend on ELK.js or another copyleft package.
+    scenario: >-
+      A reader opens LICENSE, NOTICE and packages/flow/package.json. They find MIT, the xyflow copyright and licence, and
+      no EPL or GPL dependency.
+    status: proposed
+    source:
+      - foldkit-flow:LICENSE:1-3
+      - foldkit-flow:NOTICE:4-14
+      - foldkit-flow:AGENTS.md:30
+    rationale: >-
+      The files show the state at the pin. No gate scans licences. The operator must confirm and may add a licence check
+      before publishing.
+    links:
+      serves: [goal-flow-respect-xyflow]
+
+  - id: req-flow-effect-range-gated
+    kind: requirement
+    reqType: non-functional
+    quality: reliability
+    title: A new Effect minor cannot break the library
+    statement: >-
+      A published package that uses an unstable or experimental Effect API cannot accept the next Effect minor, and a test
+      fails if it does.
+    scenario: >-
+      A contributor changes the library's Effect peer range to `^4.1.0` and imports an unstable API from the `effect`
+      root. `bun run test` fails in the published-range test.
+    status: proposed
+    source:
+      - foldkit-flow:AGENTS.md:63
+      - foldkit-flow:docs/specs/0000-development-lifecycle.md:89
+      - log:55
+    rationale: >-
+      Observed in the repository: the operator's cap rule (log line 55, AGENTS.md line 63) is decided, but the test that
+      enforces it is spec 0000's design (falsifier F13). The operator must confirm it as a requirement.
+    links:
+      serves: [goal-org-stay-on-supported-stack]
+
+  - id: req-flow-portability-browsers
+    kind: requirement
+    reqType: non-functional
+    quality: portability
+    title: Supported browsers and input types
+    statement: >-
+      The library states which browsers and input types it supports, and the journey covers them.
+    scenario: >-
+      The journey runs in each supported browser and input type and passes. Today it runs in one Chromium with mouse and
+      keyboard.
+    status: open
+    source:
+      - pr:foldkit-flow#4
+    rationale: >-
+      No source sets a support target. PR #4 lists Firefox, WebKit and touch as not run. The operator must set the
+      target.
+    links:
+      serves: [goal-flow-browser-proof]

@@ -1,0 +1,792 @@
+elements:
+  # ---------------------------------------------------------------- goals
+  - id: goal-studio-vision
+    kind: goal
+    title: A collaborative editor for reebeat stories
+    tagline: The collaborative editor for reebeat stories
+    statement: >-
+      reebeat studio is a collaborative editor for reebeat stories, a product built on the open compiler. Its licence is not
+      decided.
+    status: decided
+    source: [log:43, log:45, studio:README.md:3]
+    links:
+      subgoal-of: [goal-org-product-family]
+    canvas: [value-propositions]
+
+  - id: goal-studio-free-paid-split
+    kind: goal
+    title: Free tier for basic features, paid premium features
+    statement: >-
+      Studio has a free tier for basic features that cost nothing to run. Costly premium features, such as multiplayer
+      collaboration and heavily integrated AI agents, are behind a paywall.
+    status: decided
+    source: [log:43]
+    links:
+      subgoal-of: [goal-org-sustainable-funding]
+    canvas: [revenue-streams, customer-relationships]
+
+  - id: goal-studio-people-and-agents
+    kind: goal
+    title: People and agents edit stories together
+    statement: >-
+      Studio offers editor interfaces for pure human creation, pure agent creation, and work shared between humans and
+      agents. Users can bring their own agents and give them access to the editing tools.
+    status: decided
+    source: [log:43, log:45]
+    jtbd:
+      persona: actor-agent-operator
+      when: I run my own agent next to a story I am editing
+      want: to give the agent access to the editing tools
+      soThat: it can edit the story with me
+    links:
+      supports: [goal-org-modular-extensible]
+      subgoal-of: [goal-studio-vision]
+    canvas: [value-propositions]
+
+  - id: goal-studio-collaboration
+    kind: goal
+    title: Many people and agents edit one story
+    statement: >-
+      Humans and agents can edit one story at the same time. A merge-based keyed document, held by Loro, joins their edits.
+    status: decided
+    source: [log:45, log:47, record:studio:docs/specs/0002-collaboration-spike.md:198]
+    links:
+      subgoal-of: [goal-studio-vision]
+
+  - id: goal-studio-valid-shared-story
+    kind: goal
+    title: Check merged changes with a validation gate
+    statement: >-
+      The sync server has a validation gate that checks merged changes.
+    status: decided
+    source: [log:47, record:studio:docs/specs/0002-collaboration-spike.md:198]
+    links:
+      subgoal-of: [goal-studio-collaboration]
+      supports: [goal-org-correctness-by-construction]
+
+  - id: goal-studio-deck-view-narration
+    kind: goal
+    title: Record narration in a deck view
+    statement: >-
+      A deck view is where a person records narration. The cut narration pieces are tied to beat lifecycle events.
+    status: decided
+    source: [log:45]
+    jtbd:
+      persona: actor-presenter
+      when: I record the voice for a deck
+      want: to cut my narration into pieces and tie each piece to a beat lifecycle event
+      soThat: the pieces follow the story's beats
+    links:
+      subgoal-of: [goal-studio-lenses]
+    canvas: [value-propositions]
+
+  - id: goal-studio-web-and-binary
+    kind: goal
+    title: Ship web first and a single binary
+    statement: >-
+      Studio reaches users as a web app first and as one binary built with Bun. Native builds come later.
+    status: decided
+    source: [log:46, pr:studio#6]
+    refs: [pr:studio#6]
+    links:
+      subgoal-of: [goal-studio-vision]
+    canvas: [channels]
+
+  - id: goal-studio-lenses
+    kind: goal
+    title: Organise the editor by lenses
+    statement: >-
+      Studio's user experience is inspired by DaVinci Resolve's phase-based pages, which studio calls lenses. Each lens fits
+      one phase of work.
+    status: decided
+    source:
+      - log:45
+      - record:studio:docs/specs/0001-first-felt-journey.md:171
+    links:
+      subgoal-of: [goal-studio-vision]
+    canvas: [value-propositions]
+
+  - id: goal-studio-first-felt-journey
+    kind: goal
+    title: Edit one thing and see it at once
+    statement: >-
+      A person or an agent opens a story, sees its States and Beats as a graph and a timeline, scrubs a preview, edits one
+      Element property and sees the preview update. No server is needed.
+    status: proposed
+    rationale: >-
+      Spec 0001 states this journey, and its header calls the journey the operator's proposal of 2026-10-29. No line
+      records the operator accepting it, and the spec is blocked on reebeat. The operator must confirm the journey.
+    source: [studio:docs/specs/0001-first-felt-journey.md:3, studio:docs/specs/0001-first-felt-journey.md:11-22]
+    refs: ["studio:docs/specs/0001-first-felt-journey.md:1"]
+    jtbd:
+      persona: actor-creator
+      when: I want to change one Element of a story
+      want: to see the result at once, without a rebuild
+      soThat: I judge the change by looking at it, not by opening files
+    links:
+      subgoal-of: [goal-studio-vision]
+      supports: [goal-org-incremental-builds]
+      requires: [constraint-studio-ir-stability]
+
+  - id: goal-studio-offline-free-journey
+    kind: goal
+    title: The free journey needs no server or account
+    statement: >-
+      The first journey works offline, with no account. The story lives in a file and the preview runs in the user's
+      browser.
+    status: proposed
+    rationale: >-
+      Spec 0001 proposes falsifier F8 (no network) and the free rule says the free tier costs the project nothing. The operator log
+      says only that basic non-cost features are free (log:43). The operator must confirm that offline is a goal.
+    source: [studio:docs/specs/0001-first-felt-journey.md:13, studio:docs/specs/0001-first-felt-journey.md:138, studio:docs/design/lenses.md:15]
+    links:
+      subgoal-of: [goal-studio-first-felt-journey]
+
+  - id: goal-studio-preview-fidelity
+    kind: goal
+    title: The preview shows what the Video will show
+    statement: >-
+      The in-browser Deck preview matches the Video frame for the frames the falsifier checks, on the same Chromium build. If
+      it does not, the difference is named, not assumed away.
+    status: proposed
+    rationale: >-
+      Spec 0001 proposes the hybrid preview (option C) and makes equality falsifier F2. The spec lists this choice among
+      the operator's open questions, so the operator must confirm it.
+      The operator should confirm the fidelity criterion.
+    source: [studio:docs/specs/0001-first-felt-journey.md:59, studio:docs/specs/0001-first-felt-journey.md:132, studio:docs/specs/0001-first-felt-journey.md:160]
+    links:
+      subgoal-of: [goal-studio-first-felt-journey]
+      supports: [goal-org-reproducible-builds]
+
+  - id: goal-studio-human-control
+    kind: goal
+    title: People decide on what agents and others suggest
+    statement: >-
+      An edit suggested by an agent or a collaborator waits for a person to accept or reject it. Studio keeps who proposed
+      it and who accepted it.
+    status: proposed
+    rationale: >-
+      The operator decided that a repair is offered as a proposal and never applied without a person (spec 0002 line 198).
+      The lenses note extends this to all suggestions (Review lens). That wider goal is the lens design, not a recorded
+      decision.
+      The operator should confirm the wider goal for all suggestions.
+    source: [studio:docs/design/lenses.md:67, record:studio:docs/specs/0002-collaboration-spike.md:198]
+    links:
+      subgoal-of: [goal-studio-people-and-agents]
+
+  - id: goal-studio-checked-change
+    kind: goal
+    title: Every change passes the same gates
+    statement: >-
+      A change reaches main only through spec, code and pull request. It passes the same gates locally, in CI and in a
+      recorded review round.
+    status: proposed
+    rationale: >-
+      Observed in the repository: spec 0000 and AGENTS.md describe the lifecycle. The spec header says the operator
+      assigned the lifecycle as a whole, which does not decide each gate. The operator must confirm the gates as a goal.
+    source:
+      - studio:docs/specs/0000-development-lifecycle.md:9
+      - studio:AGENTS.md:13-20
+    links:
+      supports: [goal-org-correctness-by-construction]
+
+  # ---------------------------------------------------------------- one goal per lens
+  - id: goal-studio-lens-manuscript
+    kind: goal
+    title: Manuscript lens, read the story as text
+    statement: >-
+      Studio has a manuscript view of the story.
+    status: decided
+    source: [log:45, studio:docs/design/lenses.md:21, studio:docs/design/lenses.md:32-34]
+    links:
+      subgoal-of: [goal-studio-lenses]
+
+  - id: goal-studio-lens-story-graph
+    kind: goal
+    title: Story graph lens, lay out scenes, States and Beats
+    statement: >-
+      Studio has a view of scenes, states and beats.
+    status: decided
+    source: [log:45, studio:docs/design/lenses.md:23, studio:docs/design/lenses.md:50-52]
+    links:
+      subgoal-of: [goal-studio-lenses]
+
+  - id: goal-studio-lens-timeline
+    kind: goal
+    title: Timeline lens, time the story
+    statement: >-
+      Studio has a timeline view.
+    status: decided
+    source: [log:45, studio:docs/design/lenses.md:24, studio:docs/design/lenses.md:54-56]
+    links:
+      subgoal-of: [goal-studio-lenses]
+
+  - id: goal-studio-lens-deliver
+    kind: goal
+    title: Deliver lens, render and present
+    statement: >-
+      Studio has a render view that supports both generated video and decks.
+    status: decided
+    source: [log:45, studio:docs/design/lenses.md:29, studio:docs/design/lenses.md:79-87]
+    links:
+      subgoal-of: [goal-studio-lenses]
+      supports: [goal-org-reproducible-builds]
+
+  - id: goal-studio-lens-wiring
+    kind: goal
+    title: Wiring lens, explain why something happens when it does
+    statement: >-
+      For each effect, the lens shows the event it follows and a trace down to the exact time and frame. It shows
+      unresolved anchors and cycles with the line they come from.
+    status: proposed
+    rationale: >-
+      The lenses note designs this lens (design only). The operator named the manuscript, state, timeline and render views
+      in log line 45, not this one. The operator must confirm it.
+    source: [studio:docs/design/lenses.md:25, studio:docs/design/lenses.md:58-60]
+    links:
+      subgoal-of: [goal-studio-lenses]
+
+  - id: goal-studio-lens-review
+    kind: goal
+    title: Review lens, compare versions and accept suggestions
+    statement: >-
+      The lens shows a meaning-level diff between two versions with both renders side by side. Suggestions from agents and
+      collaborators wait there for a person.
+    status: proposed
+    rationale: >-
+      The lenses note designs this lens (design only). The operator decided only that repairs are proposals. The operator
+      must confirm the lens.
+    source: [studio:docs/design/lenses.md:26, studio:docs/design/lenses.md:62-67]
+    links:
+      subgoal-of: [goal-studio-lenses, goal-studio-human-control]
+
+  - id: goal-studio-lens-coach
+    kind: goal
+    title: Coach lens, lint for teaching quality
+    statement: >-
+      Checks of an explainer against multimedia-learning principles show their findings on the timeline. Each threshold
+      must come from its primary source before it is built.
+    status: proposed
+    rationale: >-
+      The lenses note designs this lens and depends on reebeat issue 8. No operator decision names it. The operator must
+      confirm it.
+    source: [studio:docs/design/lenses.md:27, studio:docs/design/lenses.md:71-73]
+    links:
+      subgoal-of: [goal-studio-lenses]
+      supports: [goal-org-interactive-multimedia]
+
+  - id: goal-studio-lens-languages
+    kind: goal
+    title: Languages lens, one story in several narrations
+    statement: >-
+      The lens compares narration versions and shows timing drift: which effects move and which cannot, because they use an
+      absolute time.
+    status: proposed
+    rationale: >-
+      The lenses note designs this lens and depends on reebeat issue 10. The operator log asks for language variants with
+      adjusted timings (log line 32) but does not name this lens.
+      The operator should confirm the lens and its drift report.
+    source: [studio:docs/design/lenses.md:28, studio:docs/design/lenses.md:75-77, log:32]
+    links:
+      subgoal-of: [goal-studio-lenses]
+      supports: [goal-org-accessible-artifacts]
+
+  - id: goal-studio-lens-agent-panel
+    kind: goal
+    title: Agent panel in every lens
+    statement: >-
+      Each lens has an agent panel. A person brings their own agent or uses a hosted one, and sets a read, suggest or apply
+      scope per agent and per lens.
+    status: proposed
+    rationale: >-
+      The operator decided on bring-your-own and hosted agents (log lines 43 and 45). The panel and its scopes are the
+      lenses note's design. The operator must confirm the scopes.
+    source: [studio:docs/design/lenses.md:30, studio:docs/design/lenses.md:89-99]
+    links:
+      subgoal-of: [goal-studio-lenses, goal-studio-people-and-agents]
+
+  # ---------------------------------------------------------------- problems and gaps
+  - id: problem-studio-no-licence
+    kind: problem
+    title: Studio has no LICENSE file
+    statement: >-
+      At the pinned commit, the repository is public but has no licence file. Studio's own material is not licensed for
+      reuse, because the operator has not decided a licence. Third-party code keeps its own licence.
+    status: open
+    rationale: >-
+      The README and AGENTS.md say the licence is undecided on purpose. The operator must choose a licence, or keep the
+      product closed, before distribution.
+    source: [absent:studio:LICENSE, studio:README.md:27, studio:AGENTS.md:64, log:45]
+    gap:
+      repo: studio
+      fix: The operator decides the licence and adds a LICENSE file.
+    links:
+      hinders: [goal-studio-web-and-binary]
+
+  - id: problem-studio-no-glossary
+    kind: problem
+    title: Studio has no glossary of its own
+    statement: >-
+      At the pinned commit, studio uses reebeat's words (State, Beat, Scene, effect) but has no GLOSSARY.md. It points
+      readers to reebeat's glossary.
+    status: open
+    rationale: >-
+      AGENTS.md and the lenses note send readers to reebeat's GLOSSARY.md, and PROVENANCE.md lists it as not copied. The
+      operator should confirm whether a pointer is enough or studio needs its own terms (lens, take, gate, scope).
+    source: [absent:studio:GLOSSARY.md, studio:AGENTS.md:3, studio:docs/design/lenses.md:11, studio:PROVENANCE.md:29]
+    gap:
+      repo: studio
+      fix: Add a glossary for studio's own terms, or a clear pointer to reebeat's glossary.
+    links:
+      hinders: [goal-studio-lenses]
+
+  - id: problem-studio-goals-not-in-readme
+    kind: problem
+    title: The README does not state product goals
+    statement: >-
+      At the pinned commit, the README gives a one-line purpose and the status of a placeholder shell. It does not state the
+      product goals, the free and paid split or the roadmap.
+    status: open
+    rationale: >-
+      The goals sit in the lenses note and in specs 0001 and 0002. Spec 0000 states the lifecycle as its goal. The operator
+      should say where product goals belong.
+    source: [studio:README.md:3-5, studio:docs/specs/0001-first-felt-journey.md:11-13, studio:docs/specs/0000-development-lifecycle.md:9]
+    gap:
+      repo: studio
+      fix: Add a product goals section to the README that links to the generated intent model.
+    links:
+      hinders: [goal-studio-vision]
+
+  - id: problem-studio-first-journey-blocked
+    kind: problem
+    title: The first journey waits for the reebeat story IR
+    statement: >-
+      At the pinned commit, spec 0001 is blocked on reebeat specs 0004 and 0006, and needs spec 0005 for story-wide
+      identity. Until the IR is stable, studio builds no editing feature.
+    status: open
+    rationale: >-
+      STATE.md and AGENTS.md record the block. It ends when reebeat merges those specs. The operator owns the sequence of
+      reebeat work.
+      The operator should confirm when reebeat specs 0004 to 0006 are enough.
+    source: [studio:AGENTS.md:3, studio:STATE.md:12, studio:STATE.md:18, studio:docs/specs/0001-first-felt-journey.md:3, studio:docs/specs/0001-first-felt-journey.md:30-42]
+    gap:
+      repo: reebeat
+      fix: Merge reebeat specs 0004 to 0006 so the story IR is closed, versioned and the committed source.
+    links:
+      hinders: [goal-studio-first-felt-journey]
+
+  - id: problem-studio-browser-compile-gaps
+    kind: problem
+    title: Browser compile and seek in reebeat are unverified
+    statement: >-
+      The in-browser preview needs a browser-safe compile, a seekable Deck page and a Deck generator that does not read the
+      file system. Spec 0001 lists them as new reebeat work, and says the browser safety of the compile is not yet checked.
+    status: proposed
+    rationale: >-
+      Spec 0001 names the needs as D5 to D7 and marks the first one as not yet checked. The operator must confirm that
+      reebeat takes this work.
+    source: [studio:docs/specs/0001-first-felt-journey.md:38-42]
+    gap:
+      repo: reebeat
+      fix: Add a browser-safe compile path, a seek(frame) on the Deck page and an assembleDeck that takes its assets as input.
+    links:
+      hinders: [goal-studio-preview-fidelity]
+
+  - id: problem-studio-foldkit-vite-plugin
+    kind: problem
+    title: Foldkit's Vite plugin imports a missing Crypto
+    statement: >-
+      At the pinned commit, the Foldkit Vite plugin imports Crypto from the effect root, which Effect 4.1.0 does not have.
+      The plugin stays off, so the dev tools bridge and model-preserving reload are off.
+    status: open
+    rationale: >-
+      Issue 4 tracks the fix. It ends when a Foldkit release imports effect/crypto and supports Effect 4.1.
+      The operator should confirm that studio keeps waiting for the upstream fix.
+    source: [studio:AGENTS.md:54, studio:docs/specs/0000-development-lifecycle.md:114, issue:studio#4]
+    refs: [issue:studio#4]
+    gap:
+      repo: studio
+      fix: Re-enable the Foldkit Vite plugin when a release imports effect/crypto, then drop the Effect 4.0.0 peer note.
+    links:
+      hinders: [comp-studio-editor]
+
+  - id: problem-studio-alchemy-release
+    kind: problem
+    title: The web deploy waits for an Alchemy release
+    statement: >-
+      At the pinned commit, the current Alchemy release imports an Effect module that Effect 4.1 does not have. The fix,
+      alchemy-run/alchemy#2754, was merged but not released, so pull request 6 was a draft.
+    status: open
+    rationale: >-
+      PR 6 says the binary is built and tested and the web deploy has not run. The deploy needs a release after
+      2.0.0-beta.84 that contains the fix.
+      The operator should confirm the bump once that release exists.
+    source: [pr:studio#6, studio:docs/specs/0000-development-lifecycle.md:34]
+    refs: [pr:studio#6]
+    gap:
+      repo: studio
+      fix: Bump Alchemy when a release has alchemy-run/alchemy#2754, run the deploy falsifiers, then take PR 6 out of draft.
+    links:
+      hinders: [goal-studio-web-and-binary]
+
+  - id: problem-studio-exceptions-miss-diagnostics
+    kind: problem
+    title: The exception check misses effect-diagnostics comments
+    statement: >-
+      At the pinned commit, the suppression pattern in tools/quality does not match effect-diagnostics comments. Such a
+      comment can silence a rule with no registry entry.
+    status: open
+    rationale: >-
+      Issue 7 tracks the fix: extend the pattern and add a negative control.
+      The operator should confirm the fix.
+    source: [studio:tools/quality/effectExceptions.ts:44-45, issue:studio#7]
+    refs: [issue:studio#7]
+    gap:
+      repo: studio
+      fix: Add the effect-diagnostics comment forms to directivePattern, with a failing control.
+    links:
+      hinders: [comp-studio-quality-tools]
+
+  - id: problem-studio-do-unmeasured
+    kind: problem
+    title: The Durable Object room is unmeasured at the edge
+    statement: >-
+      The room ran only on local workerd, without the validation gate. Nobody measured the real Cloudflare edge, load, many
+      sockets, or the gate's bundle size and cold start.
+    status: open
+    rationale: >-
+      Spec 0002 lists these under Not measured and says the gate was only simulated in Bun.
+      The operator should confirm whether an edge measurement must come before the sync server is built.
+    source: [studio:docs/specs/0002-collaboration-spike.md:28, studio:docs/specs/0002-collaboration-spike.md:66, studio:docs/specs/0002-collaboration-spike.md:208, studio:docs/specs/0002-collaboration-spike.md:214-215]
+    gap:
+      repo: studio
+      fix: Run the room with the gate on the Cloudflare edge and measure size, cold start, load and sockets.
+    links:
+      hinders: [goal-studio-valid-shared-story]
+
+  - id: problem-studio-demand-unmeasured
+    kind: problem
+    title: Demand and willingness to pay are not measured
+    statement: >-
+      The free and paid split follows running cost. No source measures whether people want studio or would pay for sync or
+      hosted agents.
+    status: open
+    rationale: >-
+      The lenses note and spec 0001 justify each tier by cost driver only. The org model holds the same gap for the whole
+      project. The operator should decide how to measure demand.
+    source: [studio:docs/design/lenses.md:13-15, studio:docs/specs/0001-first-felt-journey.md:112-123]
+    gap:
+      repo: studio
+      fix: Measure demand and willingness to pay before building the paid tier.
+    links:
+      hinders: [goal-studio-free-paid-split]
+
+  - id: problem-studio-ffmpeg-gpl
+    kind: problem
+    title: ffmpeg with libx264 is GPL
+    statement: >-
+      A studio binary that bundles ffmpeg with libx264 would carry GPL terms. The operator wants this reviewed before any
+      such binary is distributed.
+    status: open
+    rationale: >-
+      The log notes it for later (reebeat issue 7). PR 6 says its binary does not bundle ffmpeg and that export will use
+      WebCodecs, so the risk is latent. The operator must decide before the first binary that bundles ffmpeg.
+    source: [log:50, issue:reebeat#7, pr:studio#6]
+    gap:
+      repo: studio
+      fix: Review the licence terms before any studio binary bundles ffmpeg; today the binary does not.
+    links:
+      hinders: [goal-studio-web-and-binary]
+
+  - id: problem-studio-unsigned-binaries
+    kind: problem
+    title: The binaries are not signed
+    statement: >-
+      The macOS and Windows binaries are not signed or notarised, so those systems warn the user.
+    status: open
+    rationale: >-
+      PR 6 records signing and notarisation as not done. The operator must decide when to sign.
+    source: [pr:studio#6]
+    gap:
+      repo: studio
+      fix: Sign and notarise the macOS and Windows binaries before a public release.
+    links:
+      hinders: [goal-studio-web-and-binary]
+
+  - id: problem-studio-stale-state
+    kind: problem
+    title: STATE.md still says spec 0003 is in review
+    statement: >-
+      At the pinned commit, STATE.md says the review and verify skills are in review and lists their review as the next
+      step. PR 5 has merged.
+    status: open
+    rationale: >-
+      The pinned main commit is the merge of PR 5, yet STATE.md line 7 still says "in review". Compare line 7 with the
+      repository log.
+      The operator should confirm the update of STATE.md.
+    source: [studio:STATE.md:7, studio:STATE.md:11, pr:studio#5]
+    gap:
+      repo: studio
+      fix: Update STATE.md to say spec 0003 has merged and name the next spec.
+    links:
+      hinders: [goal-studio-checked-change]
+
+  - id: problem-studio-merge-semantics-open
+    kind: problem
+    title: Merge rule for positions and curve points is open
+    statement: >-
+      Two people can move one Element along different axes. A property-wise merge gives a position nobody chose. An atomic
+      merge keeps one whole position. The operator has not chosen.
+    status: open
+    rationale: >-
+      Spec 0002 lists this as its one open question, with cases a2, e3 and a3.
+      The operator should choose a property-wise or an atomic merge.
+    source: [studio:docs/specs/0002-collaboration-spike.md:100-101, studio:docs/specs/0002-collaboration-spike.md:229]
+    links:
+      hinders: [goal-studio-collaboration]
+
+  - id: problem-studio-lens-order-open
+    kind: problem
+    title: Lens order and shared lens state are undecided
+    statement: >-
+      The lenses note does not decide the build order of lenses after spec 0001, whether the playhead is shared between
+      collaborators, or how lenses use Foldkit Submodels.
+    status: open
+    rationale: >-
+      The note lists these under what it does not decide. The shared-state question belongs to the sync spec.
+      The operator should decide the order of the lenses and whether the playhead is shared.
+    source: [studio:docs/design/lenses.md:105-109]
+    links:
+      hinders: [goal-studio-lenses]
+
+  - id: problem-studio-invalid-merges
+    kind: problem
+    title: A merge can break the story
+    statement: >-
+      In the spike, 31 of 57 runs on a naive IR-shaped document merged to an invalid story, and 17 of 57 on a keyed one. A
+      repair made 15 of the 17 valid and could not fix the other two (one left an Element hidden and never revealed).
+    status: proposed
+    rationale: >-
+      Observed in the repository: these are spike measurements (spec 0002, cases a1 to e4). The operator decided the
+      validation gate that answers them (log:47), not the measurements. The operator must confirm the problem as stated.
+    source: [studio:docs/specs/0002-collaboration-spike.md:24-25, studio:docs/specs/0002-collaboration-spike.md:94, studio:docs/specs/0002-collaboration-spike.md:111]
+    links:
+      motivates: [goal-studio-valid-shared-story]
+
+  - id: problem-studio-index-patch-unsafe
+    kind: problem
+    title: A patch addressed by array index can edit the wrong item
+    statement: >-
+      Effect's JSON Patch compares arrays by position. In the spike, one inserted effect became 26 operations that rewrite
+      the next effects field by field, and applied to a document that moved on, that patch gave an invalid story. A
+      one-operation patch applied by index to a document that moved on edited the wrong effect, and the story stayed valid.
+    status: proposed
+    rationale: >-
+      This is a finding of the spike (T2). The operator decided the keyed model that removes it, but no line records the
+      finding itself as accepted.
+      The operator should confirm the finding.
+    source: [studio:docs/specs/0002-collaboration-spike.md:27, studio:docs/specs/0002-collaboration-spike.md:140-142]
+    links:
+      motivates: [rule-studio-edit-by-element-id]
+
+  - id: problem-studio-preview-may-diverge
+    kind: problem
+    title: The preview may differ from the Video
+    statement: >-
+      The in-browser preview could differ from the rendered Video where audio or the browser build differ. Spec 0001 answers
+      this with a falsifier, not trust.
+    status: proposed
+    rationale: >-
+      Spec 0001 states the risk of its proposed option C. Nobody has run the check, and the browser compile path does not
+      exist yet.
+      The operator should confirm the preview approach and its fidelity criterion.
+    source: [studio:docs/specs/0001-first-felt-journey.md:53, studio:docs/specs/0001-first-felt-journey.md:59]
+    links:
+      hinders: [goal-studio-preview-fidelity]
+
+  # ---------------------------------------------------------------- constraints
+  - id: constraint-studio-licence-undecided
+    kind: constraint
+    constraintType: legal
+    title: Public repository, all rights reserved, licence undecided
+    statement: >-
+      The studio licence is not decided. The README carries a copyright notice that reserves all rights, and no licence file
+      is present on purpose.
+    status: decided
+    source: [record:studio:docs/specs/0000-development-lifecycle.md:126, log:45]
+    links:
+      constrains: [comp-studio-product]
+
+  - id: constraint-studio-public-repo-hygiene
+    kind: constraint
+    constraintType: organisational
+    title: A public repository holds no secret or private material
+    statement: >-
+      The operator made the studio repository public. So it never holds a secret, personal data or course-private material.
+    status: proposed
+    rationale: >-
+      Observed in the repository: AGENTS.md and spec 0000 state the hygiene rule. The operator log decides only that the
+      repository is public (log:45). The operator must confirm the rule for studio.
+    source: [log:45, studio:AGENTS.md:3, studio:docs/specs/0000-development-lifecycle.md:35]
+    links:
+      constrains: [resource-studio-repo]
+
+  - id: constraint-studio-ir-stability
+    kind: constraint
+    constraintType: process
+    title: No editing feature before the reebeat IR is stable
+    statement: >-
+      Studio builds no editing feature against the story IR until reebeat specs 0004 to 0006 stabilise it. The shell,
+      toolchain and docs are allowed.
+    status: proposed
+    rationale: >-
+      AGENTS.md, STATE.md and spec 0001 all state it. The spec header attributes the plan to the operator's proposal, but
+      no line records the operator deciding this rule.
+      The operator should confirm the rule.
+    source: [studio:AGENTS.md:3, studio:STATE.md:12, studio:docs/specs/0001-first-felt-journey.md:30-42, studio:docs/specs/0000-development-lifecycle.md:89]
+    links:
+      constrains: [comp-studio-editor]
+
+  - id: constraint-studio-effect-foldkit-peer
+    kind: constraint
+    constraintType: technical
+    title: Effect 4.1.0 runs against Foldkit's peer of 4.0.0
+    statement: >-
+      Foldkit 0.169.0 declares a peer of effect 4.0.0, and studio runs 4.1.0. Bun prints warnings. The tests, build and a
+      browser run pass on 4.1.0, and a boot test guards the mismatch.
+    status: proposed
+    rationale: >-
+      AGENTS.md calls the choice a lead decision. The operator's stack policy pins Effect to 4.1 or later, but no line
+      decides this mismatch.
+      The operator should confirm that the mismatch is acceptable.
+    source: [studio:AGENTS.md:54, studio:docs/specs/0000-development-lifecycle.md:96, studio:docs/specs/0000-development-lifecycle.md:34]
+    links:
+      constrains: [comp-studio-editor]
+
+  - id: constraint-studio-foldkit-plugin-off
+    kind: constraint
+    constraintType: technical
+    title: Keep the Foldkit Vite plugin off until upstream fixes it
+    statement: >-
+      The Foldkit Vite plugin stays off, and studio stays on Effect 4.1.0, until a Foldkit release imports effect/crypto.
+    status: proposed
+    rationale: >-
+      Observed in the repository: AGENTS.md and spec 0000 record this as a lead decision. The operator log prefers upstream
+      fixes over workarounds (log:56) but does not decide this plugin choice. The operator must confirm it.
+    source: [log:56, studio:AGENTS.md:54, studio:docs/specs/0000-development-lifecycle.md:125, issue:studio#4]
+    links:
+      constrains: [comp-studio-editor]
+
+  - id: constraint-studio-no-chromium-devenv
+    kind: constraint
+    constraintType: technical
+    title: devenv has no Chromium, ffmpeg or whisper
+    statement: >-
+      The development environment provides Bun, Node and gitleaks only. Browser runs use the host Chromium, and CI has no
+      browser gate.
+    status: proposed
+    rationale: >-
+      devenv.nix and spec 0000 show the choice, and the verify skill needs a host Chromium. No line records the operator
+      deciding it. A CI browser job is an open question in spec 0003.
+      The operator should confirm whether a CI browser job is wanted.
+    source: [studio:devenv.nix:7-11, studio:docs/specs/0000-development-lifecycle.md:42, studio:docs/specs/0000-development-lifecycle.md:120, studio:docs/specs/0003-review-and-verify-skills.md:100]
+    links:
+      constrains: [comp-studio-verify-skill]
+
+  - id: constraint-studio-do-limits
+    kind: constraint
+    constraintType: technical
+    title: Durable Object storage has size limits
+    statement: >-
+      A SQLite value or row in a Durable Object is at most 2 MB, so a larger snapshot must be chunked. A received WebSocket
+      message is at most 32 MiB.
+    status: proposed
+    rationale: >-
+      The spike took the limits from Cloudflare's documentation. The room design is a proposal, not a decision.
+      The operator should confirm the room design.
+    source: [studio:docs/specs/0002-collaboration-spike.md:66, studio:docs/specs/0002-collaboration-spike.md:192]
+    links:
+      constrains: [comp-studio-sync-server]
+
+  # ---------------------------------------------------------------- opportunities
+  - id: opportunity-studio-paid-sync-and-agents
+    kind: opportunity
+    title: Paid sync and hosted agents fund the work
+    statement: >-
+      Multiplayer sync and hosted agents cost the project money to run, so they can earn revenue.
+    status: proposed
+    rationale: >-
+      The operator decided to gate these features (log line 43). No source gives a price, a plan or evidence that anyone
+      would pay, so the revenue claim is an inference.
+      The operator should confirm that revenue from these features is a goal.
+    source: [log:43, studio:docs/specs/0001-first-felt-journey.md:120-122]
+    links:
+      supports: [goal-studio-free-paid-split]
+    canvas: [revenue-streams]
+
+  - id: opportunity-studio-byo-agents-and-plugins
+    kind: opportunity
+    title: Users bring their own agents, and likely write plugins
+    statement: >-
+      Studio is modular and extensible, so users can bring their own agents and give them access to the editing tools. The
+      operator expects users will likely develop plugins and extensions.
+    status: decided
+    source: [log:43]
+    links:
+      supports: [goal-studio-people-and-agents]
+    canvas: [customer-relationships]
+
+  - id: opportunity-studio-loro-attribution
+    kind: opportunity
+    title: Loro gives cheap authorship and proposal branches
+    statement: >-
+      Loro names the last editor of a field, records change messages and forks a document at an older version. These
+      features suit agent attribution and suggestions.
+    status: proposed
+    rationale: >-
+      Spec 0002 measured them (getLastEditor, commit messages, forkAt). The operator chose Loro, but not for this reason.
+      The operator should confirm that attribution is a reason to keep Loro.
+    source: [studio:docs/specs/0002-collaboration-spike.md:23, studio:docs/specs/0002-collaboration-spike.md:150-152]
+    links:
+      supports: [goal-studio-human-control]
+
+  - id: opportunity-studio-preview-is-video-page
+    kind: opportunity
+    title: The Deck preview can be the Video's own page
+    statement: >-
+      If a preview frame equals the Video frame, the free in-browser preview is not an approximation. It is the page the
+      renderer photographs.
+    status: proposed
+    rationale: >-
+      Spec 0001 states this as the payoff of falsifier F2, which has not been run.
+      The operator should confirm the preview approach and its fidelity conditions.
+    source: [studio:docs/specs/0001-first-felt-journey.md:59, studio:docs/specs/0001-first-felt-journey.md:132]
+    links:
+      supports: [goal-studio-preview-fidelity]
+
+  - id: opportunity-studio-offline-binary
+    kind: opportunity
+    title: One binary gives an offline local studio
+    statement: >-
+      The single binary serves the editor on the user's own machine. It reaches users with no account or server of ours.
+    status: proposed
+    rationale: >-
+      PR 6 builds the binary and reports it tested. The link to the free offline journey is an inference.
+      The operator should confirm that the binary serves the free offline journey.
+    source: [pr:studio#6, log:46]
+    links:
+      supports: [goal-studio-offline-free-journey]
+    canvas: [channels]
+
+  - id: opportunity-studio-foldkit-flow-graph
+    kind: opportunity
+    title: The story graph lens could use foldkit-flow
+    statement: >-
+      foldkit-flow is a node-based graph UI for Foldkit. The Story graph lens needs a graph in a Foldkit app.
+    status: proposed
+    rationale: >-
+      The log describes foldkit-flow as its own repository (line 48), and the lens note describes a statechart map. No
+      source connects them. The operator must confirm the use.
+    source: [log:48, studio:docs/design/lenses.md:50-52]
+    links:
+      supports: [goal-studio-lens-story-graph]

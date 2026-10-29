@@ -1,0 +1,579 @@
+elements:
+  - id: rule-reebeat-grammar-generated
+    kind: rule
+    ruleType: derivation
+    title: The grammar document is generated from the schema
+    statement: >-
+      The parser and the linter use one schema. The grammar document is generated from it, and a test parses every
+      example in the document, so the document cannot disagree with the parser.
+    when: The grammar schema changes.
+    then: The generated document changes with it, and a test fails until it is regenerated.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0002 sets out the generated grammar document and the example test. The operator picked the effects
+      syntax, not this arrangement, so confirm it.
+    source:
+      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:16
+      - reebeat:docs/grammar/effects.md:3
+    links:
+      serves: [goal-reebeat-explicit-source, goal-reebeat-correct-by-construction]
+      constrains: [comp-reebeat-grammar-doc]
+
+  - id: rule-reebeat-tier-direction
+    kind: rule
+    ruleType: constraint
+    title: Packages depend in one direction only
+    statement: >-
+      Packages depend in one direction: library, then service, then integration. The direction never runs back.
+    status: decided
+    source:
+      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:234
+      - reebeat:docs/design/keyframe-engine.md:1220
+      - reebeat:tools/quality/tiers.ts:41-48
+      - reebeat:AGENTS.md:56-58
+    links:
+      serves: [goal-reebeat-correct-by-construction, goal-reebeat-plugin-sdk]
+      constrains: [comp-reebeat-core, comp-reebeat-services, comp-reebeat-pipeline]
+
+  - id: rule-reebeat-tier-gate
+    kind: rule
+    ruleType: event-action
+    title: The tier gate reads manifests and imports
+    statement: >-
+      The tier gate fails when a package depends, in its manifest or in an import, on a tier it may not use. It also fails
+      for a package directory in no tier, a symbolic link under a package's sources, and a directory it cannot read.
+    when: A package is added, or a manifest or import changes.
+    then: The `check:tiers` step passes only if every edge is allowed.
+    status: proposed
+    rationale: >-
+      Observed in the repository: the tier gate and AGENTS.md describe these checks. The operator decided the direction of
+      dependency, not the gate's detailed behaviour, so confirm it.
+    source:
+      - reebeat:docs/design/keyframe-engine.md:1243
+      - reebeat:AGENTS.md:33
+      - reebeat:tools/quality/tiers.ts:1-4
+    links:
+      serves: [goal-reebeat-correct-by-construction]
+      constrains: [comp-reebeat-quality-gates]
+
+  - id: rule-reebeat-only-cli-composes
+    kind: rule
+    ruleType: constraint
+    title: Only the cli composes adapters
+    statement: >-
+      The `reebeat` command is the one composition root. No other package imports an adapter, and the choice of adapters
+      is never part of the screenplay.
+    status: proposed
+    rationale: >-
+      Observed in the repository: only the cli imports adapters today. The operator decided that selection is explicit
+      configuration at a composition root, not that the cli is the only one, so confirm it.
+    source:
+      - reebeat:docs/design/keyframe-engine.md:1240
+      - reebeat:GLOSSARY.md:108-110
+      - reebeat:packages/cli/src/adapters.ts:1-5
+    links:
+      serves: [goal-reebeat-plugin-sdk, goal-reebeat-correct-by-construction]
+      constrains: [comp-reebeat-cli]
+
+  - id: rule-reebeat-missing-adapter-fails
+    kind: rule
+    ruleType: event-action
+    title: A failed adapter never falls back silently
+    statement: >-
+      Selection never falls back silently. When a selected adapter cannot run, no other adapter silently takes its place.
+    when: A selected adapter is used and its requirement is missing.
+    then: The build does not fall back silently to another adapter.
+    status: decided
+    source:
+      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:234
+      - reebeat:docs/design/keyframe-engine.md:1240
+      - reebeat:GLOSSARY.md:112-113
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:261
+    links:
+      serves: [goal-reebeat-correct-by-construction, goal-reebeat-visible-egress]
+      triggers: [process-reebeat-select-adapters]
+
+  - id: rule-reebeat-unknown-selection-fails
+    kind: rule
+    ruleType: event-action
+    title: An unknown selection fails and names the choices
+    statement: >-
+      An unknown selection key or value fails and names the key, the value and the valid choices. Defaults are the local
+      adapters.
+    when: A config file or a flag names an adapter that does not exist.
+    then: The command fails with `UnknownSelection` before any build work starts.
+    status: proposed
+    rationale: >-
+      Observed in the repository: the selection registry and the glossary describe this behaviour. The operator decided
+      that selection never falls back silently, not this error, so confirm it.
+    source:
+      - reebeat:packages/services/src/selection.ts:1-4
+      - reebeat:GLOSSARY.md:112-113
+    links:
+      serves: [goal-reebeat-correct-by-construction]
+      triggers: [process-reebeat-select-adapters]
+
+  - id: rule-reebeat-contract-suite
+    kind: rule
+    ruleType: constraint
+    title: Every adapter passes its service's contract suite
+    statement: >-
+      Each service has at least one adapter and one contract suite that every adapter of it must pass.
+    status: decided
+    source:
+      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:234
+      - reebeat:docs/design/keyframe-engine.md:1225
+      - reebeat:AGENTS.md:61
+    links:
+      serves: [goal-reebeat-plugin-sdk]
+      constrains: [comp-reebeat-services]
+      triggers: [process-reebeat-add-adapter]
+
+  - id: rule-reebeat-standin-for-model-adapters
+    kind: rule
+    ruleType: constraint
+    title: Every integration has an offline stand-in
+    statement: >-
+      Every integration has a stand-in for offline tests.
+    status: decided
+    source:
+      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:234
+      - reebeat:docs/design/keyframe-engine.md:1241
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:271
+      - reebeat:AGENTS.md:60
+    links:
+      serves: [goal-reebeat-reproducible-builds, goal-reebeat-plugin-sdk]
+      constrains: [comp-reebeat-services]
+
+  - id: rule-reebeat-egress-declared
+    kind: rule
+    ruleType: constraint
+    title: Every adapter declares what it sends out
+    statement: >-
+      Every integration declares what it sends out. The output manifest records provenance.
+    status: decided
+    source:
+      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:234
+      - reebeat:docs/design/keyframe-engine.md:1241
+      - reebeat:GLOSSARY.md:119-120
+      - reebeat:README.md:21
+    links:
+      serves: [goal-reebeat-visible-egress]
+      constrains: [comp-reebeat-pipeline]
+
+  - id: rule-reebeat-no-secrets-in-outputs
+    kind: rule
+    ruleType: constraint
+    title: Credentials stay in the environment
+    statement: >-
+      Credentials come from the environment or the secret store. They never appear in a config file or the repository, are
+      never printed, and are never part of a cache key or the manifest.
+    status: proposed
+    rationale: >-
+      Spec plan: design R3 rule 3 says this and the operator accepted R3 as a whole. The decided line (spec 0001 line 234)
+      does not mention secrets, so confirm it.
+    source:
+      - reebeat:docs/design/keyframe-engine.md:1242
+      - reebeat:GLOSSARY.md:120
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:276
+    links:
+      serves: [goal-reebeat-visible-egress]
+      constrains: [comp-reebeat-services]
+
+  - id: rule-reebeat-narration-text-equal
+    kind: rule
+    ruleType: derivation
+    title: Narration, subtitles and notes are one string
+    statement: >-
+      The narration text of a Line is its dialogue. Subtitles and speaker notes carry exactly that string, and the
+      dialogue holds no annotations.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0002 and spec 0001 set out that narration text, subtitles and notes are one string. The operator
+      decided that dialogue stays pure prose (spec 0002 line 161), so confirm the rest.
+    source:
+      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:81
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:47
+      - reebeat:GLOSSARY.md:31-33
+    links:
+      serves: [goal-reebeat-screenplay-first, goal-reebeat-accessible-artifacts]
+      constrains: [comp-reebeat-subtitles, comp-reebeat-render-reveal]
+
+  - id: rule-reebeat-unsupported-fails-with-line
+    kind: rule
+    ruleType: event-action
+    title: Unsupported constructs fail with a line number
+    statement: >-
+      Anything outside the closed screenplay vocabulary is an error with its line number. It is never dropped silently.
+    when: The parser finds a Fountain element that the vocabulary does not define.
+    then: The plan stops with an error that names the line.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0001 sets out this rule for the closed vocabulary. The operator has not decided it, so confirm it.
+    source:
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:31
+      - reebeat:GLOSSARY.md:84
+    links:
+      serves: [goal-reebeat-explicit-source]
+      triggers: [process-reebeat-parse-story]
+
+  - id: rule-reebeat-every-reference-explicit
+    kind: rule
+    ruleType: constraint
+    title: Every reference is written down
+    statement: >-
+      Elements, Scenes, effects and anchors carry explicit ids. An effect must name its anchor. The release-1 forms that
+      meant "the next one" are rejected with the replacement in the message.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0002 states this goal. The operator decided that element properties are named key=value (spec 0002
+      line 161), not the universal rule, so confirm it.
+    source:
+      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:15
+      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:190
+    links:
+      serves: [goal-reebeat-explicit-source]
+      constrains: [comp-reebeat-core]
+
+  - id: rule-reebeat-absolute-time-needs-reason
+    kind: rule
+    ruleType: constraint
+    title: An absolute time needs a written reason
+    statement: >-
+      An absolute time is allowed with a reason, written as `at 12.5s because "<reason>"`. Lint and the Plan list every
+      one.
+    status: decided
+    source:
+      - record:reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:161
+      - reebeat:docs/design/keyframe-engine.md:1113
+      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:18
+      - reebeat:packages/lint/src/absoluteTimes.ts:1-5
+    links:
+      serves: [goal-reebeat-event-timing, goal-reebeat-explicit-source]
+      constrains: [comp-reebeat-lint]
+
+  - id: rule-reebeat-intent-resolved-in-schedule
+    kind: rule
+    ruleType: derivation
+    title: The Plan keeps intent, the schedule resolves frames
+    statement: >-
+      The Plan keeps what the author wrote. The schedule stage turns each anchor into an integer frame from the aligned
+      words and the renderer's declared lifecycle. The Timeline holds the result.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0002 sets out the schedule stage and the Plan and Timeline split. The operator has not decided this
+      derivation, so confirm it.
+    source:
+      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:33
+      - reebeat:GLOSSARY.md:36
+      - reebeat:packages/core/src/schedule.ts:1-8
+    links:
+      serves: [goal-reebeat-event-timing]
+      constrains: [comp-reebeat-core]
+
+  - id: rule-reebeat-lifecycle-observed
+    kind: rule
+    ruleType: constraint
+    title: A renderer's declared timing must match the output
+    statement: >-
+      A renderer declares when an Element's motion starts and ends. The check observes the written media, so a wrong
+      declaration makes the check fail.
+    status: proposed
+    rationale: >-
+      Spec plan: design R4 and spec 0002 say a renderer's declared timing is observed in the output. The operator has not
+      decided this rule on its own line, so confirm it.
+    source:
+      - reebeat:docs/design/keyframe-engine.md:1259
+      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:128
+    links:
+      serves: [goal-reebeat-event-timing, goal-reebeat-verified-output]
+      constrains: [comp-reebeat-verify]
+
+  - id: rule-reebeat-check-reads-output
+    kind: rule
+    ruleType: constraint
+    title: A check reads written files only
+    statement: >-
+      A check reads the files a build wrote and the source. It never reads the pipeline's memory. Each falsifier has a
+      negative control that fails at the stated place.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0001 sets out the output-side check and the negative controls. The operator has not decided them, so
+      confirm it.
+    source:
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:27
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:141
+      - reebeat:docs/specs/0000-development-lifecycle.md:88
+    links:
+      serves: [goal-reebeat-verified-output]
+      constrains: [comp-reebeat-verify]
+
+  - id: rule-reebeat-failed-build-leaves-nothing
+    kind: rule
+    ruleType: event-action
+    title: A failed build leaves no accepted output
+    statement: >-
+      A build writes into a partial directory, writes the manifest last and renames the directory in one step. Any failure
+      or interrupt removes the partial directory.
+    when: A build fails or is interrupted.
+    then: No directory exists that `reebeat check` could accept.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0001 falsifier F12 and the build program describe this. The operator has not decided it, so confirm
+      it.
+    source:
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:156
+      - reebeat:packages/pipeline/src/buildProgram.ts:9-11
+    links:
+      serves: [goal-reebeat-correct-by-construction, goal-reebeat-verified-output]
+      triggers: [process-reebeat-write-manifest]
+
+  - id: rule-reebeat-no-randomness-in-build
+    kind: rule
+    ruleType: constraint
+    title: The build reads no wall clock or randomness
+    statement: >-
+      The capture runs on a virtual clock and the build draws no random input. A frame depends only on the Plan and the
+      frame number.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0001 sets out the virtual clock and the determinism falsifier. The operator named reproducibility
+      (log:10) but not this rule, so confirm it.
+    source:
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:85
+      - reebeat:docs/specs/0003-effect-4-1-upgrade.md:45
+      - reebeat:AGENTS.md:50
+    links:
+      serves: [goal-reebeat-reproducible-builds]
+      constrains: [comp-reebeat-capture-chromium]
+
+  - id: rule-reebeat-attributes-are-data
+    kind: rule
+    ruleType: constraint
+    title: Attributes are serializable data
+    statement: >-
+      An attribute may be constant or a mathematical function of time. A function becomes data at build time, so the
+      persistent format never holds a computation.
+    status: decided
+    source: [log:21, log:20]
+    links:
+      serves: [goal-reebeat-statechart-model, goal-reebeat-reproducible-builds]
+
+  - id: rule-reebeat-explicit-element-ids
+    kind: rule
+    ruleType: constraint
+    title: Element ids are explicit, never by content
+    statement: >-
+      Every Element has an id written down, unique in its Scene. The same id carries identity between Keyframes. In
+      release 1, matching across Scenes happens only where a transition says so.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0001 requires explicit ids. The operator decided that the same id is the same entity across Scenes
+      (log:23), and release 1 matches ids only across a transition that says so, so confirm the rule.
+    source:
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:59
+      - reebeat:GLOSSARY.md:61-63
+      - log:23
+    links:
+      serves: [goal-reebeat-statechart-model, goal-reebeat-explicit-source]
+      constrains: [comp-reebeat-core]
+
+  - id: rule-reebeat-ir-owned-json
+    kind: rule
+    ruleType: constraint
+    title: The persistent IR is reebeat's own JSON
+    statement: >-
+      The persistent IR is JSON defined by reebeat's own Effect Schema. SCXML is not persistent. IR formats and artifact
+      formats are different.
+    status: decided
+    source:
+      - log:25
+      - record:reebeat:docs/specs/0007-scxml-persistent-ir-spike.md:616-618
+      - reebeat:docs/specs/0007-scxml-persistent-ir-spike.md:23
+    links:
+      serves: [goal-reebeat-statechart-model, goal-reebeat-plugin-sdk]
+      constrains: [comp-reebeat-core]
+
+  - id: rule-reebeat-xstate-behind-service
+    kind: rule
+    ruleType: constraint
+    title: XState lives behind a reebeat-owned service
+    statement: >-
+      XState, through its pure system API, sits in an integration package behind a StatechartInterpreter service. Alpha
+      types never appear in reebeat's public API.
+    status: decided
+    source:
+      - log:26
+      - record:reebeat:docs/specs/0007-scxml-persistent-ir-spike.md:616-620
+    links:
+      serves: [goal-reebeat-plugin-sdk, goal-org-stay-on-supported-stack]
+      constrains: [comp-reebeat-statechart-xstate]
+
+  - id: rule-reebeat-suppression-registry
+    kind: rule
+    ruleType: constraint
+    title: Every suppression has a registry entry
+    statement: >-
+      A suppression directive needs an entry with scope, reason, alternatives, owner, versions and a retirement trigger.
+      An entry without a live suppression fails too.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0000 and AGENTS.md set out the registry. The operator has not decided its fields, so confirm it.
+    source:
+      - reebeat:docs/specs/0000-development-lifecycle.md:43
+      - reebeat:AGENTS.md:42
+    links:
+      serves: [goal-reebeat-correct-by-construction]
+      constrains: [comp-reebeat-quality-gates]
+
+  - id: rule-reebeat-one-script-per-gate
+    kind: rule
+    ruleType: constraint
+    title: CI calls the same scripts as local gates
+    statement: >-
+      Each gate is one root script. `bun run ready` runs them in order and CI runs each script as its own step, so no
+      command is written twice.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0000 sets out one script per gate. The operator has not decided it, so confirm it.
+    source:
+      - reebeat:docs/specs/0000-development-lifecycle.md:30
+      - reebeat:AGENTS.md:23
+    links:
+      serves: [goal-reebeat-correct-by-construction]
+      constrains: [comp-reebeat-ci-workflow]
+
+  - id: rule-reebeat-dependency-licence-recorded
+    kind: rule
+    ruleType: constraint
+    title: A new dependency records its licence
+    statement: >-
+      A new dependency needs its licence in the licence inventory. The gate rejects GPL, AGPL, SSPL and unknown licences,
+      and fails when a locked package has no recorded licence.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0008 sets out the licence gate and its allowlist. The operator has not decided them, so confirm it.
+    source:
+      - reebeat:docs/specs/0008-apache-2-licence.md:42
+      - reebeat:docs/design/third-party.md:86-91
+      - reebeat:AGENTS.md:71
+    links:
+      serves: [goal-reebeat-apache-licence]
+      constrains: [comp-reebeat-quality-gates]
+
+  - id: rule-reebeat-effect-one-version
+    kind: rule
+    ruleType: constraint
+    title: Effect packages share one version
+    statement: >-
+      `effect` and every `@effect/*` runtime package are locked at one version. A registered exception records the locked
+      versions, so a bump fails until the exception is re-examined.
+    status: proposed
+    rationale: >-
+      Observed in the repository: the family check and AGENTS.md describe this. The operator decided the cap for unstable
+      Effect APIs (log:55), not this check, so confirm it.
+    source:
+      - reebeat:docs/specs/0000-development-lifecycle.md:98
+      - reebeat:AGENTS.md:52
+    links:
+      serves: [goal-org-stay-on-supported-stack, goal-reebeat-correct-by-construction]
+      constrains: [comp-reebeat-quality-gates]
+
+  - id: rule-reebeat-silent-narrator-na
+    kind: rule
+    ruleType: derivation
+    title: Narration check is N/A only for stand-ins
+    statement: >-
+      The narration-onset check reports `N/A (silent stand-in)` only when the manifest lists a synthesiser whose id ends
+      in `-standin`. The sound checks stay active, because the sounds are real.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0001 and the README set out this rule. The operator has not decided it, so confirm it.
+    source:
+      - reebeat:README.md:30
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:263
+    links:
+      serves: [goal-reebeat-verified-output]
+      constrains: [comp-reebeat-verify]
+
+  - id: rule-reebeat-cache-identical-to-cold
+    kind: rule
+    ruleType: constraint
+    title: A cached build equals a cold build
+    statement: >-
+      Cached render segments must give output byte-identical to a cold build. Cached output is never an approximation.
+    status: proposed
+    rationale: >-
+      Issue #9 states it for the planned segment cache and ties it to determinism F6. The operator has not decided the
+      segment cache.
+    source: ["issue:reebeat#9"]
+    refs: ["issue:reebeat#9"]
+    links:
+      serves: [goal-reebeat-incremental-builds, goal-reebeat-reproducible-builds]
+
+  - id: rule-reebeat-capability-fail-planning
+    kind: rule
+    ruleType: event-action
+    title: Planning fails if a renderer cannot comply
+    statement: >-
+      A renderer declares which interaction kinds it can realise. Planning fails when a required one is unsupported,
+      unless the author declared a fallback.
+    when: A Plan needs an interaction that the chosen renderer does not declare.
+    then: Planning fails and names the interaction and the renderer.
+    status: proposed
+    rationale: >-
+      Proposed in comments on issue #19, which say it requires an extension architecture ADR that does not exist yet. The
+      operator has not decided it.
+    source: ["issue:reebeat#19@6503203735"]
+    refs: ["issue:reebeat#19"]
+    links:
+      serves: [goal-reebeat-multi-renderer, goal-reebeat-interactive-website]
+
+  - id: rule-reebeat-lead-follow-timing
+    kind: rule
+    ruleType: derivation
+    title: Timed items lead or follow
+    statement: >-
+      A timed item either leads, which extends the State hold, or follows, which is placed by an event and does not extend
+      it. The hold is the latest end among leaders. Narration leads by default and effects follow.
+    status: proposed
+    rationale: >-
+      Proposed in issue #12 for captions and audio description, with its own spec still to come. The operator has not
+      decided it.
+    source: ["issue:reebeat#12"]
+    refs: ["issue:reebeat#12"]
+    links:
+      serves: [goal-reebeat-accessible-artifacts, goal-reebeat-localisation]
+
+  - id: rule-reebeat-localised-absolute-times
+    kind: rule
+    ruleType: derivation
+    title: Word anchors retime per language
+    statement: >-
+      Anchors tied to words, states or beats retime when the narration changes. Absolute times do not, so lint lists them
+      for each language.
+    status: proposed
+    rationale: Proposed in issue #10. Word anchors across translations and per-language caches remain open there.
+    source: ["issue:reebeat#10"]
+    refs: ["issue:reebeat#10"]
+    links:
+      serves: [goal-reebeat-localisation]
+
+  - id: rule-reebeat-standin-scope
+    kind: rule
+    ruleType: constraint
+    title: Renderer, capturer and encoder have no stand-in
+    statement: >-
+      Renderer, FrameCapturer and Encoder have no stand-in, because they are local tools with no credential and no egress.
+      An offline build still needs Chromium and ffmpeg.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0001 review round 2 narrows the decided rule that every integration has a stand-in. The operator
+      should confirm whether the narrower exemption stands: that the local Renderer, FrameCapturer and Encoder, which need
+      no model, credential or store, have no stand-in, and that an offline build still needs Chromium and ffmpeg.
+    source:
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:271
+      - reebeat:AGENTS.md:60
+    links:
+      serves: [goal-reebeat-reproducible-builds]
+      constrains: [comp-reebeat-services]
