@@ -209,6 +209,33 @@ const advised = (id: string, change: (element: Raw) => Raw) => {
   };
 };
 
+describe("a decided problem that keeps a gap", () => {
+  it("passes: the answer decides how to resolve it, the gap stays", () => {
+    const files = Arr.map(fixtureFiles(), (file) =>
+      file.scope === "org"
+        ? {
+            ...file,
+            elements: [
+              ...file.elements,
+              {
+                gap: { fix: "Add the missing file.", repo: "reebeat" },
+                id: "problem-org-p",
+                kind: "problem",
+                links: { hinders: ["goal-org-g"] },
+                source: ["log:7"],
+                statement: "The file is missing; it will be added.",
+                status: "decided",
+                title: "A missing file",
+              },
+            ],
+          }
+        : file
+    );
+
+    assert.deepStrictEqual(checkModel(modelOf(files)), []);
+  });
+});
+
 describe("triage advice", () => {
   it("passes advice on an element that waits", () => {
     const model = advised("goal-org-g", (element) => ({

@@ -1,0 +1,36 @@
+== baseline: the model passes (it holds decided problems that keep a gap)
+   command: bun tools/intent/src/cli.ts check
+   exit:    0
+   first finding: [21:33:44.730] INFO (#2): Model clean: 658 elements, 23 tracked items.
+== baseline: F2 and F3 pass
+   command: env BASE=HEAD bash docs/specs/0002-evidence/verify.sh
+   exit:    0
+   first finding: the changed set equals the answered set
+== baseline: the log copy is the log of 2026-10-29
+   command: logcopy_is_pinned
+   exit:    0
+   first finding: pinned log: the copy matches
+== T1 triage advice for a decided element
+   command: bun tools/intent/src/cli.ts check
+   exit:    1
+   first finding: TRIAGE-DECIDED constraint-org-working-name: model/triage.yaml still advises on an element that is decided; delete the entry
+== T2 triage advice for an unknown id
+   command: bun tools/intent/src/cli.ts check
+   exit:    1
+   first finding: TRIAGE-UNKNOWN-ID goal-org-nowhere: model/triage.yaml advises on an element that does not exist
+== F2 one status moves that no answer covers
+   command: env BASE=HEAD bash docs/specs/0002-evidence/verify.sh
+   exit:    1
+   first finding: PROBLEM the changed set and the answered set differ (left: changed only, right: answered only):
+== F3 an answered element cites another log line
+   command: env BASE=HEAD bash docs/specs/0002-evidence/verify.sh
+   exit:    1
+   first finding: PROBLEM studio-D8: problem-studio-merge-semantics-open does not cite log:100
+== F4 log copy edited by one character
+   command: logcopy_is_pinned
+   exit:    1
+   first finding: pinned log: the copy differs
+== after restore: the model passes again
+   command: bun tools/intent/src/cli.ts check
+   exit:    0
+   first finding: [21:33:52.654] INFO (#2): Model clean: 658 elements, 23 tracked items.

@@ -1,0 +1,45 @@
+// Kept as .txt so it is not linted as source. verify.sh copies it to tools/intent/ (so `yaml` resolves) and runs it with bun.
+// Reads answers.tsv (decision, log line, element) and the model. Fails (exit 1) unless every listed element exists, is `decided`
+// and cites `log:<line>` of its decision. An element outside the list that cites a log line 75 to 111 is only noted:
+// verify.sh (F2) proves that its status did not change.
+import { readFileSync, readdirSync } from "node:fs";
+import { parse } from "yaml";
+
+const answers = readFileSync(process.env["ANSWERS"] ?? "answers.tsv", "utf8")
+  .split("\n")
+  .slice(1)
+  .filter((line) => line !== "")
+  .map((line) => {
+    const [decision = "", logLine = "", element = ""] = line.split("\t");
+    return { decision, element, logLine: Number(logLine) };
+  });
+
+type Element = { id: string; status: string; source?: string[] | string };
+const root = process.env["MODEL_ROOT"] ?? "model";
+const model = new Map<string, Element>();
+for (const scope of ["org", "reebeat", "studio", "foldkit-flow"]) {
+  for (const file of readdirSync(`${root}/${scope}`)) {
+    const doc = parse(readFileSync(`${root}/${scope}/${file}`, "utf8")) as { elements: Element[] };
+    for (const element of doc.elements) model.set(element.id, element);
+  }
+}
+const sourcesOf = (element: Element): string[] =>
+  element.source === undefined ? [] : Array.isArray(element.source) ? element.source : [element.source];
+
+const problems: string[] = [];
+const notes: string[] = [];
+const listed = new Set(answers.map((a) => a.element));
+for (const a of answers) {
+  const element = model.get(a.element);
+  if (element === undefined) problems.push(`${a.decision}: ${a.element} does not exist`);
+  else if (element.status !== "decided") problems.push(`${a.decision}: ${a.element} is ${element.status}, not decided`);
+  else if (!sourcesOf(element).includes(`log:${a.logLine}`)) problems.push(`${a.decision}: ${a.element} does not cite log:${a.logLine}`);
+}
+for (const element of model.values()) {
+  const cited = sourcesOf(element).filter((s) => /^log:(7[5-9]|8\d|9\d|10\d|11[01])$/u.test(s));
+  if (cited.length > 0 && !listed.has(element.id)) notes.push(`${element.id} (${element.status}) also cites ${cited.join(", ")}`);
+}
+console.log(`${answers.length} answered elements checked, ${problems.length} problems`);
+for (const p of problems) console.log(`PROBLEM ${p}`);
+for (const n of notes) console.log(`NOTE ${n}`);
+process.exit(problems.length === 0 ? 0 : 1);
