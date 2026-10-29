@@ -17,6 +17,7 @@
     "generate:check": "bun tools/intent/src/cli.ts generate --check",
     "tracker:refresh": "bun tools/intent/src/cli.ts tracker-refresh",
     "sources:verify": "bun tools/intent/src/cli.ts verify-sources",
+    "status:diff": "bun tools/intent/src/cli.ts status-diff",
     "knip": "knip",
     "cpd": "jscpd --config .jscpd.json .",
     "secrets": "gitleaks git --config .gitleaks.toml --redact",

@@ -31,7 +31,12 @@ export const makeGitRepo = (
 
     yield* git("init", "-q");
     yield* Effect.forEach(Rec.toEntries(files), ([file, text]) =>
-      fs.writeFileString(path.join(dir, file), text)
+      Effect.gen(function* writeFile() {
+        yield* fs.makeDirectory(path.dirname(path.join(dir, file)), {
+          recursive: true,
+        });
+        yield* fs.writeFileString(path.join(dir, file), text);
+      })
     );
     yield* git("add", "-A");
     yield* git("commit", "-q", "-m", "fixture");

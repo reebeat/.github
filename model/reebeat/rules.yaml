@@ -13,7 +13,7 @@ elements:
       Spec plan: spec 0002 sets out the generated grammar document and the example test. The operator picked the effects
       syntax, not this arrangement, so confirm it.
     source:
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:16
+      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:17
       - reebeat:docs/grammar/effects.md:3
     links:
       serves: [goal-reebeat-explicit-source, goal-reebeat-correct-by-construction]
@@ -27,10 +27,10 @@ elements:
       Packages depend in one direction: library, then service, then integration. The direction never runs back.
     status: decided
     source:
-      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:234
+      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
       - reebeat:docs/design/keyframe-engine.md:1220
       - reebeat:tools/quality/tiers.ts:41-48
-      - reebeat:AGENTS.md:56-58
+      - reebeat:AGENTS.md:60-62
     links:
       serves: [goal-reebeat-correct-by-construction, goal-reebeat-plugin-sdk]
       constrains: [comp-reebeat-core, comp-reebeat-services, comp-reebeat-pipeline]
@@ -50,7 +50,7 @@ elements:
       dependency, not the gate's detailed behaviour, so confirm it.
     source:
       - reebeat:docs/design/keyframe-engine.md:1243
-      - reebeat:AGENTS.md:33
+      - reebeat:AGENTS.md:35
       - reebeat:tools/quality/tiers.ts:1-4
     links:
       serves: [goal-reebeat-correct-by-construction]
@@ -85,10 +85,10 @@ elements:
     then: The build does not fall back silently to another adapter.
     status: decided
     source:
-      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:234
+      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
       - reebeat:docs/design/keyframe-engine.md:1240
       - reebeat:GLOSSARY.md:112-113
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:261
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:262
     links:
       serves: [goal-reebeat-correct-by-construction, goal-reebeat-visible-egress]
       triggers: [process-reebeat-select-adapters]
@@ -121,9 +121,9 @@ elements:
       Each service has at least one adapter and one contract suite that every adapter of it must pass.
     status: decided
     source:
-      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:234
+      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
       - reebeat:docs/design/keyframe-engine.md:1225
-      - reebeat:AGENTS.md:61
+      - reebeat:AGENTS.md:65
     links:
       serves: [goal-reebeat-plugin-sdk]
       constrains: [comp-reebeat-services]
@@ -137,10 +137,10 @@ elements:
       Every integration has a stand-in for offline tests.
     status: decided
     source:
-      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:234
+      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
       - reebeat:docs/design/keyframe-engine.md:1241
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:271
-      - reebeat:AGENTS.md:60
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:272
+      - reebeat:AGENTS.md:64
     links:
       serves: [goal-reebeat-reproducible-builds, goal-reebeat-plugin-sdk]
       constrains: [comp-reebeat-services]
@@ -153,7 +153,7 @@ elements:
       Every integration declares what it sends out. The output manifest records provenance.
     status: decided
     source:
-      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:234
+      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
       - reebeat:docs/design/keyframe-engine.md:1241
       - reebeat:GLOSSARY.md:119-120
       - reebeat:README.md:21
@@ -175,7 +175,7 @@ elements:
     source:
       - reebeat:docs/design/keyframe-engine.md:1242
       - reebeat:GLOSSARY.md:120
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:276
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:277
     links:
       serves: [goal-reebeat-visible-egress]
       constrains: [comp-reebeat-services]
@@ -192,8 +192,8 @@ elements:
       Spec plan: spec 0002 and spec 0001 set out that narration text, subtitles and notes are one string. The operator
       decided that dialogue stays pure prose (spec 0002 line 161), so confirm the rest.
     source:
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:81
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:47
+      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:82
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:48
       - reebeat:GLOSSARY.md:31-33
     links:
       serves: [goal-reebeat-screenplay-first, goal-reebeat-accessible-artifacts]
@@ -211,7 +211,7 @@ elements:
     rationale: >-
       Spec plan: spec 0001 sets out this rule for the closed vocabulary. The operator has not decided it, so confirm it.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:31
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:32
       - reebeat:GLOSSARY.md:84
     links:
       serves: [goal-reebeat-explicit-source]
@@ -229,8 +229,8 @@ elements:
       Spec plan: spec 0002 states this goal. The operator decided that element properties are named key=value (spec 0002
       line 161), not the universal rule, so confirm it.
     source:
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:15
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:190
+      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:16
+      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:191
     links:
       serves: [goal-reebeat-explicit-source]
       constrains: [comp-reebeat-core]
@@ -244,9 +244,9 @@ elements:
       one.
     status: decided
     source:
-      - record:reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:161
+      - record:reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:162
       - reebeat:docs/design/keyframe-engine.md:1113
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:18
+      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:19
       - reebeat:packages/lint/src/absoluteTimes.ts:1-5
     links:
       serves: [goal-reebeat-event-timing, goal-reebeat-explicit-source]
@@ -264,7 +264,7 @@ elements:
       Spec plan: spec 0002 sets out the schedule stage and the Plan and Timeline split. The operator has not decided this
       derivation, so confirm it.
     source:
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:33
+      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:34
       - reebeat:GLOSSARY.md:36
       - reebeat:packages/core/src/schedule.ts:1-8
     links:
@@ -284,7 +284,7 @@ elements:
       decided this rule on its own line, so confirm it.
     source:
       - reebeat:docs/design/keyframe-engine.md:1259
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:128
+      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:129
     links:
       serves: [goal-reebeat-event-timing, goal-reebeat-verified-output]
       constrains: [comp-reebeat-verify]
@@ -301,9 +301,9 @@ elements:
       Spec plan: spec 0001 sets out the output-side check and the negative controls. The operator has not decided them, so
       confirm it.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:27
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:141
-      - reebeat:docs/specs/0000-development-lifecycle.md:88
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:28
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:142
+      - reebeat:docs/specs/0000-development-lifecycle.md:89
     links:
       serves: [goal-reebeat-verified-output]
       constrains: [comp-reebeat-verify]
@@ -322,7 +322,7 @@ elements:
       Spec plan: spec 0001 falsifier F12 and the build program describe this. The operator has not decided it, so confirm
       it.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:156
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:157
       - reebeat:packages/pipeline/src/buildProgram.ts:9-11
     links:
       serves: [goal-reebeat-correct-by-construction, goal-reebeat-verified-output]
@@ -340,9 +340,9 @@ elements:
       Spec plan: spec 0001 sets out the virtual clock and the determinism falsifier. The operator named reproducibility
       (log:10) but not this rule, so confirm it.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:85
-      - reebeat:docs/specs/0003-effect-4-1-upgrade.md:45
-      - reebeat:AGENTS.md:50
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:86
+      - reebeat:docs/specs/0003-effect-4-1-upgrade.md:46
+      - reebeat:AGENTS.md:54
     links:
       serves: [goal-reebeat-reproducible-builds]
       constrains: [comp-reebeat-capture-chromium]
@@ -371,7 +371,7 @@ elements:
       Spec plan: spec 0001 requires explicit ids. The operator decided that the same id is the same entity across Scenes
       (log:23), and release 1 matches ids only across a transition that says so, so confirm the rule.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:59
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:60
       - reebeat:GLOSSARY.md:61-63
       - log:23
     links:
@@ -420,8 +420,8 @@ elements:
     rationale: >-
       Spec plan: spec 0000 and AGENTS.md set out the registry. The operator has not decided its fields, so confirm it.
     source:
-      - reebeat:docs/specs/0000-development-lifecycle.md:43
-      - reebeat:AGENTS.md:42
+      - reebeat:docs/specs/0000-development-lifecycle.md:44
+      - reebeat:AGENTS.md:46
     links:
       serves: [goal-reebeat-correct-by-construction]
       constrains: [comp-reebeat-quality-gates]
@@ -437,8 +437,8 @@ elements:
     rationale: >-
       Spec plan: spec 0000 sets out one script per gate. The operator has not decided it, so confirm it.
     source:
-      - reebeat:docs/specs/0000-development-lifecycle.md:30
-      - reebeat:AGENTS.md:23
+      - reebeat:docs/specs/0000-development-lifecycle.md:31
+      - reebeat:AGENTS.md:24
     links:
       serves: [goal-reebeat-correct-by-construction]
       constrains: [comp-reebeat-ci-workflow]
@@ -456,7 +456,7 @@ elements:
     source:
       - reebeat:docs/specs/0008-apache-2-licence.md:42
       - reebeat:docs/design/third-party.md:86-91
-      - reebeat:AGENTS.md:71
+      - reebeat:AGENTS.md:75
     links:
       serves: [goal-reebeat-apache-licence]
       constrains: [comp-reebeat-quality-gates]
@@ -473,8 +473,8 @@ elements:
       Observed in the repository: the family check and AGENTS.md describe this. The operator decided the cap for unstable
       Effect APIs (log:55), not this check, so confirm it.
     source:
-      - reebeat:docs/specs/0000-development-lifecycle.md:98
-      - reebeat:AGENTS.md:52
+      - reebeat:docs/specs/0000-development-lifecycle.md:99
+      - reebeat:AGENTS.md:56
     links:
       serves: [goal-org-stay-on-supported-stack, goal-reebeat-correct-by-construction]
       constrains: [comp-reebeat-quality-gates]
@@ -491,7 +491,7 @@ elements:
       Spec plan: spec 0001 and the README set out this rule. The operator has not decided it, so confirm it.
     source:
       - reebeat:README.md:30
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:263
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:264
     links:
       serves: [goal-reebeat-verified-output]
       constrains: [comp-reebeat-verify]
@@ -553,7 +553,7 @@ elements:
       Anchors tied to words, states or beats retime when the narration changes. Absolute times do not, so lint lists them
       for each language.
     status: proposed
-    rationale: Proposed in issue #10. Word anchors across translations and per-language caches remain open there.
+    rationale: "Proposed in issue #10. Word anchors across translations and per-language caches remain open there."
     source: ["issue:reebeat#10"]
     refs: ["issue:reebeat#10"]
     links:
@@ -572,8 +572,8 @@ elements:
       should confirm whether the narrower exemption stands: that the local Renderer, FrameCapturer and Encoder, which need
       no model, credential or store, have no stand-in, and that an offline build still needs Chromium and ffmpeg.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:271
-      - reebeat:AGENTS.md:60
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:272
+      - reebeat:AGENTS.md:64
     links:
       serves: [goal-reebeat-reproducible-builds]
       constrains: [comp-reebeat-services]

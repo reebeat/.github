@@ -394,19 +394,24 @@ elements:
 
   - id: problem-studio-foldkit-vite-plugin
     kind: problem
-    title: Foldkit's Vite plugin imports a missing Crypto
+    title: The Foldkit Vite plugin is still off in studio
     statement: >-
-      At the pinned commit, the Foldkit Vite plugin imports Crypto from the effect root, which Effect 4.1.0 does not have.
-      The plugin stays off, so the dev tools bridge and model-preserving reload are off.
+      At the pinned commit, studio keeps the Foldkit Vite plugin off, so the dev tools bridge and model-preserving reload are
+      off. The cause is fixed upstream: @foldkit/vite-plugin 0.29.0 (npm, 2026-10-29) imports SecureRandom from
+      effect/crypto and peers effect ~4.1.0. Studio has not bumped, and issue 4 is open.
     status: open
     rationale: >-
-      Issue 4 tracks the fix. It ends when a Foldkit release imports effect/crypto and supports Effect 4.1.
-      The operator should confirm that studio keeps waiting for the upstream fix.
-    source: [studio:AGENTS.md:54, studio:docs/specs/0000-development-lifecycle.md:114, issue:studio#4]
+      Issue 4 tracks re-enabling the plugin. Checked by npm pack of 0.29.0: dist/index.js imports SecureRandom from
+      effect/crypto, and the peers are effect ~4.1.0 and foldkit >=0.167.0. The plugin still uses node:crypto for createHmac,
+      createHash and randomUUID in its own code, where the operator preferred Effect's service (log:56).
+      Not verified: that studio's build works with 0.29.0.
+      The operator should confirm that studio re-enables the plugin in a bump change and whether the node:crypto use is
+      acceptable.
+    source: [studio:AGENTS.md:54, studio:docs/specs/0000-development-lifecycle.md:114, issue:studio#4, log:56]
     refs: [issue:studio#4]
     gap:
       repo: studio
-      fix: Re-enable the Foldkit Vite plugin when a release imports effect/crypto, then drop the Effect 4.0.0 peer note.
+      fix: Bump Foldkit and the Foldkit Vite plugin (0.170.0 and 0.29.0 or later), re-enable the plugin, then drop the Effect 4.0.0 peer note.
     links:
       hinders: [comp-studio-editor]
 
@@ -518,16 +523,18 @@ elements:
     title: STATE.md still says spec 0003 is in review
     statement: >-
       At the pinned commit, STATE.md says the review and verify skills are in review and lists their review as the next
-      step. PR 5 has merged.
+      step. PR 5 has merged. The branch of PR 6 rewrites both lines to say 0003 has merged, so the text is wrong on main
+      until PR 6 merges.
     status: open
     rationale: >-
       The pinned main commit is the merge of PR 5, yet STATE.md line 7 still says "in review". Compare line 7 with the
-      repository log.
-      The operator should confirm the update of STATE.md.
-    source: [studio:STATE.md:7, studio:STATE.md:11, pr:studio#5]
+      repository log. On the branch of PR 6 (a draft on 2026-10-29), STATE.md line 7 says 0003 is merged and line 11 names
+      spec 0004.
+      The operator should confirm that PR 6 carries the update of STATE.md.
+    source: [studio:STATE.md:7, studio:STATE.md:11, pr:studio#5, pr:studio#6]
     gap:
       repo: studio
-      fix: Update STATE.md to say spec 0003 has merged and name the next spec.
+      fix: Merge PR 6, whose branch already says spec 0003 has merged and names spec 0004.
     links:
       hinders: [goal-studio-checked-change]
 
@@ -650,15 +657,16 @@ elements:
   - id: constraint-studio-effect-foldkit-peer
     kind: constraint
     constraintType: technical
-    title: Effect 4.1.0 runs against Foldkit's peer of 4.0.0
+    title: Effect 4.1.0 runs against Foldkit 0.169.0's peer
     statement: >-
-      Foldkit 0.169.0 declares a peer of effect 4.0.0, and studio runs 4.1.0. Bun prints warnings. The tests, build and a
-      browser run pass on 4.1.0, and a boot test guards the mismatch.
+      Foldkit 0.169.0 declares a peer of effect 4.0.0, and studio runs 4.1.0 with it at the pinned commit. Bun prints
+      warnings. The tests, build and a browser run pass on 4.1.0, and a boot test guards the mismatch. Foldkit 0.170.0
+      (2026-10-29) peers effect ~4.1.0, so the mismatch holds only while studio stays on 0.169.0.
     status: proposed
     rationale: >-
       AGENTS.md calls the choice a lead decision. The operator's stack policy pins Effect to 4.1 or later, but no line
-      decides this mismatch.
-      The operator should confirm that the mismatch is acceptable.
+      decides this mismatch. Checked on npm on 2026-10-29: the peer ranges of foldkit 0.169.0 and 0.170.0.
+      The operator should confirm that the mismatch is acceptable until studio bumps Foldkit.
     source: [studio:AGENTS.md:54, studio:docs/specs/0000-development-lifecycle.md:96, studio:docs/specs/0000-development-lifecycle.md:34]
     links:
       constrains: [comp-studio-editor]
@@ -666,13 +674,16 @@ elements:
   - id: constraint-studio-foldkit-plugin-off
     kind: constraint
     constraintType: technical
-    title: Keep the Foldkit Vite plugin off until upstream fixes it
+    title: Keep the Foldkit Vite plugin off until the bump
     statement: >-
-      The Foldkit Vite plugin stays off, and studio stays on Effect 4.1.0, until a Foldkit release imports effect/crypto.
+      At the pinned commit, the Foldkit Vite plugin stays off, and studio stays on Effect 4.1.0, until a Foldkit release
+      imports effect/crypto. That release exists: @foldkit/vite-plugin 0.29.0 (2026-10-29). The constraint is temporary and
+      ends when studio bumps and re-enables the plugin.
     status: proposed
     rationale: >-
       Observed in the repository: AGENTS.md and spec 0000 record this as a lead decision. The operator log prefers upstream
-      fixes over workarounds (log:56) but does not decide this plugin choice. The operator must confirm it.
+      fixes over workarounds (log:56) but does not decide this plugin choice. The operator must confirm that the constraint
+      stays until the bump lands, then goes.
     source: [log:56, studio:AGENTS.md:54, studio:docs/specs/0000-development-lifecycle.md:125, issue:studio#4]
     links:
       constrains: [comp-studio-editor]
@@ -782,11 +793,15 @@ elements:
     kind: opportunity
     title: The story graph lens could use foldkit-flow
     statement: >-
-      foldkit-flow is a node-based graph UI for Foldkit. The Story graph lens needs a graph in a Foldkit app.
+      foldkit-flow is a node-based graph UI for Foldkit. At its pinned commit, its README shows a Compound graph of Scenes
+      holding States, the statechart shape, with parent nodes, keyboard control and a live region. The Story graph lens needs
+      a graph in a Foldkit app.
     status: proposed
     rationale: >-
-      The log describes foldkit-flow as its own repository (line 48), and the lens note describes a statechart map. No
-      source connects them. The operator must confirm the use.
-    source: [log:48, studio:docs/design/lenses.md:50-52]
+      The log describes foldkit-flow as its own repository (line 48), and the lens note describes a statechart map. No studio
+      document at the pinned commit names foldkit-flow. Its README says it is not published yet, and packages/flow is
+      private, so studio cannot install it from npm. Studio's use needs a published release or a workspace link.
+      The operator must confirm the use as an opportunity, not a commitment.
+    source: [log:48, studio:docs/design/lenses.md:50-52, "foldkit-flow:README.md:3", "foldkit-flow:README.md:5", "foldkit-flow:README.md:20", "foldkit-flow:README.md:66", "foldkit-flow:packages/flow/package.json:4"]
     links:
       supports: [goal-studio-lens-story-graph]

@@ -63,3 +63,7 @@ Compiled by the lead agent from the operator's own statements in the working ses
 - Honest novelty claim **(lead proposal, accepted)**: the parts are prior art (statecharts, SMIL, FRP, build systems, Effect, XState); the combination applied to multimedia is new. The build engine may be designed generically, but it is claimed only for multimedia until proven elsewhere.
 - React's core (reconciler and scheduler) was considered and rejected as the compiler core (no whole-timeline planning, wall-clock scheduler, sibling-scoped keys, one host tree, in-process incrementality, no audio). It is kept as a possible render engine; JSX is kept as a possible authoring importer.
 - Interaction tools act on produced artifacts; authoring tools act on creational formats. Static artifacts realise interactions at build time; dynamic artifacts realise them at view time.
+
+## Fountain: source and artifact (2026-10-29)
+
+- Operator (dictated; "Mountain" read as Fountain): it can likely be a source and an artifact. Fountain is both an importer (a screenplay becomes a story) and an artifact renderer (a story becomes a screenplay). It is not the persistent IR; JSON stays the IR. This refines the line about Fountain as "likely an artifact format".

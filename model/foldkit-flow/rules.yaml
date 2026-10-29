@@ -10,10 +10,14 @@ elements:
     then: The library emits Connected, Reconnected, Deleted, Moved or a selection message. The application adds or moves the edge.
     status: proposed
     source:
-      - pr:foldkit-flow#4
+      - foldkit-flow:README.md:51-54
+      - foldkit-flow:packages/flow/src/message.ts:67-70
+      - foldkit-flow:packages/flow/src/update.ts:563-604
     rationale: >-
-      Spec 0001 and the PR body state this split. It is absent at the pinned commit 5dd44a9 (PR #4 has since merged; see the tracker) and no operator line records it. The operator
-      must confirm that the app, not the library, owns graph changes.
+      README lines 51 to 54 and message.ts lines 67 to 70 state the split: the Flow does not add an edge itself, and
+      the application calls `addEdge` or `reconnectEdge`. The Flow does apply a deletion, a move and a selection change
+      to its own Model before it reports them (update.ts lines 188 to 197 and 333 to 342). No operator line records
+      the split. The operator must confirm that the app, not the library, owns graph changes.
     refs: [pr:foldkit-flow#4]
     links:
       serves: [goal-flow-generic-library]
@@ -29,11 +33,14 @@ elements:
     then: Create it in a Mount that owns its lifetime, and destroy it on unmount.
     status: proposed
     source:
-      - foldkit-flow:AGENTS.md:61
-      - pr:foldkit-flow#4
+      - foldkit-flow:AGENTS.md:63
+      - foldkit-flow:packages/flow/src/mounts.ts:34-39
+      - foldkit-flow:packages/flow/src/controllers.test.ts:42-67
     rationale: >-
-      AGENTS.md states the rule for agents. No operator line records it. The operator must confirm it as a standing
-      rule.
+      AGENTS.md states the rule for agents. mounts.ts lines 34 to 39 apply it: each controller is created in a Mount
+      and destroyed when the Mount is released, and controllers.test.ts lines 42 to 67 check that every created
+      controller is destroyed once after dispose. No operator line records the rule. The operator must confirm it as a
+      standing rule.
     links:
       serves: [goal-flow-first-journey]
       constrains: [comp-flow-mounts]
@@ -47,7 +54,7 @@ elements:
       Mount or a managed resource.
     status: proposed
     source:
-      - foldkit-flow:AGENTS.md:61
+      - foldkit-flow:AGENTS.md:63
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:69
     rationale: >-
       The rule is written in AGENTS.md and applied in the scaffold. It follows the Foldkit style. The operator must
@@ -64,8 +71,8 @@ elements:
       Tools depend on neither apps nor packages. The app depends on the library, never the reverse.
     status: proposed
     source:
-      - foldkit-flow:AGENTS.md:30
-      - foldkit-flow:AGENTS.md:21-28
+      - foldkit-flow:AGENTS.md:31
+      - foldkit-flow:AGENTS.md:21-29
     rationale: >-
       AGENTS.md states the direction. No check in the gate table enforces it. The operator must confirm it as a
       standing rule.
@@ -102,11 +109,13 @@ elements:
     status: proposed
     source:
       - foldkit-flow:README.md:7
-      - foldkit-flow:AGENTS.md:30
-      - pr:foldkit-flow#4
+      - foldkit-flow:AGENTS.md:31
+      - foldkit-flow:packages/flow/src/types.ts:42-59
+      - foldkit-flow:apps/example/src/graphs.ts:4-5
     rationale: >-
-      The README and AGENTS.md say layout is the application's job. Spec 0001 says nodes declare their size and
-      position. No operator line records it. The operator must confirm.
+      The README and AGENTS.md say layout is the application's job. A node declares its position and size (types.ts
+      lines 42 to 59), and the example places its nodes by hand (graphs.ts lines 4 and 5). No operator line records
+      it. The operator must confirm.
     links:
       serves: [goal-flow-generic-library]
       constrains: [comp-flow-library]
@@ -121,7 +130,7 @@ elements:
     then: Show the link in the corner of the canvas.
     status: proposed
     source:
-      - foldkit-flow:README.md:21
+      - foldkit-flow:README.md:86
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:53
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:69
     rationale: >-
@@ -191,7 +200,7 @@ elements:
     then: Require a registry entry with a reason and a retirement trigger.
     status: proposed
     source:
-      - foldkit-flow:AGENTS.md:43
+      - foldkit-flow:AGENTS.md:44
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:45
     rationale: >-
       Observed in the repository: AGENTS.md and spec 0000 describe the registry and its check. No operator line decides
@@ -211,7 +220,7 @@ elements:
     status: decided
     source:
       - log:55
-      - record:foldkit-flow:AGENTS.md:63
+      - record:foldkit-flow:AGENTS.md:65
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:63
     links:
       serves: [goal-org-stay-on-supported-stack]
@@ -228,10 +237,13 @@ elements:
     then: Remove the parent, all descendants and every edge attached to them, and report all of it.
     status: proposed
     source:
-      - pr:foldkit-flow#4
+      - foldkit-flow:packages/flow/src/update.ts:289-343
+      - foldkit-flow:README.md:75
+      - foldkit-flow:docs/specs/0001-first-felt-journey.md:135
     rationale: >-
-      Review round 1 of PR #4 found that deletion left child edges and a dangling grandchild. The PR says it is fixed.
-      The operator must confirm the rule.
+      update.ts lines 289 to 343 collect every descendant of a deleted node and every edge that ends on one, and
+      `Deleted` and the live region report both sets. Spec 0001 line 135 records that review round 1 found child edges
+      and a dangling grandchild left behind, and that the closure fixed it. The operator must confirm the rule.
     refs: [pr:foldkit-flow#4]
     links:
       serves: [goal-flow-studio-story-graph]
@@ -249,9 +261,15 @@ elements:
     then: Emit nothing and add no edge.
     status: proposed
     source:
-      - pr:foldkit-flow#4
+      - foldkit-flow:packages/flow/src/mounts.ts:601-625
+      - foldkit-flow:packages/flow/src/snapshot.ts:33
+      - foldkit-flow:packages/flow/src/update.ts:266-281
+      - foldkit-flow:docs/specs/0001-first-felt-journey.md:85
     rationale: >-
-      Spec 0001 states the rule and a falsifier (J3). It is absent at the pinned commit 5dd44a9 (PR #4 has since merged; see the tracker). The operator must confirm the rule.
+      The application's `isValidConnection` gates the connect gesture: the handle Mount passes it to xyflow (mounts.ts
+      lines 601 to 625), the snapshot carries it (snapshot.ts line 33), and `update` reports `Connected` only when it
+      accepts the connection (update.ts lines 266 to 281). Spec 0001 sets falsifier J3 (line 85). The operator must
+      confirm the rule.
     refs: [pr:foldkit-flow#4]
     links:
       serves: [goal-flow-first-journey]
@@ -268,10 +286,15 @@ elements:
     then: Limit its position to the parent's bounds.
     status: proposed
     source:
-      - pr:foldkit-flow#4
+      - foldkit-flow:packages/flow/src/geometry.ts:88
+      - foldkit-flow:packages/flow/src/geometry.ts:451-474
+      - foldkit-flow:packages/flow/src/update.ts:369-385
+      - foldkit-flow:docs/specs/0001-first-felt-journey.md:89
     rationale: >-
-      Spec 0001 states the rule as falsifier J7. It supports compound graphs such as Scenes holding States. The operator
-      must confirm that clamping a child inside its parent is the intended behaviour.
+      A node with `isClampedToParent` gets an xyflow parent extent for pointer drags (geometry.ts line 88), and a key
+      move is clamped to the parent's bounds (geometry.ts lines 451 to 474; update.ts lines 369 to 385). Spec 0001 sets
+      falsifier J7 (line 89). The rule supports compound graphs such as Scenes holding States. The operator must
+      confirm that clamping a child inside its parent is the intended behaviour.
     refs: [pr:foldkit-flow#4]
     links:
       serves: [goal-flow-studio-story-graph]
@@ -288,10 +311,11 @@ elements:
     then: Select, move, delete or clear, and announce the result.
     status: proposed
     source:
-      - pr:foldkit-flow#4
+      - foldkit-flow:README.md:75-77
+      - foldkit-flow:packages/flow/src/update.ts:413-435
     rationale: >-
-      The PR README and spec 0001 list these keys. Ctrl or Meta add to the selection in the PR's round-1 update. The
-      operator must confirm this key contract (keys, step sizes, announcements).
+      README lines 75 to 77 and update.ts lines 413 to 435 give these keys. Shift, Ctrl or Meta add to the selection on
+      Enter or Space (README line 75). The operator must confirm this key contract (keys, step sizes, announcements).
     refs: [pr:foldkit-flow#4]
     links:
       serves: [goal-flow-keyboard-access]
@@ -306,10 +330,15 @@ elements:
       transform, and a drag re-renders the dragged node and its edges.
     status: proposed
     source:
-      - pr:foldkit-flow#4
+      - foldkit-flow:README.md:68
+      - foldkit-flow:README.md:82
+      - foldkit-flow:packages/flow/src/view.ts:40-43
+      - foldkit-flow:docs/specs/0001-first-felt-journey.md:130
     rationale: >-
-      PR #4 reports that a cache miss on every node gave a p50 scripting time of 21 ms per pointer move, against
-      p50 2.6 ms after the fix. The operator must confirm it as a standing rule.
+      README lines 68 and 82 and view.ts lines 40 to 43 say node and edge views are keyed lazy views, so a drag renders
+      only the dragged node and its edges. Spec 0001 line 130 reports that a cache miss on every node gave a scripting
+      p50 of 21 ms per pointer move, against p50 3.3 ms after the fix. The operator must confirm it as a standing
+      rule.
     refs: [pr:foldkit-flow#4]
     links:
       serves: [goal-flow-performance]

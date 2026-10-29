@@ -20,12 +20,13 @@ elements:
     title: Artifact
     statement: >-
       A produced file or site that people consume: a video, a presentation deck, or an interactive website. Artifact
-      formats are not IR formats; Fountain is an artifact format like video and revealjs decks.
+      formats are not IR formats. Fountain is both an importer (a screenplay becomes a story) and an artifact renderer
+      (a story becomes a screenplay); it is not the persistent IR, which stays JSON.
     attributes:
       - static or dynamic interface
       - interaction surfaces
     status: decided
-    source: [log:25, log:37]
+    source: [log:25, log:37, log:67-69]
 
   - id: concept-org-interaction
     kind: concept

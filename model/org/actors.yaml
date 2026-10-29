@@ -108,7 +108,7 @@ elements:
     rationale: >-
       The organisation exists and the README says it is reserved. That is a fact the operator can see, not a line of
       the decision log, so it is not marked decided.
-    source: [reebeat:README.md:41]
+    source: [reebeat:README.md:42]
     canvas: [channels, key-resources]
 
   - id: resource-npm-org

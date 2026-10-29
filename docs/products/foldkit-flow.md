@@ -6,7 +6,7 @@ A node-based graph UI for Foldkit, like React Flow or Svelte Flow, in its own re
 
 Repository: [reebeat/foldkit-flow][1]. Licence: MIT. Status of this description: decided.
 
-136 model elements: 9 decided, 111 proposed, 16 open.
+135 model elements: 9 decided, 110 proposed, 16 open.
 
 ## Product vision board
 
@@ -20,7 +20,7 @@ After Roman Pichler's product vision board. Each cell is built from the model; c
 | Product (key features) | [packages/flow (the library)](../technical-components.md#comp-flow-library) (proposed)<br/>[apps/example (the example app)](../technical-components.md#comp-flow-example-app) (proposed)<br/>[tools/quality (repository checks)](../technical-components.md#comp-flow-quality-tools) (proposed)<br/>[tools/oxlint (vendored lint rules)](../technical-components.md#comp-flow-oxlint-rules) (proposed)<br/>[tools/journey (browser gate)](../technical-components.md#comp-flow-journey-tool) (proposed)<br/>[CI workflow (checks)](../technical-components.md#comp-flow-ci) (proposed)<br/>[Review and PR skills](../technical-components.md#comp-flow-agent-skills) (proposed)<br/>[Attribution option and view](../technical-components.md#comp-flow-attribution) (proposed)<br/>[Flow Submodel (Model, update, view)](../technical-components.md#comp-flow-flow-submodel) (proposed)<br/>[Mounts that own the xyflow controllers](../technical-components.md#comp-flow-mounts) (proposed)<br/>[Pan and zoom by wheel and drag](../technical-components.md#req-flow-pan-zoom) (proposed)<br/>[Drag a node, edges follow](../technical-components.md#req-flow-drag-node) (proposed)<br/>[Connect handles with validation](../technical-components.md#req-flow-connect) (proposed)<br/>[Reconnect an edge end](../technical-components.md#req-flow-reconnect) (proposed)<br/>[Select with a box](../technical-components.md#req-flow-box-select) (proposed)<br/>[Controls, fit view and minimap](../technical-components.md#req-flow-controls-minimap) (proposed)<br/>[Compound nodes with relative positions](../technical-components.md#req-flow-compound-nodes) (proposed)<br/>[Delete a parent with its descendants and edges](../technical-components.md#req-flow-delete-closure) (proposed)<br/>[Edit the graph by keyboard](../technical-components.md#req-flow-keyboard-edit) (proposed)<br/>[The app draws node content](../technical-components.md#req-flow-custom-nodes) (proposed)<br/>[Show the xyflow credit by default, allow hiding](../technical-components.md#req-flow-attribution-toggle) (proposed)<br/>[A browser journey gate](../technical-components.md#req-flow-browser-gate) (proposed) |
 | Business goals | [Accessible artifacts for every audience](../goals.md#goal-org-accessible-artifacts) (decided)<br/>[Correctness by construction](../goals.md#goal-org-correctness-by-construction) (decided)<br/>[Intent written down, sourced and testable](../goals.md#goal-org-written-intent) (proposed) |
 
-Scope `foldkit-flow`: 136 elements.
+Scope `foldkit-flow`: 135 elements.
 
 ## Goals and quality requirements (arc42 sections 1 and 10)
 
@@ -28,18 +28,18 @@ Scope `foldkit-flow`: 136 elements.
 
 | Requirement | Statement | Status | Sources |
 | --- | --- | --- | --- |
-| [Pan and zoom by wheel and drag](../technical-components.md#req-flow-pan-zoom) | A wheel or a drag on the empty canvas changes the viewport. No node is re-rendered. | proposed | [pr foldkit-flow#4][2] |
-| [Drag a node, edges follow](../technical-components.md#req-flow-drag-node) | Dragging a node changes its position in the Model, and the edges attached to it follow. | proposed | [pr foldkit-flow#4][2] |
-| [Connect handles with validation](../technical-components.md#req-flow-connect) | Dragging from a source handle to a target handle makes a Connected outcome. A target the application refuses makes none. | proposed | [pr foldkit-flow#4][2] |
-| [Reconnect an edge end](../technical-components.md#req-flow-reconnect) | Dragging one end of a selected edge to another handle makes a Reconnected outcome. | proposed | [pr foldkit-flow#4][2] |
-| [Select with a box](../technical-components.md#req-flow-box-select) | Shift and drag on the empty canvas selects the nodes inside the box and no others. A plain drag pans. | proposed | [pr foldkit-flow#4][2] |
-| [Controls, fit view and minimap](../technical-components.md#req-flow-controls-minimap) | Buttons zoom in, zoom out and fit the view. A minimap shows the nodes and pans when dragged. | proposed | [pr foldkit-flow#4][2] |
-| [Compound nodes with relative positions](../technical-components.md#req-flow-compound-nodes) | A child node has a position relative to its parent. Dragging the parent moves the child, and a clamped child stays inside the parent. | proposed | [pr foldkit-flow#4][2], [log L19][3] |
-| [Delete a parent with its descendants and edges](../technical-components.md#req-flow-delete-closure) | Deleting a parent removes all its descendants and every edge attached to any of them, and reports the full sets. | proposed | [pr foldkit-flow#4][2] |
-| [Edit the graph by keyboard](../technical-components.md#req-flow-keyboard-edit) | Nodes take focus. Enter or Space selects, arrow keys move (Shift makes a larger step), Delete removes, Escape clears, and a live region announces each result. | proposed | [pr foldkit-flow#4][2] |
-| [The app draws node content](../technical-components.md#req-flow-custom-nodes) | Nodes render through one callback that the application supplies. Handles are declared on the node. Edges come in three kinds with an optional arrow. | proposed | [pr foldkit-flow#4][2] |
-| [Show the xyflow credit by default, allow hiding](../technical-components.md#req-flow-attribution-toggle) | The "Built with xyflow" link shows unless the application sets Attribution to Hidden. | proposed | [foldkit-flow:docs/specs/0000-development-lifecycle.md:53][4], [foldkit-flow:docs/specs/0000-development-lifecycle.md:90][5], [foldkit-flow:README.md:21][6] |
-| [A browser journey gate](../technical-components.md#req-flow-browser-gate) | One command drives the built example in headless Chromium with real pointer and keyboard input and fails if a journey step fails. | proposed | [pr foldkit-flow#4][2] |
+| [Pan and zoom by wheel and drag](../technical-components.md#req-flow-pan-zoom) | A wheel or a drag on the empty canvas changes the viewport. No node is re-rendered. | proposed | [foldkit-flow:packages/flow/src/mounts.ts:157-208][2], [foldkit-flow:README.md:82][3], [foldkit-flow:docs/specs/0001-first-felt-journey.md:83][4] |
+| [Drag a node, edges follow](../technical-components.md#req-flow-drag-node) | Dragging a node changes its position in the Model, and the edges attached to it follow. | proposed | [foldkit-flow:packages/flow/src/mounts.ts:384-470][5], [foldkit-flow:packages/flow/src/update.ts:183-186][6], [foldkit-flow:docs/specs/0001-first-felt-journey.md:84][7] |
+| [Connect handles with validation](../technical-components.md#req-flow-connect) | Dragging from a source handle to a target handle makes a Connected outcome. A target the application refuses makes none. | proposed | [foldkit-flow:packages/flow/src/mounts.ts:601-625][8], [foldkit-flow:packages/flow/src/update.ts:266-281][9], [foldkit-flow:docs/specs/0001-first-felt-journey.md:85][10] |
+| [Reconnect an edge end](../technical-components.md#req-flow-reconnect) | Dragging one end of a selected edge to another handle makes a Reconnected outcome. | proposed | [foldkit-flow:packages/flow/src/mounts.ts:723-755][11], [foldkit-flow:packages/flow/src/update.ts:522-529][12], [foldkit-flow:README.md:20][13], [foldkit-flow:docs/specs/0001-first-felt-journey.md:85][10] |
+| [Select with a box](../technical-components.md#req-flow-box-select) | Shift and drag on the empty canvas selects the nodes inside the box and no others. A plain drag pans. | proposed | [foldkit-flow:packages/flow/src/mounts.ts:235-252][14], [foldkit-flow:README.md:66][15], [foldkit-flow:docs/specs/0001-first-felt-journey.md:86][16] |
+| [Controls, fit view and minimap](../technical-components.md#req-flow-controls-minimap) | Buttons zoom in, zoom out and fit the view. A minimap shows the nodes and pans when dragged. | proposed | [foldkit-flow:README.md:66][15], [foldkit-flow:packages/flow/src/view.ts:464-478][17], [foldkit-flow:packages/flow/src/view.ts:499-523][18], [foldkit-flow:docs/specs/0001-first-felt-journey.md:88][19] |
+| [Compound nodes with relative positions](../technical-components.md#req-flow-compound-nodes) | A child node has a position relative to its parent. Dragging the parent moves the child, and a clamped child stays inside the parent. | proposed | [foldkit-flow:packages/flow/src/geometry.ts:88][20], [foldkit-flow:packages/flow/src/geometry.ts:451-474][21], [foldkit-flow:README.md:20][13], [log L19][22] |
+| [Delete a parent with its descendants and edges](../technical-components.md#req-flow-delete-closure) | Deleting a parent removes all its descendants and every edge attached to any of them, and reports the full sets. | proposed | [foldkit-flow:packages/flow/src/update.ts:289-343][23], [foldkit-flow:README.md:75][24], [foldkit-flow:docs/specs/0001-first-felt-journey.md:135][25] |
+| [Edit the graph by keyboard](../technical-components.md#req-flow-keyboard-edit) | Nodes take focus. Enter or Space selects, arrow keys move (Shift makes a larger step), Delete removes, Escape clears, and a live region announces each result. | proposed | [foldkit-flow:README.md:74-78][26], [foldkit-flow:packages/flow/src/update.ts:413-435][27], [foldkit-flow:docs/specs/0001-first-felt-journey.md:87][28] |
+| [The app draws node content](../technical-components.md#req-flow-custom-nodes) | Nodes render through one callback that the application supplies. Handles are declared on the node. Edges come in three kinds with an optional arrow. | proposed | [foldkit-flow:README.md:56-63][29], [foldkit-flow:packages/flow/src/view.ts:45-54][30], [foldkit-flow:packages/flow/src/types.ts:33-38][31], [foldkit-flow:docs/specs/0001-first-felt-journey.md:30-33][32] |
+| [Show the xyflow credit by default, allow hiding](../technical-components.md#req-flow-attribution-toggle) | The "Built with xyflow" link shows unless the application sets Attribution to Hidden. | proposed | [foldkit-flow:docs/specs/0000-development-lifecycle.md:53][33], [foldkit-flow:docs/specs/0000-development-lifecycle.md:90][34], [foldkit-flow:README.md:86][35] |
+| [A browser journey gate](../technical-components.md#req-flow-browser-gate) | One command drives the built example in headless Chromium with real pointer and keyboard input and fails if a journey step fails. | proposed | [foldkit-flow:package.json:18][36], [foldkit-flow:README.md:17][37], [foldkit-flow:AGENTS.md:48][38], [pr foldkit-flow#4][39] |
 
 ### 1.2 Quality goals
 
@@ -69,13 +69,12 @@ Scope `foldkit-flow`: 136 elements.
 
 ## Problems and constraints
 
-- [The package is unpublished and private](../goals.md#problem-flow-unpublished) (open): Nothing is published. The library package is marked private and the README says it is under construction.
-- [The canvas was not on main at the pin](../goals.md#problem-flow-canvas-unmerged) (proposed): The README at the pinned commit 5dd44a9 says the canvas, nodes, edges and selection arrive with spec 0001. PR #4 carried them and had not merged at the pin.
+- [The package is unpublished and private](../goals.md#problem-flow-unpublished) (open): Nothing is published. The library package is marked private at version 0.0.0, and the README says it is not published yet.
 - [No stated goals beyond the README](../goals.md#problem-flow-goals-undocumented) (open): The README gives one sentence of purpose, and spec 0000 states the goal of its lifecycle. No file gives the library's own product goals, users or success measures.
 - [No glossary for the graph terms](../goals.md#problem-flow-no-glossary) (open): The repository has no GLOSSARY.md. Terms such as node, handle, connection and controller have no single definition.
 - [STATE says nothing is blocked](../goals.md#problem-flow-state-blocked-nothing) (open): STATE.md lists "Blocked: Nothing". The same file names the Foldkit plugin mismatch, and issue #3 about the Bun toolchain is open.
 - [vp run may use a different Bun than devenv](../goals.md#problem-flow-bun-mismatch) (open): The package manager range is `^1.4.2` with download on failure. `vp run` can download its own Bun and so differ from the Bun that devenv pins.
-- [Keyboard users cannot create connections](../goals.md#problem-flow-keyboard-connect-missing) (open): The first journey does not let a keyboard-only person connect two handles. PR #4 lists keyboard connect as an open question.
+- [Keyboard users cannot create connections](../goals.md#problem-flow-keyboard-connect-missing) (open): The built journey does not let a keyboard-only person connect two handles. README line 78 says keyboard connect is not built, and spec 0001 lists it as an open question.
 - [The browser journey does not run in CI](../goals.md#problem-flow-journey-not-in-ci) (open): CI has no browser. The journey and the performance check run only on a developer's machine.
 - [Only Chromium and mouse input were tested](../goals.md#problem-flow-browsers-untested) (open): The journey ran in one Chromium version. Firefox, WebKit and touch input were not run.
 - [Demand and users are not measured](../goals.md#problem-flow-demand-unmeasured) (open): The cited sources show no measure of who needs the library or who uses it. Nothing is published, and the sources record no user count or request.
@@ -112,7 +111,6 @@ flowchart BT
     goal_flow_publish("Publish the package for<br/>others to use"):::proposed
     goal_flow_respect_xyflow("Credit and respect xyflow"):::proposed
     problem_flow_unpublished{{"The package is unpublished<br/>and private"}}:::open
-    problem_flow_canvas_unmerged{{"The canvas was not on main<br/>at the pin"}}:::proposed
     problem_flow_goals_undocumented{{"No stated goals beyond the<br/>README"}}:::open
     problem_flow_no_glossary{{"No glossary for the graph<br/>terms"}}:::open
     problem_flow_state_blocked_nothing{{"STATE says nothing is<br/>blocked"}}:::open
@@ -153,7 +151,6 @@ flowchart BT
     goal_flow_publish -->|subgoal-of| goal_flow_vision
     goal_flow_respect_xyflow -->|subgoal-of| goal_flow_vision
     problem_flow_unpublished -.->|hinders| goal_flow_publish
-    problem_flow_canvas_unmerged -.->|hinders| goal_flow_first_journey
     problem_flow_goals_undocumented -.->|hinders| goal_flow_vision
     problem_flow_no_glossary -.->|hinders| goal_flow_first_journey
     problem_flow_state_blocked_nothing -.->|hinders| goal_flow_lifecycle
@@ -330,35 +327,15 @@ Full tables and diagrams: [Concepts Model](../concepts.md).
 
 | Item | Title | State | Element |
 | --- | --- | --- | --- |
-| pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [End user of a graph canvas](../actors-and-resources.md#actor-flow-end-user) |
-| pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [Keyboard-only user](../actors-and-resources.md#actor-flow-keyboard-user) |
 | pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [Chromium for the journey gate](../actors-and-resources.md#resource-flow-chromium) |
-| pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [Flow](../concepts.md#concept-flow-flow) |
-| pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [Node](../concepts.md#concept-flow-node) |
-| pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [Edge](../concepts.md#concept-flow-edge) |
-| pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [Handle](../concepts.md#concept-flow-handle) |
-| pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [Connection](../concepts.md#concept-flow-connection) |
-| pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [Compound (parent) node](../concepts.md#concept-flow-parent-node) |
-| pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [Viewport](../concepts.md#concept-flow-viewport) |
-| pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [Selection](../concepts.md#concept-flow-selection) |
-| pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [Minimap and controls](../concepts.md#concept-flow-minimap) |
-| pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [Mount](../concepts.md#concept-flow-mount) |
-| pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [Controller](../concepts.md#concept-flow-controller) |
-| pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [Out-message (outcome)](../concepts.md#concept-flow-out-message) |
-| pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [Live region](../concepts.md#concept-flow-live-region) |
-| pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [Carry reebeat studio's story graph](../goals.md#goal-flow-studio-story-graph) |
 | pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [One felt journey works end to end](../goals.md#goal-flow-first-journey) |
 | pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [Keyboard-accessible graph editing](../goals.md#goal-flow-keyboard-access) |
 | pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [Stay smooth at 500 nodes and 700 edges](../goals.md#goal-flow-performance) |
 | pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [Prove interaction in a real browser](../goals.md#goal-flow-browser-proof) |
-| pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [The canvas was not on main at the pin](../goals.md#problem-flow-canvas-unmerged) |
 | issue:foldkit-flow#3 | vp run uses a downloaded Bun, not the devenv Bun (devEngines ^1.4.2) | open | [STATE says nothing is blocked](../goals.md#problem-flow-state-blocked-nothing) |
 | issue:foldkit-flow#3 | vp run uses a downloaded Bun, not the devenv Bun (devEngines ^1.4.2) | open | [vp run may use a different Bun than devenv](../goals.md#problem-flow-bun-mismatch) |
-| pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [Keyboard users cannot create connections](../goals.md#problem-flow-keyboard-connect-missing) |
-| pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [The browser journey does not run in CI](../goals.md#problem-flow-journey-not-in-ci) |
 | pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [Only Chromium and mouse input were tested](../goals.md#problem-flow-browsers-untested) |
-| pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [The module-mocking lint rule has a gap](../goals.md#problem-flow-lint-mocking-gap) |
-| pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [Pin @xyflow/system exactly](../goals.md#constraint-flow-xyflow-pinned) |
+| issue:foldkit-flow#5 | anti-slop/no-module-mocking misses vi from vite-plus/test | open | [The module-mocking lint rule has a gap](../goals.md#problem-flow-lint-mocking-gap) |
 | pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [A real browser finds defects unit tests miss](../goals.md#opportunity-flow-real-browser-defects) |
 | pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [A Foldkit app adopts the library](../business-processes.md#process-flow-adopt-library) |
 | pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [A person works on the graph canvas](../business-processes.md#process-flow-use-canvas) |
@@ -371,22 +348,16 @@ Full tables and diagrams: [Concepts Model](../concepts.md).
 | pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [Delete the selection](../business-processes.md#process-flow-delete-selection) |
 | pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [The application applies an outcome](../business-processes.md#process-flow-apply-outcome) |
 | pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [Run the browser journey gate](../business-processes.md#process-flow-run-journey-gate) |
-| pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [xyflow releases a new @xyflow/system](../business-processes.md#extproc-flow-xyflow-release) |
 | pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [The library reports outcomes; the app changes the graph](../business-rules.md#rule-flow-outcomes-not-mutations) |
-| pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [Controllers attach in Mounts and die on unmount](../business-rules.md#rule-flow-controllers-in-mounts) |
-| pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [The application owns node layout](../business-rules.md#rule-flow-layout-by-app) |
 | pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [Deleting a parent deletes its descendants and their edges](../business-rules.md#rule-flow-delete-closure) |
 | pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [A connection the app refuses makes no edge](../business-rules.md#rule-flow-invalid-connection-refused) |
 | pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [A clamped child stays inside its parent](../business-rules.md#rule-flow-child-clamp) |
 | pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [Keys select, move, delete and clear](../business-rules.md#rule-flow-keyboard-actions) |
 | pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [Pointer moves re-render only what changed](../business-rules.md#rule-flow-memoised-views) |
-| pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [packages/flow (the library)](../technical-components.md#comp-flow-library) |
 | pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [tools/journey (browser gate)](../technical-components.md#comp-flow-journey-tool) |
 | pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [Flow Submodel (Model, update, view)](../technical-components.md#comp-flow-flow-submodel) |
 | pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [Mounts that own the xyflow controllers](../technical-components.md#comp-flow-mounts) |
 | pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [The graph lives in the app's Model](../technical-components.md#isgoal-flow-elm-boundary) |
-| pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [Reuse xyflow's controllers](../technical-components.md#isgoal-flow-reuse-controllers) |
-| pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [Measure the performance budget](../technical-components.md#isgoal-flow-measured-budget) |
 | pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [Pan and zoom by wheel and drag](../technical-components.md#req-flow-pan-zoom) |
 | pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [Drag a node, edges follow](../technical-components.md#req-flow-drag-node) |
 | pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [Connect handles with validation](../technical-components.md#req-flow-connect) |
@@ -405,8 +376,41 @@ Full tables and diagrams: [Concepts Model](../concepts.md).
 | pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [Supported browsers and input types](../technical-components.md#req-flow-portability-browsers) |
 
 [1]: https://github.com/reebeat/foldkit-flow
-[2]: https://github.com/reebeat/foldkit-flow/pull/4
-[3]: ../../sources/operator-decisions-2026-10.md#L19
-[4]: https://github.com/reebeat/foldkit-flow/blob/5dd44a9fe34f1adabca41d9757eefe410f03f60b/docs/specs/0000-development-lifecycle.md#L53
-[5]: https://github.com/reebeat/foldkit-flow/blob/5dd44a9fe34f1adabca41d9757eefe410f03f60b/docs/specs/0000-development-lifecycle.md#L90
-[6]: https://github.com/reebeat/foldkit-flow/blob/5dd44a9fe34f1adabca41d9757eefe410f03f60b/README.md#L21
+[2]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/mounts.ts#L157-L208
+[3]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L82
+[4]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0001-first-felt-journey.md#L83
+[5]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/mounts.ts#L384-L470
+[6]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/update.ts#L183-L186
+[7]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0001-first-felt-journey.md#L84
+[8]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/mounts.ts#L601-L625
+[9]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/update.ts#L266-L281
+[10]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0001-first-felt-journey.md#L85
+[11]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/mounts.ts#L723-L755
+[12]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/update.ts#L522-L529
+[13]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L20
+[14]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/mounts.ts#L235-L252
+[15]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L66
+[16]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0001-first-felt-journey.md#L86
+[17]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/view.ts#L464-L478
+[18]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/view.ts#L499-L523
+[19]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0001-first-felt-journey.md#L88
+[20]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/geometry.ts#L88
+[21]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/geometry.ts#L451-L474
+[22]: ../../sources/operator-decisions-2026-10.md#L19
+[23]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/update.ts#L289-L343
+[24]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L75
+[25]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0001-first-felt-journey.md#L135
+[26]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L74-L78
+[27]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/update.ts#L413-L435
+[28]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0001-first-felt-journey.md#L87
+[29]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L56-L63
+[30]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/view.ts#L45-L54
+[31]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/types.ts#L33-L38
+[32]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0001-first-felt-journey.md#L30-L33
+[33]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0000-development-lifecycle.md#L53
+[34]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0000-development-lifecycle.md#L90
+[35]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L86
+[36]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/package.json#L18
+[37]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L17
+[38]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/AGENTS.md#L48
+[39]: https://github.com/reebeat/foldkit-flow/pull/4
