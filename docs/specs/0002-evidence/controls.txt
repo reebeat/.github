@@ -1,7 +1,7 @@
 == baseline: the model passes (it holds decided problems that keep a gap)
    command: bun tools/intent/src/cli.ts check
    exit:    0
-   first finding: [21:33:44.730] INFO (#2): Model clean: 658 elements, 23 tracked items.
+   first finding: [21:37:58.390] INFO (#2): Model clean: 658 elements, 23 tracked items.
 == baseline: F2 and F3 pass
    command: env BASE=HEAD bash docs/specs/0002-evidence/verify.sh
    exit:    0
@@ -33,4 +33,4 @@
 == after restore: the model passes again
    command: bun tools/intent/src/cli.ts check
    exit:    0
-   first finding: [21:33:52.654] INFO (#2): Model clean: 658 elements, 23 tracked items.
+   first finding: [21:38:12.042] INFO (#2): Model clean: 658 elements, 23 tracked items.

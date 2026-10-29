@@ -1,6 +1,6 @@
-[21:33:38.311] INFO (#2): against feat/0001-model-corrections: 119 status changes, 2 added, 0 removed
-[21:33:38.314] INFO (#2): added: problem-flow-licence-scan-missing, problem-flow-library-applies-deletion
-[21:33:38.316] ERROR (#2): CheckFailed: 119 status change(s)
+[21:38:14.129] INFO (#2): against origin/main: 119 status changes, 2 added, 0 removed
+[21:38:14.134] INFO (#2): added: problem-flow-licence-scan-missing, problem-flow-library-applies-deletion
+[21:38:14.137] ERROR (#2): CheckFailed: 119 status change(s)
 concept-org-agent-tool-protocol: proposed -> decided
 problem-org-demand-unmeasured: open -> decided
 problem-org-lifecycle-copies: open -> decided
