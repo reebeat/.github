@@ -1,0 +1,11 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "ignoreDependencies": ["@effect/language-service", "vite"],
+  "workspaces": {
+    "tools/intent": {
+      "entry": ["src/cli.ts", "test/**/*.test.ts"],
+      "project": ["src/**/*.ts", "test/**/*.ts"]
+    }
+  },
+  "ignoreBinaries": ["gitleaks"]
+}
