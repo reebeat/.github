@@ -1,0 +1,323 @@
+elements:
+  - id: isgoal-org-docs-generated-from-model
+    kind: is-goal
+    title: Documents are generated from the model
+    statement: >-
+      The organisation profile, the sub-model pages, the product pages, the canvas, the roadmap and the gap report are
+      generated from the model. No one edits them by hand.
+    status: proposed
+    rationale: >-
+      Follows the operator's single-source rule (log line 54) applied to this repository. The assignment of 2026-10-29
+      asks for it; the decision log does not.
+    source: [log:54]
+    links:
+      supports: [goal-org-written-intent]
+
+  - id: req-org-intent-checks
+    kind: requirement
+    reqType: functional
+    title: CI fails when the model contradicts itself
+    statement: >-
+      CI fails on a goal with no support, a component that serves no goal, a rule that cites no goal, an element with no
+      source, and a "decided" element whose source is not an operator decision.
+    status: proposed
+    rationale: Required by the assignment of 2026-10-29. The operator should confirm it as a standing requirement.
+    source: [log:54]
+    links:
+      serves: [goal-org-written-intent]
+
+  - id: req-org-model-drift
+    kind: requirement
+    reqType: non-functional
+    quality: maintainability
+    title: Generated documents never drift from the model
+    statement: A test fails when a committed generated document differs from what the generator makes from the model.
+    scenario: >-
+      Someone edits a generated page by hand. The drift test fails in CI and names the page.
+    status: proposed
+    rationale: Applies the generate, then test, then convention ladder of the operator's single-source rule (log line 54).
+    source: [log:54]
+    links:
+      serves: [goal-org-written-intent, goal-org-correctness-by-construction]
+
+  - id: comp-org-intent-model
+    kind: component
+    tier: tool
+    title: The intent model and its generator
+    statement: >-
+      The YAML model in `model/`, its Effect Schema, the checks and the Bun generator in `tools/intent`. It is the only
+      hand-written source of this repository's documents.
+    package: tools/intent
+    licence: Apache-2.0
+    status: proposed
+    rationale: Built for the assignment of 2026-10-29; it waits for the operator's confirmation of the goal it serves.
+    source: [log:3]
+    canvas: [key-activities, key-resources]
+    links:
+      serves: [goal-org-written-intent]
+      realizes: [req-org-intent-checks, req-org-model-drift, isgoal-org-docs-generated-from-model]
+      depends-on: [resource-decision-log]
+
+  - id: comp-org-profile
+    kind: component
+    tier: artifact
+    title: The organisation profile
+    statement: >-
+      `profile/README.md` is the page that visitors see on the reebeat organisation: vision, tagline, the product family,
+      status and roadmap links.
+    package: profile/README.md
+    licence: Apache-2.0
+    status: proposed
+    rationale: Generated from the model for the assignment of 2026-10-29.
+    source: [log:7]
+    canvas: [channels]
+    links:
+      serves: [goal-org-vision, goal-org-written-intent]
+      realizes: [isgoal-org-docs-generated-from-model]
+      depends-on: [comp-org-intent-model]
+
+  - id: comp-org-lifecycle-toolchain
+    kind: component
+    tier: process-asset
+    title: The shared lifecycle toolchain
+    statement: >-
+      Git hooks, commitlint, gitleaks, the review and merge scripts and the CI workflow, copied into each repository
+      with a provenance record.
+    status: proposed
+    rationale: >-
+      Observed in the repositories: the operator decided the lifecycle (reebeat spec 0000) and its copy into studio, but
+      not this inventory of parts.
+    source: [studio:PROVENANCE.md:3, foldkit-flow:PROVENANCE.md:3]
+    canvas: [key-resources]
+    links:
+      serves: [goal-org-correctness-by-construction]
+      depends-on: [resource-github-org]
+
+  - id: isgoal-org-three-layers
+    kind: is-goal
+    title: Model, Plan and Build are separate layers
+    statement: >-
+      The system keeps three layers apart: a Model that holds the story, a Plan that unrolls it for one artifact, and a
+      Build that makes the artifact incrementally.
+    status: decided
+    source: [log:62]
+    links:
+      supports: [goal-org-declarative-creation, goal-org-reproducible-builds, goal-org-incremental-builds]
+
+  - id: req-org-model-statechart-time
+    kind: requirement
+    reqType: functional
+    title: The Model is a statechart with functional reactive time
+    statement: >-
+      The Model is a statechart plus FRP and SMIL time. It may contain cycles, such as interactive loops and repeats.
+    status: decided
+    source: [log:62, log:24]
+    links:
+      serves: [goal-org-declarative-creation, goal-org-interactive-multimedia]
+
+  - id: req-org-plan-per-artifact
+    kind: requirement
+    reqType: functional
+    title: Each artifact has its own Plan that unrolls the Model
+    statement: >-
+      The Plan of a video is a linear timeline. The Plan of a deck is steps. The Plan of a website is a navigable graph.
+    status: decided
+    source: [log:62, log:37]
+    links:
+      serves: [goal-org-accessible-artifacts, goal-org-interactive-multimedia]
+
+  - id: req-org-build-incremental
+    kind: requirement
+    reqType: non-functional
+    quality: performance
+    title: The Build rebuilds only what an edit changes
+    statement: >-
+      The Build is an incremental graph with dynamic dependencies and early cutoff.
+    scenario: >-
+      An author edits one line of narration. Only the speech, the timing and the frames that depend on that line are
+      rebuilt; the rest comes from the cache.
+    status: proposed
+    rationale: >-
+      The operator decided the incremental build graph with dynamic dependencies and early cutoff (log line 62). The
+      narration scenario is an example drawn from issue 9 of reebeat; the operator should confirm it as the acceptance
+      scenario.
+    source: [log:62, log:10, "issue:reebeat#9"]
+    links:
+      serves: [goal-org-incremental-builds]
+
+  - id: req-org-build-reproducible
+    kind: requirement
+    reqType: non-functional
+    quality: reproducibility
+    title: Persistent traces are content-addressed
+    statement: The Build keeps persistent traces that are addressed by content.
+    scenario: >-
+      The same story is built twice, once warm and once cold. The two artifacts are byte-identical.
+    status: proposed
+    rationale: >-
+      The operator decided content-addressed persistent traces (log line 62). That a warm build equals a cold build, byte
+      for byte, comes from the open issue 9 and falsifier F6 of reebeat spec 0001; the operator should confirm it as a
+      quality goal.
+    source: [log:62, log:10, "issue:reebeat#9"]
+    links:
+      serves: [goal-org-reproducible-builds]
+
+  - id: comp-org-layer-model
+    kind: component
+    tier: layer
+    title: Layer 1, the Model
+    statement: >-
+      The story as a statechart with functional reactive time: Scenes and States as nodes, Beats as transitions. It may
+      contain cycles.
+    status: decided
+    source: [log:62, log:19]
+    canvas: [key-resources]
+    links:
+      serves: [goal-org-declarative-creation, goal-org-interactive-multimedia]
+      realizes: [req-org-model-statechart-time, isgoal-org-three-layers]
+
+  - id: comp-org-layer-plan
+    kind: component
+    tier: layer
+    title: Layer 2, the Plan
+    statement: >-
+      The unrolling of the Model for one artifact: a timeline for video, steps for a deck, a navigable graph for a website.
+    status: decided
+    source: [log:62]
+    links:
+      serves: [goal-org-accessible-artifacts, goal-org-interactive-multimedia]
+      realizes: [req-org-plan-per-artifact]
+      depends-on: [comp-org-layer-model]
+
+  - id: comp-org-layer-build
+    kind: component
+    tier: layer
+    title: Layer 3, the Build
+    statement: >-
+      An incremental build graph (a DAG) with dynamic dependencies, early cutoff and content-addressed persistent traces,
+      after Build Systems a la Carte (Mokhov, Mitchell and Peyton Jones, ICFP 2018). Only the build graph is a DAG.
+    status: decided
+    source: [log:62]
+    canvas: [key-resources]
+    links:
+      serves: [goal-org-reproducible-builds, goal-org-incremental-builds]
+      realizes: [req-org-build-incremental, req-org-build-reproducible]
+      depends-on: [comp-org-layer-plan]
+
+  - id: comp-org-effect
+    kind: component
+    tier: external
+    title: Effect
+    statement: >-
+      reebeat is written in Effect. Packages that use unstable Effect APIs cap their version range below the next minor.
+    licence: MIT
+    status: decided
+    source: [log:60, log:55]
+    canvas: [key-partners]
+    links:
+      serves: [goal-org-correctness-by-construction, goal-org-stay-on-supported-stack]
+
+  - id: comp-org-xstate
+    kind: component
+    tier: external
+    title: XState
+    statement: >-
+      XState v6 with its Effect integration may be a build-time dependency. The runtime is a build step.
+    licence: MIT
+    status: decided
+    source: [log:26]
+    canvas: [key-partners]
+    links:
+      serves: [goal-org-declarative-creation]
+      realizes: [req-org-model-statechart-time]
+
+  - id: comp-org-react-core-compiler
+    kind: component
+    tier: external
+    rejected: true
+    title: React's core as the compiler core (rejected)
+    statement: >-
+      The React reconciler and scheduler were considered as the compiler core and rejected. React stays possible as a
+      render engine and JSX as an authoring importer.
+    status: decided
+    source: [log:64]
+
+  - id: comp-org-react-render-engine
+    kind: component
+    tier: integration
+    title: React as a render engine
+    statement: React stays possible as one render engine among others, behind the render-engine contract.
+    status: proposed
+    rationale: The operator kept React "as a possible render engine" (log line 64); nothing is built or scheduled.
+    source: [log:64, log:28]
+    links:
+      serves: [goal-org-modular-extensible]
+
+  - id: comp-org-jsx-importer
+    kind: component
+    tier: integration
+    title: JSX as an authoring importer
+    statement: JSX stays possible as an authoring importer that reads JSX and writes the IR.
+    status: proposed
+    rationale: The operator kept JSX "as a possible authoring importer" (log line 64); nothing is built or scheduled.
+    source: [log:64]
+    links:
+      serves: [goal-org-modular-extensible]
+
+  - id: problem-org-react-no-whole-timeline-plan
+    kind: problem
+    title: React cannot plan the whole timeline
+    statement: React has no whole-timeline planning.
+    status: decided
+    source: [log:64]
+    links:
+      hinders: [comp-org-react-core-compiler]
+
+  - id: problem-org-react-wall-clock-scheduler
+    kind: problem
+    title: The React scheduler runs on wall-clock time
+    statement: The scheduler follows the wall clock. A reproducible build needs time that the compiler controls.
+    status: decided
+    source: [log:64]
+    links:
+      hinders: [comp-org-react-core-compiler]
+
+  - id: problem-org-react-local-keys-one-host
+    kind: problem
+    title: React keys are sibling-scoped and it has one host tree
+    statement: >-
+      Keys only identify siblings, but a story needs identity across Scenes. One host tree does not fit several artifacts
+      and render engines.
+    status: decided
+    source: [log:64, log:23]
+    links:
+      hinders: [comp-org-react-core-compiler]
+
+  - id: problem-org-react-in-process-no-audio
+    kind: problem
+    title: React caches in process and has no audio
+    statement: >-
+      React keeps incremental state inside one process, not in persistent traces. It has no notion of audio.
+    status: decided
+    source: [log:64, log:62]
+    links:
+      hinders: [comp-org-react-core-compiler]
+
+  - id: comp-org-how-it-works
+    kind: component
+    tier: artifact
+    title: How it works (the technical description)
+    statement: >-
+      A note in the reebeat repository that explains, for technical readers, how the qualities come from the mechanisms:
+      the Model, Plan and Build layers, Effect and XState, prior art, the novelty claim and why React's core was rejected.
+    url: https://github.com/reebeat/reebeat/pull/24
+    status: proposed
+    rationale: >-
+      It is `docs/design/how-it-works.md` in open pull request 24 of reebeat, written for the operator's accepted technical
+      framing (log lines 58 to 65). It is not merged; the link goes to the pull request until it lands on `main`.
+    source: [log:58-65, "pr:reebeat#24"]
+    refs: ["pr:reebeat#24"]
+    canvas: [channels]
+    links:
+      serves: [goal-org-vision]
+      realizes: [isgoal-org-three-layers]

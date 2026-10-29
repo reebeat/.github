@@ -1,0 +1,326 @@
+elements:
+  # ---------------------------------------------------------------- the first felt journey
+  - id: process-studio-first-journey
+    kind: process
+    category: primary
+    title: The first felt journey
+    statement: >-
+      A person or an agent opens a story, sees it as a graph and a timeline, scrubs a preview, edits one Element property and
+      undoes the edit. No server is needed.
+    status: proposed
+    rationale: >-
+      Spec 0001 plans the journey as a design. At the pinned commit it is blocked on reebeat. The operator should confirm
+      the journey.
+    source: [studio:docs/specs/0001-first-felt-journey.md:11-22]
+    pricing: free
+    refs: ["studio:docs/specs/0001-first-felt-journey.md:1"]
+    links:
+      serves: [goal-studio-first-felt-journey]
+      requires: [constraint-studio-ir-stability]
+
+  - id: process-studio-open-story
+    kind: process
+    category: primary
+    title: Open a story
+    statement: >-
+      The editor opens a story IR JSON file, the committed source of reebeat, and checks it against the story schema.
+    status: proposed
+    rationale: >-
+      Step 1 of the journey in spec 0001. It depends on reebeat spec 0006. The operator should confirm this open-and-validate
+      workflow.
+    source: [studio:docs/specs/0001-first-felt-journey.md:16, studio:docs/specs/0001-first-felt-journey.md:36]
+    pricing: free
+    links:
+      serves: [goal-studio-first-felt-journey]
+      part-of: [process-studio-first-journey]
+      uses: [resource-studio-story-file]
+      next: [process-studio-inspect-story]
+
+  - id: process-studio-inspect-story
+    kind: process
+    category: primary
+    title: See the graph and the timeline
+    statement: >-
+      The editor draws States as nodes grouped by Scene, Beats as edges, and lanes in time with their effects.
+    status: proposed
+    rationale: >-
+      Step 2 of the journey in spec 0001. Falsifier F1 says the graph must equal the engine's graph. The operator should
+      confirm the graph and timeline presentation.
+    source: [studio:docs/specs/0001-first-felt-journey.md:17, studio:docs/specs/0001-first-felt-journey.md:131]
+    pricing: free
+    links:
+      serves: [goal-studio-first-felt-journey]
+      part-of: [process-studio-first-journey]
+      uses: [comp-studio-lens-story-graph, comp-studio-lens-timeline]
+      next: [process-studio-scrub-preview]
+
+  - id: process-studio-scrub-preview
+    kind: process
+    category: primary
+    title: Scrub the preview
+    statement: >-
+      The person drags the playhead and the preview shows that frame and its narration word.
+    status: proposed
+    rationale: >-
+      Step 3 of the journey in spec 0001. A frame-exact scrub needs a seekable Deck page from reebeat. The operator should
+      confirm the Deck preview and scrub experience.
+    source: [studio:docs/specs/0001-first-felt-journey.md:18, studio:docs/specs/0001-first-felt-journey.md:39]
+    pricing: free
+    links:
+      serves: [goal-studio-preview-fidelity]
+      part-of: [process-studio-first-journey]
+      uses: [comp-studio-preview, concept-studio-playhead]
+      next: [process-studio-edit-property]
+
+  - id: process-studio-edit-property
+    kind: process
+    category: primary
+    title: Edit one Element property
+    statement: >-
+      The person selects an Element and changes one property in the inspector. The change is one edit, and the story stays
+      valid or the edit is refused with the reason.
+    status: proposed
+    rationale: >-
+      Steps 4 and 5 of the journey in spec 0001, with falsifiers F3 and F4. The operator should confirm the edit and
+      validation behaviour.
+    source: [studio:docs/specs/0001-first-felt-journey.md:19-21, studio:docs/specs/0001-first-felt-journey.md:133-134]
+    pricing: free
+    links:
+      serves: [goal-studio-first-felt-journey]
+      part-of: [process-studio-first-journey]
+      uses: [comp-studio-edit-path]
+      next: [process-studio-undo-edit]
+
+  - id: process-studio-undo-edit
+    kind: process
+    category: primary
+    title: Undo an edit
+    statement: >-
+      Undo restores the old story byte for byte. The inverse of an edit is computed, not stored by hand.
+    status: proposed
+    rationale: >-
+      Spec 0001 plans undo as the computed inverse of the patch, and falsifier F6 tests the patch laws. The operator should
+      confirm the undo behaviour and the inverse design.
+    source: [studio:docs/specs/0001-first-felt-journey.md:20-21, studio:docs/specs/0001-first-felt-journey.md:93, studio:docs/specs/0001-first-felt-journey.md:136]
+    pricing: free
+    links:
+      serves: [goal-studio-first-felt-journey]
+      part-of: [process-studio-first-journey]
+      uses: [comp-studio-edit-path]
+
+  # ---------------------------------------------------------------- narration, collaboration, delivery
+  - id: process-studio-record-narration
+    kind: process
+    category: primary
+    title: Record narration against the Deck
+    statement: >-
+      The presenter records a take with a teleprompter. A Line can have several takes, and the author picks the best.
+    status: proposed
+    rationale: >-
+      The lenses note designs the Deck and Record lens. The operator named the deck view for recording narration (log line
+      45), not these steps.
+      The operator should confirm these steps.
+    source: [log:45, studio:docs/design/lenses.md:36-39]
+    links:
+      serves: [goal-studio-deck-view-narration]
+      uses: [comp-studio-lens-record, resource-studio-speech-cache]
+      produces: [concept-studio-take]
+      next: [process-studio-cut-narration]
+
+  - id: process-studio-cut-narration
+    kind: process
+    category: primary
+    title: Cut narration and tie it to beat events
+    statement: >-
+      The take is aligned to its words and cut into pieces. Each piece is tied to a beat lifecycle event, or the whole take
+      starts where its Line starts.
+    status: proposed
+    rationale: >-
+      The operator named cut narration pieces tied to beat lifecycle events (log line 45). The two ways to attach a take
+      come from the lenses note.
+      The operator should confirm both ways to attach a take.
+    source: [log:45, studio:docs/design/lenses.md:40-41, studio:docs/design/lenses.md:43-48]
+    links:
+      serves: [goal-studio-deck-view-narration]
+      uses: [comp-studio-lens-record]
+      produces: [concept-studio-narration-piece]
+      next: [process-studio-deliver]
+
+  - id: process-studio-collaborate-merge
+    kind: process
+    category: primary
+    title: Collaborate and merge edits
+    statement: >-
+      Several people and agents edit one story through the sync server, which holds a validation gate on the merge-based
+      keyed document. This is a paid feature.
+    status: decided
+    source: [log:43, log:45, log:47]
+    pricing: paid
+    links:
+      serves: [goal-studio-collaboration]
+      uses: [comp-studio-sync-server, concept-studio-keyed-document]
+      next: [process-studio-review-suggestion]
+
+  - id: process-studio-review-suggestion
+    kind: process
+    category: primary
+    title: Review a suggestion
+    statement: >-
+      A person sees a suggestion with its author and accepts or rejects it. An accepted suggestion applies as the patch it
+      was, and the record keeps who proposed and who accepted.
+    status: proposed
+    rationale: >-
+      The lenses note designs the Review lens. It is design only. The operator should confirm this suggestion-review
+      workflow.
+    source: [studio:docs/design/lenses.md:66-69]
+    links:
+      serves: [goal-studio-human-control]
+      uses: [comp-studio-lens-review, concept-studio-suggestion]
+      next: [process-studio-deliver]
+
+  - id: process-studio-deliver
+    kind: process
+    category: primary
+    title: Deliver a Video, a Deck or a receipt
+    statement: >-
+      The author renders a Video with aspect variants, shows the Deck in present mode, and keeps build receipts with the
+      hashes of the story, its inputs and the output.
+    status: proposed
+    rationale: >-
+      The operator named a render view supporting video and decks (log line 45). The three outputs and the free and paid
+      split of local and cloud renders come from the lenses note.
+      The operator should confirm the delivery outputs and the tier split.
+    source: [log:45, studio:docs/design/lenses.md:79-87]
+    links:
+      serves: [goal-studio-lens-deliver]
+      uses: [comp-studio-lens-deliver]
+
+  # ---------------------------------------------------------------- build and distribute
+  - id: process-studio-build-binary
+    kind: process
+    category: supporting
+    title: Build the single binary
+    statement: >-
+      The build embeds the editor into one JSON file and compiles it with Bun for five targets. The binary serves the editor
+      on a loopback address.
+    status: proposed
+    rationale: >-
+      PR 6 reported the binary built and tested, and it was a draft at the pinned commit. The operator decided the single
+      binary (log line 46) but not these steps. The operator should confirm them.
+    source: [log:46, pr:studio#6]
+    refs: [pr:studio#6]
+    links:
+      serves: [goal-studio-web-and-binary]
+      uses: [comp-studio-launcher]
+      next: [process-studio-distribute-binary]
+
+  - id: process-studio-distribute-binary
+    kind: process
+    category: supporting
+    title: Check and distribute the binaries
+    statement: >-
+      CI starts each binary on its own platform, checks its file type and checksum, and a version tag creates a draft
+      release. Nothing is published without the operator.
+    status: proposed
+    rationale: >-
+      PR 6 describes the workflow, and it was a draft at the pinned commit. The operator should confirm the workflow.
+    source: [pr:studio#6]
+    refs: [pr:studio#6]
+    links:
+      serves: [goal-studio-web-and-binary]
+      uses: [comp-studio-launcher]
+
+  - id: process-studio-deploy-web
+    kind: process
+    category: supporting
+    title: Deploy the web editor
+    statement: >-
+      Alchemy deploys the editor as a Cloudflare Worker, with one stage for each pull request and one for main. The path was
+      written but inert at the pinned commit.
+    status: open
+    rationale: >-
+      At the pinned commit the deploy had not run. It waits for an Alchemy release that fixes the Effect 4.1 import, and it
+      needs credentials that only the operator can create. The operator should confirm the per-pull-request Worker stages
+      (an open question in PR 6).
+    source: [pr:studio#6, log:46]
+    refs: [pr:studio#6]
+    links:
+      serves: [goal-studio-web-and-binary]
+      uses: [comp-studio-web-deploy]
+
+  # ---------------------------------------------------------------- governance
+  - id: process-studio-pr-review-loop
+    kind: process
+    category: governance
+    title: Spec, code, pull request, review, merge
+    statement: >-
+      A contributor writes a spec, builds it on a branch and opens one pull request when the journey works. Independent
+      reviewers judge the plan, the code and their agreement, and a recorded pass allows the merge.
+    status: proposed
+    rationale: >-
+      Observed in the repository: spec 0000 and AGENTS.md describe this road. The spec header says the operator assigned the
+      lifecycle as a whole, which does not decide each step. The operator must confirm the steps.
+    source: [studio:docs/specs/0000-development-lifecycle.md:13-24, studio:AGENTS.md:13-20]
+    links:
+      serves: [goal-studio-checked-change]
+      part-of: [process-org-ship-change]
+      uses: [comp-studio-review-skills, comp-studio-ci]
+
+  - id: process-studio-verify-journey
+    kind: process
+    category: governance
+    title: Verify behaviour in a real browser
+    statement: >-
+      A reviewer launches a disposable instance, drives each changed feature as a user would, keeps the evidence outside the
+      worktree and cleans up.
+    status: proposed
+    rationale: >-
+      Observed in the repository: spec 0003 plans the skill and its steps. The operator assigned a verification skill for
+      each repository, not these steps. The operator must confirm them.
+    source: [studio:docs/specs/0003-review-and-verify-skills.md:52-58]
+    links:
+      serves: [goal-studio-checked-change]
+      part-of: [process-studio-pr-review-loop]
+      uses: [comp-studio-verify-skill, concept-studio-feature-map]
+
+  # ---------------------------------------------------------------- external processes
+  - id: extproc-studio-reebeat-ir-stable
+    kind: external-process
+    title: Reebeat stabilises the story IR
+    statement: >-
+      Reebeat merges specs 0004 and 0006 and does spec 0005, so the IR is closed, versioned, story-wide in identity and
+      the committed source. Studio's first journey starts after this.
+    status: open
+    rationale: >-
+      The work is reebeat's. STATE.md lists the first journey as blocked until it ends.
+      The operator should confirm which reebeat specs count as enough and in what order.
+    source: [studio:STATE.md:12, studio:STATE.md:18, studio:docs/specs/0001-first-felt-journey.md:30-36]
+    links:
+      next: [process-studio-open-story]
+
+  - id: extproc-studio-reebeat-compile
+    kind: external-process
+    title: Reebeat compiles a story to a Deck and a Video
+    statement: >-
+      The open compiler takes a story and produces a reveal.js Deck and a Video. Studio reads its IR and uses its renderers.
+    status: proposed
+    rationale: >-
+      Observed in the repository: the README and AGENTS.md say reebeat owns the IR and the renderers. The log decides that
+      the compiler and its formats are open (log:43), not this boundary. The operator must confirm it.
+    source: [log:43, studio:README.md:3, studio:AGENTS.md:3]
+    links:
+      next: [process-studio-deliver]
+
+  - id: extproc-studio-alchemy-release
+    kind: external-process
+    title: Alchemy releases a version with the Effect 4.1 fix
+    statement: >-
+      Alchemy publishes a release after 2.0.0-beta.84 that contains alchemy-run/alchemy#2754. Studio then bumps it and runs
+      the deploy checks.
+    status: open
+    rationale: >-
+      The fix is merged upstream but had no release at the pinned commit. The release date is not under studio's control.
+      The operator should confirm the bump once the release exists.
+    source: [pr:studio#6]
+    links:
+      next: [process-studio-deploy-web]

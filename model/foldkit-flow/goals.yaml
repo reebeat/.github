@@ -1,0 +1,649 @@
+elements:
+  # ---- goals ----
+  - id: goal-flow-vision
+    kind: goal
+    title: A graph canvas for Foldkit applications
+    statement: >-
+      foldkit-flow is a node-based graph UI for Foldkit, like React Flow or Svelte Flow, in its own repository.
+    status: decided
+    source:
+      - log:48
+      - foldkit-flow:README.md:3
+    canvas: [value-propositions]
+    links:
+      subgoal-of: [goal-org-product-family]
+
+  - id: goal-flow-generic-library
+    kind: goal
+    title: A generic library with no product logic
+    statement: >-
+      foldkit-flow stays a generic library. It holds no reebeat product logic, so any Foldkit application can use it.
+    status: proposed
+    source:
+      - foldkit-flow:docs/specs/0000-development-lifecycle.md:3
+      - foldkit-flow:docs/specs/0000-development-lifecycle.md:35
+      - foldkit-flow:README.md:7
+    rationale: >-
+      Observed in the repository: AGENTS.md, README and spec 0000 say the library has no product logic, and the spec
+      0000 header says the operator's assignment named a "generic library with no reebeat product logic". The decision
+      log does not say it (line 48 gives a separate MIT repository), and a spec header shows only that the operator
+      accepted the plan as a whole. "Any Foldkit application can use it" is my inference. The operator must confirm.
+    canvas: [value-propositions]
+    links:
+      subgoal-of: [goal-flow-vision]
+
+  - id: goal-flow-studio-story-graph
+    kind: goal
+    title: Carry reebeat studio's story graph
+    statement: >-
+      The library can draw a statechart map in which Scenes contain States, so reebeat studio can use it for its story
+      graph.
+    status: proposed
+    source:
+      - log:19
+      - studio:docs/design/lenses.md:50-52
+      - pr:foldkit-flow#4
+    rationale: >-
+      The log says a Scene is a compound state that groups States (line 19). Studio's story graph lens draws States,
+      Beats and Scenes as a statechart map (lenses.md 50-52), and PR #4 builds compound nodes (Scenes holding States).
+      No cited line says studio will use foldkit-flow. The operator must confirm that studio is the first consumer.
+    canvas: [value-propositions]
+    links:
+      subgoal-of: [goal-flow-vision]
+
+  - id: goal-flow-first-journey
+    kind: goal
+    title: One felt journey works end to end
+    statement: >-
+      A person opens the example, sees a graph, pans and zooms, drags a node, connects two handles, reconnects an edge
+      and selects by box. A keyboard-only person can select, move and delete nodes.
+    status: proposed
+    source:
+      - pr:foldkit-flow#4
+      - foldkit-flow:README.md:5
+    rationale: >-
+      The README says the canvas arrives with spec 0001. PR #4 carries spec 0001 and had not merged at the pinned
+      commit 5dd44a9 (it has since merged; see the tracker), so at the pin the journey is a plan. PR #4 plan: the keyboard part covers node actions only, because keyboard connect is "not
+      built". The operator must accept the journey as the first release scope.
+    refs: [pr:foldkit-flow#4]
+    jtbd:
+      persona: actor-flow-app-developer
+      when: I build a Foldkit application that shows a graph
+      want: a ready canvas with pan, zoom, drag, connect and selection
+      soThat: I do not write that interaction code myself
+    links:
+      subgoal-of: [goal-flow-vision]
+
+  - id: goal-flow-keyboard-access
+    kind: goal
+    title: Keyboard-accessible graph editing
+    statement: >-
+      A person who uses only the keyboard can reach nodes, select, move and delete them, and hear the result announced.
+      Creating a connection by keyboard is not part of the first journey.
+    status: proposed
+    source:
+      - pr:foldkit-flow#4
+      - foldkit-flow:docs/specs/0000-development-lifecycle.md:3
+    rationale: >-
+      PR #4 lists keyboard access as part of its journey and falsifiers (J5). No operator line states accessibility as
+      a goal for this library; the org goal on accessible artifacts is about artifacts, not editors. The operator must
+      confirm the goal.
+    refs: [pr:foldkit-flow#4]
+    canvas: [value-propositions]
+    jtbd:
+      persona: actor-flow-keyboard-user
+      when: I cannot or do not use a pointer
+      want: to select, move and delete nodes with keys
+      soThat: I can edit the same graph as a pointer user
+    links:
+      supports: [goal-org-accessible-artifacts]
+      subgoal-of: [goal-flow-vision]
+
+  - id: goal-flow-performance
+    kind: goal
+    title: Stay smooth at 500 nodes and 700 edges
+    statement: >-
+      Dragging one node in a graph of 500 nodes and 700 edges feels smooth, and zoom and pan re-render no node.
+    status: proposed
+    source:
+      - pr:foldkit-flow#4
+    rationale: >-
+      PR #4 sets this budget and reports measured runs. It is a spec's plan and not an operator line. The operator must
+      confirm 500 nodes and 700 edges as the target size.
+    refs: [pr:foldkit-flow#4]
+    canvas: [value-propositions]
+    links:
+      subgoal-of: [goal-flow-vision]
+
+  - id: goal-flow-browser-proof
+    kind: goal
+    title: Prove interaction in a real browser
+    statement: >-
+      Graph behaviour is checked with real pointer and keyboard input in a real browser, not only in unit tests.
+    status: proposed
+    source:
+      - pr:foldkit-flow#4
+      - foldkit-flow:docs/specs/0000-development-lifecycle.md:92
+    rationale: >-
+      Spec 0000 says spec 0001 adds the browser journey as a local gate. PR #4 reports that Chromium testing found
+      defects unit tests missed. The operator must confirm this as a standing goal, not a one-off.
+    refs: [pr:foldkit-flow#4]
+    links:
+      supports: [goal-flow-first-journey]
+
+  - id: goal-flow-lifecycle
+    kind: goal
+    title: Every change travels spec, code, PR
+    statement: >-
+      Each change has one spec, one branch and one PR. It passes the same gates locally, in CI and in a recorded review.
+    status: proposed
+    source:
+      - foldkit-flow:docs/specs/0000-development-lifecycle.md:3
+      - foldkit-flow:docs/specs/0000-development-lifecycle.md:9
+      - foldkit-flow:AGENTS.md:13-19
+    rationale: >-
+      Observed in the repository: spec 0000 and AGENTS.md state the goal. The operator's assignment of spec 0000 (its
+      header) accepted the plan as a whole, not this wording. The operator must confirm.
+    canvas: [key-activities]
+    links:
+      supports: [goal-org-correctness-by-construction, goal-org-written-intent]
+
+  - id: goal-flow-upstream-offer
+    kind: goal
+    title: Offer the library to Foldkit
+    statement: >-
+      When the API has settled, the project offers the library to Foldkit as `@foldkit/flow`. It does not offer it
+      earlier.
+    status: decided
+    source:
+      - record:foldkit-flow:STATE.md:13
+      - foldkit-flow:docs/specs/0000-development-lifecycle.md:111
+    canvas: [key-partners, channels]
+
+  - id: goal-flow-publish
+    kind: goal
+    title: Publish the package for others to use
+    statement: >-
+      The library is published as the package `foldkit-flow` after it is implemented, so other applications can install
+      it.
+    status: proposed
+    source:
+      - foldkit-flow:AGENTS.md:3
+      - foldkit-flow:README.md:5
+      - foldkit-flow:packages/flow/package.json:4
+    rationale: >-
+      AGENTS.md says the package is published as `foldkit-flow`; the README says nothing is published and the package
+      is private. The log says reebeat packages go to npm under `@reebeat/*` (line 49), which differs from the name
+      `foldkit-flow`. The operator must confirm the package name and when to publish.
+    canvas: [channels]
+    links:
+      subgoal-of: [goal-flow-vision]
+
+  - id: goal-flow-respect-xyflow
+    kind: goal
+    title: Credit and respect xyflow
+    statement: >-
+      The project keeps xyflow's licence notice and credit. It shows the credit link by default and lets an
+      application hide it.
+    status: proposed
+    source:
+      - foldkit-flow:NOTICE:4-14
+      - foldkit-flow:README.md:21
+      - foldkit-flow:docs/specs/0000-development-lifecycle.md:34
+    rationale: >-
+      NOTICE and the README say xyflow asks its users to keep the attribution or support the project. The repository
+      documents the practice, but no operator line records it. The operator must confirm the default and the hide
+      option.
+    canvas: [key-partners]
+    links:
+      subgoal-of: [goal-flow-vision]
+
+  # ---- problems and gaps ----
+  - id: problem-flow-unpublished
+    kind: problem
+    title: The package is unpublished and private
+    statement: >-
+      Nothing is published. The library package is marked private and the README says it is under construction.
+    status: open
+    source:
+      - foldkit-flow:README.md:5
+      - foldkit-flow:packages/flow/package.json:4
+    rationale: >-
+      The library cannot yet be installed as a published npm package (a workspace or Git install is not ruled out).
+      Publishing needs a merged canvas and a settled package name. The operator must confirm the name and timing.
+    gap:
+      repo: foldkit-flow
+      fix: Publish a pre-release once the package name is settled.
+    links:
+      hinders: [goal-flow-publish]
+
+  - id: problem-flow-canvas-unmerged
+    kind: problem
+    title: The canvas was not on main at the pin
+    statement: >-
+      The README at the pinned commit 5dd44a9 says the canvas, nodes, edges and selection arrive with spec 0001. PR #4
+      carried them and had not merged at the pin.
+    status: proposed
+    source:
+      - foldkit-flow:README.md:5
+      - pr:foldkit-flow#4
+    rationale: >-
+      At the pin, main held only the scaffold and the attribution. PR #4 has since merged (see the tracker), so this was
+      a gap at the pin and its fix has been made; I dropped the gap field for that reason. The merged state is not
+      checked line by line here. The operator must confirm that the merged canvas is the intended first release.
+    refs: [pr:foldkit-flow#4]
+    links:
+      hinders: [goal-flow-first-journey]
+
+  - id: problem-flow-goals-undocumented
+    kind: problem
+    title: No stated goals beyond the README
+    statement: >-
+      The README gives one sentence of purpose, and spec 0000 states the goal of its lifecycle. No file gives the
+      library's own product goals, users or success measures.
+    status: open
+    source:
+      - foldkit-flow:README.md:3-7
+      - foldkit-flow:docs/specs/0000-development-lifecycle.md:9
+      - foldkit-flow:STATE.md:7
+    rationale: >-
+      The README intro and STATE.md describe what the library is; spec 0000 lists goals for the development lifecycle,
+      not for the product. This model is the first written list of product goals. The operator must confirm which
+      goals hold.
+    gap:
+      repo: foldkit-flow
+      fix: Link this model's goals from the README so the purpose is written once.
+    links:
+      hinders: [goal-flow-vision]
+
+  - id: problem-flow-no-glossary
+    kind: problem
+    title: No glossary for the graph terms
+    statement: >-
+      The repository has no GLOSSARY.md. Terms such as node, handle, connection and controller have no single
+      definition.
+    status: open
+    source:
+      - absent:foldkit-flow:GLOSSARY.md
+    rationale: >-
+      Terms come from xyflow and Foldkit and are used across README, specs and code. A glossary would fix their meaning.
+    gap:
+      repo: foldkit-flow
+      fix: Add a GLOSSARY.md generated from the concepts in this model.
+    links:
+      hinders: [goal-flow-first-journey]
+
+  - id: problem-flow-state-blocked-nothing
+    kind: problem
+    title: STATE says nothing is blocked
+    statement: >-
+      STATE.md lists "Blocked: Nothing". The same file names the Foldkit plugin mismatch, and issue #3 about the Bun
+      toolchain is open.
+    status: open
+    source:
+      - foldkit-flow:STATE.md:12
+      - foldkit-flow:STATE.md:15-17
+      - issue:foldkit-flow#3
+    rationale: >-
+      The plugin and Bun problems do not stop work today, so "nothing" may be right. But the file does not say they are
+      known risks. The maintainer must decide how STATE.md reports risks that do not block.
+    gap:
+      repo: foldkit-flow
+      fix: Add a "Risks" list to STATE.md that names the plugin mismatch and issue #3.
+    links:
+      hinders: [goal-flow-lifecycle]
+
+  - id: problem-flow-bun-mismatch
+    kind: problem
+    title: vp run may use a different Bun than devenv
+    statement: >-
+      The package manager range is `^1.4.2` with download on failure. `vp run` can download its own Bun and so differ
+      from the Bun that devenv pins.
+    status: open
+    source:
+      - issue:foldkit-flow#3
+      - foldkit-flow:package.json:43-47
+      - foldkit-flow:devenv.nix:8
+    rationale: >-
+      Issue #3 reports a downloaded Bun 1.4.3 where devenv pins 1.4.2. It proposes pinning the version exactly. The fix
+      is not made yet.
+    refs: [issue:foldkit-flow#3]
+    gap:
+      repo: foldkit-flow
+      fix: Pin devEngines to Bun 1.4.2 exactly and bump it together with devenv.
+    links:
+      hinders: [req-flow-reproducible-toolchain]
+
+  - id: problem-flow-keyboard-connect-missing
+    kind: problem
+    title: Keyboard users cannot create connections
+    statement: >-
+      The first journey does not let a keyboard-only person connect two handles. PR #4 lists keyboard connect as an open
+      question.
+    status: open
+    source:
+      - pr:foldkit-flow#4
+    rationale: >-
+      The PR README says keyboard connect is not built and asks whether a later spec should add it. Without it a
+      keyboard-only user can move and delete nodes but not draw edges.
+    gap:
+      repo: foldkit-flow
+      fix: >-
+        Decide whether to add keyboard connect (choose a handle, then a target with arrow keys) and write its spec.
+    links:
+      hinders: [goal-flow-keyboard-access]
+
+  - id: problem-flow-journey-not-in-ci
+    kind: problem
+    title: The browser journey does not run in CI
+    statement: >-
+      CI has no browser. The journey and the performance check run only on a developer's machine.
+    status: open
+    source:
+      - foldkit-flow:.github/workflows/checks.yml:3
+      - foldkit-flow:docs/specs/0000-development-lifecycle.md:92
+      - pr:foldkit-flow#4
+    rationale: >-
+      The workflow comment says it has no journey step. PR #4 says the journey is not in CI. A regression in pointer or
+      keyboard behaviour could merge without a failing check.
+    gap:
+      repo: foldkit-flow
+      fix: Run the journey in CI with a pinned Chromium, or record who runs it before each merge.
+    links:
+      hinders: [goal-flow-browser-proof]
+
+  - id: problem-flow-browsers-untested
+    kind: problem
+    title: Only Chromium and mouse input were tested
+    statement: >-
+      The journey ran in one Chromium version. Firefox, WebKit and touch input were not run.
+    status: open
+    source:
+      - pr:foldkit-flow#4
+    rationale: >-
+      PR #4 lists these runs as "not run". Support for other browsers is unknown, and no goal sets a target.
+    gap:
+      repo: foldkit-flow
+      fix: Choose which browsers and input types the library supports, then add them to the journey.
+    links:
+      hinders: [req-flow-portability-browsers]
+
+  - id: problem-flow-demand-unmeasured
+    kind: problem
+    title: Demand and users are not measured
+    statement: >-
+      The cited sources show no measure of who needs the library or who uses it. Nothing is published, and the sources
+      record no user count or request.
+    status: open
+    source:
+      - foldkit-flow:README.md:5
+      - foldkit-flow:packages/flow/package.json:4
+    rationale: >-
+      The library exists because the operator wants it (log line 48). I found no evidence of other users in the cited
+      sources and did not search every place a measure could live. The organisation has the same gap. The operator must
+      decide what evidence of demand would count.
+    gap:
+      repo: foldkit-flow
+      fix: Choose a signal to read after publishing, such as downloads or issues, and write it down.
+    links:
+      hinders: [goal-flow-publish]
+
+  - id: problem-flow-upstream-terms-open
+    kind: problem
+    title: Details of the Foldkit offer are undecided
+    statement: >-
+      The operator decided to offer the library as `@foldkit/flow` once its API settles. Spec 0000 still asks when, and
+      under which licence header.
+    status: open
+    source:
+      - foldkit-flow:docs/specs/0000-development-lifecycle.md:111
+      - foldkit-flow:STATE.md:13
+    rationale: >-
+      STATE.md line 13 fixes the name and the condition (the API has settled). What "settled" means, the date and the
+      licence header are not recorded.
+    gap:
+      repo: foldkit-flow
+      fix: Record the operator's answer to open question 1 in a spec revision.
+    links:
+      hinders: [goal-flow-upstream-offer]
+
+  - id: problem-flow-deferred-workflow-questions
+    kind: problem
+    title: Workflow hardening is deferred
+    statement: >-
+      Vendoring Foldkit as a subtree, requiring human approval, signed commits and Renovate are all deferred.
+    status: open
+    source:
+      - foldkit-flow:docs/specs/0000-development-lifecycle.md:112-113
+    rationale: >-
+      Spec 0000 leaves these as open questions for the operator. The deferral matches studio and reebeat.
+    gap:
+      repo: foldkit-flow
+      fix: Decide each item or record that it stays deferred.
+    links:
+      hinders: [goal-flow-lifecycle]
+
+  - id: problem-flow-lint-mocking-gap
+    kind: problem
+    title: The module-mocking lint rule has a gap
+    statement: >-
+      The lint rule that forbids module mocking matches only the `vitest` import source, so a mock imported from
+      `vite-plus/test` passes.
+    status: open
+    source:
+      - pr:foldkit-flow#4
+    rationale: >-
+      Spec 0001 records this in its round-2 revision as a lint gap to follow up. The code in PR #4 was changed to avoid
+      mocks, but the rule is not fixed.
+    gap:
+      repo: foldkit-flow
+      fix: Make the anti-slop module-mocking rule match the `vite-plus/test` source too.
+    links:
+      hinders: [goal-flow-lifecycle]
+
+  - id: problem-flow-community-files
+    kind: problem
+    title: No security, conduct or contributing files
+    statement: >-
+      The public repository has no SECURITY.md, CODE_OF_CONDUCT.md or CONTRIBUTING.md. The README has a short
+      contributing section.
+    status: open
+    source:
+      - absent:foldkit-flow:SECURITY.md
+      - absent:foldkit-flow:CODE_OF_CONDUCT.md
+      - absent:foldkit-flow:CONTRIBUTING.md
+      - foldkit-flow:README.md:33-35
+    rationale: >-
+      A published library needs a way to report vulnerabilities and a conduct policy. The operator must decide the
+      content.
+    gap:
+      repo: foldkit-flow
+      fix: Add the three files before the first publish.
+    links:
+      hinders: [goal-flow-publish]
+
+  # ---- constraints ----
+  - id: constraint-flow-mit-licence
+    kind: constraint
+    constraintType: legal
+    title: The library is MIT licensed
+    statement: >-
+      foldkit-flow is released under the MIT licence.
+    status: decided
+    source:
+      - log:48
+      - foldkit-flow:LICENSE:1-3
+      - foldkit-flow:README.md:31
+    canvas: [key-resources]
+    links:
+      constrains: [comp-flow-product]
+
+  - id: constraint-flow-public-repo
+    kind: constraint
+    constraintType: organisational
+    title: The repository is public and holds no secrets
+    statement: >-
+      The repository is public. It never holds a secret or personal data.
+    status: proposed
+    source:
+      - foldkit-flow:docs/specs/0000-development-lifecycle.md:3
+      - foldkit-flow:AGENTS.md:3
+    rationale: >-
+      Observed in the repository: AGENTS.md says it is public and holds no secret or personal data. The spec 0000 header
+      says the operator's assignment named "its own public repository"; the decision log (line 48) says only "its own
+      repository", and the no-secret rule is in neither. The operator must confirm public visibility and the content
+      rule.
+    links:
+      constrains: [resource-flow-repo]
+
+  - id: constraint-flow-xyflow-notice
+    kind: constraint
+    constraintType: legal
+    title: Keep xyflow's licence notice and credit
+    statement: >-
+      xyflow's code is MIT licensed. The project keeps its notice in NOTICE, credits it in the README and shows the
+      credit link by default.
+    status: proposed
+    source:
+      - foldkit-flow:NOTICE:4-14
+      - foldkit-flow:README.md:21
+      - foldkit-flow:AGENTS.md:71
+    rationale: >-
+      The repository states the practice. Whether the credit link must be on by default is xyflow's request, not a
+      licence term, and no operator line records it. The operator must confirm.
+    links:
+      constrains: [comp-flow-library]
+      hinders: [goal-flow-publish]
+
+  - id: constraint-flow-no-elk
+    kind: constraint
+    constraintType: legal
+    title: ELK stays out of the library
+    statement: >-
+      ELK.js is licensed EPL-2.0 OR GPL-3.0. The library does not depend on it, and layout stays with the application.
+    status: proposed
+    source:
+      - foldkit-flow:AGENTS.md:30
+      - foldkit-flow:docs/specs/0000-development-lifecycle.md:35
+      - foldkit-flow:README.md:7
+    rationale: >-
+      Three repository lines state the rule and its licence reason. No operator line records it. The operator must
+      confirm, and decide whether an application-owned ELK example may live in this repository.
+    links:
+      constrains: [comp-flow-library]
+
+  - id: constraint-flow-effect-range
+    kind: constraint
+    constraintType: technical
+    title: Cap the Effect range for unstable API use
+    statement: >-
+      A package that uses an unstable or experimental Effect API accepts nothing above the next minor.
+    status: decided
+    source:
+      - log:55
+      - record:foldkit-flow:AGENTS.md:63
+      - foldkit-flow:packages/flow/package.json:22-25
+    links:
+      constrains: [comp-flow-library]
+
+  - id: constraint-flow-effect-peer-mismatch
+    kind: constraint
+    constraintType: technical
+    title: Foldkit declares Effect 4.0.0, the repo runs 4.1.0
+    statement: >-
+      Foldkit 0.169.0 declares a peer of `effect@4.0.0`. The repository runs 4.1.0, so Bun prints peer warnings.
+    status: open
+    source:
+      - foldkit-flow:AGENTS.md:62
+      - foldkit-flow:docs/specs/0000-development-lifecycle.md:103
+    rationale: >-
+      The warnings stay until a Foldkit release lists 4.1. Tests, the build and a browser run pass on 4.1.0 now. The
+      operator must decide when to upgrade.
+    links:
+      hinders: [comp-flow-library]
+
+  - id: constraint-flow-vite-plugin-crypto
+    kind: constraint
+    constraintType: technical
+    title: The Foldkit Vite plugin cannot run on Effect 4.1.0
+    statement: >-
+      `@foldkit/vite-plugin` 0.28.0 imports `Crypto` from the Effect root, which 4.1.0 lacks, so the example does not
+      use it. The project waits for an upstream fix and does not work around it.
+    status: proposed
+    rationale: >-
+      Observed in the repository: AGENTS.md and spec 0000 describe the mismatch and the choice to wait. The operator
+      decided in general to prefer upstream fixes (log line 56); this specific plugin case is not in the log. The
+      operator must confirm.
+    source:
+      - log:56
+      - foldkit-flow:AGENTS.md:62
+      - foldkit-flow:STATE.md:12
+      - foldkit-flow:docs/specs/0000-development-lifecycle.md:104
+    canvas: [key-partners]
+    links:
+      constrains: [comp-flow-example-app]
+
+  - id: constraint-flow-xyflow-pinned
+    kind: constraint
+    constraintType: technical
+    title: Pin @xyflow/system exactly
+    statement: >-
+      The library depends on `@xyflow/system` 0.0.83 at an exact version, because a 0.0.x release may break.
+    status: proposed
+    source:
+      - pr:foldkit-flow#4
+    rationale: >-
+      Spec 0001 gives the pin and the reason; it is absent at the pinned commit 5dd44a9 (PR #4 has since merged; see the tracker). The operator must confirm the pin policy.
+    links:
+      constrains: [resource-flow-xyflow-system]
+
+  # ---- opportunities ----
+  - id: opportunity-flow-xyflow-core
+    kind: opportunity
+    title: Reuse xyflow's framework-free core
+    statement: >-
+      React Flow and Svelte Flow share `@xyflow/system`, which holds pan and zoom, drag, handles, edge paths and the
+      minimap. A Foldkit binding can reuse it instead of rewriting that interaction code.
+    status: proposed
+    source:
+      - foldkit-flow:README.md:21
+      - foldkit-flow:NOTICE:9-12
+    rationale: >-
+      The README names the dependency and its content. No operator line chooses xyflow by name; log line 48 only says
+      "like React Flow / Svelte Flow". The operator must confirm.
+    canvas: [key-partners, key-resources]
+    links:
+      supports: [goal-flow-first-journey]
+
+  - id: opportunity-flow-other-foldkit-apps
+    kind: opportunity
+    title: Other Foldkit apps can use it
+    statement: >-
+      A generic library with no product logic can serve any Foldkit application, and Foldkit itself may adopt it.
+    status: proposed
+    source:
+      - log:48
+      - foldkit-flow:STATE.md:13
+    rationale: >-
+      The log gives a graph UI for Foldkit (line 48) and STATE.md line 13 gives the offer. Generality for any Foldkit
+      application is my inference from the spec 0000 header's "generic library", not a decision, and no source says who
+      else needs it. See problem-flow-demand-unmeasured. The operator must confirm.
+    canvas: [customer-segments]
+    links:
+      supports: [goal-flow-upstream-offer]
+
+  - id: opportunity-flow-real-browser-defects
+    kind: opportunity
+    title: A real browser finds defects unit tests miss
+    statement: >-
+      PR #4 reports that real Chromium runs found defects that unit tests missed: the connect gesture, the minimap,
+      teardown, reconnect ends and the lazy cache.
+    status: proposed
+    source:
+      - pr:foldkit-flow#4
+    rationale: >-
+      PR #4 plan: the PR body reports the defects, and its round-1 review reports its own run of the journey (12 of 12
+      passed). Both are statements on the PR, not observations made while writing this model. If they hold, they support
+      keeping the browser journey as a standing gate. The operator must confirm.
+    links:
+      supports: [goal-flow-browser-proof]

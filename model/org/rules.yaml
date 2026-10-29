@@ -1,0 +1,173 @@
+elements:
+  - id: rule-org-paid-when-costly
+    kind: rule
+    ruleType: constraint
+    title: A feature is paid when it costs us money to run
+    statement: >-
+      A feature that runs on the user's machine or in their browser is free. A feature that needs our servers or our
+      bills is paid.
+    when: A feature is assigned to the free or the paid tier.
+    if: The feature needs our servers, inference or storage to run.
+    then: It is paid; otherwise it is free.
+    status: decided
+    source: [record:reebeat:docs/design/open-core-boundary.md:39-44, log:43]
+    canvas: [revenue-streams, cost-structure]
+    links:
+      serves: [goal-org-sustainable-funding]
+
+  - id: rule-org-open-core-split
+    kind: rule
+    ruleType: constraint
+    title: Open compiler, closed products
+    statement: >-
+      The compiler and its formats are open source. Products built on top are closed source and live in separate
+      repositories that depend on the published packages.
+    status: decided
+    source: [log:43, record:reebeat:docs/design/open-core-boundary.md:32]
+    links:
+      serves: [goal-org-open-compiler, goal-org-product-family]
+
+  - id: rule-org-open-core-needs-no-server
+    kind: rule
+    ruleType: derivation
+    title: The open core never needs a server of ours
+    statement: >-
+      Anyone can run the Apache-2.0 compiler and can build a hosted service of their own on it. The open part never needs
+      our server.
+    status: proposed
+    rationale: >-
+      open-core-boundary.md derives this from the paid-when-costly rule and says it is "proposed, not confirmed by the
+      operator": the operator has not accepted that others may sell a hosted service on the compiler.
+    source: [reebeat:docs/design/open-core-boundary.md:46]
+    links:
+      serves: [goal-org-open-compiler]
+
+  - id: rule-org-byo-agents
+    kind: rule
+    ruleType: constraint
+    title: Users can bring their own agents
+    statement: >-
+      Users can bring their own agents and give them access to the editing tools. Heavily integrated hosted AI agents,
+      like multiplayer collaboration, are paid.
+    status: decided
+    source: [log:43, record:reebeat:docs/design/open-core-boundary.md:25]
+    links:
+      serves: [goal-org-modular-extensible, goal-org-sustainable-funding]
+
+  - id: rule-org-single-source
+    kind: rule
+    ruleType: constraint
+    title: One authoritative home for every fact
+    statement: >-
+      Every fact has one authoritative home. Everything else links to it or is generated from it, with an explicit edge
+      back to its core.
+    status: decided
+    source: [log:54]
+    links:
+      serves: [goal-org-correctness-by-construction]
+
+  - id: rule-org-generate-over-test
+    kind: rule
+    ruleType: derivation
+    title: Generate a derivation before you test it, and test it before you sync it by hand
+    statement: >-
+      A derivation that is a pure function of its core is generated. If it cannot be generated, a test fails when it
+      differs from the core. Keeping the two in step by hand is the last resort.
+    status: proposed
+    rationale: >-
+      The decision log names the single-source value (line 54). The three-step ladder is from the operator's governing
+      document, which the log cites but does not quote; the operator should confirm this repository applies it.
+    source: [log:54]
+    links:
+      serves: [goal-org-correctness-by-construction, goal-org-written-intent]
+
+  - id: rule-org-unrepresentable-bad-states
+    kind: rule
+    ruleType: constraint
+    title: Make bad states unrepresentable
+    statement: >-
+      Build for correctness by construction: where types or structure can make a bad state unrepresentable, they do.
+    status: decided
+    source: [log:54]
+    links:
+      serves: [goal-org-correctness-by-construction]
+
+  - id: rule-org-cap-unstable-effect
+    kind: rule
+    ruleType: constraint
+    title: Cap the range of packages that use unstable Effect APIs
+    statement: >-
+      A package that depends on an unstable or experimental Effect API caps its version range below the next minor.
+    status: decided
+    source: [log:55]
+    links:
+      serves: [goal-org-stay-on-supported-stack]
+
+  - id: rule-org-fix-upstream
+    kind: rule
+    ruleType: constraint
+    title: Fix problems through Effect's own services
+    statement: >-
+      When a library has a gap, prefer an upstream fix through Effect's own services over a workaround around them. The
+      operator rejected a `node:crypto` workaround in Foldkit.
+    status: decided
+    source: [log:56]
+    links:
+      serves: [goal-org-stay-on-supported-stack]
+
+  - id: rule-org-spec-code-pr
+    kind: rule
+    ruleType: constraint
+    title: One spec, one branch, one pull request
+    statement: >-
+      Every change travels spec, then code, then pull request, one to one. The plan is revised while building, in dated
+      Revisions entries, and freezes when the pull request opens. Review judges the plan, the code and their agreement.
+    status: proposed
+    rationale: >-
+      Spec 0000 of reebeat and studio sets this rule, and their headers say the operator decided the spec as a whole. No
+      line of the decision log states the rule itself, so the operator should confirm it as the rule of every repository.
+    source: [reebeat:AGENTS.md:9-17]
+    links:
+      serves: [goal-org-correctness-by-construction]
+      triggers: [process-org-ship-change]
+
+  - id: rule-org-public-repos-hold-no-private-material
+    kind: rule
+    ruleType: constraint
+    title: Public repositories hold no secret, personal data or private course material
+    statement: >-
+      The reebeat repositories are public. They never hold a secret, personal data or course-private material. Hooks and
+      CI scan for secrets.
+    status: proposed
+    rationale: >-
+      Stated in each repository's AGENTS.md. The operator's decision log does not repeat it, so the operator should
+      confirm it as a standing rule.
+    source: [reebeat:AGENTS.md:3]
+    links:
+      serves: [goal-org-correctness-by-construction]
+
+  - id: rule-org-experimental-deps-pinned
+    kind: rule
+    ruleType: constraint
+    title: Experimental dependencies are pinned and stay out of public types
+    statement: >-
+      An alpha or experimental dependency is pinned exactly. Its types never appear in the signature, error, schema or
+      codec of anything a plugin author or a product imports.
+    status: decided
+    source: [log:26, record:reebeat:docs/design/open-core-boundary.md:54-55]
+    links:
+      serves: [goal-org-stay-on-supported-stack, goal-org-modular-extensible]
+
+  - id: rule-org-decided-needs-operator
+    kind: rule
+    ruleType: constraint
+    title: Only an operator decision makes an element decided
+    statement: >-
+      In this model, an element is decided only when a source shows the operator decided it. Anything inferred is
+      proposed, with its reasoning.
+    status: proposed
+    rationale: >-
+      This is the rule of the model-building assignment of 2026-10-29, not a line of the decision log. CI enforces it.
+    source: [log:3]
+    links:
+      serves: [goal-org-written-intent]

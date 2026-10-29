@@ -1,0 +1,1325 @@
+elements:
+  # -------------------------------------------------------------- product
+  - id: comp-reebeat-product
+    kind: component
+    tier: product
+    repo: reebeat
+    licence: Apache-2.0
+    pricing: free
+    title: reebeat, the open compiler
+    tagline: "Declarative multimedia: accessible, reproducible, rebuilt as you edit."
+    statement: >-
+      Semantically declared story beats, compiled into multimedia artifacts: statecharts for structure, functional reactive
+      time, and an incremental build graph, written in Effect. The compiler and its formats are open source, and running
+      them locally is free.
+    status: decided
+    source:
+      - log:7
+      - log:60
+      - log:44
+      - record:reebeat:docs/design/open-core-boundary.md:21
+      - record:reebeat:docs/design/open-core-boundary.md:39-44
+    canvas: [value-propositions]
+    links:
+      serves: [goal-reebeat-vision]
+      depends-on: [comp-org-effect]
+
+  # ------------------------------------------------ libraries (pure code)
+  - id: comp-reebeat-core
+    kind: component
+    tier: library
+    package: "@reebeat/core"
+    licence: Apache-2.0
+    pricing: free
+    title: core, from screenplay to Plan and Timeline
+    statement: >-
+      Pure code that parses a Fountain screenplay into a Story, runs the identity diff, builds the Plan, schedules the
+      Timeline from aligned words, and prints the review text. It has no browser, ffmpeg, reveal.js or Node built-in.
+    status: proposed
+    rationale: >-
+      Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
+      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is my reading of
+      log:62, so confirm them.
+    source:
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:238
+      - reebeat:packages/core/src/index.ts:1-2
+      - reebeat:packages/core/package.json:4
+      - reebeat:docs/design/open-core-boundary.md:39
+    links:
+      part-of: [comp-reebeat-product, comp-org-layer-model, comp-org-layer-plan]
+      depends-on: [comp-org-effect, resource-reebeat-fountain-format]
+      realizes: [req-reebeat-plan, req-reebeat-nfr-timing, req-reebeat-nfr-usability]
+      serves: [goal-reebeat-screenplay-first, goal-reebeat-statechart-model]
+
+  - id: comp-reebeat-subtitles
+    kind: component
+    tier: library
+    package: "@reebeat/subtitles"
+    licence: Apache-2.0
+    pricing: free
+    title: subtitles, WebVTT and SubRip writers
+    statement: >-
+      Pure code that writes the narration of a scheduled Plan as WebVTT and SubRip, and reads WebVTT back into cues.
+    status: proposed
+    rationale: >-
+      Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
+      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is my reading of
+      log:62, so confirm them.
+    source:
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:239
+      - reebeat:packages/subtitles/src/index.ts:1-2
+    links:
+      part-of: [comp-reebeat-product, comp-org-layer-plan]
+      depends-on: [comp-org-effect, comp-reebeat-core]
+      realizes: [req-reebeat-nfr-accessibility]
+      serves: [goal-reebeat-accessible-artifacts]
+
+  - id: comp-reebeat-lint
+    kind: component
+    tier: library
+    package: "@reebeat/lint"
+    licence: Apache-2.0
+    pricing: free
+    title: lint, pure rules over a Plan
+    statement: >-
+      Pure rules that return diagnostics for a Plan: every absolute time needs a reason, contrast, and agreement of
+      fragments with effects. The cross-reference checks live in the core, not here.
+    status: proposed
+    rationale: >-
+      Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
+      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is my reading of
+      log:62, so confirm them.
+    source:
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:240
+      - reebeat:packages/lint/src/index.ts:1-4
+    links:
+      part-of: [comp-reebeat-product, comp-org-layer-plan]
+      depends-on: [comp-org-effect, comp-reebeat-core]
+      realizes: [req-reebeat-lint, req-reebeat-nfr-usability]
+      serves: [goal-reebeat-explicit-source]
+
+  # ----------------------------------------------------------- the service
+  - id: comp-reebeat-services
+    kind: component
+    tier: service
+    package: "@reebeat/services"
+    licence: Apache-2.0
+    pricing: free
+    title: services, the seven contracts
+    statement: >-
+      The seven Effect service tags with their request types, tagged errors, the one cache key and the one selection
+      registry. It also ships the contract suites and the offline stand-ins. This is the plugin seam.
+    status: proposed
+    rationale: >-
+      Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
+      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is my reading of
+      log:62, so confirm them.
+    source:
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:241
+      - reebeat:packages/services/src/index.ts:1-3
+      - reebeat:packages/services/package.json:18
+    canvas: [key-resources]
+    links:
+      part-of: [comp-reebeat-product, comp-org-layer-build]
+      depends-on: [comp-org-effect, comp-reebeat-core]
+      realizes:
+        - req-reebeat-selection
+        - req-reebeat-renderer-lifecycle
+        - req-reebeat-nfr-extensibility
+        - req-reebeat-nfr-security
+      serves: [goal-reebeat-plugin-sdk]
+
+  # ------------------------------------------------------------ the program
+  - id: comp-reebeat-pipeline
+    kind: component
+    tier: program
+    package: "@reebeat/pipeline"
+    licence: Apache-2.0
+    pricing: free
+    title: pipeline, the build program
+    statement: >-
+      One Effect program over the seven services, from the story to a finished build directory, with the manifest schema. It
+      names no model, browser, binary or directory.
+    status: proposed
+    rationale: >-
+      Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
+      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is my reading of
+      log:62, so confirm them.
+    source:
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:242
+      - reebeat:packages/pipeline/src/index.ts:1-2
+    links:
+      part-of: [comp-reebeat-product, comp-org-layer-build]
+      depends-on: [comp-org-effect, comp-reebeat-core, comp-reebeat-services, comp-reebeat-subtitles]
+      realizes: [req-reebeat-deck, req-reebeat-video, req-reebeat-nfr-reliability]
+      serves: [goal-reebeat-deck-and-video]
+
+  # ------------------------------------------------------------- adapters
+  - id: comp-reebeat-speech-kokoro
+    kind: component
+    tier: integration
+    package: "@reebeat/speech-kokoro"
+    licence: Apache-2.0
+    pricing: free
+    title: speech-kokoro, local speech synthesis
+    statement: >-
+      The SpeechSynthesizer adapter on `kokoro-js`. It runs locally, declares no egress, and has a silent stand-in.
+    status: proposed
+    rationale: >-
+      Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
+      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is my reading of
+      log:62, so confirm them.
+    source:
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:243
+      - reebeat:packages/speech-kokoro/src/index.ts:1
+    links:
+      part-of: [comp-reebeat-product, comp-org-layer-build]
+      depends-on: [comp-org-effect, comp-reebeat-services, resource-reebeat-kokoro-model]
+      realizes: [req-reebeat-speech-cache]
+      serves: [goal-reebeat-deck-and-video]
+
+  - id: comp-reebeat-align-whisper
+    kind: component
+    tier: integration
+    package: "@reebeat/align-whisper"
+    licence: Apache-2.0
+    pricing: free
+    title: align-whisper, word alignment
+    statement: >-
+      The WordAligner adapter on whisper.cpp. It gives word times for the narration, runs locally, and has an even-spread
+      stand-in.
+    status: proposed
+    rationale: >-
+      Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
+      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is my reading of
+      log:62, so confirm them.
+    source:
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:244
+      - reebeat:packages/align-whisper/src/index.ts:1
+    links:
+      part-of: [comp-reebeat-product, comp-org-layer-build]
+      depends-on:
+        - comp-org-effect
+        - comp-reebeat-core
+        - comp-reebeat-services
+        - resource-reebeat-whisper-cpp
+        - resource-reebeat-whisper-model
+      realizes: [req-reebeat-speech-cache]
+      serves: [goal-reebeat-event-timing]
+
+  - id: comp-reebeat-sounds-synth
+    kind: component
+    tier: integration
+    package: "@reebeat/sounds-synth"
+    licence: Apache-2.0
+    pricing: free
+    title: sounds-synth, built-in sound effects
+    statement: >-
+      The SoundLibrary adapter that synthesises `pop`, `whoosh` and `ding` in TypeScript. It uses no recorded sample, so
+      nothing needs attribution.
+    status: proposed
+    rationale: >-
+      Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
+      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is my reading of
+      log:62, so confirm them.
+    source:
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:245
+      - reebeat:docs/design/third-party.md:78
+    links:
+      part-of: [comp-reebeat-product, comp-org-layer-build]
+      depends-on: [comp-org-effect, comp-reebeat-core, comp-reebeat-services]
+      realizes: [req-reebeat-video]
+      serves: [goal-reebeat-deck-and-video]
+
+  - id: comp-reebeat-render-reveal
+    kind: component
+    tier: integration
+    package: "@reebeat/render-reveal"
+    licence: Apache-2.0
+    pricing: free
+    title: render-reveal, the Deck renderer
+    statement: >-
+      The Renderer adapter that turns a scheduled Plan into a reveal.js page. It declares the renderer's lifecycle timing,
+      reads and checks a written page, and never parses a screenplay.
+    status: proposed
+    rationale: >-
+      Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
+      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is my reading of
+      log:62, so confirm them.
+    source:
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:246
+      - reebeat:packages/render-reveal/src/index.ts:1-4
+    canvas: [key-resources]
+    links:
+      part-of: [comp-reebeat-product, comp-org-layer-plan]
+      depends-on:
+        - comp-org-effect
+        - comp-reebeat-core
+        - comp-reebeat-lint
+        - comp-reebeat-services
+        - resource-reebeat-reveal-js
+      realizes: [req-reebeat-deck, req-reebeat-renderer-lifecycle, req-reebeat-nfr-accessibility]
+      serves: [goal-reebeat-deck-and-video, goal-reebeat-multi-renderer]
+
+  - id: comp-reebeat-capture-chromium
+    kind: component
+    tier: integration
+    package: "@reebeat/capture-chromium"
+    licence: Apache-2.0
+    pricing: free
+    title: capture-chromium, frame capture
+    statement: >-
+      The FrameCapturer adapter. It opens the Deck in Chromium under a virtual clock, steps it to the scheduled frames,
+      seeks animations and takes one screenshot per frame.
+    status: proposed
+    rationale: >-
+      Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
+      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is my reading of
+      log:62, so confirm them.
+    source:
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:247
+      - reebeat:packages/capture-chromium/src/index.ts:1-2
+    links:
+      part-of: [comp-reebeat-product, comp-org-layer-build]
+      depends-on:
+        - comp-org-effect
+        - comp-reebeat-core
+        - comp-reebeat-services
+        - resource-reebeat-chromium
+      realizes: [req-reebeat-video, req-reebeat-nfr-reproducibility]
+      serves: [goal-reebeat-reproducible-builds]
+
+  - id: comp-reebeat-encode-ffmpeg
+    kind: component
+    tier: integration
+    package: "@reebeat/encode-ffmpeg"
+    licence: Apache-2.0
+    pricing: free
+    title: encode-ffmpeg, mix and mux
+    statement: >-
+      The Encoder adapter on ffmpeg: lossless audio, the mix, the mux and the media probes that verify uses. It runs ffmpeg
+      as a separate process.
+    status: proposed
+    rationale: >-
+      Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
+      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is my reading of
+      log:62, so confirm them.
+    source:
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:248
+      - reebeat:packages/encode-ffmpeg/src/index.ts:1-2
+    links:
+      part-of: [comp-reebeat-product, comp-org-layer-build]
+      depends-on: [comp-org-effect, comp-reebeat-services, resource-reebeat-ffmpeg]
+      realizes: [req-reebeat-video, req-reebeat-nfr-reproducibility]
+      serves: [goal-reebeat-deck-and-video]
+
+  - id: comp-reebeat-cache-fs
+    kind: component
+    tier: integration
+    package: "@reebeat/cache-fs"
+    licence: Apache-2.0
+    pricing: free
+    title: cache-fs, the content-addressed cache
+    statement: >-
+      The AssetCache adapter on a directory. It stores files by content key, writes the provenance record last, and checks
+      each file's hash when it reads.
+    status: proposed
+    rationale: >-
+      Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
+      that the cache is content-addressed (spec 0001 line 234), not this adapter, its free mark or its layer. The layer is
+      my reading of log:62, so confirm them.
+    source:
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:249
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:260
+    links:
+      part-of: [comp-reebeat-product, comp-org-layer-build]
+      depends-on: [comp-org-effect, comp-reebeat-services]
+      realizes: [req-reebeat-speech-cache, req-reebeat-nfr-reproducibility]
+      serves: [goal-reebeat-incremental-builds, goal-reebeat-reproducible-builds]
+
+  # ---------------------------------------------------------------- tools
+  - id: comp-reebeat-verify
+    kind: component
+    tier: tool
+    package: "@reebeat/verify"
+    licence: Apache-2.0
+    pricing: free
+    title: verify, the output-side checks
+    statement: >-
+      The checks of the falsifiers on a build directory, the table that prints their verdicts and the exit code. It reads
+      the written files and the source only. `compareBuilds` checks determinism.
+    status: proposed
+    rationale: >-
+      Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
+      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is my reading of
+      log:62, so confirm them.
+    source:
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:250
+      - reebeat:packages/verify/src/index.ts:1-2
+    links:
+      part-of: [comp-reebeat-product, comp-org-layer-build]
+      depends-on:
+        - comp-org-effect
+        - comp-reebeat-core
+        - comp-reebeat-encode-ffmpeg
+        - comp-reebeat-lint
+        - comp-reebeat-pipeline
+        - comp-reebeat-render-reveal
+        - comp-reebeat-services
+        - comp-reebeat-sounds-synth
+        - comp-reebeat-subtitles
+      realizes: [req-reebeat-check, req-reebeat-nfr-timing, req-reebeat-nfr-reproducibility]
+      serves: [goal-reebeat-verified-output]
+
+  - id: comp-reebeat-cli
+    kind: component
+    tier: tool
+    package: "@reebeat/cli"
+    licence: Apache-2.0
+    pricing: free
+    title: cli, the reebeat command
+    statement: >-
+      The `reebeat` command with `plan`, `lint`, `build`, `check` and `journey`. It is the only place that chooses and
+      composes adapters.
+    status: proposed
+    rationale: >-
+      Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
+      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is my reading of
+      log:62, so confirm them.
+    source:
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:251
+      - reebeat:packages/cli/src/cli.ts:70
+      - reebeat:packages/cli/package.json:17-28
+    canvas: [channels]
+    links:
+      part-of: [comp-reebeat-product, comp-org-layer-build]
+      depends-on:
+        - comp-org-effect
+        - comp-reebeat-align-whisper
+        - comp-reebeat-cache-fs
+        - comp-reebeat-capture-chromium
+        - comp-reebeat-core
+        - comp-reebeat-encode-ffmpeg
+        - comp-reebeat-lint
+        - comp-reebeat-pipeline
+        - comp-reebeat-render-reveal
+        - comp-reebeat-services
+        - comp-reebeat-sounds-synth
+        - comp-reebeat-speech-kokoro
+        - comp-reebeat-verify
+      realizes: [req-reebeat-plan, req-reebeat-lint, req-reebeat-check, req-reebeat-selection, req-reebeat-journey]
+      serves: [goal-reebeat-vision]
+
+  - id: comp-reebeat-quality-gates
+    kind: component
+    tier: tool
+    pricing: free
+    title: quality gates, the repository checks
+    statement: >-
+      The scripts in `tools/quality`: the tier gate, the exception registry check, the Effect family check, the licence
+      gate and the grammar generator. Together with the format and lint rules they make up `bun run ready`.
+    status: proposed
+    rationale: >-
+      Observed in the repository: spec 0000 and AGENTS.md list these tools. The operator has not decided this collection or
+      its free mark, so confirm them.
+    source:
+      - reebeat:docs/specs/0000-development-lifecycle.md:8
+      - reebeat:AGENTS.md:25-38
+    links:
+      part-of: [comp-reebeat-product]
+      depends-on: [comp-org-effect]
+      realizes: [req-reebeat-nfr-tier-gate, req-reebeat-nfr-licensing]
+      serves: [goal-reebeat-correct-by-construction, goal-reebeat-apache-licence]
+
+  # --------------------------------------------------- planned components
+  - id: comp-reebeat-statechart-xstate
+    kind: component
+    tier: integration
+    pricing: free
+    title: statechart-xstate, the build-time interpreter
+    statement: >-
+      A planned integration package. It turns the resolved statechart into XState machine data and reads back a total order
+      of generated events through a reebeat-owned service. XState is its only dependency.
+    status: proposed
+    rationale: >-
+      Spec 0007 names this package as the recommendation, and the operator decided that XState sits in an integration
+      package behind a service (log:26, spec 0007 line 620). The package does not exist at the pinned commit, and its spec,
+      0005, is not written. Its name and tier come from the spike.
+    source:
+      - log:26
+      - reebeat:docs/specs/0007-scxml-persistent-ir-spike.md:591
+      - reebeat:docs/specs/0007-scxml-persistent-ir-spike.md:620
+    links:
+      part-of: [comp-reebeat-product, comp-org-layer-plan]
+      depends-on: [comp-org-xstate, comp-org-effect, comp-reebeat-services]
+      realizes: [req-reebeat-statechart-interpreter]
+      serves: [goal-reebeat-statechart-model]
+
+  - id: comp-reebeat-website-renderer
+    kind: component
+    tier: integration
+    pricing: free
+    title: website renderer, a planned artifact renderer
+    statement: >-
+      A planned Renderer that emits a static website: a folder of HTML, CSS and JavaScript that any static host serves,
+      with the viewer controlling the pace.
+    status: proposed
+    rationale: >-
+      Issue #19 proposes it and says its spec follows the IR work and an extension architecture ADR. The operator decided
+      that websites become an artifact type (log:36) but no renderer exists or is specified.
+    source:
+      - log:36
+      - issue:reebeat#19
+    refs: ["issue:reebeat#19"]
+    links:
+      part-of: [comp-reebeat-product, comp-org-layer-plan]
+      depends-on: [comp-org-effect, comp-reebeat-services]
+      realizes: [req-reebeat-website-artifact, req-reebeat-interaction-declaration]
+      serves: [goal-reebeat-interactive-website]
+
+  # ------------------------------------------------------ artifacts, assets
+  - id: comp-reebeat-plan-json
+    kind: component
+    tier: artifact
+    title: plan.json, the one input of the renderers
+    statement: >-
+      The Plan with the Timeline and the source hash, as canonical JSON. Two equal Plans are byte-equal. The renderers and
+      the verifier read it, and nothing else reaches them.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0001 sets out plan.json as the one renderer input. The operator has not decided the canonical JSON
+      form, so confirm it.
+    source:
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:73
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:89
+    links:
+      part-of: [comp-reebeat-product]
+      serves: [goal-reebeat-screenplay-first]
+
+  - id: comp-reebeat-build-manifest
+    kind: component
+    tier: artifact
+    title: build.json, the build manifest
+    statement: >-
+      The record of one build: the source hash, each adapter with its egress and settings, and the provenance of every
+      cached asset. It is written last, and `check` refuses a directory without a valid one.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0001 sets out the manifest fields and the write order. The operator decided that the output manifest
+      records provenance (spec 0001 line 234), so confirm the rest.
+    source:
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:262
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:223
+    links:
+      part-of: [comp-reebeat-product]
+      realizes: [isgoal-reebeat-visible-provenance]
+      serves: [goal-reebeat-visible-egress]
+
+  - id: comp-reebeat-deck-output
+    kind: component
+    tier: artifact
+    title: deck.html, the Deck artifact
+    statement: >-
+      The reveal.js presentation with its assets, the Inter font and each package's licence beside them. Narration is in the
+      speaker notes.
+    status: proposed
+    rationale: >-
+      Spec plan: the README and spec 0001 describe the Deck output, and the third-party audit lists its assets. The
+      operator has not decided this bundle, so confirm it.
+    source:
+      - reebeat:README.md:5
+      - reebeat:docs/design/third-party.md:44
+    links:
+      part-of: [comp-reebeat-product]
+      serves: [goal-reebeat-deck-and-video]
+
+  - id: comp-reebeat-video-output
+    kind: component
+    tier: artifact
+    title: the MP4 Video artifact
+    statement: >-
+      The narrated MP4 with WebVTT subtitles and chapter marks, built from the same Plan as the Deck.
+    status: proposed
+    rationale: >-
+      Spec plan: the README and spec 0001 describe the MP4 with subtitles and chapters. The operator has not decided every
+      detail, so confirm it.
+    source:
+      - reebeat:README.md:6
+    links:
+      part-of: [comp-reebeat-product]
+      serves: [goal-reebeat-deck-and-video, goal-reebeat-accessible-artifacts]
+
+  - id: comp-reebeat-grammar-doc
+    kind: component
+    tier: artifact
+    title: The generated effects grammar document
+    statement: >-
+      The document of the screenplay grammar, generated from the grammar schema. A test fails when it differs from its
+      generator and parses every example in it.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0002 sets out the generated grammar document and its test. The operator picked the effects syntax,
+      not this arrangement, so confirm it.
+    source:
+      - reebeat:docs/grammar/effects.md:3
+    links:
+      part-of: [comp-reebeat-product]
+      serves: [goal-reebeat-explicit-source]
+
+  - id: comp-reebeat-ci-workflow
+    kind: component
+    tier: process-asset
+    title: The CI workflow
+    statement: >-
+      The GitHub Actions workflow `checks`. It installs the pinned devenv and the locked dependencies, then runs each root
+      gate as its own step.
+    status: proposed
+    rationale: >-
+      Observed in the repository: the workflow file sets these steps. The operator has not decided the exact workflow, so
+      confirm it.
+    source:
+      - reebeat:.github/workflows/checks.yml:15
+      - reebeat:.github/workflows/checks.yml:30-33
+    links:
+      part-of: [comp-reebeat-product]
+      serves: [goal-reebeat-correct-by-construction]
+
+  - id: comp-reebeat-review-skills
+    kind: component
+    tier: process-asset
+    title: The review and pull request skills
+    statement: >-
+      The `review-pr` skill with its round-recording and guarded-merge scripts, and the `pr-create` skill that fixes the
+      eight sections of the report.
+    status: proposed
+    rationale: >-
+      Observed in the repository: spec 0000 names these skills and scripts. The operator has not decided them, so confirm
+      them.
+    source:
+      - reebeat:docs/specs/0000-development-lifecycle.md:51
+    links:
+      part-of: [comp-reebeat-product]
+      serves: [goal-reebeat-correct-by-construction]
+
+  - id: comp-reebeat-exception-registry
+    kind: component
+    tier: process-asset
+    title: The suppression registry
+    statement: >-
+      The JSON registry of every registered suppression, with its reason, alternatives, owner, versions and retirement
+      trigger.
+    status: proposed
+    rationale: >-
+      Observed in the repository: spec 0000 and AGENTS.md describe the registry. The operator has not decided its fields,
+      so confirm it.
+    source:
+      - reebeat:docs/specs/0000-development-lifecycle.md:43
+      - reebeat:AGENTS.md:42
+    links:
+      part-of: [comp-reebeat-quality-gates]
+      serves: [goal-reebeat-correct-by-construction]
+
+  # --------------------------------------------------- information system goals
+  - id: isgoal-reebeat-one-source
+    kind: is-goal
+    title: One source yields every rendering
+    statement: >-
+      The system generates the Plan, the Deck and the Video from one Screenplay, and keeps no generated file except the
+      speech cache.
+    status: proposed
+    rationale: >-
+      Spec plan: the operator decided that the source is one Fountain file (spec 0001 line 212). That the speech cache is
+      the only generated file kept is spec 0001's plan, so confirm it.
+    source:
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:212
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:149
+    links:
+      serves: [goal-reebeat-screenplay-first]
+
+  - id: isgoal-reebeat-replaceable-pieces
+    kind: is-goal
+    title: Every piece can be replaced one by one
+    statement: >-
+      Each outside runtime is reached through a service with a contract, so an adapter can be swapped without changing
+      the core, the program or the screenplay.
+    status: proposed
+    rationale: >-
+      Spec plan: design R3 says pieces can be replaced one by one. The operator accepted R3 as a whole, so confirm this
+      goal.
+    source:
+      - reebeat:docs/design/keyframe-engine.md:1220
+    links:
+      serves: [goal-reebeat-plugin-sdk]
+
+  - id: isgoal-reebeat-verifiable-output
+    kind: is-goal
+    title: The system can prove what it built
+    statement: >-
+      The system checks a build from its written files and records which adapters, settings and assets made it.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0001 sets out the output-side verification. The operator has not decided this goal, so confirm it.
+    source:
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:141
+    links:
+      serves: [goal-reebeat-verified-output]
+
+  - id: isgoal-reebeat-visible-provenance
+    kind: is-goal
+    title: The manifest records provenance
+    statement: >-
+      The output manifest records provenance.
+    status: decided
+    source:
+      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:234
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:262
+    links:
+      serves: [goal-reebeat-visible-egress]
+
+  - id: isgoal-reebeat-agent-usable
+    kind: is-goal
+    title: An agent can write and repair a story
+    statement: >-
+      The system gives a text source, one documented grammar and errors that name the line and the nearest valid form, so
+      an agent can write and repair stories without guessing.
+    status: proposed
+    rationale: >-
+      Spec 0002 says people and agents guess wrong at positional rules and rates an effects table best for agents. The
+      operator decided that users can bring their own agents (log:43) but has not stated this as a system goal.
+    source:
+      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:10
+      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:115
+      - log:43
+    links:
+      serves: [goal-reebeat-explicit-source, goal-reebeat-plugin-sdk]
+
+  # ------------------------------------------------ functional requirements
+  - id: req-reebeat-plan
+    kind: requirement
+    reqType: functional
+    pricing: free
+    title: Print a reviewable Plan
+    statement: >-
+      `reebeat plan` prints every Scene, Element, effect and identity decision, with the written intent and the resolved
+      frame. It needs no audio and no browser, and two runs are equal.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0001 and spec 0002 set out `reebeat plan` and its output. The compiler is free (open-core-boundary
+      line 39), but the operator has not decided each field or this feature's mark, so confirm them.
+    source:
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:27
+      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:122
+      - reebeat:docs/design/open-core-boundary.md:39
+    links:
+      serves: [goal-reebeat-deck-and-video]
+
+  - id: req-reebeat-deck
+    kind: requirement
+    reqType: functional
+    pricing: free
+    title: Build a Deck from the Plan
+    statement: >-
+      The Deck is a reveal.js page. Narration is in the speaker notes, show and focus effects are fragments in time order,
+      and sounds ride with the step or slide they are anchored to.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0001 and the README set out the Deck. The operator decided only that sounds ride along (spec 0002
+      line 161), and has not decided this feature's free mark, so confirm them.
+    source:
+      - reebeat:README.md:5
+      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:161
+      - reebeat:docs/design/open-core-boundary.md:39
+    links:
+      serves: [goal-reebeat-deck-and-video]
+
+  - id: req-reebeat-video
+    kind: requirement
+    reqType: functional
+    pricing: free
+    title: Build a narrated Video from the Plan
+    statement: >-
+      The Video is the same page captured frame by frame on a controlled clock, muxed with narration, sound effects, WebVTT
+      subtitles and chapter marks.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0001 and the README set out the Video. The operator has not decided every detail or this feature's
+      free mark, so confirm them.
+    source:
+      - reebeat:README.md:6
+      - reebeat:docs/design/open-core-boundary.md:39
+    links:
+      serves: [goal-reebeat-deck-and-video]
+
+  - id: req-reebeat-check
+    kind: requirement
+    reqType: functional
+    pricing: free
+    title: Check a build against its source
+    statement: >-
+      `reebeat check` reads a written build and the source, gives one verdict per falsifier, and reports for every effect
+      where it was resolved and where the video and audio show it.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0001 and the README set out `reebeat check` and its output. The operator has not decided each detail
+      or this feature's free mark, so confirm them.
+    source:
+      - reebeat:README.md:8
+      - reebeat:README.md:18
+      - reebeat:docs/design/open-core-boundary.md:39
+    links:
+      serves: [goal-reebeat-verified-output]
+
+  - id: req-reebeat-lint
+    kind: requirement
+    reqType: functional
+    pricing: free
+    title: Lint a story and say the fix
+    statement: >-
+      `reebeat lint` prints every problem with its line and the fix, and lists every absolute time.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0002 sets out `reebeat lint`. The operator has not decided each diagnostic or this feature's free
+      mark, so confirm them.
+    source:
+      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:122
+      - reebeat:packages/cli/src/cli.ts:118
+    links:
+      serves: [goal-reebeat-explicit-source]
+
+  - id: req-reebeat-selection
+    kind: requirement
+    reqType: functional
+    pricing: free
+    title: Select adapters by configuration
+    statement: >-
+      A config file beside the story or a flag names one adapter per service. A flag wins over the file, local adapters are
+      the default, and no choice is part of the screenplay.
+    status: proposed
+    rationale: >-
+      Observed in the repository: the README and the selection registry describe this behaviour. The operator decided that
+      selection is explicit configuration at the composition root (spec 0001 line 234), not these details, so confirm them.
+    source:
+      - reebeat:README.md:23
+      - reebeat:packages/services/src/selection.ts:18-26
+    links:
+      serves: [goal-reebeat-plugin-sdk, goal-reebeat-correct-by-construction]
+
+  - id: req-reebeat-speech-cache
+    kind: requirement
+    reqType: functional
+    pricing: free
+    title: Cache speech by content
+    statement: >-
+      Each Line's audio and word times are cached under a key made from its narration text and the adapter settings. A cache
+      hit loads no model. A miss fails and names the Line unless the build is refreshing, or the narrator is the silent
+      stand-in, which fills a miss without the flag.
+    status: proposed
+    rationale: >-
+      Spec plan and observed in the repository: spec 0001 sets out the speech cache and its key, and
+      packages/cli/src/build.ts:26-31 at the pinned commit adds the silent stand-in exception. The operator has not decided
+      those details or this feature's free mark, so confirm them.
+    source:
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:77
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:260
+      - reebeat:packages/cli/src/build.ts:26-31
+    links:
+      serves: [goal-reebeat-reproducible-builds, goal-reebeat-incremental-builds]
+
+  - id: req-reebeat-journey
+    kind: requirement
+    reqType: functional
+    pricing: free
+    title: One command runs the whole road
+    statement: >-
+      `reebeat journey` builds a story, checks it, builds it again and compares the two builds.
+    status: proposed
+    rationale: >-
+      Observed in the repository: the `journey` command and AGENTS.md describe it. The operator has not decided the
+      command or its free mark, so confirm them.
+    source:
+      - reebeat:AGENTS.md:38
+      - reebeat:packages/cli/src/journey.ts:1-3
+    links:
+      serves: [goal-reebeat-verified-output, goal-reebeat-reproducible-builds]
+
+  - id: req-reebeat-renderer-lifecycle
+    kind: requirement
+    reqType: functional
+    pricing: free
+    title: A renderer declares its lifecycle timing
+    statement: >-
+      Each Renderer declares, as plain data, when an Element's motion starts and ends and its easing. The schedule reads it
+      to place frames, and the check observes it in the output.
+    status: proposed
+    rationale: >-
+      Spec plan: design R4 and spec 0002 set out the lifecycle declaration. The operator has not decided each field or this
+      feature's free mark, so confirm them.
+    source:
+      - reebeat:docs/design/keyframe-engine.md:1259
+      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:33
+    links:
+      serves: [goal-reebeat-event-timing, goal-reebeat-multi-renderer]
+
+  - id: req-reebeat-statechart-interpreter
+    kind: requirement
+    reqType: functional
+    title: Interpreters pass one contract suite
+    statement: >-
+      A reebeat-owned StatechartInterpreter service wraps the build-time interpreter. A hand-written interpreter must pass
+      the same contract suite, which compares byte-equal logs across interpreters.
+    status: decided
+    source:
+      - record:reebeat:docs/specs/0007-scxml-persistent-ir-spike.md:616-620
+    links:
+      serves: [goal-reebeat-statechart-model]
+
+  - id: req-reebeat-state-machines
+    kind: requirement
+    reqType: functional
+    pricing: free
+    title: Explicit state machines and timing combinators
+    statement: >-
+      The compiler declares presence, position, style, effect, slide and Beat lifecycles as machines. It stores exact time
+      as flicks, generates the JSON Schema from the Effect Schema, and rejects cycles and nonsense.
+    status: proposed
+    rationale: >-
+      Read from the body of PR #17 (spec 0004), which is open and unmerged. The PR records two review rounds, both with
+      verdict "changes", so it has not passed review. Its body still says no review rounds yet, which is out of date. Parts
+      of it, such as the nearest-frame rule, are marked as operator decisions there, so confirm them.
+    source: ["pr:reebeat#17", "log:24"]
+    refs: ["pr:reebeat#17"]
+    links:
+      serves: [goal-reebeat-statechart-model]
+
+  - id: req-reebeat-accessible-variants
+    kind: requirement
+    reqType: functional
+    pricing: free
+    title: Generate captions, audio description and reduced motion
+    statement: >-
+      The compiler generates SDH captions from narration and sound metadata, audio description from Element tags and state
+      changes, a transcript, an accessible Deck, and a reduced-motion variant that uses cuts or crossfades. It checks
+      rendered frames for flashes and for contrast.
+    status: proposed
+    rationale: >-
+      Issue #12 proposes it. The operator decided the audiences (log:32), but every threshold in the issue is noted from
+      memory and must be checked against its source in the spec.
+    source: ["issue:reebeat#12", "log:32"]
+    refs: ["issue:reebeat#12"]
+    links:
+      serves: [goal-reebeat-accessible-artifacts]
+
+  - id: req-reebeat-readable-subtitles
+    kind: requirement
+    reqType: functional
+    pricing: free
+    title: Subtitles stay readable
+    statement: >-
+      The compiler checks subtitle speed, duration, line length and line count against one cited guideline. The default
+      repair extends the State hold, and splitting or condensing are alternatives.
+    status: proposed
+    rationale: Issue #12 proposes it. The operator named readable subtitles (log:27), and the guideline is still to be chosen.
+    source: ["issue:reebeat#12", "log:27"]
+    refs: ["issue:reebeat#12"]
+    links:
+      serves: [goal-reebeat-accessible-artifacts]
+
+  - id: req-reebeat-language-variants
+    kind: requirement
+    reqType: functional
+    pricing: free
+    title: Build one story in several narration languages
+    statement: >-
+      A story builds with a narration in each language, and anchors tied to words and events retime on their own. Open
+      choices, not settled: whether subtitles and Deck notes are per language, whether the speech cache is keyed by
+      language and voice, and how word anchors map across translations.
+    status: proposed
+    rationale: >-
+      Issue #10 proposes the goal and lists those choices under "Open questions". The operator named language variants
+      (log:32). The operator must decide each open choice.
+    source: ["issue:reebeat#10", "log:32"]
+    refs: ["issue:reebeat#10"]
+    links:
+      serves: [goal-reebeat-localisation]
+
+  - id: req-reebeat-render-segment-cache
+    kind: requirement
+    reqType: functional
+    pricing: free
+    title: Cache render segments
+    statement: >-
+      The build caches render segments by state pair, transition program and time window. After a narration change it
+      retimes and reuses the later segments instead of rendering them again.
+    status: proposed
+    rationale: >-
+      Issue #9 proposes it, and it requires a timeline dependency model. The operator named incremental builds (log:10) but
+      not this design.
+    source: ["issue:reebeat#9", "log:62"]
+    refs: ["issue:reebeat#9"]
+    links:
+      serves: [goal-reebeat-incremental-builds]
+
+  - id: req-reebeat-website-artifact
+    kind: requirement
+    reqType: functional
+    pricing: free
+    title: Emit a static interactive website
+    statement: >-
+      The compiler emits a folder of static HTML, CSS and JavaScript from the same IR as the Video and the Deck. The viewer
+      steps by Beat or scrubs the timeline, and narration, captions and sounds follow. It is keyboard accessible and
+      supports reduced motion and transcripts.
+    status: proposed
+    rationale: >-
+      Issue #19 proposes it. The operator decided that websites become an artifact type (log:36), but the relation to the
+      Deck and the reproducibility definition remain open in the issue.
+    source: ["issue:reebeat#19", "log:36", "log:65"]
+    refs: ["issue:reebeat#19"]
+    links:
+      serves: [goal-reebeat-interactive-website]
+
+  - id: req-reebeat-interaction-declaration
+    kind: requirement
+    reqType: functional
+    pricing: free
+    title: One interaction declaration for every surface
+    statement: >-
+      An interaction is a declared event-raising element with a payload schema and a label. Static artifacts realise it at
+      build time, for example with a visible cursor in a Video. Dynamic artifacts realise it at view time.
+    status: proposed
+    rationale: >-
+      Proposed in comments on issue #19. The operator said an interaction is just another element that raises events
+      (log:38, log:65), but the declaration format is not decided.
+    source: ["issue:reebeat#19@6503203735", "log:38", "log:65"]
+    refs: ["issue:reebeat#19"]
+    links:
+      serves: [goal-reebeat-interactive-website, goal-reebeat-multi-renderer]
+
+  - id: req-reebeat-renderer-capabilities
+    kind: requirement
+    reqType: functional
+    pricing: free
+    title: Renderers declare what they can realise
+    statement: >-
+      A renderer declares whether its artifact is static or dynamic, which interaction kinds it can realise and which
+      surfaces it exposes. Beats between Scenes of different renderers follow declared transition rules.
+    status: proposed
+    rationale: >-
+      Proposed in comments on issue #19, and the operator asked for transition rules between renderers (log:28). No
+      extension ADR exists yet.
+    source: ["issue:reebeat#19@6503256239", "log:28"]
+    refs: ["issue:reebeat#19"]
+    links:
+      serves: [goal-reebeat-multi-renderer, goal-reebeat-plugin-sdk]
+
+  - id: req-reebeat-teaching-lint
+    kind: requirement
+    reqType: functional
+    pricing: free
+    title: Lint temporal contiguity, signalling, redundancy and coherence
+    statement: >-
+      Lint rules read the semantic tags on Elements and check the four principles. Each threshold is set from its primary
+      source before the rule is built.
+    status: proposed
+    rationale: Issue #8 proposes it and says it follows specs 0004 to 0006. The operator has not decided it.
+    source: ["issue:reebeat#8"]
+    refs: ["issue:reebeat#8"]
+    links:
+      serves: [goal-reebeat-teaching-lint]
+
+  - id: req-reebeat-npm-prerelease
+    kind: requirement
+    reqType: functional
+    pricing: free
+    title: Publish only built, audited packages
+    statement: >-
+      A release stages only built JavaScript, types, docs and the licence, enforces peer ranges for unstable Effect APIs,
+      requires clean checks, and publishes by trusted publishing with provenance.
+    status: proposed
+    rationale: >-
+      Read from the body of PR #18, which was open at the pinned commit and has since merged (see the tracker). The operator
+      decided to publish pre-releases (log:49), so confirm the release details.
+    source: ["pr:reebeat#18", "log:49"]
+    refs: ["pr:reebeat#18"]
+    links:
+      serves: [goal-reebeat-npm-publication]
+
+  - id: req-reebeat-encoder-reproducible
+    kind: requirement
+    reqType: functional
+    pricing: free
+    title: Any chosen encoder keeps builds byte-identical
+    statement: >-
+      Whichever encoder replaces or complements ffmpeg with libx264 must keep two builds byte-identical, and the determinism
+      check must be measured again.
+    status: proposed
+    rationale: Issue #7 states it as a condition of any option. The operator has not chosen an option.
+    source: ["issue:reebeat#7"]
+    refs: ["issue:reebeat#7"]
+    links:
+      serves: [goal-reebeat-reproducible-builds]
+
+  - id: req-reebeat-exception-directives
+    kind: requirement
+    reqType: functional
+    pricing: free
+    title: The exception gate counts @effect-diagnostics comments
+    statement: >-
+      The exception gate recognises both `@effect-diagnostics` and `@effect-diagnostics-next-line`, has a negative control,
+      and every existing directive is registered.
+    status: proposed
+    rationale: Issue #14 proposes it. It is a gap in a gate, not a decided feature.
+    source: ["issue:reebeat#14"]
+    refs: ["issue:reebeat#14"]
+    links:
+      serves: [goal-reebeat-correct-by-construction]
+
+  - id: req-reebeat-pin-bun
+    kind: requirement
+    reqType: functional
+    pricing: free
+    title: Pin the package manager to the devenv Bun
+    statement: >-
+      `devEngines.packageManager` names the exact Bun version of devenv, and a check shows that both report the same
+      revision. Both are bumped together.
+    status: proposed
+    rationale: Issue #15 proposes it as the working fix.
+    source: ["issue:reebeat#15"]
+    refs: ["issue:reebeat#15"]
+    links:
+      serves: [goal-reebeat-reproducible-builds]
+
+  # -------------------------------------------- non-functional requirements
+  - id: req-reebeat-nfr-reproducibility
+    kind: requirement
+    reqType: non-functional
+    quality: reproducibility
+    title: Two builds are identical
+    statement: >-
+      The same source and cache, built twice on the same machine, give identical decoded video frames and identical decoded
+      audio samples. Container bytes are compared and the result is recorded.
+    scenario: >-
+      A developer builds `stories/same-id` twice with the same speech cache. `reebeat journey` compares every decoded frame
+      hash and the decoded audio hash. The check passes when all agree. Adding random jitter to the clock makes it fail and
+      name the first differing frame.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0001 falsifier F6 sets out the same-machine frame and audio check. The operator decided that builds
+      are reproducible (log:10), not this scenario, so confirm it.
+    source:
+      - log:10
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:150
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:224
+    links:
+      serves: [goal-reebeat-reproducible-builds]
+
+  - id: req-reebeat-nfr-accessibility
+    kind: requirement
+    reqType: non-functional
+    quality: accessibility
+    title: Artifacts serve different audiences
+    statement: >-
+      Subtitles and speaker notes carry the narration text exactly. Captions, audio description and reduced-motion variants
+      for the other audiences follow in issue #12.
+    scenario: >-
+      A viewer who cannot hear opens the Video and reads the WebVTT subtitles. The check confirms one cue per Line with
+      text equal to the narration. A viewer who prefers reduced motion gets a variant with cuts or crossfades, which is
+      planned and not built.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0001 sets out the subtitle and notes check. The operator decided the audiences (log:32), not this
+      acceptance scenario, and the variants are tracked in issue #12, so confirm it.
+    source:
+      - log:32
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:145-147
+    refs: ["issue:reebeat#12"]
+    links:
+      serves: [goal-reebeat-accessible-artifacts]
+
+  - id: req-reebeat-nfr-timing
+    kind: requirement
+    reqType: non-functional
+    quality: correctness
+    title: Effects appear within one frame of their anchor
+    statement: >-
+      Every effect shows in the written video, and sounds in the written audio, within one frame of the frame its anchor
+      resolves to.
+    scenario: >-
+      A story has a sound anchored to the start of a transition. After a build, the check measures the first changed frame
+      and the sound onset in the files. The check passes when both are within one frame. Shifting one effect by three frames
+      makes it fail and name the effect.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0001 and spec 0002 set out the one-frame tolerance. The operator has not decided the threshold, so
+      confirm it.
+    source:
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:145
+      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:128
+    links:
+      serves: [goal-reebeat-event-timing, goal-reebeat-verified-output]
+
+  - id: req-reebeat-nfr-tier-gate
+    kind: requirement
+    reqType: non-functional
+    quality: correctness
+    title: The package direction is enforced by a gate
+    statement: >-
+      A package cannot depend on a tier it may not use, in its manifest or in an import, and no package directory can
+      exist outside a tier.
+    scenario: >-
+      A contributor makes the core import the services package. `bun run check:tiers` fails and names the edge. Adding a
+      directory under `packages/` that is in no tier also fails.
+    status: proposed
+    rationale: >-
+      Observed in the repository: the tier gate and AGENTS.md describe this check. The operator decided the direction of
+      dependency (spec 0001 line 234), not the gate, so confirm it.
+    source:
+      - reebeat:AGENTS.md:33
+      - reebeat:tools/quality/tiers.ts:41-48
+    links:
+      serves: [goal-reebeat-correct-by-construction]
+
+  - id: req-reebeat-nfr-extensibility
+    kind: requirement
+    reqType: non-functional
+    quality: extensibility
+    title: A new adapter needs no core change
+    statement: >-
+      A plugin author adds an adapter by implementing a service's Layer and passing its contract suite. The name is then
+      selectable, and the core, the program and the screenplay do not change.
+    scenario: >-
+      A plugin author writes a hosted speech adapter. It must pass the speech contract suite. Selecting it by name builds
+      the story, and the manifest lists the adapter and what it sends out. Without its credential the build fails and
+      falls back to nothing.
+    status: proposed
+    rationale: >-
+      Observed in the repository: AGENTS.md describes adding an adapter. The operator decided plugins are supported and
+      every adapter passes a contract suite, but the adapter shape is marked proposed, so confirm this scenario.
+    source:
+      - reebeat:docs/design/open-core-boundary.md:24
+      - reebeat:AGENTS.md:61
+    links:
+      serves: [goal-reebeat-plugin-sdk]
+
+  - id: req-reebeat-nfr-licensing
+    kind: requirement
+    reqType: non-functional
+    quality: licensing
+    title: Licences are checked before a dependency lands
+    statement: >-
+      Every manifest declares Apache-2.0, and every locked package has a recorded licence on the allowlist. GPL, AGPL, SSPL
+      and unknown licences are rejected.
+    scenario: >-
+      A contributor adds a package to `bun.lock` without recording its licence. `bun run test` fails and names the package.
+      Adding a GPL package fails too.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0008 sets out the licence gate and its allowlist. The operator decided Apache-2.0 (log:44), not the
+      gate, so confirm it.
+    source:
+      - reebeat:docs/specs/0008-apache-2-licence.md:42
+      - reebeat:AGENTS.md:30
+    links:
+      serves: [goal-reebeat-apache-licence]
+
+  - id: req-reebeat-nfr-usability
+    kind: requirement
+    reqType: non-functional
+    quality: usability
+    title: Errors say how to fix the source
+    statement: >-
+      Each error names the file and line, what was found, what was expected and the nearest valid form. Old forms are
+      rejected with the replacement in the message.
+    scenario: >-
+      An author writes the old `[[next]]` cue. The parser stops, names the line and shows the form to use instead. A
+      person who rewrote a story from the messages alone built and checked it.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0002 sets out the error format. The operator has not decided it, so confirm it.
+    source:
+      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:17
+      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:190
+    links:
+      serves: [goal-reebeat-explicit-source]
+
+  - id: req-reebeat-nfr-reliability
+    kind: requirement
+    reqType: non-functional
+    quality: reliability
+    title: A failed build leaves no accepted output
+    statement: >-
+      A speech cache miss with models absent, an alignment below the threshold, and a capture timeout each stop the build
+      with a typed error. No directory remains that `check` would accept.
+    scenario: >-
+      A developer deletes one speech cache entry and builds without refreshing. The build stops with a cache-miss error
+      that names the Line. The output directory holds no partial build.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0001 falsifier F12 sets out the three failure cases. The operator has not decided them, so confirm
+      it.
+    source:
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:156
+      - reebeat:packages/pipeline/src/buildProgram.ts:9-11
+    links:
+      serves: [goal-reebeat-correct-by-construction]
+
+  - id: req-reebeat-nfr-security
+    kind: requirement
+    reqType: non-functional
+    quality: security
+    title: Credentials never reach outputs
+    statement: >-
+      Credentials are read from the environment inside the adapter. They never appear in a cache key, the Plan, the
+      manifest or an output.
+    scenario: >-
+      A test adapter needs a credential from the environment. Without it the build fails and names the requirement and
+      writes nothing. With it, a canary value never appears in any written file.
+    status: proposed
+    rationale: >-
+      Spec plan: design R3 rule 3 and spec 0001 set out the credential handling. The operator has not decided it, so
+      confirm it.
+    source:
+      - reebeat:docs/design/keyframe-engine.md:1242
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:262
+    links:
+      serves: [goal-reebeat-visible-egress]
+
+  - id: req-reebeat-nfr-incremental
+    kind: requirement
+    reqType: non-functional
+    quality: performance
+    title: An edit rebuilds only what it changes
+    statement: >-
+      After an edit, the build redoes only the work that depends on it, and the result is byte-identical to a cold build.
+    scenario: >-
+      An author changes one narration line in a story. Only that Line's speech and the render segments that depend on its
+      length are rebuilt. The output equals a cold build of the new story. This is planned and not built.
+    status: proposed
+    rationale: >-
+      The operator asked for fast incremental builds (log:10, log:62). The measure and the design come from issue #9, which
+      the operator has not decided.
+    source: ["log:10", "log:62", "issue:reebeat#9"]
+    refs: ["issue:reebeat#9"]
+    links:
+      serves: [goal-reebeat-incremental-builds]
+
+  - id: req-reebeat-nfr-portability
+    kind: requirement
+    reqType: non-functional
+    quality: portability
+    title: Release 1 runs on Linux inside devenv
+    statement: >-
+      A build runs on Linux with the pinned devenv tools. Other systems need their own Chromium, and Windows and macOS are
+      not supported.
+    scenario: >-
+      A contributor clones the repository on Linux and runs the journey inside `devenv shell`. It builds and checks the
+      story. On another system the contributor sets the Chromium path and installs the other tools by hand.
+    status: open
+    rationale: >-
+      Spec 0001 lists Windows and macOS as not in scope for release 1. Whether the supported platforms grow is the operator's
+      choice, and published packages may widen it.
+    source:
+      - reebeat:README.md:12
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:189
+      - reebeat:devenv.nix:3
+    links:
+      serves: [goal-reebeat-reproducible-builds]

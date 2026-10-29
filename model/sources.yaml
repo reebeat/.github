@@ -1,0 +1,7 @@
+# Where the model's evidence lives. Source strings in model/*.yaml cite files of these repositories at these commits
+# (the heads of `main` on 2026-10-29), so a cited line number stays true after the repository moves on.
+decisionLog: sources/operator-decisions-2026-10.md
+repos:
+  reebeat: 0bccf4294e0d3fe29111812738dc74cd29a30c38
+  studio: d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8
+  foldkit-flow: 5dd44a9fe34f1adabca41d9757eefe410f03f60b

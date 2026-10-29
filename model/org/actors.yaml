@@ -1,0 +1,135 @@
+elements:
+  - id: actor-operator
+    kind: actor
+    actorType: individual
+    title: The operator and project owner
+    statement: >-
+      The person who owns the reebeat projects, decides their direction and holds the copyright. His sole proprietorship
+      is not a separate legal person.
+    status: decided
+    source: [log:44, record:reebeat:docs/design/open-core-boundary.md:64]
+    links:
+      responsible-for: [goal-org-vision, resource-github-org, resource-npm-org]
+
+  - id: actor-contributor-agent
+    kind: actor
+    actorType: role
+    title: Coding agents that build the projects
+    statement: >-
+      Agents write specs, code and reviews under the lifecycle rules. A pass that the author of the head records about
+      its own pull request is refused.
+    status: proposed
+    rationale: >-
+      The repositories use agents as contributors in practice, but no decision line names them as a stakeholder.
+    source: [reebeat:AGENTS.md:15-17, studio:AGENTS.md:17]
+    links:
+      performs: [process-org-ship-change]
+
+  - id: actor-creator
+    kind: actor
+    actorType: role
+    persona: true
+    title: Creator
+    statement: >-
+      A person or agent who declares a story: its scenes, states, transitions and effects. They want to focus on the
+      narrative, not on how it is built.
+    status: proposed
+    rationale: >-
+      The operator names "you focus on creating" (log line 7) but no persona list. The assignment of 2026-10-29 lists
+      creator, learner, presenter, agent operator and plugin author; the operator should confirm or change them.
+    source: [log:7, log:11]
+    canvas: [customer-segments]
+    links:
+      performs: [process-org-create-and-deliver]
+
+  - id: actor-learner
+    kind: actor
+    actorType: role
+    persona: true
+    title: Learner
+    statement: >-
+      A person who learns from the artifact. They may be hearing-impaired, visually impaired or sensitive to motion, and
+      may need a language variant. They may interact with a website artifact.
+    status: proposed
+    rationale: >-
+      Inferred from the audiences the operator names (log line 32) and the interactive learning material (log line 36).
+      The persona label is not the operator's.
+    source: [log:32, log:36]
+    canvas: [customer-segments]
+
+  - id: actor-presenter
+    kind: actor
+    actorType: role
+    persona: true
+    title: Presenter
+    statement: >-
+      A person who presents a deck with narration in speaker notes, and records narration against the beats of a story.
+    status: proposed
+    rationale: >-
+      Inferred from the deck artifact and the studio deck view (log line 45). The operator should confirm that
+      presenting is a separate persona from creating.
+    source: [log:45]
+    canvas: [customer-segments]
+
+  - id: actor-agent-operator
+    kind: actor
+    actorType: role
+    persona: true
+    title: Agent operator
+    statement: >-
+      A person who brings their own AI agent and gives it the editing tools, so it can read, edit and check a story.
+    status: proposed
+    rationale: >-
+      Inferred from "users can bring their own agents" (log line 43) and agents as interaction surfaces (log line 38).
+    source: [log:38, log:43]
+    canvas: [customer-segments]
+
+  - id: actor-plugin-author
+    kind: actor
+    actorType: role
+    persona: true
+    title: Plugin author
+    statement: >-
+      A developer who writes an adapter, a render engine or an extension against the open contracts of the compiler.
+    status: proposed
+    rationale: >-
+      Inferred from plugins and extensions (log line 43) and the render-engine SDK (log line 28).
+    source: [log:28, log:43]
+    canvas: [customer-segments]
+    links:
+      performs: [process-org-publish-packages]
+
+  - id: resource-github-org
+    kind: resource
+    resourceType: service
+    title: The GitHub organisation reebeat
+    statement: The organisation that holds the repositories of the compiler, the editor and the graph library, and this model.
+    status: proposed
+    rationale: >-
+      The organisation exists and the README says it is reserved. That is a fact the operator can see, not a line of
+      the decision log, so it is not marked decided.
+    source: [reebeat:README.md:41]
+    canvas: [channels, key-resources]
+
+  - id: resource-npm-org
+    kind: resource
+    resourceType: service
+    title: The npm organisation reebeat
+    statement: The npm organisation under which `@reebeat/*` pre-releases are published. It exists.
+    status: decided
+    source: [log:49]
+    canvas: [channels, key-resources]
+
+  - id: resource-decision-log
+    kind: resource
+    resourceType: document
+    title: The operator's decision log
+    statement: >-
+      The operator's own decisions and wording, compiled by the lead agent from the working sessions of 2026-10-28 and
+      2026-10-29. Its header says that where a repository document disagrees, the log and its date win.
+    status: proposed
+    rationale: >-
+      The header is the lead's statement of the log's precedence, not a line the operator decided. The operator should
+      confirm that the log outranks repository documents.
+    source: [log:3]
+    canvas: [key-resources]

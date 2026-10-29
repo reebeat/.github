@@ -1,0 +1,256 @@
+elements:
+  - id: concept-studio-lens
+    kind: concept
+    title: Lens
+    statement: >-
+      A lens is a phase-based page of the editor, inspired by DaVinci Resolve's pages. Each lens fits one phase of work.
+    attributes:
+      - phase of work
+    status: decided
+    source: [log:45, record:studio:docs/specs/0001-first-felt-journey.md:171]
+
+  - id: concept-studio-playhead
+    kind: concept
+    title: Playhead and preview
+    statement: >-
+      The preview shows the story at the playhead. The preview, the playhead and the agent panel are present in every lens.
+    attributes:
+      - playhead position (media time)
+      - preview frame at that time
+    relations:
+      - {type: part-of, to: concept-studio-lens, label: present in every lens}
+    status: proposed
+    rationale: >-
+      Spec plan: the lenses note states it as design. Whether the playhead is shared between collaborators is open.
+      The operator should confirm that the preview, playhead and agent panel are always present, and whether the playhead is
+      shared.
+    source: [studio:docs/design/lenses.md:9, studio:docs/design/lenses.md:108]
+
+  - id: concept-studio-tier
+    kind: concept
+    title: Free tier and paid tier
+    statement: >-
+      A free feature costs us nothing to run. A paid feature costs us money to run. The tier follows the cost driver, not
+      what the screen shows.
+    attributes:
+      - cost driver (browser, always-on server, inference, render minutes)
+      - tier (free or paid)
+    status: proposed
+    rationale: >-
+      Spec plan: the lenses note and spec 0001 state this rule in general. The operator decided a free tier for basic
+      features and paid premium features such as multiplayer collaboration and integrated AI agents (log:43). The operator
+      must confirm the general rule.
+    source: [log:43, studio:docs/design/lenses.md:15, studio:docs/specs/0001-first-felt-journey.md:125]
+
+  - id: concept-studio-keyed-document
+    kind: concept
+    title: Keyed document
+    statement: >-
+      The shared story is held in a merge-based keyed document, with a validation gate in the sync server.
+    relations:
+      - {type: relates, to: concept-studio-loro-update, label: replicates as}
+    status: decided
+    source: [log:47, record:studio:docs/specs/0002-collaboration-spike.md:198]
+
+  - id: concept-studio-loro-update
+    kind: concept
+    title: Loro update
+    statement: >-
+      The replicated unit of collaboration is the Loro update.
+    relations:
+      - {type: relates, to: concept-studio-json-patch, label: described by}
+    status: decided
+    source: [record:studio:docs/specs/0001-first-felt-journey.md:172, log:47]
+
+  - id: concept-studio-json-patch
+    kind: concept
+    title: JSON Patch
+    statement: >-
+      A JSON Patch describes an edit, for agents' tool calls, review, proposals and undo. It is not what peers exchange.
+    relations:
+      - {type: relates, to: concept-studio-loro-update, label: describes the edit of}
+    status: decided
+    source: [record:studio:docs/specs/0001-first-felt-journey.md:172]
+
+  - id: concept-studio-revision
+    kind: concept
+    title: Revision
+    statement: >-
+      A revision is the SHA-256 of the canonical story text projected from the document. It does not come from the CRDT's
+      saved bytes.
+    attributes:
+      - SHA-256 of the projected IR text
+    relations:
+      - {type: relates, to: concept-studio-keyed-document, label: projected from}
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0001 defines baseRevision this way and spec 0002 keeps it for merge. The operator has not decided it.
+      The operator should confirm the revision rule.
+    source: [studio:docs/specs/0001-first-felt-journey.md:88, studio:docs/specs/0002-collaboration-spike.md:129]
+
+  - id: concept-studio-document-port
+    kind: concept
+    title: Document port
+    statement: >-
+      Loro sits behind a ten-method document port.
+    status: decided
+    source: [record:studio:docs/specs/0002-collaboration-spike.md:198]
+
+  - id: concept-studio-validation-gate
+    kind: concept
+    title: Validation gate
+    statement: >-
+      The validation gate is in the sync server, which is a Durable Object.
+    relations:
+      - {type: part-of, to: concept-studio-sync-room}
+    status: decided
+    source: [log:47, record:studio:docs/specs/0002-collaboration-spike.md:198]
+
+  - id: concept-studio-repair-proposal
+    kind: concept
+    title: Repair proposal
+    statement: >-
+      A repair for an invalid merge is offered as a proposal and is never applied without a person.
+    relations:
+      - {type: relates, to: concept-studio-validation-gate, label: offered after a refusal}
+    status: decided
+    source: [record:studio:docs/specs/0002-collaboration-spike.md:198]
+
+  - id: concept-studio-suggestion
+    kind: concept
+    title: Suggestion
+    statement: >-
+      A suggestion is an edit proposed by an agent or a collaborator that is not yet applied. It carries who proposed it.
+    attributes:
+      - author (agent or person)
+      - patch that describes the edit
+      - accepted or rejected, and by whom
+    relations:
+      - {type: relates, to: concept-studio-json-patch, label: applies as}
+      - {type: relates, to: concept-studio-repair-proposal, label: a repair is one kind}
+    status: proposed
+    rationale: >-
+      Spec plan: the lenses note designs suggestion mode. The operator decided only the repair proposal.
+      The operator should confirm the general suggestion and attribution semantics.
+    source: [studio:docs/design/lenses.md:67]
+
+  - id: concept-studio-sync-room
+    kind: concept
+    title: Sync room
+    statement: >-
+      The sync room is one Cloudflare Durable Object for each story. It uses WebSocket hibernation, keeps an update log in
+      SQLite and compacts it to a snapshot.
+    attributes:
+      - one object per story
+      - update log compacted to a snapshot
+      - snapshots over 2 MB are chunked
+    relations:
+      - {type: relates, to: concept-studio-keyed-document, label: holds the shared copy of}
+    status: proposed
+    rationale: >-
+      Spec plan: the operator decided a sync server with a gate, which is the Durable Object (log:47 and spec 0002 line
+      198). One object per story, hibernation, the SQLite log and chunking are the spike's recommendation, run only on
+      local workerd.
+      The operator should confirm these room-design details.
+    source: [studio:docs/specs/0002-collaboration-spike.md:28, studio:docs/specs/0002-collaboration-spike.md:192]
+
+  - id: concept-studio-peer
+    kind: concept
+    title: Peer
+    statement: >-
+      A person or an agent edits through its own replica of the document. A peer id registered to a name gives attribution.
+    attributes:
+      - peer id
+      - registered name (for example human or agent)
+    relations:
+      - {type: relates, to: concept-studio-loro-update, label: produces}
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0002 tested agents as peers in the spike. The operator has not decided the registration scheme.
+      The operator should confirm the peer and attribution scheme.
+    source: [studio:docs/specs/0002-collaboration-spike.md:27, studio:docs/specs/0002-collaboration-spike.md:138]
+
+  - id: concept-studio-deck-view
+    kind: concept
+    title: Deck view
+    statement: >-
+      The deck view is where narration is recorded and cut narration pieces are tied to beat lifecycle events.
+    relations:
+      - {type: isa, to: concept-studio-lens}
+    status: decided
+    source: [log:45]
+
+  - id: concept-studio-take
+    kind: concept
+    title: Take
+    statement: >-
+      A take is one recording of a Line. A Line can have several takes, and the author picks the best one.
+    relations:
+      - {type: part-of, to: concept-studio-deck-view}
+    status: proposed
+    rationale: >-
+      Spec plan: the lenses note describes takes, a teleprompter and word alignment. The operator log names cut narration
+      pieces, not takes.
+      The operator should confirm the take model.
+    source: [studio:docs/design/lenses.md:38, log:45]
+
+  - id: concept-studio-narration-piece
+    kind: concept
+    title: Narration piece
+    statement: >-
+      A narration piece is a cut part of narration that is tied to a beat lifecycle event.
+    relations:
+      - {type: part-of, to: concept-studio-deck-view}
+    status: decided
+    source: [log:45]
+
+  - id: concept-studio-anchor-offset
+    kind: concept
+    title: Anchor and offset
+    statement: >-
+      An effect starts at a delay after an anchor event. Retiming changes the delay, which is the offset, and keeps the
+      anchor.
+    relations:
+      - {type: relates, to: concept-studio-narration-piece, label: an anchor can be a narration word}
+    status: proposed
+    rationale: >-
+      Spec plan: the lenses note explains the idea with an example. The terms come from reebeat spec 0004, which is still
+      moving.
+      The operator should confirm the anchor and offset terms once reebeat settles them.
+    source: [studio:docs/design/lenses.md:56]
+
+  - id: concept-studio-agent-scope
+    kind: concept
+    title: Agent panel scope
+    statement: >-
+      A scope says what an agent may do in a lens. Read may read the story, suggest may propose edits that wait for a
+      person, and apply may edit directly.
+    attributes:
+      - read
+      - suggest
+      - apply
+      - set per agent and per lens
+    relations:
+      - {type: relates, to: concept-studio-suggestion, label: suggest scope creates}
+    status: proposed
+    rationale: >-
+      Spec plan: the lenses note designs the scopes. The operator named bring-your-own and hosted agents only.
+      The operator should confirm the scope model.
+    source: [studio:docs/design/lenses.md:91-99]
+
+  - id: concept-studio-feature-map
+    kind: concept
+    title: Feature map
+    statement: >-
+      The feature map lists each user-visible feature with how to observe it and what counts as broken. The verify skill
+      drives it in a real browser.
+    attributes:
+      - entry id and spec
+      - how to observe
+      - broken when
+    status: proposed
+    rationale: >-
+      Observed in the repository: spec 0003 defines it. The operator assigned a verification skill but did not define the
+      map.
+      The operator should confirm the feature map as the way to keep the verify skill true.
+    source: [studio:docs/specs/0003-review-and-verify-skills.md:14, studio:.agents/skills/verify-studio/features/README.md:3-5]

@@ -1,0 +1,292 @@
+elements:
+  # ---- actors ----
+  - id: actor-flow-app-developer
+    kind: actor
+    actorType: role
+    persona: true
+    title: Foldkit app developer
+    statement: >-
+      A person who builds a Foldkit application and wants a graph canvas in it. They add the library and own the
+      application's graph data, layout and node views.
+    status: proposed
+    source:
+      - log:48
+      - foldkit-flow:README.md:3
+    rationale: >-
+      The log and README say the library serves Foldkit applications. The persona is named here from that. The
+      operator must confirm who the first users are.
+    canvas: [customer-segments]
+    links:
+      performs: [process-flow-adopt-library, process-flow-apply-outcome]
+      uses: [comp-flow-library]
+      serves: [goal-flow-vision]
+
+  - id: actor-flow-studio
+    kind: actor
+    actorType: system
+    title: reebeat studio (consuming product)
+    statement: >-
+      reebeat studio is the product that would draw its story graph with the library. It is a consumer, not part of the
+      library.
+    status: proposed
+    source:
+      - log:45
+      - log:48
+      - studio:docs/design/lenses.md:50-52
+    rationale: >-
+      Studio's story graph lens needs a statechart map, and the log lists foldkit-flow beside studio. No cited line says
+      studio uses foldkit-flow. The operator must confirm.
+    canvas: [customer-segments]
+    links:
+      uses: [comp-flow-library]
+      serves: [goal-flow-studio-story-graph]
+
+  - id: actor-flow-end-user
+    kind: actor
+    actorType: role
+    persona: true
+    title: End user of a graph canvas
+    statement: >-
+      A person who uses an application built with the library. They pan, zoom, drag, connect and select with a pointer.
+    status: proposed
+    source:
+      - pr:foldkit-flow#4
+    rationale: >-
+      The journey in PR #4 has this person. The operator must confirm the persona.
+    links:
+      performs:
+        - process-flow-use-canvas
+        - process-flow-pan-zoom
+        - process-flow-drag-node
+        - process-flow-connect-handles
+        - process-flow-reconnect-edge
+        - process-flow-box-select
+      serves: [goal-flow-first-journey]
+
+  - id: actor-flow-keyboard-user
+    kind: actor
+    actorType: role
+    persona: true
+    title: Keyboard-only user
+    statement: >-
+      A person who uses only the keyboard, and may use a screen reader. They need to reach, select, move and delete
+      nodes without a pointer.
+    status: proposed
+    source:
+      - pr:foldkit-flow#4
+    rationale: >-
+      PR #4 builds for this person (falsifier J5). No line names a screen reader user, but the live region implies one.
+      The operator must confirm.
+    links:
+      performs: [process-flow-keyboard-navigate, process-flow-delete-selection]
+      serves: [goal-flow-keyboard-access]
+
+  - id: actor-flow-contributor
+    kind: actor
+    actorType: role
+    title: Contributor (human or agent)
+    statement: >-
+      A person or an agent who writes specs and code, opens PRs and takes part in review rounds.
+    status: proposed
+    source:
+      - foldkit-flow:docs/specs/0000-development-lifecycle.md:14
+    rationale: >-
+      Observed in the repository: spec 0000 names the contributor as a human or an agent. No operator line decides the
+      role. The operator must confirm.
+    links:
+      performs: [process-flow-ship-spec, process-flow-run-journey-gate]
+      serves: [goal-flow-lifecycle]
+
+  - id: actor-flow-xyflow
+    kind: actor
+    actorType: org-unit
+    title: The xyflow project
+    statement: >-
+      xyflow (webkid GmbH) makes React Flow, Svelte Flow and `@xyflow/system`. It asks its users to keep its attribution
+      or to support the project.
+    status: proposed
+    source:
+      - foldkit-flow:NOTICE:4-14
+      - foldkit-flow:README.md:21
+    rationale: >-
+      NOTICE names the copyright holder and its request. No operator line records a relationship with xyflow. The
+      operator must confirm whether to support the project in another way.
+    canvas: [key-partners]
+
+  - id: actor-flow-foldkit-project
+    kind: actor
+    actorType: org-unit
+    title: The Foldkit project
+    statement: >-
+      Foldkit makes the framework the library is built for. It owns the plugin the example cannot use yet, and the
+      project may take the library upstream.
+    status: proposed
+    source:
+      - foldkit-flow:AGENTS.md:62
+      - foldkit-flow:STATE.md:12-13
+      - log:56
+    rationale: >-
+      Sources describe Foldkit as an upstream dependency and a possible new owner. No line records a working agreement
+      with its maintainers. The operator must confirm.
+    canvas: [key-partners]
+
+  # ---- resources ----
+  - id: resource-flow-xyflow-system
+    kind: resource
+    resourceType: external-tool
+    title: "@xyflow/system"
+    statement: >-
+      The MIT-licensed, framework-free core of React Flow and Svelte Flow. It supplies the pan and zoom, drag, handle,
+      edge-path and minimap controllers.
+    status: proposed
+    source:
+      - foldkit-flow:README.md:21
+      - foldkit-flow:AGENTS.md:25
+      - foldkit-flow:NOTICE:4-7
+    rationale: >-
+      The README and AGENTS.md name the dependency. At the pinned commit 5dd44a9 (PR #4 has since merged; see the tracker), the library does not import it yet; PR #4 adds it at version
+      0.0.83. The operator must confirm the choice.
+    canvas: [key-partners, key-resources]
+    links:
+      serves: [goal-flow-first-journey]
+
+  - id: resource-flow-foldkit
+    kind: resource
+    resourceType: software
+    title: Foldkit
+    statement: >-
+      The web framework the library is built for.
+    status: decided
+    source:
+      - log:48
+    canvas: [key-partners, key-resources]
+    links:
+      serves: [goal-flow-vision]
+
+  - id: resource-flow-foldkit-pin
+    kind: resource
+    resourceType: software
+    title: Foldkit 0.169.0 and its peer range
+    statement: >-
+      The repository uses Foldkit 0.169.0, and the library declares a peer of `~0.169.0`.
+    status: proposed
+    source:
+      - foldkit-flow:package.json:64
+      - foldkit-flow:packages/flow/package.json:24
+    rationale: >-
+      Observed in the repository: the version and the peer range are in package.json. The log chooses Foldkit, not a
+      version. The operator must confirm.
+    canvas: [key-partners, key-resources]
+    links:
+      serves: [goal-flow-vision]
+
+  - id: resource-flow-effect
+    kind: resource
+    resourceType: software
+    title: Effect 4.1.0
+    statement: >-
+      The Effect runtime and libraries the repository pins at 4.1.0. The library declares a peer of `~4.1.0`.
+    status: proposed
+    source:
+      - foldkit-flow:AGENTS.md:63
+      - foldkit-flow:package.json:58
+      - foldkit-flow:packages/flow/package.json:23
+    rationale: >-
+      Observed in the repository: the pin and peer range are in package.json. The operator's rule at AGENTS.md line 63
+      sets how a package declares its range (see constraint-flow-effect-range), not the exact version. The operator
+      must confirm.
+    canvas: [key-partners, key-resources]
+    links:
+      serves: [goal-org-stay-on-supported-stack]
+
+  - id: resource-flow-repo
+    kind: resource
+    resourceType: service
+    title: The project's own repository
+    statement: >-
+      The project's own repository.
+    status: decided
+    source:
+      - log:48
+    links:
+      serves: [goal-flow-lifecycle]
+
+  - id: resource-flow-toolchain
+    kind: resource
+    resourceType: external-tool
+    title: Devenv, Bun, Vite+ and Oxlint toolchain
+    statement: >-
+      The tools the gates run on: devenv (Bun, Node, gitleaks), Bun, Vite+, Oxfmt, Oxlint, `@effect/tsgo`, knip, jscpd and
+      commitlint.
+    status: proposed
+    source:
+      - foldkit-flow:docs/specs/0000-development-lifecycle.md:33
+      - foldkit-flow:AGENTS.md:36-49
+    rationale: >-
+      Observed in the repository: spec 0000 and AGENTS.md list these tools. The log does not decide the list. The
+      operator must confirm.
+    links:
+      serves: [goal-flow-lifecycle]
+
+  - id: resource-flow-specs
+    kind: resource
+    resourceType: document
+    title: Specs in docs/specs
+    statement: >-
+      One spec per felt journey, with its falsifiers and dated revisions. STATE.md says which is active.
+    status: proposed
+    rationale: >-
+      Observed in the repository: README and spec 0000 describe the specs. The operator's assignment of spec 0000
+      accepted the plan as a whole. The operator must confirm.
+    source:
+      - foldkit-flow:docs/specs/0000-development-lifecycle.md:3
+      - foldkit-flow:README.md:26
+    links:
+      serves: [goal-flow-lifecycle]
+
+  - id: resource-flow-state-file
+    kind: resource
+    resourceType: document
+    title: STATE.md
+    statement: >-
+      The mission-state file: lifecycle stage, what is happening now, what is next and what is blocked.
+    status: proposed
+    source:
+      - foldkit-flow:STATE.md:1-17
+    rationale: >-
+      The file exists and has this shape. See problem-flow-state-blocked-nothing for a gap in it. The operator must
+      confirm it as the single place for state.
+    links:
+      serves: [goal-flow-lifecycle]
+
+  - id: resource-flow-notice
+    kind: resource
+    resourceType: document
+    title: LICENSE and NOTICE
+    statement: >-
+      The MIT licence text and the notice that credits xyflow and points to PROVENANCE.md for other third-party code.
+    status: proposed
+    rationale: >-
+      Observed in the repository: the files exist as described. The log decides MIT only (line 48); it does not decide
+      the content of NOTICE. The operator must confirm.
+    source:
+      - log:48
+      - foldkit-flow:LICENSE:1-3
+      - foldkit-flow:NOTICE:1-17
+    links:
+      serves: [goal-flow-respect-xyflow]
+
+  - id: resource-flow-chromium
+    kind: resource
+    resourceType: external-tool
+    title: Chromium for the journey gate
+    statement: >-
+      A Chromium browser on the path or named by `FLOW_CHROMIUM`. The journey needs it. CI has none.
+    status: proposed
+    source:
+      - pr:foldkit-flow#4
+      - foldkit-flow:docs/specs/0000-development-lifecycle.md:92
+    rationale: >-
+      Only PR #4 describes the need. It ran on Chromium 155. The operator must decide which browser CI should provide.
+    links:
+      serves: [goal-flow-browser-proof]

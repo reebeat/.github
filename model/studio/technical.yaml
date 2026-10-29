@@ -1,0 +1,960 @@
+elements:
+  # ---------------------------------------------------------------- the product and the app
+  - id: comp-studio-product
+    kind: component
+    tier: product
+    title: reebeat studio
+    tagline: The collaborative editor for reebeat stories
+    repo: studio
+    licence: "none; all rights reserved, undecided"
+    statement: >-
+      Studio is a collaborative editor for reebeat stories, a product built on the open compiler. It ships web first and as
+      one binary built with Bun. Its licence is not decided.
+    status: decided
+    source: [log:43, log:45, log:46]
+    links:
+      serves: [goal-studio-vision]
+      depends-on: [resource-studio-reebeat-compiler]
+    canvas: [value-propositions, key-activities]
+
+  - id: comp-studio-editor
+    kind: component
+    tier: app
+    package: "@reebeat-studio/editor"
+    repo: studio
+    title: The editor app (apps/editor)
+    statement: >-
+      A Foldkit single-page app. Today it is a placeholder shell with four named regions and an inspector toggle, and it
+      edits nothing.
+    status: proposed
+    rationale: >-
+      Observed in the repository: the README and spec 0000 describe the shell. The spec header says the operator assigned a
+      scaffolded Foldkit app as a whole. The operator must confirm the app as stated.
+    source: [studio:README.md:5, studio:README.md:23, studio:docs/specs/0000-development-lifecycle.md:53]
+    links:
+      part-of: [comp-studio-product]
+      serves: [goal-studio-first-felt-journey, goal-studio-lenses]
+      depends-on: [resource-studio-foldkit, resource-studio-effect, resource-studio-reebeat-compiler]
+      realizes: [req-studio-accessible-regions, req-studio-offline-free-tier]
+
+  - id: comp-studio-preview
+    kind: component
+    tier: app
+    title: In-browser Deck preview
+    statement: >-
+      The preview renders the compiled timeline with reebeat's Deck renderer in an iframe and seeks it to the playhead. The
+      Preview region owns the iframe as a Mount.
+    status: proposed
+    rationale: >-
+      Spec 0001 proposes this option (C) and its lifetimes. It needs reebeat's browser compile and seek, which spec 0001
+      lists as new reebeat work. The operator should confirm Deck-as-preview, the open question 1 of spec 0001.
+    source: [studio:docs/specs/0001-first-felt-journey.md:59-72]
+    pricing: free
+    links:
+      part-of: [comp-studio-editor]
+      serves: [goal-studio-preview-fidelity]
+      depends-on: [resource-studio-reebeat-compiler]
+      realizes: [req-studio-preview-equals-video, req-studio-scrub-frame]
+
+  - id: comp-studio-edit-path
+    kind: component
+    tier: library
+    title: The validated edit path
+    statement: >-
+      The edit path applies an edit, decodes the result with the story schema, computes the revision and keeps the inverse
+      for undo. A bad edit returns a tagged error and changes nothing.
+    status: proposed
+    rationale: >-
+      Spec 0001 plans it, and its later revision changes only what peers replicate. It has no code at the pinned commit. The
+      operator should confirm the validated edit path.
+    source: [studio:docs/specs/0001-first-felt-journey.md:76-93, studio:docs/specs/0001-first-felt-journey.md:172]
+    pricing: free
+    links:
+      part-of: [comp-studio-editor]
+      serves: [goal-studio-first-felt-journey]
+      realizes: [isgoal-studio-one-edit-path, req-studio-edit-one-property, req-studio-undo-restores]
+
+  # ---------------------------------------------------------------- lenses, one component each
+  - id: comp-studio-lens-manuscript
+    kind: component
+    tier: app
+    title: Manuscript lens
+    statement: >-
+      A read-only reading view of the screenplay, drawn from the IR as a Fountain document. It needs a Fountain writer from
+      reebeat.
+    status: proposed
+    rationale: >-
+      The operator named a manuscript view (log line 45). The read-only Fountain output, the writer dependency and the tier
+      are the lenses note's proposal. The operator should confirm the view behaviour and the tier.
+    source: [log:45, studio:docs/design/lenses.md:21, studio:docs/design/lenses.md:34]
+    pricing: free
+    links:
+      part-of: [comp-studio-editor]
+      serves: [goal-studio-lens-manuscript]
+
+  - id: comp-studio-lens-record
+    kind: component
+    tier: app
+    title: Deck and Record lens
+    statement: >-
+      The deck view with a teleprompter, several takes for each Line and word-aligned cuts tied to beat lifecycle events.
+      Recording and alignment on the user's machine are free. Hosted alignment is a separate paid service.
+    status: proposed
+    rationale: >-
+      The operator decided the deck view (log line 45). The teleprompter, the takes, the word alignment and the free tier of
+      local recording are the lenses note's proposal. The operator should confirm those details and the tier split.
+    source: [log:45, studio:docs/design/lenses.md:22, studio:docs/design/lenses.md:36-48]
+    pricing: free
+    links:
+      part-of: [comp-studio-editor]
+      serves: [goal-studio-deck-view-narration]
+      realizes: [req-studio-record-takes, req-studio-cut-narration-by-word]
+
+  - id: comp-studio-lens-story-graph
+    kind: component
+    tier: app
+    title: Story graph lens
+    statement: >-
+      A statechart map of Scenes, States and the Beats the engine generates. The first journey builds a read-only version
+      with one property edit.
+    status: proposed
+    rationale: >-
+      The operator named a scene, state and beat view (log line 45). Generated Beats, the read-only first version and the
+      tier are the lenses note's proposal. The operator should confirm those behaviours and the tier.
+    source: [log:45, studio:docs/design/lenses.md:23, studio:docs/design/lenses.md:50-52]
+    pricing: free
+    links:
+      part-of: [comp-studio-editor]
+      serves: [goal-studio-lens-story-graph]
+      realizes: [req-studio-graph-matches-plan]
+
+  - id: comp-studio-lens-timeline
+    kind: component
+    tier: app
+    title: Timeline lens
+    statement: >-
+      Lanes for Elements and Lines with effects at resolved times, and a scrub-linked preview. Retiming writes a new offset
+      from the anchor. The first journey builds it read-only.
+    status: proposed
+    rationale: >-
+      The operator named a timeline view (log line 45). Retiming by anchored offset and the tier are the lenses note's
+      proposal. The operator should confirm the retiming behaviour and the tier.
+    source: [log:45, studio:docs/design/lenses.md:24, studio:docs/design/lenses.md:54-56]
+    pricing: free
+    links:
+      part-of: [comp-studio-editor]
+      serves: [goal-studio-lens-timeline]
+
+  - id: comp-studio-lens-wiring
+    kind: component
+    tier: app
+    title: Wiring lens
+    statement: >-
+      For each effect, the event it follows and a trace to the frame. It reads what reebeat's timing plan prints and adds the
+      chain.
+    status: proposed
+    rationale: >-
+      Design only. The lens, its tier and its reebeat needs (event resolution, cycle lint, clocks) are the lenses note's
+      proposal. The operator should confirm this lens and its tier.
+    source: [studio:docs/design/lenses.md:25, studio:docs/design/lenses.md:58-60]
+    pricing: free
+    links:
+      part-of: [comp-studio-editor]
+      serves: [goal-studio-lens-wiring]
+
+  - id: comp-studio-lens-review
+    kind: component
+    tier: app
+    title: Review lens
+    statement: >-
+      A meaning-level diff of two versions with renders side by side, and suggestion mode. It is free for one person and
+      local agents. Suggestions from others need the paid sync server, and suggestions from hosted agents need the paid
+      hosted agents.
+    status: proposed
+    rationale: >-
+      Design only. The semantic diff, the suggestion workflow and the tier split are the lenses note's proposal. The
+      operator should confirm the review behaviour and the tier.
+    source: [studio:docs/design/lenses.md:26, studio:docs/design/lenses.md:62-69]
+    pricing: free
+    links:
+      part-of: [comp-studio-editor]
+      serves: [goal-studio-lens-review]
+      realizes: [isgoal-studio-attribution]
+
+  - id: comp-studio-lens-coach
+    kind: component
+    tier: app
+    title: Coach lens
+    statement: >-
+      Shows the findings of reebeat's teaching lint on the timeline. The lint is free. The lenses note says guided fixes may
+      be a paid tier.
+    status: proposed
+    rationale: >-
+      Design only. It depends on reebeat issue 8, and the lens, its findings view and the tier are the lenses note's
+      proposal. The operator should confirm the lens and its tier.
+    source: [studio:docs/design/lenses.md:27, studio:docs/design/lenses.md:71-73]
+    pricing: free
+    links:
+      part-of: [comp-studio-editor]
+      serves: [goal-studio-lens-coach]
+
+  - id: comp-studio-lens-languages
+    kind: component
+    tier: app
+    title: Languages lens
+    statement: >-
+      Compares narration versions and shows timing drift for each language. The drift report is free. Hosted translation or
+      speech is a separate paid service.
+    status: proposed
+    rationale: >-
+      Design only. It depends on reebeat issue 10, and the drift view and the tier are the lenses note's proposal. The
+      operator should confirm those functions and the tier.
+    source: [studio:docs/design/lenses.md:28, studio:docs/design/lenses.md:75-77]
+    pricing: free
+    links:
+      part-of: [comp-studio-editor]
+      serves: [goal-studio-lens-languages]
+
+  - id: comp-studio-lens-deliver
+    kind: component
+    tier: app
+    title: Deliver lens
+    statement: >-
+      Video with aspect variants, the Deck in present mode and build receipts. A render on the user's machine is free. A
+      render in our cloud is a separate paid service.
+    status: proposed
+    rationale: >-
+      The operator named a render view (log line 45). The outputs and the tier split are the lenses note's proposal, and
+      aspect variants are new reebeat work. The operator should confirm the delivery scope and the tiers.
+    source: [log:45, studio:docs/design/lenses.md:29, studio:docs/design/lenses.md:79-87]
+    pricing: free
+    links:
+      part-of: [comp-studio-editor]
+      serves: [goal-studio-lens-deliver]
+
+  - id: comp-studio-lens-agent-panel
+    kind: component
+    tier: app
+    title: Agent panel
+    statement: >-
+      A panel in every lens where a person adds an agent and sets its scope. Bringing your own agent is free. A hosted agent
+      is a separate paid service.
+    status: proposed
+    rationale: >-
+      Design only. The scopes and the tier are the lenses note's proposal. The operator should confirm the scopes and the
+      tier.
+    source: [studio:docs/design/lenses.md:30, studio:docs/design/lenses.md:89-99]
+    pricing: free
+    links:
+      part-of: [comp-studio-editor]
+      serves: [goal-studio-lens-agent-panel]
+      realizes: [req-studio-agent-scopes]
+
+  # ---------------------------------------------------------------- agent tools and hosted services
+  - id: comp-studio-tool-protocol
+    kind: component
+    tier: integration
+    title: The agent tool protocol
+    statement: >-
+      Editing tools for agents: read the story, describe the schema, plan timing, apply a patch, set a property by Element id
+      and render a frame. The transport is likely MCP but is not chosen.
+    status: proposed
+    rationale: >-
+      Spec 0001 lists the tools as open. The operator wants agents to get the editing tools (log line 43) but has not
+      confirmed MCP or the tool set. The operator should confirm the tool set, the error contract and the transport.
+    source: [log:43, studio:docs/specs/0001-first-felt-journey.md:95-108, studio:docs/specs/0001-first-felt-journey.md:164]
+    pricing: free
+    links:
+      serves: [goal-studio-people-and-agents]
+      realizes: [req-studio-agent-tools, req-studio-bring-your-own-agent, req-studio-extensible-agents]
+
+  - id: comp-studio-reference-server
+    kind: component
+    tier: program
+    title: Reference tool server over a local story file
+    statement: >-
+      A small server that offers the tool protocol over one story file on the user's machine. It is part of the open core.
+    status: proposed
+    rationale: >-
+      Spec 0001 plans it (milestone M3), and it has no code at the pinned commit. The operator should confirm the reference
+      server and its place in the open core.
+    source: [studio:docs/specs/0001-first-felt-journey.md:108, studio:docs/specs/0001-first-felt-journey.md:118, studio:docs/specs/0001-first-felt-journey.md:151]
+    pricing: free
+    links:
+      serves: [goal-studio-people-and-agents]
+      depends-on: [comp-studio-tool-protocol]
+
+  - id: comp-studio-hosted-agent
+    kind: component
+    tier: service
+    title: Hosted agents
+    statement: >-
+      Heavily integrated AI agents that we offer are a premium feature behind the paywall.
+    status: decided
+    source: [log:43]
+    pricing: paid
+    links:
+      serves: [goal-studio-people-and-agents, goal-studio-free-paid-split]
+      depends-on: [comp-studio-tool-protocol]
+    canvas: [revenue-streams, cost-structure]
+
+  - id: comp-studio-hosted-speech
+    kind: component
+    tier: service
+    title: Hosted alignment, speech and translation
+    statement: >-
+      Services that align narration, make speech and translate it on our servers. They cost compute, so the lenses note
+      marks them paid.
+    status: proposed
+    rationale: >-
+      The lenses note and spec 0001 propose it. Spec 0001 lists hosted speech as an ambiguous row that the operator must
+      settle.
+    source: [studio:docs/design/lenses.md:22, studio:docs/design/lenses.md:28, studio:docs/specs/0001-first-felt-journey.md:123, studio:docs/specs/0001-first-felt-journey.md:163]
+    pricing: paid
+    links:
+      serves: [goal-studio-deck-view-narration, goal-studio-free-paid-split]
+    canvas: [revenue-streams]
+
+  - id: comp-studio-cloud-render
+    kind: component
+    tier: service
+    title: Cloud rendering
+    statement: >-
+      A service that renders the Video in our cloud with Chromium and ffmpeg. It costs CPU minutes, so it is paid.
+    status: proposed
+    rationale: >-
+      The lenses note and spec 0001 propose it as paid. The ffmpeg licence question must be settled first. The operator
+      should confirm cloud rendering and its price tier.
+    source: [studio:docs/design/lenses.md:29, studio:docs/design/lenses.md:87, studio:docs/specs/0001-first-felt-journey.md:122]
+    pricing: paid
+    links:
+      serves: [goal-studio-lens-deliver, goal-studio-free-paid-split]
+    canvas: [revenue-streams, cost-structure]
+
+  # ---------------------------------------------------------------- collaboration
+  - id: comp-studio-sync-server
+    kind: component
+    tier: service
+    title: The sync server (planned)
+    statement: >-
+      Multiplayer collaboration runs through a sync server that holds a validation gate on the merge-based keyed document.
+      It is a paid feature, and the server is a Durable Object.
+    status: decided
+    source: [log:43, log:47, record:studio:docs/specs/0002-collaboration-spike.md:198]
+    pricing: paid
+    links:
+      serves: [goal-studio-collaboration, goal-studio-free-paid-split]
+      depends-on: [comp-studio-document-port, comp-studio-validation-gate, resource-studio-cloudflare, resource-studio-loro]
+      realizes: [req-studio-gate-refuses-invalid, req-studio-sync-persistence, req-studio-validity-under-merge]
+    canvas: [revenue-streams, cost-structure]
+
+  - id: comp-studio-document-port
+    kind: component
+    tier: library
+    title: The document port over Loro
+    statement: >-
+      Loro sits behind a ten-method document port.
+    status: decided
+    source: [record:studio:docs/specs/0002-collaboration-spike.md:198]
+    links:
+      serves: [goal-studio-collaboration]
+      depends-on: [resource-studio-loro]
+      realizes: [isgoal-studio-agents-as-peers]
+
+  - id: comp-studio-validation-gate
+    kind: component
+    tier: library
+    title: The validation gate
+    statement: >-
+      The sync server has a validation gate that checks merged changes.
+    status: decided
+    source: [log:47, record:studio:docs/specs/0002-collaboration-spike.md:198]
+    links:
+      serves: [goal-studio-valid-shared-story]
+      depends-on: [resource-studio-reebeat-compiler]
+      realizes: [req-studio-gate-refuses-invalid, isgoal-studio-story-always-valid]
+
+  - id: comp-studio-repair
+    kind: component
+    tier: library
+    title: The repair function
+    statement: >-
+      A repair for an invalid merge is offered as a proposal and is never applied without a person. A function makes the
+      repair.
+    status: decided
+    source: [record:studio:docs/specs/0002-collaboration-spike.md:198]
+    links:
+      serves: [goal-studio-human-control]
+      realizes: [req-studio-repair-proposal]
+
+  # ---------------------------------------------------------------- distribution
+  - id: comp-studio-launcher
+    kind: component
+    tier: app
+    title: The single-binary launcher
+    statement: >-
+      A small Bun server compiled with the editor embedded. It serves the editor on a loopback address, answers GET and HEAD
+      only, and builds for five targets.
+    status: proposed
+    rationale: >-
+      The operator decided the single binary (log line 46). The launcher is in PR 6, a draft that was not on main at the
+      pinned commit, so the design is the PR's. The operator should confirm the launcher behaviour and the targets.
+    source: [log:46, pr:studio#6]
+    refs: [pr:studio#6]
+    links:
+      part-of: [comp-studio-product]
+      serves: [goal-studio-web-and-binary]
+      depends-on: [comp-studio-editor, resource-studio-bun]
+      realizes: [req-studio-binary-loopback-readonly, req-studio-binary-portable]
+    canvas: [channels]
+
+  - id: comp-studio-web-deploy
+    kind: component
+    tier: integration
+    title: The web deploy (inert)
+    statement: >-
+      An Alchemy file deploys the editor as a Cloudflare Worker, one stage for each pull request and one for main. At the
+      pinned commit it had type-checked but had not run.
+    status: proposed
+    rationale: >-
+      The operator decided web first (log line 46). The deploy design is in PR 6 and was blocked on an Alchemy release and
+      on credentials. The operator should confirm the per-pull-request Worker stages (an open question in PR 6).
+    source: [log:46, pr:studio#6]
+    refs: [pr:studio#6]
+    links:
+      part-of: [comp-studio-product]
+      serves: [goal-studio-web-and-binary]
+      depends-on: [resource-studio-alchemy, resource-studio-cloudflare]
+    canvas: [channels]
+
+  # ---------------------------------------------------------------- process assets and tools
+  - id: comp-studio-quality-tools
+    kind: component
+    tier: tool
+    package: "@reebeat-studio/quality"
+    title: Quality tools (tools/quality)
+    statement: >-
+      The exception registry check, the Effect family check, the feature-map test, the review-record test, the headroom test
+      and the Foldkit lint adapter.
+    status: proposed
+    rationale: >-
+      Observed in the repository: the README and AGENTS.md list the tools. The spec header says the operator assigned the
+      lifecycle as a whole, which does not decide this inventory. The operator must confirm it.
+    source: [studio:README.md:23, studio:AGENTS.md:33-37]
+    links:
+      serves: [goal-studio-checked-change]
+      realizes: [req-studio-maintainable-gates]
+
+  - id: comp-studio-ci
+    kind: component
+    tier: tool
+    title: CI checks workflow
+    statement: >-
+      Runs each gate as its own step on every pull request and on main. Its status check, named checks, must pass to merge.
+    status: proposed
+    rationale: >-
+      Observed in the repository: the workflow file and AGENTS.md describe it. The operator decided the lifecycle only as a
+      whole. The operator must confirm the workflow.
+    source: [studio:.github/workflows/checks.yml:16-18, studio:AGENTS.md:20]
+    links:
+      serves: [goal-studio-checked-change]
+      depends-on: [resource-studio-ci]
+
+  - id: comp-studio-review-skills
+    kind: component
+    tier: process-asset
+    title: Review and PR creation skills
+    statement: >-
+      The review-pr skill with its record and merge scripts, and the pr-create skill. A pass cannot be recorded by the
+      author, and a merge needs a passing record on the head.
+    status: proposed
+    rationale: >-
+      Spec plan: spec 0003 designs the author check and the merge script. The operator assigned adopting review and PR
+      procedures, not these details. The operator must confirm them.
+    source: [studio:docs/specs/0003-review-and-verify-skills.md:13, studio:docs/specs/0003-review-and-verify-skills.md:46]
+    links:
+      serves: [goal-studio-checked-change]
+
+  - id: comp-studio-verify-skill
+    kind: component
+    tier: process-asset
+    title: The verify-studio skill and feature map
+    statement: >-
+      Launches a disposable editor, drives it in a real browser, keeps evidence outside the worktree and cleans up. Its
+      feature map lists what a person can see or do and what counts as broken.
+    status: proposed
+    rationale: >-
+      Spec plan: the operator assigned a verification skill for each repository. The disposable instance, the browser drive
+      and the feature map are spec 0003's design. The operator must confirm them.
+    source: [studio:docs/specs/0003-review-and-verify-skills.md:14, studio:docs/specs/0003-review-and-verify-skills.md:52-58]
+    links:
+      serves: [goal-studio-checked-change]
+      depends-on: [resource-studio-host-chromium]
+
+  # ---------------------------------------------------------------- functional requirements
+  - id: req-studio-graph-matches-plan
+    kind: requirement
+    reqType: functional
+    title: The graph is the engine's graph
+    statement: >-
+      The States and Beats the editor draws equal the ones reebeat's timing plan lists, with the same ids, count and order.
+    status: proposed
+    rationale: >-
+      Falsifier F1 of spec 0001. It has no code at the pinned commit. The operator should confirm the graph equality
+      requirement.
+    source: [studio:docs/specs/0001-first-felt-journey.md:17, studio:docs/specs/0001-first-felt-journey.md:131]
+    refs: ["studio:docs/specs/0001-first-felt-journey.md:1"]
+    pricing: free
+    links:
+      serves: [goal-studio-first-felt-journey]
+
+  - id: req-studio-scrub-frame
+    kind: requirement
+    reqType: functional
+    title: The playhead seeks the preview to any frame
+    statement: >-
+      Dragging the playhead shows that frame and its narration word in the preview.
+    status: proposed
+    rationale: >-
+      Step 3 of spec 0001. It needs a seekable Deck page from reebeat. The operator should confirm the scrub and preview
+      requirement.
+    source: [studio:docs/specs/0001-first-felt-journey.md:18, studio:docs/specs/0001-first-felt-journey.md:39]
+    pricing: free
+    links:
+      serves: [goal-studio-first-felt-journey]
+
+  - id: req-studio-edit-one-property
+    kind: requirement
+    reqType: functional
+    title: One property edit is one change
+    statement: >-
+      Setting an Element property changes the story by exactly one replace. An invalid result is refused with a reason and
+      leaves the story unchanged.
+    status: proposed
+    rationale: >-
+      Falsifiers F3 and F4 of spec 0001. They have no code at the pinned commit. The operator should confirm these edit
+      semantics.
+    source: [studio:docs/specs/0001-first-felt-journey.md:19-21, studio:docs/specs/0001-first-felt-journey.md:133-134]
+    pricing: free
+    links:
+      serves: [goal-studio-first-felt-journey]
+
+  - id: req-studio-undo-restores
+    kind: requirement
+    reqType: functional
+    title: Undo restores the old story exactly
+    statement: >-
+      Undo gives back the story byte for byte, using the computed inverse of the edit.
+    status: proposed
+    rationale: >-
+      Spec 0001 plans it and falsifier F6 tests the patch laws. The operator should confirm exact restoration and the
+      inverse behaviour.
+    source: [studio:docs/specs/0001-first-felt-journey.md:20-21, studio:docs/specs/0001-first-felt-journey.md:93, studio:docs/specs/0001-first-felt-journey.md:136]
+    pricing: free
+    links:
+      serves: [goal-studio-first-felt-journey]
+
+  - id: req-studio-record-takes
+    kind: requirement
+    reqType: functional
+    title: Record several takes with a teleprompter
+    statement: >-
+      The presenter reads a Line from a teleprompter, keeps several takes and picks the best one.
+    status: proposed
+    rationale: >-
+      The lenses note describes the deck view. The operator named the view but not these details. The operator should
+      confirm the teleprompter and take model.
+    source: [log:45, studio:docs/design/lenses.md:38]
+    pricing: free
+    links:
+      serves: [goal-studio-deck-view-narration]
+
+  - id: req-studio-cut-narration-by-word
+    kind: requirement
+    reqType: functional
+    title: Tie cut narration pieces to beat events
+    statement: >-
+      Cut narration pieces are tied to beat lifecycle events.
+    status: decided
+    source: [log:45]
+    links:
+      serves: [goal-studio-deck-view-narration]
+
+  - id: req-studio-gate-refuses-invalid
+    kind: requirement
+    reqType: functional
+    title: The sync server refuses an invalid merge with a reason
+    statement: >-
+      The server applies a change set to a copy and keeps it only when the result decodes as a valid story. It returns the
+      reason so the author can rebase.
+    status: proposed
+    rationale: >-
+      Spec plan: the operator decided a validation gate in the sync server (log:47). Applying to a copy and returning a
+      reason for a rebase are the spike's recommendation. The operator must confirm the protocol.
+    source: [log:47, studio:docs/specs/0002-collaboration-spike.md:25, studio:docs/specs/0002-collaboration-spike.md:111-112]
+    pricing: paid
+    links:
+      serves: [goal-studio-valid-shared-story]
+
+  - id: req-studio-repair-proposal
+    kind: requirement
+    reqType: functional
+    title: Offer a repair as a proposal
+    statement: >-
+      When a repair is offered for an invalid merge, it applies only after a person accepts.
+    status: decided
+    source: [record:studio:docs/specs/0002-collaboration-spike.md:198]
+    links:
+      serves: [goal-studio-human-control]
+
+  - id: req-studio-sync-persistence
+    kind: requirement
+    reqType: functional
+    title: The sync room stores an update log and a snapshot
+    statement: >-
+      The room appends each update to storage, compacts the log to a snapshot and chunks a snapshot over 2 MB. A new object
+      started from storage returns the same document.
+    status: proposed
+    rationale: >-
+      The spike ran this on local workerd for three libraries and the operator decided the sync server. The Durable Object
+      design is a recommendation. The operator should confirm the persistence protocol.
+    source: [studio:docs/specs/0002-collaboration-spike.md:28, studio:docs/specs/0002-collaboration-spike.md:56, studio:docs/specs/0002-collaboration-spike.md:66]
+    pricing: paid
+    links:
+      serves: [goal-studio-collaboration]
+
+  - id: req-studio-agent-tools
+    kind: requirement
+    reqType: functional
+    title: Agents get tools to read and edit a story
+    statement: >-
+      Tools let an agent read the story, read the schema, plan timing, apply a patch, set a property by Element id and render
+      a frame. They return the same typed errors the editor shows.
+    status: proposed
+    rationale: >-
+      Spec 0001 lists the tools and leaves the transport open. The operator should confirm the tool set and the error
+      contract.
+    source: [studio:docs/specs/0001-first-felt-journey.md:95-108]
+    pricing: free
+    links:
+      serves: [goal-studio-people-and-agents]
+
+  - id: req-studio-bring-your-own-agent
+    kind: requirement
+    reqType: functional
+    title: A user can bring their own agent
+    statement: >-
+      A user connects an agent of their choice and gives it access to the editing tools.
+    status: decided
+    source: [log:43]
+    links:
+      serves: [goal-studio-people-and-agents]
+
+  - id: req-studio-agent-scopes
+    kind: requirement
+    reqType: functional
+    title: Set an agent's scope per lens
+    statement: >-
+      A person sets read, suggest or apply for each agent, and the scope can differ for each lens.
+    status: proposed
+    rationale: >-
+      The lenses note designs it and calls a permission spec still to write. The operator should confirm the scope model.
+    source: [studio:docs/design/lenses.md:91-99]
+    pricing: free
+    links:
+      serves: [goal-studio-lens-agent-panel]
+
+  - id: req-studio-serve-local
+    kind: requirement
+    reqType: functional
+    title: The binary opens the editor in the user's browser
+    statement: >-
+      Running the binary starts a local server and opens the browser on a loopback address and port.
+    status: proposed
+    rationale: >-
+      PR 6 describes it, and it was a draft at the pinned commit. The operator should confirm the local server and the
+      browser-opening behaviour.
+    source: [pr:studio#6, log:46]
+    links:
+      serves: [goal-studio-web-and-binary]
+
+  # ---------------------------------------------------------------- non-functional requirements
+  - id: req-studio-preview-equals-video
+    kind: requirement
+    reqType: non-functional
+    quality: correctness
+    title: A preview frame equals the Video frame
+    statement: >-
+      The in-browser preview at a frame equals the Video's frame at the same time.
+    scenario: >-
+      For the first frame, a mid-transition frame, a frame inside a focus ring and the last frame of the same-id story, the
+      preview at seek(frame) and the Video frame are byte for byte equal after PNG decode, on the same Chromium build.
+    status: proposed
+    rationale: >-
+      Falsifier F2 of spec 0001. It needs reebeat's seek and browser compile, and it has not been run. The operator should
+      confirm the fidelity criterion and the preview choice.
+    source: [studio:docs/specs/0001-first-felt-journey.md:59, studio:docs/specs/0001-first-felt-journey.md:132]
+    pricing: free
+    links:
+      serves: [goal-studio-preview-fidelity]
+
+  - id: req-studio-offline-free-tier
+    kind: requirement
+    reqType: non-functional
+    quality: reliability
+    title: The free journey works offline
+    statement: >-
+      With the network off, the free journey still works and the page requests nothing but its own static files.
+    scenario: >-
+      With the network off and the static assets served, a person opens a story, sees the graph and timeline, scrubs, edits
+      one property and undoes it. The page makes no request except for its own files.
+    status: proposed
+    rationale: >-
+      Falsifier F8 of spec 0001, and the shell's feature map already checks that the page requests only its own files. The
+      operator should confirm offline behaviour and its free tier.
+    source: [studio:docs/specs/0001-first-felt-journey.md:138, studio:.agents/skills/verify-studio/features/README.md:26]
+    pricing: free
+    links:
+      serves: [goal-studio-offline-free-journey]
+
+  - id: req-studio-accessible-regions
+    kind: requirement
+    reqType: non-functional
+    quality: accessibility
+    title: Every editor region has an accessible name
+    statement: >-
+      The editor has one h1, and each region and the inspector has an accessible name. The inspector button exposes its state
+      with aria-expanded.
+    scenario: >-
+      A screen reader user lists the landmarks and finds Story graph, Preview, Timeline and Inspector by name. The Hide
+      inspector button reports aria-expanded true while the inspector shows, and false when it is hidden.
+    status: proposed
+    rationale: >-
+      The shell builds it and the feature map checks it. The operator names accessibility as a quality of the artifacts
+      (log line 10), not of the editor itself. The operator must confirm it for the editor.
+    source: [studio:apps/editor/src/main.ts:62-63, studio:apps/editor/src/main.ts:89, studio:docs/specs/0000-development-lifecycle.md:63, log:10]
+    pricing: free
+    links:
+      serves: [goal-studio-vision]
+
+  - id: req-studio-validity-under-merge
+    kind: requirement
+    reqType: non-functional
+    quality: correctness
+    title: A merged story is valid or refused
+    statement: >-
+      After any merge, the shared story is a valid story. No merge stores an invalid one.
+    scenario: >-
+      Two peers edit a story at the same time and then merge. If the merged document does not decode as a valid story, the
+      server refuses it and names the reason. Over the 66 valid spike outcomes, it refused none.
+    status: proposed
+    rationale: >-
+      Spec plan: the operator decided a validation gate in the sync server (log:47). The refusal behaviour and the
+      zero-false-refusal measurement over 66 valid spike outcomes are the spike's evidence. The operator must confirm the
+      requirement as stated.
+    source: [log:47, studio:docs/specs/0002-collaboration-spike.md:25, studio:docs/specs/0002-collaboration-spike.md:208]
+    pricing: paid
+    links:
+      serves: [goal-studio-valid-shared-story]
+
+  - id: req-studio-deterministic-merge
+    kind: requirement
+    reqType: non-functional
+    quality: reproducibility
+    title: The same updates give the same story on every peer
+    statement: >-
+      Updates replayed in any order give the same projected story text on every peer.
+    scenario: >-
+      Replay the same updates in 200 random orders into fresh replicas. Every replica gives the same story text, with 0
+      differing texts, on Bun and on Node.
+    status: proposed
+    rationale: >-
+      The spike measured this for three libraries. The operator chose Loro but did not set this requirement. The operator
+      should confirm the convergence requirement and its test scope.
+    source: [studio:docs/specs/0002-collaboration-spike.md:26, studio:docs/specs/0002-collaboration-spike.md:122-128]
+    links:
+      serves: [goal-studio-collaboration]
+
+  - id: req-studio-performance-unmeasured
+    kind: requirement
+    reqType: non-functional
+    quality: performance
+    title: Edit latency and edge cost are not yet measured
+    statement: >-
+      An edit must show in the preview within a latency budget, and the sync gate must start and run within a measured size.
+      At the pinned commit neither number exists.
+    scenario: >-
+      Milestone M0 measures the compile and render time of the same-id story in a browser and sets the budget for one edit.
+      A Cloudflare edge run measures the gate's bundle size, cold start and load with many sockets.
+    status: open
+    rationale: >-
+      Spec 0001 says a number written before M0 would be a guess, and spec 0002 lists the gate's size and cold start as not
+      measured. No performance target is set. The operator should confirm the latency and edge targets after they are
+      measured.
+    source: [studio:docs/specs/0001-first-felt-journey.md:142, studio:docs/specs/0001-first-felt-journey.md:148, studio:docs/specs/0002-collaboration-spike.md:215]
+    links:
+      serves: [goal-studio-first-felt-journey, goal-studio-collaboration]
+
+  - id: req-studio-binary-loopback-readonly
+    kind: requirement
+    reqType: non-functional
+    quality: security
+    title: The binary serves only on loopback and only reads
+    statement: >-
+      The binary binds a loopback address, answers GET and HEAD only and refuses a path outside its embedded files.
+    scenario: >-
+      A client on a non-loopback address of the same machine cannot connect. A POST returns 405. A request path with dot-dot
+      segments reaches no file outside the embedded set, although a normalised path can answer with an embedded file.
+    status: proposed
+    rationale: >-
+      PR 6 reports these as falsifiers F3 to F5 that passed in CI, and the PR was a draft at the pinned commit. The operator
+      should confirm this security requirement.
+    source: [pr:studio#6]
+    refs: [pr:studio#6]
+    links:
+      serves: [goal-studio-web-and-binary]
+
+  - id: req-studio-binary-portable
+    kind: requirement
+    reqType: non-functional
+    quality: portability
+    title: The binary runs on five targets
+    statement: >-
+      The release builds binaries for Linux x64 and arm64, macOS arm64 and x64, and Windows x64. No Linux binary names a
+      path in the Nix store.
+    scenario: >-
+      On the runners that run the full smoke (Linux x64 and arm64, macOS arm64 and x64), the binary starts, serves and exits
+      cleanly on a stop signal. On Windows only the start-and-check step runs. A file-type check fails any Linux binary that
+      names /nix/store.
+    status: proposed
+    rationale: >-
+      PR 6 reports all five runners passing, and the PR was a draft at the pinned commit. The operator should confirm the
+      platform matrix and the required checks.
+    source: [pr:studio#6]
+    refs: [pr:studio#6]
+    links:
+      serves: [goal-studio-web-and-binary]
+
+  - id: req-studio-licence-clear
+    kind: requirement
+    reqType: non-functional
+    quality: licensing
+    title: Every distributed artifact has a known licence
+    statement: >-
+      Before studio distributes a binary, the licence of studio and of any bundled third-party code is known. At the pinned
+      commit studio's licence is undecided, and its binary does not bundle ffmpeg.
+    scenario: >-
+      Before a release, the operator has chosen a licence and added a LICENSE file. A binary that bundles ffmpeg with libx264
+      has had its GPL terms reviewed.
+    status: open
+    rationale: >-
+      The operator flagged GPL review before distribution (log line 50) and has not decided studio's licence. The
+      requirement states what must be true before release. The operator should choose the studio licence and confirm the
+      distribution licensing policy.
+    source: [log:50, log:45, studio:README.md:27]
+    links:
+      serves: [goal-studio-web-and-binary]
+
+  - id: req-studio-maintainable-gates
+    kind: requirement
+    reqType: non-functional
+    quality: maintainability
+    title: One command runs every gate
+    statement: >-
+      The ready command runs format, lint, types, the exception check, tests, build, dead code, duplication and secret scans.
+      CI runs the same gates.
+    scenario: >-
+      On a clean tree, the ready command exits 0. Adding a lint suppression with no registry entry makes the exception check
+      fail and name the file and line.
+    status: proposed
+    rationale: >-
+      Observed in the repository: spec 0000 and AGENTS.md describe the gates. The spec header says the operator assigned the
+      lifecycle as a whole. The exception check does not yet see effect-diagnostics comments (issue 7). The operator must
+      confirm the requirement.
+    source: [studio:docs/specs/0000-development-lifecycle.md:71-75, studio:AGENTS.md:22-24]
+    links:
+      serves: [goal-studio-checked-change]
+
+  - id: req-studio-extensible-agents
+    kind: requirement
+    reqType: non-functional
+    quality: extensibility
+    title: Users extend studio with their own agents and plugins
+    statement: >-
+      Studio stays modular so users add agents and plugins without changing studio's code.
+    scenario: >-
+      A user connects an agent that studio did not ship, through the published tool protocol, and the agent edits a story
+      with the same tools the editor uses.
+    status: proposed
+    rationale: >-
+      Spec plan: the operator wants studio modular and extensible for bring-your-own agents and plugins (log:43). The
+      published tool protocol and the no-code-change guarantee are this model's reading. The operator must confirm them.
+    source: [log:43]
+    links:
+      serves: [goal-studio-people-and-agents]
+
+  # ---------------------------------------------------------------- information system goals
+  - id: isgoal-studio-one-edit-path
+    kind: is-goal
+    title: Every change enters through one validated path
+    statement: >-
+      The system accepts changes from the UI, the tools and sync through one path that validates the result.
+    status: proposed
+    rationale: >-
+      Spec 0001 plans one edit path, one validation and one undo. The merge model changed what peers exchange but not this
+      aim. The operator should confirm one validated path across the UI, the tools and sync.
+    source: [studio:docs/specs/0001-first-felt-journey.md:76, studio:docs/specs/0001-first-felt-journey.md:172]
+    links:
+      supports: [goal-studio-first-felt-journey]
+
+  - id: isgoal-studio-story-always-valid
+    kind: is-goal
+    title: A validation gate guards the shared document
+    statement: >-
+      The sync server's validation gate checks merged changes to the shared document.
+    status: decided
+    source: [log:47, record:studio:docs/specs/0002-collaboration-spike.md:198]
+    links:
+      supports: [goal-studio-valid-shared-story]
+
+  - id: isgoal-studio-attribution
+    kind: is-goal
+    title: The system knows who made each change
+    statement: >-
+      The system records the author of each change and of each accepted suggestion, whether a person, an agent or the
+      system.
+    status: proposed
+    rationale: >-
+      The lenses note asks for attribution and the spike tested it. The operator has not confirmed it. The operator should
+      confirm attribution as an information system goal.
+    source: [studio:docs/design/lenses.md:67, studio:docs/specs/0002-collaboration-spike.md:150-152]
+    links:
+      supports: [goal-studio-human-control]
+
+  - id: isgoal-studio-agents-as-peers
+    kind: is-goal
+    title: An agent is a named peer with its own replica
+    statement: >-
+      An agent edits through its own replica under a peer id registered to its name. The system keeps the agent's changes
+      separate from a person's.
+    status: proposed
+    rationale: >-
+      Spec 0002 tested it for three libraries. The operator decided the library but not the peer scheme. The operator should
+      confirm the peer and attribution scheme.
+    source: [studio:docs/specs/0002-collaboration-spike.md:27, studio:docs/specs/0002-collaboration-spike.md:138, studio:docs/specs/0002-collaboration-spike.md:154]
+    links:
+      supports: [goal-studio-people-and-agents]
+
+  - id: isgoal-studio-free-runs-locally
+    kind: is-goal
+    title: Free features run with no server of ours
+    statement: >-
+      The free features run in the user's browser or on their machine. The free-tier document lives in a file.
+    status: proposed
+    rationale: >-
+      The spike and spec 0001 describe the free tier this way. The operator log says only that basic non-cost features are
+      free (line 43). The operator should choose between local file access and hosted storage and confirm a local-only free
+      tier.
+    source: [studio:docs/specs/0001-first-felt-journey.md:112-118, studio:docs/specs/0002-collaboration-spike.md:192, log:43]
+    links:
+      supports: [goal-studio-offline-free-journey]
