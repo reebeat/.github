@@ -8,11 +8,14 @@ elements:
       views and a connection check, and applies the outcomes the Flow reports.
     status: proposed
     source:
-      - pr:foldkit-flow#4
       - foldkit-flow:README.md:3
+      - foldkit-flow:README.md:24-64
+      - foldkit-flow:packages/flow/src/flow.ts:14-24
     rationale: >-
-      The steps come from the API sketch in PR #4, since the README at the pinned commit 5dd44a9 (PR #4 has since merged;
-      see the tracker) has no usage section. The operator must confirm this as the adoption path.
+      README lines 24 to 64 show the adoption steps: declare the rules with `Flow.defineFlow`, add `Flow.init` to the
+      application's Model, fold the Messages and out-messages, and render with `h.submodel`. The application applies
+      outcomes with `Flow.addEdge` and `Flow.reconnectEdge` (lines 53 and 54). The operator must confirm this as the
+      adoption path.
     refs: [pr:foldkit-flow#4]
     canvas: [key-activities]
     links:
@@ -29,11 +32,12 @@ elements:
       canvas of an application that uses the library.
     status: proposed
     source:
-      - pr:foldkit-flow#4
-      - foldkit-flow:README.md:3
+      - foldkit-flow:README.md:20
+      - foldkit-flow:README.md:66
+      - foldkit-flow:README.md:74-77
     rationale: >-
-      PR #4 plan: the journey is the one in PR #4, including reconnection and keyboard editing. The README at the pinned commit names
-      only the basic pointer gestures (pan and zoom, drag, connect, box select). The operator must confirm it.
+      README line 20 lists the gestures of the example: pan and zoom, drag, connect, reconnect and box select. Lines 66
+      and 74 to 77 add the minimap, the zoom controls and keyboard control. The operator must confirm the journey.
     refs: [pr:foldkit-flow#4]
     links:
       serves: [goal-flow-first-journey]
@@ -47,10 +51,13 @@ elements:
       A person scrolls the wheel or drags the empty canvas. The viewport changes and no node is re-rendered.
     status: proposed
     source:
-      - pr:foldkit-flow#4
-      - foldkit-flow:README.md:3
+      - foldkit-flow:packages/flow/src/mounts.ts:157-208
+      - foldkit-flow:README.md:82
+      - foldkit-flow:docs/specs/0001-first-felt-journey.md:83
     rationale: >-
-      Step 1 of the PR journey; falsifier J1. Absent at the pinned commit 5dd44a9 (PR #4 has since merged; see the tracker). The operator must confirm the behaviour.
+      The pane Mount creates the xyflow pan and zoom controller (mounts.ts lines 157 to 208). README line 82 says pan
+      and zoom change only the viewport element's transform and render no node, and spec 0001 sets this as falsifier
+      J1 (line 83). The operator must confirm the behaviour.
     refs: [pr:foldkit-flow#4]
     links:
       part-of: [process-flow-use-canvas]
@@ -67,10 +74,14 @@ elements:
       parent.
     status: proposed
     source:
-      - pr:foldkit-flow#4
-      - foldkit-flow:README.md:3
+      - foldkit-flow:packages/flow/src/mounts.ts:384-470
+      - foldkit-flow:packages/flow/src/update.ts:183-186
+      - foldkit-flow:packages/flow/src/geometry.ts:88
+      - foldkit-flow:docs/specs/0001-first-felt-journey.md:84
     rationale: >-
-      Falsifiers J2 and J7 of spec 0001. Absent at the pinned commit 5dd44a9 (PR #4 has since merged; see the tracker). The operator must confirm the behaviour.
+      The node Mount creates the xyflow drag controller (mounts.ts lines 384 to 470), and `DraggedNodes` changes the
+      position in the Model (update.ts lines 183 to 186). A clamped child stays inside its parent (geometry.ts line
+      88). Spec 0001 sets falsifiers J2 and J7 (lines 84 and 89). The operator must confirm the behaviour.
     refs: [pr:foldkit-flow#4]
     links:
       part-of: [process-flow-use-canvas]
@@ -87,10 +98,13 @@ elements:
       library reports an accepted one as Connected.
     status: proposed
     source:
-      - pr:foldkit-flow#4
-      - foldkit-flow:README.md:3
+      - foldkit-flow:packages/flow/src/mounts.ts:601-625
+      - foldkit-flow:packages/flow/src/update.ts:266-281
+      - foldkit-flow:docs/specs/0001-first-felt-journey.md:85
     rationale: >-
-      Falsifier J3 of spec 0001. Absent at the pinned commit 5dd44a9 (PR #4 has since merged; see the tracker). The operator must confirm the behaviour.
+      The handle Mount starts the xyflow connection gesture with the application's `isValidConnection` (mounts.ts
+      lines 601 to 625). `update` reports an accepted drop as `Connected` and an invalid one as nothing (update.ts
+      lines 266 to 281). Spec 0001 sets falsifier J3 (line 85). The operator must confirm the behaviour.
     refs: [pr:foldkit-flow#4]
     links:
       part-of: [process-flow-use-canvas]
@@ -108,10 +122,14 @@ elements:
       opposite end stays where it was.
     status: proposed
     source:
-      - pr:foldkit-flow#4
+      - foldkit-flow:packages/flow/src/view.ts:270-281
+      - foldkit-flow:packages/flow/src/mounts.ts:723-755
+      - foldkit-flow:docs/specs/0001-first-felt-journey.md:130
     rationale: >-
-      Falsifier J3 of spec 0001. The PR says the first build used the wrong end and was fixed. The operator must
-      confirm the reconnection behaviour, including that the opposite end stays fixed.
+      A selected edge shows an anchor on each end (view.ts lines 270 to 281). Dragging one starts a connection from
+      the opposite end (mounts.ts lines 723 to 755), and `update` reports `Reconnected` (update.ts lines 522 to 529).
+      Spec 0001 sets falsifier J3 (line 85) and line 130 says the first build used the wrong end and was fixed. The
+      operator must confirm the reconnection behaviour, including that the opposite end stays fixed.
     refs: [pr:foldkit-flow#4]
     links:
       part-of: [process-flow-use-canvas]
@@ -128,10 +146,13 @@ elements:
       A person holds Shift and drags on the empty canvas. The nodes inside the box become the selection, and no others.
     status: proposed
     source:
-      - pr:foldkit-flow#4
-      - foldkit-flow:README.md:3
+      - foldkit-flow:packages/flow/src/mounts.ts:235-252
+      - foldkit-flow:packages/flow/src/update.ts:125-152
+      - foldkit-flow:docs/specs/0001-first-felt-journey.md:86
     rationale: >-
-      Falsifier J4 of spec 0001. Absent at the pinned commit 5dd44a9 (PR #4 has since merged; see the tracker). The operator must confirm the behaviour.
+      The pane Mount starts a box on a Shift and left-button press on the empty pane (mounts.ts lines 235 to 252).
+      `update` selects the nodes inside the box while it moves and reports the final selection when it ends (update.ts
+      lines 125 to 152). Spec 0001 sets falsifier J4 (line 86). The operator must confirm the behaviour.
     refs: [pr:foldkit-flow#4]
     links:
       part-of: [process-flow-use-canvas]
@@ -148,9 +169,12 @@ elements:
       live region announces each result.
     status: proposed
     source:
-      - pr:foldkit-flow#4
+      - foldkit-flow:README.md:74-77
+      - foldkit-flow:packages/flow/src/update.ts:413-435
+      - foldkit-flow:docs/specs/0001-first-felt-journey.md:87
     rationale: >-
-      Falsifier J5 of spec 0001. Keyboard connection creation is not part of it (see
+      README lines 74 to 77 describe the keyboard contract, and update.ts lines 413 to 435 implement the node keys
+      (spec 0001 falsifier J5, line 87). Creating a connection by keyboard is not part of it (see
       problem-flow-keyboard-connect-missing). The operator must confirm the keyboard contract (keys and announcements).
     refs: [pr:foldkit-flow#4]
     links:
@@ -168,10 +192,14 @@ elements:
       the library reports all of it.
     status: proposed
     source:
-      - pr:foldkit-flow#4
+      - foldkit-flow:README.md:75
+      - foldkit-flow:packages/flow/src/update.ts:289-343
+      - foldkit-flow:docs/specs/0001-first-felt-journey.md:135
     rationale: >-
-      Falsifier J5 of spec 0001 and the round-1 fix for parent deletion. The operator must confirm that deletion removes
-      descendants and all attached edges and reports them.
+      README line 75 says Delete or Backspace removes the selection with every node below a deleted parent and every
+      edge that ends on a removed node. update.ts lines 289 to 343 compute that closure and report it. Spec 0001 sets
+      falsifier J5 (line 87), and its round-1 entry (line 135) records the fix for parent deletion. The operator must
+      confirm that deletion removes descendants and all attached edges and reports them.
     refs: [pr:foldkit-flow#4]
     links:
       part-of: [process-flow-use-canvas]
@@ -189,9 +217,11 @@ elements:
       Reconnected and records a Deleted set.
     status: proposed
     source:
-      - pr:foldkit-flow#4
+      - foldkit-flow:README.md:51-54
+      - foldkit-flow:packages/flow/src/update.ts:563-604
     rationale: >-
-      PR #4 states that the application applies graph changes through helper functions. See
+      README lines 51 to 54 say the Flow does not add an edge itself: the application calls `Flow.addEdge` on
+      `Connected` and `Flow.reconnectEdge` on `Reconnected`. update.ts lines 563 to 604 define both helpers. See
       rule-flow-outcomes-not-mutations. The operator must confirm that the application, not the library, owns these
       changes.
     refs: [pr:foldkit-flow#4]
@@ -208,11 +238,15 @@ elements:
       The run also measures performance.
     status: proposed
     source:
-      - pr:foldkit-flow#4
+      - foldkit-flow:package.json:18
+      - foldkit-flow:README.md:17
+      - foldkit-flow:AGENTS.md:48
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:92
     rationale: >-
-      The gate is in PR #4 and spec 0000 line 92 calls it a local gate; see problem-flow-journey-not-in-ci. The operator
-      must confirm it as a standing gate.
+      The gate is built: `bun run journey` runs tools/journey (package.json line 18, README line 17, AGENTS.md line
+      48). It runs locally only, not in `ready` or CI (see problem-flow-journey-not-in-ci). It exits 0 when the checks
+      hold, 1 when a check fails and 75 when the performance check could not be timed on a busy host, which is not a
+      pass. The operator must confirm it as a standing gate.
     refs: [pr:foldkit-flow#4]
     links:
       part-of: [process-flow-ship-spec]
@@ -245,14 +279,15 @@ elements:
     category: supporting
     title: Publish the package
     statement: >-
-      The project publishes the library to npm after it is implemented.
+      The project publishes the library to npm.
     status: proposed
     source:
       - foldkit-flow:AGENTS.md:3
       - foldkit-flow:README.md:5
     rationale: >-
-      AGENTS.md says the package is published as `foldkit-flow`, but no publish step exists yet. The org has a publish
-      process that this step should follow. The operator must confirm name and timing.
+      AGENTS.md line 3 says the package is published as `foldkit-flow`, but README line 5 says it is not published yet
+      and no publish step exists. The org has a publish process that this step should follow. The operator must
+      confirm name and timing.
     canvas: [channels]
     links:
       serves: [goal-flow-publish]
@@ -267,7 +302,7 @@ elements:
       Once its API has settled, the library is offered to Foldkit as `@foldkit/flow`.
     status: decided
     source:
-      - record:foldkit-flow:STATE.md:13
+      - record:foldkit-flow:STATE.md:14
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:111
     links:
       serves: [goal-flow-upstream-offer]
@@ -280,7 +315,7 @@ elements:
       The Foldkit project decides whether to take the library, and under which name and licence header.
     status: proposed
     source:
-      - foldkit-flow:STATE.md:13
+      - foldkit-flow:STATE.md:14
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:111
     rationale: >-
       The sources describe the offer but nothing about how Foldkit decides. The step is implied. The operator must
@@ -294,10 +329,12 @@ elements:
       needs the journey to run again.
     status: proposed
     source:
-      - pr:foldkit-flow#4
+      - foldkit-flow:packages/flow/package.json:18
+      - foldkit-flow:docs/specs/0001-first-felt-journey.md:111
       - foldkit-flow:NOTICE:4-7
     rationale: >-
-      PR #4 pins the version exactly because 0.0.x may break, and says the journey pins the controller contract. The
-      link to the journey gate is inferred. The operator must confirm.
+      The library pins `@xyflow/system` 0.0.83 exactly because a 0.0.x release may break (package.json line 18; spec
+      0001 line 111). The link from a new release to the journey gate is inferred: the journey exercises every
+      controller (spec 0001 lines 83 to 88). The operator must confirm.
     links:
       next: [process-flow-run-journey-gate]

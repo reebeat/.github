@@ -50,9 +50,11 @@ elements:
       A person who uses an application built with the library. They pan, zoom, drag, connect and select with a pointer.
     status: proposed
     source:
-      - pr:foldkit-flow#4
+      - foldkit-flow:README.md:3
+      - foldkit-flow:README.md:20
     rationale: >-
-      The journey in PR #4 has this person. The operator must confirm the persona.
+      README lines 3 and 20 describe this person: they pan, zoom, drag, connect and select on the canvas of the
+      example. The operator must confirm the persona.
     links:
       performs:
         - process-flow-use-canvas
@@ -73,10 +75,11 @@ elements:
       nodes without a pointer.
     status: proposed
     source:
-      - pr:foldkit-flow#4
+      - foldkit-flow:README.md:74-78
+      - foldkit-flow:docs/specs/0001-first-felt-journey.md:87
     rationale: >-
-      PR #4 builds for this person (falsifier J5). No line names a screen reader user, but the live region implies one.
-      The operator must confirm.
+      README lines 74 to 78 describe the keyboard and live-region behaviour built for this person (spec 0001
+      falsifier J5). No line names a screen reader user, but the live region implies one. The operator must confirm.
     links:
       performs: [process-flow-keyboard-navigate, process-flow-delete-selection]
       serves: [goal-flow-keyboard-access]
@@ -106,8 +109,8 @@ elements:
       or to support the project.
     status: proposed
     source:
-      - foldkit-flow:NOTICE:4-14
-      - foldkit-flow:README.md:21
+      - foldkit-flow:NOTICE:4-17
+      - foldkit-flow:README.md:86
     rationale: >-
       NOTICE names the copyright holder and its request. No operator line records a relationship with xyflow. The
       operator must confirm whether to support the project in another way.
@@ -122,8 +125,8 @@ elements:
       project may take the library upstream.
     status: proposed
     source:
-      - foldkit-flow:AGENTS.md:62
-      - foldkit-flow:STATE.md:12-13
+      - foldkit-flow:AGENTS.md:64
+      - foldkit-flow:STATE.md:13-14
       - log:56
     rationale: >-
       Sources describe Foldkit as an upstream dependency and a possible new owner. No line records a working agreement
@@ -140,12 +143,14 @@ elements:
       edge-path and minimap controllers.
     status: proposed
     source:
-      - foldkit-flow:README.md:21
+      - foldkit-flow:README.md:86
       - foldkit-flow:AGENTS.md:25
       - foldkit-flow:NOTICE:4-7
+      - foldkit-flow:packages/flow/package.json:18
+      - foldkit-flow:packages/flow/src/xyflow.ts:1
     rationale: >-
-      The README and AGENTS.md name the dependency. At the pinned commit 5dd44a9 (PR #4 has since merged; see the tracker), the library does not import it yet; PR #4 adds it at version
-      0.0.83. The operator must confirm the choice.
+      The README and AGENTS.md name the dependency. packages/flow/package.json line 18 pins `@xyflow/system` 0.0.83
+      exactly, and xyflow.ts line 1 imports the controllers from it. The operator must confirm the choice.
     canvas: [key-partners, key-resources]
     links:
       serves: [goal-flow-first-journey]
@@ -171,8 +176,8 @@ elements:
       The repository uses Foldkit 0.169.0, and the library declares a peer of `~0.169.0`.
     status: proposed
     source:
-      - foldkit-flow:package.json:64
-      - foldkit-flow:packages/flow/package.json:24
+      - foldkit-flow:package.json:65
+      - foldkit-flow:packages/flow/package.json:32
     rationale: >-
       Observed in the repository: the version and the peer range are in package.json. The log chooses Foldkit, not a
       version. The operator must confirm.
@@ -188,11 +193,11 @@ elements:
       The Effect runtime and libraries the repository pins at 4.1.0. The library declares a peer of `~4.1.0`.
     status: proposed
     source:
-      - foldkit-flow:AGENTS.md:63
-      - foldkit-flow:package.json:58
-      - foldkit-flow:packages/flow/package.json:23
+      - foldkit-flow:AGENTS.md:65
+      - foldkit-flow:package.json:59
+      - foldkit-flow:packages/flow/package.json:31
     rationale: >-
-      Observed in the repository: the pin and peer range are in package.json. The operator's rule at AGENTS.md line 63
+      Observed in the repository: the pin and peer range are in package.json. The operator's rule at AGENTS.md line 65
       sets how a package declares its range (see constraint-flow-effect-range), not the exact version. The operator
       must confirm.
     canvas: [key-partners, key-resources]
@@ -221,7 +226,7 @@ elements:
     status: proposed
     source:
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:33
-      - foldkit-flow:AGENTS.md:36-49
+      - foldkit-flow:AGENTS.md:37-51
     rationale: >-
       Observed in the repository: spec 0000 and AGENTS.md list these tools. The log does not decide the list. The
       operator must confirm.
@@ -240,7 +245,7 @@ elements:
       accepted the plan as a whole. The operator must confirm.
     source:
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:3
-      - foldkit-flow:README.md:26
+      - foldkit-flow:README.md:91
     links:
       serves: [goal-flow-lifecycle]
 
@@ -252,7 +257,7 @@ elements:
       The mission-state file: lifecycle stage, what is happening now, what is next and what is blocked.
     status: proposed
     source:
-      - foldkit-flow:STATE.md:1-17
+      - foldkit-flow:STATE.md:1-18
     rationale: >-
       The file exists and has this shape. See problem-flow-state-blocked-nothing for a gap in it. The operator must
       confirm it as the single place for state.
@@ -272,7 +277,7 @@ elements:
     source:
       - log:48
       - foldkit-flow:LICENSE:1-3
-      - foldkit-flow:NOTICE:1-17
+      - foldkit-flow:NOTICE:1-20
     links:
       serves: [goal-flow-respect-xyflow]
 
@@ -285,8 +290,11 @@ elements:
     status: proposed
     source:
       - pr:foldkit-flow#4
+      - foldkit-flow:README.md:17
+      - foldkit-flow:AGENTS.md:48
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:92
     rationale: >-
-      Only PR #4 describes the need. It ran on Chromium 155. The operator must decide which browser CI should provide.
+      README line 17 says the journey needs a Chromium on the path or in `FLOW_CHROMIUM`, and AGENTS.md line 48 says CI
+      has none. Only PR #4 reports a run, on Chromium 155. The operator must decide which browser CI should provide.
     links:
       serves: [goal-flow-browser-proof]

@@ -48,7 +48,7 @@ elements:
     rationale: >-
       The operator decided that users can bring their own agents (log:43). That an agent works through `plan`, `lint` and
       `check` is the model author's reading of spec 0002.
-    source: ["log:43", "reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:10"]
+    source: ["log:43", "reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:11"]
     canvas: [customer-segments]
     links:
       part-of: [actor-agent-operator]
@@ -69,7 +69,7 @@ elements:
     source:
       - log:43
       - reebeat:docs/design/open-core-boundary.md:24
-      - reebeat:AGENTS.md:61
+      - reebeat:AGENTS.md:65
     canvas: [customer-segments]
     links:
       part-of: [actor-plugin-author]
@@ -90,7 +90,7 @@ elements:
     source:
       - reebeat:packages/cli/src/cli.ts:70
       - reebeat:packages/cli/src/cli.ts:321
-      - reebeat:AGENTS.md:58
+      - reebeat:AGENTS.md:62
     canvas: [channels]
     links:
       performs: [process-reebeat-select-adapters, process-reebeat-run-journey]
@@ -133,7 +133,7 @@ elements:
       not decided this inventory, so confirm it.
     source:
       - reebeat:README.md:21
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:259
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:260
     links:
       performs: [process-reebeat-capture-frames, process-reebeat-encode-video]
       uses: [resource-reebeat-chromium, resource-reebeat-ffmpeg, resource-reebeat-whisper-cpp]
@@ -166,8 +166,8 @@ elements:
       Spec plan: spec 0000 describes the reviewer and fixer roles. The operator has not decided each responsibility, so
       confirm it.
     source:
-      - reebeat:docs/specs/0000-development-lifecycle.md:74
-      - reebeat:docs/specs/0000-development-lifecycle.md:78
+      - reebeat:docs/specs/0000-development-lifecycle.md:75
+      - reebeat:docs/specs/0000-development-lifecycle.md:79
     links:
       part-of: [actor-contributor-agent]
       performs: [process-reebeat-review-round]
@@ -185,8 +185,8 @@ elements:
       Observed in the repository: spec 0000 and AGENTS.md describe these duties. The npm provisioning duty comes from PR
       #18. The operator has not decided this role, so confirm it.
     source:
-      - reebeat:docs/specs/0000-development-lifecycle.md:22
-      - reebeat:AGENTS.md:73-81
+      - reebeat:docs/specs/0000-development-lifecycle.md:23
+      - reebeat:AGENTS.md:77-85
     links:
       part-of: [actor-operator]
       performs: [process-reebeat-release-publish]
@@ -205,9 +205,9 @@ elements:
       Spec plan: spec 0001 and the third-party audit describe Chromium, Playwright and the process boundary. The operator
       has not decided this arrangement, so confirm it.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:85
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:86
       - reebeat:docs/design/third-party.md:56
-      - reebeat:AGENTS.md:87
+      - reebeat:AGENTS.md:91
     canvas: [key-partners, key-resources]
     links:
       serves: [goal-reebeat-deck-and-video]
@@ -225,7 +225,7 @@ elements:
       the GPL concern for later (log:50) but has not decided this inventory, so confirm it.
     source:
       - reebeat:docs/design/third-party.md:57
-      - reebeat:AGENTS.md:88
+      - reebeat:AGENTS.md:92
       - log:50
     canvas: [key-partners, key-resources]
     links:
@@ -243,7 +243,7 @@ elements:
       Spec plan: spec 0001 and the third-party audit describe whisper-cli, its MIT licence and the process boundary. The
       operator has not decided this arrangement, so confirm it.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:77
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:78
       - reebeat:docs/design/third-party.md:59
     canvas: [key-partners, key-resources]
     links:
@@ -261,7 +261,7 @@ elements:
       Spec plan: spec 0001 and the third-party audit describe the Kokoro model, its licence and its download. The operator
       has not decided this arrangement, so confirm it.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:77
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:78
       - reebeat:docs/design/third-party.md:71
     canvas: [key-partners, key-resources]
     links:
@@ -280,7 +280,7 @@ elements:
       decided this arrangement, so confirm it.
     source:
       - reebeat:docs/design/third-party.md:72
-      - reebeat:AGENTS.md:89
+      - reebeat:AGENTS.md:93
     links:
       serves: [goal-reebeat-event-timing]
 
@@ -296,7 +296,7 @@ elements:
       Observed in the repository: the third-party audit gives the MIT licence. The operator decided reveal.js Auto-Animate
       as the release-1 animator (spec 0001 line 212), not the licence detail, so confirm it.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:212
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213
       - reebeat:docs/design/third-party.md:44
     canvas: [key-partners, key-resources]
     links:
@@ -307,15 +307,18 @@ elements:
     resourceType: document
     title: The Fountain screenplay format
     statement: >-
-      The plain-text screenplay syntax, version 1.1, that a Story is written in. reebeat reads it through an existing
-      parser and defines a small fixed vocabulary on top.
+      The plain-text screenplay syntax, version 1.1. reebeat reads it through an existing parser and defines a small fixed
+      vocabulary on top; that is the importer. reebeat is also to write Fountain as an artifact, which is not built at the
+      pinned commit.
     status: proposed
     rationale: >-
-      Spec plan: the operator decided that the source is one Fountain file (spec 0001 line 212). The version, the parser and
-      the fixed vocabulary come from the spec plan, so confirm them.
+      Spec plan: the operator decided that the source is one Fountain file (spec 0001 line 213). The version, the parser and
+      the fixed vocabulary come from the spec plan, so confirm them. The operator also said Fountain is both an importer
+      and an artifact renderer (log:67-69); confirm that the renderer shares this vocabulary.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:212
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:31
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:32
+      - log:67-69
     links:
       serves: [goal-reebeat-screenplay-first]
 
@@ -367,7 +370,7 @@ elements:
       cache as an open question for the operator, so this is the current default only.
     source:
       - reebeat:README.md:8
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:13
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:14
     links:
       serves: [goal-reebeat-verified-output]
 
@@ -383,7 +386,7 @@ elements:
       Observed in the repository: the speech cache is committed. Spec 0001 asks the operator whether that is acceptable and
       the question stays open, so this is the current default only.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:77
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:78
       - reebeat:README.md:21
     canvas: [key-resources]
     links:

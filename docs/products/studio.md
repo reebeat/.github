@@ -82,14 +82,14 @@ Scope `studio`: 199 elements.
 - [The README does not state product goals](../goals.md#problem-studio-goals-not-in-readme) (open): At the pinned commit, the README gives a one-line purpose and the status of a placeholder shell. It does not state the product goals, the free and paid split or the roadmap.
 - [The first journey waits for the reebeat story IR](../goals.md#problem-studio-first-journey-blocked) (open): At the pinned commit, spec 0001 is blocked on reebeat specs 0004 and 0006, and needs spec 0005 for story-wide identity. Until the IR is stable, studio builds no editing feature.
 - [Browser compile and seek in reebeat are unverified](../goals.md#problem-studio-browser-compile-gaps) (proposed): The in-browser preview needs a browser-safe compile, a seekable Deck page and a Deck generator that does not read the file system. Spec 0001 lists them as new reebeat work, and says the browser safety of the compile is not yet checked.
-- [Foldkit's Vite plugin imports a missing Crypto](../goals.md#problem-studio-foldkit-vite-plugin) (open): At the pinned commit, the Foldkit Vite plugin imports Crypto from the effect root, which Effect 4.1.0 does not have. The plugin stays off, so the dev tools bridge and model-preserving reload are off.
+- [The Foldkit Vite plugin is still off in studio](../goals.md#problem-studio-foldkit-vite-plugin) (open): At the pinned commit, studio keeps the Foldkit Vite plugin off, so the dev tools bridge and model-preserving reload are off. The cause is fixed upstream: @foldkit/vite-plugin 0.29.0 (npm, 2026-10-29) imports SecureRandom from effect/crypto and peers effect ~4.1.0. Studio has not bumped, and issue 4 is open.
 - [The web deploy waits for an Alchemy release](../goals.md#problem-studio-alchemy-release) (open): At the pinned commit, the current Alchemy release imports an Effect module that Effect 4.1 does not have. The fix, alchemy-run/alchemy#2754, was merged but not released, so pull request 6 was a draft.
 - [The exception check misses effect-diagnostics comments](../goals.md#problem-studio-exceptions-miss-diagnostics) (open): At the pinned commit, the suppression pattern in tools/quality does not match effect-diagnostics comments. Such a comment can silence a rule with no registry entry.
 - [The Durable Object room is unmeasured at the edge](../goals.md#problem-studio-do-unmeasured) (open): The room ran only on local workerd, without the validation gate. Nobody measured the real Cloudflare edge, load, many sockets, or the gate's bundle size and cold start.
 - [Demand and willingness to pay are not measured](../goals.md#problem-studio-demand-unmeasured) (open): The free and paid split follows running cost. No source measures whether people want studio or would pay for sync or hosted agents.
 - [ffmpeg with libx264 is GPL](../goals.md#problem-studio-ffmpeg-gpl) (open): A studio binary that bundles ffmpeg with libx264 would carry GPL terms. The operator wants this reviewed before any such binary is distributed.
 - [The binaries are not signed](../goals.md#problem-studio-unsigned-binaries) (open): The macOS and Windows binaries are not signed or notarised, so those systems warn the user.
-- [STATE.md still says spec 0003 is in review](../goals.md#problem-studio-stale-state) (open): At the pinned commit, STATE.md says the review and verify skills are in review and lists their review as the next step. PR 5 has merged.
+- [STATE.md still says spec 0003 is in review](../goals.md#problem-studio-stale-state) (open): At the pinned commit, STATE.md says the review and verify skills are in review and lists their review as the next step. PR 5 has merged. The branch of PR 6 rewrites both lines to say 0003 has merged, so the text is wrong on main until PR 6 merges.
 - [Merge rule for positions and curve points is open](../goals.md#problem-studio-merge-semantics-open) (open): Two people can move one Element along different axes. A property-wise merge gives a position nobody chose. An atomic merge keeps one whole position. The operator has not chosen.
 - [Lens order and shared lens state are undecided](../goals.md#problem-studio-lens-order-open) (open): The lenses note does not decide the build order of lenses after spec 0001, whether the playhead is shared between collaborators, or how lenses use Foldkit Submodels.
 - [A merge can break the story](../goals.md#problem-studio-invalid-merges) (proposed): In the spike, 31 of 57 runs on a naive IR-shaped document merged to an invalid story, and 17 of 57 on a keyed one. A repair made 15 of the 17 valid and could not fix the other two (one left an Element hidden and never revealed).
@@ -98,8 +98,8 @@ Scope `studio`: 199 elements.
 - [Public repository, all rights reserved, licence undecided](../goals.md#constraint-studio-licence-undecided) (decided): The studio licence is not decided. The README carries a copyright notice that reserves all rights, and no licence file is present on purpose.
 - [A public repository holds no secret or private material](../goals.md#constraint-studio-public-repo-hygiene) (proposed): The operator made the studio repository public. So it never holds a secret, personal data or course-private material.
 - [No editing feature before the reebeat IR is stable](../goals.md#constraint-studio-ir-stability) (proposed): Studio builds no editing feature against the story IR until reebeat specs 0004 to 0006 stabilise it. The shell, toolchain and docs are allowed.
-- [Effect 4.1.0 runs against Foldkit's peer of 4.0.0](../goals.md#constraint-studio-effect-foldkit-peer) (proposed): Foldkit 0.169.0 declares a peer of effect 4.0.0, and studio runs 4.1.0. Bun prints warnings. The tests, build and a browser run pass on 4.1.0, and a boot test guards the mismatch.
-- [Keep the Foldkit Vite plugin off until upstream fixes it](../goals.md#constraint-studio-foldkit-plugin-off) (proposed): The Foldkit Vite plugin stays off, and studio stays on Effect 4.1.0, until a Foldkit release imports effect/crypto.
+- [Effect 4.1.0 runs against Foldkit 0.169.0's peer](../goals.md#constraint-studio-effect-foldkit-peer) (proposed): Foldkit 0.169.0 declares a peer of effect 4.0.0, and studio runs 4.1.0 with it at the pinned commit. Bun prints warnings. The tests, build and a browser run pass on 4.1.0, and a boot test guards the mismatch. Foldkit 0.170.0 (2026-10-29) peers effect ~4.1.0, so the mismatch holds only while studio stays on 0.169.0.
+- [Keep the Foldkit Vite plugin off until the bump](../goals.md#constraint-studio-foldkit-plugin-off) (proposed): At the pinned commit, the Foldkit Vite plugin stays off, and studio stays on Effect 4.1.0, until a Foldkit release imports effect/crypto. That release exists: @foldkit/vite-plugin 0.29.0 (2026-10-29). The constraint is temporary and ends when studio bumps and re-enables the plugin.
 - [devenv has no Chromium, ffmpeg or whisper](../goals.md#constraint-studio-no-chromium-devenv) (proposed): The development environment provides Bun, Node and gitleaks only. Browser runs use the host Chromium, and CI has no browser gate.
 - [Durable Object storage has size limits](../goals.md#constraint-studio-do-limits) (proposed): A SQLite value or row in a Durable Object is at most 2 MB, so a larger snapshot must be chunked. A received WebSocket message is at most 32 MiB.
 
@@ -138,7 +138,7 @@ flowchart BT
     problem_studio_goals_not_in_readme{{"The README does not state<br/>product goals"}}:::open
     problem_studio_first_journey_blocked{{"The first journey waits for<br/>the reebeat story IR"}}:::open
     problem_studio_browser_compile_gaps{{"Browser compile and seek in<br/>reebeat are unverified"}}:::proposed
-    problem_studio_foldkit_vite_plugin{{"Foldkit's Vite plugin<br/>imports a missing Crypto"}}:::open
+    problem_studio_foldkit_vite_plugin{{"The Foldkit Vite plugin is<br/>still off in studio"}}:::open
     problem_studio_alchemy_release{{"The web deploy waits for an<br/>Alchemy release"}}:::open
     problem_studio_exceptions_miss_diagnostics{{"The exception check misses<br/>effect-diagnostics comments"}}:::open
     problem_studio_do_unmeasured{{"The Durable Object room is<br/>unmeasured at the edge"}}:::open
@@ -154,8 +154,8 @@ flowchart BT
     constraint_studio_licence_undecided[/"Public repository, all<br/>rights reserved, licence<br/>undecided"/]:::decided
     constraint_studio_public_repo_hygiene[/"A public repository holds no<br/>secret or private material"/]:::proposed
     constraint_studio_ir_stability[/"No editing feature before<br/>the reebeat IR is stable"/]:::proposed
-    constraint_studio_effect_foldkit_peer[/"Effect 4.1.0 runs against<br/>Foldkit's peer of 4.0.0"/]:::proposed
-    constraint_studio_foldkit_plugin_off[/"Keep the Foldkit Vite plugin<br/>off until upstream fixes it"/]:::proposed
+    constraint_studio_effect_foldkit_peer[/"Effect 4.1.0 runs against<br/>Foldkit 0.169.0's peer"/]:::proposed
+    constraint_studio_foldkit_plugin_off[/"Keep the Foldkit Vite plugin<br/>off until the bump"/]:::proposed
     constraint_studio_no_chromium_devenv[/"devenv has no Chromium,<br/>ffmpeg or whisper"/]:::proposed
     constraint_studio_do_limits[/"Durable Object storage has<br/>size limits"/]:::proposed
     opportunity_studio_paid_sync_and_agents(["Paid sync and hosted agents<br/>fund the work"]):::proposed
@@ -430,14 +430,15 @@ Full tables and diagrams: [Concepts Model](../concepts.md).
 | pr:studio#6 | feat: distribution, a single binary now and the web deploy when Alchemy supports effect 4.1 (spec 0004) | open | [Cloudflare Workers and Durable Objects](../actors-and-resources.md#resource-studio-cloudflare) |
 | pr:studio#6 | feat: distribution, a single binary now and the web deploy when Alchemy supports effect 4.1 (spec 0004) | open | [Alchemy v2](../actors-and-resources.md#resource-studio-alchemy) |
 | pr:studio#6 | feat: distribution, a single binary now and the web deploy when Alchemy supports effect 4.1 (spec 0004) | open | [Ship web first and a single binary](../goals.md#goal-studio-web-and-binary) |
-| issue:studio#4 | Re-enable @foldkit/vite-plugin when a release supports effect 4.1.0 | open | [Foldkit's Vite plugin imports a missing Crypto](../goals.md#problem-studio-foldkit-vite-plugin) |
+| issue:studio#4 | Re-enable @foldkit/vite-plugin when a release supports effect 4.1.0 | open | [The Foldkit Vite plugin is still off in studio](../goals.md#problem-studio-foldkit-vite-plugin) |
 | pr:studio#6 | feat: distribution, a single binary now and the web deploy when Alchemy supports effect 4.1 (spec 0004) | open | [The web deploy waits for an Alchemy release](../goals.md#problem-studio-alchemy-release) |
 | issue:studio#7 | check:exceptions ignores @effect-diagnostics suppression comments | open | [The exception check misses effect-diagnostics comments](../goals.md#problem-studio-exceptions-miss-diagnostics) |
 | issue:reebeat#7 | ffmpeg with libx264 is GPL: decide before distributing a binary | open | [ffmpeg with libx264 is GPL](../goals.md#problem-studio-ffmpeg-gpl) |
 | pr:studio#6 | feat: distribution, a single binary now and the web deploy when Alchemy supports effect 4.1 (spec 0004) | open | [ffmpeg with libx264 is GPL](../goals.md#problem-studio-ffmpeg-gpl) |
 | pr:studio#6 | feat: distribution, a single binary now and the web deploy when Alchemy supports effect 4.1 (spec 0004) | open | [The binaries are not signed](../goals.md#problem-studio-unsigned-binaries) |
 | pr:studio#5 | feat: review, PR creation and verification skills (spec 0003) | merged | [STATE.md still says spec 0003 is in review](../goals.md#problem-studio-stale-state) |
-| issue:studio#4 | Re-enable @foldkit/vite-plugin when a release supports effect 4.1.0 | open | [Keep the Foldkit Vite plugin off until upstream fixes it](../goals.md#constraint-studio-foldkit-plugin-off) |
+| pr:studio#6 | feat: distribution, a single binary now and the web deploy when Alchemy supports effect 4.1 (spec 0004) | open | [STATE.md still says spec 0003 is in review](../goals.md#problem-studio-stale-state) |
+| issue:studio#4 | Re-enable @foldkit/vite-plugin when a release supports effect 4.1.0 | open | [Keep the Foldkit Vite plugin off until the bump](../goals.md#constraint-studio-foldkit-plugin-off) |
 | pr:studio#6 | feat: distribution, a single binary now and the web deploy when Alchemy supports effect 4.1 (spec 0004) | open | [One binary gives an offline local studio](../goals.md#opportunity-studio-offline-binary) |
 | pr:studio#6 | feat: distribution, a single binary now and the web deploy when Alchemy supports effect 4.1 (spec 0004) | open | [Build the single binary](../business-processes.md#process-studio-build-binary) |
 | pr:studio#6 | feat: distribution, a single binary now and the web deploy when Alchemy supports effect 4.1 (spec 0004) | open | [Check and distribute the binaries](../business-processes.md#process-studio-distribute-binary) |

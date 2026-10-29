@@ -41,9 +41,9 @@ elements:
       the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
       log:62, so confirm them.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:238
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:239
       - reebeat:packages/core/src/index.ts:1-2
-      - reebeat:packages/core/package.json:4
+      - reebeat:packages/core/package.json:5
       - reebeat:docs/design/open-core-boundary.md:39
     links:
       part-of: [comp-reebeat-product, comp-org-layer-model, comp-org-layer-plan]
@@ -66,7 +66,7 @@ elements:
       the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
       log:62, so confirm them.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:239
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:240
       - reebeat:packages/subtitles/src/index.ts:1-2
     links:
       part-of: [comp-reebeat-product, comp-org-layer-plan]
@@ -90,7 +90,7 @@ elements:
       the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
       log:62, so confirm them.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:240
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:241
       - reebeat:packages/lint/src/index.ts:1-4
     links:
       part-of: [comp-reebeat-product, comp-org-layer-plan]
@@ -115,9 +115,9 @@ elements:
       the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
       log:62, so confirm them.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:241
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:242
       - reebeat:packages/services/src/index.ts:1-3
-      - reebeat:packages/services/package.json:18
+      - reebeat:packages/services/package.json:22
     canvas: [key-resources]
     links:
       part-of: [comp-reebeat-product, comp-org-layer-build]
@@ -146,7 +146,7 @@ elements:
       the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
       log:62, so confirm them.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:242
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:243
       - reebeat:packages/pipeline/src/index.ts:1-2
     links:
       part-of: [comp-reebeat-product, comp-org-layer-build]
@@ -170,7 +170,7 @@ elements:
       the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
       log:62, so confirm them.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:243
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:244
       - reebeat:packages/speech-kokoro/src/index.ts:1
     links:
       part-of: [comp-reebeat-product, comp-org-layer-build]
@@ -194,7 +194,7 @@ elements:
       the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
       log:62, so confirm them.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:244
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:245
       - reebeat:packages/align-whisper/src/index.ts:1
     links:
       part-of: [comp-reebeat-product, comp-org-layer-build]
@@ -223,7 +223,7 @@ elements:
       the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
       log:62, so confirm them.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:245
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:246
       - reebeat:docs/design/third-party.md:78
     links:
       part-of: [comp-reebeat-product, comp-org-layer-build]
@@ -247,7 +247,7 @@ elements:
       the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
       log:62, so confirm them.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:246
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:247
       - reebeat:packages/render-reveal/src/index.ts:1-4
     canvas: [key-resources]
     links:
@@ -277,7 +277,7 @@ elements:
       the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
       log:62, so confirm them.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:247
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:248
       - reebeat:packages/capture-chromium/src/index.ts:1-2
     links:
       part-of: [comp-reebeat-product, comp-org-layer-build]
@@ -305,7 +305,7 @@ elements:
       the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
       log:62, so confirm them.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:248
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:249
       - reebeat:packages/encode-ffmpeg/src/index.ts:1-2
     links:
       part-of: [comp-reebeat-product, comp-org-layer-build]
@@ -329,8 +329,8 @@ elements:
       that the cache is content-addressed (spec 0001 line 234), not this adapter, its free mark or its layer. The layer is
       inferred from log:62, so confirm them.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:249
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:260
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:250
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:261
     links:
       part-of: [comp-reebeat-product, comp-org-layer-build]
       depends-on: [comp-org-effect, comp-reebeat-services]
@@ -354,7 +354,7 @@ elements:
       the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
       log:62, so confirm them.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:250
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:251
       - reebeat:packages/verify/src/index.ts:1-2
     links:
       part-of: [comp-reebeat-product, comp-org-layer-build]
@@ -387,7 +387,7 @@ elements:
       the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
       log:62, so confirm them.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:251
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:252
       - reebeat:packages/cli/src/cli.ts:70
       - reebeat:packages/cli/package.json:17-28
     canvas: [channels]
@@ -423,8 +423,8 @@ elements:
       Observed in the repository: spec 0000 and AGENTS.md list these tools. The operator has not decided this collection or
       its free mark, so confirm them.
     source:
-      - reebeat:docs/specs/0000-development-lifecycle.md:8
-      - reebeat:AGENTS.md:25-38
+      - reebeat:docs/specs/0000-development-lifecycle.md:9
+      - reebeat:AGENTS.md:26-42
     links:
       part-of: [comp-reebeat-product]
       depends-on: [comp-org-effect]
@@ -490,8 +490,8 @@ elements:
       Spec plan: spec 0001 sets out plan.json as the one renderer input. The operator has not decided the canonical JSON
       form, so confirm it.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:73
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:89
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:74
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:90
     links:
       part-of: [comp-reebeat-product]
       serves: [goal-reebeat-screenplay-first]
@@ -508,8 +508,8 @@ elements:
       Spec plan: spec 0001 sets out the manifest fields and the write order. The operator decided that the output manifest
       records provenance (spec 0001 line 234), so confirm the rest.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:262
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:223
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:263
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:224
     links:
       part-of: [comp-reebeat-product]
       realizes: [isgoal-reebeat-visible-provenance]
@@ -596,7 +596,7 @@ elements:
       Observed in the repository: spec 0000 names these skills and scripts. The operator has not decided them, so confirm
       them.
     source:
-      - reebeat:docs/specs/0000-development-lifecycle.md:51
+      - reebeat:docs/specs/0000-development-lifecycle.md:52
     links:
       part-of: [comp-reebeat-product]
       serves: [goal-reebeat-correct-by-construction]
@@ -613,8 +613,8 @@ elements:
       Observed in the repository: spec 0000 and AGENTS.md describe the registry. The operator has not decided its fields,
       so confirm it.
     source:
-      - reebeat:docs/specs/0000-development-lifecycle.md:43
-      - reebeat:AGENTS.md:42
+      - reebeat:docs/specs/0000-development-lifecycle.md:44
+      - reebeat:AGENTS.md:46
     links:
       part-of: [comp-reebeat-quality-gates]
       serves: [goal-reebeat-correct-by-construction]
@@ -622,17 +622,21 @@ elements:
   # --------------------------------------------------- information system goals
   - id: isgoal-reebeat-one-source
     kind: is-goal
-    title: One source yields every rendering
+    title: One declared story yields every rendering
     statement: >-
-      The system generates the Plan, the Deck and the Video from one Screenplay, and keeps no generated file except the
-      speech cache.
+      The system generates the Plan, the Deck and the Video from one declared story. In release 1 the declaration is
+      imported from one Fountain file. The speech cache is the only generated file kept.
     status: proposed
     rationale: >-
-      Spec plan: the operator decided that the source is one Fountain file (spec 0001 line 212). That the speech cache is
-      the only generated file kept is spec 0001's plan, so confirm it.
+      Spec plan: the operator decided that the source is one Fountain file (spec 0001 line 213). That Fountain is an importer
+      and an artifact renderer, and that the persistent IR stays JSON, is the operator's later refinement (log:25,
+      log:67-69). That the speech cache is the only generated file kept is spec 0001's plan (falsifier F5). Confirm the
+      wording.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:212
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:149
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:150
+      - log:25
+      - log:67-69
     links:
       serves: [goal-reebeat-screenplay-first]
 
@@ -660,7 +664,7 @@ elements:
     rationale: >-
       Spec plan: spec 0001 sets out the output-side verification. The operator has not decided this goal, so confirm it.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:141
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:142
     links:
       serves: [goal-reebeat-verified-output]
 
@@ -671,8 +675,8 @@ elements:
       The output manifest records provenance.
     status: decided
     source:
-      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:234
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:262
+      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:263
     links:
       serves: [goal-reebeat-visible-egress]
 
@@ -687,8 +691,8 @@ elements:
       Spec 0002 says people and agents guess wrong at positional rules and rates an effects table best for agents. The
       operator decided that users can bring their own agents (log:43) but has not stated this as a system goal.
     source:
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:10
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:115
+      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:11
+      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:116
       - log:43
     links:
       serves: [goal-reebeat-explicit-source, goal-reebeat-plugin-sdk]
@@ -707,8 +711,8 @@ elements:
       Spec plan: spec 0001 and spec 0002 set out `reebeat plan` and its output. The compiler is free (open-core-boundary
       line 39), but the operator has not decided each field or this feature's mark, so confirm them.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:27
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:122
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:28
+      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:123
       - reebeat:docs/design/open-core-boundary.md:39
     links:
       serves: [goal-reebeat-deck-and-video]
@@ -727,7 +731,7 @@ elements:
       line 161), and has not decided this feature's free mark, so confirm them.
     source:
       - reebeat:README.md:5
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:161
+      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:162
       - reebeat:docs/design/open-core-boundary.md:39
     links:
       serves: [goal-reebeat-deck-and-video]
@@ -749,6 +753,26 @@ elements:
       - reebeat:docs/design/open-core-boundary.md:39
     links:
       serves: [goal-reebeat-deck-and-video]
+
+  - id: req-reebeat-fountain-artifact-renderer
+    kind: requirement
+    reqType: functional
+    pricing: free
+    title: Write a story as a Fountain screenplay
+    statement: >-
+      A story becomes a Fountain screenplay, a static artifact. The importer already reads a screenplay into a story; this
+      renderer is the other direction and is not built at the pinned commit.
+    status: proposed
+    rationale: >-
+      The operator said Fountain is both an importer and an artifact renderer (log:67-69). ADR-0000 (status Proposed) lists
+      a pure Fountain renderer among the extension points to build now (row 10a). No code writes Fountain at the pinned
+      commit. The operator must confirm the requirement, its release and that the renderer is free.
+    source:
+      - log:67-69
+      - reebeat:docs/decisions/0000-extension-architecture.md:141
+    refs: ["pr:reebeat#23"]
+    links:
+      serves: [goal-reebeat-screenplay-first]
 
   - id: req-reebeat-check
     kind: requirement
@@ -781,7 +805,7 @@ elements:
       Spec plan: spec 0002 sets out `reebeat lint`. The operator has not decided each diagnostic or this feature's free
       mark, so confirm them.
     source:
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:122
+      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:123
       - reebeat:packages/cli/src/cli.ts:118
     links:
       serves: [goal-reebeat-explicit-source]
@@ -819,8 +843,8 @@ elements:
       packages/cli/src/build.ts:26-31 at the pinned commit adds the silent stand-in exception. The operator has not decided
       those details or this feature's free mark, so confirm them.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:77
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:260
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:78
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:261
       - reebeat:packages/cli/src/build.ts:26-31
     links:
       serves: [goal-reebeat-reproducible-builds, goal-reebeat-incremental-builds]
@@ -837,7 +861,7 @@ elements:
       Observed in the repository: the `journey` command and AGENTS.md describe it. The operator has not decided the
       command or its free mark, so confirm them.
     source:
-      - reebeat:AGENTS.md:38
+      - reebeat:AGENTS.md:42
       - reebeat:packages/cli/src/journey.ts:1-3
     links:
       serves: [goal-reebeat-verified-output, goal-reebeat-reproducible-builds]
@@ -856,7 +880,7 @@ elements:
       feature's free mark, so confirm them.
     source:
       - reebeat:docs/design/keyframe-engine.md:1259
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:33
+      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:34
     links:
       serves: [goal-reebeat-event-timing, goal-reebeat-multi-renderer]
 
@@ -918,7 +942,7 @@ elements:
       The compiler checks subtitle speed, duration, line length and line count against one cited guideline. The default
       repair extends the State hold, and splitting or condensing are alternatives.
     status: proposed
-    rationale: Issue #12 proposes it. The operator named readable subtitles (log:27), and the guideline is still to be chosen.
+    rationale: "Issue #12 proposes it. The operator named readable subtitles (log:27), and the guideline is still to be chosen."
     source: ["issue:reebeat#12", "log:27"]
     refs: ["issue:reebeat#12"]
     links:
@@ -1020,7 +1044,7 @@ elements:
       Lint rules read the semantic tags on Elements and check the four principles. Each threshold is set from its primary
       source before the rule is built.
     status: proposed
-    rationale: Issue #8 proposes it and says it follows specs 0004 to 0006. The operator has not decided it.
+    rationale: "Issue #8 proposes it and says it follows specs 0004 to 0006. The operator has not decided it."
     source: ["issue:reebeat#8"]
     refs: ["issue:reebeat#8"]
     links:
@@ -1052,7 +1076,7 @@ elements:
       Whichever encoder replaces or complements ffmpeg with libx264 must keep two builds byte-identical, and the determinism
       check must be measured again.
     status: proposed
-    rationale: Issue #7 states it as a condition of any option. The operator has not chosen an option.
+    rationale: "Issue #7 states it as a condition of any option. The operator has not chosen an option."
     source: ["issue:reebeat#7"]
     refs: ["issue:reebeat#7"]
     links:
@@ -1067,7 +1091,7 @@ elements:
       The exception gate recognises both `@effect-diagnostics` and `@effect-diagnostics-next-line`, has a negative control,
       and every existing directive is registered.
     status: proposed
-    rationale: Issue #14 proposes it. It is a gap in a gate, not a decided feature.
+    rationale: "Issue #14 proposes it. It is a gap in a gate, not a decided feature."
     source: ["issue:reebeat#14"]
     refs: ["issue:reebeat#14"]
     links:
@@ -1082,7 +1106,7 @@ elements:
       `devEngines.packageManager` names the exact Bun version of devenv, and a check shows that both report the same
       revision. Both are bumped together.
     status: proposed
-    rationale: Issue #15 proposes it as the working fix.
+    rationale: "Issue #15 proposes it as the working fix."
     source: ["issue:reebeat#15"]
     refs: ["issue:reebeat#15"]
     links:
@@ -1107,8 +1131,8 @@ elements:
       are reproducible (log:10), not this scenario, so confirm it.
     source:
       - log:10
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:150
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:224
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:151
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:225
     links:
       serves: [goal-reebeat-reproducible-builds]
 
@@ -1130,7 +1154,7 @@ elements:
       acceptance scenario, and the variants are tracked in issue #12, so confirm it.
     source:
       - log:32
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:145-147
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:146-148
     refs: ["issue:reebeat#12"]
     links:
       serves: [goal-reebeat-accessible-artifacts]
@@ -1152,8 +1176,8 @@ elements:
       Spec plan: spec 0001 and spec 0002 set out the one-frame tolerance. The operator has not decided the threshold, so
       confirm it.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:145
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:128
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:146
+      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:129
     links:
       serves: [goal-reebeat-event-timing, goal-reebeat-verified-output]
 
@@ -1173,7 +1197,7 @@ elements:
       Observed in the repository: the tier gate and AGENTS.md describe this check. The operator decided the direction of
       dependency (spec 0001 line 234), not the gate, so confirm it.
     source:
-      - reebeat:AGENTS.md:33
+      - reebeat:AGENTS.md:35
       - reebeat:tools/quality/tiers.ts:41-48
     links:
       serves: [goal-reebeat-correct-by-construction]
@@ -1196,7 +1220,7 @@ elements:
       every adapter passes a contract suite, but the adapter shape is marked proposed, so confirm this scenario.
     source:
       - reebeat:docs/design/open-core-boundary.md:24
-      - reebeat:AGENTS.md:61
+      - reebeat:AGENTS.md:65
     links:
       serves: [goal-reebeat-plugin-sdk]
 
@@ -1217,7 +1241,7 @@ elements:
       gate, so confirm it.
     source:
       - reebeat:docs/specs/0008-apache-2-licence.md:42
-      - reebeat:AGENTS.md:30
+      - reebeat:AGENTS.md:31
     links:
       serves: [goal-reebeat-apache-licence]
 
@@ -1236,8 +1260,8 @@ elements:
     rationale: >-
       Spec plan: spec 0002 sets out the error format. The operator has not decided it, so confirm it.
     source:
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:17
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:190
+      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:18
+      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:191
     links:
       serves: [goal-reebeat-explicit-source]
 
@@ -1257,7 +1281,7 @@ elements:
       Spec plan: spec 0001 falsifier F12 sets out the three failure cases. The operator has not decided them, so confirm
       it.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:156
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:157
       - reebeat:packages/pipeline/src/buildProgram.ts:9-11
     links:
       serves: [goal-reebeat-correct-by-construction]
@@ -1279,7 +1303,7 @@ elements:
       confirm it.
     source:
       - reebeat:docs/design/keyframe-engine.md:1242
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:262
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:263
     links:
       serves: [goal-reebeat-visible-egress]
 
@@ -1319,7 +1343,7 @@ elements:
       choice, and published packages may widen it.
     source:
       - reebeat:README.md:12
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:189
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:190
       - reebeat:devenv.nix:3
     links:
       serves: [goal-reebeat-reproducible-builds]

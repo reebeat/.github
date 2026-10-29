@@ -208,16 +208,17 @@ elements:
     kind: concept
     title: Anchor and offset
     statement: >-
-      An effect starts at a delay after an anchor event. Retiming changes the delay, which is the offset, and keeps the
-      anchor.
+      An effect is timed against an anchor, a named moment such as a word of the narration, a scene start or end, or another
+      effect. An offset moves the effect from its anchor by a signed time or a share of a window. Retiming in studio
+      changes the offset and keeps the anchor.
     relations:
       - {type: relates, to: concept-studio-narration-piece, label: an anchor can be a narration word}
     status: proposed
     rationale: >-
-      Spec plan: the lenses note explains the idea with an example. The terms come from reebeat spec 0004, which is still
-      moving.
-      The operator should confirm the anchor and offset terms once reebeat settles them.
-    source: [studio:docs/design/lenses.md:56]
+      Reebeat's GLOSSARY.md defines the anchor and the offset (lines 39-40; the syntax came with spec 0002, merged in
+      reebeat PR 4 on 2026-10-29). The lenses note applies them to retiming in the Timeline lens (line 56). The operator
+      should confirm that studio uses the terms as the reebeat glossary defines them.
+    source: [studio:docs/design/lenses.md:56, reebeat:GLOSSARY.md:39-40]
 
   - id: concept-studio-agent-scope
     kind: concept

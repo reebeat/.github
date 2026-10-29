@@ -4,6 +4,9 @@ items:
   - ref: issue:foldkit-flow#3
     state: open
     title: vp run uses a downloaded Bun, not the devenv Bun (devEngines ^1.4.2)
+  - ref: issue:foldkit-flow#5
+    state: open
+    title: anti-slop/no-module-mocking misses vi from vite-plus/test
   - ref: issue:reebeat#10
     state: open
     title: "Localisation: one story, several narration languages"
@@ -23,6 +26,10 @@ items:
   - ref: issue:reebeat#20
     state: open
     title: "Roadmap (deferred): interactive lessons — investigate later"
+  - ref: issue:reebeat#25
+    state: open
+    title: verify-reebeat cleanup does not stop a capture Chromium started by build
+      or journey
   - ref: issue:reebeat#7
     state: open
     title: "ffmpeg with libx264 is GPL: decide before distributing a binary"
@@ -42,10 +49,6 @@ items:
   - ref: pr:foldkit-flow#4
     state: merged
     title: "feat: first felt journey (spec 0001)"
-  - ref: pr:reebeat#16
-    state: open
-    title: "chore: port the review loop, add verify-reebeat and its feature map
-      (spec 0010)"
   - ref: pr:reebeat#17
     state: open
     title: "feat: explicit state machines and timing combinators (spec 0004)"
@@ -54,7 +57,7 @@ items:
     title: "feat(release): publish @reebeat/* pre-releases to npm by trusted
       publishing (spec 0009)"
   - ref: pr:reebeat#23
-    state: open
+    state: merged
     title: "docs: extension architecture, ADR-0000 and spec 0012"
   - ref: pr:reebeat#24
     state: open

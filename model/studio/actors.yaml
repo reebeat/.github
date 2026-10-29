@@ -195,12 +195,14 @@ elements:
     resourceType: external-tool
     title: Foldkit, the UI framework
     statement: >-
-      Foldkit 0.169.0 is the UI framework, under the MIT licence. The editor is a Foldkit app. It installs from npm and is
-      not vendored.
+      At the pinned commit, Foldkit 0.169.0 is the UI framework, under the MIT licence. The editor is a Foldkit app. It
+      installs from npm and is not vendored. Foldkit 0.170.0, released on 2026-10-29, is a newer release that studio has not
+      adopted.
     status: proposed
     rationale: >-
       Observed in the repository: AGENTS.md and PROVENANCE.md state the version, licence and installation. The operator log
-      names Foldkit only for foldkit-flow (log:48). The operator must confirm Foldkit as studio's framework.
+      names Foldkit only for foldkit-flow (log:48). Checked on npm on 2026-10-29: Foldkit 0.170.0 peers effect ~4.1.0, where
+      0.169.0 peers effect 4.0.0. The operator must confirm Foldkit as studio's framework.
     source: [studio:AGENTS.md:54, studio:PROVENANCE.md:42, log:48]
     links:
       serves: [goal-studio-vision]
@@ -211,7 +213,7 @@ elements:
     resourceType: software
     title: Effect 4.1.0
     statement: >-
-      Studio is written in native Effect, pinned at 4.1.0. Foldkit declares a peer of 4.0.0.
+      Studio is written in native Effect, pinned at 4.1.0.
     status: proposed
     rationale: >-
       Observed in the repository: AGENTS.md and package.json pin the version. The operator's Effect policy (log:55) caps

@@ -22,28 +22,28 @@ The reasons behind the reebeat products, modelled with the 4EM method and genera
 
 | Sub-model | The organisation | reebeat (the compiler) | reebeat studio | foldkit-flow | decided | proposed | open |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| [Goals Model](goals.md) | 28 | 61 | 53 | 36 | 57 | 63 | 58 |
+| [Goals Model](goals.md) | 28 | 60 | 53 | 35 | 57 | 62 | 57 |
 | [Business Rules Model](business-rules.md) | 13 | 33 | 24 | 17 | 21 | 66 | 0 |
 | [Concepts Model](concepts.md) | 9 | 31 | 19 | 14 | 38 | 35 | 0 |
 | [Business Process Model](business-processes.md) | 9 | 22 | 19 | 16 | 6 | 56 | 4 |
 | [Actors and Resources Model](actors-and-resources.md) | 10 | 21 | 26 | 17 | 12 | 62 | 0 |
-| [Technical Components and Requirements Model](technical-components.md) | 20 | 65 | 58 | 36 | 23 | 151 | 5 |
+| [Technical Components and Requirements Model](technical-components.md) | 20 | 66 | 58 | 36 | 23 | 152 | 5 |
 
 ## Elements by scope and status
 
 | Scope | Elements | decided | proposed | open |
 | --- | --- | --- | --- | --- |
 | The organisation | 89 | 50 | 34 | 5 |
-| [reebeat (the compiler)](products/reebeat.md) | 233 | 53 | 153 | 27 |
+| [reebeat (the compiler)](products/reebeat.md) | 233 | 53 | 154 | 26 |
 | [reebeat studio](products/studio.md) | 199 | 45 | 135 | 19 |
-| [foldkit-flow](products/foldkit-flow.md) | 136 | 9 | 111 | 16 |
+| [foldkit-flow](products/foldkit-flow.md) | 135 | 9 | 110 | 16 |
 
 ## Elements by kind
 
 | Kind | Sub-model | decided | proposed | open |
 | --- | --- | --- | --- | --- |
 | Goal | Goals Model | 42 | 23 | 1 |
-| Problem | Goals Model | 5 | 8 | 54 |
+| Problem | Goals Model | 5 | 7 | 53 |
 | Constraint | Goals Model | 8 | 17 | 3 |
 | Opportunity | Goals Model | 2 | 15 | 0 |
 | Business rule | Business Rules Model | 21 | 66 | 0 |
@@ -54,7 +54,7 @@ The reasons behind the reebeat products, modelled with the 4EM method and genera
 | Resource | Actors and Resources Model | 7 | 33 | 0 |
 | Information system goal | Technical Components and Requirements Model | 3 | 13 | 0 |
 | Technical component | Technical Components and Requirements Model | 14 | 64 | 0 |
-| Requirement | Technical Components and Requirements Model | 6 | 74 | 5 |
+| Requirement | Technical Components and Requirements Model | 6 | 75 | 5 |
 
 ## Inter-model links
 
@@ -81,7 +81,7 @@ The reasons behind the reebeat products, modelled with the 4EM method and genera
 | rules -> technical | 47 | constrains |
 | technical -> actors | 31 | depends-on |
 | technical -> concepts | 8 | requires |
-| technical -> goals | 202 | serves, supports |
+| technical -> goals | 203 | serves, supports |
 
 ## Status
 

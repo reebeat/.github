@@ -9,10 +9,12 @@ elements:
     source:
       - log:48
       - foldkit-flow:README.md:3
-      - pr:foldkit-flow#4
+      - foldkit-flow:README.md:24
+      - foldkit-flow:packages/flow/src/model.ts:14-29
     rationale: >-
-      PR #4 plan: the log decides only a node-based graph UI for Foldkit (line 48). That the Flow holds nodes, edges,
-      viewport and selection in the application's Model, and its fields, come from PR #4. The operator must confirm the
+      The log decides only a node-based graph UI for Foldkit (line 48). README line 24 says the Flow is a Foldkit
+      Submodel whose graph lives in the application's Model, and model.ts lines 14 to 29 define its fields: nodes,
+      edges, viewport and attribution. Selection is a flag on each node and edge. The operator must confirm the
       concept.
     attributes:
       - id
@@ -32,9 +34,11 @@ elements:
     status: proposed
     source:
       - foldkit-flow:README.md:3
-      - pr:foldkit-flow#4
+      - foldkit-flow:README.md:35-47
+      - foldkit-flow:packages/flow/src/types.ts:42-59
     rationale: >-
-      The README names nodes. The fields come from PR #4 and are absent at the pinned commit 5dd44a9 (PR #4 has since merged; see the tracker). The operator must confirm the vocabulary.
+      README lines 35 to 47 show the node fields in use, and types.ts lines 42 to 59 define them. A node declares its
+      size and handles, so edges are placed without measuring the DOM. The operator must confirm the vocabulary.
     attributes:
       - id
       - label
@@ -55,9 +59,13 @@ elements:
       with an optional arrow.
     status: proposed
     source:
-      - pr:foldkit-flow#4
+      - foldkit-flow:README.md:47
+      - foldkit-flow:README.md:66
+      - foldkit-flow:packages/flow/src/types.ts:63-77
     rationale: >-
-      The edge fields and kinds come from PR #4 and are absent at the pinned commit 5dd44a9 (PR #4 has since merged; see the tracker). The operator must confirm the vocabulary.
+      README line 47 shows an edge, and line 66 says there are three edge types with an optional arrow. types.ts lines
+      63 to 77 define the kinds (Bezier, SmoothStep, Straight) and the fields, including a label. The operator must
+      confirm the vocabulary.
     attributes:
       - id
       - source node and handle
@@ -77,10 +85,11 @@ elements:
     status: proposed
     source:
       - foldkit-flow:README.md:3
-      - pr:foldkit-flow#4
+      - foldkit-flow:README.md:43
+      - foldkit-flow:packages/flow/src/types.ts:33-38
     rationale: >-
-      The README names handles. Their declared fields (id, kind, side) come from PR #4. The operator must confirm the
-      vocabulary.
+      The README names handles (line 3) and shows one declared on a node (line 43). types.ts lines 33 to 38 define a
+      handle by id, kind (source or target) and side. The operator must confirm the vocabulary.
     attributes:
       - id
       - kind (source or target)
@@ -96,9 +105,12 @@ elements:
       it, and the application turns an accepted one into an edge.
     status: proposed
     source:
-      - pr:foldkit-flow#4
+      - foldkit-flow:README.md:53-54
+      - foldkit-flow:packages/flow/src/types.ts:81-89
     rationale: >-
-      PR #4 separates a connection (a gesture result) from an edge (graph data). The operator must confirm.
+      types.ts lines 81 to 89 define a connection as the two ends of an edge that is about to exist. README lines 53
+      and 54 say the application adds the edge when it receives `Connected`. So a connection (a gesture result)
+      differs from an edge (graph data). The operator must confirm.
     relations:
       - { type: relates, to: concept-flow-handle, label: from a source handle to a target handle }
       - { type: relates, to: concept-flow-edge, label: becomes, multiplicity: zero or one }
@@ -112,10 +124,14 @@ elements:
     status: proposed
     source:
       - log:19
-      - pr:foldkit-flow#4
+      - foldkit-flow:README.md:45
+      - foldkit-flow:README.md:66
+      - foldkit-flow:packages/flow/src/types.ts:52-54
     rationale: >-
-      The log says a Scene is a compound state that groups States, and PR #4 builds parent nodes for that shape. No
-      line names the node kind as a flow concept. The operator must confirm.
+      The log says a Scene is a compound state that groups States (line 19). The library builds parent nodes for that
+      shape: a node with `parentId` is a child whose position is relative to its parent (README line 45), and
+      `isClampedToParent` keeps it inside (README line 66; types.ts line 52). No line names the node kind as a flow
+      concept. The operator must confirm.
     attributes:
       - children
       - clamp to parent
@@ -131,9 +147,12 @@ elements:
     status: proposed
     source:
       - foldkit-flow:README.md:3
-      - pr:foldkit-flow#4
+      - foldkit-flow:README.md:82
+      - foldkit-flow:packages/flow/src/types.ts:10-14
     rationale: >-
-      The README names pan and zoom. The viewport as a Model value is in PR #4. The operator must confirm.
+      The README names pan and zoom (line 3) and says they change only the viewport element's transform (line 82).
+      types.ts lines 10 to 14 define the viewport as x, y and zoom, and model.ts line 28 holds it in the Model. The
+      operator must confirm.
     attributes:
       - x offset
       - y offset
@@ -150,10 +169,12 @@ elements:
     status: proposed
     source:
       - foldkit-flow:README.md:3
-      - pr:foldkit-flow#4
+      - foldkit-flow:README.md:66
+      - foldkit-flow:packages/flow/src/selection.ts:5-7
     rationale: >-
-      The README names selecting with a box. Click, key and additive selection come from PR #4. The operator must
-      confirm.
+      The README names selecting with a box (line 3) and lists click, Shift-click and box selection (line 66).
+      Selection is a `selected` flag on each node and edge (selection.ts lines 5 to 7), and `UpdatedSelection` reports
+      it (message.ts line 79). The operator must confirm.
     relations:
       - { type: part-of, to: concept-flow-flow, multiplicity: one to one }
 
@@ -165,9 +186,13 @@ elements:
       zoom out and fit the view.
     status: proposed
     source:
-      - pr:foldkit-flow#4
+      - foldkit-flow:README.md:66
+      - foldkit-flow:packages/flow/src/view.ts:464-478
+      - foldkit-flow:packages/flow/src/view.ts:499-523
     rationale: >-
-      PR #4 builds both; they are absent at the pinned commit 5dd44a9 (PR #4 has since merged; see the tracker). The operator must confirm them as part of the first release.
+      README line 66 lists a minimap, zoom controls and fit view as built. view.ts draws the controls (lines 464 to
+      478) and the minimap (lines 499 to 523), and the minimap Mount lets a person drag it to pan (mounts.ts lines 757
+      to 779). The operator must confirm them as part of the first release.
     relations:
       - { type: part-of, to: concept-flow-flow }
 
@@ -179,7 +204,7 @@ elements:
       Visible is the default.
     status: proposed
     source:
-      - foldkit-flow:README.md:21
+      - foldkit-flow:README.md:86
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:53
       - foldkit-flow:packages/flow/src/attribution.ts:15-22
     rationale: >-
@@ -198,10 +223,11 @@ elements:
       uses Mounts to own its controllers.
     status: proposed
     source:
-      - foldkit-flow:AGENTS.md:61
-      - pr:foldkit-flow#4
+      - foldkit-flow:AGENTS.md:63
+      - foldkit-flow:packages/flow/src/mounts.ts:34-39
     rationale: >-
-      Mount is a Foldkit term, used here as AGENTS.md uses it. The operator must confirm that it belongs in the model.
+      Mount is a Foldkit term, used here as AGENTS.md uses it. mounts.ts lines 34 to 39 say each xyflow controller is
+      created and destroyed by a Mount. The operator must confirm that it belongs in the model.
     relations:
       - { type: relates, to: concept-flow-controller, label: owns the lifetime of, multiplicity: one to one }
 
@@ -213,11 +239,12 @@ elements:
       connection or the minimap.
     status: proposed
     source:
-      - foldkit-flow:README.md:21
-      - foldkit-flow:AGENTS.md:61
-      - pr:foldkit-flow#4
+      - foldkit-flow:README.md:86
+      - foldkit-flow:AGENTS.md:63
+      - foldkit-flow:packages/flow/src/xyflow.ts:7-20
     rationale: >-
-      The README lists xyflow's controllers. PR #4 names the four it uses. The operator must confirm.
+      The README lists xyflow's controllers (line 86). xyflow.ts lines 7 to 20 name the four the library calls:
+      XYPanZoom, XYDrag, XYMinimap and the handle gesture XYHandle.onPointerDown. The operator must confirm.
     relations:
       - { type: relates, to: concept-flow-flow, label: acts on }
 
@@ -229,9 +256,11 @@ elements:
       selection change. The application decides what to do with it.
     status: proposed
     source:
-      - pr:foldkit-flow#4
+      - foldkit-flow:README.md:52
+      - foldkit-flow:packages/flow/src/message.ts:67-83
     rationale: >-
-      The out-messages are named in PR #4 and are absent at the pinned commit 5dd44a9 (PR #4 has since merged; see the tracker). The operator must confirm the vocabulary.
+      message.ts lines 67 to 83 define the out-messages Connected, Deleted, Moved, Reconnected and UpdatedSelection,
+      and README line 52 lists them. The operator must confirm the vocabulary.
     relations:
       - { type: relates, to: concept-flow-connection, label: reports }
 
@@ -243,8 +272,11 @@ elements:
       readers.
     status: proposed
     source:
-      - pr:foldkit-flow#4
+      - foldkit-flow:README.md:76
+      - foldkit-flow:packages/flow/src/view.ts:665-673
     rationale: >-
-      The PR README describes it as part of keyboard access; it is absent at the pinned commit 5dd44a9 (PR #4 has since merged; see the tracker). The operator must confirm the live region as part of the keyboard contract.
+      README line 76 says a polite live region (`role="status"`) announces selection, moves, connections and
+      deletions, and view.ts lines 665 to 673 render it. The operator must confirm the live region as part of the
+      keyboard contract.
     relations:
       - { type: part-of, to: concept-flow-flow }

@@ -3,31 +3,40 @@ elements:
     kind: concept
     title: Story
     statement: >-
-      The largest unit with one concern and one audience. It contains Scenes, and its source is one Screenplay. A Video is
-      a rendering of a Story, not the Story.
+      The largest unit with one concern and one audience. It contains Scenes. Its declaration is the story IR, and in
+      release 1 a Story is imported from one Screenplay. A Video is a rendering of a Story, not the Story.
     attributes:
       - one concern and one audience
       - title, author and default speech speed
     status: proposed
     rationale: >-
-      Observed in the repository: the glossary, which an agent wrote, defines Story. The decision log defines Scene, State
-      and Beat but does not define Story, so confirm it.
-    source: ["reebeat:GLOSSARY.md:11-13"]
+      Observed in the repository: the glossary, which an agent wrote, defines Story and says its source is one Screenplay.
+      The operator later said that JSON stays the persistent IR and that a Screenplay is both an importer input and an
+      artifact (log:25, log:67-69). The glossary does not yet say so. The decision log defines Scene, State and Beat but
+      does not define Story, so confirm it.
+    source:
+      - reebeat:GLOSSARY.md:11-13
+      - log:25
+      - log:67-69
     relations:
       - type: relates
         to: concept-reebeat-screenplay
-        label: has source
-        multiplicity: "1 to 1"
+        label: is imported from, or written as
+        multiplicity: "1 to 0..*"
 
   - id: concept-reebeat-screenplay
     kind: concept
     title: Screenplay
     statement: >-
-      In release 1 the source of a Story is one Fountain file. The renderings are generated from it.
+      A Fountain file with reebeat's fixed vocabulary. It is an input of the importer, which reads it into a Story, and an
+      artifact that a renderer writes from a Story. In release 1 the importer is the only way to declare a Story. A
+      Screenplay is not the persistent IR: JSON stays the IR.
     status: decided
     source:
-      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:212
+      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213
       - reebeat:GLOSSARY.md:15-17
+      - log:25
+      - log:67-69
     relations:
       - type: relates
         to: concept-reebeat-plan
@@ -130,8 +139,8 @@ elements:
       An effect is declared in a Scene's effects block and is timed against an anchor.
     status: decided
     source:
-      - record:reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:161
       - record:reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:162
+      - record:reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:163
       - reebeat:GLOSSARY.md:35-37
     relations:
       - type: part-of
@@ -154,8 +163,8 @@ elements:
       start, its end or a percent of the way), or an Element's lifecycle.
     status: decided
     source:
-      - record:reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:162
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:14
+      - record:reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:163
+      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:15
       - reebeat:GLOSSARY.md:39-41
     relations:
       - type: relates
@@ -171,7 +180,7 @@ elements:
       to the slide change is anchored here, so it follows the motion and not the voice.
     status: decided
     source:
-      - record:reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:162
+      - record:reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:163
       - reebeat:GLOSSARY.md:47-49
     relations:
       - type: isa
@@ -241,7 +250,7 @@ elements:
       Spec plan: the operator decided reveal.js Auto-Animate as the release-1 identity diff (spec 0001 line 212) and
       story-wide identity (log:23). The comparison algorithm comes from the glossary, so confirm it.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:212
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213
       - log:23
       - reebeat:GLOSSARY.md:65-67
     relations:
@@ -270,7 +279,7 @@ elements:
       those contents, so confirm them.
     source:
       - reebeat:docs/design/keyframe-engine.md:1112
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:89
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:90
     relations:
       - type: relates
         to: concept-reebeat-story
@@ -299,7 +308,7 @@ elements:
       has not decided those details, so confirm them.
     source:
       - reebeat:docs/design/keyframe-engine.md:1112
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:67
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:68
     relations:
       - type: relates
         to: concept-reebeat-effect
@@ -375,7 +384,7 @@ elements:
       A rendering that is a reveal.js presentation.
     status: decided
     source:
-      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:212
+      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213
       - reebeat:README.md:5
       - reebeat:GLOSSARY.md:78-80
     relations:
@@ -389,7 +398,7 @@ elements:
       A rendering captured from the Deck's page on a controlled clock.
     status: decided
     source:
-      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:212
+      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213
       - reebeat:README.md:6
       - reebeat:GLOSSARY.md:75-76
     relations:
@@ -419,7 +428,7 @@ elements:
       Pure code with no runtime and no service.
     status: decided
     source:
-      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:234
+      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
       - reebeat:GLOSSARY.md:101-102
     relations:
       - type: relates
@@ -434,7 +443,7 @@ elements:
       An Effect interface plus a contract that every implementation passes.
     status: decided
     source:
-      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:234
+      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
       - reebeat:docs/design/keyframe-engine.md:1225
       - reebeat:GLOSSARY.md:104-106
     relations:
@@ -450,7 +459,7 @@ elements:
       A Layer that implements a service on an outside runtime. It is an integration.
     status: decided
     source:
-      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:234
+      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
       - reebeat:GLOSSARY.md:108-110
     relations:
       - type: relates
@@ -466,7 +475,7 @@ elements:
       back silently.
     status: decided
     source:
-      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:234
+      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
       - reebeat:GLOSSARY.md:112-113
       - reebeat:packages/services/src/selection.ts:18-26
     relations:
@@ -481,7 +490,7 @@ elements:
       An offline stand-in for an integration, used in tests.
     status: decided
     source:
-      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:234
+      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
       - reebeat:GLOSSARY.md:115-117
     relations:
       - type: isa
@@ -494,7 +503,7 @@ elements:
       What an integration sends out of the machine, declared by the integration.
     status: decided
     source:
-      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:234
+      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
       - reebeat:GLOSSARY.md:119-120
     relations:
       - type: part-of
@@ -507,9 +516,9 @@ elements:
       The suite that every adapter of one service must pass.
     status: decided
     source:
-      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:234
+      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
       - reebeat:docs/design/keyframe-engine.md:1225
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:258
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:259
     relations:
       - type: relates
         to: concept-reebeat-adapter
@@ -523,4 +532,4 @@ elements:
       One of three categories, library, service or integration, with one dependency direction.
     status: decided
     source:
-      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:234
+      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235

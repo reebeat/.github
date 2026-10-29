@@ -12,9 +12,9 @@ elements:
       Spec plan: spec 0001 and the screenplay-first revision describe this step. The operator decided that the source is
       one Fountain file, not the effects-block syntax or the explicit-id rules, so confirm the detail.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:212
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213
       - reebeat:README.md:3
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:60-79
+      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:61-80
     canvas: [key-activities]
     links:
       serves: [goal-reebeat-screenplay-first]
@@ -30,9 +30,9 @@ elements:
       Adapter selection is explicit configuration read at the composition root. It never falls back silently.
     status: decided
     source:
-      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:234
+      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
       - reebeat:README.md:23
-      - reebeat:AGENTS.md:59
+      - reebeat:AGENTS.md:63
       - reebeat:packages/services/src/selection.ts:1-4
     links:
       serves: [goal-reebeat-correct-by-construction, goal-reebeat-visible-egress]
@@ -51,8 +51,8 @@ elements:
       Spec plan: spec 0001 sets out the parser adapter and the closed vocabulary. The operator has not decided each error
       and line-number rule, so confirm the detail.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:31
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:63-65
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:32
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:64-66
     canvas: [key-activities]
     links:
       serves: [goal-reebeat-explicit-source]
@@ -73,8 +73,8 @@ elements:
       exact compilation steps, so confirm them.
     source:
       - reebeat:docs/design/keyframe-engine.md:1112
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:27
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:65
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:28
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:66
     canvas: [key-activities]
     links:
       serves: [goal-reebeat-deck-and-video, goal-reebeat-statechart-model]
@@ -95,7 +95,7 @@ elements:
       decided this review step or the fields it lists, so confirm it.
     source:
       - reebeat:docs/design/keyframe-engine.md:1112
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:122
+      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:123
     links:
       serves: [goal-reebeat-deck-and-video, goal-reebeat-verified-output]
       uses: [concept-reebeat-plan]
@@ -114,8 +114,8 @@ elements:
       packages/cli/src/build.ts:26-31 at the pinned commit refills a miss when refreshing, or always for the `silent`
       stand-in. The operator has not decided those details, so confirm them and the stand-in exception.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:77
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:260
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:78
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:261
       - reebeat:packages/cli/src/build.ts:26-31
     canvas: [key-activities]
     links:
@@ -136,7 +136,7 @@ elements:
       Spec plan: spec 0002 describes the schedule stage. The operator picked the effects syntax, not the integer-frame
       scheduling, so confirm the detail.
     source:
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:33
+      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:34
       - reebeat:packages/core/src/schedule.ts:1-8
     canvas: [key-activities]
     links:
@@ -157,7 +157,7 @@ elements:
       Spec plan: the operator decided only that sounds ride along in the Deck (spec 0002 line 161). The rest of the Deck
       rendering comes from the README and spec 0001, so confirm it.
     source:
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:161
+      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:162
       - reebeat:README.md:5
       - reebeat:packages/pipeline/src/buildProgram.ts:5-7
     canvas: [key-activities]
@@ -179,7 +179,7 @@ elements:
       the one-screenshot-per-frame mechanism, so confirm it.
     source:
       - reebeat:README.md:6
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:85
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:86
     canvas: [key-activities]
     links:
       serves: [goal-reebeat-reproducible-builds, goal-reebeat-deck-and-video]
@@ -219,7 +219,7 @@ elements:
       Spec plan: spec 0001 describes the manifest and the final rename. The operator decided that the output manifest
       records provenance, not the write order, so confirm the detail.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:262
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:263
       - reebeat:packages/pipeline/src/buildProgram.ts:9-11
     links:
       serves: [goal-reebeat-visible-egress, goal-reebeat-verified-output]
@@ -238,7 +238,7 @@ elements:
       list, so confirm it.
     source:
       - reebeat:README.md:18
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:141
+      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:142
     canvas: [key-activities]
     links:
       serves: [goal-reebeat-verified-output]
@@ -256,7 +256,7 @@ elements:
       the command, so confirm it.
     source:
       - reebeat:packages/cli/src/journey.ts:1-3
-      - reebeat:AGENTS.md:38
+      - reebeat:AGENTS.md:42
     links:
       serves: [goal-reebeat-reproducible-builds, goal-reebeat-verified-output]
       requires: [process-reebeat-verify-build]
@@ -275,7 +275,7 @@ elements:
       Observed in the repository: AGENTS.md lists these five steps. The operator decided that every adapter passes a
       contract suite, not the checklist, so confirm it.
     source:
-      - reebeat:AGENTS.md:61
+      - reebeat:AGENTS.md:65
       - reebeat:docs/design/keyframe-engine.md:1225
     links:
       serves: [goal-reebeat-plugin-sdk]
@@ -293,7 +293,7 @@ elements:
       Spec plan: spec 0000 lists this road. Its header shows the operator accepted the spec as a whole, but not each step,
       so confirm the detail.
     source:
-      - reebeat:docs/specs/0000-development-lifecycle.md:12-20
+      - reebeat:docs/specs/0000-development-lifecycle.md:13-21
       - reebeat:AGENTS.md:13-16
     links:
       part-of: [process-org-ship-change]
@@ -312,8 +312,8 @@ elements:
       Spec plan: spec 0000 describes the reviewer roles and the pass rule. The operator has not decided each detail, so
       confirm it.
     source:
-      - reebeat:docs/specs/0000-development-lifecycle.md:74
-      - reebeat:docs/specs/0000-development-lifecycle.md:78
+      - reebeat:docs/specs/0000-development-lifecycle.md:75
+      - reebeat:docs/specs/0000-development-lifecycle.md:79
     links:
       part-of: [process-org-ship-change]
       serves: [goal-reebeat-correct-by-construction]
@@ -331,9 +331,9 @@ elements:
       Spec plan: spec 0000 describes the merge script and branch protection. The operator has not decided each condition,
       so confirm it.
     source:
-      - reebeat:docs/specs/0000-development-lifecycle.md:22
-      - reebeat:docs/specs/0000-development-lifecycle.md:99-100
-      - reebeat:AGENTS.md:19
+      - reebeat:docs/specs/0000-development-lifecycle.md:23
+      - reebeat:docs/specs/0000-development-lifecycle.md:100-101
+      - reebeat:AGENTS.md:20
     links:
       part-of: [process-org-ship-change]
       serves: [goal-reebeat-correct-by-construction]
@@ -416,5 +416,5 @@ elements:
       Observed in the repository: spec 0000 and AGENTS.md describe these settings. The operator has not decided each
       setting, and the live state is not read here, so confirm it.
     source:
-      - reebeat:docs/specs/0000-development-lifecycle.md:52
-      - reebeat:AGENTS.md:19
+      - reebeat:docs/specs/0000-development-lifecycle.md:53
+      - reebeat:AGENTS.md:20

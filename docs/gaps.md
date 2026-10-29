@@ -2,7 +2,7 @@
 
 # Gap report
 
-What the analysis found missing in the product repositories, each with its fix. 50 gaps. This repository changes none of the product repositories; the fixes are follow-ups for their owners.
+What the analysis found missing in the product repositories, each with its fix. 49 gaps. This repository changes none of the product repositories; the fixes are follow-ups for their owners.
 
 ## The organisation
 
@@ -14,167 +14,180 @@ What the analysis found missing in the product repositories, each with its fix. 
 
 | Gap | What is missing | Evidence | Fix | Status |
 | --- | --- | --- | --- | --- |
-| [The roadmap exists only as issues and pull requests](goals.md#problem-org-no-written-roadmap) | The root of the reebeat and studio repositories has no ROADMAP file. The plans that exist are issues and open pull requests, so a visitor of the organisation cannot see them in one place. | [absent reebeat:ROADMAP.md][4], [absent studio:ROADMAP.md][5], [issue reebeat#19][6], [issue reebeat#20][7] | Link the generated roadmap of this repository from each README. | open |
+| [The product READMEs do not link the generated roadmap](goals.md#problem-org-no-written-roadmap) | The roadmap is generated in the `reebeat/.github` repository (`docs/roadmap.md`) and linked from the organisation profile. The READMEs of reebeat and studio do not link it, and neither contains the word "roadmap". The root of both repositories has no ROADMAP file. | [absent reebeat:ROADMAP.md][4], [absent studio:ROADMAP.md][5], [reebeat:README.md:1][6], [studio:README.md:1][7] | Link the generated roadmap of the reebeat/.github repository from the README of reebeat and of studio. | open |
 | [STATE.md is out of date](goals.md#problem-reebeat-state-stale) | STATE.md says specs 0001 and 0002 are in review. Both pull requests are merged. The file also lists "candidates for 0003" that are not the spec 0003 the repository holds. | [reebeat:STATE.md:7][8], [reebeat:STATE.md:13][9], [reebeat:docs/specs/0003-effect-4-1-upgrade.md:1][10], [pr reebeat#3][11], [pr reebeat#4][12] | Rewrite STATE.md from the merged pull requests and the specs that exist, or generate it from this model. | open |
-| [Spec status lines disagree with the pull requests](goals.md#problem-reebeat-spec-status-mismatch) | Spec 0002 says "built; in review (PR #4)" and spec 0001 and spec 0003 say "plan", but all three pull requests are merged. A reader cannot tell the state of a spec from the spec. | [reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:3][13], [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:3][14], [reebeat:docs/specs/0003-effect-4-1-upgrade.md:3][15], [reebeat:docs/specs/0000-development-lifecycle.md:128][16] | Show merge state from GitHub in generated views and leave the frozen spec text alone. | open |
-| [The exception gate ignores @effect-diagnostics comments](goals.md#problem-reebeat-exceptions-gate-blind) | `check:exceptions` does not count `@effect-diagnostics` directives. One such comment can silence an Effect rule with no registry entry, which breaks the rule that every suppression is registered. | [issue reebeat#14][17], [reebeat:AGENTS.md:42][18], [reebeat:tools/quality/effectExceptions.ts:44][19] | Add both @effect-diagnostics forms to the directive pattern, add a negative control and register existing directives. | open |
-| [vp run uses its own Bun](goals.md#problem-reebeat-bun-not-pinned) | The repository declares Bun as `^1.4.2` and asks to download when the installed Bun does not match. `vp run` then uses its own Bun, not the one devenv pins, so scripts may run on another version. | [issue reebeat#15][20], [reebeat:package.json:43-49][21], [reebeat:devenv.nix:17][22] | Pin devEngines.packageManager to the devenv Bun version exactly and check that both report the same revision. | open |
-| [No CONTRIBUTING.md](goals.md#problem-reebeat-no-contributing) | The repository has no CONTRIBUTING.md. The README points contributors to AGENTS.md and spec 0000 instead. | [absent reebeat:CONTRIBUTING.md][4], [reebeat:README.md:49][23] | Add a short CONTRIBUTING.md that links AGENTS.md and the spec, code and pull request road. | open |
+| [Spec status lines disagree with the pull requests](goals.md#problem-reebeat-spec-status-mismatch) | Spec 0002 says "built; in review (PR #4)" and spec 0001 and spec 0003 say "plan", but all three pull requests are merged. A reader cannot tell the state of a spec from the spec. | [reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:3][13], [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:3][14], [reebeat:docs/specs/0003-effect-4-1-upgrade.md:3][15], [reebeat:docs/specs/0000-development-lifecycle.md:129][16] | Show merge state from GitHub in generated views and leave the frozen spec text alone. | open |
+| [The exception gate ignores @effect-diagnostics comments](goals.md#problem-reebeat-exceptions-gate-blind) | `check:exceptions` does not count `@effect-diagnostics` directives. One such comment can silence an Effect rule with no registry entry, which breaks the rule that every suppression is registered. | [issue reebeat#14][17], [reebeat:AGENTS.md:46][18], [reebeat:tools/quality/effectExceptions.ts:44][19] | Add both @effect-diagnostics forms to the directive pattern, add a negative control and register existing directives. | open |
+| [vp run uses its own Bun](goals.md#problem-reebeat-bun-not-pinned) | The repository declares Bun as `^1.4.2` and asks to download when the installed Bun does not match. `vp run` then uses its own Bun, not the one devenv pins, so scripts may run on another version. | [issue reebeat#15][20], [reebeat:package.json:55-61][21], [reebeat:devenv.nix:17][22] | Pin devEngines.packageManager to the devenv Bun version exactly and check that both report the same revision. | open |
+| [No CONTRIBUTING.md](goals.md#problem-reebeat-no-contributing) | The repository has no CONTRIBUTING.md. The README points contributors to AGENTS.md and spec 0000 instead. | [absent reebeat:CONTRIBUTING.md][4], [reebeat:README.md:50][23] | Add a short CONTRIBUTING.md that links AGENTS.md and the spec, code and pull request road. | open |
 | [No SECURITY.md](goals.md#problem-reebeat-no-security-policy) | The repository has no SECURITY.md, so a reporter does not know where to send a vulnerability. | [absent reebeat:SECURITY.md][4] | Add SECURITY.md that names a private reporting channel and the supported versions. | open |
 | [No CODE_OF_CONDUCT.md](goals.md#problem-reebeat-no-code-of-conduct) | The repository has no CODE_OF_CONDUCT.md, so there is no stated standard for behaviour of contributors. | [absent reebeat:CODE_OF_CONDUCT.md][4] | Adopt a standard code of conduct and add it as CODE_OF_CONDUCT.md. | open |
 | [No issue templates](goals.md#problem-reebeat-no-issue-templates) | The .github directory holds only a workflow. There are no issue templates, so a report may arrive without the spec, journey or version that a maintainer needs. | [absent reebeat:.github/ISSUE_TEMPLATE][4] | Add issue templates for a bug and for a roadmap item under .github/ISSUE_TEMPLATE. | open |
-| [No pull request template](goals.md#problem-reebeat-no-pr-template) | The repository has no pull request template. The report format of spec 0000 lives in a skill, so a contributor without the skill does not see it. | [absent reebeat:.github/PULL_REQUEST_TEMPLATE.md][4], [reebeat:docs/specs/0000-development-lifecycle.md:59-70][24] | Add .github/PULL_REQUEST_TEMPLATE.md with the eight report sections. | open |
+| [No pull request template](goals.md#problem-reebeat-no-pr-template) | The repository has no pull request template. The report format of spec 0000 lives in a skill, so a contributor without the skill does not see it. | [absent reebeat:.github/PULL_REQUEST_TEMPLATE.md][4], [reebeat:docs/specs/0000-development-lifecycle.md:60-71][24] | Add .github/PULL_REQUEST_TEMPLATE.md with the eight report sections. | open |
 | [The README does not state the goals](goals.md#problem-reebeat-goals-not-in-readme) | The README opens with the mechanism, "explainer videos from a screenplay". It does not state the tagline or the qualities the operator wants to promote. | [log L7][25], [log L9][26], [reebeat:README.md:1-3][27] | Open the README with the tagline and the four qualities, and generate that text from this model. | open |
-| [The roadmap lives only in GitHub issues](goals.md#problem-reebeat-roadmap-only-in-issues) | Future work is in issues #8 to #12, #19 and #20 and in open pull requests. The repository holds no roadmap file, and STATE.md is out of date. | [absent reebeat:ROADMAP.md][4], [issue reebeat#19][6], [issue reebeat#20][7] | Generate a roadmap page into the repository from this model and the tracker. | open |
-| [Demand for reebeat is not measured](goals.md#problem-reebeat-demand-unmeasured) | The README and the specs read for this model report no usage or uptake. The roadmap is not evidence of demand. | [reebeat:README.md:1-49][28] | Decide a product-level signal, such as installs of the published packages, and record it. | open |
-| [Packages are private at the pinned commit](goals.md#problem-reebeat-packages-private) | At the pinned commit every package manifest under `packages/` says `"private": true`, so none can be published as it stands. Products and plugin authors cannot yet depend on the compiler from npm. | [reebeat:packages/core/package.json:4][29], [reebeat:packages/cli/package.json:4][30], [reebeat:packages/services/package.json:4][31], [reebeat:packages/pipeline/package.json:4][32], [reebeat:packages/verify/package.json:4][33], [reebeat:docs/design/open-core-boundary.md:26][34], [pr reebeat#18][35] | Merge the npm pre-release spec and publish the packages it lists. | open |
-| [No gate for experimental types in the API](goals.md#problem-reebeat-experimental-gate-open) | The rule that experimental types stay out of the public API is decided, but no test enforces it. Whether to scan exported declarations is open. | [reebeat:docs/design/open-core-boundary.md:58][36], [reebeat:docs/design/third-party.md:48][37] | Add a test that scans exported declarations for imports from a list of experimental packages. | open |
-| [Extension points beyond adapters are not defined](goals.md#problem-reebeat-extension-points-open) | Plugins are supported, and the adapter seams are the proposed plugin API. New effect kinds, new importers and the agent tool protocol are open, and no extension ADR exists. | [reebeat:docs/design/open-core-boundary.md:24-25][38], [issue reebeat#19][6] | Write the extension architecture ADR, including capability declarations and the agent tool protocol. | open |
-| [Element identity stops at the Scene](goals.md#problem-reebeat-identity-scene-bounded) | The operator decided that the same id is the same entity across Scenes. Release 1 matches ids only between two consecutive Scenes joined by AUTO-ANIMATE. | [log L23][39], [reebeat:GLOSSARY.md:19-21][40], [pr reebeat#17][41] | Implement story-wide identity at the start of spec 0005 and update the glossary. | open |
-| [Fountain is a source here, an artifact in the log](goals.md#problem-reebeat-fountain-role) | The decision log says Fountain is likely an artifact format, like video and decks. Release 1 reads Fountain as the one source of a story. | [log L25][42], [reebeat:README.md:3][43], [reebeat:GLOSSARY.md:15-17][44] | Record in the glossary whether Fountain is an authoring importer, an artifact format, or both. | open |
-| [Transition lines still apply to the Scene below](goals.md#problem-reebeat-transition-lines-positional) | `> AUTO-ANIMATE` and `> CUT` still apply to the Scene heading below them. That is positional, which spec 0002 set out to remove. | [reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:202][45], [reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:10][46] | Ask the operator to pick, then make the transition a property of the Scene heading if chosen. | open |
-| [Two anchor kinds have no probe](goals.md#problem-reebeat-anchor-probes-missing) | The `update` and `scene.end` anchors exist in code, but no check observes them in the written media. No lint reports an Element that is declared and never used. | [reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:199][47] | Add probes for update and scene.end and an unusedElement lint rule. | open |
-| [One Line keeps an interim speed hint](goals.md#problem-reebeat-speed-interim) | The story `same-id` keeps `(speed 1.05)` on one Line as an interim fix. Removal waits for word timings from the synthesiser or for alignment judged by its path. | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:274][48], [reebeat:STATE.md:12][49] | Remove the speed hint once word timings come from the synthesiser or alignment is judged by its path. | open |
-| [The licence gate trusts the declared licence field](goals.md#problem-reebeat-licence-gate-declared-only) | The licence gate reads the `license` field of each package. It does not read licence files inside packages, the licences of what a package bundles, or the binaries and models. | [reebeat:docs/design/third-party.md:93][50] | Read licence files inside packages for those that bundle components. | open |
-| [DCO enforcement and a trademark policy are undecided](goals.md#problem-reebeat-dco-and-trademark-open) | A Developer Certificate of Origin sign-off is recommended and not enforced. A trademark policy waits for the final name. | [reebeat:docs/design/open-core-boundary.md:63][51], [reebeat:docs/design/open-core-boundary.md:68][52] | Decide DCO enforcement now, and write the trademark policy after the name is final. | open |
-| [The first journey waits for the reebeat story IR](goals.md#problem-studio-first-journey-blocked) | At the pinned commit, spec 0001 is blocked on reebeat specs 0004 and 0006, and needs spec 0005 for story-wide identity. Until the IR is stable, studio builds no editing feature. | [studio:AGENTS.md:3][53], [studio:STATE.md:12][54], [studio:STATE.md:18][55], [studio:docs/specs/0001-first-felt-journey.md:3][56], [studio:docs/specs/0001-first-felt-journey.md:30-42][57] | Merge reebeat specs 0004 to 0006 so the story IR is closed, versioned and the committed source. | open |
-| [Browser compile and seek in reebeat are unverified](goals.md#problem-studio-browser-compile-gaps) | The in-browser preview needs a browser-safe compile, a seekable Deck page and a Deck generator that does not read the file system. Spec 0001 lists them as new reebeat work, and says the browser safety of the compile is not yet checked. | [studio:docs/specs/0001-first-felt-journey.md:38-42][58] | Add a browser-safe compile path, a seek(frame) on the Deck page and an assembleDeck that takes its assets as input. | proposed |
+| [The README does not link the generated roadmap](goals.md#problem-reebeat-roadmap-only-in-issues) | The reebeat README has no link to the roadmap that reebeat/.github generates from the model and the tracker, and STATE.md is out of date. The reebeat repository holds no roadmap file. | [absent reebeat:ROADMAP.md][4], [reebeat:README.md:1-50][28], [reebeat:STATE.md:7][8], [issue reebeat#19][29], [issue reebeat#20][30] | Link the generated roadmap from the README and bring STATE.md up to date. | open |
+| [Demand for reebeat is not measured](goals.md#problem-reebeat-demand-unmeasured) | The README and the specs read for this model report no usage or uptake. The roadmap is not evidence of demand. | [reebeat:README.md:1-50][28] | Decide a product-level signal, such as installs of the published packages, and record it. | open |
+| [No pre-release yet; cli and adapters unpublished](goals.md#problem-reebeat-packages-private) | No `@reebeat/*` package is on npm yet: the registry answered 404 for `@reebeat/core` on 2026-10-29. Seven packages are set up to publish (core, subtitles, lint, services, pipeline, sounds-synth, render-reveal). The `reebeat` command (`cli`), `verify` and the five Node adapters stay `"private": true`, so they have no distribution path. | [reebeat:packages/core/package.json:11-14][31], [reebeat:packages/cli/package.json:4][32], [reebeat:packages/verify/package.json:4][33], [reebeat:packages/speech-kokoro/package.json:4][34], [reebeat:packages/align-whisper/package.json:4][35], [reebeat:packages/capture-chromium/package.json:4][36], [reebeat:packages/encode-ffmpeg/package.json:4][37], [reebeat:packages/cache-fs/package.json:4][38], [reebeat:.github/workflows/release.yml:1-5][39], [reebeat:docs/design/open-core-boundary.md:26][40], [reebeat:docs/specs/0009-npm-prereleases.md:23][41], [reebeat:docs/specs/0009-npm-prereleases.md:36-38][42], [pr reebeat#18][43] | Publish the first alpha release after the operator steps, and decide how the cli and the Node adapters are distributed. | open |
+| [No gate for experimental types in the API](goals.md#problem-reebeat-experimental-gate-open) | The rule that experimental types stay out of the public API is decided, but no test enforces it. Whether to scan exported declarations is open. | [reebeat:docs/design/open-core-boundary.md:58][44], [reebeat:docs/design/third-party.md:48][45] | Add a test that scans exported declarations for imports from a list of experimental packages. | open |
+| [Extension points beyond adapters are not defined](goals.md#problem-reebeat-extension-points-open) | Plugins are supported, and the adapter seams are the proposed plugin API. New effect kinds, new importers and the agent tool protocol are open, and no extension ADR exists. | [reebeat:docs/design/open-core-boundary.md:24-25][46], [issue reebeat#19][29] | Write the extension architecture ADR, including capability declarations and the agent tool protocol. | open |
+| [Element identity stops at the Scene](goals.md#problem-reebeat-identity-scene-bounded) | The operator decided that the same id is the same entity across Scenes. Release 1 matches ids only between two consecutive Scenes joined by AUTO-ANIMATE. | [log L23][47], [reebeat:GLOSSARY.md:19-21][48], [pr reebeat#17][49] | Implement story-wide identity at the start of spec 0005 and update the glossary. | open |
+| [Transition lines still apply to the Scene below](goals.md#problem-reebeat-transition-lines-positional) | `> AUTO-ANIMATE` and `> CUT` still apply to the Scene heading below them. That is positional, which spec 0002 set out to remove. | [reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:203][50], [reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:11][51] | Ask the operator to pick, then make the transition a property of the Scene heading if chosen. | open |
+| [Two anchor kinds have no probe](goals.md#problem-reebeat-anchor-probes-missing) | The `update` and `scene.end` anchors exist in code, but no check observes them in the written media. No lint reports an Element that is declared and never used. | [reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:200][52] | Add probes for update and scene.end and an unusedElement lint rule. | open |
+| [One Line keeps an interim speed hint](goals.md#problem-reebeat-speed-interim) | The story `same-id` keeps `(speed 1.05)` on one Line as an interim fix. Removal waits for word timings from the synthesiser or for alignment judged by its path. | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:275][53], [reebeat:STATE.md:12][54] | Remove the speed hint once word timings come from the synthesiser or alignment is judged by its path. | open |
+| [The licence gate trusts the declared licence field](goals.md#problem-reebeat-licence-gate-declared-only) | The licence gate reads the `license` field of each package. It does not read licence files inside packages, the licences of what a package bundles, or the binaries and models. | [reebeat:docs/design/third-party.md:93][55] | Read licence files inside packages for those that bundle components. | open |
+| [DCO enforcement and a trademark policy are undecided](goals.md#problem-reebeat-dco-and-trademark-open) | A Developer Certificate of Origin sign-off is recommended and not enforced. A trademark policy waits for the final name. | [reebeat:docs/design/open-core-boundary.md:63][56], [reebeat:docs/design/open-core-boundary.md:68][57] | Decide DCO enforcement now, and write the trademark policy after the name is final. | open |
+| [The first journey waits for the reebeat story IR](goals.md#problem-studio-first-journey-blocked) | At the pinned commit, spec 0001 is blocked on reebeat specs 0004 and 0006, and needs spec 0005 for story-wide identity. Until the IR is stable, studio builds no editing feature. | [studio:AGENTS.md:3][58], [studio:STATE.md:12][59], [studio:STATE.md:18][60], [studio:docs/specs/0001-first-felt-journey.md:3][61], [studio:docs/specs/0001-first-felt-journey.md:30-42][62] | Merge reebeat specs 0004 to 0006 so the story IR is closed, versioned and the committed source. | open |
+| [Browser compile and seek in reebeat are unverified](goals.md#problem-studio-browser-compile-gaps) | The in-browser preview needs a browser-safe compile, a seekable Deck page and a Deck generator that does not read the file system. Spec 0001 lists them as new reebeat work, and says the browser safety of the compile is not yet checked. | [studio:docs/specs/0001-first-felt-journey.md:38-42][63] | Add a browser-safe compile path, a seek(frame) on the Deck page and an assembleDeck that takes its assets as input. | proposed |
 
-## [reebeat/studio][59]
-
-| Gap | What is missing | Evidence | Fix | Status |
-| --- | --- | --- | --- | --- |
-| [Studio has no LICENSE file](goals.md#problem-studio-no-licence) | At the pinned commit, the repository is public but has no licence file. Studio's own material is not licensed for reuse, because the operator has not decided a licence. Third-party code keeps its own licence. | [absent studio:LICENSE][5], [studio:README.md:27][60], [studio:AGENTS.md:64][61], [log L45][62] | The operator decides the licence and adds a LICENSE file. | open |
-| [Studio has no glossary of its own](goals.md#problem-studio-no-glossary) | At the pinned commit, studio uses reebeat's words (State, Beat, Scene, effect) but has no GLOSSARY.md. It points readers to reebeat's glossary. | [absent studio:GLOSSARY.md][5], [studio:AGENTS.md:3][53], [studio:docs/design/lenses.md:11][63], [studio:PROVENANCE.md:29][64] | Add a glossary for studio's own terms, or a clear pointer to reebeat's glossary. | open |
-| [The README does not state product goals](goals.md#problem-studio-goals-not-in-readme) | At the pinned commit, the README gives a one-line purpose and the status of a placeholder shell. It does not state the product goals, the free and paid split or the roadmap. | [studio:README.md:3-5][65], [studio:docs/specs/0001-first-felt-journey.md:11-13][66], [studio:docs/specs/0000-development-lifecycle.md:9][67] | Add a product goals section to the README that links to the generated intent model. | open |
-| [Foldkit's Vite plugin imports a missing Crypto](goals.md#problem-studio-foldkit-vite-plugin) | At the pinned commit, the Foldkit Vite plugin imports Crypto from the effect root, which Effect 4.1.0 does not have. The plugin stays off, so the dev tools bridge and model-preserving reload are off. | [studio:AGENTS.md:54][68], [studio:docs/specs/0000-development-lifecycle.md:114][69], [issue studio#4][70] | Re-enable the Foldkit Vite plugin when a release imports effect/crypto, then drop the Effect 4.0.0 peer note. | open |
-| [The web deploy waits for an Alchemy release](goals.md#problem-studio-alchemy-release) | At the pinned commit, the current Alchemy release imports an Effect module that Effect 4.1 does not have. The fix, alchemy-run/alchemy#2754, was merged but not released, so pull request 6 was a draft. | [pr studio#6][71], [studio:docs/specs/0000-development-lifecycle.md:34][72] | Bump Alchemy when a release has alchemy-run/alchemy#2754, run the deploy falsifiers, then take PR 6 out of draft. | open |
-| [The exception check misses effect-diagnostics comments](goals.md#problem-studio-exceptions-miss-diagnostics) | At the pinned commit, the suppression pattern in tools/quality does not match effect-diagnostics comments. Such a comment can silence a rule with no registry entry. | [studio:tools/quality/effectExceptions.ts:44-45][73], [issue studio#7][74] | Add the effect-diagnostics comment forms to directivePattern, with a failing control. | open |
-| [The Durable Object room is unmeasured at the edge](goals.md#problem-studio-do-unmeasured) | The room ran only on local workerd, without the validation gate. Nobody measured the real Cloudflare edge, load, many sockets, or the gate's bundle size and cold start. | [studio:docs/specs/0002-collaboration-spike.md:28][75], [studio:docs/specs/0002-collaboration-spike.md:66][76], [studio:docs/specs/0002-collaboration-spike.md:208][77], [studio:docs/specs/0002-collaboration-spike.md:214-215][78] | Run the room with the gate on the Cloudflare edge and measure size, cold start, load and sockets. | open |
-| [Demand and willingness to pay are not measured](goals.md#problem-studio-demand-unmeasured) | The free and paid split follows running cost. No source measures whether people want studio or would pay for sync or hosted agents. | [studio:docs/design/lenses.md:13-15][79], [studio:docs/specs/0001-first-felt-journey.md:112-123][80] | Measure demand and willingness to pay before building the paid tier. | open |
-| [ffmpeg with libx264 is GPL](goals.md#problem-studio-ffmpeg-gpl) | A studio binary that bundles ffmpeg with libx264 would carry GPL terms. The operator wants this reviewed before any such binary is distributed. | [log L50][81], [issue reebeat#7][82], [pr studio#6][71] | Review the licence terms before any studio binary bundles ffmpeg; today the binary does not. | open |
-| [The binaries are not signed](goals.md#problem-studio-unsigned-binaries) | The macOS and Windows binaries are not signed or notarised, so those systems warn the user. | [pr studio#6][71] | Sign and notarise the macOS and Windows binaries before a public release. | open |
-| [STATE.md still says spec 0003 is in review](goals.md#problem-studio-stale-state) | At the pinned commit, STATE.md says the review and verify skills are in review and lists their review as the next step. PR 5 has merged. | [studio:STATE.md:7][83], [studio:STATE.md:11][84], [pr studio#5][85] | Update STATE.md to say spec 0003 has merged and name the next spec. | open |
-
-## [reebeat/foldkit-flow][86]
+## [reebeat/studio][64]
 
 | Gap | What is missing | Evidence | Fix | Status |
 | --- | --- | --- | --- | --- |
-| [The package is unpublished and private](goals.md#problem-flow-unpublished) | Nothing is published. The library package is marked private and the README says it is under construction. | [foldkit-flow:README.md:5][87], [foldkit-flow:packages/flow/package.json:4][88] | Publish a pre-release once the package name is settled. | open |
-| [No stated goals beyond the README](goals.md#problem-flow-goals-undocumented) | The README gives one sentence of purpose, and spec 0000 states the goal of its lifecycle. No file gives the library's own product goals, users or success measures. | [foldkit-flow:README.md:3-7][89], [foldkit-flow:docs/specs/0000-development-lifecycle.md:9][90], [foldkit-flow:STATE.md:7][91] | Link this model's goals from the README so the purpose is written once. | open |
-| [No glossary for the graph terms](goals.md#problem-flow-no-glossary) | The repository has no GLOSSARY.md. Terms such as node, handle, connection and controller have no single definition. | [absent foldkit-flow:GLOSSARY.md][92] | Add a GLOSSARY.md generated from the concepts in this model. | open |
-| [STATE says nothing is blocked](goals.md#problem-flow-state-blocked-nothing) | STATE.md lists "Blocked: Nothing". The same file names the Foldkit plugin mismatch, and issue #3 about the Bun toolchain is open. | [foldkit-flow:STATE.md:12][93], [foldkit-flow:STATE.md:15-17][94], [issue foldkit-flow#3][95] | Add a "Risks" list to STATE.md that names the plugin mismatch and issue | open |
-| [vp run may use a different Bun than devenv](goals.md#problem-flow-bun-mismatch) | The package manager range is `^1.4.2` with download on failure. `vp run` can download its own Bun and so differ from the Bun that devenv pins. | [issue foldkit-flow#3][95], [foldkit-flow:package.json:43-47][96], [foldkit-flow:devenv.nix:8][97] | Pin devEngines to Bun 1.4.2 exactly and bump it together with devenv. | open |
-| [Keyboard users cannot create connections](goals.md#problem-flow-keyboard-connect-missing) | The first journey does not let a keyboard-only person connect two handles. PR #4 lists keyboard connect as an open question. | [pr foldkit-flow#4][98] | Decide whether to add keyboard connect (choose a handle, then a target with arrow keys) and write its spec. | open |
-| [The browser journey does not run in CI](goals.md#problem-flow-journey-not-in-ci) | CI has no browser. The journey and the performance check run only on a developer's machine. | [foldkit-flow:.github/workflows/checks.yml:3][99], [foldkit-flow:docs/specs/0000-development-lifecycle.md:92][100], [pr foldkit-flow#4][98] | Run the journey in CI with a pinned Chromium, or record who runs it before each merge. | open |
-| [Only Chromium and mouse input were tested](goals.md#problem-flow-browsers-untested) | The journey ran in one Chromium version. Firefox, WebKit and touch input were not run. | [pr foldkit-flow#4][98] | Choose which browsers and input types the library supports, then add them to the journey. | open |
-| [Demand and users are not measured](goals.md#problem-flow-demand-unmeasured) | The cited sources show no measure of who needs the library or who uses it. Nothing is published, and the sources record no user count or request. | [foldkit-flow:README.md:5][87], [foldkit-flow:packages/flow/package.json:4][88] | Choose a signal to read after publishing, such as downloads or issues, and write it down. | open |
-| [Details of the Foldkit offer are undecided](goals.md#problem-flow-upstream-terms-open) | The operator decided to offer the library as `@foldkit/flow` once its API settles. Spec 0000 still asks when, and under which licence header. | [foldkit-flow:docs/specs/0000-development-lifecycle.md:111][101], [foldkit-flow:STATE.md:13][102] | Record the operator's answer to open question 1 in a spec revision. | open |
-| [Workflow hardening is deferred](goals.md#problem-flow-deferred-workflow-questions) | Vendoring Foldkit as a subtree, requiring human approval, signed commits and Renovate are all deferred. | [foldkit-flow:docs/specs/0000-development-lifecycle.md:112-113][103] | Decide each item or record that it stays deferred. | open |
-| [The module-mocking lint rule has a gap](goals.md#problem-flow-lint-mocking-gap) | The lint rule that forbids module mocking matches only the `vitest` import source, so a mock imported from `vite-plus/test` passes. | [pr foldkit-flow#4][98] | Make the anti-slop module-mocking rule match the `vite-plus/test` source too. | open |
-| [No security, conduct or contributing files](goals.md#problem-flow-community-files) | The public repository has no SECURITY.md, CODE_OF_CONDUCT.md or CONTRIBUTING.md. The README has a short contributing section. | [absent foldkit-flow:SECURITY.md][92], [absent foldkit-flow:CODE_OF_CONDUCT.md][92], [absent foldkit-flow:CONTRIBUTING.md][92], [foldkit-flow:README.md:33-35][104] | Add the three files before the first publish. | open |
+| [Studio has no LICENSE file](goals.md#problem-studio-no-licence) | At the pinned commit, the repository is public but has no licence file. Studio's own material is not licensed for reuse, because the operator has not decided a licence. Third-party code keeps its own licence. | [absent studio:LICENSE][5], [studio:README.md:27][65], [studio:AGENTS.md:64][66], [log L45][67] | The operator decides the licence and adds a LICENSE file. | open |
+| [Studio has no glossary of its own](goals.md#problem-studio-no-glossary) | At the pinned commit, studio uses reebeat's words (State, Beat, Scene, effect) but has no GLOSSARY.md. It points readers to reebeat's glossary. | [absent studio:GLOSSARY.md][5], [studio:AGENTS.md:3][58], [studio:docs/design/lenses.md:11][68], [studio:PROVENANCE.md:29][69] | Add a glossary for studio's own terms, or a clear pointer to reebeat's glossary. | open |
+| [The README does not state product goals](goals.md#problem-studio-goals-not-in-readme) | At the pinned commit, the README gives a one-line purpose and the status of a placeholder shell. It does not state the product goals, the free and paid split or the roadmap. | [studio:README.md:3-5][70], [studio:docs/specs/0001-first-felt-journey.md:11-13][71], [studio:docs/specs/0000-development-lifecycle.md:9][72] | Add a product goals section to the README that links to the generated intent model. | open |
+| [The Foldkit Vite plugin is still off in studio](goals.md#problem-studio-foldkit-vite-plugin) | At the pinned commit, studio keeps the Foldkit Vite plugin off, so the dev tools bridge and model-preserving reload are off. The cause is fixed upstream: @foldkit/vite-plugin 0.29.0 (npm, 2026-10-29) imports SecureRandom from effect/crypto and peers effect ~4.1.0. Studio has not bumped, and issue 4 is open. | [studio:AGENTS.md:54][73], [studio:docs/specs/0000-development-lifecycle.md:114][74], [issue studio#4][75], [log L56][76] | Bump Foldkit and the Foldkit Vite plugin (0.170.0 and 0.29.0 or later), re-enable the plugin, then drop the Effect 4.0.0 peer note. | open |
+| [The web deploy waits for an Alchemy release](goals.md#problem-studio-alchemy-release) | At the pinned commit, the current Alchemy release imports an Effect module that Effect 4.1 does not have. The fix, alchemy-run/alchemy#2754, was merged but not released, so pull request 6 was a draft. | [pr studio#6][77], [studio:docs/specs/0000-development-lifecycle.md:34][78] | Bump Alchemy when a release has alchemy-run/alchemy#2754, run the deploy falsifiers, then take PR 6 out of draft. | open |
+| [The exception check misses effect-diagnostics comments](goals.md#problem-studio-exceptions-miss-diagnostics) | At the pinned commit, the suppression pattern in tools/quality does not match effect-diagnostics comments. Such a comment can silence a rule with no registry entry. | [studio:tools/quality/effectExceptions.ts:44-45][79], [issue studio#7][80] | Add the effect-diagnostics comment forms to directivePattern, with a failing control. | open |
+| [The Durable Object room is unmeasured at the edge](goals.md#problem-studio-do-unmeasured) | The room ran only on local workerd, without the validation gate. Nobody measured the real Cloudflare edge, load, many sockets, or the gate's bundle size and cold start. | [studio:docs/specs/0002-collaboration-spike.md:28][81], [studio:docs/specs/0002-collaboration-spike.md:66][82], [studio:docs/specs/0002-collaboration-spike.md:208][83], [studio:docs/specs/0002-collaboration-spike.md:214-215][84] | Run the room with the gate on the Cloudflare edge and measure size, cold start, load and sockets. | open |
+| [Demand and willingness to pay are not measured](goals.md#problem-studio-demand-unmeasured) | The free and paid split follows running cost. No source measures whether people want studio or would pay for sync or hosted agents. | [studio:docs/design/lenses.md:13-15][85], [studio:docs/specs/0001-first-felt-journey.md:112-123][86] | Measure demand and willingness to pay before building the paid tier. | open |
+| [ffmpeg with libx264 is GPL](goals.md#problem-studio-ffmpeg-gpl) | A studio binary that bundles ffmpeg with libx264 would carry GPL terms. The operator wants this reviewed before any such binary is distributed. | [log L50][87], [issue reebeat#7][88], [pr studio#6][77] | Review the licence terms before any studio binary bundles ffmpeg; today the binary does not. | open |
+| [The binaries are not signed](goals.md#problem-studio-unsigned-binaries) | The macOS and Windows binaries are not signed or notarised, so those systems warn the user. | [pr studio#6][77] | Sign and notarise the macOS and Windows binaries before a public release. | open |
+| [STATE.md still says spec 0003 is in review](goals.md#problem-studio-stale-state) | At the pinned commit, STATE.md says the review and verify skills are in review and lists their review as the next step. PR 5 has merged. The branch of PR 6 rewrites both lines to say 0003 has merged, so the text is wrong on main until PR 6 merges. | [studio:STATE.md:7][89], [studio:STATE.md:11][90], [pr studio#5][91], [pr studio#6][77] | Merge PR 6, whose branch already says spec 0003 has merged and names spec 0004. | open |
+
+## [reebeat/foldkit-flow][92]
+
+| Gap | What is missing | Evidence | Fix | Status |
+| --- | --- | --- | --- | --- |
+| [The package is unpublished and private](goals.md#problem-flow-unpublished) | Nothing is published. The library package is marked private at version 0.0.0, and the README says it is not published yet. | [foldkit-flow:README.md:5][93], [foldkit-flow:packages/flow/package.json:4][94] | Publish a pre-release once the package name is settled. | open |
+| [No stated goals beyond the README](goals.md#problem-flow-goals-undocumented) | The README gives one sentence of purpose, and spec 0000 states the goal of its lifecycle. No file gives the library's own product goals, users or success measures. | [foldkit-flow:README.md:3-7][95], [foldkit-flow:docs/specs/0000-development-lifecycle.md:9][96], [foldkit-flow:STATE.md:7][97] | Link this model's goals from the README so the purpose is written once. | open |
+| [No glossary for the graph terms](goals.md#problem-flow-no-glossary) | The repository has no GLOSSARY.md. Terms such as node, handle, connection and controller have no single definition. | [absent foldkit-flow:GLOSSARY.md][98] | Add a GLOSSARY.md generated from the concepts in this model. | open |
+| [STATE says nothing is blocked](goals.md#problem-flow-state-blocked-nothing) | STATE.md lists "Blocked: Nothing". The same file names the Foldkit plugin mismatch, and issue #3 about the Bun toolchain is open. | [foldkit-flow:STATE.md:13][99], [foldkit-flow:STATE.md:16-18][100], [issue foldkit-flow#3][101] | Add a "Risks" list to STATE.md that names the plugin mismatch and issue #3. | open |
+| [vp run may use a different Bun than devenv](goals.md#problem-flow-bun-mismatch) | The package manager range is `^1.4.2` with download on failure. `vp run` can download its own Bun and so differ from the Bun that devenv pins. | [issue foldkit-flow#3][101], [foldkit-flow:package.json:44-48][102], [foldkit-flow:devenv.nix:8][103] | Pin devEngines to Bun 1.4.2 exactly and bump it together with devenv. | open |
+| [Keyboard users cannot create connections](goals.md#problem-flow-keyboard-connect-missing) | The built journey does not let a keyboard-only person connect two handles. README line 78 says keyboard connect is not built, and spec 0001 lists it as an open question. | [foldkit-flow:README.md:78][104], [foldkit-flow:docs/specs/0001-first-felt-journey.md:116][105], [foldkit-flow:STATE.md:11][106] | Decide whether to add keyboard connect (choose a handle, then a target with arrow keys) and write its spec. | open |
+| [The browser journey does not run in CI](goals.md#problem-flow-journey-not-in-ci) | CI has no browser. The journey and the performance check run only on a developer's machine. | [foldkit-flow:.github/workflows/checks.yml:3][107], [foldkit-flow:docs/specs/0000-development-lifecycle.md:92][108], [foldkit-flow:AGENTS.md:48][109], [foldkit-flow:STATE.md:12][110] | Run the journey in CI with a pinned Chromium, or record who runs it before each merge. | open |
+| [Only Chromium and mouse input were tested](goals.md#problem-flow-browsers-untested) | The journey ran in one Chromium version. Firefox, WebKit and touch input were not run. | [pr foldkit-flow#4][111] | Choose which browsers and input types the library supports, then add them to the journey. | open |
+| [Demand and users are not measured](goals.md#problem-flow-demand-unmeasured) | The cited sources show no measure of who needs the library or who uses it. Nothing is published, and the sources record no user count or request. | [foldkit-flow:README.md:5][93], [foldkit-flow:packages/flow/package.json:4][94] | Choose a signal to read after publishing, such as downloads or issues, and write it down. | open |
+| [Details of the Foldkit offer are undecided](goals.md#problem-flow-upstream-terms-open) | The operator decided to offer the library as `@foldkit/flow` once its API settles. Spec 0000 still asks when, and under which licence header. | [foldkit-flow:docs/specs/0000-development-lifecycle.md:111][112], [foldkit-flow:STATE.md:14][113] | Record the operator's answer to open question 1 in a spec revision. | open |
+| [Workflow hardening is deferred](goals.md#problem-flow-deferred-workflow-questions) | Vendoring Foldkit as a subtree, requiring human approval, signed commits and Renovate are all deferred. | [foldkit-flow:docs/specs/0000-development-lifecycle.md:112-113][114] | Decide each item or record that it stays deferred. | open |
+| [The module-mocking lint rule has a gap](goals.md#problem-flow-lint-mocking-gap) | The lint rule that forbids module mocking matches only the `vitest` import source, so a mock imported from `vite-plus/test` passes. | [foldkit-flow:docs/specs/0001-first-felt-journey.md:142][115], [foldkit-flow:tools/oxlint/anti-slop/rules/no-module-mocking.ts:41-42][116], [issue foldkit-flow#5][117] | Make the anti-slop module-mocking rule match the `vite-plus/test` source too. | open |
+| [No security, conduct or contributing files](goals.md#problem-flow-community-files) | The public repository has no SECURITY.md, CODE_OF_CONDUCT.md or CONTRIBUTING.md. The README has a short contributing section. | [absent foldkit-flow:SECURITY.md][98], [absent foldkit-flow:CODE_OF_CONDUCT.md][98], [absent foldkit-flow:CONTRIBUTING.md][98], [foldkit-flow:README.md:98-100][118] | Add the three files before the first publish. | open |
 
 [1]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/PROVENANCE.md#L3
-[2]: https://github.com/reebeat/foldkit-flow/blob/5dd44a9fe34f1adabca41d9757eefe410f03f60b/PROVENANCE.md#L3
+[2]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/PROVENANCE.md#L3
 [3]: https://github.com/reebeat/reebeat
-[4]: https://github.com/reebeat/reebeat/tree/0bccf4294e0d3fe29111812738dc74cd29a30c38
+[4]: https://github.com/reebeat/reebeat/tree/82ee66f8806558460917b33ad9ad8d21c47a9a5b
 [5]: https://github.com/reebeat/studio/tree/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8
-[6]: https://github.com/reebeat/reebeat/issues/19
-[7]: https://github.com/reebeat/reebeat/issues/20
-[8]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/STATE.md#L7
-[9]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/STATE.md#L13
-[10]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/specs/0003-effect-4-1-upgrade.md#L1
+[6]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/README.md#L1
+[7]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/README.md#L1
+[8]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/STATE.md#L7
+[9]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/STATE.md#L13
+[10]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0003-effect-4-1-upgrade.md#L1
 [11]: https://github.com/reebeat/reebeat/pull/3
 [12]: https://github.com/reebeat/reebeat/pull/4
-[13]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/specs/0002-explicit-anchors-and-syntax.md#L3
-[14]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L3
-[15]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/specs/0003-effect-4-1-upgrade.md#L3
-[16]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/specs/0000-development-lifecycle.md#L128
+[13]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0002-explicit-anchors-and-syntax.md#L3
+[14]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L3
+[15]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0003-effect-4-1-upgrade.md#L3
+[16]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0000-development-lifecycle.md#L129
 [17]: https://github.com/reebeat/reebeat/issues/14
-[18]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/AGENTS.md#L42
-[19]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/tools/quality/effectExceptions.ts#L44
+[18]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/AGENTS.md#L46
+[19]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/tools/quality/effectExceptions.ts#L44
 [20]: https://github.com/reebeat/reebeat/issues/15
-[21]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/package.json#L43-L49
-[22]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/devenv.nix#L17
-[23]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/README.md#L49
-[24]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/specs/0000-development-lifecycle.md#L59-L70
+[21]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/package.json#L55-L61
+[22]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/devenv.nix#L17
+[23]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/README.md#L50
+[24]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0000-development-lifecycle.md#L60-L71
 [25]: ../sources/operator-decisions-2026-10.md#L7
 [26]: ../sources/operator-decisions-2026-10.md#L9
-[27]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/README.md#L1-L3
-[28]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/README.md#L1-L49
-[29]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/packages/core/package.json#L4
-[30]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/packages/cli/package.json#L4
-[31]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/packages/services/package.json#L4
-[32]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/packages/pipeline/package.json#L4
-[33]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/packages/verify/package.json#L4
-[34]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/design/open-core-boundary.md#L26
-[35]: https://github.com/reebeat/reebeat/pull/18
-[36]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/design/open-core-boundary.md#L58
-[37]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/design/third-party.md#L48
-[38]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/design/open-core-boundary.md#L24-L25
-[39]: ../sources/operator-decisions-2026-10.md#L23
-[40]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/GLOSSARY.md#L19-L21
-[41]: https://github.com/reebeat/reebeat/pull/17
-[42]: ../sources/operator-decisions-2026-10.md#L25
-[43]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/README.md#L3
-[44]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/GLOSSARY.md#L15-L17
-[45]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/specs/0002-explicit-anchors-and-syntax.md#L202
-[46]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/specs/0002-explicit-anchors-and-syntax.md#L10
-[47]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/specs/0002-explicit-anchors-and-syntax.md#L199
-[48]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L274
-[49]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/STATE.md#L12
-[50]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/design/third-party.md#L93
-[51]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/design/open-core-boundary.md#L63
-[52]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/design/open-core-boundary.md#L68
-[53]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/AGENTS.md#L3
-[54]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/STATE.md#L12
-[55]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/STATE.md#L18
-[56]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L3
-[57]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L30-L42
-[58]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L38-L42
-[59]: https://github.com/reebeat/studio
-[60]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/README.md#L27
-[61]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/AGENTS.md#L64
-[62]: ../sources/operator-decisions-2026-10.md#L45
-[63]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L11
-[64]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/PROVENANCE.md#L29
-[65]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/README.md#L3-L5
-[66]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L11-L13
-[67]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0000-development-lifecycle.md#L9
-[68]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/AGENTS.md#L54
-[69]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0000-development-lifecycle.md#L114
-[70]: https://github.com/reebeat/studio/issues/4
-[71]: https://github.com/reebeat/studio/pull/6
-[72]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0000-development-lifecycle.md#L34
-[73]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/tools/quality/effectExceptions.ts#L44-L45
-[74]: https://github.com/reebeat/studio/issues/7
-[75]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L28
-[76]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L66
-[77]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L208
-[78]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L214-L215
-[79]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L13-L15
-[80]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L112-L123
-[81]: ../sources/operator-decisions-2026-10.md#L50
-[82]: https://github.com/reebeat/reebeat/issues/7
-[83]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/STATE.md#L7
-[84]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/STATE.md#L11
-[85]: https://github.com/reebeat/studio/pull/5
-[86]: https://github.com/reebeat/foldkit-flow
-[87]: https://github.com/reebeat/foldkit-flow/blob/5dd44a9fe34f1adabca41d9757eefe410f03f60b/README.md#L5
-[88]: https://github.com/reebeat/foldkit-flow/blob/5dd44a9fe34f1adabca41d9757eefe410f03f60b/packages/flow/package.json#L4
-[89]: https://github.com/reebeat/foldkit-flow/blob/5dd44a9fe34f1adabca41d9757eefe410f03f60b/README.md#L3-L7
-[90]: https://github.com/reebeat/foldkit-flow/blob/5dd44a9fe34f1adabca41d9757eefe410f03f60b/docs/specs/0000-development-lifecycle.md#L9
-[91]: https://github.com/reebeat/foldkit-flow/blob/5dd44a9fe34f1adabca41d9757eefe410f03f60b/STATE.md#L7
-[92]: https://github.com/reebeat/foldkit-flow/tree/5dd44a9fe34f1adabca41d9757eefe410f03f60b
-[93]: https://github.com/reebeat/foldkit-flow/blob/5dd44a9fe34f1adabca41d9757eefe410f03f60b/STATE.md#L12
-[94]: https://github.com/reebeat/foldkit-flow/blob/5dd44a9fe34f1adabca41d9757eefe410f03f60b/STATE.md#L15-L17
-[95]: https://github.com/reebeat/foldkit-flow/issues/3
-[96]: https://github.com/reebeat/foldkit-flow/blob/5dd44a9fe34f1adabca41d9757eefe410f03f60b/package.json#L43-L47
-[97]: https://github.com/reebeat/foldkit-flow/blob/5dd44a9fe34f1adabca41d9757eefe410f03f60b/devenv.nix#L8
-[98]: https://github.com/reebeat/foldkit-flow/pull/4
-[99]: https://github.com/reebeat/foldkit-flow/blob/5dd44a9fe34f1adabca41d9757eefe410f03f60b/.github/workflows/checks.yml#L3
-[100]: https://github.com/reebeat/foldkit-flow/blob/5dd44a9fe34f1adabca41d9757eefe410f03f60b/docs/specs/0000-development-lifecycle.md#L92
-[101]: https://github.com/reebeat/foldkit-flow/blob/5dd44a9fe34f1adabca41d9757eefe410f03f60b/docs/specs/0000-development-lifecycle.md#L111
-[102]: https://github.com/reebeat/foldkit-flow/blob/5dd44a9fe34f1adabca41d9757eefe410f03f60b/STATE.md#L13
-[103]: https://github.com/reebeat/foldkit-flow/blob/5dd44a9fe34f1adabca41d9757eefe410f03f60b/docs/specs/0000-development-lifecycle.md#L112-L113
-[104]: https://github.com/reebeat/foldkit-flow/blob/5dd44a9fe34f1adabca41d9757eefe410f03f60b/README.md#L33-L35
+[27]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/README.md#L1-L3
+[28]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/README.md#L1-L50
+[29]: https://github.com/reebeat/reebeat/issues/19
+[30]: https://github.com/reebeat/reebeat/issues/20
+[31]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/core/package.json#L11-L14
+[32]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/cli/package.json#L4
+[33]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/verify/package.json#L4
+[34]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/speech-kokoro/package.json#L4
+[35]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/align-whisper/package.json#L4
+[36]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/capture-chromium/package.json#L4
+[37]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/encode-ffmpeg/package.json#L4
+[38]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/cache-fs/package.json#L4
+[39]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/.github/workflows/release.yml#L1-L5
+[40]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/design/open-core-boundary.md#L26
+[41]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0009-npm-prereleases.md#L23
+[42]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0009-npm-prereleases.md#L36-L38
+[43]: https://github.com/reebeat/reebeat/pull/18
+[44]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/design/open-core-boundary.md#L58
+[45]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/design/third-party.md#L48
+[46]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/design/open-core-boundary.md#L24-L25
+[47]: ../sources/operator-decisions-2026-10.md#L23
+[48]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L19-L21
+[49]: https://github.com/reebeat/reebeat/pull/17
+[50]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0002-explicit-anchors-and-syntax.md#L203
+[51]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0002-explicit-anchors-and-syntax.md#L11
+[52]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0002-explicit-anchors-and-syntax.md#L200
+[53]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L275
+[54]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/STATE.md#L12
+[55]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/design/third-party.md#L93
+[56]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/design/open-core-boundary.md#L63
+[57]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/design/open-core-boundary.md#L68
+[58]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/AGENTS.md#L3
+[59]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/STATE.md#L12
+[60]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/STATE.md#L18
+[61]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L3
+[62]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L30-L42
+[63]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L38-L42
+[64]: https://github.com/reebeat/studio
+[65]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/README.md#L27
+[66]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/AGENTS.md#L64
+[67]: ../sources/operator-decisions-2026-10.md#L45
+[68]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L11
+[69]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/PROVENANCE.md#L29
+[70]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/README.md#L3-L5
+[71]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L11-L13
+[72]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0000-development-lifecycle.md#L9
+[73]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/AGENTS.md#L54
+[74]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0000-development-lifecycle.md#L114
+[75]: https://github.com/reebeat/studio/issues/4
+[76]: ../sources/operator-decisions-2026-10.md#L56
+[77]: https://github.com/reebeat/studio/pull/6
+[78]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0000-development-lifecycle.md#L34
+[79]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/tools/quality/effectExceptions.ts#L44-L45
+[80]: https://github.com/reebeat/studio/issues/7
+[81]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L28
+[82]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L66
+[83]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L208
+[84]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L214-L215
+[85]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L13-L15
+[86]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L112-L123
+[87]: ../sources/operator-decisions-2026-10.md#L50
+[88]: https://github.com/reebeat/reebeat/issues/7
+[89]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/STATE.md#L7
+[90]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/STATE.md#L11
+[91]: https://github.com/reebeat/studio/pull/5
+[92]: https://github.com/reebeat/foldkit-flow
+[93]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L5
+[94]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/package.json#L4
+[95]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L3-L7
+[96]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0000-development-lifecycle.md#L9
+[97]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/STATE.md#L7
+[98]: https://github.com/reebeat/foldkit-flow/tree/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6
+[99]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/STATE.md#L13
+[100]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/STATE.md#L16-L18
+[101]: https://github.com/reebeat/foldkit-flow/issues/3
+[102]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/package.json#L44-L48
+[103]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/devenv.nix#L8
+[104]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L78
+[105]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0001-first-felt-journey.md#L116
+[106]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/STATE.md#L11
+[107]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/.github/workflows/checks.yml#L3
+[108]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0000-development-lifecycle.md#L92
+[109]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/AGENTS.md#L48
+[110]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/STATE.md#L12
+[111]: https://github.com/reebeat/foldkit-flow/pull/4
+[112]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0000-development-lifecycle.md#L111
+[113]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/STATE.md#L14
+[114]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0000-development-lifecycle.md#L112-L113
+[115]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0001-first-felt-journey.md#L142
+[116]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/tools/oxlint/anti-slop/rules/no-module-mocking.ts#L41-L42
+[117]: https://github.com/reebeat/foldkit-flow/issues/5
+[118]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L98-L100

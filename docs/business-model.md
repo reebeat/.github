@@ -21,84 +21,85 @@ The operator decided the principle and two paid features: multiplayer collaborat
 | Tier | Element | Scope | Status | Sources |
 | --- | --- | --- | --- | --- |
 | free | [reebeat, the open compiler](technical-components.md#comp-reebeat-product) | reebeat | decided | [log L7][1], [log L60][2], [log L44][3], [record reebeat:docs/design/open-core-boundary.md:21][4], [record reebeat:docs/design/open-core-boundary.md:39-44][5] |
-| free | [core, from screenplay to Plan and Timeline](technical-components.md#comp-reebeat-core) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:238][6], [reebeat:packages/core/src/index.ts:1-2][7], [reebeat:packages/core/package.json:4][8], [reebeat:docs/design/open-core-boundary.md:39][9] |
-| free | [subtitles, WebVTT and SubRip writers](technical-components.md#comp-reebeat-subtitles) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:239][10], [reebeat:packages/subtitles/src/index.ts:1-2][11] |
-| free | [lint, pure rules over a Plan](technical-components.md#comp-reebeat-lint) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:240][12], [reebeat:packages/lint/src/index.ts:1-4][13] |
-| free | [services, the seven contracts](technical-components.md#comp-reebeat-services) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:241][14], [reebeat:packages/services/src/index.ts:1-3][15], [reebeat:packages/services/package.json:18][16] |
-| free | [pipeline, the build program](technical-components.md#comp-reebeat-pipeline) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:242][17], [reebeat:packages/pipeline/src/index.ts:1-2][18] |
-| free | [speech-kokoro, local speech synthesis](technical-components.md#comp-reebeat-speech-kokoro) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:243][19], [reebeat:packages/speech-kokoro/src/index.ts:1][20] |
-| free | [align-whisper, word alignment](technical-components.md#comp-reebeat-align-whisper) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:244][21], [reebeat:packages/align-whisper/src/index.ts:1][22] |
-| free | [sounds-synth, built-in sound effects](technical-components.md#comp-reebeat-sounds-synth) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:245][23], [reebeat:docs/design/third-party.md:78][24] |
-| free | [render-reveal, the Deck renderer](technical-components.md#comp-reebeat-render-reveal) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:246][25], [reebeat:packages/render-reveal/src/index.ts:1-4][26] |
-| free | [capture-chromium, frame capture](technical-components.md#comp-reebeat-capture-chromium) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:247][27], [reebeat:packages/capture-chromium/src/index.ts:1-2][28] |
-| free | [encode-ffmpeg, mix and mux](technical-components.md#comp-reebeat-encode-ffmpeg) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:248][29], [reebeat:packages/encode-ffmpeg/src/index.ts:1-2][30] |
-| free | [cache-fs, the content-addressed cache](technical-components.md#comp-reebeat-cache-fs) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:249][31], [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:260][32] |
-| free | [verify, the output-side checks](technical-components.md#comp-reebeat-verify) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:250][33], [reebeat:packages/verify/src/index.ts:1-2][34] |
-| free | [cli, the reebeat command](technical-components.md#comp-reebeat-cli) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:251][35], [reebeat:packages/cli/src/cli.ts:70][36], [reebeat:packages/cli/package.json:17-28][37] |
-| free | [quality gates, the repository checks](technical-components.md#comp-reebeat-quality-gates) | reebeat | proposed | [reebeat:docs/specs/0000-development-lifecycle.md:8][38], [reebeat:AGENTS.md:25-38][39] |
+| free | [core, from screenplay to Plan and Timeline](technical-components.md#comp-reebeat-core) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:239][6], [reebeat:packages/core/src/index.ts:1-2][7], [reebeat:packages/core/package.json:5][8], [reebeat:docs/design/open-core-boundary.md:39][9] |
+| free | [subtitles, WebVTT and SubRip writers](technical-components.md#comp-reebeat-subtitles) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:240][10], [reebeat:packages/subtitles/src/index.ts:1-2][11] |
+| free | [lint, pure rules over a Plan](technical-components.md#comp-reebeat-lint) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:241][12], [reebeat:packages/lint/src/index.ts:1-4][13] |
+| free | [services, the seven contracts](technical-components.md#comp-reebeat-services) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:242][14], [reebeat:packages/services/src/index.ts:1-3][15], [reebeat:packages/services/package.json:22][16] |
+| free | [pipeline, the build program](technical-components.md#comp-reebeat-pipeline) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:243][17], [reebeat:packages/pipeline/src/index.ts:1-2][18] |
+| free | [speech-kokoro, local speech synthesis](technical-components.md#comp-reebeat-speech-kokoro) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:244][19], [reebeat:packages/speech-kokoro/src/index.ts:1][20] |
+| free | [align-whisper, word alignment](technical-components.md#comp-reebeat-align-whisper) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:245][21], [reebeat:packages/align-whisper/src/index.ts:1][22] |
+| free | [sounds-synth, built-in sound effects](technical-components.md#comp-reebeat-sounds-synth) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:246][23], [reebeat:docs/design/third-party.md:78][24] |
+| free | [render-reveal, the Deck renderer](technical-components.md#comp-reebeat-render-reveal) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:247][25], [reebeat:packages/render-reveal/src/index.ts:1-4][26] |
+| free | [capture-chromium, frame capture](technical-components.md#comp-reebeat-capture-chromium) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:248][27], [reebeat:packages/capture-chromium/src/index.ts:1-2][28] |
+| free | [encode-ffmpeg, mix and mux](technical-components.md#comp-reebeat-encode-ffmpeg) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:249][29], [reebeat:packages/encode-ffmpeg/src/index.ts:1-2][30] |
+| free | [cache-fs, the content-addressed cache](technical-components.md#comp-reebeat-cache-fs) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:250][31], [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:261][32] |
+| free | [verify, the output-side checks](technical-components.md#comp-reebeat-verify) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:251][33], [reebeat:packages/verify/src/index.ts:1-2][34] |
+| free | [cli, the reebeat command](technical-components.md#comp-reebeat-cli) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:252][35], [reebeat:packages/cli/src/cli.ts:70][36], [reebeat:packages/cli/package.json:17-28][37] |
+| free | [quality gates, the repository checks](technical-components.md#comp-reebeat-quality-gates) | reebeat | proposed | [reebeat:docs/specs/0000-development-lifecycle.md:9][38], [reebeat:AGENTS.md:26-42][39] |
 | free | [statechart-xstate, the build-time interpreter](technical-components.md#comp-reebeat-statechart-xstate) | reebeat | proposed | [log L26][40], [reebeat:docs/specs/0007-scxml-persistent-ir-spike.md:591][41], [reebeat:docs/specs/0007-scxml-persistent-ir-spike.md:620][42] |
 | free | [website renderer, a planned artifact renderer](technical-components.md#comp-reebeat-website-renderer) | reebeat | proposed | [log L36][43], [issue reebeat#19][44] |
-| free | [Print a reviewable Plan](technical-components.md#req-reebeat-plan) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:27][45], [reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:122][46], [reebeat:docs/design/open-core-boundary.md:39][9] |
-| free | [Build a Deck from the Plan](technical-components.md#req-reebeat-deck) | reebeat | proposed | [reebeat:README.md:5][47], [reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:161][48], [reebeat:docs/design/open-core-boundary.md:39][9] |
+| free | [Print a reviewable Plan](technical-components.md#req-reebeat-plan) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:28][45], [reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:123][46], [reebeat:docs/design/open-core-boundary.md:39][9] |
+| free | [Build a Deck from the Plan](technical-components.md#req-reebeat-deck) | reebeat | proposed | [reebeat:README.md:5][47], [reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:162][48], [reebeat:docs/design/open-core-boundary.md:39][9] |
 | free | [Build a narrated Video from the Plan](technical-components.md#req-reebeat-video) | reebeat | proposed | [reebeat:README.md:6][49], [reebeat:docs/design/open-core-boundary.md:39][9] |
-| free | [Check a build against its source](technical-components.md#req-reebeat-check) | reebeat | proposed | [reebeat:README.md:8][50], [reebeat:README.md:18][51], [reebeat:docs/design/open-core-boundary.md:39][9] |
-| free | [Lint a story and say the fix](technical-components.md#req-reebeat-lint) | reebeat | proposed | [reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:122][46], [reebeat:packages/cli/src/cli.ts:118][52] |
-| free | [Select adapters by configuration](technical-components.md#req-reebeat-selection) | reebeat | proposed | [reebeat:README.md:23][53], [reebeat:packages/services/src/selection.ts:18-26][54] |
-| free | [Cache speech by content](technical-components.md#req-reebeat-speech-cache) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:77][55], [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:260][32], [reebeat:packages/cli/src/build.ts:26-31][56] |
-| free | [One command runs the whole road](technical-components.md#req-reebeat-journey) | reebeat | proposed | [reebeat:AGENTS.md:38][57], [reebeat:packages/cli/src/journey.ts:1-3][58] |
-| free | [A renderer declares its lifecycle timing](technical-components.md#req-reebeat-renderer-lifecycle) | reebeat | proposed | [reebeat:docs/design/keyframe-engine.md:1259][59], [reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:33][60] |
-| free | [Explicit state machines and timing combinators](technical-components.md#req-reebeat-state-machines) | reebeat | proposed | [pr reebeat#17][61], [log L24][62] |
-| free | [Generate captions, audio description and reduced motion](technical-components.md#req-reebeat-accessible-variants) | reebeat | proposed | [issue reebeat#12][63], [log L32][64] |
-| free | [Subtitles stay readable](technical-components.md#req-reebeat-readable-subtitles) | reebeat | proposed | [issue reebeat#12][63], [log L27][65] |
-| free | [Build one story in several narration languages](technical-components.md#req-reebeat-language-variants) | reebeat | proposed | [issue reebeat#10][66], [log L32][64] |
-| free | [Cache render segments](technical-components.md#req-reebeat-render-segment-cache) | reebeat | proposed | [issue reebeat#9][67], [log L62][68] |
-| free | [Emit a static interactive website](technical-components.md#req-reebeat-website-artifact) | reebeat | proposed | [issue reebeat#19][44], [log L36][43], [log L65][69] |
-| free | [One interaction declaration for every surface](technical-components.md#req-reebeat-interaction-declaration) | reebeat | proposed | [issue reebeat#19][70], [log L38][71], [log L65][69] |
-| free | [Renderers declare what they can realise](technical-components.md#req-reebeat-renderer-capabilities) | reebeat | proposed | [issue reebeat#19][72], [log L28][73] |
-| free | [Lint temporal contiguity, signalling, redundancy and coherence](technical-components.md#req-reebeat-teaching-lint) | reebeat | proposed | [issue reebeat#8][74] |
-| free | [Publish only built, audited packages](technical-components.md#req-reebeat-npm-prerelease) | reebeat | proposed | [pr reebeat#18][75], [log L49][76] |
-| free | [Any chosen encoder keeps builds byte-identical](technical-components.md#req-reebeat-encoder-reproducible) | reebeat | proposed | [issue reebeat#7][77] |
-| free | [The exception gate counts @effect-diagnostics comments](technical-components.md#req-reebeat-exception-directives) | reebeat | proposed | [issue reebeat#14][78] |
-| free | [Pin the package manager to the devenv Bun](technical-components.md#req-reebeat-pin-bun) | reebeat | proposed | [issue reebeat#15][79] |
-| free | [The first felt journey](business-processes.md#process-studio-first-journey) | studio | proposed | [studio:docs/specs/0001-first-felt-journey.md:11-22][80] |
-| free | [Open a story](business-processes.md#process-studio-open-story) | studio | proposed | [studio:docs/specs/0001-first-felt-journey.md:16][81], [studio:docs/specs/0001-first-felt-journey.md:36][82] |
-| free | [See the graph and the timeline](business-processes.md#process-studio-inspect-story) | studio | proposed | [studio:docs/specs/0001-first-felt-journey.md:17][83], [studio:docs/specs/0001-first-felt-journey.md:131][84] |
-| free | [Scrub the preview](business-processes.md#process-studio-scrub-preview) | studio | proposed | [studio:docs/specs/0001-first-felt-journey.md:18][85], [studio:docs/specs/0001-first-felt-journey.md:39][86] |
-| free | [Edit one Element property](business-processes.md#process-studio-edit-property) | studio | proposed | [studio:docs/specs/0001-first-felt-journey.md:19-21][87], [studio:docs/specs/0001-first-felt-journey.md:133-134][88] |
-| free | [Undo an edit](business-processes.md#process-studio-undo-edit) | studio | proposed | [studio:docs/specs/0001-first-felt-journey.md:20-21][89], [studio:docs/specs/0001-first-felt-journey.md:93][90], [studio:docs/specs/0001-first-felt-journey.md:136][91] |
-| free | [In-browser Deck preview](technical-components.md#comp-studio-preview) | studio | proposed | [studio:docs/specs/0001-first-felt-journey.md:59-72][92] |
-| free | [The validated edit path](technical-components.md#comp-studio-edit-path) | studio | proposed | [studio:docs/specs/0001-first-felt-journey.md:76-93][93], [studio:docs/specs/0001-first-felt-journey.md:172][94] |
-| free | [Manuscript lens](technical-components.md#comp-studio-lens-manuscript) | studio | proposed | [log L45][95], [studio:docs/design/lenses.md:21][96], [studio:docs/design/lenses.md:34][97] |
-| free | [Deck and Record lens](technical-components.md#comp-studio-lens-record) | studio | proposed | [log L45][95], [studio:docs/design/lenses.md:22][98], [studio:docs/design/lenses.md:36-48][99] |
-| free | [Story graph lens](technical-components.md#comp-studio-lens-story-graph) | studio | proposed | [log L45][95], [studio:docs/design/lenses.md:23][100], [studio:docs/design/lenses.md:50-52][101] |
-| free | [Timeline lens](technical-components.md#comp-studio-lens-timeline) | studio | proposed | [log L45][95], [studio:docs/design/lenses.md:24][102], [studio:docs/design/lenses.md:54-56][103] |
-| free | [Wiring lens](technical-components.md#comp-studio-lens-wiring) | studio | proposed | [studio:docs/design/lenses.md:25][104], [studio:docs/design/lenses.md:58-60][105] |
-| free | [Review lens](technical-components.md#comp-studio-lens-review) | studio | proposed | [studio:docs/design/lenses.md:26][106], [studio:docs/design/lenses.md:62-69][107] |
-| free | [Coach lens](technical-components.md#comp-studio-lens-coach) | studio | proposed | [studio:docs/design/lenses.md:27][108], [studio:docs/design/lenses.md:71-73][109] |
-| free | [Languages lens](technical-components.md#comp-studio-lens-languages) | studio | proposed | [studio:docs/design/lenses.md:28][110], [studio:docs/design/lenses.md:75-77][111] |
-| free | [Deliver lens](technical-components.md#comp-studio-lens-deliver) | studio | proposed | [log L45][95], [studio:docs/design/lenses.md:29][112], [studio:docs/design/lenses.md:79-87][113] |
-| free | [Agent panel](technical-components.md#comp-studio-lens-agent-panel) | studio | proposed | [studio:docs/design/lenses.md:30][114], [studio:docs/design/lenses.md:89-99][115] |
-| free | [The agent tool protocol](technical-components.md#comp-studio-tool-protocol) | studio | proposed | [log L43][116], [studio:docs/specs/0001-first-felt-journey.md:95-108][117], [studio:docs/specs/0001-first-felt-journey.md:164][118] |
-| free | [Reference tool server over a local story file](technical-components.md#comp-studio-reference-server) | studio | proposed | [studio:docs/specs/0001-first-felt-journey.md:108][119], [studio:docs/specs/0001-first-felt-journey.md:118][120], [studio:docs/specs/0001-first-felt-journey.md:151][121] |
-| free | [The graph is the engine's graph](technical-components.md#req-studio-graph-matches-plan) | studio | proposed | [studio:docs/specs/0001-first-felt-journey.md:17][83], [studio:docs/specs/0001-first-felt-journey.md:131][84] |
-| free | [The playhead seeks the preview to any frame](technical-components.md#req-studio-scrub-frame) | studio | proposed | [studio:docs/specs/0001-first-felt-journey.md:18][85], [studio:docs/specs/0001-first-felt-journey.md:39][86] |
-| free | [One property edit is one change](technical-components.md#req-studio-edit-one-property) | studio | proposed | [studio:docs/specs/0001-first-felt-journey.md:19-21][87], [studio:docs/specs/0001-first-felt-journey.md:133-134][88] |
-| free | [Undo restores the old story exactly](technical-components.md#req-studio-undo-restores) | studio | proposed | [studio:docs/specs/0001-first-felt-journey.md:20-21][89], [studio:docs/specs/0001-first-felt-journey.md:93][90], [studio:docs/specs/0001-first-felt-journey.md:136][91] |
-| free | [Record several takes with a teleprompter](technical-components.md#req-studio-record-takes) | studio | proposed | [log L45][95], [studio:docs/design/lenses.md:38][122] |
-| free | [Agents get tools to read and edit a story](technical-components.md#req-studio-agent-tools) | studio | proposed | [studio:docs/specs/0001-first-felt-journey.md:95-108][117] |
-| free | [Set an agent's scope per lens](technical-components.md#req-studio-agent-scopes) | studio | proposed | [studio:docs/design/lenses.md:91-99][123] |
-| free | [A preview frame equals the Video frame](technical-components.md#req-studio-preview-equals-video) | studio | proposed | [studio:docs/specs/0001-first-felt-journey.md:59][124], [studio:docs/specs/0001-first-felt-journey.md:132][125] |
-| free | [The free journey works offline](technical-components.md#req-studio-offline-free-tier) | studio | proposed | [studio:docs/specs/0001-first-felt-journey.md:138][126], [studio:.agents/skills/verify-studio/features/README.md:26][127] |
-| free | [Every editor region has an accessible name](technical-components.md#req-studio-accessible-regions) | studio | proposed | [studio:apps/editor/src/main.ts:62-63][128], [studio:apps/editor/src/main.ts:89][129], [studio:docs/specs/0000-development-lifecycle.md:63][130], [log L10][131] |
-| free | [packages/flow (the library)](technical-components.md#comp-flow-library) | foldkit-flow | proposed | [foldkit-flow:AGENTS.md:3][132], [foldkit-flow:AGENTS.md:25][133], [foldkit-flow:README.md:5][134], [foldkit-flow:packages/flow/package.json:2-6][135], [pr foldkit-flow#4][136] |
-| paid | [Collaborate and merge edits](business-processes.md#process-studio-collaborate-merge) | studio | decided | [log L43][116], [log L45][95], [log L47][137] |
-| paid | [Hosted agents](technical-components.md#comp-studio-hosted-agent) | studio | decided | [log L43][116] |
-| paid | [Hosted alignment, speech and translation](technical-components.md#comp-studio-hosted-speech) | studio | proposed | [studio:docs/design/lenses.md:22][98], [studio:docs/design/lenses.md:28][110], [studio:docs/specs/0001-first-felt-journey.md:123][138], [studio:docs/specs/0001-first-felt-journey.md:163][139] |
-| paid | [Cloud rendering](technical-components.md#comp-studio-cloud-render) | studio | proposed | [studio:docs/design/lenses.md:29][112], [studio:docs/design/lenses.md:87][140], [studio:docs/specs/0001-first-felt-journey.md:122][141] |
-| paid | [The sync server (planned)](technical-components.md#comp-studio-sync-server) | studio | decided | [log L43][116], [log L47][137], [record studio:docs/specs/0002-collaboration-spike.md:198][142] |
-| paid | [The sync server refuses an invalid merge with a reason](technical-components.md#req-studio-gate-refuses-invalid) | studio | proposed | [log L47][137], [studio:docs/specs/0002-collaboration-spike.md:25][143], [studio:docs/specs/0002-collaboration-spike.md:111-112][144] |
-| paid | [The sync room stores an update log and a snapshot](technical-components.md#req-studio-sync-persistence) | studio | proposed | [studio:docs/specs/0002-collaboration-spike.md:28][145], [studio:docs/specs/0002-collaboration-spike.md:56][146], [studio:docs/specs/0002-collaboration-spike.md:66][147] |
-| paid | [A merged story is valid or refused](technical-components.md#req-studio-validity-under-merge) | studio | proposed | [log L47][137], [studio:docs/specs/0002-collaboration-spike.md:25][143], [studio:docs/specs/0002-collaboration-spike.md:208][148] |
+| free | [Write a story as a Fountain screenplay](technical-components.md#req-reebeat-fountain-artifact-renderer) | reebeat | proposed | [log L67-69][50], [reebeat:docs/decisions/0000-extension-architecture.md:141][51] |
+| free | [Check a build against its source](technical-components.md#req-reebeat-check) | reebeat | proposed | [reebeat:README.md:8][52], [reebeat:README.md:18][53], [reebeat:docs/design/open-core-boundary.md:39][9] |
+| free | [Lint a story and say the fix](technical-components.md#req-reebeat-lint) | reebeat | proposed | [reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:123][46], [reebeat:packages/cli/src/cli.ts:118][54] |
+| free | [Select adapters by configuration](technical-components.md#req-reebeat-selection) | reebeat | proposed | [reebeat:README.md:23][55], [reebeat:packages/services/src/selection.ts:18-26][56] |
+| free | [Cache speech by content](technical-components.md#req-reebeat-speech-cache) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:78][57], [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:261][32], [reebeat:packages/cli/src/build.ts:26-31][58] |
+| free | [One command runs the whole road](technical-components.md#req-reebeat-journey) | reebeat | proposed | [reebeat:AGENTS.md:42][59], [reebeat:packages/cli/src/journey.ts:1-3][60] |
+| free | [A renderer declares its lifecycle timing](technical-components.md#req-reebeat-renderer-lifecycle) | reebeat | proposed | [reebeat:docs/design/keyframe-engine.md:1259][61], [reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:34][62] |
+| free | [Explicit state machines and timing combinators](technical-components.md#req-reebeat-state-machines) | reebeat | proposed | [pr reebeat#17][63], [log L24][64] |
+| free | [Generate captions, audio description and reduced motion](technical-components.md#req-reebeat-accessible-variants) | reebeat | proposed | [issue reebeat#12][65], [log L32][66] |
+| free | [Subtitles stay readable](technical-components.md#req-reebeat-readable-subtitles) | reebeat | proposed | [issue reebeat#12][65], [log L27][67] |
+| free | [Build one story in several narration languages](technical-components.md#req-reebeat-language-variants) | reebeat | proposed | [issue reebeat#10][68], [log L32][66] |
+| free | [Cache render segments](technical-components.md#req-reebeat-render-segment-cache) | reebeat | proposed | [issue reebeat#9][69], [log L62][70] |
+| free | [Emit a static interactive website](technical-components.md#req-reebeat-website-artifact) | reebeat | proposed | [issue reebeat#19][44], [log L36][43], [log L65][71] |
+| free | [One interaction declaration for every surface](technical-components.md#req-reebeat-interaction-declaration) | reebeat | proposed | [issue reebeat#19][72], [log L38][73], [log L65][71] |
+| free | [Renderers declare what they can realise](technical-components.md#req-reebeat-renderer-capabilities) | reebeat | proposed | [issue reebeat#19][74], [log L28][75] |
+| free | [Lint temporal contiguity, signalling, redundancy and coherence](technical-components.md#req-reebeat-teaching-lint) | reebeat | proposed | [issue reebeat#8][76] |
+| free | [Publish only built, audited packages](technical-components.md#req-reebeat-npm-prerelease) | reebeat | proposed | [pr reebeat#18][77], [log L49][78] |
+| free | [Any chosen encoder keeps builds byte-identical](technical-components.md#req-reebeat-encoder-reproducible) | reebeat | proposed | [issue reebeat#7][79] |
+| free | [The exception gate counts @effect-diagnostics comments](technical-components.md#req-reebeat-exception-directives) | reebeat | proposed | [issue reebeat#14][80] |
+| free | [Pin the package manager to the devenv Bun](technical-components.md#req-reebeat-pin-bun) | reebeat | proposed | [issue reebeat#15][81] |
+| free | [The first felt journey](business-processes.md#process-studio-first-journey) | studio | proposed | [studio:docs/specs/0001-first-felt-journey.md:11-22][82] |
+| free | [Open a story](business-processes.md#process-studio-open-story) | studio | proposed | [studio:docs/specs/0001-first-felt-journey.md:16][83], [studio:docs/specs/0001-first-felt-journey.md:36][84] |
+| free | [See the graph and the timeline](business-processes.md#process-studio-inspect-story) | studio | proposed | [studio:docs/specs/0001-first-felt-journey.md:17][85], [studio:docs/specs/0001-first-felt-journey.md:131][86] |
+| free | [Scrub the preview](business-processes.md#process-studio-scrub-preview) | studio | proposed | [studio:docs/specs/0001-first-felt-journey.md:18][87], [studio:docs/specs/0001-first-felt-journey.md:39][88] |
+| free | [Edit one Element property](business-processes.md#process-studio-edit-property) | studio | proposed | [studio:docs/specs/0001-first-felt-journey.md:19-21][89], [studio:docs/specs/0001-first-felt-journey.md:133-134][90] |
+| free | [Undo an edit](business-processes.md#process-studio-undo-edit) | studio | proposed | [studio:docs/specs/0001-first-felt-journey.md:20-21][91], [studio:docs/specs/0001-first-felt-journey.md:93][92], [studio:docs/specs/0001-first-felt-journey.md:136][93] |
+| free | [In-browser Deck preview](technical-components.md#comp-studio-preview) | studio | proposed | [studio:docs/specs/0001-first-felt-journey.md:59-72][94] |
+| free | [The validated edit path](technical-components.md#comp-studio-edit-path) | studio | proposed | [studio:docs/specs/0001-first-felt-journey.md:76-93][95], [studio:docs/specs/0001-first-felt-journey.md:172][96] |
+| free | [Manuscript lens](technical-components.md#comp-studio-lens-manuscript) | studio | proposed | [log L45][97], [studio:docs/design/lenses.md:21][98], [studio:docs/design/lenses.md:34][99] |
+| free | [Deck and Record lens](technical-components.md#comp-studio-lens-record) | studio | proposed | [log L45][97], [studio:docs/design/lenses.md:22][100], [studio:docs/design/lenses.md:36-48][101] |
+| free | [Story graph lens](technical-components.md#comp-studio-lens-story-graph) | studio | proposed | [log L45][97], [studio:docs/design/lenses.md:23][102], [studio:docs/design/lenses.md:50-52][103] |
+| free | [Timeline lens](technical-components.md#comp-studio-lens-timeline) | studio | proposed | [log L45][97], [studio:docs/design/lenses.md:24][104], [studio:docs/design/lenses.md:54-56][105] |
+| free | [Wiring lens](technical-components.md#comp-studio-lens-wiring) | studio | proposed | [studio:docs/design/lenses.md:25][106], [studio:docs/design/lenses.md:58-60][107] |
+| free | [Review lens](technical-components.md#comp-studio-lens-review) | studio | proposed | [studio:docs/design/lenses.md:26][108], [studio:docs/design/lenses.md:62-69][109] |
+| free | [Coach lens](technical-components.md#comp-studio-lens-coach) | studio | proposed | [studio:docs/design/lenses.md:27][110], [studio:docs/design/lenses.md:71-73][111] |
+| free | [Languages lens](technical-components.md#comp-studio-lens-languages) | studio | proposed | [studio:docs/design/lenses.md:28][112], [studio:docs/design/lenses.md:75-77][113] |
+| free | [Deliver lens](technical-components.md#comp-studio-lens-deliver) | studio | proposed | [log L45][97], [studio:docs/design/lenses.md:29][114], [studio:docs/design/lenses.md:79-87][115] |
+| free | [Agent panel](technical-components.md#comp-studio-lens-agent-panel) | studio | proposed | [studio:docs/design/lenses.md:30][116], [studio:docs/design/lenses.md:89-99][117] |
+| free | [The agent tool protocol](technical-components.md#comp-studio-tool-protocol) | studio | proposed | [log L43][118], [studio:docs/specs/0001-first-felt-journey.md:95-108][119], [studio:docs/specs/0001-first-felt-journey.md:164][120] |
+| free | [Reference tool server over a local story file](technical-components.md#comp-studio-reference-server) | studio | proposed | [studio:docs/specs/0001-first-felt-journey.md:108][121], [studio:docs/specs/0001-first-felt-journey.md:118][122], [studio:docs/specs/0001-first-felt-journey.md:151][123] |
+| free | [The graph is the engine's graph](technical-components.md#req-studio-graph-matches-plan) | studio | proposed | [studio:docs/specs/0001-first-felt-journey.md:17][85], [studio:docs/specs/0001-first-felt-journey.md:131][86] |
+| free | [The playhead seeks the preview to any frame](technical-components.md#req-studio-scrub-frame) | studio | proposed | [studio:docs/specs/0001-first-felt-journey.md:18][87], [studio:docs/specs/0001-first-felt-journey.md:39][88] |
+| free | [One property edit is one change](technical-components.md#req-studio-edit-one-property) | studio | proposed | [studio:docs/specs/0001-first-felt-journey.md:19-21][89], [studio:docs/specs/0001-first-felt-journey.md:133-134][90] |
+| free | [Undo restores the old story exactly](technical-components.md#req-studio-undo-restores) | studio | proposed | [studio:docs/specs/0001-first-felt-journey.md:20-21][91], [studio:docs/specs/0001-first-felt-journey.md:93][92], [studio:docs/specs/0001-first-felt-journey.md:136][93] |
+| free | [Record several takes with a teleprompter](technical-components.md#req-studio-record-takes) | studio | proposed | [log L45][97], [studio:docs/design/lenses.md:38][124] |
+| free | [Agents get tools to read and edit a story](technical-components.md#req-studio-agent-tools) | studio | proposed | [studio:docs/specs/0001-first-felt-journey.md:95-108][119] |
+| free | [Set an agent's scope per lens](technical-components.md#req-studio-agent-scopes) | studio | proposed | [studio:docs/design/lenses.md:91-99][125] |
+| free | [A preview frame equals the Video frame](technical-components.md#req-studio-preview-equals-video) | studio | proposed | [studio:docs/specs/0001-first-felt-journey.md:59][126], [studio:docs/specs/0001-first-felt-journey.md:132][127] |
+| free | [The free journey works offline](technical-components.md#req-studio-offline-free-tier) | studio | proposed | [studio:docs/specs/0001-first-felt-journey.md:138][128], [studio:.agents/skills/verify-studio/features/README.md:26][129] |
+| free | [Every editor region has an accessible name](technical-components.md#req-studio-accessible-regions) | studio | proposed | [studio:apps/editor/src/main.ts:62-63][130], [studio:apps/editor/src/main.ts:89][131], [studio:docs/specs/0000-development-lifecycle.md:63][132], [log L10][133] |
+| free | [packages/flow (the library)](technical-components.md#comp-flow-library) | foldkit-flow | proposed | [foldkit-flow:AGENTS.md:3][134], [foldkit-flow:AGENTS.md:25][135], [foldkit-flow:README.md:5][136], [foldkit-flow:packages/flow/package.json:2-6][137], [foldkit-flow:packages/flow/src/index.ts:1-39][138] |
+| paid | [Collaborate and merge edits](business-processes.md#process-studio-collaborate-merge) | studio | decided | [log L43][118], [log L45][97], [log L47][139] |
+| paid | [Hosted agents](technical-components.md#comp-studio-hosted-agent) | studio | decided | [log L43][118] |
+| paid | [Hosted alignment, speech and translation](technical-components.md#comp-studio-hosted-speech) | studio | proposed | [studio:docs/design/lenses.md:22][100], [studio:docs/design/lenses.md:28][112], [studio:docs/specs/0001-first-felt-journey.md:123][140], [studio:docs/specs/0001-first-felt-journey.md:163][141] |
+| paid | [Cloud rendering](technical-components.md#comp-studio-cloud-render) | studio | proposed | [studio:docs/design/lenses.md:29][114], [studio:docs/design/lenses.md:87][142], [studio:docs/specs/0001-first-felt-journey.md:122][143] |
+| paid | [The sync server (planned)](technical-components.md#comp-studio-sync-server) | studio | decided | [log L43][118], [log L47][139], [record studio:docs/specs/0002-collaboration-spike.md:198][144] |
+| paid | [The sync server refuses an invalid merge with a reason](technical-components.md#req-studio-gate-refuses-invalid) | studio | proposed | [log L47][139], [studio:docs/specs/0002-collaboration-spike.md:25][145], [studio:docs/specs/0002-collaboration-spike.md:111-112][146] |
+| paid | [The sync room stores an update log and a snapshot](technical-components.md#req-studio-sync-persistence) | studio | proposed | [studio:docs/specs/0002-collaboration-spike.md:28][147], [studio:docs/specs/0002-collaboration-spike.md:56][148], [studio:docs/specs/0002-collaboration-spike.md:66][149] |
+| paid | [A merged story is valid or refused](technical-components.md#req-studio-validity-under-merge) | studio | proposed | [log L47][139], [studio:docs/specs/0002-collaboration-spike.md:25][145], [studio:docs/specs/0002-collaboration-spike.md:208][150] |
 
 ## The blocks in detail
 
@@ -298,148 +299,150 @@ The operator decided the principle and two paid features: multiplayer collaborat
 [1]: ../sources/operator-decisions-2026-10.md#L7
 [2]: ../sources/operator-decisions-2026-10.md#L60
 [3]: ../sources/operator-decisions-2026-10.md#L44
-[4]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/design/open-core-boundary.md#L21
-[5]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/design/open-core-boundary.md#L39-L44
-[6]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L238
-[7]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/packages/core/src/index.ts#L1-L2
-[8]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/packages/core/package.json#L4
-[9]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/design/open-core-boundary.md#L39
-[10]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L239
-[11]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/packages/subtitles/src/index.ts#L1-L2
-[12]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L240
-[13]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/packages/lint/src/index.ts#L1-L4
-[14]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L241
-[15]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/packages/services/src/index.ts#L1-L3
-[16]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/packages/services/package.json#L18
-[17]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L242
-[18]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/packages/pipeline/src/index.ts#L1-L2
-[19]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L243
-[20]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/packages/speech-kokoro/src/index.ts#L1
-[21]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L244
-[22]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/packages/align-whisper/src/index.ts#L1
-[23]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L245
-[24]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/design/third-party.md#L78
-[25]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L246
-[26]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/packages/render-reveal/src/index.ts#L1-L4
-[27]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L247
-[28]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/packages/capture-chromium/src/index.ts#L1-L2
-[29]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L248
-[30]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/packages/encode-ffmpeg/src/index.ts#L1-L2
-[31]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L249
-[32]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L260
-[33]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L250
-[34]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/packages/verify/src/index.ts#L1-L2
-[35]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L251
-[36]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/packages/cli/src/cli.ts#L70
-[37]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/packages/cli/package.json#L17-L28
-[38]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/specs/0000-development-lifecycle.md#L8
-[39]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/AGENTS.md#L25-L38
+[4]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/design/open-core-boundary.md#L21
+[5]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/design/open-core-boundary.md#L39-L44
+[6]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L239
+[7]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/core/src/index.ts#L1-L2
+[8]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/core/package.json#L5
+[9]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/design/open-core-boundary.md#L39
+[10]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L240
+[11]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/subtitles/src/index.ts#L1-L2
+[12]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L241
+[13]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/lint/src/index.ts#L1-L4
+[14]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L242
+[15]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/services/src/index.ts#L1-L3
+[16]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/services/package.json#L22
+[17]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L243
+[18]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/pipeline/src/index.ts#L1-L2
+[19]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L244
+[20]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/speech-kokoro/src/index.ts#L1
+[21]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L245
+[22]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/align-whisper/src/index.ts#L1
+[23]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L246
+[24]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/design/third-party.md#L78
+[25]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L247
+[26]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/render-reveal/src/index.ts#L1-L4
+[27]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L248
+[28]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/capture-chromium/src/index.ts#L1-L2
+[29]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L249
+[30]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/encode-ffmpeg/src/index.ts#L1-L2
+[31]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L250
+[32]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L261
+[33]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L251
+[34]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/verify/src/index.ts#L1-L2
+[35]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L252
+[36]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/cli/src/cli.ts#L70
+[37]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/cli/package.json#L17-L28
+[38]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0000-development-lifecycle.md#L9
+[39]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/AGENTS.md#L26-L42
 [40]: ../sources/operator-decisions-2026-10.md#L26
-[41]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/specs/0007-scxml-persistent-ir-spike.md#L591
-[42]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/specs/0007-scxml-persistent-ir-spike.md#L620
+[41]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0007-scxml-persistent-ir-spike.md#L591
+[42]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0007-scxml-persistent-ir-spike.md#L620
 [43]: ../sources/operator-decisions-2026-10.md#L36
 [44]: https://github.com/reebeat/reebeat/issues/19
-[45]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L27
-[46]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/specs/0002-explicit-anchors-and-syntax.md#L122
-[47]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/README.md#L5
-[48]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/specs/0002-explicit-anchors-and-syntax.md#L161
-[49]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/README.md#L6
-[50]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/README.md#L8
-[51]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/README.md#L18
-[52]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/packages/cli/src/cli.ts#L118
-[53]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/README.md#L23
-[54]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/packages/services/src/selection.ts#L18-L26
-[55]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L77
-[56]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/packages/cli/src/build.ts#L26-L31
-[57]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/AGENTS.md#L38
-[58]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/packages/cli/src/journey.ts#L1-L3
-[59]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/design/keyframe-engine.md#L1259
-[60]: https://github.com/reebeat/reebeat/blob/0bccf4294e0d3fe29111812738dc74cd29a30c38/docs/specs/0002-explicit-anchors-and-syntax.md#L33
-[61]: https://github.com/reebeat/reebeat/pull/17
-[62]: ../sources/operator-decisions-2026-10.md#L24
-[63]: https://github.com/reebeat/reebeat/issues/12
-[64]: ../sources/operator-decisions-2026-10.md#L32
-[65]: ../sources/operator-decisions-2026-10.md#L27
-[66]: https://github.com/reebeat/reebeat/issues/10
-[67]: https://github.com/reebeat/reebeat/issues/9
-[68]: ../sources/operator-decisions-2026-10.md#L62
-[69]: ../sources/operator-decisions-2026-10.md#L65
-[70]: https://github.com/reebeat/reebeat/issues/19#issuecomment-6503203735
-[71]: ../sources/operator-decisions-2026-10.md#L38
-[72]: https://github.com/reebeat/reebeat/issues/19#issuecomment-6503256239
-[73]: ../sources/operator-decisions-2026-10.md#L28
-[74]: https://github.com/reebeat/reebeat/issues/8
-[75]: https://github.com/reebeat/reebeat/pull/18
-[76]: ../sources/operator-decisions-2026-10.md#L49
-[77]: https://github.com/reebeat/reebeat/issues/7
-[78]: https://github.com/reebeat/reebeat/issues/14
-[79]: https://github.com/reebeat/reebeat/issues/15
-[80]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L11-L22
-[81]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L16
-[82]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L36
-[83]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L17
-[84]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L131
-[85]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L18
-[86]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L39
-[87]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L19-L21
-[88]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L133-L134
-[89]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L20-L21
-[90]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L93
-[91]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L136
-[92]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L59-L72
-[93]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L76-L93
-[94]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L172
-[95]: ../sources/operator-decisions-2026-10.md#L45
-[96]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L21
-[97]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L34
-[98]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L22
-[99]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L36-L48
-[100]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L23
-[101]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L50-L52
-[102]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L24
-[103]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L54-L56
-[104]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L25
-[105]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L58-L60
-[106]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L26
-[107]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L62-L69
-[108]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L27
-[109]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L71-L73
-[110]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L28
-[111]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L75-L77
-[112]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L29
-[113]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L79-L87
-[114]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L30
-[115]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L89-L99
-[116]: ../sources/operator-decisions-2026-10.md#L43
-[117]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L95-L108
-[118]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L164
-[119]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L108
-[120]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L118
-[121]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L151
-[122]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L38
-[123]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L91-L99
-[124]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L59
-[125]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L132
-[126]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L138
-[127]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/.agents/skills/verify-studio/features/README.md#L26
-[128]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/apps/editor/src/main.ts#L62-L63
-[129]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/apps/editor/src/main.ts#L89
-[130]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0000-development-lifecycle.md#L63
-[131]: ../sources/operator-decisions-2026-10.md#L10
-[132]: https://github.com/reebeat/foldkit-flow/blob/5dd44a9fe34f1adabca41d9757eefe410f03f60b/AGENTS.md#L3
-[133]: https://github.com/reebeat/foldkit-flow/blob/5dd44a9fe34f1adabca41d9757eefe410f03f60b/AGENTS.md#L25
-[134]: https://github.com/reebeat/foldkit-flow/blob/5dd44a9fe34f1adabca41d9757eefe410f03f60b/README.md#L5
-[135]: https://github.com/reebeat/foldkit-flow/blob/5dd44a9fe34f1adabca41d9757eefe410f03f60b/packages/flow/package.json#L2-L6
-[136]: https://github.com/reebeat/foldkit-flow/pull/4
-[137]: ../sources/operator-decisions-2026-10.md#L47
-[138]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L123
-[139]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L163
-[140]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L87
-[141]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L122
-[142]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L198
-[143]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L25
-[144]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L111-L112
-[145]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L28
-[146]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L56
-[147]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L66
-[148]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L208
+[45]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L28
+[46]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0002-explicit-anchors-and-syntax.md#L123
+[47]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/README.md#L5
+[48]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0002-explicit-anchors-and-syntax.md#L162
+[49]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/README.md#L6
+[50]: ../sources/operator-decisions-2026-10.md#L67
+[51]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/decisions/0000-extension-architecture.md#L141
+[52]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/README.md#L8
+[53]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/README.md#L18
+[54]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/cli/src/cli.ts#L118
+[55]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/README.md#L23
+[56]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/services/src/selection.ts#L18-L26
+[57]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L78
+[58]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/cli/src/build.ts#L26-L31
+[59]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/AGENTS.md#L42
+[60]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/cli/src/journey.ts#L1-L3
+[61]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/design/keyframe-engine.md#L1259
+[62]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0002-explicit-anchors-and-syntax.md#L34
+[63]: https://github.com/reebeat/reebeat/pull/17
+[64]: ../sources/operator-decisions-2026-10.md#L24
+[65]: https://github.com/reebeat/reebeat/issues/12
+[66]: ../sources/operator-decisions-2026-10.md#L32
+[67]: ../sources/operator-decisions-2026-10.md#L27
+[68]: https://github.com/reebeat/reebeat/issues/10
+[69]: https://github.com/reebeat/reebeat/issues/9
+[70]: ../sources/operator-decisions-2026-10.md#L62
+[71]: ../sources/operator-decisions-2026-10.md#L65
+[72]: https://github.com/reebeat/reebeat/issues/19#issuecomment-6503203735
+[73]: ../sources/operator-decisions-2026-10.md#L38
+[74]: https://github.com/reebeat/reebeat/issues/19#issuecomment-6503256239
+[75]: ../sources/operator-decisions-2026-10.md#L28
+[76]: https://github.com/reebeat/reebeat/issues/8
+[77]: https://github.com/reebeat/reebeat/pull/18
+[78]: ../sources/operator-decisions-2026-10.md#L49
+[79]: https://github.com/reebeat/reebeat/issues/7
+[80]: https://github.com/reebeat/reebeat/issues/14
+[81]: https://github.com/reebeat/reebeat/issues/15
+[82]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L11-L22
+[83]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L16
+[84]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L36
+[85]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L17
+[86]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L131
+[87]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L18
+[88]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L39
+[89]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L19-L21
+[90]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L133-L134
+[91]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L20-L21
+[92]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L93
+[93]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L136
+[94]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L59-L72
+[95]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L76-L93
+[96]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L172
+[97]: ../sources/operator-decisions-2026-10.md#L45
+[98]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L21
+[99]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L34
+[100]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L22
+[101]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L36-L48
+[102]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L23
+[103]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L50-L52
+[104]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L24
+[105]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L54-L56
+[106]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L25
+[107]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L58-L60
+[108]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L26
+[109]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L62-L69
+[110]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L27
+[111]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L71-L73
+[112]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L28
+[113]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L75-L77
+[114]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L29
+[115]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L79-L87
+[116]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L30
+[117]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L89-L99
+[118]: ../sources/operator-decisions-2026-10.md#L43
+[119]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L95-L108
+[120]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L164
+[121]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L108
+[122]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L118
+[123]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L151
+[124]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L38
+[125]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L91-L99
+[126]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L59
+[127]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L132
+[128]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L138
+[129]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/.agents/skills/verify-studio/features/README.md#L26
+[130]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/apps/editor/src/main.ts#L62-L63
+[131]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/apps/editor/src/main.ts#L89
+[132]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0000-development-lifecycle.md#L63
+[133]: ../sources/operator-decisions-2026-10.md#L10
+[134]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/AGENTS.md#L3
+[135]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/AGENTS.md#L25
+[136]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L5
+[137]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/package.json#L2-L6
+[138]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/index.ts#L1-L39
+[139]: ../sources/operator-decisions-2026-10.md#L47
+[140]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L123
+[141]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L163
+[142]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L87
+[143]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L122
+[144]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L198
+[145]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L25
+[146]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L111-L112
+[147]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L28
+[148]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L56
+[149]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L66
+[150]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L208

@@ -195,19 +195,21 @@ elements:
 
   - id: problem-org-no-written-roadmap
     kind: problem
-    title: The roadmap exists only as issues and pull requests
+    title: The product READMEs do not link the generated roadmap
     statement: >-
-      The root of the reebeat and studio repositories has no ROADMAP file. The plans that exist are issues and open
-      pull requests, so a visitor of the organisation cannot see them in one place.
+      The roadmap is generated in the `reebeat/.github` repository (`docs/roadmap.md`) and linked from the organisation
+      profile. The READMEs of reebeat and studio do not link it, and neither contains the word "roadmap". The root of
+      both repositories has no ROADMAP file.
     status: open
     rationale: >-
-      Only the two root paths were checked at the pinned commits. Issues 19 and 20 of reebeat are roadmap entries kept
-      as issues. This repository now generates a roadmap page from the model and the tracker snapshot.
+      Checked at the pinned commits of reebeat and studio. Issues 19 and 20 of reebeat are roadmap entries kept as
+      issues. The gap is one link in each README. The operator should confirm that the generated roadmap is the place
+      to link.
     source:
-      ["absent:reebeat:ROADMAP.md", "absent:studio:ROADMAP.md", "issue:reebeat#19", "issue:reebeat#20"]
+      ["absent:reebeat:ROADMAP.md", "absent:studio:ROADMAP.md", "reebeat:README.md:1", "studio:README.md:1"]
     gap:
       repo: reebeat
-      fix: Link the generated roadmap of this repository from each README.
+      fix: Link the generated roadmap of the reebeat/.github repository from the README of reebeat and of studio.
 
   - id: constraint-org-apache-2
     kind: constraint
@@ -243,7 +245,7 @@ elements:
       for the final name.
     status: open
     rationale: The README and the boundary document both say the name is working; the operator has not chosen a final name.
-    source: [reebeat:README.md:41, reebeat:docs/design/open-core-boundary.md:68]
+    source: [reebeat:README.md:42, reebeat:docs/design/open-core-boundary.md:68]
 
   - id: opportunity-org-one-declaration-many-surfaces
     kind: opportunity

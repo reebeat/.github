@@ -1,0 +1,36 @@
+• Running devenv:files:cleanup
+✓ Running devenv:files:cleanup in 15.2ms
+• Running devenv:enterShell
+✓ Running devenv:enterShell in 14.1ms
+== baseline: the model passes
+   command: bun tools/intent/src/cli.ts check
+   exit:    0
+   first finding: [21:11:37.540] INFO (#2): Model clean: 656 elements, 23 tracked items.
+== F5 baseline: the log copy equals the operator's file
+   command: cmp sources/operator-decisions-2026-10.md /srv/share/projects/reebeat-intent-sources/operator-decisions-2026-10.md
+   exit:    0
+   first finding: 
+== F2 plain rationale with ' #' (cut by the parser)
+   command: bun tools/intent/src/cli.ts check
+   exit:    1
+   first finding: [21:11:38.151] ERROR (#2): ModelLoadError: model/reebeat/goals.yaml: line 349: the value "Issue" is cut at " #"; the parser dropped "14 reports it, found in a foldkit-flow review. The fix and its negative control are proposed there."". Quote the value or use a
+== F3 rationale that ends at the word Issue
+   command: bun tools/intent/src/cli.ts check
+   exit:    1
+   first finding: TEXT-DANGLING problem-reebeat-exceptions-gate-blind: rationale ends at "issue", "pr", "spec" or "#": the tail of the text is missing
+== F4 baseline: no status differs from the base
+   command: bun tools/intent/src/cli.ts status-diff --ref HEAD
+   exit:    0
+   first finding: [21:11:39.824] INFO (#2): against HEAD: 0 status changes, 0 added, 0 removed
+== F4 one status moved from proposed to decided
+   command: bun tools/intent/src/cli.ts status-diff --ref HEAD
+   exit:    1
+   first finding: [21:11:40.869] INFO (#2): against HEAD: 1 status changes, 0 added, 0 removed
+== F5 log copy edited by one character
+   command: cmp sources/operator-decisions-2026-10.md /srv/share/projects/reebeat-intent-sources/operator-decisions-2026-10.md
+   exit:    1
+   first finding: sources/operator-decisions-2026-10.md /srv/share/projects/reebeat-intent-sources/operator-decisions-2026-10.md differ: byte 585, line 7
+== after restore: the model passes again
+   command: bun tools/intent/src/cli.ts check
+   exit:    0
+   first finding: [21:11:41.734] INFO (#2): Model clean: 656 elements, 23 tracked items.

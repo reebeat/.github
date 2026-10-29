@@ -50,7 +50,7 @@ Licence: MIT. Model status: decided. [Product page](https://github.com/reebeat/.
 
 ## Status and roadmap
 
-The model holds 657 elements: 157 decided by the operator, 433 proposed and 67 open. 17 tracked issues and pull requests are open (snapshot of 2026-10-29).
+The model holds 656 elements: 157 decided by the operator, 433 proposed and 66 open. 17 tracked issues and pull requests are open (snapshot of 2026-10-29).
 
 - [Roadmap](https://github.com/reebeat/.github/blob/main/docs/roadmap.md): generated from the model and the issue tracker.
 - [Goals](https://github.com/reebeat/.github/blob/main/docs/goals.md) and the other [4EM sub-model pages](https://github.com/reebeat/.github/blob/main/docs/README.md).

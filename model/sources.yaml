@@ -2,6 +2,6 @@
 # (the heads of `main` on 2026-10-29), so a cited line number stays true after the repository moves on.
 decisionLog: sources/operator-decisions-2026-10.md
 repos:
-  reebeat: 0bccf4294e0d3fe29111812738dc74cd29a30c38
+  reebeat: 82ee66f8806558460917b33ad9ad8d21c47a9a5b
   studio: d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8
-  foldkit-flow: 5dd44a9fe34f1adabca41d9757eefe410f03f60b
+  foldkit-flow: 8124d5b08fe5e87c75c85b067c3079e2ce46a5a6
