@@ -10,7 +10,7 @@ People make multimedia by declaring its narrative and structure. reebeat builds 
 
 **How it works, technically:** Semantically declared story beats, compiled into multimedia artifacts: statecharts for structure, functional reactive time, and an incremental build graph, written in Effect.
 
-## What we aim for
+## What the products aim for
 
 - **Declare scenes and transitions, not build steps.** Authors declare the story: scenes, states and the transitions between them, with effects tied to events. They do not write the imperative steps that build the video.
 - **Accessible artifacts for every audience.** Every artifact can serve hearing-impaired, visually impaired and reduced-motion audiences, and language variants adjust the timing.

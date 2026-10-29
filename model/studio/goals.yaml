@@ -136,7 +136,7 @@ elements:
       browser.
     status: proposed
     rationale: >-
-      Spec 0001 proposes falsifier F8 (no network) and the free rule says the free tier costs us nothing. The operator log
+      Spec 0001 proposes falsifier F8 (no network) and the free rule says the free tier costs the project nothing. The operator log
       says only that basic non-cost features are free (log:43). The operator must confirm that offline is a goal.
     source: [studio:docs/specs/0001-first-felt-journey.md:13, studio:docs/specs/0001-first-felt-journey.md:138, studio:docs/design/lenses.md:15]
     links:
@@ -713,7 +713,7 @@ elements:
     kind: opportunity
     title: Paid sync and hosted agents fund the work
     statement: >-
-      Multiplayer sync and hosted agents cost us money to run, so they can earn revenue.
+      Multiplayer sync and hosted agents cost the project money to run, so they can earn revenue.
     status: proposed
     rationale: >-
       The operator decided to gate these features (log line 43). No source gives a price, a plan or evidence that anyone

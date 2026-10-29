@@ -88,7 +88,7 @@ elements:
     rationale: >-
       Observed in the repository: README and spec 0000 state the rule, and the spec 0000 header says the operator's
       assignment named a "generic library with no reebeat product logic". The decision log does not say it, and the
-      "put it in the product" placement is my wording. The operator must confirm.
+      "put it in the product" placement is an inference from that wording. The operator must confirm.
     links:
       serves: [goal-flow-generic-library]
       constrains: [comp-flow-library]

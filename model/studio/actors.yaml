@@ -10,7 +10,7 @@ elements:
     status: proposed
     rationale: >-
       The README says people edit stories in studio. The org model names the creator persona, and the link to this role is
-      my inference. The operator must confirm the persona.
+      an inference. The operator must confirm the persona.
     source: [studio:README.md:3, studio:docs/specs/0001-first-felt-journey.md:11-13]
     links:
       part-of: [actor-creator]
@@ -34,7 +34,7 @@ elements:
       presenter persona at work in studio.
     status: proposed
     rationale: >-
-      The operator named recording narration in a deck view (log line 45). Linking it to the presenter persona is my
+      The operator named recording narration in a deck view (log line 45). Linking it to the presenter persona is an
       inference. The operator must confirm the persona.
     source: [log:45, studio:docs/design/lenses.md:36-41]
     links:
@@ -53,7 +53,7 @@ elements:
     status: proposed
     rationale: >-
       The operator wants users to bring their own agents (log line 43). The scopes they set are the lenses note's design.
-      The persona link is my inference. The operator should confirm the role mapping and the scope model.
+      The persona link is an inference. The operator should confirm the role mapping and the scope model.
     source: [log:43, studio:docs/design/lenses.md:91-99]
     links:
       part-of: [actor-agent-operator]
@@ -140,9 +140,9 @@ elements:
   - id: actor-studio-hosted-agent
     kind: actor
     actorType: system
-    title: A hosted agent run by us
+    title: A hosted agent run by the project
     statement: >-
-      A heavily integrated AI agent that we offer is a premium feature behind the paywall.
+      A heavily integrated AI agent that the project offers is a premium feature behind the paywall.
     status: decided
     source: [log:43]
     links:

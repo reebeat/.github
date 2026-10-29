@@ -2,12 +2,12 @@ elements:
   - id: rule-studio-free-costs-nothing
     kind: rule
     ruleType: derivation
-    title: Free means it costs us nothing to run
+    title: Free means it costs the project nothing to run
     statement: >-
-      A feature is free when it runs in the user's browser or on their machine and costs us nothing. It is paid when we run
-      something for the user, such as an always-on server, model inference or render minutes.
+      A feature is free when it runs in the user's browser or on their machine and costs the project nothing. It is paid
+      when the project runs something for the user, such as an always-on server, model inference or render minutes.
     when: A studio feature is placed in a tier
-    if: Its running cost falls on us (a server, inference or render minutes)
+    if: Its running cost falls on the project (a server, inference or render minutes)
     then: The feature is paid; otherwise it is free
     status: proposed
     rationale: >-

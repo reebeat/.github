@@ -30,8 +30,8 @@ elements:
     kind: concept
     title: Free tier and paid tier
     statement: >-
-      A free feature costs us nothing to run. A paid feature costs us money to run. The tier follows the cost driver, not
-      what the screen shows.
+      A free feature costs the project nothing to run. A paid feature costs the project money to run. The tier follows
+      the cost driver, not what the screen shows.
     attributes:
       - cost driver (browser, always-on server, inference, render minutes)
       - tier (free or paid)

@@ -27,7 +27,7 @@ elements:
       Observed in the repository: AGENTS.md, README and spec 0000 say the library has no product logic, and the spec
       0000 header says the operator's assignment named a "generic library with no reebeat product logic". The decision
       log does not say it (line 48 gives a separate MIT repository), and a spec header shows only that the operator
-      accepted the plan as a whole. "Any Foldkit application can use it" is my inference. The operator must confirm.
+      accepted the plan as a whole. "Any Foldkit application can use it" is an inference. The operator must confirm.
     canvas: [value-propositions]
     links:
       subgoal-of: [goal-flow-vision]
@@ -626,7 +626,7 @@ elements:
       - foldkit-flow:STATE.md:13
     rationale: >-
       The log gives a graph UI for Foldkit (line 48) and STATE.md line 13 gives the offer. Generality for any Foldkit
-      application is my inference from the spec 0000 header's "generic library", not a decision, and no source says who
+      application is an inference from the spec 0000 header's "generic library", not a decision, and no source says who
       else needs it. See problem-flow-demand-unmeasured. The operator must confirm.
     canvas: [customer-segments]
     links:

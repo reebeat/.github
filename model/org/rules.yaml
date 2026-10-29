@@ -2,12 +2,12 @@ elements:
   - id: rule-org-paid-when-costly
     kind: rule
     ruleType: constraint
-    title: A feature is paid when it costs us money to run
+    title: A feature is paid when it costs the project money to run
     statement: >-
-      A feature that runs on the user's machine or in their browser is free. A feature that needs our servers or our
-      bills is paid.
+      A feature that runs on the user's machine or in their browser is free. A feature that needs the project's servers
+      or bills is paid.
     when: A feature is assigned to the free or the paid tier.
-    if: The feature needs our servers, inference or storage to run.
+    if: The feature needs the project's servers, inference or storage to run.
     then: It is paid; otherwise it is free.
     status: decided
     source: [record:reebeat:docs/design/open-core-boundary.md:39-44, log:43]
@@ -33,7 +33,7 @@ elements:
     title: The open core never needs a server of ours
     statement: >-
       Anyone can run the Apache-2.0 compiler and can build a hosted service of their own on it. The open part never needs
-      our server.
+      a server of the project.
     status: proposed
     rationale: >-
       open-core-boundary.md derives this from the paid-when-costly rule and says it is "proposed, not confirmed by the

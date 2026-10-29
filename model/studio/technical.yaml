@@ -221,7 +221,7 @@ elements:
     title: Deliver lens
     statement: >-
       Video with aspect variants, the Deck in present mode and build receipts. A render on the user's machine is free. A
-      render in our cloud is a separate paid service.
+      render in the project's cloud is a separate paid service.
     status: proposed
     rationale: >-
       The operator named a render view (log line 45). The outputs and the tier split are the lenses note's proposal, and
@@ -289,7 +289,7 @@ elements:
     tier: service
     title: Hosted agents
     statement: >-
-      Heavily integrated AI agents that we offer are a premium feature behind the paywall.
+      Heavily integrated AI agents that the project offers are a premium feature behind the paywall.
     status: decided
     source: [log:43]
     pricing: paid
@@ -303,8 +303,8 @@ elements:
     tier: service
     title: Hosted alignment, speech and translation
     statement: >-
-      Services that align narration, make speech and translate it on our servers. They cost compute, so the lenses note
-      marks them paid.
+      Services that align narration, make speech and translate it on the project's servers. They cost compute, so the
+      lenses note marks them paid.
     status: proposed
     rationale: >-
       The lenses note and spec 0001 propose it. Spec 0001 lists hosted speech as an ambiguous row that the operator must
@@ -320,7 +320,7 @@ elements:
     tier: service
     title: Cloud rendering
     statement: >-
-      A service that renders the Video in our cloud with Chromium and ffmpeg. It costs CPU minutes, so it is paid.
+      A service that renders the Video in the project's cloud with Chromium and ffmpeg. It costs CPU minutes, so it is paid.
     status: proposed
     rationale: >-
       The lenses note and spec 0001 propose it as paid. The ffmpeg licence question must be settled first. The operator

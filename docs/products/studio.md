@@ -72,7 +72,7 @@ Scope `studio`: 199 elements.
 | [Contributor who writes a spec and its pull request](../actors-and-resources.md#actor-studio-pr-author) | A human or an agent who writes a spec, builds it on its own branch and opens one pull request. | proposed |
 | [Independent reviewer](../actors-and-resources.md#actor-studio-reviewer) | A reviewer judges the plan, the code and their agreement, and runs the verify skill for the changed behaviour. A reviewer is never the author of the head. | proposed |
 | [An agent that runs on the user's side](../actors-and-resources.md#actor-studio-own-agent) | An agent that the user brings. The user gives it access to the editing tools. | decided |
-| [A hosted agent run by us](../actors-and-resources.md#actor-studio-hosted-agent) | A heavily integrated AI agent that we offer is a premium feature behind the paywall. | decided |
+| [A hosted agent run by the project](../actors-and-resources.md#actor-studio-hosted-agent) | A heavily integrated AI agent that the project offers is a premium feature behind the paywall. | decided |
 | [The sync server](../actors-and-resources.md#actor-studio-sync-server) | The sync server holds the validation gate on the merge-based keyed document. | decided |
 
 ## Problems and constraints
@@ -280,7 +280,7 @@ flowchart LR
 
 Full tables and diagrams: [Business Rules Model](../business-rules.md).
 
-- [Free means it costs us nothing to run](../business-rules.md#rule-studio-free-costs-nothing) (business rule, proposed)
+- [Free means it costs the project nothing to run](../business-rules.md#rule-studio-free-costs-nothing) (business rule, proposed)
 - [Every edit goes through one validated path](../business-rules.md#rule-studio-single-edit-path) (business rule, proposed)
 - [Edit by Element id, not by array index](../business-rules.md#rule-studio-edit-by-element-id) (business rule, proposed)
 - [Objects with an id are keyed by an immutable uid](../business-rules.md#rule-studio-keyed-by-uid) (business rule, proposed)
@@ -317,7 +317,7 @@ Full tables and diagrams: [Actors and Resources Model](../actors-and-resources.m
 - [Contributor who writes a spec and its pull request](../actors-and-resources.md#actor-studio-pr-author) (actor, proposed)
 - [Independent reviewer](../actors-and-resources.md#actor-studio-reviewer) (actor, proposed)
 - [An agent that runs on the user's side](../actors-and-resources.md#actor-studio-own-agent) (actor, decided)
-- [A hosted agent run by us](../actors-and-resources.md#actor-studio-hosted-agent) (actor, decided)
+- [A hosted agent run by the project](../actors-and-resources.md#actor-studio-hosted-agent) (actor, decided)
 - [The sync server](../actors-and-resources.md#actor-studio-sync-server) (actor, decided)
 - [The public repository reebeat/studio](../actors-and-resources.md#resource-studio-repo) (resource, decided)
 - [The reebeat compiler and its IR](../actors-and-resources.md#resource-studio-reebeat-compiler) (resource, proposed)

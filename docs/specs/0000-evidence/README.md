@@ -21,7 +21,7 @@ devenv shell -- bash docs/specs/0000-evidence/controls.sh
 | F10 source line beyond the end of a file | `exit: 1`, `reebeat:README.md:9999-9999 is beyond the 49 lines of the file` |
 | F12 staged fake secret | `exit: 1`, `leaks found: 1` |
 
-The two baselines (`check`, `generate --check`) and the run after the restore exit 0. The unit controls (47 tests, `bun run test`) cover the rest of the checks: links, ids, coverage, products, canvas, tracker, and the verifier (`verifySources.test.ts`: a header line, a plain line, a missing file, a file cited as absent, the last line of a file, the line one past it, a blank range, an unknown commit and a missing checkout).
+The two baselines (`check`, `generate --check`) and the run after the restore exit 0. The unit controls (49 tests, `bun run test`) cover the rest of the checks: links, ids, coverage, products, canvas, tracker, and the verifier (`verifySources.test.ts`: a header line, a plain line, a missing file, a file cited as absent, the last line of a file, the line one past it, a blank range, an unknown commit and a missing checkout).
 
 ## The source reviews
 

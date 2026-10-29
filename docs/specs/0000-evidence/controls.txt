@@ -1,15 +1,15 @@
 • Running devenv:files:cleanup
-✓ Running devenv:files:cleanup in 12.5ms
+✓ Running devenv:files:cleanup in 11.8ms
 • Running devenv:enterShell
-✓ Running devenv:enterShell in 19.2ms
+✓ Running devenv:enterShell in 13.0ms
 == baseline: the model passes
    command: bun tools/intent/src/cli.ts check
    exit:    0
-   first finding: [20:21:09.045] INFO (#2): Model clean: 657 elements, 22 tracked items.
+   first finding: [20:26:58.981] INFO (#2): Model clean: 657 elements, 22 tracked items.
 == baseline: the generated files match
    command: bun tools/intent/src/cli.ts generate --check
    exit:    0
-   first finding: [20:21:09.827] INFO (#2): Generated files match: 15 files.
+   first finding: [20:26:59.720] INFO (#2): Generated files match: 15 files.
 == F2 goal with no support
    command: bun tools/intent/src/cli.ts check
    exit:    1
@@ -33,7 +33,7 @@
 == F7 generated page edited by hand
    command: bun tools/intent/src/cli.ts generate --check
    exit:    1
-   first finding: [20:21:13.166] ERROR (#2): GeneratedDrift: generated files differ from the committed ones (run `bun run generate`):
+   first finding: [20:27:03.608] ERROR (#2): GeneratedDrift: generated files differ from the committed ones (run `bun run generate`):
 == F10 source line beyond the end of the file
    command: bun tools/intent/src/cli.ts verify-sources
    exit:    1
@@ -41,8 +41,8 @@
 == after restore: the model passes again
    command: bun tools/intent/src/cli.ts check
    exit:    0
-   first finding: [20:21:16.372] INFO (#2): Model clean: 657 elements, 22 tracked items.
+   first finding: [20:27:07.828] INFO (#2): Model clean: 657 elements, 22 tracked items.
 == F12 staged fake secret
-   command: bash -c cd '/tmp/tmp.ximRgiapQg' && gitleaks git --staged --redact --no-banner --config '/srv/share/projects/reebeat-org/.gitleaks.toml' 2>&1 | grep -E 'leaks found'; exit ${PIPESTATUS[0]}
+   command: bash -c cd '/tmp/tmp.VgBott3oqG' && gitleaks git --staged --redact --no-banner --config '/srv/share/projects/reebeat-org/.gitleaks.toml' 2>&1 | grep -E 'leaks found'; exit ${PIPESTATUS[0]}
    exit:    1
-   first finding: 8:21PM WRN leaks found: 1
+   first finding: 8:27PM WRN leaks found: 1

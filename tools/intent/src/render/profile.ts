@@ -103,7 +103,7 @@ export const renderProfile = (model: Model): string => {
       generatedNotice,
       "",
       body,
-      "## What we aim for",
+      "## What the products aim for",
       "",
       ...Arr.map(
         qualities,

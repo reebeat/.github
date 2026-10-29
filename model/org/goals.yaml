@@ -166,7 +166,7 @@ elements:
     kind: problem
     title: Demand for the products is not measured
     statement: >-
-      The documents of the three repositories that we read hold no measure of demand, usage or willingness to pay. The
+      The documents of the three repositories that were read hold no measure of demand, usage or willingness to pay. The
       roadmap and the free and paid split rest on the operator's judgement.
     status: open
     rationale: >-
