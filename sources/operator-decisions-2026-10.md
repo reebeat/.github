@@ -67,3 +67,47 @@ Compiled by the lead agent from the operator's own statements in the working ses
 ## Fountain: source and artifact (2026-10-29)
 
 - Operator (dictated; "Mountain" read as Fountain): it can likely be a source and an artifact. Fountain is both an importer (a screenplay becomes a story) and an artifact renderer (a story becomes a screenplay). It is not the persistent IR; JSON stays the IR. This refines the line about Fountain as "likely an artifact format".
+
+## Consequential decisions, answered from the triage questionnaire (2026-10-29)
+
+Each line is the operator's pick for one decision; ids refer to `questions.json` and `answers-2026-10-29.md` in this directory. "(rec)" means the pick equals the triage recommendation.
+
+- Name: keep `reebeat` (two e's) for now, and run the clearance check first (report: `name-clearance-2026-10-29.md`). The operator's view: different fields (music vs multimedia generation) likely mean no conflict; the check tests that by registered classes.
+- org-D1: confirm as written; anyone may host the open compiler under Apache-2.0 (rec).
+- agent-protocol: tools are declared once in a protocol-neutral way; MCP is the first adapter (rec).
+- ffmpeg: keep libx264 and never bundle ffmpeg (rec). Operator note: for now; in future support multiple encoders behind an adapter.
+- org-D5: validate demand first, then design tiers; no pricing or billing code before evidence (rec).
+- org-D6: keep copies of the lifecycle toolchain and add a drift test (rec).
+- reproducible: bytes for data artifacts; identical decoded frames and audio for video (rec).
+- reebeat-D3: enforce DCO sign-off now; trademark policy after the name is cleared (rec).
+- reebeat-D4: element ids are story-global as a rule and a lint; adjacent-Scene motion until spec 0005 (rec).
+- reebeat-D5: keep Fountain's own transition line; the IR carries each Scene's incoming transition explicitly (rec).
+- reebeat-D6: the story IR is public and versioned; the timeline IR is an unstable build artifact; flicks stay (rec).
+- reebeat-D7: the extension ADR-0000 is adopted in stages; open points are tagged unstable (rec).
+- reebeat-D8: one interaction declaration; an artifact that cannot realise it fails at plan time for that output (rec). Operator note: a flag may bypass this for a specific output, so the drift is silent but explicit.
+- reebeat-D9: the decided incremental build engine, built in steps (rec).
+- reebeat-D11: Linux with devenv only (rec). Operator note: for now.
+- reebeat-D12: organisation-level conduct and security defaults in reebeat/.github, plus private vulnerability reporting per repository (rec).
+- reebeat-D13: lint and deterministic --fix are open; hosted-AI fixes are paid (rec).
+- reebeat-D14: measure demand with named pilot users and a waitlist, using one activation step (rec).
+- reebeat-D15: word anchors use phrase ids declared once in a per-language phrase table (rec).
+- reebeat-D16: narration, subtitles and notes stay one string; readable pace is repaired by extending the State hold (rec).
+- studio-D1: studio is proprietary, all rights reserved, with a LICENSE file and third-party notices (rec).
+- studio-D3: the free tier stores stories in browser private storage (OPFS) with import and export of IR JSON (rec). Operator note: also support the File System Access API natively where it exists.
+- studio-D4: the preview is a hybrid with the Deck in an iframe, gated by byte-equal frames (F2) (rec).
+- studio-D6: peer identity is server-issued and bound to an authenticated user (rec).
+- studio-D7: agent permissions are action sets on resources, declared in code, with presets (rec).
+- studio-D8: composite values merge atomically; the rest merge property-wise (rec).
+- studio-D9: measure first: a small spike on the real edge before the sync room is built (rec).
+- studio-D10: undo reverts one's own changes per peer (rec).
+- studio-D11: studio states no narration timing rule; it shows reebeat's diagnostics (rec).
+- studio-D12: hosted speech, alignment and translation are out of scope until demand shows (rec).
+- flow-D1: publish `@reebeat/flow` pre-releases under the npm org; the repo stays `foldkit-flow`; if Foldkit adopts it, publish `@foldkit/flow` and deprecate (rec).
+- flow-D2: the xyflow credit is visible by default; an application may hide it (rec).
+- flow-D3: keep the exact `@xyflow/system` pin and bump it on purpose (rec).
+- flow-D4: reebeat studio is an intended consumer of foldkit-flow, not a committed one (rec).
+- flow-D5: the library reports outcomes; the app applies graph changes (rec).
+- flow-D6: publish 0.x with keyboard connect documented as a gap; 1.0 waits for it (rec).
+- flow-D7: ELK.js stays out of `packages/`; a private example may use it; add a licence scan (rec).
+- pg-outbox: build a narrow client-neutral outbox core with thin Effect and pg adapters in its own repository, after a stage-0 gate (fix pg-txmode's `outbox.relay`, which is at-most-once as written; run Effect 4.1 `PersistedQueue` through the pg-txmode harness behind PgBouncer; if it passes and Effect would accept typed `claimLost` and a transaction-required offer upstream, use `PersistedQueue` instead). Research: `pg-outbox-research.md` (2026-10-29).
+- Name after clearance (2026-10-29): the clearance check (`name-clearance-2026-10-29.md`) found no register hit for REEBEAT itself, but a registered EU mark REBEAT (classes 9, 35, 41, to 2034) and an active Norwegian registration FREEBEAT (classes 16, 28, 38, 41, 42). Operator decision: pause the first npm publish and get a Norwegian IP advisor's opinion first. Nothing is published until the advisor has answered; if the advisor flags a conflict, rename before any package exists. The name `reebeat` stays the working name meanwhile.

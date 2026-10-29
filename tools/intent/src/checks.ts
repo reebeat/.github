@@ -14,7 +14,7 @@
 //   PRODUCT-COMPONENT, ORG-TAGLINE        a product has one product component; the organisation has one tagline
 //   QUALITY-MISSING                       every product states a quality goal
 //   CANVAS-EMPTY                          every Business Model Canvas block has an element
-//   GAP-STATUS, JTBD-PERSONA,
+//   JTBD-PERSONA,
 //   CONCEPT-RELATION                      smaller shape rules the schema cannot say
 import { Array as Arr, Option, String as Str } from "effect";
 
@@ -142,18 +142,6 @@ const checkItemFields = (
   item: Item,
   byId: ReadonlyMap<string, Item>
 ): readonly Finding[] => {
-  if (item.kind === "problem") {
-    return item.gap !== undefined && item.status === "decided"
-      ? [
-          finding(
-            "GAP-STATUS",
-            item.id,
-            `a gap is found by analysis, so it is proposed or open, not decided`
-          ),
-        ]
-      : [];
-  }
-
   if (item.kind === "goal") {
     return item.jtbd !== undefined &&
       byId.get(item.jtbd.persona)?.kind !== "actor"
@@ -491,7 +479,37 @@ const checkText = (model: Model): readonly Finding[] =>
     )
   );
 
+/** Advice belongs to an element that exists and still waits; a decided element needs none. */
+const checkTriage = (model: Model): readonly Finding[] => {
+  const byId = itemsById(model);
+
+  return Arr.flatMap(model.triage.advice, (entry) => {
+    const item = byId.get(entry.id);
+
+    if (item === undefined) {
+      return [
+        finding(
+          "TRIAGE-UNKNOWN-ID",
+          entry.id,
+          "model/triage.yaml advises on an element that does not exist"
+        ),
+      ];
+    }
+
+    return item.status === "decided"
+      ? [
+          finding(
+            "TRIAGE-DECIDED",
+            entry.id,
+            "model/triage.yaml still advises on an element that is decided; delete the entry"
+          ),
+        ]
+      : [];
+  });
+};
+
 export const checkModel = (model: Model): readonly Finding[] => [
+  ...checkTriage(model),
   ...checkText(model),
   ...checkIds(model),
   ...checkLinks(model),

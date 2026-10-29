@@ -218,3 +218,11 @@ export const decodeModelFile = Schema.decodeUnknownResult(ModelFile, strict);
 export const decodeSources = Schema.decodeUnknownResult(SourcesSchema, strict);
 
 export const decodeTracker = Schema.decodeUnknownResult(TrackerSchema, strict);
+
+const TriageSchema = Schema.Struct({
+  advice: Schema.Array(Schema.Struct({ advice: Text, id: Id })),
+});
+
+export type Triage = typeof TriageSchema.Type;
+
+export const decodeTriage = Schema.decodeUnknownResult(TriageSchema, strict);

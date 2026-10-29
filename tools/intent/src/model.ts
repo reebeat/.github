@@ -1,7 +1,7 @@
 // The loaded model: every element with its scope, indexed by id. Pure data; checks and renderers read it.
 import { Array as Arr, Option, Record as Rec } from "effect";
 
-import type { Element, Sources, Tracker } from "./schema.ts";
+import type { Element, Sources, Tracker, Triage } from "./schema.ts";
 import { kindInfo } from "./vocabulary.ts";
 import type { Kind, Scope, SubModel } from "./vocabulary.ts";
 
@@ -23,6 +23,7 @@ export interface ModelInput {
   readonly logLines: number;
   readonly sources: Sources;
   readonly tracker: Tracker;
+  readonly triage: Triage;
 }
 
 export interface Model {
@@ -31,6 +32,8 @@ export interface Model {
   readonly logLines: number;
   readonly sources: Sources;
   readonly tracker: Tracker;
+  /** The lead's advice on elements that wait (confirm, or a default); it is not a decision. */
+  readonly triage: Triage;
 }
 
 export const buildModel = (input: ModelInput): Model => ({
@@ -40,6 +43,7 @@ export const buildModel = (input: ModelInput): Model => ({
   logLines: input.logLines,
   sources: input.sources,
   tracker: input.tracker,
+  triage: input.triage,
 });
 
 export const itemsById = (model: Model): ReadonlyMap<string, Item> =>

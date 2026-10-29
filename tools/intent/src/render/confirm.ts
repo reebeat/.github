@@ -18,16 +18,23 @@ import {
 const waiting = (items: readonly Item[]): readonly Item[] =>
   Arr.filter(items, (item) => item.status !== "decided");
 
-const rowOf = (item: Item): readonly string[] => [
-  `[${item.title}](${href(item, "")})`,
-  kindInfo[item.kind].label,
-  item.status,
-  oneLine(item.rationale ?? ""),
-];
+const rowOf =
+  (advice: ReadonlyMap<string, string>) =>
+  (item: Item): readonly string[] => [
+    `[${item.title}](${href(item, "")})`,
+    kindInfo[item.kind].label,
+    item.status,
+    oneLine(item.rationale ?? ""),
+    advice.get(item.id) ?? "",
+  ];
 
 const scopeSection = (model: Model, scope: (typeof scopes)[number]): string => {
   const items = waiting(itemsOfScope(model.items, scope));
   const counts = statusCounts(items);
+
+  const advice = new Map(
+    Arr.map(model.triage.advice, (entry) => [entry.id, entry.advice] as const)
+  );
 
   return Arr.join(
     [
@@ -36,8 +43,14 @@ const scopeSection = (model: Model, scope: (typeof scopes)[number]): string => {
       `${items.length} elements wait: ${counts.proposed} proposed, ${counts.open} open.`,
       "",
       table(
-        ["Element", "Kind", "Status", "Why it waits, and what to confirm"],
-        Arr.map(items, rowOf)
+        [
+          "Element",
+          "Kind",
+          "Status",
+          "Why it waits, and what to confirm",
+          "Triage advice",
+        ],
+        Arr.map(items, rowOf(advice))
       ),
       "",
     ],
@@ -81,7 +94,7 @@ export const renderConfirm = (model: Model): string =>
       "",
       "# What the operator confirms or rejects",
       "",
-      "Every element in the scope tables is not an operator decision. `proposed` means an agent, a spec or an inference put it forward; `open` means a gap, a question or an undecided choice. Each row says why it waits and what to confirm. The last section lists decided elements that rest on repository records alone.",
+      'Every element in the scope tables is not an operator decision. `proposed` means an agent, a spec or an inference put it forward; `open` means a gap, a question or an undecided choice. Each row says why it waits and what to confirm. The column "Triage advice" holds the lead\'s advice where there is one ("Recommended: confirm", or a recommended default); the operator has not answered it, so it is not a decision. The last section lists decided elements that rest on repository records alone.',
       "",
       "To confirm an element, change its `status` to `decided` in `model/` and cite the line that shows the decision (a line of the decision log, or a repository line that records it); to reject it, delete it. Run `bun run model:check` and `bun run generate`.",
       "",

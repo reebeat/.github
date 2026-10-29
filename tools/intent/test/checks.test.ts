@@ -200,6 +200,46 @@ describe("links", () => {
   });
 });
 
+const advised = (id: string, change: (element: Raw) => Raw) => {
+  const model = withChange(id, change);
+
+  return {
+    ...model,
+    triage: { advice: [{ advice: "Recommended: confirm", id }] },
+  };
+};
+
+describe("triage advice", () => {
+  it("passes advice on an element that waits", () => {
+    const model = advised("goal-org-g", (element) => ({
+      ...element,
+      rationale: "Waits for the operator.",
+      status: "proposed",
+    }));
+
+    assert.notInclude(codes(model), "TRIAGE-DECIDED");
+    assert.notInclude(codes(model), "TRIAGE-UNKNOWN-ID");
+  });
+
+  it("fails when the advised element is decided", () => {
+    assert.include(
+      codes(advised("goal-org-g", (element) => element)),
+      "TRIAGE-DECIDED"
+    );
+  });
+
+  it("fails when the advised id does not exist", () => {
+    const model = {
+      ...withChange("goal-org-g", (element) => element),
+      triage: {
+        advice: [{ advice: "Recommended: confirm", id: "goal-org-nowhere" }],
+      },
+    };
+
+    assert.include(codes(model), "TRIAGE-UNKNOWN-ID");
+  });
+});
+
 describe("text cut short", () => {
   it("fails when a rationale ends at the word Issue", () => {
     const model = withChange("goal-org-g", (element) => ({

@@ -95,6 +95,7 @@ export const modelOf = (files: readonly RawFile[]): Model =>
       },
     },
     tracker: { asOf: "2026-10-29", items: [] },
+    triage: { advice: [] },
   });
 
 type Patch = (element: Raw) => Raw | undefined;
