@@ -54,3 +54,4 @@ The model holds 657 elements: 157 decided by the operator, 433 proposed and 67 o
 - [Goals](https://github.com/reebeat/.github/blob/main/docs/goals.md) and the other [4EM sub-model pages](https://github.com/reebeat/.github/blob/main/docs/README.md).
 - [Business model](https://github.com/reebeat/.github/blob/main/docs/business-model.md): the canvas, and the free and paid split.
 - [Gap report](https://github.com/reebeat/.github/blob/main/docs/gaps.md): what is missing in the repositories, and how to fix it.
+- [To confirm](https://github.com/reebeat/.github/blob/main/docs/confirm.md): what waits for the operator to confirm or reject.

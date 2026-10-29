@@ -13,7 +13,7 @@ The reasons behind the reebeat products, modelled with the 4EM method and genera
 - [Actors and Resources Model](actors-and-resources.md)
 - [Technical Components and Requirements Model](technical-components.md)
 - [Business model](business-model.md): a Business Model Canvas, with the free and paid split.
-- [Roadmap](roadmap.md) and [gap report](gaps.md).
+- [Roadmap](roadmap.md), [gap report](gaps.md) and [what the operator confirms](confirm.md).
 - Product page: [reebeat (the compiler)](products/reebeat.md)
 - Product page: [reebeat studio](products/studio.md)
 - Product page: [foldkit-flow](products/foldkit-flow.md)

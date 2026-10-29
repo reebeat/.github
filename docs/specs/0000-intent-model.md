@@ -43,7 +43,7 @@ A reader who clones the repository and runs `devenv shell -- bun install` and `d
 | The schema | `tools/intent/src/schema.ts`, an Effect Schema. A missing source, an empty source list, an unknown key or an unknown kind does not decode. |
 | The checks | `tools/intent/src/checks.ts`; each has a negative control in `tools/intent/test/checks.test.ts`. |
 | The generator | `tools/intent/src/generate.ts` and `tools/intent/src/render/`: Mermaid diagrams and tables. |
-| The generated documents | `profile/README.md`; `docs/README.md`; `docs/goals.md`, `business-rules.md`, `concepts.md`, `business-processes.md`, `actors-and-resources.md`, `technical-components.md`; `docs/products/<product>.md` (vision board, the goals served, actors, key processes, rules, components, quality goals); `docs/business-model.md`; `docs/roadmap.md`; `docs/gaps.md`. |
+| The generated documents | `profile/README.md`; `docs/README.md`; `docs/goals.md`, `business-rules.md`, `concepts.md`, `business-processes.md`, `actors-and-resources.md`, `technical-components.md`; `docs/products/<product>.md` (vision board, the goals served, actors, key processes, rules, components, quality goals); `docs/business-model.md`; `docs/roadmap.md`; `docs/gaps.md`; `docs/confirm.md` (every `proposed` and `open` element, with what the operator confirms). |
 | The source verifier | `bun run sources:verify [--show]`: every file source exists at the pinned commit, its lines exist, a `record:` line says "decided" or "operator", an `absent:` file is absent. Not in CI (CI has no checkouts); run by reviewers. |
 | The lifecycle | hooks, commitlint, gitleaks, review and merge scripts, CI, copied from `reebeat/studio`. |
 | Branch protection | `main`: pull request required (administrators included), required status check `checks`, no force push, no deletion. |
@@ -106,7 +106,7 @@ Each falsifier has a negative control that is run and observed to fail. The cont
 
 ## Open questions for the operator
 
-1. Confirm or reject every `proposed` element (the PR body lists them): personas, quality scenarios, the free and paid marks that are not the operator's two decided paid features, the structure of the value stream.
+1. Confirm or reject every `proposed` element: [`docs/confirm.md`](../confirm.md) lists each with the reason and what to confirm (personas, quality scenarios, the free and paid marks that are not the operator's two decided paid features, the structure of the value stream).
 2. Should the lifecycle toolchain move to a shared home (this repository) instead of being copied into each repository?
 3. Should the organisation-wide community health files (CONTRIBUTING, SECURITY, CODE_OF_CONDUCT) live in this repository, where GitHub uses them as defaults for repositories that have none? The gap report lists their absence per repository; this PR adds none.
 

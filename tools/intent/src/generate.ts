@@ -17,6 +17,7 @@ import {
   renderBusinessModel,
   renderRoadmap,
 } from "./render/business.ts";
+import { renderConfirm } from "./render/confirm.ts";
 import { productFiles } from "./render/product.ts";
 import { renderIndex, renderProfile } from "./render/profile.ts";
 import { subModelPageFiles } from "./render/subModels.ts";
@@ -53,6 +54,7 @@ export const generateAll = (model: Model): Readonly<Record<string, string>> =>
     {
       "docs/README.md": renderIndex(model),
       "docs/business-model.md": renderBusinessModel(model),
+      "docs/confirm.md": renderConfirm(model),
       "docs/gaps.md": renderGaps(model),
       "docs/roadmap.md": renderRoadmap(model),
       "profile/README.md": renderProfile(model),

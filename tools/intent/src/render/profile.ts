@@ -129,6 +129,7 @@ export const renderProfile = (model: Model): string => {
       `- [Goals](${site}docs/goals.md) and the other [4EM sub-model pages](${site}docs/README.md).`,
       `- [Business model](${site}docs/business-model.md): the canvas, and the free and paid split.`,
       `- [Gap report](${site}docs/gaps.md): what is missing in the repositories, and how to fix it.`,
+      `- [To confirm](${site}docs/confirm.md): what waits for the operator to confirm or reject.`,
       "",
     ],
     "\n"
@@ -260,7 +261,7 @@ export const renderIndex = (model: Model): string => {
         "\n"
       ),
       "- [Business model](business-model.md): a Business Model Canvas, with the free and paid split.",
-      "- [Roadmap](roadmap.md) and [gap report](gaps.md).",
+      "- [Roadmap](roadmap.md), [gap report](gaps.md) and [what the operator confirms](confirm.md).",
       ...Arr.map(
         productScopes,
         (scope) =>
