@@ -81,13 +81,11 @@ elements:
     tier: process-asset
     title: The shared lifecycle toolchain
     statement: >-
-      Git hooks, commitlint, gitleaks, the review and merge scripts and the CI workflow, copied into each repository
-      with a provenance record.
-    status: proposed
-    rationale: >-
-      Observed in the repositories: the operator decided the lifecycle (reebeat spec 0000) and its copy into studio, but
-      not this inventory of parts.
-    source: [studio:PROVENANCE.md:3, foldkit-flow:PROVENANCE.md:3]
+      Git hooks, commitlint, gitleaks, the review and merge scripts and the CI workflow stay as copies in each of the four
+      repositories, with a provenance record. A drift test in `reebeat/.github` compares blob hashes of the files that
+      should be identical and fails on a difference; unifying the copies stays manual.
+    status: decided
+    source: [log:80, studio:PROVENANCE.md:3, foldkit-flow:PROVENANCE.md:3]
     canvas: [key-resources]
     links:
       serves: [goal-org-correctness-by-construction]
@@ -149,16 +147,16 @@ elements:
     kind: requirement
     reqType: non-functional
     quality: reproducibility
-    title: Persistent traces are content-addressed
-    statement: The Build keeps persistent traces that are addressed by content.
+    title: Builds are reproducible on a pinned toolchain
+    statement: >-
+      The Build keeps persistent traces that are addressed by content. Text and data artifacts are byte-identical across
+      builds. For video, builds give identical decoded frames and audio samples on one machine with the pinned toolchain,
+      and the container bytes are recorded.
     scenario: >-
-      The same story is built twice, once warm and once cold. The two artifacts are byte-identical.
-    status: proposed
-    rationale: >-
-      The operator decided content-addressed persistent traces (log line 62). That a warm build equals a cold build, byte
-      for byte, comes from the open issue 9 and falsifier F6 of reebeat spec 0001; the operator should confirm it as a
-      quality goal.
-    source: [log:62, log:10, "issue:reebeat#9"]
+      The same story is built twice, once warm and once cold. The text and data artifacts are byte-identical; the video
+      has identical decoded frames and audio samples, and its container bytes are recorded.
+    status: decided
+    source: [log:81, log:62, log:10, "issue:reebeat#9"]
     links:
       serves: [goal-org-reproducible-builds]
 

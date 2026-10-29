@@ -70,13 +70,17 @@ elements:
     kind: concept
     title: Agent tool protocol
     statement: >-
-      A protocol through which an agent reads a story, applies an edit and runs the checks. A user's own agent gets the
-      same tools as a hosted one.
-    status: proposed
-    rationale: >-
-      The operator decided that bring-your-own agents get the editing tools. Which protocol, and its tool set, is open;
-      MCP is the first candidate named in the open-core boundary.
-    source: [log:43, reebeat:docs/design/open-core-boundary.md:25]
+      Each tool through which an agent reads a story, applies an edit and runs the checks is declared once, in a
+      protocol-neutral way. MCP is the first adapter, and its schema is generated from the declaration. A user's own agent
+      gets the same tools as a hosted one, through MCP.
+    status: decided
+    source: [log:77, log:43, reebeat:docs/design/open-core-boundary.md:25]
+    attributes:
+      - Name
+      - Input Schema
+      - Output Schema
+      - Annotation
+      - Effect
     relations:
       - type: relates
         to: concept-org-ir

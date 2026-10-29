@@ -22,39 +22,39 @@ The reasons behind the reebeat products, modelled with the 4EM method and genera
 
 | Sub-model | The organisation | reebeat (the compiler) | reebeat studio | foldkit-flow | decided | proposed | open |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| [Goals Model](goals.md) | 28 | 60 | 53 | 35 | 57 | 62 | 57 |
-| [Business Rules Model](business-rules.md) | 13 | 33 | 24 | 17 | 21 | 66 | 0 |
-| [Concepts Model](concepts.md) | 9 | 31 | 19 | 14 | 38 | 35 | 0 |
-| [Business Process Model](business-processes.md) | 9 | 22 | 19 | 16 | 6 | 56 | 4 |
-| [Actors and Resources Model](actors-and-resources.md) | 10 | 21 | 26 | 17 | 12 | 62 | 0 |
-| [Technical Components and Requirements Model](technical-components.md) | 20 | 66 | 58 | 36 | 23 | 152 | 5 |
+| [Goals Model](goals.md) | 28 | 60 | 53 | 37 | 96 | 42 | 40 |
+| [Business Rules Model](business-rules.md) | 13 | 33 | 24 | 17 | 35 | 52 | 0 |
+| [Concepts Model](concepts.md) | 9 | 31 | 19 | 14 | 47 | 26 | 0 |
+| [Business Process Model](business-processes.md) | 9 | 22 | 19 | 16 | 15 | 48 | 3 |
+| [Actors and Resources Model](actors-and-resources.md) | 10 | 21 | 26 | 17 | 21 | 53 | 0 |
+| [Technical Components and Requirements Model](technical-components.md) | 20 | 66 | 58 | 36 | 62 | 115 | 3 |
 
 ## Elements by scope and status
 
 | Scope | Elements | decided | proposed | open |
 | --- | --- | --- | --- | --- |
-| The organisation | 89 | 50 | 34 | 5 |
-| [reebeat (the compiler)](products/reebeat.md) | 233 | 53 | 154 | 26 |
-| [reebeat studio](products/studio.md) | 199 | 45 | 135 | 19 |
-| [foldkit-flow](products/foldkit-flow.md) | 135 | 9 | 110 | 16 |
+| The organisation | 89 | 59 | 29 | 1 |
+| [reebeat (the compiler)](products/reebeat.md) | 233 | 85 | 132 | 16 |
+| [reebeat studio](products/studio.md) | 199 | 85 | 100 | 14 |
+| [foldkit-flow](products/foldkit-flow.md) | 137 | 47 | 75 | 15 |
 
 ## Elements by kind
 
 | Kind | Sub-model | decided | proposed | open |
 | --- | --- | --- | --- | --- |
-| Goal | Goals Model | 42 | 23 | 1 |
-| Problem | Goals Model | 5 | 7 | 53 |
-| Constraint | Goals Model | 8 | 17 | 3 |
-| Opportunity | Goals Model | 2 | 15 | 0 |
-| Business rule | Business Rules Model | 21 | 66 | 0 |
-| Concept | Concepts Model | 38 | 35 | 0 |
-| Process | Business Process Model | 6 | 48 | 2 |
-| External process | Business Process Model | 0 | 8 | 2 |
-| Actor | Actors and Resources Model | 5 | 29 | 0 |
-| Resource | Actors and Resources Model | 7 | 33 | 0 |
-| Information system goal | Technical Components and Requirements Model | 3 | 13 | 0 |
-| Technical component | Technical Components and Requirements Model | 14 | 64 | 0 |
-| Requirement | Technical Components and Requirements Model | 6 | 75 | 5 |
+| Goal | Goals Model | 49 | 16 | 1 |
+| Problem | Goals Model | 24 | 6 | 37 |
+| Constraint | Goals Model | 15 | 11 | 2 |
+| Opportunity | Goals Model | 8 | 9 | 0 |
+| Business rule | Business Rules Model | 35 | 52 | 0 |
+| Concept | Concepts Model | 47 | 26 | 0 |
+| Process | Business Process Model | 13 | 42 | 1 |
+| External process | Business Process Model | 2 | 6 | 2 |
+| Actor | Actors and Resources Model | 10 | 24 | 0 |
+| Resource | Actors and Resources Model | 11 | 29 | 0 |
+| Information system goal | Technical Components and Requirements Model | 8 | 8 | 0 |
+| Technical component | Technical Components and Requirements Model | 25 | 53 | 0 |
+| Requirement | Technical Components and Requirements Model | 29 | 54 | 3 |
 
 ## Inter-model links
 
@@ -70,14 +70,14 @@ The reasons behind the reebeat products, modelled with the 4EM method and genera
 | goals -> actors | 3 | constrains |
 | goals -> processes | 4 | constrains, hinders |
 | goals -> rules | 1 | motivates |
-| goals -> technical | 33 | constrains, hinders |
+| goals -> technical | 35 | constrains, hinders |
 | processes -> actors | 16 | produces, uses |
 | processes -> concepts | 38 | produces, uses |
 | processes -> goals | 67 | requires, serves |
 | processes -> technical | 19 | uses |
 | rules -> actors | 1 | constrains |
-| rules -> goals | 108 | serves |
-| rules -> processes | 19 | triggers |
+| rules -> goals | 109 | serves |
+| rules -> processes | 18 | triggers |
 | rules -> technical | 47 | constrains |
 | technical -> actors | 31 | depends-on |
 | technical -> concepts | 8 | requires |

@@ -82,9 +82,9 @@ elements:
     actorType: role
     title: The operator as owner of studio
     statement: >-
-      The operator made the studio repository public and has not decided its licence.
+      The operator made the studio repository public and decided that studio is proprietary, all rights reserved.
     status: decided
-    source: [log:45, record:studio:docs/specs/0000-development-lifecycle.md:126]
+    source: [log:45, log:95]
     links:
       part-of: [actor-operator]
       responsible-for: [goal-studio-vision, comp-studio-product]
@@ -254,13 +254,11 @@ elements:
     resourceType: service
     title: Cloudflare Workers and Durable Objects
     statement: >-
-      The planned sync server and the web editor run on Cloudflare. Alchemy declares the resources.
-    status: proposed
-    rationale: >-
-      Spec plan: the operator's record names the sync server as the Durable Object (spec 0002 line 198). The web editor
-      deploy is PR 6's design and the one-object-per-story layout is the spike's recommendation. The operator must confirm
-      them.
-    source: [studio:docs/specs/0002-collaboration-spike.md:28, studio:docs/specs/0002-collaboration-spike.md:66, pr:studio#6]
+      The planned sync server and the web editor run on Cloudflare. Alchemy declares the resources. A small measured spike on
+      the real edge comes before the sync room is built: a gate inside a Durable Object, with bundle size, cold start,
+      sockets and cost per story-hour measured.
+    status: decided
+    source: [studio:docs/specs/0002-collaboration-spike.md:28, studio:docs/specs/0002-collaboration-spike.md:66, pr:studio#6, log:101]
     links:
       serves: [goal-studio-collaboration]
     canvas: [key-partners, cost-structure]
@@ -298,13 +296,11 @@ elements:
     resourceType: data
     title: A story IR file
     statement: >-
-      The free journey opens a story IR JSON file. Where such files live in the free tier is an open question.
-    status: proposed
-    rationale: >-
-      Spec 0001 opens a file, and the spike's free tier keeps the document in a file. Spec 0001 asks the operator whether
-      the browser's file API or hosted storage holds it. The operator should choose between local file access and hosted
-      storage.
-    source: [studio:docs/specs/0001-first-felt-journey.md:16, studio:docs/specs/0001-first-felt-journey.md:161, studio:docs/specs/0002-collaboration-spike.md:192]
+      A story is an IR JSON file. In the free tier the working copy lives in the browser's private storage (OPFS), with
+      import and export of IR JSON. The editor also reads and writes local files natively where the File System Access API
+      exists. A story stays in browser storage until it is exported.
+    status: decided
+    source: [studio:docs/specs/0001-first-felt-journey.md:16, log:96]
     links:
       serves: [goal-studio-offline-free-journey]
 
@@ -317,8 +313,8 @@ elements:
       run in a browser.
     status: proposed
     rationale: >-
-      Spec 0001 states this as a stand-in for the first journey. Hosted speech may be paid, and that row is still open. The
-      operator should confirm the stand-in and settle hosted speech pricing separately.
+      Spec 0001 states this as a stand-in for the first journey. Hosted speech is out of scope until demand shows (log:104).
+      The operator should confirm the stand-in.
     source: [studio:docs/specs/0001-first-felt-journey.md:26, studio:docs/specs/0001-first-felt-journey.md:56]
     links:
       serves: [goal-studio-deck-view-narration]

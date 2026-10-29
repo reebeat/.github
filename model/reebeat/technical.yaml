@@ -462,13 +462,12 @@ elements:
     title: website renderer, a planned artifact renderer
     statement: >-
       A planned Renderer that emits a static website: a folder of HTML, CSS and JavaScript that any static host serves,
-      with the viewer controlling the pace.
-    status: proposed
-    rationale: >-
-      Issue #19 proposes it and says its spec follows the IR work and an extension architecture ADR. The operator decided
-      that websites become an artifact type (log:36) but no renderer exists or is specified.
+      with the viewer controlling the pace. It declares which interactions it realises, and planning fails for its output
+      when a required interaction is unsupported, unless the author wrote a fallback or a flag bypasses the failure.
+    status: decided
     source:
       - log:36
+      - log:87
       - issue:reebeat#19
     refs: ["issue:reebeat#19"]
     links:
@@ -904,13 +903,10 @@ elements:
     title: Explicit state machines and timing combinators
     statement: >-
       The compiler declares presence, position, style, effect, slide and Beat lifecycles as machines. It stores exact time
-      as flicks, generates the JSON Schema from the Effect Schema, and rejects cycles and nonsense.
-    status: proposed
-    rationale: >-
-      Read from the body of PR #17 (spec 0004), which is open and unmerged. The PR records two review rounds, both with
-      verdict "changes", so it has not passed review. Its body still says no review rounds yet, which is out of date. Parts
-      of it, such as the nearest-frame rule, are marked as operator decisions there, so confirm them.
-    source: ["pr:reebeat#17", "log:24"]
+      as flicks, generates the JSON Schema from the Effect Schema, and rejects timing cycles and nonsense; the Model itself
+      may contain cycles. The story IR is public and versioned. The timeline IR is an unstable build artifact.
+    status: decided
+    source: ["pr:reebeat#17", "log:24", "log:62", "log:85"]
     refs: ["pr:reebeat#17"]
     links:
       serves: [goal-reebeat-statechart-model]
@@ -939,11 +935,11 @@ elements:
     pricing: free
     title: Subtitles stay readable
     statement: >-
-      The compiler checks subtitle speed, duration, line length and line count against one cited guideline. The default
-      repair extends the State hold, and splitting or condensing are alternatives.
-    status: proposed
-    rationale: "Issue #12 proposes it. The operator named readable subtitles (log:27), and the guideline is still to be chosen."
-    source: ["issue:reebeat#12", "log:27"]
+      The compiler checks subtitle speed, duration, line length and line count against one cited guideline. Narration,
+      subtitles and notes stay one string, so the repair for a pace that is too fast extends the State hold. Videos can
+      slow down as a result.
+    status: decided
+    source: ["issue:reebeat#12", "log:27", "log:94"]
     refs: ["issue:reebeat#12"]
     links:
       serves: [goal-reebeat-accessible-artifacts]
@@ -954,14 +950,11 @@ elements:
     pricing: free
     title: Build one story in several narration languages
     statement: >-
-      A story builds with a narration in each language, and anchors tied to words and events retime on their own. Open
-      choices, not settled: whether subtitles and Deck notes are per language, whether the speech cache is keyed by
-      language and voice, and how word anchors map across translations.
-    status: proposed
-    rationale: >-
-      Issue #10 proposes the goal and lists those choices under "Open questions". The operator named language variants
-      (log:32). The operator must decide each open choice.
-    source: ["issue:reebeat#10", "log:32"]
+      A story builds with a narration in each language, and anchors tied to words and events retime on their own. Word
+      anchors use phrase ids declared once in a per-language phrase table, so narration stays pure prose. Not yet settled:
+      whether subtitles and Deck notes are per language, and whether the speech cache is keyed by language and voice.
+    status: decided
+    source: ["issue:reebeat#10", "log:32", "log:93"]
     refs: ["issue:reebeat#10"]
     links:
       serves: [goal-reebeat-localisation]
@@ -972,13 +965,11 @@ elements:
     pricing: free
     title: Cache render segments
     statement: >-
-      The build caches render segments by state pair, transition program and time window. After a narration change it
-      retimes and reuses the later segments instead of rendering them again.
-    status: proposed
-    rationale: >-
-      Issue #9 proposes it, and it requires a timeline dependency model. The operator named incremental builds (log:10) but
-      not this design.
-    source: ["issue:reebeat#9", "log:62"]
+      The build caches render segments by state pair, transition program and time window, as tasks of the incremental build
+      engine. This comes in a later step, after stages become tasks. After a narration change it retimes and reuses the
+      later segments instead of rendering them again.
+    status: decided
+    source: ["issue:reebeat#9", "log:62", "log:88"]
     refs: ["issue:reebeat#9"]
     links:
       serves: [goal-reebeat-incremental-builds]
@@ -991,12 +982,10 @@ elements:
     statement: >-
       The compiler emits a folder of static HTML, CSS and JavaScript from the same IR as the Video and the Deck. The viewer
       steps by Beat or scrubs the timeline, and narration, captions and sounds follow. It is keyboard accessible and
-      supports reduced motion and transcripts.
-    status: proposed
-    rationale: >-
-      Issue #19 proposes it. The operator decided that websites become an artifact type (log:36), but the relation to the
-      Deck and the reproducibility definition remain open in the issue.
-    source: ["issue:reebeat#19", "log:36", "log:65"]
+      supports reduced motion and transcripts. An interaction the website cannot realise fails at plan time for that output.
+      Reproducible means byte-identical files, not identical sessions.
+    status: decided
+    source: ["issue:reebeat#19", "log:36", "log:65", "log:87"]
     refs: ["issue:reebeat#19"]
     links:
       serves: [goal-reebeat-interactive-website]
@@ -1007,13 +996,13 @@ elements:
     pricing: free
     title: One interaction declaration for every surface
     statement: >-
-      An interaction is a declared event-raising element with a payload schema and a label. Static artifacts realise it at
-      build time, for example with a visible cursor in a Video. Dynamic artifacts realise it at view time.
-    status: proposed
-    rationale: >-
-      Proposed in comments on issue #19. The operator said an interaction is just another element that raises events
-      (log:38, log:65), but the declaration format is not decided.
-    source: ["issue:reebeat#19@6503203735", "log:38", "log:65"]
+      An interaction is a declared event-raising element with a payload schema and a label, declared once for every surface.
+      Each artifact declares what it realises. Static artifacts realise it at build time, for example with a visible cursor
+      in a Video. Dynamic artifacts realise it at view time. An artifact that cannot realise it fails at plan time for that
+      output, unless the author wrote an explicit fallback or a flag bypasses the failure for that output, so the drift is
+      silent but explicit (a declared opt-out, never a default).
+    status: decided
+    source: ["issue:reebeat#19@6503203735", "log:38", "log:65", "log:87"]
     refs: ["issue:reebeat#19"]
     links:
       serves: [goal-reebeat-interactive-website, goal-reebeat-multi-renderer]
@@ -1025,12 +1014,11 @@ elements:
     title: Renderers declare what they can realise
     statement: >-
       A renderer declares whether its artifact is static or dynamic, which interaction kinds it can realise and which
-      surfaces it exposes. Beats between Scenes of different renderers follow declared transition rules.
-    status: proposed
-    rationale: >-
-      Proposed in comments on issue #19, and the operator asked for transition rules between renderers (log:28). No
-      extension ADR exists yet.
-    source: ["issue:reebeat#19@6503256239", "log:28"]
+      surfaces it exposes. Beats between Scenes of different renderers follow declared transition rules. The declarations
+      come through the extension ADR-0000, adopted in stages, and stay tagged unstable until a second real engine has run
+      the protocol.
+    status: decided
+    source: ["issue:reebeat#19@6503256239", "log:28", "log:86"]
     refs: ["issue:reebeat#19"]
     links:
       serves: [goal-reebeat-multi-renderer, goal-reebeat-plugin-sdk]
@@ -1071,13 +1059,13 @@ elements:
     kind: requirement
     reqType: functional
     pricing: free
-    title: Any chosen encoder keeps builds byte-identical
+    title: Any chosen encoder keeps decoded output identical
     statement: >-
-      Whichever encoder replaces or complements ffmpeg with libx264 must keep two builds byte-identical, and the determinism
-      check must be measured again.
-    status: proposed
-    rationale: "Issue #7 states it as a condition of any option. The operator has not chosen an option."
-    source: ["issue:reebeat#7"]
+      Whichever encoder is used, now ffmpeg with libx264 and in future others behind an adapter, two builds with the pinned
+      toolchain give identical decoded frames and audio samples, and container bytes are recorded. The determinism check is
+      measured again when the encoder changes.
+    status: decided
+    source: ["issue:reebeat#7", "log:78", "log:81"]
     refs: ["issue:reebeat#7"]
     links:
       serves: [goal-reebeat-reproducible-builds]
@@ -1119,18 +1107,17 @@ elements:
     quality: reproducibility
     title: Two builds are identical
     statement: >-
-      The same source and cache, built twice on the same machine, give identical decoded video frames and identical decoded
-      audio samples. Container bytes are compared and the result is recorded.
+      Text and data artifacts are byte-identical across builds. For video, the same source and cache, built twice on the
+      same machine with the pinned toolchain, give identical decoded frames and identical decoded audio samples. Container
+      bytes are compared and the result is recorded.
     scenario: >-
       A developer builds `stories/same-id` twice with the same speech cache. `reebeat journey` compares every decoded frame
       hash and the decoded audio hash. The check passes when all agree. Adding random jitter to the clock makes it fail and
       name the first differing frame.
-    status: proposed
-    rationale: >-
-      Spec plan: spec 0001 falsifier F6 sets out the same-machine frame and audio check. The operator decided that builds
-      are reproducible (log:10), not this scenario, so confirm it.
+    status: decided
     source:
       - log:10
+      - log:81
       - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:151
       - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:225
     links:
@@ -1313,15 +1300,14 @@ elements:
     quality: performance
     title: An edit rebuilds only what it changes
     statement: >-
-      After an edit, the build redoes only the work that depends on it, and the result is byte-identical to a cold build.
+      After an edit, the build redoes only the work that depends on it, and the result equals a cold build. The build
+      engine is built in steps: a build library with tasks, a trace store and early cutoff, with stages as tasks first and
+      render segments later.
     scenario: >-
       An author changes one narration line in a story. Only that Line's speech and the render segments that depend on its
       length are rebuilt. The output equals a cold build of the new story. This is planned and not built.
-    status: proposed
-    rationale: >-
-      The operator asked for fast incremental builds (log:10, log:62). The measure and the design come from issue #9, which
-      the operator has not decided.
-    source: ["log:10", "log:62", "issue:reebeat#9"]
+    status: decided
+    source: ["log:10", "log:62", "log:88", "issue:reebeat#9"]
     refs: ["issue:reebeat#9"]
     links:
       serves: [goal-reebeat-incremental-builds]
@@ -1332,16 +1318,14 @@ elements:
     quality: portability
     title: Release 1 runs on Linux inside devenv
     statement: >-
-      A build runs on Linux with the pinned devenv tools. Other systems need their own Chromium, and Windows and macOS are
-      not supported.
+      A build runs on Linux with the pinned devenv tools, for now. Others use their own Linux environment with their own
+      Chromium. Windows and macOS are not supported, and nothing is maintained for them.
     scenario: >-
       A contributor clones the repository on Linux and runs the journey inside `devenv shell`. It builds and checks the
-      story. On another system the contributor sets the Chromium path and installs the other tools by hand.
-    status: open
-    rationale: >-
-      Spec 0001 lists Windows and macOS as not in scope for release 1. Whether the supported platforms grow is the operator's
-      choice, and published packages may widen it.
+      story. On another Linux system the contributor sets the Chromium path and installs the other tools by hand.
+    status: decided
     source:
+      - log:89
       - reebeat:README.md:12
       - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:190
       - reebeat:devenv.nix:3

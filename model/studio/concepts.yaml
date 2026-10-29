@@ -66,7 +66,7 @@ elements:
     kind: concept
     title: JSON Patch
     statement: >-
-      A JSON Patch describes an edit, for agents' tool calls, review, proposals and undo. It is not what peers exchange.
+      A JSON Patch describes an edit, for agents' tool calls, review and proposals. It is not what peers exchange.
     relations:
       - {type: relates, to: concept-studio-loro-update, label: describes the edit of}
     status: decided
@@ -120,7 +120,8 @@ elements:
     kind: concept
     title: Suggestion
     statement: >-
-      A suggestion is an edit proposed by an agent or a collaborator that is not yet applied. It carries who proposed it.
+      A suggestion is an edit proposed under the suggest preset by an agent or a collaborator that is not yet applied. It
+      carries who proposed it.
     attributes:
       - author (agent or person)
       - patch that describes the edit
@@ -128,47 +129,38 @@ elements:
     relations:
       - {type: relates, to: concept-studio-json-patch, label: applies as}
       - {type: relates, to: concept-studio-repair-proposal, label: a repair is one kind}
-    status: proposed
-    rationale: >-
-      Spec plan: the lenses note designs suggestion mode. The operator decided only the repair proposal.
-      The operator should confirm the general suggestion and attribution semantics.
-    source: [studio:docs/design/lenses.md:67]
+    status: decided
+    source: [studio:docs/design/lenses.md:67, log:99]
 
   - id: concept-studio-sync-room
     kind: concept
     title: Sync room
     statement: >-
-      The sync room is one Cloudflare Durable Object for each story. It uses WebSocket hibernation, keeps an update log in
-      SQLite and compacts it to a snapshot.
+      The sync room is planned as one Cloudflare Durable Object for each story. It uses WebSocket hibernation, keeps an update
+      log in SQLite and compacts it to a snapshot, and a small measured spike on the real edge comes before it is built.
     attributes:
       - one object per story
       - update log compacted to a snapshot
       - snapshots over 2 MB are chunked
     relations:
       - {type: relates, to: concept-studio-keyed-document, label: holds the shared copy of}
-    status: proposed
-    rationale: >-
-      Spec plan: the operator decided a sync server with a gate, which is the Durable Object (log:47 and spec 0002 line
-      198). One object per story, hibernation, the SQLite log and chunking are the spike's recommendation, run only on
-      local workerd.
-      The operator should confirm these room-design details.
-    source: [studio:docs/specs/0002-collaboration-spike.md:28, studio:docs/specs/0002-collaboration-spike.md:192]
+    status: decided
+    source: [studio:docs/specs/0002-collaboration-spike.md:28, studio:docs/specs/0002-collaboration-spike.md:192, log:101]
 
   - id: concept-studio-peer
     kind: concept
     title: Peer
     statement: >-
-      A person or an agent edits through its own replica of the document. A peer id registered to a name gives attribution.
+      A peer is a person, an agent or a system that edits through its own replica of the document. The server issues the
+      peer's identity and binds it to an authenticated user when the peer connects. The free local mode uses one local
+      principal.
     attributes:
-      - peer id
-      - registered name (for example human or agent)
+      - peer id (issued by the server)
+      - authenticated user it is bound to (a person, an agent or a system)
     relations:
       - {type: relates, to: concept-studio-loro-update, label: produces}
-    status: proposed
-    rationale: >-
-      Spec plan: spec 0002 tested agents as peers in the spike. The operator has not decided the registration scheme.
-      The operator should confirm the peer and attribution scheme.
-    source: [studio:docs/specs/0002-collaboration-spike.md:27, studio:docs/specs/0002-collaboration-spike.md:138]
+    status: decided
+    source: [studio:docs/specs/0002-collaboration-spike.md:27, studio:docs/specs/0002-collaboration-spike.md:138, log:98]
 
   - id: concept-studio-deck-view
     kind: concept
@@ -224,20 +216,18 @@ elements:
     kind: concept
     title: Agent panel scope
     statement: >-
-      A scope says what an agent may do in a lens. Read may read the story, suggest may propose edits that wait for a
-      person, and apply may edit directly.
+      A scope is an action set on resources (scenes, elements, effects, timing, narration), declared in code, that says what
+      an agent may do. Read, suggest and apply are named presets: read may read the story, suggest may propose edits that wait
+      for a person, and apply may edit directly. Per-lens defaults are UI presets.
     attributes:
-      - read
-      - suggest
-      - apply
-      - set per agent and per lens
+      - action set on resources
+      - presets read, suggest and apply
+      - set per agent
+      - default preset per lens
     relations:
       - {type: relates, to: concept-studio-suggestion, label: suggest scope creates}
-    status: proposed
-    rationale: >-
-      Spec plan: the lenses note designs the scopes. The operator named bring-your-own and hosted agents only.
-      The operator should confirm the scope model.
-    source: [studio:docs/design/lenses.md:91-99]
+    status: decided
+    source: [studio:docs/design/lenses.md:91-99, log:99]
 
   - id: concept-studio-feature-map
     kind: concept

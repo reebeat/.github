@@ -8,7 +8,7 @@ Semantically declared story beats, compiled into multimedia artifacts: statechar
 
 Repository: [reebeat/reebeat][1]. Licence: Apache-2.0. Status of this description: decided.
 
-233 model elements: 53 decided, 154 proposed, 26 open.
+233 model elements: 85 decided, 132 proposed, 16 open.
 
 ## Product vision board
 
@@ -19,7 +19,7 @@ After Roman Pichler's product vision board. Each cell is built from the model; c
 | Vision | [Declare the story, reebeat builds the artifacts](../goals.md#goal-reebeat-vision) (decided): reebeat takes care of building, so you can focus on creating. You declare the story's beats and what they mean. reebeat derives motion, timing and every artifact, reproducibly, and rebuilds only what an edit changes. |
 | Target group | [Story author](../actors-and-resources.md#actor-reebeat-story-author) (proposed)<br/>[Presenter](../actors-and-resources.md#actor-reebeat-presenter) (proposed)<br/>[Agent operator](../actors-and-resources.md#actor-reebeat-agent-operator) (proposed)<br/>[Plugin author](../actors-and-resources.md#actor-reebeat-plugin-author) (proposed)<br/>[Independent reviewers and the fixer](../actors-and-resources.md#actor-reebeat-reviewers) (proposed)<br/>[Maintainer](../actors-and-resources.md#actor-reebeat-maintainer) (proposed) |
 | Needs (jobs to be done) | _No jobs stated for this product yet._ |
-| Product (key features) | [core, from screenplay to Plan and Timeline](../technical-components.md#comp-reebeat-core) (proposed)<br/>[subtitles, WebVTT and SubRip writers](../technical-components.md#comp-reebeat-subtitles) (proposed)<br/>[lint, pure rules over a Plan](../technical-components.md#comp-reebeat-lint) (proposed)<br/>[services, the seven contracts](../technical-components.md#comp-reebeat-services) (proposed)<br/>[pipeline, the build program](../technical-components.md#comp-reebeat-pipeline) (proposed)<br/>[speech-kokoro, local speech synthesis](../technical-components.md#comp-reebeat-speech-kokoro) (proposed)<br/>[align-whisper, word alignment](../technical-components.md#comp-reebeat-align-whisper) (proposed)<br/>[sounds-synth, built-in sound effects](../technical-components.md#comp-reebeat-sounds-synth) (proposed)<br/>[render-reveal, the Deck renderer](../technical-components.md#comp-reebeat-render-reveal) (proposed)<br/>[capture-chromium, frame capture](../technical-components.md#comp-reebeat-capture-chromium) (proposed)<br/>[encode-ffmpeg, mix and mux](../technical-components.md#comp-reebeat-encode-ffmpeg) (proposed)<br/>[cache-fs, the content-addressed cache](../technical-components.md#comp-reebeat-cache-fs) (proposed)<br/>[verify, the output-side checks](../technical-components.md#comp-reebeat-verify) (proposed)<br/>[cli, the reebeat command](../technical-components.md#comp-reebeat-cli) (proposed)<br/>[quality gates, the repository checks](../technical-components.md#comp-reebeat-quality-gates) (proposed)<br/>[statechart-xstate, the build-time interpreter](../technical-components.md#comp-reebeat-statechart-xstate) (proposed)<br/>[website renderer, a planned artifact renderer](../technical-components.md#comp-reebeat-website-renderer) (proposed)<br/>[plan.json, the one input of the renderers](../technical-components.md#comp-reebeat-plan-json) (proposed)<br/>[build.json, the build manifest](../technical-components.md#comp-reebeat-build-manifest) (proposed)<br/>[deck.html, the Deck artifact](../technical-components.md#comp-reebeat-deck-output) (proposed)<br/>[the MP4 Video artifact](../technical-components.md#comp-reebeat-video-output) (proposed)<br/>[The generated effects grammar document](../technical-components.md#comp-reebeat-grammar-doc) (proposed)<br/>[The CI workflow](../technical-components.md#comp-reebeat-ci-workflow) (proposed)<br/>[The review and pull request skills](../technical-components.md#comp-reebeat-review-skills) (proposed)<br/>[The suppression registry](../technical-components.md#comp-reebeat-exception-registry) (proposed)<br/>[Print a reviewable Plan](../technical-components.md#req-reebeat-plan) (proposed)<br/>[Build a Deck from the Plan](../technical-components.md#req-reebeat-deck) (proposed)<br/>[Build a narrated Video from the Plan](../technical-components.md#req-reebeat-video) (proposed)<br/>[Write a story as a Fountain screenplay](../technical-components.md#req-reebeat-fountain-artifact-renderer) (proposed)<br/>[Check a build against its source](../technical-components.md#req-reebeat-check) (proposed)<br/>[Lint a story and say the fix](../technical-components.md#req-reebeat-lint) (proposed)<br/>[Select adapters by configuration](../technical-components.md#req-reebeat-selection) (proposed)<br/>[Cache speech by content](../technical-components.md#req-reebeat-speech-cache) (proposed)<br/>[One command runs the whole road](../technical-components.md#req-reebeat-journey) (proposed)<br/>[A renderer declares its lifecycle timing](../technical-components.md#req-reebeat-renderer-lifecycle) (proposed)<br/>[Interpreters pass one contract suite](../technical-components.md#req-reebeat-statechart-interpreter) (decided)<br/>[Explicit state machines and timing combinators](../technical-components.md#req-reebeat-state-machines) (proposed)<br/>[Generate captions, audio description and reduced motion](../technical-components.md#req-reebeat-accessible-variants) (proposed)<br/>[Subtitles stay readable](../technical-components.md#req-reebeat-readable-subtitles) (proposed)<br/>[Build one story in several narration languages](../technical-components.md#req-reebeat-language-variants) (proposed)<br/>[Cache render segments](../technical-components.md#req-reebeat-render-segment-cache) (proposed)<br/>[Emit a static interactive website](../technical-components.md#req-reebeat-website-artifact) (proposed)<br/>[One interaction declaration for every surface](../technical-components.md#req-reebeat-interaction-declaration) (proposed)<br/>[Renderers declare what they can realise](../technical-components.md#req-reebeat-renderer-capabilities) (proposed)<br/>[Lint temporal contiguity, signalling, redundancy and coherence](../technical-components.md#req-reebeat-teaching-lint) (proposed)<br/>[Publish only built, audited packages](../technical-components.md#req-reebeat-npm-prerelease) (proposed)<br/>[Any chosen encoder keeps builds byte-identical](../technical-components.md#req-reebeat-encoder-reproducible) (proposed)<br/>[The exception gate counts @effect-diagnostics comments](../technical-components.md#req-reebeat-exception-directives) (proposed)<br/>[Pin the package manager to the devenv Bun](../technical-components.md#req-reebeat-pin-bun) (proposed) |
+| Product (key features) | [core, from screenplay to Plan and Timeline](../technical-components.md#comp-reebeat-core) (proposed)<br/>[subtitles, WebVTT and SubRip writers](../technical-components.md#comp-reebeat-subtitles) (proposed)<br/>[lint, pure rules over a Plan](../technical-components.md#comp-reebeat-lint) (proposed)<br/>[services, the seven contracts](../technical-components.md#comp-reebeat-services) (proposed)<br/>[pipeline, the build program](../technical-components.md#comp-reebeat-pipeline) (proposed)<br/>[speech-kokoro, local speech synthesis](../technical-components.md#comp-reebeat-speech-kokoro) (proposed)<br/>[align-whisper, word alignment](../technical-components.md#comp-reebeat-align-whisper) (proposed)<br/>[sounds-synth, built-in sound effects](../technical-components.md#comp-reebeat-sounds-synth) (proposed)<br/>[render-reveal, the Deck renderer](../technical-components.md#comp-reebeat-render-reveal) (proposed)<br/>[capture-chromium, frame capture](../technical-components.md#comp-reebeat-capture-chromium) (proposed)<br/>[encode-ffmpeg, mix and mux](../technical-components.md#comp-reebeat-encode-ffmpeg) (proposed)<br/>[cache-fs, the content-addressed cache](../technical-components.md#comp-reebeat-cache-fs) (proposed)<br/>[verify, the output-side checks](../technical-components.md#comp-reebeat-verify) (proposed)<br/>[cli, the reebeat command](../technical-components.md#comp-reebeat-cli) (proposed)<br/>[quality gates, the repository checks](../technical-components.md#comp-reebeat-quality-gates) (proposed)<br/>[statechart-xstate, the build-time interpreter](../technical-components.md#comp-reebeat-statechart-xstate) (proposed)<br/>[website renderer, a planned artifact renderer](../technical-components.md#comp-reebeat-website-renderer) (decided)<br/>[plan.json, the one input of the renderers](../technical-components.md#comp-reebeat-plan-json) (proposed)<br/>[build.json, the build manifest](../technical-components.md#comp-reebeat-build-manifest) (proposed)<br/>[deck.html, the Deck artifact](../technical-components.md#comp-reebeat-deck-output) (proposed)<br/>[the MP4 Video artifact](../technical-components.md#comp-reebeat-video-output) (proposed)<br/>[The generated effects grammar document](../technical-components.md#comp-reebeat-grammar-doc) (proposed)<br/>[The CI workflow](../technical-components.md#comp-reebeat-ci-workflow) (proposed)<br/>[The review and pull request skills](../technical-components.md#comp-reebeat-review-skills) (proposed)<br/>[The suppression registry](../technical-components.md#comp-reebeat-exception-registry) (proposed)<br/>[Print a reviewable Plan](../technical-components.md#req-reebeat-plan) (proposed)<br/>[Build a Deck from the Plan](../technical-components.md#req-reebeat-deck) (proposed)<br/>[Build a narrated Video from the Plan](../technical-components.md#req-reebeat-video) (proposed)<br/>[Write a story as a Fountain screenplay](../technical-components.md#req-reebeat-fountain-artifact-renderer) (proposed)<br/>[Check a build against its source](../technical-components.md#req-reebeat-check) (proposed)<br/>[Lint a story and say the fix](../technical-components.md#req-reebeat-lint) (proposed)<br/>[Select adapters by configuration](../technical-components.md#req-reebeat-selection) (proposed)<br/>[Cache speech by content](../technical-components.md#req-reebeat-speech-cache) (proposed)<br/>[One command runs the whole road](../technical-components.md#req-reebeat-journey) (proposed)<br/>[A renderer declares its lifecycle timing](../technical-components.md#req-reebeat-renderer-lifecycle) (proposed)<br/>[Interpreters pass one contract suite](../technical-components.md#req-reebeat-statechart-interpreter) (decided)<br/>[Explicit state machines and timing combinators](../technical-components.md#req-reebeat-state-machines) (decided)<br/>[Generate captions, audio description and reduced motion](../technical-components.md#req-reebeat-accessible-variants) (proposed)<br/>[Subtitles stay readable](../technical-components.md#req-reebeat-readable-subtitles) (decided)<br/>[Build one story in several narration languages](../technical-components.md#req-reebeat-language-variants) (decided)<br/>[Cache render segments](../technical-components.md#req-reebeat-render-segment-cache) (decided)<br/>[Emit a static interactive website](../technical-components.md#req-reebeat-website-artifact) (decided)<br/>[One interaction declaration for every surface](../technical-components.md#req-reebeat-interaction-declaration) (decided)<br/>[Renderers declare what they can realise](../technical-components.md#req-reebeat-renderer-capabilities) (decided)<br/>[Lint temporal contiguity, signalling, redundancy and coherence](../technical-components.md#req-reebeat-teaching-lint) (proposed)<br/>[Publish only built, audited packages](../technical-components.md#req-reebeat-npm-prerelease) (proposed)<br/>[Any chosen encoder keeps decoded output identical](../technical-components.md#req-reebeat-encoder-reproducible) (decided)<br/>[The exception gate counts @effect-diagnostics comments](../technical-components.md#req-reebeat-exception-directives) (proposed)<br/>[Pin the package manager to the devenv Bun](../technical-components.md#req-reebeat-pin-bun) (proposed) |
 | Business goals | [Declare scenes and transitions, not build steps](../goals.md#goal-org-declarative-creation) (decided)<br/>[Accessible artifacts for every audience](../goals.md#goal-org-accessible-artifacts) (decided)<br/>[Reproducible builds](../goals.md#goal-org-reproducible-builds) (decided)<br/>[Fast, incremental, reactive builds](../goals.md#goal-org-incremental-builds) (decided)<br/>[Interactive multimedia for learning](../goals.md#goal-org-interactive-multimedia) (decided)<br/>[An open compiler and open formats](../goals.md#goal-org-open-compiler) (decided)<br/>[Modular and extensible by users](../goals.md#goal-org-modular-extensible) (decided)<br/>[Correctness by construction](../goals.md#goal-org-correctness-by-construction) (decided) |
 
 Scope `reebeat`: 233 elements.
@@ -41,25 +41,25 @@ Scope `reebeat`: 233 elements.
 | [One command runs the whole road](../technical-components.md#req-reebeat-journey) | `reebeat journey` builds a story, checks it, builds it again and compares the two builds. | proposed | [reebeat:AGENTS.md:42][18], [reebeat:packages/cli/src/journey.ts:1-3][19] |
 | [A renderer declares its lifecycle timing](../technical-components.md#req-reebeat-renderer-lifecycle) | Each Renderer declares, as plain data, when an Element's motion starts and ends and its easing. The schedule reads it to place frames, and the check observes it in the output. | proposed | [reebeat:docs/design/keyframe-engine.md:1259][20], [reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:34][21] |
 | [Interpreters pass one contract suite](../technical-components.md#req-reebeat-statechart-interpreter) | A reebeat-owned StatechartInterpreter service wraps the build-time interpreter. A hand-written interpreter must pass the same contract suite, which compares byte-equal logs across interpreters. | decided | [record reebeat:docs/specs/0007-scxml-persistent-ir-spike.md:616-620][22] |
-| [Explicit state machines and timing combinators](../technical-components.md#req-reebeat-state-machines) | The compiler declares presence, position, style, effect, slide and Beat lifecycles as machines. It stores exact time as flicks, generates the JSON Schema from the Effect Schema, and rejects cycles and nonsense. | proposed | [pr reebeat#17][23], [log L24][24] |
-| [Generate captions, audio description and reduced motion](../technical-components.md#req-reebeat-accessible-variants) | The compiler generates SDH captions from narration and sound metadata, audio description from Element tags and state changes, a transcript, an accessible Deck, and a reduced-motion variant that uses cuts or crossfades. It checks rendered frames for flashes and for contrast. | proposed | [issue reebeat#12][25], [log L32][26] |
-| [Subtitles stay readable](../technical-components.md#req-reebeat-readable-subtitles) | The compiler checks subtitle speed, duration, line length and line count against one cited guideline. The default repair extends the State hold, and splitting or condensing are alternatives. | proposed | [issue reebeat#12][25], [log L27][27] |
-| [Build one story in several narration languages](../technical-components.md#req-reebeat-language-variants) | A story builds with a narration in each language, and anchors tied to words and events retime on their own. Open choices, not settled: whether subtitles and Deck notes are per language, whether the speech cache is keyed by language and voice, and how word anchors map across translations. | proposed | [issue reebeat#10][28], [log L32][26] |
-| [Cache render segments](../technical-components.md#req-reebeat-render-segment-cache) | The build caches render segments by state pair, transition program and time window. After a narration change it retimes and reuses the later segments instead of rendering them again. | proposed | [issue reebeat#9][29], [log L62][30] |
-| [Emit a static interactive website](../technical-components.md#req-reebeat-website-artifact) | The compiler emits a folder of static HTML, CSS and JavaScript from the same IR as the Video and the Deck. The viewer steps by Beat or scrubs the timeline, and narration, captions and sounds follow. It is keyboard accessible and supports reduced motion and transcripts. | proposed | [issue reebeat#19][31], [log L36][32], [log L65][33] |
-| [One interaction declaration for every surface](../technical-components.md#req-reebeat-interaction-declaration) | An interaction is a declared event-raising element with a payload schema and a label. Static artifacts realise it at build time, for example with a visible cursor in a Video. Dynamic artifacts realise it at view time. | proposed | [issue reebeat#19][34], [log L38][35], [log L65][33] |
-| [Renderers declare what they can realise](../technical-components.md#req-reebeat-renderer-capabilities) | A renderer declares whether its artifact is static or dynamic, which interaction kinds it can realise and which surfaces it exposes. Beats between Scenes of different renderers follow declared transition rules. | proposed | [issue reebeat#19][36], [log L28][37] |
-| [Lint temporal contiguity, signalling, redundancy and coherence](../technical-components.md#req-reebeat-teaching-lint) | Lint rules read the semantic tags on Elements and check the four principles. Each threshold is set from its primary source before the rule is built. | proposed | [issue reebeat#8][38] |
-| [Publish only built, audited packages](../technical-components.md#req-reebeat-npm-prerelease) | A release stages only built JavaScript, types, docs and the licence, enforces peer ranges for unstable Effect APIs, requires clean checks, and publishes by trusted publishing with provenance. | proposed | [pr reebeat#18][39], [log L49][40] |
-| [Any chosen encoder keeps builds byte-identical](../technical-components.md#req-reebeat-encoder-reproducible) | Whichever encoder replaces or complements ffmpeg with libx264 must keep two builds byte-identical, and the determinism check must be measured again. | proposed | [issue reebeat#7][41] |
-| [The exception gate counts @effect-diagnostics comments](../technical-components.md#req-reebeat-exception-directives) | The exception gate recognises both `@effect-diagnostics` and `@effect-diagnostics-next-line`, has a negative control, and every existing directive is registered. | proposed | [issue reebeat#14][42] |
-| [Pin the package manager to the devenv Bun](../technical-components.md#req-reebeat-pin-bun) | `devEngines.packageManager` names the exact Bun version of devenv, and a check shows that both report the same revision. Both are bumped together. | proposed | [issue reebeat#15][43] |
+| [Explicit state machines and timing combinators](../technical-components.md#req-reebeat-state-machines) | The compiler declares presence, position, style, effect, slide and Beat lifecycles as machines. It stores exact time as flicks, generates the JSON Schema from the Effect Schema, and rejects timing cycles and nonsense; the Model itself may contain cycles. The story IR is public and versioned. The timeline IR is an unstable build artifact. | decided | [pr reebeat#17][23], [log L24][24], [log L62][25], [log L85][26] |
+| [Generate captions, audio description and reduced motion](../technical-components.md#req-reebeat-accessible-variants) | The compiler generates SDH captions from narration and sound metadata, audio description from Element tags and state changes, a transcript, an accessible Deck, and a reduced-motion variant that uses cuts or crossfades. It checks rendered frames for flashes and for contrast. | proposed | [issue reebeat#12][27], [log L32][28] |
+| [Subtitles stay readable](../technical-components.md#req-reebeat-readable-subtitles) | The compiler checks subtitle speed, duration, line length and line count against one cited guideline. Narration, subtitles and notes stay one string, so the repair for a pace that is too fast extends the State hold. Videos can slow down as a result. | decided | [issue reebeat#12][27], [log L27][29], [log L94][30] |
+| [Build one story in several narration languages](../technical-components.md#req-reebeat-language-variants) | A story builds with a narration in each language, and anchors tied to words and events retime on their own. Word anchors use phrase ids declared once in a per-language phrase table, so narration stays pure prose. Not yet settled: whether subtitles and Deck notes are per language, and whether the speech cache is keyed by language and voice. | decided | [issue reebeat#10][31], [log L32][28], [log L93][32] |
+| [Cache render segments](../technical-components.md#req-reebeat-render-segment-cache) | The build caches render segments by state pair, transition program and time window, as tasks of the incremental build engine. This comes in a later step, after stages become tasks. After a narration change it retimes and reuses the later segments instead of rendering them again. | decided | [issue reebeat#9][33], [log L62][25], [log L88][34] |
+| [Emit a static interactive website](../technical-components.md#req-reebeat-website-artifact) | The compiler emits a folder of static HTML, CSS and JavaScript from the same IR as the Video and the Deck. The viewer steps by Beat or scrubs the timeline, and narration, captions and sounds follow. It is keyboard accessible and supports reduced motion and transcripts. An interaction the website cannot realise fails at plan time for that output. Reproducible means byte-identical files, not identical sessions. | decided | [issue reebeat#19][35], [log L36][36], [log L65][37], [log L87][38] |
+| [One interaction declaration for every surface](../technical-components.md#req-reebeat-interaction-declaration) | An interaction is a declared event-raising element with a payload schema and a label, declared once for every surface. Each artifact declares what it realises. Static artifacts realise it at build time, for example with a visible cursor in a Video. Dynamic artifacts realise it at view time. An artifact that cannot realise it fails at plan time for that output, unless the author wrote an explicit fallback or a flag bypasses the failure for that output, so the drift is silent but explicit (a declared opt-out, never a default). | decided | [issue reebeat#19][39], [log L38][40], [log L65][37], [log L87][38] |
+| [Renderers declare what they can realise](../technical-components.md#req-reebeat-renderer-capabilities) | A renderer declares whether its artifact is static or dynamic, which interaction kinds it can realise and which surfaces it exposes. Beats between Scenes of different renderers follow declared transition rules. The declarations come through the extension ADR-0000, adopted in stages, and stay tagged unstable until a second real engine has run the protocol. | decided | [issue reebeat#19][41], [log L28][42], [log L86][43] |
+| [Lint temporal contiguity, signalling, redundancy and coherence](../technical-components.md#req-reebeat-teaching-lint) | Lint rules read the semantic tags on Elements and check the four principles. Each threshold is set from its primary source before the rule is built. | proposed | [issue reebeat#8][44] |
+| [Publish only built, audited packages](../technical-components.md#req-reebeat-npm-prerelease) | A release stages only built JavaScript, types, docs and the licence, enforces peer ranges for unstable Effect APIs, requires clean checks, and publishes by trusted publishing with provenance. | proposed | [pr reebeat#18][45], [log L49][46] |
+| [Any chosen encoder keeps decoded output identical](../technical-components.md#req-reebeat-encoder-reproducible) | Whichever encoder is used, now ffmpeg with libx264 and in future others behind an adapter, two builds with the pinned toolchain give identical decoded frames and audio samples, and container bytes are recorded. The determinism check is measured again when the encoder changes. | decided | [issue reebeat#7][47], [log L78][48], [log L81][49] |
+| [The exception gate counts @effect-diagnostics comments](../technical-components.md#req-reebeat-exception-directives) | The exception gate recognises both `@effect-diagnostics` and `@effect-diagnostics-next-line`, has a negative control, and every existing directive is registered. | proposed | [issue reebeat#14][50] |
+| [Pin the package manager to the devenv Bun](../technical-components.md#req-reebeat-pin-bun) | `devEngines.packageManager` names the exact Bun version of devenv, and a check shows that both report the same revision. Both are bumped together. | proposed | [issue reebeat#15][51] |
 
 ### 1.2 Quality goals
 
 | Quality | Goal | Scenario | Status |
 | --- | --- | --- | --- |
-| reproducibility | [Two builds are identical](../technical-components.md#req-reebeat-nfr-reproducibility): The same source and cache, built twice on the same machine, give identical decoded video frames and identical decoded audio samples. Container bytes are compared and the result is recorded. | A developer builds `stories/same-id` twice with the same speech cache. `reebeat journey` compares every decoded frame hash and the decoded audio hash. The check passes when all agree. Adding random jitter to the clock makes it fail and name the first differing frame. | proposed |
+| reproducibility | [Two builds are identical](../technical-components.md#req-reebeat-nfr-reproducibility): Text and data artifacts are byte-identical across builds. For video, the same source and cache, built twice on the same machine with the pinned toolchain, give identical decoded frames and identical decoded audio samples. Container bytes are compared and the result is recorded. | A developer builds `stories/same-id` twice with the same speech cache. `reebeat journey` compares every decoded frame hash and the decoded audio hash. The check passes when all agree. Adding random jitter to the clock makes it fail and name the first differing frame. | decided |
 | accessibility | [Artifacts serve different audiences](../technical-components.md#req-reebeat-nfr-accessibility): Subtitles and speaker notes carry the narration text exactly. Captions, audio description and reduced-motion variants for the other audiences follow in issue #12. | A viewer who cannot hear opens the Video and reads the WebVTT subtitles. The check confirms one cue per Line with text equal to the narration. A viewer who prefers reduced motion gets a variant with cuts or crossfades, which is planned and not built. | proposed |
 | correctness | [Effects appear within one frame of their anchor](../technical-components.md#req-reebeat-nfr-timing): Every effect shows in the written video, and sounds in the written audio, within one frame of the frame its anchor resolves to. | A story has a sound anchored to the start of a transition. After a build, the check measures the first changed frame and the sound onset in the files. The check passes when both are within one frame. Shifting one effect by three frames makes it fail and name the effect. | proposed |
 | correctness | [The package direction is enforced by a gate](../technical-components.md#req-reebeat-nfr-tier-gate): A package cannot depend on a tier it may not use, in its manifest or in an import, and no package directory can exist outside a tier. | A contributor makes the core import the services package. `bun run check:tiers` fails and names the edge. Adding a directory under `packages/` that is in no tier also fails. | proposed |
@@ -68,8 +68,8 @@ Scope `reebeat`: 233 elements.
 | usability | [Errors say how to fix the source](../technical-components.md#req-reebeat-nfr-usability): Each error names the file and line, what was found, what was expected and the nearest valid form. Old forms are rejected with the replacement in the message. | An author writes the old `[[next]]` cue. The parser stops, names the line and shows the form to use instead. A person who rewrote a story from the messages alone built and checked it. | proposed |
 | reliability | [A failed build leaves no accepted output](../technical-components.md#req-reebeat-nfr-reliability): A speech cache miss with models absent, an alignment below the threshold, and a capture timeout each stop the build with a typed error. No directory remains that `check` would accept. | A developer deletes one speech cache entry and builds without refreshing. The build stops with a cache-miss error that names the Line. The output directory holds no partial build. | proposed |
 | security | [Credentials never reach outputs](../technical-components.md#req-reebeat-nfr-security): Credentials are read from the environment inside the adapter. They never appear in a cache key, the Plan, the manifest or an output. | A test adapter needs a credential from the environment. Without it the build fails and names the requirement and writes nothing. With it, a canary value never appears in any written file. | proposed |
-| performance | [An edit rebuilds only what it changes](../technical-components.md#req-reebeat-nfr-incremental): After an edit, the build redoes only the work that depends on it, and the result is byte-identical to a cold build. | An author changes one narration line in a story. Only that Line's speech and the render segments that depend on its length are rebuilt. The output equals a cold build of the new story. This is planned and not built. | proposed |
-| portability | [Release 1 runs on Linux inside devenv](../technical-components.md#req-reebeat-nfr-portability): A build runs on Linux with the pinned devenv tools. Other systems need their own Chromium, and Windows and macOS are not supported. | A contributor clones the repository on Linux and runs the journey inside `devenv shell`. It builds and checks the story. On another system the contributor sets the Chromium path and installs the other tools by hand. | open |
+| performance | [An edit rebuilds only what it changes](../technical-components.md#req-reebeat-nfr-incremental): After an edit, the build redoes only the work that depends on it, and the result equals a cold build. The build engine is built in steps: a build library with tasks, a trace store and early cutoff, with stages as tasks first and render segments later. | An author changes one narration line in a story. Only that Line's speech and the render segments that depend on its length are rebuilt. The output equals a cold build of the new story. This is planned and not built. | decided |
+| portability | [Release 1 runs on Linux inside devenv](../technical-components.md#req-reebeat-nfr-portability): A build runs on Linux with the pinned devenv tools, for now. Others use their own Linux environment with their own Chromium. Windows and macOS are not supported, and nothing is maintained for them. | A contributor clones the repository on Linux and runs the journey inside `devenv shell`. It builds and checks the story. On another Linux system the contributor sets the Chromium path and installs the other tools by hand. | decided |
 
 ### 1.3 Stakeholders
 
@@ -88,39 +88,39 @@ Scope `reebeat`: 233 elements.
 
 ## Problems and constraints
 
-- [ffmpeg is GPL, so shipping needs a decision](../goals.md#problem-reebeat-ffmpeg-gpl) (open): The ffmpeg build used here is GPL. A product that distributes it takes on GPL duties for that binary. The options are an LGPL build with another encoder, another codec, or GPL compliance. None is chosen.
+- [ffmpeg is GPL, so it is never bundled](../goals.md#problem-reebeat-ffmpeg-gpl) (decided): Libx264 stays and the project never bundles ffmpeg: a person uses their own ffmpeg or the one in devenv, and a hosted service does not distribute it. This holds for now; in future the compiler may support multiple encoders behind an adapter. If a product ever bundles ffmpeg, it complies with the GPL for that binary.
 - [STATE.md is out of date](../goals.md#problem-reebeat-state-stale) (open): STATE.md says specs 0001 and 0002 are in review. Both pull requests are merged. The file also lists "candidates for 0003" that are not the spec 0003 the repository holds.
 - [Spec status lines disagree with the pull requests](../goals.md#problem-reebeat-spec-status-mismatch) (open): Spec 0002 says "built; in review (PR #4)" and spec 0001 and spec 0003 say "plan", but all three pull requests are merged. A reader cannot tell the state of a spec from the spec.
 - [The exception gate ignores @effect-diagnostics comments](../goals.md#problem-reebeat-exceptions-gate-blind) (open): `check:exceptions` does not count `@effect-diagnostics` directives. One such comment can silence an Effect rule with no registry entry, which breaks the rule that every suppression is registered.
 - [vp run uses its own Bun](../goals.md#problem-reebeat-bun-not-pinned) (open): The repository declares Bun as `^1.4.2` and asks to download when the installed Bun does not match. `vp run` then uses its own Bun, not the one devenv pins, so scripts may run on another version.
 - [No CONTRIBUTING.md](../goals.md#problem-reebeat-no-contributing) (open): The repository has no CONTRIBUTING.md. The README points contributors to AGENTS.md and spec 0000 instead.
-- [No SECURITY.md](../goals.md#problem-reebeat-no-security-policy) (open): The repository has no SECURITY.md, so a reporter does not know where to send a vulnerability.
-- [No CODE_OF_CONDUCT.md](../goals.md#problem-reebeat-no-code-of-conduct) (open): The repository has no CODE_OF_CONDUCT.md, so there is no stated standard for behaviour of contributors.
+- [Security reporting comes from reebeat/.github](../goals.md#problem-reebeat-no-security-policy) (decided): The security policy comes from the organisation-level defaults in reebeat/.github, which this repository inherits, and private vulnerability reporting is enabled for this repository. A SECURITY.md in this repository would override the default. This repository has none yet.
+- [Conduct defaults come from reebeat/.github](../goals.md#problem-reebeat-no-code-of-conduct) (decided): The code of conduct comes from the organisation-level defaults in reebeat/.github, which this repository inherits. A CODE_OF_CONDUCT.md in this repository would override them. This repository has none yet.
 - [No issue templates](../goals.md#problem-reebeat-no-issue-templates) (open): The .github directory holds only a workflow. There are no issue templates, so a report may arrive without the spec, journey or version that a maintainer needs.
 - [No pull request template](../goals.md#problem-reebeat-no-pr-template) (open): The repository has no pull request template. The report format of spec 0000 lives in a skill, so a contributor without the skill does not see it.
 - [The README does not state the goals](../goals.md#problem-reebeat-goals-not-in-readme) (open): The README opens with the mechanism, "explainer videos from a screenplay". It does not state the tagline or the qualities the operator wants to promote.
 - [The README does not link the generated roadmap](../goals.md#problem-reebeat-roadmap-only-in-issues) (open): The reebeat README has no link to the roadmap that reebeat/.github generates from the model and the tracker, and STATE.md is out of date. The reebeat repository holds no roadmap file.
-- [Demand for reebeat is not measured](../goals.md#problem-reebeat-demand-unmeasured) (open): The README and the specs read for this model report no usage or uptake. The roadmap is not evidence of demand.
+- [Demand is measured with pilot users and a waitlist](../goals.md#problem-reebeat-demand-unmeasured) (decided): Demand is measured with named pilot users and a waitlist, using one activation step: a story built end to end. The README and the specs read for this model report no usage or uptake yet.
 - [No pre-release yet; cli and adapters unpublished](../goals.md#problem-reebeat-packages-private) (open): No `@reebeat/*` package is on npm yet: the registry answered 404 for `@reebeat/core` on 2026-10-29. Seven packages are set up to publish (core, subtitles, lint, services, pipeline, sounds-synth, render-reveal). The `reebeat` command (`cli`), `verify` and the five Node adapters stay `"private": true`, so they have no distribution path.
 - [XState v6 is an alpha with breaking releases](../goals.md#problem-reebeat-xstate-alpha-risk) (proposed): The planned build-time interpreter, XState v6, is an alpha. Its releases renamed public names without aliases, and its declarations failed under the stricter compiler flags of the packages.
 - [No gate for experimental types in the API](../goals.md#problem-reebeat-experimental-gate-open) (open): The rule that experimental types stay out of the public API is decided, but no test enforces it. Whether to scan exported declarations is open.
-- [Extension points beyond adapters are not defined](../goals.md#problem-reebeat-extension-points-open) (open): Plugins are supported, and the adapter seams are the proposed plugin API. New effect kinds, new importers and the agent tool protocol are open, and no extension ADR exists.
-- [Every edit rebuilds the render](../goals.md#problem-reebeat-no-incremental-render) (open): Speech assets are cached by content. An edit still rebuilds the whole timeline and the whole render, so an editor cannot show fast previews.
-- [Element identity stops at the Scene](../goals.md#problem-reebeat-identity-scene-bounded) (open): The operator decided that the same id is the same entity across Scenes. Release 1 matches ids only between two consecutive Scenes joined by AUTO-ANIMATE.
-- [Transition lines still apply to the Scene below](../goals.md#problem-reebeat-transition-lines-positional) (open): `> AUTO-ANIMATE` and `> CUT` still apply to the Scene heading below them. That is positional, which spec 0002 set out to remove.
+- [Extension points are staged under ADR-0000](../goals.md#problem-reebeat-extension-points-open) (decided): The extension ADR-0000 is adopted in stages, decision by decision. Extension points that are still open are tagged unstable until a second real engine has run the protocol. Adapter seams are the plugin API today; new effect kinds, new importers and the agent tool protocol come through the ADR.
+- [The build engine is incremental, built in steps](../goals.md#problem-reebeat-no-incremental-render) (decided): The build reuses work with the decided incremental build engine, built in steps: a build library with tasks, a trace store and early cutoff. Stages become tasks first and render segments later. Until then speech assets are cached by content, and an edit still rebuilds the whole timeline and the whole render.
+- [Element ids are story-global; motion is adjacent first](../goals.md#problem-reebeat-identity-scene-bounded) (decided): Element ids are story-global: one id is one entity in the whole story, as a rule enforced by a lint. Until spec 0005, motion runs only between adjacent Scenes. Release 1 matches ids only between two consecutive Scenes joined by AUTO-ANIMATE.
+- [Transition lines stay Fountain's, the IR is explicit](../goals.md#problem-reebeat-transition-lines-positional) (decided): Fountain's own transition line stays, and the IR carries each Scene's incoming transition explicitly as a property. The positional reading, where a transition line applies to the Scene below, lives in one adapter only.
 - [Two anchor kinds have no probe](../goals.md#problem-reebeat-anchor-probes-missing) (open): The `update` and `scene.end` anchors exist in code, but no check observes them in the written media. No lint reports an Element that is declared and never used.
 - [One Line keeps an interim speed hint](../goals.md#problem-reebeat-speed-interim) (open): The story `same-id` keeps `(speed 1.05)` on one Line as an interim fix. Removal waits for word timings from the synthesiser or for alignment judged by its path.
 - [The licence gate trusts the declared licence field](../goals.md#problem-reebeat-licence-gate-declared-only) (open): The licence gate reads the `license` field of each package. It does not read licence files inside packages, the licences of what a package bundles, or the binaries and models.
-- [DCO enforcement and a trademark policy are undecided](../goals.md#problem-reebeat-dco-and-trademark-open) (open): A Developer Certificate of Origin sign-off is recommended and not enforced. A trademark policy waits for the final name.
+- [DCO is enforced now; the trademark policy waits](../goals.md#problem-reebeat-dco-and-trademark-open) (decided): DCO sign-off is enforced now: CI checks a Signed-off-by trailer on commits, including commits written by coding agents. The trademark policy is written after the name is cleared. Commits that are already unsigned stay unsigned.
 - [Verify cleanup misses a Chromium from build or journey](../goals.md#problem-reebeat-review-cleanup) (proposed): The `verify-reebeat` cleanup does not stop a Chromium that `reebeat build` or `journey` starts through capture-chromium. Playwright launches it detached, in its own process group, and nothing records it in `pids.txt`. After an interrupted build it can stay running.
 - [Explicit state machines (PR #17) are not merged](../goals.md#problem-reebeat-state-machine-conformance) (proposed): Spec 0004 (explicit state machines and timing combinators, pull request #17) is not merged at the pinned commit. Its review findings change with each push and live on the pull request.
 - [The compiler and its formats are Apache-2.0](../goals.md#constraint-reebeat-apache-2) (decided): The compiler and its formats are Apache-2.0. Contributions come in under the same licence, with no contributor agreement. The copyright holder is the individual named in NOTICE.
 - [External tools run as separate processes](../goals.md#constraint-reebeat-ffmpeg-process-only) (proposed): reebeat calls ffmpeg, ffprobe, whisper-cli and Chromium as external processes. It neither links nor bundles them, so their licences do not reach reebeat's code.
 - [The repository is public, no private material](../goals.md#constraint-reebeat-public-repo) (proposed): The repository is public. It holds no secret, no personal data and no course-private material. A regression baseline derived from course material stays outside the repository.
-- [The name reebeat is a working name](../goals.md#constraint-reebeat-working-name) (proposed): The name `reebeat` is provisional. The GitHub and npm organisations are reserved. A trademark policy waits for the final name.
+- [The name reebeat stays for now](../goals.md#constraint-reebeat-working-name) (decided): The name `reebeat` stays the working name. The clearance check found no register hit for REEBEAT itself, but a registered EU mark REBEAT and an active Norwegian registration FREEBEAT. The operator paused the first npm publish until a Norwegian IP advisor has answered. If the advisor flags a conflict, the project renames before any package exists. The GitHub and npm organisations are reserved, and a trademark policy follows once the name is cleared.
 - [Effect is pinned at 4.1.0 as one family](../goals.md#constraint-reebeat-effect-pin) (proposed): `effect` and every `@effect/*` runtime package share one version, 4.1.0, pinned in the root catalog. `@effect/tsgo` is one version for the whole repository. An upgrade is its own spec.
 - [XState is a pinned alpha behind a boundary](../goals.md#constraint-reebeat-xstate-pinned) (decided): The build-time interpreter is XState v6 alpha, pinned exactly at alpha.71, using its pure system API. It sits in an integration package behind a reebeat-owned service, and its types never appear in the public API.
-- [A local build needs Chromium and ffmpeg](../goals.md#constraint-reebeat-local-tools) (proposed): Release 1 builds on Linux inside devenv. Even with offline stand-ins for speech and alignment, a build still needs Chromium and ffmpeg.
+- [A local build needs Linux, Chromium and ffmpeg](../goals.md#constraint-reebeat-local-tools) (decided): A local build runs on Linux inside devenv only, for now. Even with offline stand-ins for speech and alignment, a build still needs Chromium and ffmpeg. Others use their own Linux environment, and there is no macOS or Windows support.
 - [Release 1 renders 1280x720 at 30 fps](../goals.md#constraint-reebeat-canvas) (open): The release-1 canvas is 1280 by 720 at 30 frames per second. Frame rate is meant to be explicit configuration with presets 24, 30 and 60. A larger canvas costs more capture time.
 
 ## Goals it serves
@@ -151,45 +151,45 @@ flowchart BT
     goal_reebeat_correct_by_construction("A compiler whose structure<br/>prevents bad states"):::decided
     goal_reebeat_verified_output("Check the written files, not<br/>the pipeline's memory"):::proposed
     goal_reebeat_visible_egress("Every build says what leaves<br/>the machine"):::decided
-    problem_reebeat_ffmpeg_gpl{{"ffmpeg is GPL, so shipping<br/>needs a decision"}}:::open
+    problem_reebeat_ffmpeg_gpl{{"ffmpeg is GPL, so it is<br/>never bundled"}}:::decided
     problem_reebeat_state_stale{{"STATE.md is out of date"}}:::open
     problem_reebeat_spec_status_mismatch{{"Spec status lines disagree<br/>with the pull requests"}}:::open
     problem_reebeat_exceptions_gate_blind{{"The exception gate ignores<br/>@effect-diagnostics comments"}}:::open
     problem_reebeat_bun_not_pinned{{"vp run uses its own Bun"}}:::open
     problem_reebeat_no_contributing{{"No CONTRIBUTING.md"}}:::open
-    problem_reebeat_no_security_policy{{"No SECURITY.md"}}:::open
-    problem_reebeat_no_code_of_conduct{{"No CODE_OF_CONDUCT.md"}}:::open
+    problem_reebeat_no_security_policy{{"Security reporting comes<br/>from reebeat/.github"}}:::decided
+    problem_reebeat_no_code_of_conduct{{"Conduct defaults come from<br/>reebeat/.github"}}:::decided
     problem_reebeat_no_issue_templates{{"No issue templates"}}:::open
     problem_reebeat_no_pr_template{{"No pull request template"}}:::open
     problem_reebeat_goals_not_in_readme{{"The README does not state<br/>the goals"}}:::open
     problem_reebeat_roadmap_only_in_issues{{"The README does not link the<br/>generated roadmap"}}:::open
-    problem_reebeat_demand_unmeasured{{"Demand for reebeat is not<br/>measured"}}:::open
+    problem_reebeat_demand_unmeasured{{"Demand is measured with<br/>pilot users and a waitlist"}}:::decided
     problem_reebeat_packages_private{{"No pre-release yet; cli and<br/>adapters unpublished"}}:::open
     problem_reebeat_xstate_alpha_risk{{"XState v6 is an alpha with<br/>breaking releases"}}:::proposed
     problem_reebeat_experimental_gate_open{{"No gate for experimental<br/>types in the API"}}:::open
-    problem_reebeat_extension_points_open{{"Extension points beyond<br/>adapters are not defined"}}:::open
-    problem_reebeat_no_incremental_render{{"Every edit rebuilds the<br/>render"}}:::open
-    problem_reebeat_identity_scene_bounded{{"Element identity stops at<br/>the Scene"}}:::open
-    problem_reebeat_transition_lines_positional{{"Transition lines still apply<br/>to the Scene below"}}:::open
+    problem_reebeat_extension_points_open{{"Extension points are staged<br/>under ADR-0000"}}:::decided
+    problem_reebeat_no_incremental_render{{"The build engine is<br/>incremental, built in steps"}}:::decided
+    problem_reebeat_identity_scene_bounded{{"Element ids are<br/>story-global; motion is<br/>adjacent first"}}:::decided
+    problem_reebeat_transition_lines_positional{{"Transition lines stay<br/>Fountain's, the IR is<br/>explicit"}}:::decided
     problem_reebeat_anchor_probes_missing{{"Two anchor kinds have no<br/>probe"}}:::open
     problem_reebeat_speed_interim{{"One Line keeps an interim<br/>speed hint"}}:::open
     problem_reebeat_licence_gate_declared_only{{"The licence gate trusts the<br/>declared licence field"}}:::open
-    problem_reebeat_dco_and_trademark_open{{"DCO enforcement and a<br/>trademark policy are<br/>undecided"}}:::open
+    problem_reebeat_dco_and_trademark_open{{"DCO is enforced now; the<br/>trademark policy waits"}}:::decided
     problem_reebeat_review_cleanup{{"Verify cleanup misses a<br/>Chromium from build or<br/>journey"}}:::proposed
     problem_reebeat_state_machine_conformance{{"Explicit state machines (PR<br/>#17) are not merged"}}:::proposed
     constraint_reebeat_apache_2[/"The compiler and its formats<br/>are Apache-2.0"/]:::decided
     constraint_reebeat_ffmpeg_process_only[/"External tools run as<br/>separate processes"/]:::proposed
     constraint_reebeat_public_repo[/"The repository is public, no<br/>private material"/]:::proposed
-    constraint_reebeat_working_name[/"The name reebeat is a<br/>working name"/]:::proposed
+    constraint_reebeat_working_name[/"The name reebeat stays for<br/>now"/]:::decided
     constraint_reebeat_effect_pin[/"Effect is pinned at 4.1.0 as<br/>one family"/]:::proposed
     constraint_reebeat_xstate_pinned[/"XState is a pinned alpha<br/>behind a boundary"/]:::decided
-    constraint_reebeat_local_tools[/"A local build needs Chromium<br/>and ffmpeg"/]:::proposed
+    constraint_reebeat_local_tools[/"A local build needs Linux,<br/>Chromium and ffmpeg"/]:::decided
     constraint_reebeat_canvas[/"Release 1 renders 1280x720<br/>at 30 fps"/]:::open
-    opportunity_reebeat_identity_diff_motion(["The identity diff derives<br/>motion"]):::proposed
-    opportunity_reebeat_one_declaration_many_surfaces(["One declaration, many<br/>surfaces"]):::proposed
+    opportunity_reebeat_identity_diff_motion(["The identity diff derives<br/>motion"]):::decided
+    opportunity_reebeat_one_declaration_many_surfaces(["One declaration, many<br/>surfaces"]):::decided
     opportunity_reebeat_offline_standins(["Offline stand-ins need no<br/>model"]):::proposed
     opportunity_reebeat_byo_agents(["A text source agents can<br/>write and repair"]):::proposed
-    opportunity_reebeat_lint_open_fixes_paid(["Lint in the compiler, fixes<br/>in the editor"]):::proposed
+    opportunity_reebeat_lint_open_fixes_paid(["Lint in the compiler, fixes<br/>in the editor"]):::decided
     opportunity_reebeat_react_engine(["React as render engine, JSX<br/>as importer"]):::decided
     goal_org_vision("Multimedia that authors<br/>declare and tools rebuild"):::outside
     goal_org_declarative_creation("Declare scenes and<br/>transitions, not build steps"):::outside
@@ -332,7 +332,7 @@ Full tables and diagrams: [Business Rules Model](../business-rules.md).
 - [Every integration has an offline stand-in](../business-rules.md#rule-reebeat-standin-for-model-adapters) (business rule, decided)
 - [Every adapter declares what it sends out](../business-rules.md#rule-reebeat-egress-declared) (business rule, decided)
 - [Credentials stay in the environment](../business-rules.md#rule-reebeat-no-secrets-in-outputs) (business rule, proposed)
-- [Narration, subtitles and notes are one string](../business-rules.md#rule-reebeat-narration-text-equal) (business rule, proposed)
+- [Narration, subtitles and notes are one string](../business-rules.md#rule-reebeat-narration-text-equal) (business rule, decided)
 - [Unsupported constructs fail with a line number](../business-rules.md#rule-reebeat-unsupported-fails-with-line) (business rule, proposed)
 - [Every reference is written down](../business-rules.md#rule-reebeat-every-reference-explicit) (business rule, proposed)
 - [An absolute time needs a written reason](../business-rules.md#rule-reebeat-absolute-time-needs-reason) (business rule, decided)
@@ -342,7 +342,7 @@ Full tables and diagrams: [Business Rules Model](../business-rules.md).
 - [A failed build leaves no accepted output](../business-rules.md#rule-reebeat-failed-build-leaves-nothing) (business rule, proposed)
 - [The build reads no wall clock or randomness](../business-rules.md#rule-reebeat-no-randomness-in-build) (business rule, proposed)
 - [Attributes are serializable data](../business-rules.md#rule-reebeat-attributes-are-data) (business rule, decided)
-- [Element ids are explicit, never by content](../business-rules.md#rule-reebeat-explicit-element-ids) (business rule, proposed)
+- [Element ids are explicit, never by content](../business-rules.md#rule-reebeat-explicit-element-ids) (business rule, decided)
 - [The persistent IR is reebeat's own JSON](../business-rules.md#rule-reebeat-ir-owned-json) (business rule, decided)
 - [XState lives behind a reebeat-owned service](../business-rules.md#rule-reebeat-xstate-behind-service) (business rule, decided)
 - [Every suppression has a registry entry](../business-rules.md#rule-reebeat-suppression-registry) (business rule, proposed)
@@ -350,8 +350,8 @@ Full tables and diagrams: [Business Rules Model](../business-rules.md).
 - [A new dependency records its licence](../business-rules.md#rule-reebeat-dependency-licence-recorded) (business rule, proposed)
 - [Effect packages share one version](../business-rules.md#rule-reebeat-effect-one-version) (business rule, proposed)
 - [Narration check is N/A only for stand-ins](../business-rules.md#rule-reebeat-silent-narrator-na) (business rule, proposed)
-- [A cached build equals a cold build](../business-rules.md#rule-reebeat-cache-identical-to-cold) (business rule, proposed)
-- [Planning fails if a renderer cannot comply](../business-rules.md#rule-reebeat-capability-fail-planning) (business rule, proposed)
+- [A cached build equals a cold build](../business-rules.md#rule-reebeat-cache-identical-to-cold) (business rule, decided)
+- [Planning fails if a renderer cannot comply](../business-rules.md#rule-reebeat-capability-fail-planning) (business rule, decided)
 - [Timed items lead or follow](../business-rules.md#rule-reebeat-lead-follow-timing) (business rule, proposed)
 - [Word anchors retime per language](../business-rules.md#rule-reebeat-localised-absolute-times) (business rule, proposed)
 - [Renderer, capturer and encoder have no stand-in](../business-rules.md#rule-reebeat-standin-scope) (business rule, proposed)
@@ -403,7 +403,7 @@ Full tables and diagrams: [Technical Components and Requirements Model](../techn
 - [cli, the reebeat command](../technical-components.md#comp-reebeat-cli) (technical component, proposed)
 - [quality gates, the repository checks](../technical-components.md#comp-reebeat-quality-gates) (technical component, proposed)
 - [statechart-xstate, the build-time interpreter](../technical-components.md#comp-reebeat-statechart-xstate) (technical component, proposed)
-- [website renderer, a planned artifact renderer](../technical-components.md#comp-reebeat-website-renderer) (technical component, proposed)
+- [website renderer, a planned artifact renderer](../technical-components.md#comp-reebeat-website-renderer) (technical component, decided)
 - [plan.json, the one input of the renderers](../technical-components.md#comp-reebeat-plan-json) (technical component, proposed)
 - [build.json, the build manifest](../technical-components.md#comp-reebeat-build-manifest) (technical component, proposed)
 - [deck.html, the Deck artifact](../technical-components.md#comp-reebeat-deck-output) (technical component, proposed)
@@ -428,20 +428,20 @@ Full tables and diagrams: [Technical Components and Requirements Model](../techn
 - [One command runs the whole road](../technical-components.md#req-reebeat-journey) (requirement, proposed)
 - [A renderer declares its lifecycle timing](../technical-components.md#req-reebeat-renderer-lifecycle) (requirement, proposed)
 - [Interpreters pass one contract suite](../technical-components.md#req-reebeat-statechart-interpreter) (requirement, decided)
-- [Explicit state machines and timing combinators](../technical-components.md#req-reebeat-state-machines) (requirement, proposed)
+- [Explicit state machines and timing combinators](../technical-components.md#req-reebeat-state-machines) (requirement, decided)
 - [Generate captions, audio description and reduced motion](../technical-components.md#req-reebeat-accessible-variants) (requirement, proposed)
-- [Subtitles stay readable](../technical-components.md#req-reebeat-readable-subtitles) (requirement, proposed)
-- [Build one story in several narration languages](../technical-components.md#req-reebeat-language-variants) (requirement, proposed)
-- [Cache render segments](../technical-components.md#req-reebeat-render-segment-cache) (requirement, proposed)
-- [Emit a static interactive website](../technical-components.md#req-reebeat-website-artifact) (requirement, proposed)
-- [One interaction declaration for every surface](../technical-components.md#req-reebeat-interaction-declaration) (requirement, proposed)
-- [Renderers declare what they can realise](../technical-components.md#req-reebeat-renderer-capabilities) (requirement, proposed)
+- [Subtitles stay readable](../technical-components.md#req-reebeat-readable-subtitles) (requirement, decided)
+- [Build one story in several narration languages](../technical-components.md#req-reebeat-language-variants) (requirement, decided)
+- [Cache render segments](../technical-components.md#req-reebeat-render-segment-cache) (requirement, decided)
+- [Emit a static interactive website](../technical-components.md#req-reebeat-website-artifact) (requirement, decided)
+- [One interaction declaration for every surface](../technical-components.md#req-reebeat-interaction-declaration) (requirement, decided)
+- [Renderers declare what they can realise](../technical-components.md#req-reebeat-renderer-capabilities) (requirement, decided)
 - [Lint temporal contiguity, signalling, redundancy and coherence](../technical-components.md#req-reebeat-teaching-lint) (requirement, proposed)
 - [Publish only built, audited packages](../technical-components.md#req-reebeat-npm-prerelease) (requirement, proposed)
-- [Any chosen encoder keeps builds byte-identical](../technical-components.md#req-reebeat-encoder-reproducible) (requirement, proposed)
+- [Any chosen encoder keeps decoded output identical](../technical-components.md#req-reebeat-encoder-reproducible) (requirement, decided)
 - [The exception gate counts @effect-diagnostics comments](../technical-components.md#req-reebeat-exception-directives) (requirement, proposed)
 - [Pin the package manager to the devenv Bun](../technical-components.md#req-reebeat-pin-bun) (requirement, proposed)
-- [Two builds are identical](../technical-components.md#req-reebeat-nfr-reproducibility) (requirement, proposed)
+- [Two builds are identical](../technical-components.md#req-reebeat-nfr-reproducibility) (requirement, decided)
 - [Artifacts serve different audiences](../technical-components.md#req-reebeat-nfr-accessibility) (requirement, proposed)
 - [Effects appear within one frame of their anchor](../technical-components.md#req-reebeat-nfr-timing) (requirement, proposed)
 - [The package direction is enforced by a gate](../technical-components.md#req-reebeat-nfr-tier-gate) (requirement, proposed)
@@ -450,8 +450,8 @@ Full tables and diagrams: [Technical Components and Requirements Model](../techn
 - [Errors say how to fix the source](../technical-components.md#req-reebeat-nfr-usability) (requirement, proposed)
 - [A failed build leaves no accepted output](../technical-components.md#req-reebeat-nfr-reliability) (requirement, proposed)
 - [Credentials never reach outputs](../technical-components.md#req-reebeat-nfr-security) (requirement, proposed)
-- [An edit rebuilds only what it changes](../technical-components.md#req-reebeat-nfr-incremental) (requirement, proposed)
-- [Release 1 runs on Linux inside devenv](../technical-components.md#req-reebeat-nfr-portability) (requirement, open)
+- [An edit rebuilds only what it changes](../technical-components.md#req-reebeat-nfr-incremental) (requirement, decided)
+- [Release 1 runs on Linux inside devenv](../technical-components.md#req-reebeat-nfr-portability) (requirement, decided)
 
 ## Concepts
 
@@ -470,12 +470,12 @@ Full tables and diagrams: [Concepts Model](../concepts.md).
 - [Lifecycle event](../concepts.md#concept-reebeat-lifecycle-event) (concept, proposed)
 - [Hint](../concepts.md#concept-reebeat-hint) (concept, proposed)
 - [Element](../concepts.md#concept-reebeat-element) (concept, decided)
-- [Identity diff](../concepts.md#concept-reebeat-identity-diff) (concept, proposed)
+- [Identity diff](../concepts.md#concept-reebeat-identity-diff) (concept, decided)
 - [Plan](../concepts.md#concept-reebeat-plan) (concept, proposed)
 - [Timeline](../concepts.md#concept-reebeat-timeline) (concept, proposed)
 - [Model](../concepts.md#concept-reebeat-model) (concept, decided)
 - [Build graph](../concepts.md#concept-reebeat-build-graph) (concept, decided)
-- [Story IR and Timeline IR](../concepts.md#concept-reebeat-ir) (concept, proposed)
+- [Story IR and Timeline IR](../concepts.md#concept-reebeat-ir) (concept, decided)
 - [Rendering](../concepts.md#concept-reebeat-rendering) (concept, decided)
 - [Deck](../concepts.md#concept-reebeat-deck) (concept, decided)
 - [Video](../concepts.md#concept-reebeat-video) (concept, decided)
@@ -502,7 +502,7 @@ Full tables and diagrams: [Concepts Model](../concepts.md).
 | issue:reebeat#20 | Roadmap (deferred): interactive lessons — investigate later | open | [Interactive lessons, deferred for later](../goals.md#goal-reebeat-interactive-lessons) |
 | issue:reebeat#8 | Teaching lint: check explainer stories against multimedia-learning principles | open | [A teaching lint for explainer stories](../goals.md#goal-reebeat-teaching-lint) |
 | pr:reebeat#18 | feat(release): publish @reebeat/* pre-releases to npm by trusted publishing (spec 0009) | merged | [Publish @reebeat packages to npm](../goals.md#goal-reebeat-npm-publication) |
-| issue:reebeat#7 | ffmpeg with libx264 is GPL: decide before distributing a binary | open | [ffmpeg is GPL, so shipping needs a decision](../goals.md#problem-reebeat-ffmpeg-gpl) |
+| issue:reebeat#7 | ffmpeg with libx264 is GPL: decide before distributing a binary | open | [ffmpeg is GPL, so it is never bundled](../goals.md#problem-reebeat-ffmpeg-gpl) |
 | pr:reebeat#3 | feat: screenplay to deck and video, release 1 (spec 0001) | merged | [STATE.md is out of date](../goals.md#problem-reebeat-state-stale) |
 | pr:reebeat#4 | feat: effects anchored to lifecycle events and an explicit syntax (spec 0002) | merged | [STATE.md is out of date](../goals.md#problem-reebeat-state-stale) |
 | issue:reebeat#14 | check:exceptions ignores @effect-diagnostics suppression comments | open | [The exception gate ignores @effect-diagnostics comments](../goals.md#problem-reebeat-exceptions-gate-blind) |
@@ -510,10 +510,10 @@ Full tables and diagrams: [Concepts Model](../concepts.md).
 | issue:reebeat#19 | Roadmap: interactive website as an artifact type | open | [The README does not link the generated roadmap](../goals.md#problem-reebeat-roadmap-only-in-issues) |
 | issue:reebeat#20 | Roadmap (deferred): interactive lessons — investigate later | open | [The README does not link the generated roadmap](../goals.md#problem-reebeat-roadmap-only-in-issues) |
 | pr:reebeat#18 | feat(release): publish @reebeat/* pre-releases to npm by trusted publishing (spec 0009) | merged | [No pre-release yet; cli and adapters unpublished](../goals.md#problem-reebeat-packages-private) |
-| pr:reebeat#23 | docs: extension architecture, ADR-0000 and spec 0012 | merged | [Extension points beyond adapters are not defined](../goals.md#problem-reebeat-extension-points-open) |
-| issue:reebeat#19 | Roadmap: interactive website as an artifact type | open | [Extension points beyond adapters are not defined](../goals.md#problem-reebeat-extension-points-open) |
-| issue:reebeat#9 | Incremental builds: cache render segments, not only speech | open | [Every edit rebuilds the render](../goals.md#problem-reebeat-no-incremental-render) |
-| pr:reebeat#17 | feat: explicit state machines and timing combinators (spec 0004) | open | [Element identity stops at the Scene](../goals.md#problem-reebeat-identity-scene-bounded) |
+| pr:reebeat#23 | docs: extension architecture, ADR-0000 and spec 0012 | merged | [Extension points are staged under ADR-0000](../goals.md#problem-reebeat-extension-points-open) |
+| issue:reebeat#19 | Roadmap: interactive website as an artifact type | open | [Extension points are staged under ADR-0000](../goals.md#problem-reebeat-extension-points-open) |
+| issue:reebeat#9 | Incremental builds: cache render segments, not only speech | open | [The build engine is incremental, built in steps](../goals.md#problem-reebeat-no-incremental-render) |
+| pr:reebeat#17 | feat: explicit state machines and timing combinators (spec 0004) | open | [Element ids are story-global; motion is adjacent first](../goals.md#problem-reebeat-identity-scene-bounded) |
 | issue:reebeat#25 | verify-reebeat cleanup does not stop a capture Chromium started by build or journey | open | [Verify cleanup misses a Chromium from build or journey](../goals.md#problem-reebeat-review-cleanup) |
 | pr:reebeat#17 | feat: explicit state machines and timing combinators (spec 0004) | open | [Explicit state machines (PR #17) are not merged](../goals.md#problem-reebeat-state-machine-conformance) |
 | issue:reebeat#19 | Roadmap: interactive website as an artifact type | open | [One declaration, many surfaces](../goals.md#opportunity-reebeat-one-declaration-many-surfaces) |
@@ -536,7 +536,7 @@ Full tables and diagrams: [Concepts Model](../concepts.md).
 | issue:reebeat#19 | Roadmap: interactive website as an artifact type | open | [Renderers declare what they can realise](../technical-components.md#req-reebeat-renderer-capabilities) |
 | issue:reebeat#8 | Teaching lint: check explainer stories against multimedia-learning principles | open | [Lint temporal contiguity, signalling, redundancy and coherence](../technical-components.md#req-reebeat-teaching-lint) |
 | pr:reebeat#18 | feat(release): publish @reebeat/* pre-releases to npm by trusted publishing (spec 0009) | merged | [Publish only built, audited packages](../technical-components.md#req-reebeat-npm-prerelease) |
-| issue:reebeat#7 | ffmpeg with libx264 is GPL: decide before distributing a binary | open | [Any chosen encoder keeps builds byte-identical](../technical-components.md#req-reebeat-encoder-reproducible) |
+| issue:reebeat#7 | ffmpeg with libx264 is GPL: decide before distributing a binary | open | [Any chosen encoder keeps decoded output identical](../technical-components.md#req-reebeat-encoder-reproducible) |
 | issue:reebeat#14 | check:exceptions ignores @effect-diagnostics suppression comments | open | [The exception gate counts @effect-diagnostics comments](../technical-components.md#req-reebeat-exception-directives) |
 | issue:reebeat#15 | vp run uses a downloaded Bun, not the devenv Bun (devEngines ^1.4.2) | open | [Pin the package manager to the devenv Bun](../technical-components.md#req-reebeat-pin-bun) |
 | issue:reebeat#12 | Accessible artifacts: captions, audio description, reduced motion and readable subtitles | open | [Artifacts serve different audiences](../technical-components.md#req-reebeat-nfr-accessibility) |
@@ -566,22 +566,30 @@ Full tables and diagrams: [Concepts Model](../concepts.md).
 [22]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0007-scxml-persistent-ir-spike.md#L616-L620
 [23]: https://github.com/reebeat/reebeat/pull/17
 [24]: ../../sources/operator-decisions-2026-10.md#L24
-[25]: https://github.com/reebeat/reebeat/issues/12
-[26]: ../../sources/operator-decisions-2026-10.md#L32
-[27]: ../../sources/operator-decisions-2026-10.md#L27
-[28]: https://github.com/reebeat/reebeat/issues/10
-[29]: https://github.com/reebeat/reebeat/issues/9
-[30]: ../../sources/operator-decisions-2026-10.md#L62
-[31]: https://github.com/reebeat/reebeat/issues/19
-[32]: ../../sources/operator-decisions-2026-10.md#L36
-[33]: ../../sources/operator-decisions-2026-10.md#L65
-[34]: https://github.com/reebeat/reebeat/issues/19#issuecomment-6503203735
-[35]: ../../sources/operator-decisions-2026-10.md#L38
-[36]: https://github.com/reebeat/reebeat/issues/19#issuecomment-6503256239
-[37]: ../../sources/operator-decisions-2026-10.md#L28
-[38]: https://github.com/reebeat/reebeat/issues/8
-[39]: https://github.com/reebeat/reebeat/pull/18
-[40]: ../../sources/operator-decisions-2026-10.md#L49
-[41]: https://github.com/reebeat/reebeat/issues/7
-[42]: https://github.com/reebeat/reebeat/issues/14
-[43]: https://github.com/reebeat/reebeat/issues/15
+[25]: ../../sources/operator-decisions-2026-10.md#L62
+[26]: ../../sources/operator-decisions-2026-10.md#L85
+[27]: https://github.com/reebeat/reebeat/issues/12
+[28]: ../../sources/operator-decisions-2026-10.md#L32
+[29]: ../../sources/operator-decisions-2026-10.md#L27
+[30]: ../../sources/operator-decisions-2026-10.md#L94
+[31]: https://github.com/reebeat/reebeat/issues/10
+[32]: ../../sources/operator-decisions-2026-10.md#L93
+[33]: https://github.com/reebeat/reebeat/issues/9
+[34]: ../../sources/operator-decisions-2026-10.md#L88
+[35]: https://github.com/reebeat/reebeat/issues/19
+[36]: ../../sources/operator-decisions-2026-10.md#L36
+[37]: ../../sources/operator-decisions-2026-10.md#L65
+[38]: ../../sources/operator-decisions-2026-10.md#L87
+[39]: https://github.com/reebeat/reebeat/issues/19#issuecomment-6503203735
+[40]: ../../sources/operator-decisions-2026-10.md#L38
+[41]: https://github.com/reebeat/reebeat/issues/19#issuecomment-6503256239
+[42]: ../../sources/operator-decisions-2026-10.md#L28
+[43]: ../../sources/operator-decisions-2026-10.md#L86
+[44]: https://github.com/reebeat/reebeat/issues/8
+[45]: https://github.com/reebeat/reebeat/pull/18
+[46]: ../../sources/operator-decisions-2026-10.md#L49
+[47]: https://github.com/reebeat/reebeat/issues/7
+[48]: ../../sources/operator-decisions-2026-10.md#L78
+[49]: ../../sources/operator-decisions-2026-10.md#L81
+[50]: https://github.com/reebeat/reebeat/issues/14
+[51]: https://github.com/reebeat/reebeat/issues/15

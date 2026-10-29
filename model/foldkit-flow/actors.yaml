@@ -6,15 +6,15 @@ elements:
     persona: true
     title: Foldkit app developer
     statement: >-
-      A person who builds a Foldkit application and wants a graph canvas in it. They add the library and own the
-      application's graph data, layout and node views.
-    status: proposed
+      A person who builds a Foldkit application and wants a graph canvas in it. They are the library's audience. They
+      add the library and own the application's graph data, layout and node views, and they apply the outcomes the
+      library reports.
+    status: decided
     source:
       - log:48
+      - log:108
+      - log:109
       - foldkit-flow:README.md:3
-    rationale: >-
-      The log and README say the library serves Foldkit applications. The persona is named here from that. The
-      operator must confirm who the first users are.
     canvas: [customer-segments]
     links:
       performs: [process-flow-adopt-library, process-flow-apply-outcome]
@@ -26,16 +26,14 @@ elements:
     actorType: system
     title: reebeat studio (consuming product)
     statement: >-
-      reebeat studio is the product that would draw its story graph with the library. It is a consumer, not part of the
-      library.
-    status: proposed
+      reebeat studio is an intended consumer of the library for its story graph, not a committed one. It has no
+      dependency on the library until a studio spec adopts it. It is a consumer, not part of the library.
+    status: decided
     source:
       - log:45
       - log:48
+      - log:108
       - studio:docs/design/lenses.md:50-52
-    rationale: >-
-      Studio's story graph lens needs a statechart map, and the log lists foldkit-flow beside studio. No cited line says
-      studio uses foldkit-flow. The operator must confirm.
     canvas: [customer-segments]
     links:
       uses: [comp-flow-library]
@@ -71,15 +69,13 @@ elements:
     persona: true
     title: Keyboard-only user
     statement: >-
-      A person who uses only the keyboard, and may use a screen reader. They need to reach, select, move and delete
-      nodes without a pointer.
-    status: proposed
+      A person who uses only the keyboard, and may use a screen reader. In the 0.x releases they can reach, select, move
+      and delete nodes without a pointer. Connecting nodes by keyboard is a documented gap, and 1.0 waits for it.
+    status: decided
     source:
+      - log:110
       - foldkit-flow:README.md:74-78
       - foldkit-flow:docs/specs/0001-first-felt-journey.md:87
-    rationale: >-
-      README lines 74 to 78 describe the keyboard and live-region behaviour built for this person (spec 0001
-      falsifier J5). No line names a screen reader user, but the live region implies one. The operator must confirm.
     links:
       performs: [process-flow-keyboard-navigate, process-flow-delete-selection]
       serves: [goal-flow-keyboard-access]
@@ -106,14 +102,12 @@ elements:
     title: The xyflow project
     statement: >-
       xyflow (webkid GmbH) makes React Flow, Svelte Flow and `@xyflow/system`. It asks its users to keep its attribution
-      or to support the project.
-    status: proposed
+      or to support the project. The library shows the credit by default and lets an application hide it.
+    status: decided
     source:
+      - log:106
       - foldkit-flow:NOTICE:4-17
       - foldkit-flow:README.md:86
-    rationale: >-
-      NOTICE names the copyright holder and its request. No operator line records a relationship with xyflow. The
-      operator must confirm whether to support the project in another way.
     canvas: [key-partners]
 
   - id: actor-flow-foldkit-project
@@ -121,16 +115,14 @@ elements:
     actorType: org-unit
     title: The Foldkit project
     statement: >-
-      Foldkit makes the framework the library is built for. It owns the plugin the example cannot use yet, and the
-      project may take the library upstream.
-    status: proposed
+      Foldkit makes the framework the library is built for. It owns the plugin the example cannot use yet. If it adopts
+      the library, the project publishes `@foldkit/flow` and deprecates `@reebeat/flow`.
+    status: decided
     source:
+      - log:105
+      - log:56
       - foldkit-flow:AGENTS.md:64
       - foldkit-flow:STATE.md:13-14
-      - log:56
-    rationale: >-
-      Sources describe Foldkit as an upstream dependency and a possible new owner. No line records a working agreement
-      with its maintainers. The operator must confirm.
     canvas: [key-partners]
 
   # ---- resources ----
@@ -140,17 +132,15 @@ elements:
     title: "@xyflow/system"
     statement: >-
       The MIT-licensed, framework-free core of React Flow and Svelte Flow. It supplies the pan and zoom, drag, handle,
-      edge-path and minimap controllers.
-    status: proposed
+      edge-path and minimap controllers. The library pins it at exactly 0.0.83 and bumps it on purpose.
+    status: decided
     source:
+      - log:107
       - foldkit-flow:README.md:86
       - foldkit-flow:AGENTS.md:25
       - foldkit-flow:NOTICE:4-7
       - foldkit-flow:packages/flow/package.json:18
       - foldkit-flow:packages/flow/src/xyflow.ts:1
-    rationale: >-
-      The README and AGENTS.md name the dependency. packages/flow/package.json line 18 pins `@xyflow/system` 0.0.83
-      exactly, and xyflow.ts line 1 imports the controllers from it. The operator must confirm the choice.
     canvas: [key-partners, key-resources]
     links:
       serves: [goal-flow-first-journey]
@@ -270,12 +260,11 @@ elements:
     title: LICENSE and NOTICE
     statement: >-
       The MIT licence text and the notice that credits xyflow and points to PROVENANCE.md for other third-party code.
-    status: proposed
-    rationale: >-
-      Observed in the repository: the files exist as described. The log decides MIT only (line 48); it does not decide
-      the content of NOTICE. The operator must confirm.
+      The credit link in the canvas is visible by default, and an application may hide it.
+    status: decided
     source:
       - log:48
+      - log:106
       - foldkit-flow:LICENSE:1-3
       - foldkit-flow:NOTICE:1-20
     links:

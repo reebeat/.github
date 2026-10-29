@@ -23,7 +23,8 @@ elements:
     category: primary
     title: Open a story
     statement: >-
-      The editor opens a story IR JSON file, the committed source of reebeat, and checks it against the story schema.
+      The editor opens a story from the browser's private storage, after an import of an IR JSON file, or from a local file
+      where the browser has the File System Access API. It checks the story against the story schema.
     status: proposed
     rationale: >-
       Step 1 of the journey in spec 0001. It depends on reebeat spec 0006. The operator should confirm this open-and-validate
@@ -59,12 +60,9 @@ elements:
     category: primary
     title: Scrub the preview
     statement: >-
-      The person drags the playhead and the preview shows that frame and its narration word.
-    status: proposed
-    rationale: >-
-      Step 3 of the journey in spec 0001. A frame-exact scrub needs a seekable Deck page from reebeat. The operator should
-      confirm the Deck preview and scrub experience.
-    source: [studio:docs/specs/0001-first-felt-journey.md:18, studio:docs/specs/0001-first-felt-journey.md:39]
+      The person drags the playhead, and the Deck in the preview iframe seeks to that frame and shows its narration word.
+    status: decided
+    source: [studio:docs/specs/0001-first-felt-journey.md:18, studio:docs/specs/0001-first-felt-journey.md:39, log:97]
     pricing: free
     links:
       serves: [goal-studio-preview-fidelity]
@@ -96,12 +94,10 @@ elements:
     category: primary
     title: Undo an edit
     statement: >-
-      Undo restores the old story byte for byte. The inverse of an edit is computed, not stored by hand.
-    status: proposed
-    rationale: >-
-      Spec 0001 plans undo as the computed inverse of the patch, and falsifier F6 tests the patch laws. The operator should
-      confirm the undo behaviour and the inverse design.
-    source: [studio:docs/specs/0001-first-felt-journey.md:20-21, studio:docs/specs/0001-first-felt-journey.md:93, studio:docs/specs/0001-first-felt-journey.md:136]
+      Undo reverts the person's own last change per peer, through Loro's UndoManager. It gives back the exact story when
+      nobody else edited meanwhile.
+    status: decided
+    source: [studio:docs/specs/0001-first-felt-journey.md:20-21, studio:docs/specs/0001-first-felt-journey.md:93, studio:docs/specs/0001-first-felt-journey.md:136, log:102]
     pricing: free
     links:
       serves: [goal-studio-first-felt-journey]
@@ -166,13 +162,10 @@ elements:
     category: primary
     title: Review a suggestion
     statement: >-
-      A person sees a suggestion with its author and accepts or rejects it. An accepted suggestion applies as the patch it
-      was, and the record keeps who proposed and who accepted.
-    status: proposed
-    rationale: >-
-      The lenses note designs the Review lens. It is design only. The operator should confirm this suggestion-review
-      workflow.
-    source: [studio:docs/design/lenses.md:66-69]
+      A person sees a suggestion made under the suggest preset, with its author, and accepts or rejects it. An accepted
+      suggestion applies as the patch it was, and the record keeps who proposed and who accepted.
+    status: decided
+    source: [studio:docs/design/lenses.md:66-69, log:99]
     links:
       serves: [goal-studio-human-control]
       uses: [comp-studio-lens-review, concept-studio-suggestion]

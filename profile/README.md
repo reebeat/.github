@@ -34,9 +34,9 @@ Licence: Apache-2.0. Model status: decided. [Product page](https://github.com/re
 
 *The collaborative editor for reebeat stories*
 
-Studio is a collaborative editor for reebeat stories, a product built on the open compiler. It ships web first and as one binary built with Bun. Its licence is not decided.
+Studio is a collaborative editor for reebeat stories, a product built on the open compiler. It ships web first and as one binary built with Bun. It is proprietary, all rights reserved.
 
-Licence: none; all rights reserved, undecided. Model status: decided. [Product page](https://github.com/reebeat/.github/blob/main/docs/products/studio.md).
+Licence: proprietary; all rights reserved (LICENSE file and third-party notices). Model status: decided. [Product page](https://github.com/reebeat/.github/blob/main/docs/products/studio.md).
 
 ### [foldkit-flow](https://github.com/reebeat/foldkit-flow)
 
@@ -50,7 +50,7 @@ Licence: MIT. Model status: decided. [Product page](https://github.com/reebeat/.
 
 ## Status and roadmap
 
-The model holds 656 elements: 157 decided by the operator, 433 proposed and 66 open. 17 tracked issues and pull requests are open (snapshot of 2026-10-29).
+The model holds 658 elements: 276 decided by the operator, 336 proposed and 46 open. 17 tracked issues and pull requests are open (snapshot of 2026-10-29).
 
 - [Roadmap](https://github.com/reebeat/.github/blob/main/docs/roadmap.md): generated from the model and the issue tracker.
 - [Goals](https://github.com/reebeat/.github/blob/main/docs/goals.md) and the other [4EM sub-model pages](https://github.com/reebeat/.github/blob/main/docs/README.md).

@@ -279,16 +279,15 @@ elements:
   # ------------------------------------------------------------- problems
   - id: problem-reebeat-ffmpeg-gpl
     kind: problem
-    title: ffmpeg is GPL, so shipping needs a decision
+    title: ffmpeg is GPL, so it is never bundled
     statement: >-
-      The ffmpeg build used here is GPL. A product that distributes it takes on GPL duties for that binary. The options
-      are an LGPL build with another encoder, another codec, or GPL compliance. None is chosen.
-    status: open
-    rationale: >-
-      The operator noted this for later, before distributing a binary (log:50), and issue #7 tracks it. The third-party
-      audit says the decision is the operator's and is not taken.
+      Libx264 stays and the project never bundles ffmpeg: a person uses their own ffmpeg or the one in devenv, and a hosted
+      service does not distribute it. This holds for now; in future the compiler may support multiple encoders behind an
+      adapter. If a product ever bundles ffmpeg, it complies with the GPL for that binary.
+    status: decided
     source:
       - log:50
+      - log:78
       - issue:reebeat#7
       - reebeat:docs/design/third-party.md:18-20
     refs: ["issue:reebeat#7"]
@@ -397,28 +396,34 @@ elements:
 
   - id: problem-reebeat-no-security-policy
     kind: problem
-    title: No SECURITY.md
+    title: Security reporting comes from reebeat/.github
     statement: >-
-      The repository has no SECURITY.md, so a reporter does not know where to send a vulnerability.
-    status: open
-    rationale: The path does not exist at the pinned commit. The operator should say where private reports go.
-    source: [absent:reebeat:SECURITY.md]
+      The security policy comes from the organisation-level defaults in reebeat/.github, which this repository inherits,
+      and private vulnerability reporting is enabled for this repository. A SECURITY.md in this repository would override
+      the default. This repository has none yet.
+    status: decided
+    source:
+      - log:90
+      - absent:reebeat:SECURITY.md
     gap:
       repo: reebeat
-      fix: Add SECURITY.md that names a private reporting channel and the supported versions.
+      fix: Enable private vulnerability reporting for this repository, and add SECURITY.md to the organisation defaults in reebeat/.github.
     links:
       hinders: [goal-org-open-compiler]
 
   - id: problem-reebeat-no-code-of-conduct
     kind: problem
-    title: No CODE_OF_CONDUCT.md
-    statement: The repository has no CODE_OF_CONDUCT.md, so there is no stated standard for behaviour of contributors.
-    status: open
-    rationale: The path does not exist at the pinned commit. The choice of a code is the operator's.
-    source: [absent:reebeat:CODE_OF_CONDUCT.md]
+    title: Conduct defaults come from reebeat/.github
+    statement: >-
+      The code of conduct comes from the organisation-level defaults in reebeat/.github, which this repository inherits. A
+      CODE_OF_CONDUCT.md in this repository would override them. This repository has none yet.
+    status: decided
+    source:
+      - log:90
+      - absent:reebeat:CODE_OF_CONDUCT.md
     gap:
-      repo: reebeat
-      fix: Adopt a standard code of conduct and add it as CODE_OF_CONDUCT.md.
+      repo: org
+      fix: Add CODE_OF_CONDUCT.md to the organisation defaults in reebeat/.github.
     links:
       hinders: [goal-org-open-compiler]
 
@@ -501,18 +506,17 @@ elements:
 
   - id: problem-reebeat-demand-unmeasured
     kind: problem
-    title: Demand for reebeat is not measured
+    title: Demand is measured with pilot users and a waitlist
     statement: >-
-      The README and the specs read for this model report no usage or uptake. The roadmap is not evidence of demand.
-    status: open
-    rationale: >-
-      Limited to the inspected documents: the README and the specs show no usage or uptake figure, and no wider inventory
-      was made. The organisation-level problem is the same; this one is the product-level view. The operator should decide
-      what to measure.
-    source: ["reebeat:README.md:1-50"]
+      Demand is measured with named pilot users and a waitlist, using one activation step: a story built end to end. The
+      README and the specs read for this model report no usage or uptake yet.
+    status: decided
+    source:
+      - "reebeat:README.md:1-50"
+      - log:92
     gap:
       repo: reebeat
-      fix: Decide a product-level signal, such as installs of the published packages, and record it.
+      fix: Recruit named pilot users, open a waitlist and record the activation step, a story built end to end.
     links:
       hinders: [goal-reebeat-vision]
 
@@ -587,75 +591,77 @@ elements:
 
   - id: problem-reebeat-extension-points-open
     kind: problem
-    title: Extension points beyond adapters are not defined
+    title: Extension points are staged under ADR-0000
     statement: >-
-      Plugins are supported, and the adapter seams are the proposed plugin API. New effect kinds, new importers and the
-      agent tool protocol are open, and no extension ADR exists.
-    status: open
-    rationale: >-
-      Open-core-boundary marks these open. Issue #19 says its spec follows an extension architecture ADR, which is not in
-      the pull request list.
+      The extension ADR-0000 is adopted in stages, decision by decision. Extension points that are still open are tagged
+      unstable until a second real engine has run the protocol. Adapter seams are the plugin API today; new effect kinds,
+      new importers and the agent tool protocol come through the ADR.
+    status: decided
     source:
       - reebeat:docs/design/open-core-boundary.md:24-25
       - issue:reebeat#19
+      - log:86
     refs: ["pr:reebeat#23"]
     gap:
       repo: reebeat
-      fix: Write the extension architecture ADR, including capability declarations and the agent tool protocol.
+      fix: Write ADR-0000 in stages, including capability declarations and the agent tool protocol, and tag open points unstable.
     links:
       hinders: [goal-reebeat-plugin-sdk, goal-reebeat-multi-renderer]
 
   - id: problem-reebeat-no-incremental-render
     kind: problem
-    title: Every edit rebuilds the render
+    title: The build engine is incremental, built in steps
     statement: >-
-      Speech assets are cached by content. An edit still rebuilds the whole timeline and the whole render, so an editor
-      cannot show fast previews.
-    status: open
-    rationale: "Issue #9 describes it. Release 1 caches speech only, and the build program has no render-segment cache."
+      The build reuses work with the decided incremental build engine, built in steps: a build library with tasks, a trace
+      store and early cutoff. Stages become tasks first and render segments later. Until then speech assets are cached by
+      content, and an edit still rebuilds the whole timeline and the whole render.
+    status: decided
     source:
       - issue:reebeat#9
+      - log:62
+      - log:88
       - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:78
       - reebeat:packages/pipeline/src/buildProgram.ts:5-7
+    gap:
+      repo: reebeat
+      fix: Build the incremental build engine in steps, with stages as tasks first and render segments later.
     refs: ["issue:reebeat#9"]
     links:
       hinders: [goal-reebeat-incremental-builds]
 
   - id: problem-reebeat-identity-scene-bounded
     kind: problem
-    title: Element identity stops at the Scene
+    title: Element ids are story-global; motion is adjacent first
     statement: >-
-      The operator decided that the same id is the same entity across Scenes. Release 1 matches ids only between two
-      consecutive Scenes joined by AUTO-ANIMATE.
-    status: open
-    rationale: >-
-      The log (log:23) and the glossary (GLOSSARY.md:20) disagree, and the log wins until the glossary is corrected. PR #17
-      says story-wide identity is deferred to the start of spec 0005.
+      Element ids are story-global: one id is one entity in the whole story, as a rule enforced by a lint. Until spec 0005,
+      motion runs only between adjacent Scenes. Release 1 matches ids only between two consecutive Scenes joined by
+      AUTO-ANIMATE.
+    status: decided
     source:
       - log:23
+      - log:83
       - reebeat:GLOSSARY.md:19-21
       - pr:reebeat#17
     gap:
       repo: reebeat
-      fix: Implement story-wide identity at the start of spec 0005 and update the glossary.
+      fix: Add the story-global id lint, change the glossary to story-wide identity now, and build non-adjacent motion in spec 0005.
     links:
       hinders: [goal-reebeat-statechart-model]
 
   - id: problem-reebeat-transition-lines-positional
     kind: problem
-    title: Transition lines still apply to the Scene below
+    title: Transition lines stay Fountain's, the IR is explicit
     statement: >-
-      `> AUTO-ANIMATE` and `> CUT` still apply to the Scene heading below them. That is positional, which spec 0002 set out
-      to remove.
-    status: open
-    rationale: >-
-      Spec 0002 records it as an operator-owned fork that is open. Making the transition a heading property is one option.
+      Fountain's own transition line stays, and the IR carries each Scene's incoming transition explicitly as a property.
+      The positional reading, where a transition line applies to the Scene below, lives in one adapter only.
+    status: decided
     source:
+      - log:84
       - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:203
       - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:11
     gap:
       repo: reebeat
-      fix: Ask the operator to pick, then make the transition a property of the Scene heading if chosen.
+      fix: Add each Scene's incoming transition as an explicit IR property, and keep the positional reading in the Fountain adapter only.
     links:
       hinders: [goal-reebeat-explicit-source]
 
@@ -709,18 +715,18 @@ elements:
 
   - id: problem-reebeat-dco-and-trademark-open
     kind: problem
-    title: DCO enforcement and a trademark policy are undecided
+    title: DCO is enforced now; the trademark policy waits
     statement: >-
-      A Developer Certificate of Origin sign-off is recommended and not enforced. A trademark policy waits for the final
-      name.
-    status: open
-    rationale: Open-core-boundary lists both as open.
+      DCO sign-off is enforced now: CI checks a Signed-off-by trailer on commits, including commits written by coding
+      agents. The trademark policy is written after the name is cleared. Commits that are already unsigned stay unsigned.
+    status: decided
     source:
+      - log:82
       - reebeat:docs/design/open-core-boundary.md:63
       - reebeat:docs/design/open-core-boundary.md:68
     gap:
       repo: reebeat
-      fix: Decide DCO enforcement now, and write the trademark policy after the name is final.
+      fix: Add a CI check for the Signed-off-by trailer, and write the trademark policy once the name is cleared.
     links:
       hinders: [goal-reebeat-apache-licence]
 
@@ -818,16 +824,16 @@ elements:
   - id: constraint-reebeat-working-name
     kind: constraint
     constraintType: organisational
-    title: The name reebeat is a working name
+    title: The name reebeat stays for now
     statement: >-
-      The name `reebeat` is provisional. The GitHub and npm organisations are reserved. A trademark policy waits for the
-      final name.
-    status: proposed
-    rationale: >-
-      Observed in the repository: the README and open-core-boundary.md call the name working, and design decision 9 names
-      it. The operator has not stated the decision on its own line, so confirm it.
+      The name `reebeat` stays the working name. The clearance check found no register hit for REEBEAT itself, but a
+      registered EU mark REBEAT and an active Norwegian registration FREEBEAT. The operator paused the first npm publish
+      until a Norwegian IP advisor has answered. If the advisor flags a conflict, the project renames before any package
+      exists. The GitHub and npm organisations are reserved, and a trademark policy follows once the name is cleared.
+    status: decided
     source:
-      - reebeat:docs/design/keyframe-engine.md:1111
+      - log:75
+      - log:113
       - reebeat:README.md:42
       - reebeat:docs/design/open-core-boundary.md:68
     links:
@@ -868,15 +874,14 @@ elements:
   - id: constraint-reebeat-local-tools
     kind: constraint
     constraintType: technical
-    title: A local build needs Chromium and ffmpeg
+    title: A local build needs Linux, Chromium and ffmpeg
     statement: >-
-      Release 1 builds on Linux inside devenv. Even with offline stand-ins for speech and alignment, a build still needs
-      Chromium and ffmpeg.
-    status: proposed
-    rationale: >-
-      Observed in the repository: the README and spec 0001 state this need. The operator has not decided a Linux and
-      devenv requirement, so confirm it.
+      A local build runs on Linux inside devenv only, for now. Even with offline stand-ins for speech and alignment, a
+      build still needs Chromium and ffmpeg. Others use their own Linux environment, and there is no macOS or Windows
+      support.
+    status: decided
     source:
+      - log:89
       - reebeat:README.md:12
       - reebeat:README.md:23
       - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:190
@@ -906,14 +911,12 @@ elements:
     kind: opportunity
     title: The identity diff derives motion
     statement: >-
-      When the same id appears in two Keyframes, the compiler derives enter, exit and update. Authors do not write the
-      motion by hand.
-    status: proposed
-    rationale: >-
-      The operator decided story-wide identity (log:23). Naming it an opportunity to replace hand-authored animation is
-      the model author's reading, so the operator should confirm it.
+      Element ids are story-global, so when the same id appears in two Keyframes the compiler derives enter, exit and
+      update. Authors do not write the motion by hand. Until spec 0005 the motion runs between adjacent Scenes.
+    status: decided
     source:
       - log:23
+      - log:83
       - reebeat:GLOSSARY.md:65-67
     canvas: [value-propositions]
     links:
@@ -923,15 +926,15 @@ elements:
     kind: opportunity
     title: One declaration, many surfaces
     statement: >-
-      One interaction declaration can generate an agent function signature, a web control, a visible-cursor action in a
-      Video and a Deck step. No one writes each surface by hand.
-    status: proposed
-    rationale: >-
-      Proposed in comments on issue #19. The log says an interaction is just another element that triggers events (log:38)
-      and is surfaced through functions, tool calling or website controls (log:38).
+      One interaction declaration generates an agent function signature, a web control, a visible-cursor action in a Video
+      and a Deck step. No one writes each surface by hand. An artifact that cannot realise a declared interaction fails at
+      plan time for that output. A flag may bypass the plan-time failure for a specific output, so the drift is silent but
+      explicit (a declared opt-out, never a default).
+    status: decided
     source:
       - issue:reebeat#19@6503203735
       - log:38
+      - log:87
     refs: ["issue:reebeat#19"]
     links:
       supports: [goal-reebeat-interactive-website, goal-reebeat-multi-renderer]
@@ -974,12 +977,10 @@ elements:
     kind: opportunity
     title: Lint in the compiler, fixes in the editor
     statement: >-
-      The lint can live in the open compiler, and guided fixes can be a paid feature of the editor.
-    status: proposed
-    rationale: >-
-      Issue #8 suggests it as a possible product tier. It applies the operator's rule that costly features are paid (log:43)
-      but the operator has not confirmed this split.
-    source: ["issue:reebeat#8", "log:43"]
+      The lint and its deterministic `--fix` are open and live in the compiler. Only hosted-AI guided fixes in the editor
+      are paid, because they cost inference money.
+    status: decided
+    source: ["issue:reebeat#8", "log:43", "log:91"]
     refs: ["issue:reebeat#8"]
     links:
       supports: [goal-reebeat-teaching-lint]

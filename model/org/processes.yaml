@@ -109,9 +109,10 @@ elements:
     title: Publish packages to npm
     statement: >-
       The compiler's libraries and services are to be published to npm as `@reebeat/*` pre-releases, so products and
-      plugin authors can depend on them.
+      plugin authors can depend on them. The first publish is paused until a Norwegian IP advisor has given an opinion
+      on the name; nothing is published before that.
     status: decided
-    source: [log:49]
+    source: [log:49, log:113]
     refs: ["pr:reebeat#18"]
     links:
       serves: [goal-org-open-compiler, goal-org-modular-extensible]
@@ -122,10 +123,9 @@ elements:
     category: supporting
     title: A free user becomes a paying user
     statement: >-
-      No process, price, tier list or billing exists yet for moving a user from the free tier to a paid feature.
-    status: open
-    rationale: >-
-      The decision log fixes the principle (free for local, paid for what costs money to run) but no price or flow.
-      The open-core boundary says price and tiers belong to the closed products' repositories, and none of them has them yet.
-    source: [log:43, reebeat:docs/design/open-core-boundary.md:69]
+      A free user becomes a paying user only after demand is validated: the project publishes the roadmap, collects a
+      waitlist for the sync server and hosted agents, interviews prospective creators and sets a threshold. Tiers are
+      designed after that, and no pricing or billing code is written before the threshold is met.
+    status: decided
+    source: [log:79, log:43, reebeat:docs/design/open-core-boundary.md:69]
     canvas: [customer-relationships, revenue-streams]

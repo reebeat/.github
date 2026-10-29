@@ -22,20 +22,16 @@ elements:
     tier: library
     title: packages/flow (the library)
     statement: >-
-      The reusable library, named `foldkit-flow`: the graph Model, update, view and Mounts, with peers on Effect and
-      Foldkit.
-    status: proposed
+      The reusable library, published as `@reebeat/flow` (pre-releases under the reebeat npm org; the repository stays
+      `foldkit-flow`): the graph Model, update, view and Mounts, with peers on Effect and Foldkit. If Foldkit adopts it,
+      the project publishes `@foldkit/flow` and deprecates `@reebeat/flow`.
+    status: decided
     source:
-      - foldkit-flow:AGENTS.md:3
+      - log:105
       - foldkit-flow:AGENTS.md:25
       - foldkit-flow:README.md:5
-      - foldkit-flow:packages/flow/package.json:2-6
       - foldkit-flow:packages/flow/src/index.ts:1-39
-    rationale: >-
-      The library holds the Flow Submodel, its view and the Mounts that own the xyflow controllers (README line 5;
-      exports in index.ts lines 1 to 39). The free price mark is inferred from the MIT licence (log line 48); no
-      pricing decision is recorded. The operator must confirm the content and the free mark.
-    package: foldkit-flow
+    package: "@reebeat/flow"
     repo: foldkit-flow
     licence: MIT
     pricing: free
@@ -164,12 +160,12 @@ elements:
     title: Attribution option and view
     statement: >-
       The Attribution type (Visible or Hidden, Visible by default) and the view that draws the "Built with xyflow" link.
-    status: proposed
+      An application may set it to Hidden.
+    status: decided
     source:
+      - log:106
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:53
       - foldkit-flow:packages/flow/src/attribution.ts:15-38
-    rationale: >-
-      The scaffold at the pin implements it, but no operator line decides the behaviour. The operator must confirm it.
     links:
       part-of: [comp-flow-library]
       realizes: [req-flow-attribution-toggle]
@@ -180,16 +176,13 @@ elements:
     title: Flow Submodel (Model, update, view)
     statement: >-
       The pure part of the library: the graph Model, Messages, update, and view, exposed through `defineFlow`, `init`,
-      `update` and `view`.
-    status: proposed
+      `update` and `view`. It reports outcomes as out-messages, and the application applies the graph changes.
+    status: decided
     source:
+      - log:109
       - foldkit-flow:packages/flow/src/flow.ts:14-24
       - foldkit-flow:packages/flow/src/index.ts:1-39
       - foldkit-flow:packages/flow/src/model.ts:14-61
-    rationale: >-
-      `defineFlow` returns the pure `update` and the `view` (flow.ts lines 14 to 24), and index.ts lines 1 to 39 export
-      `init`, `Model`, `Message` and `OutMessage`. The operator must confirm the API (defineFlow, init, update, view);
-      it may still change before the offer to Foldkit.
     refs: [pr:foldkit-flow#4]
     links:
       part-of: [comp-flow-library]
@@ -225,13 +218,13 @@ elements:
     kind: is-goal
     title: The graph lives in the app's Model
     statement: >-
-      The graph state sits in the application's Model and changes only in update. Controllers report through Messages.
-    status: proposed
+      The graph state sits in the application's Model and changes only in update. Controllers report through Messages,
+      and the library reports outcomes that the application applies.
+    status: decided
     source:
+      - log:109
       - pr:foldkit-flow#4
       - foldkit-flow:AGENTS.md:63
-    rationale: >-
-      Spec 0001 names the Elm architecture as the boundary. The operator must confirm it.
     links:
       supports: [goal-flow-generic-library, goal-flow-first-journey]
 
@@ -239,14 +232,14 @@ elements:
     kind: is-goal
     title: Reuse xyflow's controllers
     statement: >-
-      Pan and zoom, drag, handle connection and the minimap come from xyflow's controllers, not from new code.
-    status: proposed
+      Pan and zoom, drag, handle connection and the minimap come from xyflow's controllers in `@xyflow/system`, not
+      from new code. The package is pinned exactly and bumped on purpose, and the controllers are injected, so a bump
+      touches one seam.
+    status: decided
     source:
+      - log:107
       - foldkit-flow:README.md:86
       - foldkit-flow:packages/flow/src/xyflow.ts:7-20
-    rationale: >-
-      The README names the dependency (line 86), and xyflow.ts lines 7 to 20 show the four controllers the library
-      calls. No operator line chooses it. The operator must confirm.
     links:
       supports: [goal-flow-first-journey]
 
@@ -471,19 +464,15 @@ elements:
     reqType: functional
     title: The app draws node content
     statement: >-
-      Nodes render through one callback that the application supplies. Handles are declared on the node. Edges come in
-      three kinds with an optional arrow.
-    status: proposed
+      The application draws node content, as it owns the graph and the layout. Nodes render through one callback that
+      the application supplies. Handles are declared on the node. Edges come in three kinds with an optional arrow.
+    status: decided
     source:
+      - log:109
       - foldkit-flow:README.md:56-63
       - foldkit-flow:packages/flow/src/view.ts:45-54
       - foldkit-flow:packages/flow/src/types.ts:33-38
       - foldkit-flow:docs/specs/0001-first-felt-journey.md:30-33
-    rationale: >-
-      Built: the application supplies one `renderNode` callback (README lines 56 to 63; view.ts lines 45 to 54),
-      handles are declared on the node (types.ts lines 33 to 38), and edges have three kinds with an optional arrow
-      (types.ts lines 63 to 77). Spec 0001 lists these as the public API (lines 30 to 33). The operator must confirm
-      the API.
     refs: [pr:foldkit-flow#4]
     links:
       serves: [goal-flow-generic-library]
@@ -493,14 +482,13 @@ elements:
     reqType: functional
     title: Show the xyflow credit by default, allow hiding
     statement: >-
-      The "Built with xyflow" link shows unless the application sets Attribution to Hidden.
-    status: proposed
+      The "Built with xyflow" link shows by default. It hides only when the application sets Attribution to Hidden.
+    status: decided
     source:
+      - log:106
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:53
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:90
       - foldkit-flow:README.md:86
-    rationale: >-
-      Spec 0000 builds and tests it (falsifier F14). No operator line decides it. The operator must confirm.
     links:
       serves: [goal-flow-respect-xyflow]
 
@@ -559,19 +547,17 @@ elements:
     title: Keyboard-only use with announcements
     statement: >-
       Selecting, moving, deleting and clearing nodes works with the keyboard alone, and results are announced to
-      assistive technology. Creating or reconnecting a connection, and using the minimap, are not specified.
+      assistive technology. Creating a connection by keyboard is a documented gap in 0.x, and 1.0 waits for it.
+      Reconnecting an edge and using the minimap by keyboard are not specified.
     scenario: >-
       A keyboard-only user presses Tab to reach a node, Enter to select it, an arrow key to move it by 10, Shift and an
       arrow to move it by 40, Escape to clear, Enter again and Delete to remove it. The canvas has role application, each
       node has role group and a name, and a polite live region says what happened.
-    status: proposed
+    status: decided
     source:
+      - log:110
       - foldkit-flow:README.md:74-78
       - foldkit-flow:docs/specs/0001-first-felt-journey.md:87
-    rationale: >-
-      The steps are in README lines 74 to 78 and spec 0001 falsifier J5 (line 87). Creating a connection by keyboard is
-      not built (README line 78). The README does not say that reconnecting an edge or using the minimap works by
-      keyboard, so those stay open. The operator must confirm the target.
     refs: [pr:foldkit-flow#4]
     canvas: [value-propositions]
     links:
@@ -672,18 +658,18 @@ elements:
     quality: licensing
     title: MIT library, xyflow credited, no copyleft dependency
     statement: >-
-      The library is MIT licensed with xyflow's notice kept. It does not depend on ELK.js or another copyleft package.
+      The library is MIT licensed with xyflow's notice kept. No package under `packages/` depends on ELK.js or another
+      copyleft package. The project adds a licence scan of the published dependencies to check it. A private example may
+      use ELK.js.
     scenario: >-
-      A reader opens LICENSE, NOTICE and packages/flow/package.json. They find MIT, the xyflow copyright and licence, and
-      no EPL or GPL dependency.
-    status: proposed
+      A reader opens LICENSE, NOTICE and packages/flow/package.json. They find MIT and the xyflow copyright and licence.
+      The licence scan of the published dependencies lists no EPL or GPL licence and fails if one appears.
+    status: decided
     source:
+      - log:111
       - foldkit-flow:LICENSE:1-3
       - foldkit-flow:NOTICE:4-17
       - foldkit-flow:AGENTS.md:31
-    rationale: >-
-      The files show the state at the pin. No gate scans licences. The operator must confirm and may add a licence check
-      before publishing.
     links:
       serves: [goal-flow-respect-xyflow]
 

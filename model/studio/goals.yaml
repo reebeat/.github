@@ -5,10 +5,10 @@ elements:
     title: A collaborative editor for reebeat stories
     tagline: The collaborative editor for reebeat stories
     statement: >-
-      reebeat studio is a collaborative editor for reebeat stories, a product built on the open compiler. Its licence is not
-      decided.
+      reebeat studio is a collaborative editor for reebeat stories, a product built on the open compiler. It is proprietary,
+      all rights reserved.
     status: decided
-    source: [log:43, log:45, studio:README.md:3]
+    source: [log:43, log:45, log:95, studio:README.md:3]
     links:
       subgoal-of: [goal-org-product-family]
     canvas: [value-propositions]
@@ -132,8 +132,8 @@ elements:
     kind: goal
     title: The free journey needs no server or account
     statement: >-
-      The first journey works offline, with no account. The story lives in a file and the preview runs in the user's
-      browser.
+      The first journey works offline, with no account. The story lives in the browser's private storage, with import and
+      export of IR JSON, and the preview runs in the user's browser.
     status: proposed
     rationale: >-
       Spec 0001 proposes falsifier F8 (no network) and the free rule says the free tier costs the project nothing. The operator log
@@ -146,14 +146,11 @@ elements:
     kind: goal
     title: The preview shows what the Video will show
     statement: >-
-      The in-browser Deck preview matches the Video frame for the frames the falsifier checks, on the same Chromium build. If
-      it does not, the difference is named, not assumed away.
-    status: proposed
-    rationale: >-
-      Spec 0001 proposes the hybrid preview (option C) and makes equality falsifier F2. The spec lists this choice among
-      the operator's open questions, so the operator must confirm it.
-      The operator should confirm the fidelity criterion.
-    source: [studio:docs/specs/0001-first-felt-journey.md:59, studio:docs/specs/0001-first-felt-journey.md:132, studio:docs/specs/0001-first-felt-journey.md:160]
+      The in-browser preview is the Deck in an iframe. It matches the Video frame byte for byte for the frames gate F2
+      checks, on the same Chromium build. Other browsers may differ, and if F2 fails the differences are named in the spec,
+      not assumed away.
+    status: decided
+    source: [studio:docs/specs/0001-first-felt-journey.md:59, studio:docs/specs/0001-first-felt-journey.md:132, studio:docs/specs/0001-first-felt-journey.md:160, log:97]
     links:
       subgoal-of: [goal-studio-first-felt-journey]
       supports: [goal-org-reproducible-builds]
@@ -163,14 +160,9 @@ elements:
     title: People decide on what agents and others suggest
     statement: >-
       An edit suggested by an agent or a collaborator waits for a person to accept or reject it. Studio keeps who proposed
-      it and who accepted it.
-    status: proposed
-    rationale: >-
-      The operator decided that a repair is offered as a proposal and never applied without a person (spec 0002 line 198).
-      The lenses note extends this to all suggestions (Review lens). That wider goal is the lens design, not a recorded
-      decision.
-      The operator should confirm the wider goal for all suggestions.
-    source: [studio:docs/design/lenses.md:67, record:studio:docs/specs/0002-collaboration-spike.md:198]
+      it and who accepted it. The suggest preset of an agent's action set gives this limit.
+    status: decided
+    source: [studio:docs/design/lenses.md:67, record:studio:docs/specs/0002-collaboration-spike.md:198, log:99]
     links:
       subgoal-of: [goal-studio-people-and-agents]
 
@@ -295,13 +287,10 @@ elements:
     kind: goal
     title: Agent panel in every lens
     statement: >-
-      Each lens has an agent panel. A person brings their own agent or uses a hosted one, and sets a read, suggest or apply
-      scope per agent and per lens.
-    status: proposed
-    rationale: >-
-      The operator decided on bring-your-own and hosted agents (log lines 43 and 45). The panel and its scopes are the
-      lenses note's design. The operator must confirm the scopes.
-    source: [studio:docs/design/lenses.md:30, studio:docs/design/lenses.md:89-99]
+      Each lens has an agent panel. A person brings their own agent or uses a hosted one, and sets what it may do as an
+      action set on resources. Read, suggest and apply are named presets, and each lens has a default preset.
+    status: decided
+    source: [studio:docs/design/lenses.md:30, studio:docs/design/lenses.md:89-99, log:99]
     links:
       subgoal-of: [goal-studio-lenses, goal-studio-people-and-agents]
 
@@ -310,16 +299,13 @@ elements:
     kind: problem
     title: Studio has no LICENSE file
     statement: >-
-      At the pinned commit, the repository is public but has no licence file. Studio's own material is not licensed for
-      reuse, because the operator has not decided a licence. Third-party code keeps its own licence.
-    status: open
-    rationale: >-
-      The README and AGENTS.md say the licence is undecided on purpose. The operator must choose a licence, or keep the
-      product closed, before distribution.
-    source: [absent:studio:LICENSE, studio:README.md:27, studio:AGENTS.md:64, log:45]
+      Studio is proprietary, all rights reserved, with a LICENSE file and third-party notices. At the pinned commit the
+      repository is public but has no licence file, so the file and the notices are still to be added.
+    status: decided
+    source: [absent:studio:LICENSE, studio:README.md:27, studio:AGENTS.md:64, log:45, log:95]
     gap:
       repo: studio
-      fix: The operator decides the licence and adds a LICENSE file.
+      fix: Add a LICENSE file (proprietary, all rights reserved), third-party notices and terms for binary users, and update the README and AGENTS.md that still say the licence is undecided.
     links:
       hinders: [goal-studio-web-and-binary]
 
@@ -456,16 +442,14 @@ elements:
     kind: problem
     title: The Durable Object room is unmeasured at the edge
     statement: >-
-      The room ran only on local workerd, without the validation gate. Nobody measured the real Cloudflare edge, load, many
-      sockets, or the gate's bundle size and cold start.
-    status: open
-    rationale: >-
-      Spec 0002 lists these under Not measured and says the gate was only simulated in Bun.
-      The operator should confirm whether an edge measurement must come before the sync server is built.
-    source: [studio:docs/specs/0002-collaboration-spike.md:28, studio:docs/specs/0002-collaboration-spike.md:66, studio:docs/specs/0002-collaboration-spike.md:208, studio:docs/specs/0002-collaboration-spike.md:214-215]
+      A small measured spike on the real Cloudflare edge comes first. It runs the gate inside a Durable Object and measures
+      bundle size, cold start, sockets and cost per story-hour, and the sync spec follows the numbers. So far the room ran
+      only on local workerd, without the gate.
+    status: decided
+    source: [studio:docs/specs/0002-collaboration-spike.md:28, studio:docs/specs/0002-collaboration-spike.md:66, studio:docs/specs/0002-collaboration-spike.md:208, studio:docs/specs/0002-collaboration-spike.md:214-215, log:101]
     gap:
       repo: studio
-      fix: Run the room with the gate on the Cloudflare edge and measure size, cold start, load and sockets.
+      fix: Run the spike with the gate in a Durable Object on the Cloudflare edge, measure size, cold start, sockets and cost per story-hour, then write the sync spec.
     links:
       hinders: [goal-studio-valid-shared-story]
 
@@ -490,16 +474,14 @@ elements:
     kind: problem
     title: ffmpeg with libx264 is GPL
     statement: >-
-      A studio binary that bundles ffmpeg with libx264 would carry GPL terms. The operator wants this reviewed before any
-      such binary is distributed.
-    status: open
-    rationale: >-
-      The log notes it for later (reebeat issue 7). PR 6 says its binary does not bundle ffmpeg and that export will use
-      WebCodecs, so the risk is latent. The operator must decide before the first binary that bundles ffmpeg.
-    source: [log:50, issue:reebeat#7, pr:studio#6]
+      Studio keeps libx264 and never bundles ffmpeg. The user's own ffmpeg or devenv supplies it, as now, and a hosted
+      service does not distribute it. This holds for now; in future multiple encoders sit behind an adapter. If a product
+      ever bundles ffmpeg, it complies with the GPL for that binary.
+    status: decided
+    source: [log:78, log:50, issue:reebeat#7, pr:studio#6]
     gap:
       repo: studio
-      fix: Review the licence terms before any studio binary bundles ffmpeg; today the binary does not.
+      fix: Keep ffmpeg out of every studio binary, as the binary does today; add an encoder adapter when a second encoder is wanted, and meet the GPL for any binary that bundles ffmpeg.
     links:
       hinders: [goal-studio-web-and-binary]
 
@@ -540,15 +522,15 @@ elements:
 
   - id: problem-studio-merge-semantics-open
     kind: problem
-    title: Merge rule for positions and curve points is open
+    title: Composite values merge atomically
     statement: >-
-      Two people can move one Element along different axes. A property-wise merge gives a position nobody chose. An atomic
-      merge keeps one whole position. The operator has not chosen.
-    status: open
-    rationale: >-
-      Spec 0002 lists this as its one open question, with cases a2, e3 and a3.
-      The operator should choose a property-wise or an atomic merge.
-    source: [studio:docs/specs/0002-collaboration-spike.md:100-101, studio:docs/specs/0002-collaboration-spike.md:229]
+      Composite values, a position and a curve point, merge atomically: the schema declares them atomic, and a whole value
+      wins or loses together. The other properties merge property-wise. One concurrent edit of a single axis can be lost.
+    status: decided
+    source: [studio:docs/specs/0002-collaboration-spike.md:100-101, studio:docs/specs/0002-collaboration-spike.md:229, log:100]
+    gap:
+      repo: studio
+      fix: Declare position and curve point atomic in the keyed document's schema, keep the annotation in the stored shape and record the choice in spec 0002.
     links:
       hinders: [goal-studio-collaboration]
 
@@ -600,14 +582,11 @@ elements:
     kind: problem
     title: The preview may differ from the Video
     statement: >-
-      The in-browser preview could differ from the rendered Video where audio or the browser build differ. Spec 0001 answers
-      this with a falsifier, not trust.
-    status: proposed
-    rationale: >-
-      Spec 0001 states the risk of its proposed option C. Nobody has run the check, and the browser compile path does not
-      exist yet.
-      The operator should confirm the preview approach and its fidelity criterion.
-    source: [studio:docs/specs/0001-first-felt-journey.md:53, studio:docs/specs/0001-first-felt-journey.md:59]
+      The in-browser preview could differ from the rendered Video where audio or the browser build differ. The decision is a
+      hybrid: the Deck in an iframe, gated by byte-equal frames (F2) on the same Chromium build. Other browsers may differ,
+      and if F2 fails the differences become part of the spec.
+    status: decided
+    source: [studio:docs/specs/0001-first-felt-journey.md:53, studio:docs/specs/0001-first-felt-journey.md:59, log:97]
     links:
       hinders: [goal-studio-preview-fidelity]
 
@@ -615,12 +594,12 @@ elements:
   - id: constraint-studio-licence-undecided
     kind: constraint
     constraintType: legal
-    title: Public repository, all rights reserved, licence undecided
+    title: Public repository, all rights reserved
     statement: >-
-      The studio licence is not decided. The README carries a copyright notice that reserves all rights, and no licence file
-      is present on purpose.
+      Studio is proprietary, all rights reserved. The repository is public, but nothing in it is licensed for reuse, and
+      third-party code keeps its own licence.
     status: decided
-    source: [record:studio:docs/specs/0000-development-lifecycle.md:126, log:45]
+    source: [log:95, log:45]
     links:
       constrains: [comp-studio-product]
 
@@ -765,13 +744,10 @@ elements:
     kind: opportunity
     title: The Deck preview can be the Video's own page
     statement: >-
-      If a preview frame equals the Video frame, the free in-browser preview is not an approximation. It is the page the
-      renderer photographs.
-    status: proposed
-    rationale: >-
-      Spec 0001 states this as the payoff of falsifier F2, which has not been run.
-      The operator should confirm the preview approach and its fidelity conditions.
-    source: [studio:docs/specs/0001-first-felt-journey.md:59, studio:docs/specs/0001-first-felt-journey.md:132]
+      The preview is the Deck in an iframe, and gate F2 checks its frames against the Video. Where the gate passes, the free
+      in-browser preview is not an approximation. It is the page the renderer photographs.
+    status: decided
+    source: [studio:docs/specs/0001-first-felt-journey.md:59, studio:docs/specs/0001-first-felt-journey.md:132, log:97]
     links:
       supports: [goal-studio-preview-fidelity]
 
