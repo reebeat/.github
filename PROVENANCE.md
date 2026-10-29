@@ -9,6 +9,7 @@ The development lifecycle is copied from [`reebeat/studio`](https://github.com/r
 | `.vite-hooks/pre-commit`, `commit-msg`, `pre-push` | same paths | identical |
 | `commitlint.config.ts`, `devenv.yaml`, `devenv.lock`, `devenv.nix`, `.gitignore` | same paths | identical (checked with `git hash-object`) |
 | `.jscpd.json`, `.gitleaks.toml`, `tsconfig.json` | same paths | `.jscpd.json`: the `tools/oxlint/anti-slop` ignore entry removed; `.gitleaks.toml`: the title names this repository; `tsconfig.json`: `include` lists this repository's files |
+| `knip.json` | same path | rewritten: the `tools/oxlint/anti-slop` ignore, the `apps/editor` and `tools/quality` workspaces are replaced by the `tools/intent` workspace; `gitleaks` stays in `ignoreBinaries`; `vite` and `@effect/language-service` are in `ignoreDependencies` (vite is a peer of the test runner and is not imported) |
 | `.agents/skills/review-pr/merge.sh`, `record-round.sh` | same paths | identical |
 | `.agents/skills/review-pr/SKILL.md`, `reviewers.md` | same paths | rewritten for this repository: no browser, no Foldkit, no verify skill; reviewers sample the model's sources |
 | `.agents/skills/pr-create/SKILL.md` | same path | the `verify-studio` parts removed; the description names this repository |

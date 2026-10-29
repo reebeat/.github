@@ -10,7 +10,7 @@ import { withChange } from "./fixture.ts";
 import { makeGitRepo } from "./gitRepo.ts";
 
 const document =
-  "Status: plan\nDecided 2026-10-29: the operator chose A.\nJust a description.\n";
+  "Status: plan\nDecided 2026-10-29: the operator chose A.\nJust a description.\n\nTail.\n";
 
 const makeRepo = makeGitRepo("reebeat", { "doc.md": document });
 
@@ -75,6 +75,26 @@ describe("verifySources", () => {
 
       assert.lengthOf(found, 1);
       assert.include(found[0], "beyond");
+    })
+  );
+
+  it.effect("accepts the last line and rejects the line one past it", () =>
+    Effect.gen(function* boundary() {
+      assert.deepStrictEqual(yield* problemsFor("reebeat:doc.md:5"), []);
+
+      const found = yield* problemsFor("reebeat:doc.md:6");
+
+      assert.lengthOf(found, 1);
+      assert.include(found[0], "beyond the 5 lines");
+    })
+  );
+
+  it.effect("rejects a range that cites only blank lines", () =>
+    Effect.gen(function* blank() {
+      const found = yield* problemsFor("reebeat:doc.md:4");
+
+      assert.lengthOf(found, 1);
+      assert.include(found[0], "only blank lines");
     })
   );
 

@@ -229,7 +229,7 @@ elements:
       - pr:foldkit-flow#4
     rationale: >-
       At the pin, main held only the scaffold and the attribution. PR #4 has since merged (see the tracker), so this was
-      a gap at the pin and its fix has been made; I dropped the gap field for that reason. The merged state is not
+      a gap at the pin and its fix has been made; the gap field is therefore dropped. The merged state is not
       checked line by line here. The operator must confirm that the merged canvas is the intended first release.
     refs: [pr:foldkit-flow#4]
     links:
@@ -379,8 +379,8 @@ elements:
       - foldkit-flow:README.md:5
       - foldkit-flow:packages/flow/package.json:4
     rationale: >-
-      The library exists because the operator wants it (log line 48). I found no evidence of other users in the cited
-      sources and did not search every place a measure could live. The organisation has the same gap. The operator must
+      The library exists because the operator wants it (log line 48). The cited sources hold no evidence of other users,
+      and not every place a measure could live was searched. The organisation has the same gap. The operator must
       decide what evidence of demand would count.
     gap:
       repo: foldkit-flow

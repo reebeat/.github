@@ -2,6 +2,8 @@
 
 # Declarative multimedia: accessible, reproducible, rebuilt as you edit.
 
+*We take care of building; you focus on creating.*
+
 People make multimedia by declaring its narrative and structure. reebeat builds the artifacts, so they stay accessible and reproducible and are rebuilt as the author edits.
 
 **In one line:** You declare the story's beats and what they mean; reebeat derives motion, timing and every artifact, reproducibly, rebuilding only what an edit changes.

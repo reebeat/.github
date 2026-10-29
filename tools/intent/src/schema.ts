@@ -36,6 +36,7 @@ const baseFields = {
 const Goal = Schema.Struct({
   ...baseFields,
   elevator: Schema.optionalKey(Text),
+  intentLine: Schema.optionalKey(Text),
   jtbd: Schema.optionalKey(
     Schema.Struct({
       persona: Id,

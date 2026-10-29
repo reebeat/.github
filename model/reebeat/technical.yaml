@@ -38,7 +38,7 @@ elements:
     status: proposed
     rationale: >-
       Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
-      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is my reading of
+      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
       log:62, so confirm them.
     source:
       - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:238
@@ -63,7 +63,7 @@ elements:
     status: proposed
     rationale: >-
       Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
-      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is my reading of
+      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
       log:62, so confirm them.
     source:
       - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:239
@@ -87,7 +87,7 @@ elements:
     status: proposed
     rationale: >-
       Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
-      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is my reading of
+      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
       log:62, so confirm them.
     source:
       - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:240
@@ -112,7 +112,7 @@ elements:
     status: proposed
     rationale: >-
       Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
-      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is my reading of
+      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
       log:62, so confirm them.
     source:
       - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:241
@@ -143,7 +143,7 @@ elements:
     status: proposed
     rationale: >-
       Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
-      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is my reading of
+      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
       log:62, so confirm them.
     source:
       - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:242
@@ -167,7 +167,7 @@ elements:
     status: proposed
     rationale: >-
       Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
-      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is my reading of
+      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
       log:62, so confirm them.
     source:
       - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:243
@@ -191,7 +191,7 @@ elements:
     status: proposed
     rationale: >-
       Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
-      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is my reading of
+      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
       log:62, so confirm them.
     source:
       - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:244
@@ -220,7 +220,7 @@ elements:
     status: proposed
     rationale: >-
       Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
-      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is my reading of
+      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
       log:62, so confirm them.
     source:
       - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:245
@@ -244,7 +244,7 @@ elements:
     status: proposed
     rationale: >-
       Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
-      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is my reading of
+      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
       log:62, so confirm them.
     source:
       - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:246
@@ -274,7 +274,7 @@ elements:
     status: proposed
     rationale: >-
       Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
-      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is my reading of
+      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
       log:62, so confirm them.
     source:
       - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:247
@@ -302,7 +302,7 @@ elements:
     status: proposed
     rationale: >-
       Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
-      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is my reading of
+      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
       log:62, so confirm them.
     source:
       - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:248
@@ -327,7 +327,7 @@ elements:
     rationale: >-
       Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
       that the cache is content-addressed (spec 0001 line 234), not this adapter, its free mark or its layer. The layer is
-      my reading of log:62, so confirm them.
+      inferred from log:62, so confirm them.
     source:
       - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:249
       - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:260
@@ -351,7 +351,7 @@ elements:
     status: proposed
     rationale: >-
       Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
-      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is my reading of
+      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
       log:62, so confirm them.
     source:
       - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:250
@@ -384,7 +384,7 @@ elements:
     status: proposed
     rationale: >-
       Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
-      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is my reading of
+      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
       log:62, so confirm them.
     source:
       - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:251

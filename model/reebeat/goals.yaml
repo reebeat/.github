@@ -705,7 +705,7 @@ elements:
     status: open
     rationale: >-
       The audit states the limit itself. A package can declare a licence wrongly, so assurance is partial.
-    source: ["reebeat:docs/design/third-party.md:92"]
+    source: ["reebeat:docs/design/third-party.md:93"]
     gap:
       repo: reebeat
       fix: Read licence files inside packages for those that bundle components.

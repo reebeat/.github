@@ -89,7 +89,7 @@ const verifyOne = Effect.fn("verifyOne")(function* verifyOne(
     ];
   }
 
-  const lines = Str.split(content.value, "\n");
+  const lines = Str.split(Str.replace(/\n$/u, "")(content.value), "\n");
 
   if (source.to > lines.length) {
     return [
@@ -104,6 +104,15 @@ const verifyOne = Effect.fn("verifyOne")(function* verifyOne(
     Arr.take(Arr.drop(lines, source.from - 1), source.to - source.from + 1),
     "\n"
   );
+
+  if (Str.isEmpty(Str.trim(fullText))) {
+    return [
+      {
+        id,
+        message: `${source.repo}:${source.path}:${source.from}-${source.to} cites only blank lines`,
+      },
+    ];
+  }
 
   const cited = Arr.join(
     Arr.map(Str.split(fullText, "\n"), (line) => Str.slice(0, 200)(line)),

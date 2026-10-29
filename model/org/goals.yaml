@@ -6,6 +6,7 @@ elements:
       People make multimedia by declaring its narrative and structure. reebeat builds the artifacts, so they stay
       accessible and reproducible and are rebuilt as the author edits.
     tagline: "Declarative multimedia: accessible, reproducible, rebuilt as you edit."
+    intentLine: "We take care of building; you focus on creating."
     technicalLine: >-
       Semantically declared story beats, compiled into multimedia artifacts: statecharts for structure, functional
       reactive time, and an incremental build graph, written in Effect.

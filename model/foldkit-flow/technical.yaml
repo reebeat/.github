@@ -159,7 +159,7 @@ elements:
     status: proposed
     source:
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:53
-      - foldkit-flow:packages/flow/src/attribution.ts:15-39
+      - foldkit-flow:packages/flow/src/attribution.ts:15-38
     rationale: >-
       The scaffold at the pin implements it, but no operator line decides the behaviour. The operator must confirm it.
     links:

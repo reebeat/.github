@@ -80,6 +80,8 @@ export const renderProfile = (model: Model): string => {
             [
               `# ${goal.tagline ?? goal.title}`,
               "",
+              goal.intentLine === undefined ? "" : `*${goal.intentLine}*`,
+              "",
               oneLine(goal.statement),
               "",
               goal.elevator === undefined
