@@ -1,0 +1,1 @@
+3b339f6036a6665ec5504747d1da134bec9e13b4235e31390d7bc483babb7bc2  sources/operator-decisions-2026-10.md

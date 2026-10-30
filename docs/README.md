@@ -22,7 +22,7 @@ The reasons behind the tsukuri products, modelled with the 4EM method and genera
 
 | Sub-model | The organisation | tsukuri (the compiler) | tsukuri studio | foldkit-flow | decided | proposed | open |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| [Goals Model](goals.md) | 28 | 60 | 53 | 37 | 95 | 43 | 40 |
+| [Goals Model](goals.md) | 29 | 60 | 53 | 37 | 96 | 43 | 40 |
 | [Business Rules Model](business-rules.md) | 13 | 33 | 24 | 17 | 34 | 53 | 0 |
 | [Concepts Model](concepts.md) | 9 | 31 | 19 | 14 | 45 | 28 | 0 |
 | [Business Process Model](business-processes.md) | 9 | 22 | 19 | 16 | 14 | 49 | 3 |
@@ -33,7 +33,7 @@ The reasons behind the tsukuri products, modelled with the 4EM method and genera
 
 | Scope | Elements | decided | proposed | open |
 | --- | --- | --- | --- | --- |
-| The organisation | 89 | 59 | 29 | 1 |
+| The organisation | 90 | 60 | 29 | 1 |
 | [tsukuri (the compiler)](products/tsukuri.md) | 233 | 82 | 135 | 16 |
 | [tsukuri studio](products/studio.md) | 199 | 78 | 107 | 14 |
 | [foldkit-flow](products/foldkit-flow.md) | 137 | 47 | 75 | 15 |
@@ -44,7 +44,7 @@ The reasons behind the tsukuri products, modelled with the 4EM method and genera
 | --- | --- | --- | --- | --- |
 | Goal | Goals Model | 48 | 17 | 1 |
 | Problem | Goals Model | 24 | 6 | 37 |
-| Constraint | Goals Model | 15 | 11 | 2 |
+| Constraint | Goals Model | 16 | 11 | 2 |
 | Opportunity | Goals Model | 8 | 9 | 0 |
 | Business rule | Business Rules Model | 34 | 53 | 0 |
 | Concept | Concepts Model | 45 | 28 | 0 |
@@ -70,7 +70,7 @@ The reasons behind the tsukuri products, modelled with the 4EM method and genera
 | goals -> actors | 3 | constrains |
 | goals -> processes | 4 | constrains, hinders |
 | goals -> rules | 1 | motivates |
-| goals -> technical | 35 | constrains, hinders |
+| goals -> technical | 36 | constrains, hinders |
 | processes -> actors | 16 | produces, uses |
 | processes -> concepts | 38 | produces, uses |
 | processes -> goals | 67 | requires, serves |

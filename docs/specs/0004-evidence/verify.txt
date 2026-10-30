@@ -1,0 +1,10 @@
+== F1: the log copy is the operator's file
+identical: 123 lines, sha256 3b339f6036a6665ec5504747d1da134bec9e13b4235e31390d7bc483babb7bc2
+== F2: statuses against origin/main
+[05:06:44.884] INFO (#2): against origin/main: 0 status changes, 1 added, 0 removed
+[05:06:44.887] INFO (#2): added: constraint-org-final-name
+== F4: statements that still say paused
+model/org/goals.yaml:244:      operator paused the first npm publish for a Norwegian IP advisor's opinion (line 113), then named Tsukuri the
+model/tsukuri/goals.yaml:835:      REBEAT and an active Norwegian registration FREEBEAT. The operator paused the first npm publish for a Norwegian IP
+== F5: the pins
+0

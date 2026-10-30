@@ -171,15 +171,16 @@ elements:
     kind: goal
     title: Publish the package for others to use
     statement: >-
-      Once the name is cleared (the first npm publish is paused, log line 113), the project publishes pre-releases of the
-      library as `@tsukuri/flow` under the tsukuri npm organisation, so other applications can install it. The repository
-      stays `foldkit-flow`. If Foldkit adopts the library, the project publishes `@foldkit/flow` and deprecates
+      The project publishes pre-releases of the library as `@tsukuri/flow` under the tsukuri npm organisation, so other
+      applications can install it; on 2026-10-30 the operator decided not to wait for the Norwegian IP advisor (log line
+      118). The repository stays `foldkit-flow`. If Foldkit adopts the library, the project publishes `@foldkit/flow` and deprecates
       `@tsukuri/flow`.
     status: decided
     source:
       - log:49
       - log:105
       - log:113
+      - log:118
       - foldkit-flow:README.md:5
       - foldkit-flow:packages/flow/package.json:4
     canvas: [channels]
@@ -209,12 +210,13 @@ elements:
     statement: >-
       The operator decided to publish `@tsukuri/flow` pre-releases under the npm org. Nothing is published yet: the
       library package is private at version 0.0.0 and still named `foldkit-flow`, and the README says it is not
-      published yet. The first npm publish is paused until a Norwegian IP advisor has given an opinion on the name
-      (log line 113).
+      published yet. On 2026-10-30 the operator decided to publish without waiting for the Norwegian IP advisor (log line
+      118).
     status: decided
     source:
       - log:105
       - log:113
+      - log:118
       - foldkit-flow:README.md:5
       - foldkit-flow:packages/flow/package.json:4
     gap:

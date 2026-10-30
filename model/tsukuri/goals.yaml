@@ -718,15 +718,19 @@ elements:
     title: DCO is enforced now; the trademark policy waits
     statement: >-
       DCO sign-off is enforced now: CI checks a Signed-off-by trailer on commits, including commits written by coding
-      agents. The trademark policy is written after the name is cleared. Commits that are already unsigned stay unsigned.
+      agents. The trademark policy is written after the name is cleared (line 82). The operator has since chosen Tsukuri and
+      skipped the advisor's clearance (lines 118 and 119), so the log names no trigger for the policy now. Commits that
+      are already unsigned stay unsigned.
     status: decided
     source:
       - log:82
+      - log:118
+      - log:119
       - tsukuri:docs/design/open-core-boundary.md:63
       - tsukuri:docs/design/open-core-boundary.md:68
     gap:
       repo: tsukuri
-      fix: Add a CI check for the Signed-off-by trailer, and write the trademark policy once the name is cleared.
+      fix: Add a CI check for the Signed-off-by trailer, and write the trademark policy (the operator names no trigger since lines 118 and 119).
     links:
       hinders: [goal-tsukuri-apache-licence]
 
@@ -824,16 +828,21 @@ elements:
   - id: constraint-reebeat-working-name
     kind: constraint
     constraintType: organisational
-    title: The name reebeat stays for now
+    title: The name reebeat was the working name
     statement: >-
-      The name `reebeat` stays the working name. The clearance check found no register hit for REEBEAT itself, but a
-      registered EU mark REBEAT and an active Norwegian registration FREEBEAT. The operator paused the first npm publish
-      until a Norwegian IP advisor has answered. If the advisor flags a conflict, the project renames before any package
-      exists. The GitHub and npm organisations are reserved, and a trademark policy follows once the name is cleared.
+      `reebeat` was the working name until 2026-10-30; the operator replaced it with Tsukuri (see
+      constraint-org-final-name). The clearance check found no register hit for REEBEAT itself, but a registered EU mark
+      REBEAT and an active Norwegian registration FREEBEAT. The operator paused the first npm publish for a Norwegian IP
+      advisor's opinion, then named Tsukuri the preferred replacement (line 114) and decided on 2026-10-30 not to wait for
+      the advisor (lines 118 and 119).
+      The GitHub and npm organisations were reserved, and a trademark policy is not written yet.
     status: decided
     source:
       - log:75
       - log:113
+      - log:114
+      - log:118
+      - log:119
       - tsukuri:README.md:42
       - tsukuri:docs/design/open-core-boundary.md:68
     links:

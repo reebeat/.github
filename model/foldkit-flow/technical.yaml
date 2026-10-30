@@ -22,14 +22,15 @@ elements:
     tier: library
     title: packages/flow (the library)
     statement: >-
-      The reusable library, to be published as `@tsukuri/flow` once the name is cleared (pre-releases under the tsukuri npm
-      org; the first publish is paused, log line 113; the repository stays `foldkit-flow`): the graph Model, update, view
+      The reusable library, to be published as `@tsukuri/flow` (pre-releases under the tsukuri npm org; the operator decided
+      on 2026-10-30 not to wait for the Norwegian IP advisor, log line 118; the repository stays `foldkit-flow`): the graph Model, update, view
       and Mounts, with peers on Effect and Foldkit. If Foldkit adopts it, the project publishes `@foldkit/flow` and
       deprecates `@tsukuri/flow`.
     status: decided
     source:
       - log:105
       - log:113
+      - log:118
       - foldkit-flow:AGENTS.md:25
       - foldkit-flow:README.md:5
       - foldkit-flow:packages/flow/src/index.ts:1-39

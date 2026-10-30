@@ -50,7 +50,7 @@ Licence: MIT. Model status: decided. [Product page](https://github.com/tsukuri-l
 
 ## Status and roadmap
 
-The model holds 658 elements: 266 decided by the operator, 346 proposed and 46 open. 17 tracked issues and pull requests are open (snapshot of 2026-10-29).
+The model holds 659 elements: 267 decided by the operator, 346 proposed and 46 open. 17 tracked issues and pull requests are open (snapshot of 2026-10-29).
 
 - [Roadmap](https://github.com/tsukuri-labs/.github/blob/main/docs/roadmap.md): generated from the model and the issue tracker.
 - [Goals](https://github.com/tsukuri-labs/.github/blob/main/docs/goals.md) and the other [4EM sub-model pages](https://github.com/tsukuri-labs/.github/blob/main/docs/README.md).

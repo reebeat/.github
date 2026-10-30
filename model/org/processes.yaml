@@ -109,10 +109,10 @@ elements:
     title: Publish packages to npm
     statement: >-
       The compiler's libraries and services are to be published to npm as `@tsukuri/*` pre-releases, so products and
-      plugin authors can depend on them. The first publish is paused until a Norwegian IP advisor has given an opinion
-      on the name; nothing is published before that.
+      plugin authors can depend on them. On 2026-10-30 the operator decided to publish without waiting for the Norwegian IP
+      advisor (log lines 118 and 119).
     status: decided
-    source: [log:49, log:113]
+    source: [log:49, log:113, log:118, log:119]
     refs: ["pr:tsukuri#18"]
     links:
       serves: [goal-org-open-compiler, goal-org-modular-extensible]
