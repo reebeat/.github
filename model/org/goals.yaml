@@ -248,7 +248,7 @@ elements:
       - log:114
       - log:118
       - log:119
-      - tsukuri:README.md:42
+      - tsukuri:README.md:43
       - tsukuri:docs/design/open-core-boundary.md:68
 
   - id: constraint-org-final-name
@@ -261,7 +261,7 @@ elements:
       and 119). No advisor has cleared Tsukuri; line 114 had asked for that opinion, and the operator accepts the trademark
       risk (line 119, D4). The npm organisation `tsukuri` is owned by the operator (line 118). The GitHub organisation
       handle is `tsukuri-labs`: the operator decided to rename the organisation and never to delete it (lines 117 and 118).
-      The domain `tsukuri.dev` is registered and managed in Cloudflare (line 123). A published npm name is permanent.
+      The domain `tsukuri.dev` is registered and managed in Cloudflare (line 123).
     status: decided
     source:
       - log:114

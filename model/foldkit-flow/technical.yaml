@@ -54,7 +54,7 @@ elements:
     source:
       - foldkit-flow:AGENTS.md:3
       - foldkit-flow:AGENTS.md:24
-      - foldkit-flow:apps/example/package.json:16
+      - foldkit-flow:apps/example/package.json:14
       - foldkit-flow:README.md:20
       - log:118
     links:
@@ -103,7 +103,7 @@ elements:
     status: proposed
     source:
       - foldkit-flow:package.json:18
-      - foldkit-flow:tools/journey/journey.ts:65-66
+      - foldkit-flow:tools/journey/journey.ts:67-68
       - foldkit-flow:AGENTS.md:48
     rationale: >-
       The tool is built: `bun run journey` runs tools/journey (package.json line 18). journey.ts lines 65 and 66 define
@@ -601,7 +601,7 @@ elements:
     source:
       - foldkit-flow:AGENTS.md:21-31
       - foldkit-flow:package.json:5-9
-      - foldkit-flow:apps/example/package.json:16
+      - foldkit-flow:apps/example/package.json:14
       - log:118
     links:
       serves: [goal-flow-generic-library]

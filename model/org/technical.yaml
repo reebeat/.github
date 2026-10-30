@@ -125,8 +125,8 @@ elements:
     statement: >-
       The Build is an incremental graph with dynamic dependencies and early cutoff.
     scenario: >-
-      An author edits one line of narration. Only the speech, the timing and the frames that depend on that line are
-      rebuilt; the rest comes from the cache.
+      An author edits one line of narration. Only that line is re-synthesised, the plan verdict returns without pixels,
+      and pixel reuse follows the spec for issue 9 (ADR-0000, merged).
     status: decided
     source: [log:62, log:10, "issue:tsukuri#9", log:118]
     links:

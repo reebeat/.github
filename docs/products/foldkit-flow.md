@@ -6,7 +6,7 @@ A node-based graph UI for Foldkit, like React Flow or Svelte Flow, in its own re
 
 Repository: [tsukuri-labs/foldkit-flow][1]. Licence: MIT. Status of this description: decided.
 
-137 model elements: 114 decided, 21 proposed, 2 open.
+135 model elements: 112 decided, 21 proposed, 2 open.
 
 ## Product vision board
 
@@ -20,7 +20,7 @@ After Roman Pichler's product vision board. Each cell is built from the model; c
 | Product (key features) | [packages/flow (the library)](../technical-components.md#comp-flow-library) (decided)<br/>[apps/example (the example app)](../technical-components.md#comp-flow-example-app) (decided)<br/>[tools/quality (repository checks)](../technical-components.md#comp-flow-quality-tools) (decided)<br/>[tools/oxlint (vendored lint rules)](../technical-components.md#comp-flow-oxlint-rules) (decided)<br/>[tools/journey (browser gate)](../technical-components.md#comp-flow-journey-tool) (proposed)<br/>[CI workflow (checks)](../technical-components.md#comp-flow-ci) (decided)<br/>[Review and PR skills](../technical-components.md#comp-flow-agent-skills) (decided)<br/>[Attribution option and view](../technical-components.md#comp-flow-attribution) (decided)<br/>[Flow Submodel (Model, update, view)](../technical-components.md#comp-flow-flow-submodel) (decided)<br/>[Mounts that own the xyflow controllers](../technical-components.md#comp-flow-mounts) (proposed)<br/>[Pan and zoom by wheel and drag](../technical-components.md#req-flow-pan-zoom) (proposed)<br/>[Drag a node, edges follow](../technical-components.md#req-flow-drag-node) (proposed)<br/>[Connect handles with validation](../technical-components.md#req-flow-connect) (proposed)<br/>[Reconnect an edge end](../technical-components.md#req-flow-reconnect) (proposed)<br/>[Select with a box](../technical-components.md#req-flow-box-select) (proposed)<br/>[Controls, fit view and minimap](../technical-components.md#req-flow-controls-minimap) (proposed)<br/>[Compound nodes with relative positions](../technical-components.md#req-flow-compound-nodes) (proposed)<br/>[Delete a parent with its descendants and edges](../technical-components.md#req-flow-delete-closure) (proposed)<br/>[Edit the graph by keyboard](../technical-components.md#req-flow-keyboard-edit) (decided)<br/>[The app draws node content](../technical-components.md#req-flow-custom-nodes) (decided)<br/>[Show the xyflow credit by default, allow hiding](../technical-components.md#req-flow-attribution-toggle) (decided)<br/>[A browser journey gate](../technical-components.md#req-flow-browser-gate) (decided) |
 | Business goals | [Accessible artifacts for every audience](../goals.md#goal-org-accessible-artifacts) (decided)<br/>[Correctness by construction](../goals.md#goal-org-correctness-by-construction) (decided)<br/>[Intent written down, sourced and testable](../goals.md#goal-org-written-intent) (decided) |
 
-Scope `foldkit-flow`: 137 elements.
+Scope `foldkit-flow`: 135 elements.
 
 ## Goals and quality requirements (arc42 sections 1 and 10)
 
@@ -65,7 +65,7 @@ Scope `foldkit-flow`: 137 elements.
 | [Keyboard-only user](../actors-and-resources.md#actor-flow-keyboard-user) | A person who uses only the keyboard, and may use a screen reader. In the 0.x releases they can reach, select, move and delete nodes without a pointer. Connecting nodes by keyboard is a documented gap, and 1.0 waits for it. | decided |
 | [Contributor (human or agent)](../actors-and-resources.md#actor-flow-contributor) | A person or an agent who writes specs and code, opens PRs and takes part in review rounds. | decided |
 | [The xyflow project](../actors-and-resources.md#actor-flow-xyflow) | xyflow (webkid GmbH) makes React Flow, Svelte Flow and `@xyflow/system`. It asks its users to keep its attribution or to support the project. The library shows the credit by default and lets an application hide it. | decided |
-| [The Foldkit project](../actors-and-resources.md#actor-flow-foldkit-project) | Foldkit makes the framework the library is built for. It owns the plugin the example cannot use yet. If it adopts the library, the project publishes `@foldkit/flow` and deprecates `@tsukuri/flow`. | decided |
+| [The Foldkit project](../actors-and-resources.md#actor-flow-foldkit-project) | Foldkit makes the framework the library is built for. It owns `@foldkit/vite-plugin` 0.29.0, which the example loads. If it adopts the library, the project publishes `@foldkit/flow` and deprecates `@tsukuri/flow`. | decided |
 
 ## Problems and constraints
 
@@ -74,7 +74,7 @@ Scope `foldkit-flow`: 137 elements.
 - [The library applies a deletion itself](../goals.md#problem-flow-library-applies-deletion) (open): The operator decided that the library reports outcomes and the app applies graph changes (log line 109). For a deletion, the Flow removes the deleted nodes and edges from its own Model and then reports them.
 - [No stated goals beyond the README](../goals.md#problem-flow-goals-undocumented) (decided): The README gives one sentence of purpose, and spec 0000 states the goal of its lifecycle. No file gives the library's own product goals, users or success measures.
 - [No glossary for the graph terms](../goals.md#problem-flow-no-glossary) (decided): The repository has no GLOSSARY.md. Terms such as node, handle, connection and controller have no single definition.
-- [STATE says nothing is blocked](../goals.md#problem-flow-state-blocked-nothing) (decided): STATE.md lists "Blocked: Nothing". The same file names the Foldkit plugin mismatch, and issue #3 about the Bun toolchain is open.
+- [STATE says nothing is blocked](../goals.md#problem-flow-state-blocked-nothing) (decided): STATE.md lists "Blocked: Nothing". Issue #3 about the Bun toolchain is open, and STATE.md does not name it.
 - [vp run may use a different Bun than devenv](../goals.md#problem-flow-bun-mismatch) (decided): The package manager range is `^1.4.2` with download on failure. `vp run` can download its own Bun and so differ from the Bun that devenv pins.
 - [Keyboard users cannot create connections](../goals.md#problem-flow-keyboard-connect-missing) (decided): The operator decided to publish 0.x with keyboard connect documented as a gap, to build it as the next spec, and to block 1.0 on it. Today the built journey does not let a keyboard-only person connect two handles: README line 78 says keyboard connect is not built, and spec 0001 lists it as an open question.
 - [The browser journey does not run in CI](../goals.md#problem-flow-journey-not-in-ci) (decided): CI has no browser. The journey and the performance check run only on a developer's machine.
@@ -89,8 +89,6 @@ Scope `foldkit-flow`: 137 elements.
 - [Keep xyflow's licence notice and credit](../goals.md#constraint-flow-xyflow-notice) (decided): xyflow's code is MIT licensed. The project keeps its notice in NOTICE, credits it in the README and shows the credit link by default. An application may hide the link.
 - [ELK stays out of the library](../goals.md#constraint-flow-no-elk) (decided): ELK.js is licensed EPL-2.0 OR GPL-3.0. It stays out of `packages/`, so the library does not depend on it. A private example may use it, and layout stays with the application.
 - [Cap the Effect range for unstable API use](../goals.md#constraint-flow-effect-range) (decided): A package that uses an unstable or experimental Effect API accepts nothing above the next minor.
-- [Foldkit declares Effect 4.0.0, the repo runs 4.1.0](../goals.md#constraint-flow-effect-peer-mismatch) (decided): Foldkit 0.169.0 declares a peer of `effect@4.0.0`. The repository runs 4.1.0, so Bun prints peer warnings.
-- [The Foldkit Vite plugin cannot run on Effect 4.1.0](../goals.md#constraint-flow-vite-plugin-crypto) (decided): `@foldkit/vite-plugin` 0.28.0 imports `Crypto` from the Effect root, which 4.1.0 lacks, so the example does not use it. The project waits for an upstream fix and does not work around it.
 - [Pin @xyflow/system exactly](../goals.md#constraint-flow-xyflow-pinned) (decided): The library depends on `@xyflow/system` at the exact version 0.0.83, because a 0.0.x release may break. The project bumps the pin on purpose, and the journey gate decides each bump.
 
 ## Goals it serves
@@ -132,8 +130,6 @@ flowchart BT
     constraint_flow_xyflow_notice[/"Keep xyflow's licence notice<br/>and credit"/]:::decided
     constraint_flow_no_elk[/"ELK stays out of the library"/]:::decided
     constraint_flow_effect_range[/"Cap the Effect range for<br/>unstable API use"/]:::decided
-    constraint_flow_effect_peer_mismatch[/"Foldkit declares Effect<br/>4.0.0, the repo runs 4.1.0"/]:::decided
-    constraint_flow_vite_plugin_crypto[/"The Foldkit Vite plugin<br/>cannot run on Effect 4.1.0"/]:::decided
     constraint_flow_xyflow_pinned[/"Pin @xyflow/system exactly"/]:::decided
     opportunity_flow_xyflow_core(["Reuse xyflow's<br/>framework-free core"]):::decided
     opportunity_flow_other_foldkit_apps(["Other Foldkit apps can use<br/>it"]):::decided
@@ -258,7 +254,7 @@ Full tables and diagrams: [Actors and Resources Model](../actors-and-resources.m
 - [The Foldkit project](../actors-and-resources.md#actor-flow-foldkit-project) (actor, decided)
 - [@xyflow/system](../actors-and-resources.md#resource-flow-xyflow-system) (resource, decided)
 - [Foldkit](../actors-and-resources.md#resource-flow-foldkit) (resource, decided)
-- [Foldkit 0.169.0 and its peer range](../actors-and-resources.md#resource-flow-foldkit-pin) (resource, decided)
+- [Foldkit 0.170.0 and its peer range](../actors-and-resources.md#resource-flow-foldkit-pin) (resource, decided)
 - [Effect 4.1.0](../actors-and-resources.md#resource-flow-effect) (resource, decided)
 - [The project's own repository](../actors-and-resources.md#resource-flow-repo) (resource, decided)
 - [Devenv, Bun, Vite+ and Oxlint toolchain](../actors-and-resources.md#resource-flow-toolchain) (resource, decided)
@@ -380,44 +376,44 @@ Full tables and diagrams: [Concepts Model](../concepts.md).
 | pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [Supported browsers and input types](../technical-components.md#req-flow-portability-browsers) |
 
 [1]: https://github.com/tsukuri-labs/foldkit-flow
-[2]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/mounts.ts#L157-L208
-[3]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L82
-[4]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0001-first-felt-journey.md#L83
-[5]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/mounts.ts#L384-L470
-[6]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/update.ts#L183-L186
-[7]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0001-first-felt-journey.md#L84
-[8]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/mounts.ts#L601-L625
-[9]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/update.ts#L266-L281
-[10]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0001-first-felt-journey.md#L85
-[11]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/mounts.ts#L723-L755
-[12]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/update.ts#L522-L529
-[13]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L20
-[14]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/mounts.ts#L235-L252
-[15]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L66
-[16]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0001-first-felt-journey.md#L86
-[17]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/view.ts#L464-L478
-[18]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/view.ts#L499-L523
-[19]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0001-first-felt-journey.md#L88
-[20]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/geometry.ts#L88
-[21]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/geometry.ts#L451-L474
+[2]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/packages/flow/src/mounts.ts#L157-L208
+[3]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/README.md#L82
+[4]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/docs/specs/0001-first-felt-journey.md#L83
+[5]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/packages/flow/src/mounts.ts#L384-L470
+[6]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/packages/flow/src/update.ts#L183-L186
+[7]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/docs/specs/0001-first-felt-journey.md#L84
+[8]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/packages/flow/src/mounts.ts#L601-L625
+[9]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/packages/flow/src/update.ts#L266-L281
+[10]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/docs/specs/0001-first-felt-journey.md#L85
+[11]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/packages/flow/src/mounts.ts#L723-L755
+[12]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/packages/flow/src/update.ts#L522-L529
+[13]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/README.md#L20
+[14]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/packages/flow/src/mounts.ts#L235-L252
+[15]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/README.md#L66
+[16]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/docs/specs/0001-first-felt-journey.md#L86
+[17]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/packages/flow/src/view.ts#L464-L478
+[18]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/packages/flow/src/view.ts#L499-L523
+[19]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/docs/specs/0001-first-felt-journey.md#L88
+[20]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/packages/flow/src/geometry.ts#L88
+[21]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/packages/flow/src/geometry.ts#L451-L474
 [22]: ../../sources/operator-decisions-2026-10.md#L19
-[23]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/update.ts#L289-L343
-[24]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L75
-[25]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0001-first-felt-journey.md#L135
-[26]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L74-L78
-[27]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/update.ts#L413-L435
-[28]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0001-first-felt-journey.md#L87
+[23]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/packages/flow/src/update.ts#L289-L343
+[24]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/README.md#L75
+[25]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/docs/specs/0001-first-felt-journey.md#L135
+[26]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/README.md#L74-L78
+[27]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/packages/flow/src/update.ts#L413-L435
+[28]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/docs/specs/0001-first-felt-journey.md#L87
 [29]: ../../sources/operator-decisions-2026-10.md#L118
 [30]: ../../sources/operator-decisions-2026-10.md#L109
-[31]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L56-L63
-[32]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/view.ts#L45-L54
-[33]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/types.ts#L33-L38
-[34]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0001-first-felt-journey.md#L30-L33
+[31]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/README.md#L56-L63
+[32]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/packages/flow/src/view.ts#L45-L54
+[33]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/packages/flow/src/types.ts#L33-L38
+[34]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/docs/specs/0001-first-felt-journey.md#L30-L33
 [35]: ../../sources/operator-decisions-2026-10.md#L106
-[36]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0000-development-lifecycle.md#L53
-[37]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0000-development-lifecycle.md#L90
-[38]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L86
-[39]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/package.json#L18
-[40]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L17
-[41]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/AGENTS.md#L48
+[36]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/docs/specs/0000-development-lifecycle.md#L53
+[37]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/docs/specs/0000-development-lifecycle.md#L90
+[38]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/README.md#L86
+[39]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/package.json#L18
+[40]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/README.md#L17
+[41]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/AGENTS.md#L48
 [42]: https://github.com/tsukuri-labs/foldkit-flow/pull/4

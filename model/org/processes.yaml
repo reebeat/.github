@@ -49,7 +49,7 @@ elements:
       The author reviews the plan and the artifact, and checks them against the source. They edit the story and build
       again, or approve the result.
     status: decided
-    source: [tsukuri:README.md:3, tsukuri:README.md:12-18, log:118]
+    source: [tsukuri:README.md:3, tsukuri:README.md:12-19, log:118]
     links:
       part-of: [process-org-create-and-deliver]
       next: [process-org-deliver-artifact, process-org-declare-story]

@@ -29,8 +29,8 @@ elements:
     status: decided
     source:
       - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
-      - tsukuri:README.md:23
-      - tsukuri:AGENTS.md:63
+      - tsukuri:README.md:24
+      - tsukuri:AGENTS.md:64
       - tsukuri:packages/services/src/selection.ts:1-4
       - log:118
     links:
@@ -214,7 +214,7 @@ elements:
       notes, fragments, source hash, transitions, narration, chapters and provenance.
     status: decided
     source:
-      - tsukuri:README.md:18
+      - tsukuri:README.md:19
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:142
       - log:118
     canvas: [key-activities]
@@ -231,7 +231,7 @@ elements:
     status: decided
     source:
       - tsukuri:packages/cli/src/journey.ts:1-3
-      - tsukuri:AGENTS.md:42
+      - tsukuri:AGENTS.md:43
       - log:118
     links:
       serves: [goal-tsukuri-reproducible-builds, goal-tsukuri-verified-output]
@@ -248,7 +248,7 @@ elements:
       lint and dead-code configs.
     status: decided
     source:
-      - tsukuri:AGENTS.md:65
+      - tsukuri:AGENTS.md:66
       - tsukuri:docs/design/keyframe-engine.md:1225
       - log:118
     links:

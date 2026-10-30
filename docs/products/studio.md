@@ -8,7 +8,7 @@ Studio is a collaborative editor for tsukuri stories, a product built on the ope
 
 Repository: [tsukuri-labs/studio][1]. Licence: proprietary; all rights reserved (LICENSE file and third-party notices still to be added). Status of this description: decided.
 
-199 model elements: 184 decided, 13 proposed, 2 open.
+196 model elements: 184 decided, 11 proposed, 1 open.
 
 ## Product vision board
 
@@ -22,7 +22,7 @@ After Roman Pichler's product vision board. Each cell is built from the model; c
 | Product (key features) | [The editor app (apps/editor)](../technical-components.md#comp-studio-editor) (decided)<br/>[In-browser Deck preview](../technical-components.md#comp-studio-preview) (decided)<br/>[The validated edit path](../technical-components.md#comp-studio-edit-path) (decided)<br/>[Manuscript lens](../technical-components.md#comp-studio-lens-manuscript) (decided)<br/>[Deck and Record lens](../technical-components.md#comp-studio-lens-record) (decided)<br/>[Story graph lens](../technical-components.md#comp-studio-lens-story-graph) (decided)<br/>[Timeline lens](../technical-components.md#comp-studio-lens-timeline) (decided)<br/>[Wiring lens](../technical-components.md#comp-studio-lens-wiring) (decided)<br/>[Review lens](../technical-components.md#comp-studio-lens-review) (decided)<br/>[Coach lens](../technical-components.md#comp-studio-lens-coach) (decided)<br/>[Languages lens](../technical-components.md#comp-studio-lens-languages) (decided)<br/>[Deliver lens](../technical-components.md#comp-studio-lens-deliver) (decided)<br/>[Agent panel](../technical-components.md#comp-studio-lens-agent-panel) (decided)<br/>[The agent tool protocol](../technical-components.md#comp-studio-tool-protocol) (decided)<br/>[Reference tool server over a local story file](../technical-components.md#comp-studio-reference-server) (decided)<br/>[Hosted agents](../technical-components.md#comp-studio-hosted-agent) (decided)<br/>[Hosted alignment, speech and translation](../technical-components.md#comp-studio-hosted-speech) (decided)<br/>[Cloud rendering](../technical-components.md#comp-studio-cloud-render) (decided)<br/>[The sync server (planned)](../technical-components.md#comp-studio-sync-server) (decided)<br/>[The document port over Loro](../technical-components.md#comp-studio-document-port) (decided)<br/>[The validation gate](../technical-components.md#comp-studio-validation-gate) (decided)<br/>[The repair function](../technical-components.md#comp-studio-repair) (decided)<br/>[The single-binary launcher](../technical-components.md#comp-studio-launcher) (decided)<br/>[The web deploy (inert)](../technical-components.md#comp-studio-web-deploy) (decided)<br/>[Quality tools (tools/quality)](../technical-components.md#comp-studio-quality-tools) (decided)<br/>[CI checks workflow](../technical-components.md#comp-studio-ci) (decided)<br/>[Review and PR creation skills](../technical-components.md#comp-studio-review-skills) (decided)<br/>[The verify-studio skill and feature map](../technical-components.md#comp-studio-verify-skill) (decided)<br/>[The graph is the engine's graph](../technical-components.md#req-studio-graph-matches-plan) (decided)<br/>[The playhead seeks the preview to any frame](../technical-components.md#req-studio-scrub-frame) (decided)<br/>[One property edit is one change](../technical-components.md#req-studio-edit-one-property) (decided)<br/>[Undo reverts a person's own changes](../technical-components.md#req-studio-undo-restores) (decided)<br/>[Record several takes with a teleprompter](../technical-components.md#req-studio-record-takes) (decided)<br/>[Tie cut narration pieces to beat events](../technical-components.md#req-studio-cut-narration-by-word) (decided)<br/>[The sync server refuses an invalid merge with a reason](../technical-components.md#req-studio-gate-refuses-invalid) (decided)<br/>[Offer a repair as a proposal](../technical-components.md#req-studio-repair-proposal) (decided)<br/>[The sync room stores an update log and a snapshot](../technical-components.md#req-studio-sync-persistence) (decided)<br/>[Agents get tools to read and edit a story](../technical-components.md#req-studio-agent-tools) (proposed)<br/>[A user can bring their own agent](../technical-components.md#req-studio-bring-your-own-agent) (decided)<br/>[Set an agent's action set, with presets](../technical-components.md#req-studio-agent-scopes) (decided)<br/>[The binary opens the editor in the user's browser](../technical-components.md#req-studio-serve-local) (decided) |
 | Business goals | [Modular and extensible by users](../goals.md#goal-org-modular-extensible) (decided)<br/>[Correctness by construction](../goals.md#goal-org-correctness-by-construction) (decided)<br/>[Fast, incremental, reactive builds](../goals.md#goal-org-incremental-builds) (decided)<br/>[Reproducible builds](../goals.md#goal-org-reproducible-builds) (decided)<br/>[Interactive multimedia for learning](../goals.md#goal-org-interactive-multimedia) (decided)<br/>[Accessible artifacts for every audience](../goals.md#goal-org-accessible-artifacts) (decided)<br/>[Free tier for basic features, paid premium features](../goals.md#goal-studio-free-paid-split) (decided)<br/>[Paid sync and hosted agents fund the work](../goals.md#opportunity-studio-paid-sync-and-agents) (decided)<br/>[Hosted agents](../technical-components.md#comp-studio-hosted-agent) (decided)<br/>[Hosted alignment, speech and translation](../technical-components.md#comp-studio-hosted-speech) (decided)<br/>[Cloud rendering](../technical-components.md#comp-studio-cloud-render) (decided)<br/>[The sync server (planned)](../technical-components.md#comp-studio-sync-server) (decided) |
 
-Scope `studio`: 199 elements.
+Scope `studio`: 196 elements.
 
 ## Goals and quality requirements (arc42 sections 1 and 10)
 
@@ -82,14 +82,13 @@ Scope `studio`: 199 elements.
 - [The README does not state product goals](../goals.md#problem-studio-goals-not-in-readme) (decided): At the pinned commit, the README gives a one-line purpose and the status of a placeholder shell. It does not state the product goals, the free and paid split or the roadmap.
 - [The first journey waits for the tsukuri story IR](../goals.md#problem-studio-first-journey-blocked) (decided): At the pinned commit, spec 0001 is blocked on tsukuri specs 0004 and 0006, and needs spec 0005 for story-wide identity. Until the IR is stable, studio builds no editing feature.
 - [Browser compile and seek in tsukuri are unverified](../goals.md#problem-studio-browser-compile-gaps) (decided): The in-browser preview needs a browser-safe compile, a seekable Deck page and a Deck generator that does not read the file system. Spec 0001 lists them as new tsukuri work, and says the browser safety of the compile is not yet checked.
-- [The Foldkit Vite plugin is still off in studio](../goals.md#problem-studio-foldkit-vite-plugin) (open): At the pinned commit, studio keeps the Foldkit Vite plugin off, so the dev tools bridge and model-preserving reload are off. The cause is fixed upstream: @foldkit/vite-plugin 0.29.0 (npm, 2026-10-29) imports SecureRandom from effect/crypto and peers effect ~4.1.0. Studio has not bumped, and issue 4 is open.
 - [The web deploy waits for an Alchemy release](../goals.md#problem-studio-alchemy-release) (decided): At the pinned commit, the current Alchemy release imports an Effect module that Effect 4.1 does not have. The fix, alchemy-run/alchemy#2754, was merged but not released, so pull request 6 was a draft.
 - [The exception check misses effect-diagnostics comments](../goals.md#problem-studio-exceptions-miss-diagnostics) (decided): At the pinned commit, the suppression pattern in tools/quality does not match effect-diagnostics comments. Such a comment can silence a rule with no registry entry.
 - [The Durable Object room is unmeasured at the edge](../goals.md#problem-studio-do-unmeasured) (decided): A small measured spike on the real Cloudflare edge comes first. It runs the gate inside a Durable Object and measures bundle size, cold start, sockets and cost per story-hour, and the sync spec follows the numbers. So far the room ran only on local workerd, without the gate.
 - [Demand and willingness to pay are not measured](../goals.md#problem-studio-demand-unmeasured) (decided): The free and paid split follows running cost. No source measures whether people want studio or would pay for sync or hosted agents.
 - [ffmpeg with libx264 is GPL](../goals.md#problem-studio-ffmpeg-gpl) (decided): Studio keeps libx264 and never bundles ffmpeg. The user's own ffmpeg or devenv supplies it, as now, and a hosted service does not distribute it. This holds for now; in future multiple encoders sit behind an adapter. If a product ever bundles ffmpeg, it complies with the GPL for that binary.
 - [The binaries are not signed](../goals.md#problem-studio-unsigned-binaries) (decided): The macOS and Windows binaries are not signed or notarised, so those systems warn the user.
-- [STATE.md still says spec 0003 is in review](../goals.md#problem-studio-stale-state) (open): At the pinned commit, STATE.md says the review and verify skills are in review and lists their review as the next step. PR 5 has merged. The branch of PR 6 rewrites both lines to say 0003 has merged, so the text is wrong on main until PR 6 merges.
+- [STATE.md still says spec 0005 is in review](../goals.md#problem-studio-stale-state) (open): At the pinned commit, STATE.md says spec 0005 (Foldkit 0.170.0 and the Vite plugin) is in review as PR 9 and lists its review as the next step. PR 9 is merged: the pinned main commit is its merge. STATE.md is wrong until a later change rewrites it.
 - [Composite values merge atomically](../goals.md#problem-studio-merge-semantics-open) (decided): Composite values, a position and a curve point, merge atomically: the schema declares them atomic, and a whole value wins or loses together. The other properties merge property-wise. One concurrent edit of a single axis can be lost.
 - [Lens order and shared lens state are undecided](../goals.md#problem-studio-lens-order-open) (decided): The lenses note does not decide the build order of lenses after spec 0001, whether the playhead is shared between collaborators, or how lenses use Foldkit Submodels.
 - [A merge can break the story](../goals.md#problem-studio-invalid-merges) (decided): In the spike, 31 of 57 runs on a naive IR-shaped document merged to an invalid story, and 17 of 57 on a keyed one. A repair made 15 of the 17 valid and could not fix the other two (one left an Element hidden and never revealed).
@@ -98,8 +97,6 @@ Scope `studio`: 199 elements.
 - [Public repository, all rights reserved](../goals.md#constraint-studio-licence-undecided) (decided): Studio is proprietary, all rights reserved. The repository is public, but nothing in it is licensed for reuse, and third-party code keeps its own licence.
 - [A public repository holds no secret or private material](../goals.md#constraint-studio-public-repo-hygiene) (decided): The operator made the studio repository public. So it never holds a secret, personal data or course-private material.
 - [No editing feature before the tsukuri IR is stable](../goals.md#constraint-studio-ir-stability) (decided): Studio builds no editing feature against the story IR until tsukuri specs 0004 to 0006 stabilise it. The shell, toolchain and docs are allowed.
-- [Effect 4.1.0 runs against Foldkit 0.169.0's peer](../goals.md#constraint-studio-effect-foldkit-peer) (proposed): Foldkit 0.169.0 declares a peer of effect 4.0.0, and studio runs 4.1.0 with it at the pinned commit. Bun prints warnings. The tests, build and a browser run pass on 4.1.0, and a boot test guards the mismatch. Foldkit 0.170.0 (2026-10-29) peers effect ~4.1.0, so the mismatch holds only while studio stays on 0.169.0.
-- [Keep the Foldkit Vite plugin off until the bump](../goals.md#constraint-studio-foldkit-plugin-off) (proposed): At the pinned commit, the Foldkit Vite plugin stays off, and studio stays on Effect 4.1.0, until a Foldkit release imports effect/crypto. That release exists: @foldkit/vite-plugin 0.29.0 (2026-10-29). The constraint is temporary and ends when studio bumps and re-enables the plugin.
 - [devenv has no Chromium, ffmpeg or whisper](../goals.md#constraint-studio-no-chromium-devenv) (decided): The development environment provides Bun, Node and gitleaks only. Browser runs use the host Chromium, and CI has no browser gate.
 - [Durable Object storage has size limits](../goals.md#constraint-studio-do-limits) (decided): A SQLite value or row in a Durable Object is at most 2 MB, so a larger snapshot must be chunked. A received WebSocket message is at most 32 MiB.
 
@@ -138,14 +135,13 @@ flowchart BT
     problem_studio_goals_not_in_readme{{"The README does not state<br/>product goals"}}:::decided
     problem_studio_first_journey_blocked{{"The first journey waits for<br/>the tsukuri story IR"}}:::decided
     problem_studio_browser_compile_gaps{{"Browser compile and seek in<br/>tsukuri are unverified"}}:::decided
-    problem_studio_foldkit_vite_plugin{{"The Foldkit Vite plugin is<br/>still off in studio"}}:::open
     problem_studio_alchemy_release{{"The web deploy waits for an<br/>Alchemy release"}}:::decided
     problem_studio_exceptions_miss_diagnostics{{"The exception check misses<br/>effect-diagnostics comments"}}:::decided
     problem_studio_do_unmeasured{{"The Durable Object room is<br/>unmeasured at the edge"}}:::decided
     problem_studio_demand_unmeasured{{"Demand and willingness to<br/>pay are not measured"}}:::decided
     problem_studio_ffmpeg_gpl{{"ffmpeg with libx264 is GPL"}}:::decided
     problem_studio_unsigned_binaries{{"The binaries are not signed"}}:::decided
-    problem_studio_stale_state{{"STATE.md still says spec<br/>0003 is in review"}}:::open
+    problem_studio_stale_state{{"STATE.md still says spec<br/>0005 is in review"}}:::open
     problem_studio_merge_semantics_open{{"Composite values merge<br/>atomically"}}:::decided
     problem_studio_lens_order_open{{"Lens order and shared lens<br/>state are undecided"}}:::decided
     problem_studio_invalid_merges{{"A merge can break the story"}}:::decided
@@ -154,8 +150,6 @@ flowchart BT
     constraint_studio_licence_undecided[/"Public repository, all<br/>rights reserved"/]:::decided
     constraint_studio_public_repo_hygiene[/"A public repository holds no<br/>secret or private material"/]:::decided
     constraint_studio_ir_stability[/"No editing feature before<br/>the tsukuri IR is stable"/]:::decided
-    constraint_studio_effect_foldkit_peer[/"Effect 4.1.0 runs against<br/>Foldkit 0.169.0's peer"/]:::proposed
-    constraint_studio_foldkit_plugin_off[/"Keep the Foldkit Vite plugin<br/>off until the bump"/]:::proposed
     constraint_studio_no_chromium_devenv[/"devenv has no Chromium,<br/>ffmpeg or whisper"/]:::decided
     constraint_studio_do_limits[/"Durable Object storage has<br/>size limits"/]:::decided
     opportunity_studio_paid_sync_and_agents(["Paid sync and hosted agents<br/>fund the work"]):::decided
@@ -430,15 +424,13 @@ Full tables and diagrams: [Concepts Model](../concepts.md).
 | pr:studio#6 | feat: distribution, a single binary now and the web deploy when Alchemy supports effect 4.1 (spec 0004) | open | [Cloudflare Workers and Durable Objects](../actors-and-resources.md#resource-studio-cloudflare) |
 | pr:studio#6 | feat: distribution, a single binary now and the web deploy when Alchemy supports effect 4.1 (spec 0004) | open | [Alchemy v2](../actors-and-resources.md#resource-studio-alchemy) |
 | pr:studio#6 | feat: distribution, a single binary now and the web deploy when Alchemy supports effect 4.1 (spec 0004) | open | [Ship web first and a single binary](../goals.md#goal-studio-web-and-binary) |
-| issue:studio#4 | Re-enable @foldkit/vite-plugin when a release supports effect 4.1.0 | open | [The Foldkit Vite plugin is still off in studio](../goals.md#problem-studio-foldkit-vite-plugin) |
 | pr:studio#6 | feat: distribution, a single binary now and the web deploy when Alchemy supports effect 4.1 (spec 0004) | open | [The web deploy waits for an Alchemy release](../goals.md#problem-studio-alchemy-release) |
 | issue:studio#7 | check:exceptions ignores @effect-diagnostics suppression comments | open | [The exception check misses effect-diagnostics comments](../goals.md#problem-studio-exceptions-miss-diagnostics) |
 | issue:tsukuri#7 | ffmpeg with libx264 is GPL: decide before distributing a binary | open | [ffmpeg with libx264 is GPL](../goals.md#problem-studio-ffmpeg-gpl) |
 | pr:studio#6 | feat: distribution, a single binary now and the web deploy when Alchemy supports effect 4.1 (spec 0004) | open | [ffmpeg with libx264 is GPL](../goals.md#problem-studio-ffmpeg-gpl) |
 | pr:studio#6 | feat: distribution, a single binary now and the web deploy when Alchemy supports effect 4.1 (spec 0004) | open | [The binaries are not signed](../goals.md#problem-studio-unsigned-binaries) |
-| pr:studio#5 | feat: review, PR creation and verification skills (spec 0003) | merged | [STATE.md still says spec 0003 is in review](../goals.md#problem-studio-stale-state) |
-| pr:studio#6 | feat: distribution, a single binary now and the web deploy when Alchemy supports effect 4.1 (spec 0004) | open | [STATE.md still says spec 0003 is in review](../goals.md#problem-studio-stale-state) |
-| issue:studio#4 | Re-enable @foldkit/vite-plugin when a release supports effect 4.1.0 | open | [Keep the Foldkit Vite plugin off until the bump](../goals.md#constraint-studio-foldkit-plugin-off) |
+| pr:studio#5 | feat: review, PR creation and verification skills (spec 0003) | merged | [STATE.md still says spec 0005 is in review](../goals.md#problem-studio-stale-state) |
+| pr:studio#6 | feat: distribution, a single binary now and the web deploy when Alchemy supports effect 4.1 (spec 0004) | open | [STATE.md still says spec 0005 is in review](../goals.md#problem-studio-stale-state) |
 | pr:studio#6 | feat: distribution, a single binary now and the web deploy when Alchemy supports effect 4.1 (spec 0004) | open | [One binary gives an offline local studio](../goals.md#opportunity-studio-offline-binary) |
 | pr:studio#6 | feat: distribution, a single binary now and the web deploy when Alchemy supports effect 4.1 (spec 0004) | open | [Build the single binary](../business-processes.md#process-studio-build-binary) |
 | pr:studio#6 | feat: distribution, a single binary now and the web deploy when Alchemy supports effect 4.1 (spec 0004) | open | [Check and distribute the binaries](../business-processes.md#process-studio-distribute-binary) |
@@ -452,30 +444,30 @@ Full tables and diagrams: [Concepts Model](../concepts.md).
 | pr:studio#6 | feat: distribution, a single binary now and the web deploy when Alchemy supports effect 4.1 (spec 0004) | open | [The binary runs on five targets](../technical-components.md#req-studio-binary-portable) |
 
 [1]: https://github.com/tsukuri-labs/studio
-[2]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L17
-[3]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L131
+[2]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/specs/0001-first-felt-journey.md#L17
+[3]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/specs/0001-first-felt-journey.md#L131
 [4]: ../../sources/operator-decisions-2026-10.md#L118
-[5]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L18
-[6]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L39
+[5]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/specs/0001-first-felt-journey.md#L18
+[6]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/specs/0001-first-felt-journey.md#L39
 [7]: ../../sources/operator-decisions-2026-10.md#L97
-[8]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L19-L21
-[9]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L133-L134
-[10]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L20-L21
-[11]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L93
-[12]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L136
+[8]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/specs/0001-first-felt-journey.md#L19-L21
+[9]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/specs/0001-first-felt-journey.md#L133-L134
+[10]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/specs/0001-first-felt-journey.md#L20-L21
+[11]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/specs/0001-first-felt-journey.md#L93
+[12]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/specs/0001-first-felt-journey.md#L136
 [13]: ../../sources/operator-decisions-2026-10.md#L102
 [14]: ../../sources/operator-decisions-2026-10.md#L45
-[15]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L38
+[15]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/design/lenses.md#L38
 [16]: ../../sources/operator-decisions-2026-10.md#L47
-[17]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L25
-[18]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L111-L112
-[19]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L198
-[20]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L28
-[21]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L56
-[22]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L66
-[23]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L95-L108
+[17]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/specs/0002-collaboration-spike.md#L25
+[18]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/specs/0002-collaboration-spike.md#L111-L112
+[19]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/specs/0002-collaboration-spike.md#L198
+[20]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/specs/0002-collaboration-spike.md#L28
+[21]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/specs/0002-collaboration-spike.md#L56
+[22]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/specs/0002-collaboration-spike.md#L66
+[23]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/specs/0001-first-felt-journey.md#L95-L108
 [24]: ../../sources/operator-decisions-2026-10.md#L43
-[25]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L91-L99
+[25]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/design/lenses.md#L91-L99
 [26]: ../../sources/operator-decisions-2026-10.md#L99
 [27]: https://github.com/tsukuri-labs/studio/pull/6
 [28]: ../../sources/operator-decisions-2026-10.md#L46

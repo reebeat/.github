@@ -1,0 +1,14 @@
+== F2: the pins
+-  tsukuri: 82ee66f8806558460917b33ad9ad8d21c47a9a5b
+-  studio: d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8
+-  foldkit-flow: 8124d5b08fe5e87c75c85b067c3079e2ce46a5a6
++  tsukuri: 215868c28f58ed9bbb6ad62dfa20870247e650ff
++  studio: 14df3cdacb15b1883da33abbf21ff8bed08f1e14
++  foldkit-flow: a31331a24360bcfc64fd8e3a1ef36914f41b047b
+== F1: sources:verify
+[05:31:17.904] INFO (#2): Every file source resolves.
+== F3: statuses against feat/0006-triage-ratification (REF=feat/0006-triage-ratification until that PR merges)
+[05:31:18.717] INFO (#2): against feat/0006-triage-ratification: 0 status changes, 0 added, 6 removed
+[05:31:18.720] INFO (#2): removed: constraint-flow-effect-peer-mismatch, constraint-flow-vite-plugin-crypto, problem-studio-foldkit-vite-plugin, constraint-studio-effect-foldkit-peer, constraint-studio-foldkit-plugin-off, problem-tsukuri-state-machine-conformance
+== F4: rows
+74

@@ -174,9 +174,8 @@ elements:
     resourceType: external-tool
     title: Foldkit, the UI framework
     statement: >-
-      At the pinned commit, Foldkit 0.169.0 is the UI framework, under the MIT licence. The editor is a Foldkit app. It
-      installs from npm and is not vendored. Foldkit 0.170.0, released on 2026-10-29, is a newer release that studio has not
-      adopted.
+      At the pinned commit, Foldkit 0.170.0 is the UI framework, under the MIT licence, with `@foldkit/ui` 0.170.0 and
+      `@foldkit/vite-plugin` 0.29.0. The editor is a Foldkit app. It installs from npm and is not vendored.
     status: proposed
     rationale: >-
       Observed in the repository: AGENTS.md and PROVENANCE.md state the version, licence and installation. The operator log

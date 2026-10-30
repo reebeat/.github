@@ -248,7 +248,7 @@ elements:
       Tsukuri merges specs 0004 and 0006 and does spec 0005, so the IR is closed, versioned, story-wide in identity and
       the committed source. Studio's first journey starts after this.
     status: decided
-    source: [studio:STATE.md:12, studio:STATE.md:18, studio:docs/specs/0001-first-felt-journey.md:30-36, log:118]
+    source: [studio:STATE.md:12, studio:STATE.md:17, studio:docs/specs/0001-first-felt-journey.md:30-36, log:118]
     links:
       next: [process-studio-open-story]
 
