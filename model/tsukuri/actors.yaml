@@ -9,7 +9,7 @@ elements:
       A creator who writes one Fountain screenplay and runs `plan`, `build` and `check`. They declare the story and leave
       the building to tsukuri.
     status: decided
-    source: ["tsukuri:README.md:3", "tsukuri:README.md:14-19", "log:7", log:118]
+    source: ["tsukuri:README.md:3", "tsukuri:README.md:14-20", "log:7", log:118]
     canvas: [customer-segments]
     links:
       part-of: [actor-creator]
@@ -24,7 +24,7 @@ elements:
     statement: >-
       A speaker who steps through the Deck with the arrow keys and reads the narration as speaker notes.
     status: decided
-    source: ["tsukuri:README.md:21", "tsukuri:GLOSSARY.md:78-80", log:118]
+    source: ["tsukuri:README.md:22", "tsukuri:GLOSSARY.md:127-129", log:118]
     canvas: [customer-segments]
     links:
       part-of: [actor-presenter]
@@ -57,7 +57,7 @@ elements:
     source:
       - log:43
       - tsukuri:docs/design/open-core-boundary.md:24
-      - tsukuri:AGENTS.md:65
+      - tsukuri:AGENTS.md:66
       - log:118
     canvas: [customer-segments]
     links:
@@ -75,8 +75,8 @@ elements:
     status: decided
     source:
       - tsukuri:packages/cli/src/cli.ts:70
-      - tsukuri:packages/cli/src/cli.ts:321
-      - tsukuri:AGENTS.md:62
+      - tsukuri:packages/cli/src/cli.ts:324
+      - tsukuri:AGENTS.md:63
       - log:118
     canvas: [channels]
     links:
@@ -114,7 +114,7 @@ elements:
       on the user's machine and sends nothing out.
     status: decided
     source:
-      - tsukuri:README.md:21
+      - tsukuri:README.md:22
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:260
       - log:118
     links:
@@ -163,7 +163,7 @@ elements:
     status: decided
     source:
       - tsukuri:docs/specs/0000-development-lifecycle.md:23
-      - tsukuri:AGENTS.md:77-85
+      - tsukuri:AGENTS.md:78-86
       - log:118
     links:
       part-of: [actor-operator]
@@ -182,7 +182,7 @@ elements:
     source:
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:86
       - tsukuri:docs/design/third-party.md:56
-      - tsukuri:AGENTS.md:91
+      - tsukuri:AGENTS.md:92
       - log:118
     canvas: [key-partners, key-resources]
     links:
@@ -198,7 +198,7 @@ elements:
     status: decided
     source:
       - tsukuri:docs/design/third-party.md:57
-      - tsukuri:AGENTS.md:92
+      - tsukuri:AGENTS.md:93
       - log:50
       - log:118
     canvas: [key-partners, key-resources]
@@ -247,7 +247,7 @@ elements:
     status: decided
     source:
       - tsukuri:docs/design/third-party.md:72
-      - tsukuri:AGENTS.md:93
+      - tsukuri:AGENTS.md:94
       - log:118
     links:
       serves: [goal-tsukuri-event-timing]
@@ -345,7 +345,7 @@ elements:
     status: decided
     source:
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:78
-      - tsukuri:README.md:21
+      - tsukuri:README.md:22
       - log:118
     canvas: [key-resources]
     links:

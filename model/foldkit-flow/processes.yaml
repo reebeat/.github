@@ -278,7 +278,7 @@ elements:
       Once its API has settled, the library is offered to Foldkit as `@foldkit/flow`.
     status: decided
     source:
-      - record:foldkit-flow:STATE.md:14
+      - record:foldkit-flow:STATE.md:13
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:111
       - log:118
     links:
@@ -294,7 +294,7 @@ elements:
     status: decided
     source:
       - log:105
-      - foldkit-flow:STATE.md:14
+      - foldkit-flow:STATE.md:13
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:111
 
   - id: extproc-flow-xyflow-release

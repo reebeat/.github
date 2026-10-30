@@ -1,0 +1,158 @@
+#!/usr/bin/env bun
+// repin.ts <org worktree> [--write]: move the file citations of model/*/*.yaml (`<repo>:<path>:<lines>`, `record:<repo>:...`,
+// `absent:<repo>:<path>`) from the pins of model/sources.yaml to the current `origin/main` of each product repository.
+//
+// The rename rewrote nearly every product file, one word per line and no line moved. So the old file is first run through the
+// rename mapping (text and path), and only THEN diffed against the new file: a line the rename alone changed is unchanged here,
+// a line another commit changed is reported and left for a human. A citation whose lines all survive is renumbered; the pin in
+// sources.yaml is rewritten last, only with --write.
+//
+//   NEW_NAME=tsukuri GITHUB_ORG=tsukuri-labs bun repin.ts <worktree> [--write] [--clones /srv/share/projects]
+import { spawnSync } from "node:child_process";
+import { mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
+import { Engine, type RepoId } from "./lib.ts";
+
+const [dir, ...rest] = process.argv.slice(2);
+if (!dir) throw new Error("usage: repin.ts <org worktree> [--write] [--clones <dir>]");
+const write = rest.includes("--write");
+const clones = rest.includes("--clones") ? (rest[rest.indexOf("--clones") + 1] as string) : "/srv/share/projects";
+
+// model key in the citations -> checkout directory, repository id of the rename tool, branch carrying the new pin
+const REPOS: Record<string, { clone: string; id: RepoId }> = {
+  tsukuri: { clone: "reebeat", id: "reebeat" },
+  studio: { clone: "reebeat-studio", id: "studio" },
+  "foldkit-flow": { clone: "foldkit-flow", id: "flow" },
+};
+
+const run = (cwd: string, ...args: string[]): { ok: boolean; out: string } => {
+  const r = spawnSync("/run/current-system/sw/bin/git", args, { cwd, encoding: "utf8", maxBuffer: 1 << 28 });
+  return { ok: r.status === 0, out: r.stdout };
+};
+
+const sourcesPath = join(dir, "model/sources.yaml");
+const sourcesText = readFileSync(sourcesPath, "utf8");
+const oldPins = (Bun.YAML.parse(sourcesText) as { repos: Record<string, string> }).repos;
+
+const tmp = mkdtempSync(join(tmpdir(), "repin-"));
+type Hunk = { a: number; b: number; c: number; d: number };
+const hunkCache = new Map<string, { newPath: string; hunks: Hunk[]; oldLines: string[]; newLines: string[] } | "missing">();
+
+const hunksOf = (key: string, oldPath: string, engine: Engine, oldSha: string, newSha: string) => {
+  const ck = `${key}|${oldPath}`;
+  const cached = hunkCache.get(ck);
+  if (cached !== undefined) return cached;
+  const clone = join(clones, (REPOS[key] as { clone: string }).clone);
+  const oldText = run(clone, "show", `${oldSha}:${oldPath}`);
+  const newPath = engine.renamePath(oldPath);
+  const newText = run(clone, "show", `${newSha}:${newPath}`);
+  let result: { newPath: string; hunks: Hunk[]; oldLines: string[]; newLines: string[] } | "missing";
+  if (!oldText.ok || !newText.ok) result = "missing";
+  else {
+    const mappedOld = engine.transform(oldText.out, oldPath);
+    writeFileSync(join(tmp, "a"), mappedOld);
+    writeFileSync(join(tmp, "b"), newText.out);
+    const d = run(tmp, "diff", "--no-index", "--no-renames", "-U0", "a", "b").out;
+    const hunks: Hunk[] = [];
+    for (const m of d.matchAll(/^@@ -(\d+)(?:,(\d+))? \+(\d+)(?:,(\d+))? @@/gmu)) {
+      hunks.push({ a: Number(m[1]), b: m[2] === undefined ? 1 : Number(m[2]), c: Number(m[3]), d: m[4] === undefined ? 1 : Number(m[4]) });
+    }
+    result = { newPath, hunks, oldLines: mappedOld.split("\n"), newLines: newText.out.split("\n") };
+  }
+  hunkCache.set(ck, result);
+  return result;
+};
+
+/** New number of old line n, or null when another commit changed or removed it. */
+const mapLine = (hunks: Hunk[], n: number): number | null => {
+  let delta = 0;
+  for (const h of hunks) {
+    if (h.b === 0) {
+      if (h.a < n) delta += h.d;
+      continue;
+    }
+    if (n >= h.a && n < h.a + h.b) return null;
+    if (h.a + h.b <= n) delta += h.d - h.b;
+  }
+  return n + delta;
+};
+
+const newPins: Record<string, string> = {};
+for (const key of Object.keys(REPOS)) {
+  const r = run(join(clones, (REPOS[key] as { clone: string }).clone), "rev-parse", "origin/main");
+  newPins[key] = r.out.trim();
+}
+
+const report: string[] = [];
+let renumbered = 0;
+let same = 0;
+let absent = 0;
+let moved = 0;
+const modelRoot = join(dir, "model");
+for (const scope of readdirSync(modelRoot)) {
+  if (scope.endsWith(".yaml")) continue;
+  for (const file of readdirSync(join(modelRoot, scope))) {
+    const full = join(modelRoot, scope, file);
+    const lines = readFileSync(full, "utf8").split("\n");
+    let currentId = "";
+    const out = lines.map((line, index) => {
+      const idMatch = /^\s*- id: (\S+)/u.exec(line);
+      if (idMatch !== null) currentId = idMatch[1] ?? "";
+      let res = line.replace(/\babsent:(tsukuri|studio|foldkit-flow):([^\s,\]"']+)/gu, (whole, key: string, path: string) => {
+        absent++;
+        const clone = join(clones, (REPOS[key] as { clone: string }).clone);
+        const stillAbsent = !run(clone, "cat-file", "-e", `${newPins[key]}:${path}`).ok;
+        if (!stillAbsent) report.push(`PRESENT ${scope}/${file}:${index + 1} ${currentId} ${whole} (the file exists at the new pin)`);
+        return whole;
+      });
+      res = res.replace(/(record:)?\b(tsukuri|studio|foldkit-flow):([^:\s,\]"']+):(\d+)(?:-(\d+))?/gu, (whole, rec: string | undefined, key: string, path: string, from: string, to: string | undefined) => {
+        const engine = new Engine((REPOS[key] as { id: RepoId }).id);
+        const found = hunksOf(key, path, engine, oldPins[key] as string, newPins[key] as string);
+        const a = Number(from);
+        const b = to === undefined ? a : Number(to);
+        if (found === "missing") {
+          report.push(`MISSING ${scope}/${file}:${index + 1} ${currentId} ${whole}`);
+          return whole;
+        }
+        const na = mapLine(found.hunks, a);
+        const nb = mapLine(found.hunks, b);
+        let inner = true;
+        for (let n = a; n <= b && inner; n++) if (mapLine(found.hunks, n) === null) inner = false;
+        if (na === null || nb === null || !inner) {
+          // the block may have MOVED unchanged (a section inserted before it): find the cited lines, whole, in the new file
+          const block = found.oldLines.slice(a - 1, b);
+          const starts: number[] = [];
+          for (let i = 0; i + block.length <= found.newLines.length; i++) {
+            if (block.every((l, k) => l === found.newLines[i + k])) starts.push(i + 1);
+          }
+          const nonBlank = block.some((l) => l.trim() !== "");
+          if (nonBlank && starts.length >= 1) {
+            const at = starts.reduce((best, c) => (Math.abs(c - a) < Math.abs(best - a) ? c : best));
+            moved++;
+            return `${rec ?? ""}${key}:${found.newPath}:${at}${to === undefined ? "" : `-${at + (b - a)}`}`;
+          }
+          report.push(`CHANGED ${scope}/${file}:${index + 1} ${currentId} ${whole} -> ${found.newPath}`);
+          return whole;
+        }
+        if (na === a && nb === b && found.newPath === path) {
+          same++;
+          return whole;
+        }
+        renumbered++;
+        return `${rec ?? ""}${key}:${found.newPath}:${na}${to === undefined ? "" : `-${nb}`}`;
+      });
+      return res;
+    });
+    if (write) writeFileSync(full, out.join("\n"));
+  }
+}
+if (write) {
+  let text = sourcesText;
+  for (const [key, sha] of Object.entries(newPins)) text = text.replace(new RegExp(`(^  ${key}: )[0-9a-f]{40}`, "m"), `$1${sha}`);
+  writeFileSync(sourcesPath, text);
+}
+rmSync(tmp, { recursive: true });
+console.log(`pins ${JSON.stringify(oldPins)} -> ${JSON.stringify(newPins)}`);
+console.log(`renumbered or moved ${renumbered}, unchanged ${same}, absent citations ${absent}, moved blocks found whole ${moved}, reported ${report.length}${write ? " (written)" : " (dry run)"}`);
+console.log(report.join("\n"));

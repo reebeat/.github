@@ -508,6 +508,23 @@ const checkTriage = (model: Model): readonly Finding[] => {
   });
 };
 
+/** A re-check note belongs to an element that exists. */
+const checkRecheck = (model: Model): readonly Finding[] => {
+  const byId = itemsById(model);
+
+  return Arr.flatMap(model.triage.recheck ?? [], (entry) =>
+    byId.has(entry.id)
+      ? []
+      : [
+          finding(
+            "RECHECK-UNKNOWN-ID",
+            entry.id,
+            "model/triage.yaml asks to re-read an element that does not exist"
+          ),
+        ]
+  );
+};
+
 /** A log source of the element that covers a line which decides a free or paid mark. */
 const citesPricingDecision = (item: Item, model: Model): boolean =>
   Arr.some(item.source, (text) =>
@@ -549,6 +566,7 @@ const checkPricing = (model: Model): readonly Finding[] =>
 
 export const checkModel = (model: Model): readonly Finding[] => [
   ...checkTriage(model),
+  ...checkRecheck(model),
   ...checkPricing(model),
   ...checkText(model),
   ...checkIds(model),

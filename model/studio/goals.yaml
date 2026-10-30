@@ -328,7 +328,7 @@ elements:
       At the pinned commit, spec 0001 is blocked on tsukuri specs 0004 and 0006, and needs spec 0005 for story-wide
       identity. Until the IR is stable, studio builds no editing feature.
     status: decided
-    source: [studio:AGENTS.md:3, studio:STATE.md:12, studio:STATE.md:18, studio:docs/specs/0001-first-felt-journey.md:3, studio:docs/specs/0001-first-felt-journey.md:30-42, log:118]
+    source: [studio:AGENTS.md:3, studio:STATE.md:12, studio:STATE.md:17, studio:docs/specs/0001-first-felt-journey.md:3, studio:docs/specs/0001-first-felt-journey.md:30-42, log:118]
     gap:
       repo: tsukuri
       fix: Merge tsukuri specs 0004 to 0006 so the story IR is closed, versioned and the committed source.
@@ -348,29 +348,6 @@ elements:
       fix: Add a browser-safe compile path, a seek(frame) on the Deck page and an assembleDeck that takes its assets as input.
     links:
       hinders: [goal-studio-preview-fidelity]
-
-  - id: problem-studio-foldkit-vite-plugin
-    kind: problem
-    title: The Foldkit Vite plugin is still off in studio
-    statement: >-
-      At the pinned commit, studio keeps the Foldkit Vite plugin off, so the dev tools bridge and model-preserving reload are
-      off. The cause is fixed upstream: @foldkit/vite-plugin 0.29.0 (npm, 2026-10-29) imports SecureRandom from
-      effect/crypto and peers effect ~4.1.0. Studio has not bumped, and issue 4 is open.
-    status: open
-    rationale: >-
-      Issue 4 tracks re-enabling the plugin. Checked by npm pack of 0.29.0: dist/index.js imports SecureRandom from
-      effect/crypto, and the peers are effect ~4.1.0 and foldkit >=0.167.0. The plugin still uses node:crypto for createHmac,
-      createHash and randomUUID in its own code, where the operator preferred Effect's service (log:56).
-      Not verified: that studio's build works with 0.29.0.
-      The operator should confirm that studio re-enables the plugin in a bump change and whether the node:crypto use is
-      acceptable.
-    source: [studio:AGENTS.md:54, studio:docs/specs/0000-development-lifecycle.md:114, issue:studio#4, log:56]
-    refs: [issue:studio#4]
-    gap:
-      repo: studio
-      fix: Bump Foldkit and the Foldkit Vite plugin (0.170.0 and 0.29.0 or later), re-enable the plugin, then drop the Effect 4.0.0 peer note.
-    links:
-      hinders: [comp-studio-editor]
 
   - id: problem-studio-alchemy-release
     kind: problem
@@ -461,21 +438,19 @@ elements:
 
   - id: problem-studio-stale-state
     kind: problem
-    title: STATE.md still says spec 0003 is in review
+    title: STATE.md still says spec 0005 is in review
     statement: >-
-      At the pinned commit, STATE.md says the review and verify skills are in review and lists their review as the next
-      step. PR 5 has merged. The branch of PR 6 rewrites both lines to say 0003 has merged, so the text is wrong on main
-      until PR 6 merges.
+      At the pinned commit, STATE.md says spec 0005 (Foldkit 0.170.0 and the Vite plugin) is in review as PR 9 and lists
+      its review as the next step. PR 9 is merged; the pinned main commit is the merge of PR 10, the rename, which came after it. STATE.md is wrong until a later
+      change rewrites it.
     status: open
     rationale: >-
-      The pinned main commit is the merge of PR 5, yet STATE.md line 7 still says "in review". Compare line 7 with the
-      repository log. On the branch of PR 6 (a draft on 2026-10-29), STATE.md line 7 says 0003 is merged and line 11 names
-      spec 0004.
-      The operator should confirm that PR 6 carries the update of STATE.md.
+      PR 9 merged before the pinned main commit (`git log`), yet STATE.md line 7 still says "in review". Compare line 7
+      with the repository log. The operator should confirm that the next spec updates STATE.md.
     source: [studio:STATE.md:7, studio:STATE.md:11, pr:studio#5, pr:studio#6]
     gap:
       repo: studio
-      fix: Merge PR 6, whose branch already says spec 0003 has merged and names spec 0004.
+      fix: Rewrite STATE.md to say spec 0005 has merged (PR 6, the distribution spec, also edits it and waits for an Alchemy release).
     links:
       hinders: [goal-studio-checked-change]
 
@@ -572,40 +547,6 @@ elements:
       toolchain and docs are allowed.
     status: decided
     source: [studio:AGENTS.md:3, studio:STATE.md:12, studio:docs/specs/0001-first-felt-journey.md:30-42, studio:docs/specs/0000-development-lifecycle.md:89, log:118]
-    links:
-      constrains: [comp-studio-editor]
-
-  - id: constraint-studio-effect-foldkit-peer
-    kind: constraint
-    constraintType: technical
-    title: Effect 4.1.0 runs against Foldkit 0.169.0's peer
-    statement: >-
-      Foldkit 0.169.0 declares a peer of effect 4.0.0, and studio runs 4.1.0 with it at the pinned commit. Bun prints
-      warnings. The tests, build and a browser run pass on 4.1.0, and a boot test guards the mismatch. Foldkit 0.170.0
-      (2026-10-29) peers effect ~4.1.0, so the mismatch holds only while studio stays on 0.169.0.
-    status: proposed
-    rationale: >-
-      AGENTS.md calls the choice a lead decision. The operator's stack policy pins Effect to 4.1 or later, but no line
-      decides this mismatch. Checked on npm on 2026-10-29: the peer ranges of foldkit 0.169.0 and 0.170.0.
-      The operator should confirm that the mismatch is acceptable until studio bumps Foldkit.
-    source: [studio:AGENTS.md:54, studio:docs/specs/0000-development-lifecycle.md:96, studio:docs/specs/0000-development-lifecycle.md:34]
-    links:
-      constrains: [comp-studio-editor]
-
-  - id: constraint-studio-foldkit-plugin-off
-    kind: constraint
-    constraintType: technical
-    title: Keep the Foldkit Vite plugin off until the bump
-    statement: >-
-      At the pinned commit, the Foldkit Vite plugin stays off, and studio stays on Effect 4.1.0, until a Foldkit release
-      imports effect/crypto. That release exists: @foldkit/vite-plugin 0.29.0 (2026-10-29). The constraint is temporary and
-      ends when studio bumps and re-enables the plugin.
-    status: proposed
-    rationale: >-
-      Observed in the repository: AGENTS.md and spec 0000 record this as a lead decision. The operator log prefers upstream
-      fixes over workarounds (log:56) but does not decide this plugin choice. The operator must confirm that the constraint
-      stays until the bump lands, then goes.
-    source: [log:56, studio:AGENTS.md:54, studio:docs/specs/0000-development-lifecycle.md:125, issue:studio#4]
     links:
       constrains: [comp-studio-editor]
 

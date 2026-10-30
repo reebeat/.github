@@ -111,14 +111,14 @@ elements:
     actorType: org-unit
     title: The Foldkit project
     statement: >-
-      Foldkit makes the framework the library is built for. It owns the plugin the example cannot use yet. If it adopts
+      Foldkit makes the framework the library is built for. It owns `@foldkit/vite-plugin` 0.29.0, which the example loads. If it adopts
       the library, the project publishes `@foldkit/flow` and deprecates `@tsukuri/flow`.
     status: decided
     source:
       - log:105
       - log:56
       - foldkit-flow:AGENTS.md:64
-      - foldkit-flow:STATE.md:13-14
+      - foldkit-flow:STATE.md:13
     canvas: [key-partners]
 
   # ---- resources ----
@@ -157,9 +157,9 @@ elements:
   - id: resource-flow-foldkit-pin
     kind: resource
     resourceType: software
-    title: Foldkit 0.169.0 and its peer range
+    title: Foldkit 0.170.0 and its peer range
     statement: >-
-      The repository uses Foldkit 0.169.0, and the library declares a peer of `~0.169.0`.
+      The repository uses Foldkit 0.170.0, and the library declares a peer of `~0.170.0`.
     status: decided
     source:
       - foldkit-flow:package.json:65
@@ -234,7 +234,7 @@ elements:
       The mission-state file: lifecycle stage, what is happening now, what is next and what is blocked.
     status: decided
     source:
-      - foldkit-flow:STATE.md:1-18
+      - foldkit-flow:STATE.md:1-17
       - log:118
     links:
       serves: [goal-flow-lifecycle]

@@ -2,7 +2,7 @@
 
 # What the operator confirms or rejects
 
-Every element in the scope tables is not an operator decision. `proposed` means an agent, a spec or an inference put it forward; `open` means a gap, a question or an undecided choice. Each row says why it waits and what to confirm. The column "Triage advice" holds the lead's advice where there is one ("Recommended: confirm", or a recommended default); the operator has not answered it, so it is not a decision. The last section lists decided elements that rest on repository records alone.
+Every element in the scope tables is not an operator decision. `proposed` means an agent, a spec or an inference put it forward; `open` means a gap, a question or an undecided choice. Each row says why it waits and what to confirm. The column "Triage advice" holds the lead's advice where there is one ("Recommended: confirm", or a recommended default); the operator has not answered it, so it is not a decision. The next section lists decided elements that rest on repository records alone; the last lists elements whose cited lines changed at a re-pin.
 
 To confirm an element, change its `status` to `decided` in `model/` and cite the line that shows the decision (a line of the decision log, or a repository line that records it); to reject it, delete it. Run `bun run model:check` and `bun run generate`.
 
@@ -16,7 +16,7 @@ To confirm an element, change its `status` to `decided` in `model/` and cite the
 
 ## tsukuri (the compiler)
 
-11 elements wait: 9 proposed, 2 open.
+10 elements wait: 8 proposed, 2 open.
 
 | Element | Kind | Status | Why it waits, and what to confirm | Triage advice |
 | --- | --- | --- | --- | --- |
@@ -25,7 +25,6 @@ To confirm an element, change its `status` to `decided` in `model/` and cite the
 | [The README does not link the generated roadmap](goals.md#problem-tsukuri-roadmap-only-in-issues) | Problem | open | No roadmap file exists at the pinned commit, and the README does not mention a roadmap. The roadmap now exists as `docs/roadmap.md` of tsukuri-labs/.github, generated from this model, which keeps a single source. The open item is the link. The stale STATE.md is also recorded in problem-tsukuri-state-stale. |  |
 | [No pre-release yet; cli and adapters unpublished](goals.md#problem-tsukuri-packages-private) | Problem | open | Observed at the pinned commit: seven of the 14 manifests under `packages/` carry no `"private": true`, and `.github/workflows/release.yml` exists (PR #18, merged). The other seven are private by design (spec 0009). A lookup of `@tsukuri/core` in the npm registry returned 404 on 2026-10-29, which a pinned file cannot show. Spec 0009 says the first release needs operator steps (claim the names, configure trusted publishers); whether they are done is not verified. The operator should confirm the gap and say how the `tsukuri` command and the adapters are distributed. |  |
 | [Verify cleanup misses a Chromium from build or journey](goals.md#problem-tsukuri-review-cleanup) | Problem | proposed | PR #16 merged at the pinned commit and disclosed this gap in the `cleanup.sh` header and in the skill. Issue #25 (open) tracks it. It is a finding of a review round and an issue, not an operator statement, so confirm it. |  |
-| [Explicit state machines (PR #17) are not merged](goals.md#problem-tsukuri-state-machine-conformance) | Problem | proposed | Pull request #17 was open at head 9394420 on 2026-10-29, and no spec 0004 file exists at the pinned commit. The model keeps the fact, not the review rounds, which belong to the tracker. Confirm it. |  |
 | [website renderer, a planned artifact renderer](technical-components.md#comp-tsukuri-website-renderer) | Technical component | proposed | Issue #19 proposes it and says its spec follows the IR work and an extension architecture ADR. The operator decided that websites become an artifact type (log:36) but no renderer exists or is specified. |  |
 | [One declared story yields every rendering](technical-components.md#isgoal-tsukuri-one-source) | Information system goal | proposed | Spec plan: the operator decided that the source is one Fountain file (spec 0001 line 213). That Fountain is an importer and an artifact renderer, and that the persistent IR stays JSON, is the operator's later refinement (log:25, log:67-69). That the speech cache is the only generated file kept is spec 0001's plan (falsifier F5). Confirm the wording. |  |
 | [Write a story as a Fountain screenplay](technical-components.md#req-tsukuri-fountain-artifact-renderer) | Requirement | proposed | The operator said Fountain is both an importer and an artifact renderer (log:67-69). ADR-0000 (status Proposed) lists a pure Fountain renderer among the extension points to build now (row 10a). No code writes Fountain at the pinned commit. The operator must confirm the requirement, its release and that the renderer is free. |  |
@@ -34,7 +33,7 @@ To confirm an element, change its `status` to `decided` in `model/` and cite the
 
 ## tsukuri studio
 
-15 elements wait: 13 proposed, 2 open.
+12 elements wait: 11 proposed, 1 open.
 
 | Element | Kind | Status | Why it waits, and what to confirm | Triage advice |
 | --- | --- | --- | --- | --- |
@@ -45,10 +44,7 @@ To confirm an element, change its `status` to `decided` in `model/` and cite the
 | [Sync room](concepts.md#concept-studio-sync-room) | Concept | proposed | Spec plan: the operator decided a sync server with a gate, which is the Durable Object (log:47 and spec 0002 line 198). One object per story, hibernation, the SQLite log and chunking are the spike's recommendation, run only on local workerd. The operator should confirm these room-design details. |  |
 | [Anchor and offset](concepts.md#concept-studio-anchor-offset) | Concept | proposed | Tsukuri's GLOSSARY.md defines the anchor and the offset (lines 39-40; the syntax came with spec 0002, merged in tsukuri PR 4 on 2026-10-29). The lenses note applies them to retiming in the Timeline lens (line 56). The operator should confirm that studio uses the terms as the tsukuri glossary defines them. |  |
 | [People decide on what agents and others suggest](goals.md#goal-studio-human-control) | Goal | proposed | The operator decided that a repair is offered as a proposal and never applied without a person (spec 0002 line 198). The lenses note extends this to all suggestions (Review lens). That wider goal is the lens design, not a recorded decision. The operator should confirm the wider goal for all suggestions. |  |
-| [The Foldkit Vite plugin is still off in studio](goals.md#problem-studio-foldkit-vite-plugin) | Problem | open | Issue 4 tracks re-enabling the plugin. Checked by npm pack of 0.29.0: dist/index.js imports SecureRandom from effect/crypto, and the peers are effect ~4.1.0 and foldkit >=0.167.0. The plugin still uses node:crypto for createHmac, createHash and randomUUID in its own code, where the operator preferred Effect's service (log:56). Not verified: that studio's build works with 0.29.0. The operator should confirm that studio re-enables the plugin in a bump change and whether the node:crypto use is acceptable. |  |
-| [STATE.md still says spec 0003 is in review](goals.md#problem-studio-stale-state) | Problem | open | The pinned main commit is the merge of PR 5, yet STATE.md line 7 still says "in review". Compare line 7 with the repository log. On the branch of PR 6 (a draft on 2026-10-29), STATE.md line 7 says 0003 is merged and line 11 names spec 0004. The operator should confirm that PR 6 carries the update of STATE.md. |  |
-| [Effect 4.1.0 runs against Foldkit 0.169.0's peer](goals.md#constraint-studio-effect-foldkit-peer) | Constraint | proposed | AGENTS.md calls the choice a lead decision. The operator's stack policy pins Effect to 4.1 or later, but no line decides this mismatch. Checked on npm on 2026-10-29: the peer ranges of foldkit 0.169.0 and 0.170.0. The operator should confirm that the mismatch is acceptable until studio bumps Foldkit. |  |
-| [Keep the Foldkit Vite plugin off until the bump](goals.md#constraint-studio-foldkit-plugin-off) | Constraint | proposed | Observed in the repository: AGENTS.md and spec 0000 record this as a lead decision. The operator log prefers upstream fixes over workarounds (log:56) but does not decide this plugin choice. The operator must confirm that the constraint stays until the bump lands, then goes. |  |
+| [STATE.md still says spec 0005 is in review](goals.md#problem-studio-stale-state) | Problem | open | PR 9 merged before the pinned main commit (`git log`), yet STATE.md line 7 still says "in review". Compare line 7 with the repository log. The operator should confirm that the next spec updates STATE.md. |  |
 | [The story graph lens could use foldkit-flow](goals.md#opportunity-studio-foldkit-flow-graph) | Opportunity | proposed | The log describes foldkit-flow as its own repository (line 48), and the lens note describes a statechart map. No studio document at the pinned commit names foldkit-flow. Its README says it is not published yet, and packages/flow is private, so studio cannot install it from npm. Studio's use needs a published release or a workspace link. The operator must confirm the use as an opportunity, not a commitment. |  |
 | [Review a suggestion](business-processes.md#process-studio-review-suggestion) | Process | proposed | The lenses note designs the Review lens. It is design only. The operator should confirm this suggestion-review workflow. |  |
 | [A suggestion needs a human to accept it](business-rules.md#rule-studio-suggestions-need-human-accept) | Business rule | proposed | The lenses note designs suggestion mode. The operator decided the same for repairs only (spec 0002 line 198), so the general rule needs confirmation. The operator should confirm the general rule for suggestions. |  |
@@ -90,3 +86,60 @@ To confirm an element, change its `status` to `decided` in `model/` and cite the
 
 | Element | Scope | Kind | Sources |
 | --- | --- | --- | --- |
+
+## Citations to re-read
+
+50 elements cite lines that another commit changed between two pins of `model/sources.yaml`. The citation was moved to the new lines and still resolves, but the statement was written from the old text and may now disagree with it. Read the new lines, then correct the statement and delete the entry from `recheck` in `model/triage.yaml`.
+
+| Element | Scope | Status | What changed |
+| --- | --- | --- | --- |
+| [Presenter](actors-and-resources.md#actor-tsukuri-presenter) | tsukuri | decided | cited text changed: tsukuri:GLOSSARY.md:78-80 -> GLOSSARY.md:127-129 (1.00, SIMILAR) |
+| [Story author](actors-and-resources.md#actor-tsukuri-story-author) | tsukuri | decided | cited text changed: tsukuri:README.md:3-3 -> README.md:3-3 (0.80, SIMILAR) |
+| [apps/example (the example app)](technical-components.md#comp-flow-example-app) | foldkit-flow | decided | cited text changed: foldkit-flow:apps/example/package.json:16-16 -> apps/example/package.json:14-14 (0.79, SIMILAR) |
+| [tools/journey (browser gate)](technical-components.md#comp-flow-journey-tool) | foldkit-flow | proposed | cited text changed: foldkit-flow:AGENTS.md:48-48 -> AGENTS.md:48-48 (0.87, SIMILAR) |
+| [Viewport](concepts.md#concept-flow-viewport) | foldkit-flow | decided | cited text changed: foldkit-flow:README.md:82-82 -> README.md:82-82 (0.86, SIMILAR) |
+| [Agent tool protocol](concepts.md#concept-org-agent-tool-protocol) | org | decided | cited text changed: tsukuri:docs/design/open-core-boundary.md:25-25 -> docs/design/open-core-boundary.md:25-25 (0.36, CHANGED-IN-SUBSTANCE) |
+| [Anchor and offset](concepts.md#concept-studio-anchor-offset) | studio | proposed | cited text changed: tsukuri:GLOSSARY.md:39-40 -> GLOSSARY.md:49-50 (1.00, SIMILAR) |
+| [Anchor](concepts.md#concept-tsukuri-anchor) | tsukuri | decided | cited text changed: tsukuri:GLOSSARY.md:39-41 -> GLOSSARY.md:49-51 (1.00, SIMILAR) |
+| [Deck](concepts.md#concept-tsukuri-deck) | tsukuri | decided | cited text changed: tsukuri:GLOSSARY.md:78-80 -> GLOSSARY.md:127-129 (1.00, SIMILAR) |
+| [Effect](concepts.md#concept-tsukuri-effect) | tsukuri | decided | cited text changed: tsukuri:GLOSSARY.md:35-37 -> GLOSSARY.md:45-47 (1.00, SIMILAR) |
+| [Library](concepts.md#concept-tsukuri-library) | tsukuri | decided | cited text changed: tsukuri:GLOSSARY.md:101-102 -> GLOSSARY.md:150-151 (1.00, SIMILAR) |
+| [Lifecycle event](concepts.md#concept-tsukuri-lifecycle-event) | tsukuri | decided | cited text changed: tsukuri:GLOSSARY.md:43-45 -> GLOSSARY.md:53-55 (1.00, SIMILAR) |
+| [Transition anchor](concepts.md#concept-tsukuri-transition-anchor) | tsukuri | decided | cited text changed: tsukuri:GLOSSARY.md:47-49 -> GLOSSARY.md:57-59 (1.00, SIMILAR) |
+| [Cap the Effect range for unstable API use](goals.md#constraint-flow-effect-range) | foldkit-flow | decided | cited text changed: foldkit-flow:AGENTS.md:65-65 -> AGENTS.md:65-65 (1.00, SIMILAR); foldkit-flow:packages/flow/package.json:30-33 -> packages/flow/package.json:30-33 (1.00, SIMILAR) |
+| [Prove interaction in a real browser](goals.md#goal-flow-browser-proof) | foldkit-flow | decided | cited text changed: foldkit-flow:AGENTS.md:48-48 -> AGENTS.md:48-48 (0.87, SIMILAR) |
+| [Stay smooth at 500 nodes and 700 edges](goals.md#goal-flow-performance) | foldkit-flow | decided | cited text changed: foldkit-flow:README.md:82-82 -> README.md:82-82 (0.86, SIMILAR) |
+| [A Deck and a Video from one source](goals.md#goal-tsukuri-deck-and-video) | tsukuri | decided | cited text changed: tsukuri:README.md:3-6 -> README.md:3-6 (0.80, SIMILAR) |
+| [One screenplay, every rendering](goals.md#goal-tsukuri-screenplay-first) | tsukuri | decided | cited text changed: tsukuri:README.md:3-3 -> README.md:3-3 (0.80, SIMILAR) |
+| [Measure the performance budget](technical-components.md#isgoal-flow-measured-budget) | foldkit-flow | decided | cited text changed: foldkit-flow:README.md:82-82 -> README.md:82-82 (0.86, SIMILAR) |
+| [No stated goals beyond the README](goals.md#problem-flow-goals-undocumented) | foldkit-flow | decided | cited text changed: foldkit-flow:STATE.md:7-7 -> STATE.md:7-7 (0.49, CHANGED-IN-SUBSTANCE) |
+| [The browser journey does not run in CI](goals.md#problem-flow-journey-not-in-ci) | foldkit-flow | decided | cited text changed: foldkit-flow:AGENTS.md:48-48 -> AGENTS.md:48-48 (0.87, SIMILAR) |
+| [Keyboard users cannot create connections](goals.md#problem-flow-keyboard-connect-missing) | foldkit-flow | decided | cited text changed: foldkit-flow:STATE.md:11-11 -> STATE.md:11-11 (0.80, SIMILAR) |
+| [Demand is measured with pilot users and a waitlist](goals.md#problem-tsukuri-demand-unmeasured) | tsukuri | decided | cited text changed: tsukuri:README.md:1-50 -> README.md:1-50 (1.00, SIMILAR) |
+| [Extension points are staged under ADR-0000](goals.md#problem-tsukuri-extension-points-open) | tsukuri | decided | cited text changed: tsukuri:docs/design/open-core-boundary.md:24-25 -> docs/design/open-core-boundary.md:24-25 (1.00, SIMILAR) |
+| [The README does not state the goals](goals.md#problem-tsukuri-goals-not-in-readme) | tsukuri | decided | cited text changed: tsukuri:README.md:1-3 -> README.md:1-3 (1.00, SIMILAR) |
+| [No pre-release yet; cli and adapters unpublished](goals.md#problem-tsukuri-packages-private) | tsukuri | open | cited text changed: tsukuri:.github/workflows/release.yml:1-5 -> .github/workflows/release.yml:1-5 (1.00, SIMILAR) |
+| [The README does not link the generated roadmap](goals.md#problem-tsukuri-roadmap-only-in-issues) | tsukuri | open | cited text changed: tsukuri:README.md:1-50 -> README.md:1-50 (1.00, SIMILAR); tsukuri:STATE.md:7-7 -> STATE.md:7-7 (0.21, CHANGED-IN-SUBSTANCE) |
+| [One Line keeps an interim speed hint](goals.md#problem-tsukuri-speed-interim) | tsukuri | decided | cited text changed: tsukuri:STATE.md:12-12 -> STATE.md:12-12 (0.99, SIMILAR) |
+| [Pan and zoom the canvas](business-processes.md#process-flow-pan-zoom) | foldkit-flow | proposed | cited text changed: foldkit-flow:README.md:82-82 -> README.md:82-82 (0.86, SIMILAR) |
+| [Run the browser journey gate](business-processes.md#process-flow-run-journey-gate) | foldkit-flow | decided | cited text changed: foldkit-flow:AGENTS.md:48-48 -> AGENTS.md:48-48 (0.87, SIMILAR) |
+| [Review the artifact and the plan](business-processes.md#process-org-review-artifact) | org | decided | cited text changed: tsukuri:README.md:3-3 -> README.md:3-3 (0.80, SIMILAR) |
+| [Author a story](business-processes.md#process-tsukuri-author-story) | tsukuri | decided | cited text changed: tsukuri:README.md:3-3 -> README.md:3-3 (0.80, SIMILAR) |
+| [A browser journey gate](technical-components.md#req-flow-browser-gate) | foldkit-flow | decided | cited text changed: foldkit-flow:AGENTS.md:48-48 -> AGENTS.md:48-48 (0.87, SIMILAR) |
+| [A new Effect minor cannot break the library](technical-components.md#req-flow-effect-range-gated) | foldkit-flow | decided | cited text changed: foldkit-flow:AGENTS.md:65-65 -> AGENTS.md:65-65 (1.00, SIMILAR) |
+| [Tools, packages and apps stay separate](technical-components.md#req-flow-maintain-tiers) | foldkit-flow | decided | cited text changed: foldkit-flow:apps/example/package.json:16-16 -> apps/example/package.json:14-14 (0.79, SIMILAR) |
+| [Pan and zoom by wheel and drag](technical-components.md#req-flow-pan-zoom) | foldkit-flow | proposed | cited text changed: foldkit-flow:README.md:82-82 -> README.md:82-82 (0.86, SIMILAR) |
+| [Dragging stays fast at 500 nodes and 700 edges](technical-components.md#req-flow-perf-drag) | foldkit-flow | decided | cited text changed: foldkit-flow:README.md:82-82 -> README.md:82-82 (0.86, SIMILAR) |
+| [Check a build against its source](technical-components.md#req-tsukuri-check) | tsukuri | decided | cited text changed: tsukuri:README.md:8-8 -> README.md:8-8 (0.78, SIMILAR) |
+| [Chromium for the journey gate](actors-and-resources.md#resource-flow-chromium) | foldkit-flow | decided | cited text changed: foldkit-flow:AGENTS.md:48-48 -> AGENTS.md:48-48 (0.87, SIMILAR) |
+| [Effect 4.1.0](actors-and-resources.md#resource-flow-effect) | foldkit-flow | decided | cited text changed: foldkit-flow:AGENTS.md:65-65 -> AGENTS.md:65-65 (1.00, SIMILAR) |
+| [Devenv, Bun, Vite+ and Oxlint toolchain](actors-and-resources.md#resource-flow-toolchain) | foldkit-flow | decided | cited text changed: foldkit-flow:AGENTS.md:37-51 -> AGENTS.md:37-51 (1.00, SIMILAR) |
+| [Effect 4.1.0](actors-and-resources.md#resource-studio-effect) | studio | proposed | cited text changed: studio:AGENTS.md:54-54 -> AGENTS.md:54-54 (0.24, CHANGED-IN-SUBSTANCE) |
+| [Specs and the lenses design note](actors-and-resources.md#resource-studio-specs) | studio | decided | cited text changed: studio:STATE.md:7-7 -> STATE.md:7-7 (0.92, SIMILAR) |
+| [The story same-id](actors-and-resources.md#resource-tsukuri-same-id-story) | tsukuri | decided | cited text changed: tsukuri:README.md:8-8 -> README.md:8-8 (0.78, SIMILAR) |
+| [A package accepts only the Effect versions it can trust](business-rules.md#rule-flow-effect-range-by-stability) | foldkit-flow | decided | cited text changed: foldkit-flow:AGENTS.md:65-65 -> AGENTS.md:65-65 (1.00, SIMILAR) |
+| [Pointer moves re-render only what changed](business-rules.md#rule-flow-memoised-views) | foldkit-flow | decided | cited text changed: foldkit-flow:README.md:82-82 -> README.md:82-82 (0.86, SIMILAR) |
+| [Users can bring their own agents](business-rules.md#rule-org-byo-agents) | org | decided | cited text changed: tsukuri:docs/design/open-core-boundary.md:25-25 -> docs/design/open-core-boundary.md:25-25 (0.36, CHANGED-IN-SUBSTANCE) |
+| [Effect packages stay on one pinned version](business-rules.md#rule-studio-effect-one-version) | studio | decided | cited text changed: studio:AGENTS.md:54-54 -> AGENTS.md:54-54 (0.24, CHANGED-IN-SUBSTANCE) |
+| [An absolute time needs a written reason](business-rules.md#rule-tsukuri-absolute-time-needs-reason) | tsukuri | decided | cited text changed: tsukuri:packages/lint/src/absoluteTimes.ts:1-5 -> packages/lint/src/absoluteTimes.ts:1-5 (0.93, SIMILAR) |
+| [Narration, subtitles and notes are one string](business-rules.md#rule-tsukuri-narration-text-equal) | tsukuri | decided | cited text changed: tsukuri:GLOSSARY.md:31-33 -> GLOSSARY.md:41-43 (1.00, SIMILAR) |

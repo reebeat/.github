@@ -319,6 +319,32 @@ describe("triage advice", () => {
   });
 });
 
+describe("citations to re-read", () => {
+  it("passes a note on an element that exists", () => {
+    const model = {
+      ...withChange("goal-org-g", (element) => element),
+      triage: {
+        advice: [],
+        recheck: [{ id: "goal-org-g", note: "cited line 4 changed" }],
+      },
+    };
+
+    assert.notInclude(codes(model), "RECHECK-UNKNOWN-ID");
+  });
+
+  it("fails when the noted id does not exist", () => {
+    const model = {
+      ...withChange("goal-org-g", (element) => element),
+      triage: {
+        advice: [],
+        recheck: [{ id: "goal-org-nowhere", note: "cited line 4 changed" }],
+      },
+    };
+
+    assert.include(codes(model), "RECHECK-UNKNOWN-ID");
+  });
+});
+
 describe("text cut short", () => {
   it("fails when a rationale ends at the word Issue", () => {
     const model = withChange("goal-org-g", (element) => ({

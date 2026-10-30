@@ -47,7 +47,7 @@ flowchart LR
 | <a id="actor-presenter"></a><code>actor-presenter</code><br/>Actor | **Presenter.** A person who presents a deck with narration in speaker notes, and records narration against the beats of a story. Type: role. Persona. | decided |  | [log L45][10], [log L118][5] |
 | <a id="actor-agent-operator"></a><code>actor-agent-operator</code><br/>Actor | **Agent operator.** A person who brings their own AI agent and gives it the editing tools, so it can read, edit and check a story. Type: role. Persona. | decided |  | [log L38][11], [log L43][12], [log L118][5] |
 | <a id="actor-plugin-author"></a><code>actor-plugin-author</code><br/>Actor | **Plugin author.** A developer who writes an adapter, a render engine or an extension against the open contracts of the compiler. Type: role. Persona. | decided | performs: [Publish packages to npm](business-processes.md#process-org-publish-packages) | [log L28][13], [log L43][12], [log L118][5] |
-| <a id="resource-github-org"></a><code>resource-github-org</code><br/>Resource | **The GitHub organisation tsukuri-labs.** The organisation that holds the repositories of the compiler, the editor and the graph library, and this model. Type: service. | decided |  | [tsukuri:README.md:42][14], [log L118][5] |
+| <a id="resource-github-org"></a><code>resource-github-org</code><br/>Resource | **The GitHub organisation tsukuri-labs.** The organisation that holds the repositories of the compiler, the editor and the graph library, and this model. Type: service. | decided |  | [tsukuri:README.md:43][14], [log L118][5] |
 | <a id="resource-npm-org"></a><code>resource-npm-org</code><br/>Resource | **The npm organisation tsukuri.** The npm organisation under which `@tsukuri/*` pre-releases are published. It exists. Type: service. | decided |  | [log L49][15] |
 | <a id="resource-decision-log"></a><code>resource-decision-log</code><br/>Resource | **The operator's decision log.** The operator's own decisions and wording, compiled by the lead agent from the working sessions of 2026-10-28 and 2026-10-29. Its header says that where a repository document disagrees, the log and its date win. Type: document. | decided |  | [log L3][16], [log L118][5] |
 
@@ -146,26 +146,26 @@ flowchart LR
 
 | Element | Statement | Status | Links | Sources |
 | --- | --- | --- | --- | --- |
-| <a id="actor-tsukuri-story-author"></a><code>actor-tsukuri-story-author</code><br/>Actor | **Story author.** A creator who writes one Fountain screenplay and runs `plan`, `build` and `check`. They declare the story and leave the building to tsukuri. Type: role. Persona. | decided | part-of: [Creator](actors-and-resources.md#actor-creator); performs: [Author a story](business-processes.md#process-tsukuri-author-story), [Review the Plan](business-processes.md#process-tsukuri-review-plan); serves: [Declare the story, tsukuri builds the artifacts](goals.md#goal-tsukuri-vision) | [tsukuri:README.md:3][17], [tsukuri:README.md:14-19][18], [log L7][6], [log L118][5] |
-| <a id="actor-tsukuri-presenter"></a><code>actor-tsukuri-presenter</code><br/>Actor | **Presenter.** A speaker who steps through the Deck with the arrow keys and reads the narration as speaker notes. Type: role. Persona. | decided | part-of: [Presenter](actors-and-resources.md#actor-presenter); uses: [Deck](concepts.md#concept-tsukuri-deck); serves: [A Deck and a Video from one source](goals.md#goal-tsukuri-deck-and-video) | [tsukuri:README.md:21][19], [tsukuri:GLOSSARY.md:78-80][20], [log L118][5] |
+| <a id="actor-tsukuri-story-author"></a><code>actor-tsukuri-story-author</code><br/>Actor | **Story author.** A creator who writes one Fountain screenplay and runs `plan`, `build` and `check`. They declare the story and leave the building to tsukuri. Type: role. Persona. | decided | part-of: [Creator](actors-and-resources.md#actor-creator); performs: [Author a story](business-processes.md#process-tsukuri-author-story), [Review the Plan](business-processes.md#process-tsukuri-review-plan); serves: [Declare the story, tsukuri builds the artifacts](goals.md#goal-tsukuri-vision) | [tsukuri:README.md:3][17], [tsukuri:README.md:14-20][18], [log L7][6], [log L118][5] |
+| <a id="actor-tsukuri-presenter"></a><code>actor-tsukuri-presenter</code><br/>Actor | **Presenter.** A speaker who steps through the Deck with the arrow keys and reads the narration as speaker notes. Type: role. Persona. | decided | part-of: [Presenter](actors-and-resources.md#actor-presenter); uses: [Deck](concepts.md#concept-tsukuri-deck); serves: [A Deck and a Video from one source](goals.md#goal-tsukuri-deck-and-video) | [tsukuri:README.md:22][19], [tsukuri:GLOSSARY.md:127-129][20], [log L118][5] |
 | <a id="actor-tsukuri-agent-operator"></a><code>actor-tsukuri-agent-operator</code><br/>Actor | **Agent operator.** A person whose own agent writes and repairs stories with the compiler's text source and its line-numbered messages. Type: role. Persona. | decided | part-of: [Agent operator](actors-and-resources.md#actor-agent-operator); performs: [Author a story](business-processes.md#process-tsukuri-author-story); serves: [An explicit source nobody can misread](goals.md#goal-tsukuri-explicit-source) | [log L43][12], [tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:11][21], [log L118][5] |
-| <a id="actor-tsukuri-plugin-author"></a><code>actor-tsukuri-plugin-author</code><br/>Actor | **Plugin author.** A developer who writes an adapter for one service and proves it with the service's contract suite. Type: role. Persona. | decided | part-of: [Plugin author](actors-and-resources.md#actor-plugin-author); performs: [Add an adapter](business-processes.md#process-tsukuri-add-adapter); serves: [Plugins and a render-engine SDK](goals.md#goal-tsukuri-plugin-sdk) | [log L43][12], [tsukuri:docs/design/open-core-boundary.md:24][22], [tsukuri:AGENTS.md:65][23], [log L118][5] |
-| <a id="actor-tsukuri-cli"></a><code>actor-tsukuri-cli</code><br/>Actor | **The tsukuri command.** The `tsukuri` command with `plan`, `lint`, `build`, `check` and `journey`. It is the one composition root that reads the selection and fills each service with an adapter. Type: system. | decided | performs: [Select the adapters](business-processes.md#process-tsukuri-select-adapters), [Run the whole journey on one story](business-processes.md#process-tsukuri-run-journey); responsible-for: [Only the cli composes adapters](business-rules.md#rule-tsukuri-only-cli-composes); uses: [cli, the tsukuri command](technical-components.md#comp-tsukuri-cli) | [tsukuri:packages/cli/src/cli.ts:70][24], [tsukuri:packages/cli/src/cli.ts:321][25], [tsukuri:AGENTS.md:62][26], [log L118][5] |
+| <a id="actor-tsukuri-plugin-author"></a><code>actor-tsukuri-plugin-author</code><br/>Actor | **Plugin author.** A developer who writes an adapter for one service and proves it with the service's contract suite. Type: role. Persona. | decided | part-of: [Plugin author](actors-and-resources.md#actor-plugin-author); performs: [Add an adapter](business-processes.md#process-tsukuri-add-adapter); serves: [Plugins and a render-engine SDK](goals.md#goal-tsukuri-plugin-sdk) | [log L43][12], [tsukuri:docs/design/open-core-boundary.md:24][22], [tsukuri:AGENTS.md:66][23], [log L118][5] |
+| <a id="actor-tsukuri-cli"></a><code>actor-tsukuri-cli</code><br/>Actor | **The tsukuri command.** The `tsukuri` command with `plan`, `lint`, `build`, `check` and `journey`. It is the one composition root that reads the selection and fills each service with an adapter. Type: system. | decided | performs: [Select the adapters](business-processes.md#process-tsukuri-select-adapters), [Run the whole journey on one story](business-processes.md#process-tsukuri-run-journey); responsible-for: [Only the cli composes adapters](business-rules.md#rule-tsukuri-only-cli-composes); uses: [cli, the tsukuri command](technical-components.md#comp-tsukuri-cli) | [tsukuri:packages/cli/src/cli.ts:70][24], [tsukuri:packages/cli/src/cli.ts:324][25], [tsukuri:AGENTS.md:63][26], [log L118][5] |
 | <a id="actor-tsukuri-build-program"></a><code>actor-tsukuri-build-program</code><br/>Actor | **The build program.** One Effect program over the seven services. It runs every stage from the story to a finished build directory and knows no model, browser or binary. Type: system. | decided | performs: [Parse the screenplay](business-processes.md#process-tsukuri-parse-story), [Build the Plan](business-processes.md#process-tsukuri-build-plan), [Make or reuse the narration audio](business-processes.md#process-tsukuri-speech-stage), [Schedule the Timeline](business-processes.md#process-tsukuri-schedule), [Render the Deck](business-processes.md#process-tsukuri-render-deck), [Write the manifest and commit the build](business-processes.md#process-tsukuri-write-manifest); uses: [pipeline, the build program](technical-components.md#comp-tsukuri-pipeline) | [tsukuri:packages/pipeline/src/buildProgram.ts:1-3][27], [log L118][5] |
-| <a id="actor-tsukuri-local-adapters"></a><code>actor-tsukuri-local-adapters</code><br/>Actor | **The local adapters.** The adapters for Kokoro, whisper.cpp, synthesised sounds, reveal.js, Chromium, ffmpeg and the file cache. Each runs on the user's machine and sends nothing out. Type: system. | decided | performs: [Capture the frames](business-processes.md#process-tsukuri-capture-frames), [Encode and mux the Video](business-processes.md#process-tsukuri-encode-video); uses: [Chromium](actors-and-resources.md#resource-tsukuri-chromium), [ffmpeg and ffprobe](actors-and-resources.md#resource-tsukuri-ffmpeg), [whisper.cpp](actors-and-resources.md#resource-tsukuri-whisper-cpp) | [tsukuri:README.md:21][19], [tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:260][28], [log L118][5] |
+| <a id="actor-tsukuri-local-adapters"></a><code>actor-tsukuri-local-adapters</code><br/>Actor | **The local adapters.** The adapters for Kokoro, whisper.cpp, synthesised sounds, reveal.js, Chromium, ffmpeg and the file cache. Each runs on the user's machine and sends nothing out. Type: system. | decided | performs: [Capture the frames](business-processes.md#process-tsukuri-capture-frames), [Encode and mux the Video](business-processes.md#process-tsukuri-encode-video); uses: [Chromium](actors-and-resources.md#resource-tsukuri-chromium), [ffmpeg and ffprobe](actors-and-resources.md#resource-tsukuri-ffmpeg), [whisper.cpp](actors-and-resources.md#resource-tsukuri-whisper-cpp) | [tsukuri:README.md:22][19], [tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:260][28], [log L118][5] |
 | <a id="actor-tsukuri-verifier"></a><code>actor-tsukuri-verifier</code><br/>Actor | **The verifier.** The `verify` tool reads a written build and the source, and prints one verdict per falsifier. It never reads the pipeline's memory. Type: system. | decided | performs: [Verify the written build](business-processes.md#process-tsukuri-verify-build); uses: [verify, the output-side checks](technical-components.md#comp-tsukuri-verify) | [tsukuri:packages/verify/src/index.ts:1-2][29], [log L118][5] |
 | <a id="actor-tsukuri-reviewers"></a><code>actor-tsukuri-reviewers</code><br/>Actor | **Independent reviewers and the fixer.** A verification reviewer and a conformance reviewer judge the plan, the code and their agreement. A fixer addresses the findings. Reviewers are read-only on product code. Type: role. | decided | part-of: [Coding agents that build the projects](actors-and-resources.md#actor-contributor-agent); performs: [Hold a recorded review round](business-processes.md#process-tsukuri-review-round); serves: [A compiler whose structure prevents bad states](goals.md#goal-tsukuri-correct-by-construction) | [tsukuri:docs/specs/0000-development-lifecycle.md:75][30], [tsukuri:docs/specs/0000-development-lifecycle.md:79][31], [log L118][5] |
-| <a id="actor-tsukuri-maintainer"></a><code>actor-tsukuri-maintainer</code><br/>Actor | **Maintainer.** The person who owns the repository. They answer operator-owned forks, merge a pull request that has a passing recorded round, and provision the npm and GitHub environment for a release. Type: role. | decided | part-of: [The operator and project owner](actors-and-resources.md#actor-operator); performs: [Publish pre-releases to npm](business-processes.md#process-tsukuri-release-publish); responsible-for: [Publish @tsukuri packages to npm](goals.md#goal-tsukuri-npm-publication) | [tsukuri:docs/specs/0000-development-lifecycle.md:23][32], [tsukuri:AGENTS.md:77-85][33], [log L118][5] |
-| <a id="resource-tsukuri-chromium"></a><code>resource-tsukuri-chromium</code><br/>Resource | **Chromium.** The browser that renders the Deck page for frame capture, driven by Playwright under a virtual clock. It runs as a separate process. Type: external-tool. | decided | serves: [A Deck and a Video from one source](goals.md#goal-tsukuri-deck-and-video) | [tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:86][34], [tsukuri:docs/design/third-party.md:56][35], [tsukuri:AGENTS.md:91][36], [log L118][5] |
-| <a id="resource-tsukuri-ffmpeg"></a><code>resource-tsukuri-ffmpeg</code><br/>Resource | **ffmpeg and ffprobe.** The tools that encode lossless audio, mix, mux the Video and measure written files. The configured build is GPL-3.0-or-later because it includes libx264. Type: external-tool. | decided | serves: [A Deck and a Video from one source](goals.md#goal-tsukuri-deck-and-video) | [tsukuri:docs/design/third-party.md:57][37], [tsukuri:AGENTS.md:92][38], [log L50][39], [log L118][5] |
+| <a id="actor-tsukuri-maintainer"></a><code>actor-tsukuri-maintainer</code><br/>Actor | **Maintainer.** The person who owns the repository. They answer operator-owned forks, merge a pull request that has a passing recorded round, and provision the npm and GitHub environment for a release. Type: role. | decided | part-of: [The operator and project owner](actors-and-resources.md#actor-operator); performs: [Publish pre-releases to npm](business-processes.md#process-tsukuri-release-publish); responsible-for: [Publish @tsukuri packages to npm](goals.md#goal-tsukuri-npm-publication) | [tsukuri:docs/specs/0000-development-lifecycle.md:23][32], [tsukuri:AGENTS.md:78-86][33], [log L118][5] |
+| <a id="resource-tsukuri-chromium"></a><code>resource-tsukuri-chromium</code><br/>Resource | **Chromium.** The browser that renders the Deck page for frame capture, driven by Playwright under a virtual clock. It runs as a separate process. Type: external-tool. | decided | serves: [A Deck and a Video from one source](goals.md#goal-tsukuri-deck-and-video) | [tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:86][34], [tsukuri:docs/design/third-party.md:56][35], [tsukuri:AGENTS.md:92][36], [log L118][5] |
+| <a id="resource-tsukuri-ffmpeg"></a><code>resource-tsukuri-ffmpeg</code><br/>Resource | **ffmpeg and ffprobe.** The tools that encode lossless audio, mix, mux the Video and measure written files. The configured build is GPL-3.0-or-later because it includes libx264. Type: external-tool. | decided | serves: [A Deck and a Video from one source](goals.md#goal-tsukuri-deck-and-video) | [tsukuri:docs/design/third-party.md:57][37], [tsukuri:AGENTS.md:93][38], [log L50][39], [log L118][5] |
 | <a id="resource-tsukuri-whisper-cpp"></a><code>resource-tsukuri-whisper-cpp</code><br/>Resource | **whisper.cpp.** The `whisper-cli` program that gives word timestamps for the aligned narration. It is MIT licensed and runs as a separate process. Type: external-tool. | decided | serves: [Effects connect to produced events](goals.md#goal-tsukuri-event-timing) | [tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:78][40], [tsukuri:docs/design/third-party.md:59][41], [log L118][5] |
 | <a id="resource-tsukuri-kokoro-model"></a><code>resource-tsukuri-kokoro-model</code><br/>Resource | **Kokoro speech model.** The Kokoro-82M model, with its voices, run locally through `kokoro-js`. It is Apache-2.0, is downloaded on first use, and is never stored in the repository. Type: model-asset. | decided | serves: [A Deck and a Video from one source](goals.md#goal-tsukuri-deck-and-video) | [tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:78][40], [tsukuri:docs/design/third-party.md:71][42], [log L118][5] |
-| <a id="resource-tsukuri-whisper-model"></a><code>resource-tsukuri-whisper-model</code><br/>Resource | **Whisper base English model.** The `ggml-base.en` model file that whisper.cpp reads. It is MIT licensed. It is not in the repository or in devenv, so the user downloads it. Type: model-asset. | decided | serves: [Effects connect to produced events](goals.md#goal-tsukuri-event-timing) | [tsukuri:docs/design/third-party.md:72][43], [tsukuri:AGENTS.md:93][44], [log L118][5] |
+| <a id="resource-tsukuri-whisper-model"></a><code>resource-tsukuri-whisper-model</code><br/>Resource | **Whisper base English model.** The `ggml-base.en` model file that whisper.cpp reads. It is MIT licensed. It is not in the repository or in devenv, so the user downloads it. Type: model-asset. | decided | serves: [Effects connect to produced events](goals.md#goal-tsukuri-event-timing) | [tsukuri:docs/design/third-party.md:72][43], [tsukuri:AGENTS.md:94][44], [log L118][5] |
 | <a id="resource-tsukuri-reveal-js"></a><code>resource-tsukuri-reveal-js</code><br/>Resource | **reveal.js.** The presentation framework that renders the Deck. Its Auto-Animate matches Elements by id and is the animator and the identity diff in release 1. It is MIT licensed. Type: software. | decided | serves: [A Deck and a Video from one source](goals.md#goal-tsukuri-deck-and-video) | [tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213][45], [tsukuri:docs/design/third-party.md:44][46], [log L118][5] |
 | <a id="resource-tsukuri-licence-inventory"></a><code>resource-tsukuri-licence-inventory</code><br/>Resource | **The licence inventory.** One file lists every locked npm package with its licence, taken from the package's own manifest. A test ties it to the lockfile, so nothing else lists packages. Type: data. | decided | serves: [License the compiler and its formats under Apache-2.0](goals.md#goal-tsukuri-apache-licence) | [tsukuri:docs/design/third-party.md:33][47], [tsukuri:docs/specs/0008-apache-2-licence.md:61][48], [log L118][5] |
 | <a id="resource-tsukuri-devenv"></a><code>resource-tsukuri-devenv</code><br/>Resource | **devenv shell.** The pinned toolchain that provides Bun, Node, gitleaks, Chromium, ffmpeg and whisper.cpp for builds, hooks and CI. It runs on Linux, and elsewhere the user sets the Chromium path. Type: external-tool. | decided | serves: [Reproducible builds](goals.md#goal-tsukuri-reproducible-builds) | [tsukuri:devenv.nix:16-23][49], [tsukuri:README.md:12][50], [log L118][5] |
 | <a id="resource-tsukuri-same-id-story"></a><code>resource-tsukuri-same-id-story</code><br/>Resource | **The story same-id.** The one original, public story that builds end to end. It holds the screenplay and a committed speech cache, and it is the subject of every journey check. Type: document. | decided | serves: [Check the written files, not the pipeline's memory](goals.md#goal-tsukuri-verified-output) | [tsukuri:README.md:8][51], [tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:14][52], [log L118][5] |
-| <a id="resource-tsukuri-speech-cache"></a><code>resource-tsukuri-speech-cache</code><br/>Resource | **The speech cache.** Content-addressed FLAC audio and word timings, keyed by the narration text and the adapter settings. It is the only generated asset kept in git, so a build needs no model. Type: data. | decided | serves: [Reproducible builds](goals.md#goal-tsukuri-reproducible-builds) | [tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:78][40], [tsukuri:README.md:21][19], [log L118][5] |
+| <a id="resource-tsukuri-speech-cache"></a><code>resource-tsukuri-speech-cache</code><br/>Resource | **The speech cache.** Content-addressed FLAC audio and word timings, keyed by the narration text and the adapter settings. It is the only generated asset kept in git, so a build needs no model. Type: data. | decided | serves: [Reproducible builds](goals.md#goal-tsukuri-reproducible-builds) | [tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:78][40], [tsukuri:README.md:22][19], [log L118][5] |
 | <a id="resource-tsukuri-fountain-format"></a><code>resource-tsukuri-fountain-format</code><br/>Resource | **The Fountain screenplay format.** The plain-text screenplay syntax, version 1.1. tsukuri reads it through an existing parser and defines a small fixed vocabulary on top; that is the importer. tsukuri is also to write Fountain as an artifact, which is not built at the pinned commit. Type: document. *Why proposed:* Spec plan: the operator decided that the source is one Fountain file (spec 0001 line 213). The version, the parser and the fixed vocabulary come from the spec plan, so confirm them. The operator also said Fountain is both an importer and an artifact renderer (log:67-69); confirm that the renderer shares this vocabulary. | proposed | serves: [One screenplay, every rendering](goals.md#goal-tsukuri-screenplay-first) | [tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213][45], [tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:32][53], [log L67-69][54] |
 
 ## tsukuri studio
@@ -285,7 +285,7 @@ flowchart LR
 | <a id="resource-studio-ci"></a><code>resource-studio-ci</code><br/>Resource | **GitHub Actions checks.** A workflow runs each gate as its own step on every pull request and push to main. The check named checks must pass. Type: service. | decided | serves: [Every change passes the same gates](goals.md#goal-studio-checked-change) | [studio:.github/workflows/checks.yml:16-18][79], [studio:AGENTS.md:20][80], [log L118][5] |
 | <a id="resource-studio-host-chromium"></a><code>resource-studio-host-chromium</code><br/>Resource | **The host Chromium for browser runs.** devenv has no browser. The verify skill and browser smoke runs use the Chromium on the host machine. Type: external-tool. | decided | serves: [Every change passes the same gates](goals.md#goal-studio-checked-change) | [studio:docs/specs/0000-development-lifecycle.md:120][81], [studio:.agents/skills/verify-studio/features/README.md:25][82], [log L118][5] |
 | <a id="resource-studio-hosting-cost"></a><code>resource-studio-hosting-cost</code><br/>Resource | **Cost of servers and inference.** Running multiplayer collaboration and heavily integrated AI agents costs money. They are the premium features behind the paywall. Type: financial. | decided | serves: [Free tier for basic features, paid premium features](goals.md#goal-studio-free-paid-split) | [log L43][12] |
-| <a id="resource-studio-foldkit"></a><code>resource-studio-foldkit</code><br/>Resource | **Foldkit, the UI framework.** At the pinned commit, Foldkit 0.169.0 is the UI framework, under the MIT licence. The editor is a Foldkit app. It installs from npm and is not vendored. Foldkit 0.170.0, released on 2026-10-29, is a newer release that studio has not adopted. Type: external-tool. *Why proposed:* Observed in the repository: AGENTS.md and PROVENANCE.md state the version, licence and installation. The operator log names Foldkit only for foldkit-flow (log:48). Checked on npm on 2026-10-29: Foldkit 0.170.0 peers effect ~4.1.0, where 0.169.0 peers effect 4.0.0. The operator must confirm Foldkit as studio's framework. | proposed | serves: [A collaborative editor for tsukuri stories](goals.md#goal-studio-vision) | [studio:AGENTS.md:54][83], [studio:PROVENANCE.md:42][84], [log L48][85] |
+| <a id="resource-studio-foldkit"></a><code>resource-studio-foldkit</code><br/>Resource | **Foldkit, the UI framework.** At the pinned commit, Foldkit 0.170.0 is the UI framework, under the MIT licence, with `@foldkit/ui` 0.170.0 and `@foldkit/vite-plugin` 0.29.0. The editor is a Foldkit app. It installs from npm and is not vendored. Type: external-tool. *Why proposed:* Observed in the repository: AGENTS.md and PROVENANCE.md state the version, licence and installation. The operator log names Foldkit only for foldkit-flow (log:48). Checked on npm on 2026-10-29: Foldkit 0.170.0 peers effect ~4.1.0, where 0.169.0 peers effect 4.0.0. The operator must confirm Foldkit as studio's framework. | proposed | serves: [A collaborative editor for tsukuri stories](goals.md#goal-studio-vision) | [studio:AGENTS.md:54][83], [studio:PROVENANCE.md:42][84], [log L48][85] |
 | <a id="resource-studio-effect"></a><code>resource-studio-effect</code><br/>Resource | **Effect 4.1.0.** Studio is written in native Effect, pinned at 4.1.0. Type: software. *Why proposed:* Observed in the repository: AGENTS.md and package.json pin the version. The operator's Effect policy (log:55) caps ranges below the next minor but does not set this version. The operator must confirm it. | proposed | serves: [Stay on supported Effect APIs and fix problems upstream](goals.md#goal-org-stay-on-supported-stack) | [studio:AGENTS.md:54][83], [studio:package.json:57][86], [log L55][87] |
 | <a id="resource-studio-cloudflare"></a><code>resource-studio-cloudflare</code><br/>Resource | **Cloudflare Workers and Durable Objects.** The planned sync server and the web editor run on Cloudflare. Alchemy declares the resources. Type: service. *Why proposed:* Spec plan: the operator's record names the sync server as the Durable Object (spec 0002 line 198). The web editor deploy is PR 6's design and the one-object-per-story layout is the spike's recommendation. The operator must confirm them. | proposed | serves: [Many people and agents edit one story](goals.md#goal-studio-collaboration) | [studio:docs/specs/0002-collaboration-spike.md:28][88], [studio:docs/specs/0002-collaboration-spike.md:66][89], [pr studio#6][70] |
 
@@ -308,7 +308,7 @@ flowchart LR
     actor_flow_foldkit_project(["The Foldkit project"]):::decided
     resource_flow_xyflow_system[("@xyflow/system")]:::decided
     resource_flow_foldkit[("Foldkit")]:::decided
-    resource_flow_foldkit_pin[("Foldkit 0.169.0 and its peer<br/>range")]:::decided
+    resource_flow_foldkit_pin[("Foldkit 0.170.0 and its peer<br/>range")]:::decided
     resource_flow_effect[("Effect 4.1.0")]:::decided
     resource_flow_repo[("The project's own repository")]:::decided
     resource_flow_toolchain[("Devenv, Bun, Vite+ and<br/>Oxlint toolchain")]:::decided
@@ -353,15 +353,15 @@ flowchart LR
 | <a id="actor-flow-keyboard-user"></a><code>actor-flow-keyboard-user</code><br/>Actor | **Keyboard-only user.** A person who uses only the keyboard, and may use a screen reader. In the 0.x releases they can reach, select, move and delete nodes without a pointer. Connecting nodes by keyboard is a documented gap, and 1.0 waits for it. Type: role. Persona. | decided | performs: [Work the graph by keyboard](business-processes.md#process-flow-keyboard-navigate), [Delete the selection](business-processes.md#process-flow-delete-selection); serves: [Keyboard-accessible graph editing](goals.md#goal-flow-keyboard-access) | [log L110][95], [foldkit-flow:README.md:74-78][96], [foldkit-flow:docs/specs/0001-first-felt-journey.md:87][97] |
 | <a id="actor-flow-contributor"></a><code>actor-flow-contributor</code><br/>Actor | **Contributor (human or agent).** A person or an agent who writes specs and code, opens PRs and takes part in review rounds. Type: role. | decided | performs: [Ship a spec as a PR](business-processes.md#process-flow-ship-spec), [Run the browser journey gate](business-processes.md#process-flow-run-journey-gate); serves: [Every change travels spec, code, PR](goals.md#goal-flow-lifecycle) | [foldkit-flow:docs/specs/0000-development-lifecycle.md:14][98], [log L118][5] |
 | <a id="actor-flow-xyflow"></a><code>actor-flow-xyflow</code><br/>Actor | **The xyflow project.** xyflow (webkid GmbH) makes React Flow, Svelte Flow and `@xyflow/system`. It asks its users to keep its attribution or to support the project. The library shows the credit by default and lets an application hide it. Type: org-unit. | decided |  | [log L106][99], [foldkit-flow:NOTICE:4-17][100], [foldkit-flow:README.md:86][101] |
-| <a id="actor-flow-foldkit-project"></a><code>actor-flow-foldkit-project</code><br/>Actor | **The Foldkit project.** Foldkit makes the framework the library is built for. It owns the plugin the example cannot use yet. If it adopts the library, the project publishes `@foldkit/flow` and deprecates `@tsukuri/flow`. Type: org-unit. | decided |  | [log L105][102], [log L56][103], [foldkit-flow:AGENTS.md:64][104], [foldkit-flow:STATE.md:13-14][105] |
+| <a id="actor-flow-foldkit-project"></a><code>actor-flow-foldkit-project</code><br/>Actor | **The Foldkit project.** Foldkit makes the framework the library is built for. It owns `@foldkit/vite-plugin` 0.29.0, which the example loads. If it adopts the library, the project publishes `@foldkit/flow` and deprecates `@tsukuri/flow`. Type: org-unit. | decided |  | [log L105][102], [log L56][103], [foldkit-flow:AGENTS.md:64][104], [foldkit-flow:STATE.md:13][105] |
 | <a id="resource-flow-xyflow-system"></a><code>resource-flow-xyflow-system</code><br/>Resource | **@xyflow/system.** The MIT-licensed, framework-free core of React Flow and Svelte Flow. It supplies the pan and zoom, drag, handle, edge-path and minimap controllers. The library pins it at exactly 0.0.83 and bumps it on purpose. Type: external-tool. | decided | serves: [One felt journey works end to end](goals.md#goal-flow-first-journey) | [log L107][106], [foldkit-flow:README.md:86][101], [foldkit-flow:AGENTS.md:25][107], [foldkit-flow:NOTICE:4-7][108], [foldkit-flow:packages/flow/package.json:18][109], [foldkit-flow:packages/flow/src/xyflow.ts:1][110] |
 | <a id="resource-flow-foldkit"></a><code>resource-flow-foldkit</code><br/>Resource | **Foldkit.** The web framework the library is built for. Type: software. | decided | serves: [A graph canvas for Foldkit applications](goals.md#goal-flow-vision) | [log L48][85] |
-| <a id="resource-flow-foldkit-pin"></a><code>resource-flow-foldkit-pin</code><br/>Resource | **Foldkit 0.169.0 and its peer range.** The repository uses Foldkit 0.169.0, and the library declares a peer of `~0.169.0`. Type: software. | decided | serves: [A graph canvas for Foldkit applications](goals.md#goal-flow-vision) | [foldkit-flow:package.json:65][111], [foldkit-flow:packages/flow/package.json:32][112], [log L118][5] |
+| <a id="resource-flow-foldkit-pin"></a><code>resource-flow-foldkit-pin</code><br/>Resource | **Foldkit 0.170.0 and its peer range.** The repository uses Foldkit 0.170.0, and the library declares a peer of `~0.170.0`. Type: software. | decided | serves: [A graph canvas for Foldkit applications](goals.md#goal-flow-vision) | [foldkit-flow:package.json:65][111], [foldkit-flow:packages/flow/package.json:32][112], [log L118][5] |
 | <a id="resource-flow-effect"></a><code>resource-flow-effect</code><br/>Resource | **Effect 4.1.0.** The Effect runtime and libraries the repository pins at 4.1.0. The library declares a peer of `~4.1.0`. Type: software. | decided | serves: [Stay on supported Effect APIs and fix problems upstream](goals.md#goal-org-stay-on-supported-stack) | [foldkit-flow:AGENTS.md:65][113], [foldkit-flow:package.json:59][114], [foldkit-flow:packages/flow/package.json:31][115], [log L118][5] |
 | <a id="resource-flow-repo"></a><code>resource-flow-repo</code><br/>Resource | **The project's own repository.** The project's own repository. Type: service. | decided | serves: [Every change travels spec, code, PR](goals.md#goal-flow-lifecycle) | [log L48][85] |
 | <a id="resource-flow-toolchain"></a><code>resource-flow-toolchain</code><br/>Resource | **Devenv, Bun, Vite+ and Oxlint toolchain.** The tools the gates run on: devenv (Bun, Node, gitleaks), Bun, Vite+, Oxfmt, Oxlint, `@effect/tsgo`, knip, jscpd and commitlint. Type: external-tool. | decided | serves: [Every change travels spec, code, PR](goals.md#goal-flow-lifecycle) | [foldkit-flow:docs/specs/0000-development-lifecycle.md:33][116], [foldkit-flow:AGENTS.md:37-51][117], [log L118][5] |
 | <a id="resource-flow-specs"></a><code>resource-flow-specs</code><br/>Resource | **Specs in docs/specs.** One spec per felt journey, with its falsifiers and dated revisions. STATE.md says which is active. Type: document. | decided | serves: [Every change travels spec, code, PR](goals.md#goal-flow-lifecycle) | [foldkit-flow:docs/specs/0000-development-lifecycle.md:3][118], [foldkit-flow:README.md:91][119], [log L118][5] |
-| <a id="resource-flow-state-file"></a><code>resource-flow-state-file</code><br/>Resource | **STATE.md.** The mission-state file: lifecycle stage, what is happening now, what is next and what is blocked. Type: document. | decided | serves: [Every change travels spec, code, PR](goals.md#goal-flow-lifecycle) | [foldkit-flow:STATE.md:1-18][120], [log L118][5] |
+| <a id="resource-flow-state-file"></a><code>resource-flow-state-file</code><br/>Resource | **STATE.md.** The mission-state file: lifecycle stage, what is happening now, what is next and what is blocked. Type: document. | decided | serves: [Every change travels spec, code, PR](goals.md#goal-flow-lifecycle) | [foldkit-flow:STATE.md:1-17][120], [log L118][5] |
 | <a id="resource-flow-notice"></a><code>resource-flow-notice</code><br/>Resource | **LICENSE and NOTICE.** The MIT licence text and the notice that credits xyflow and points to PROVENANCE.md for other third-party code. The credit link in the canvas is visible by default, and an application may hide it. Type: document. | decided | serves: [Credit and respect xyflow](goals.md#goal-flow-respect-xyflow) | [log L48][85], [log L106][99], [foldkit-flow:LICENSE:1-3][121], [foldkit-flow:NOTICE:1-20][122] |
 | <a id="resource-flow-chromium"></a><code>resource-flow-chromium</code><br/>Resource | **Chromium for the journey gate.** A Chromium browser on the path or named by `FLOW_CHROMIUM`. The journey needs it. CI has none. Type: external-tool. | decided | serves: [Prove interaction in a real browser](goals.md#goal-flow-browser-proof) | [pr foldkit-flow#4][123], [foldkit-flow:README.md:17][124], [foldkit-flow:AGENTS.md:48][125], [foldkit-flow:docs/specs/0000-development-lifecycle.md:92][126], [log L118][5] |
 
@@ -378,9 +378,9 @@ Each persona and the job they hire the products for (jobs-to-be-done form).
 | actor-flow-keyboard-user | I cannot or do not use a pointer | to select, move and delete nodes with keys | I can edit the same graph as a pointer user | decided |
 
 [1]: ../sources/operator-decisions-2026-10.md#L44
-[2]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/design/open-core-boundary.md#L64
-[3]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/AGENTS.md#L15-L17
-[4]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/AGENTS.md#L17
+[2]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/docs/design/open-core-boundary.md#L64
+[3]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/AGENTS.md#L15-L17
+[4]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/AGENTS.md#L17
 [5]: ../sources/operator-decisions-2026-10.md#L118
 [6]: ../sources/operator-decisions-2026-10.md#L7
 [7]: ../sources/operator-decisions-2026-10.md#L11
@@ -390,116 +390,116 @@ Each persona and the job they hire the products for (jobs-to-be-done form).
 [11]: ../sources/operator-decisions-2026-10.md#L38
 [12]: ../sources/operator-decisions-2026-10.md#L43
 [13]: ../sources/operator-decisions-2026-10.md#L28
-[14]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/README.md#L42
+[14]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/README.md#L43
 [15]: ../sources/operator-decisions-2026-10.md#L49
 [16]: ../sources/operator-decisions-2026-10.md#L3
-[17]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/README.md#L3
-[18]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/README.md#L14-L19
-[19]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/README.md#L21
-[20]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L78-L80
-[21]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0002-explicit-anchors-and-syntax.md#L11
-[22]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/design/open-core-boundary.md#L24
-[23]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/AGENTS.md#L65
-[24]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/cli/src/cli.ts#L70
-[25]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/cli/src/cli.ts#L321
-[26]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/AGENTS.md#L62
-[27]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/pipeline/src/buildProgram.ts#L1-L3
-[28]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L260
-[29]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/verify/src/index.ts#L1-L2
-[30]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0000-development-lifecycle.md#L75
-[31]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0000-development-lifecycle.md#L79
-[32]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0000-development-lifecycle.md#L23
-[33]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/AGENTS.md#L77-L85
-[34]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L86
-[35]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/design/third-party.md#L56
-[36]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/AGENTS.md#L91
-[37]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/design/third-party.md#L57
-[38]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/AGENTS.md#L92
+[17]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/README.md#L3
+[18]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/README.md#L14-L20
+[19]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/README.md#L22
+[20]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/GLOSSARY.md#L127-L129
+[21]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/docs/specs/0002-explicit-anchors-and-syntax.md#L11
+[22]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/docs/design/open-core-boundary.md#L24
+[23]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/AGENTS.md#L66
+[24]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/packages/cli/src/cli.ts#L70
+[25]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/packages/cli/src/cli.ts#L324
+[26]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/AGENTS.md#L63
+[27]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/packages/pipeline/src/buildProgram.ts#L1-L3
+[28]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L260
+[29]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/packages/verify/src/index.ts#L1-L2
+[30]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/docs/specs/0000-development-lifecycle.md#L75
+[31]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/docs/specs/0000-development-lifecycle.md#L79
+[32]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/docs/specs/0000-development-lifecycle.md#L23
+[33]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/AGENTS.md#L78-L86
+[34]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L86
+[35]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/docs/design/third-party.md#L56
+[36]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/AGENTS.md#L92
+[37]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/docs/design/third-party.md#L57
+[38]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/AGENTS.md#L93
 [39]: ../sources/operator-decisions-2026-10.md#L50
-[40]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L78
-[41]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/design/third-party.md#L59
-[42]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/design/third-party.md#L71
-[43]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/design/third-party.md#L72
-[44]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/AGENTS.md#L93
-[45]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L213
-[46]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/design/third-party.md#L44
-[47]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/design/third-party.md#L33
-[48]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0008-apache-2-licence.md#L61
-[49]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/devenv.nix#L16-L23
-[50]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/README.md#L12
-[51]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/README.md#L8
-[52]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L14
-[53]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L32
+[40]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L78
+[41]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/docs/design/third-party.md#L59
+[42]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/docs/design/third-party.md#L71
+[43]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/docs/design/third-party.md#L72
+[44]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/AGENTS.md#L94
+[45]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L213
+[46]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/docs/design/third-party.md#L44
+[47]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/docs/design/third-party.md#L33
+[48]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/docs/specs/0008-apache-2-licence.md#L61
+[49]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/devenv.nix#L16-L23
+[50]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/README.md#L12
+[51]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/README.md#L8
+[52]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L14
+[53]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L32
 [54]: ../sources/operator-decisions-2026-10.md#L67
-[55]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/README.md#L3
-[56]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L11-L13
-[57]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L36-L41
-[58]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L91-L99
-[59]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L67-L69
+[55]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/README.md#L3
+[56]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/specs/0001-first-felt-journey.md#L11-L13
+[57]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/design/lenses.md#L36-L41
+[58]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/design/lenses.md#L91-L99
+[59]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/design/lenses.md#L67-L69
 [60]: ../sources/operator-decisions-2026-10.md#L95
-[61]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0000-development-lifecycle.md#L14
-[62]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/AGENTS.md#L13
-[63]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0003-review-and-verify-skills.md#L22-L24
+[61]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/specs/0000-development-lifecycle.md#L14
+[62]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/AGENTS.md#L13
+[63]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/specs/0003-review-and-verify-skills.md#L22-L24
 [64]: ../sources/operator-decisions-2026-10.md#L47
-[65]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L198
-[66]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/AGENTS.md#L3
-[67]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L23
-[68]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L43
-[69]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0000-development-lifecycle.md#L34
+[65]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/specs/0002-collaboration-spike.md#L198
+[66]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/AGENTS.md#L3
+[67]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/specs/0002-collaboration-spike.md#L23
+[68]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/specs/0002-collaboration-spike.md#L43
+[69]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/specs/0000-development-lifecycle.md#L34
 [70]: https://github.com/tsukuri-labs/studio/pull/6
 [71]: ../sources/operator-decisions-2026-10.md#L46
-[72]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L16
+[72]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/specs/0001-first-felt-journey.md#L16
 [73]: ../sources/operator-decisions-2026-10.md#L96
-[74]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L26
-[75]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L56
-[76]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/README.md#L19-L21
-[77]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/STATE.md#L7
-[78]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L32
-[79]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/.github/workflows/checks.yml#L16-L18
-[80]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/AGENTS.md#L20
-[81]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0000-development-lifecycle.md#L120
-[82]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/.agents/skills/verify-studio/features/README.md#L25
-[83]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/AGENTS.md#L54
-[84]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/PROVENANCE.md#L42
+[74]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/specs/0001-first-felt-journey.md#L26
+[75]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/specs/0001-first-felt-journey.md#L56
+[76]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/README.md#L19-L21
+[77]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/STATE.md#L7
+[78]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/specs/0002-collaboration-spike.md#L32
+[79]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/.github/workflows/checks.yml#L16-L18
+[80]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/AGENTS.md#L20
+[81]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/specs/0000-development-lifecycle.md#L120
+[82]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/.agents/skills/verify-studio/features/README.md#L25
+[83]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/AGENTS.md#L54
+[84]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/PROVENANCE.md#L42
 [85]: ../sources/operator-decisions-2026-10.md#L48
-[86]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/package.json#L57
+[86]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/package.json#L57
 [87]: ../sources/operator-decisions-2026-10.md#L55
-[88]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L28
-[89]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L66
+[88]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/specs/0002-collaboration-spike.md#L28
+[89]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/specs/0002-collaboration-spike.md#L66
 [90]: ../sources/operator-decisions-2026-10.md#L108
 [91]: ../sources/operator-decisions-2026-10.md#L109
-[92]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L3
-[93]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L50-L52
-[94]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L20
+[92]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/README.md#L3
+[93]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/design/lenses.md#L50-L52
+[94]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/README.md#L20
 [95]: ../sources/operator-decisions-2026-10.md#L110
-[96]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L74-L78
-[97]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0001-first-felt-journey.md#L87
-[98]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0000-development-lifecycle.md#L14
+[96]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/README.md#L74-L78
+[97]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/docs/specs/0001-first-felt-journey.md#L87
+[98]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/docs/specs/0000-development-lifecycle.md#L14
 [99]: ../sources/operator-decisions-2026-10.md#L106
-[100]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/NOTICE#L4-L17
-[101]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L86
+[100]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/NOTICE#L4-L17
+[101]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/README.md#L86
 [102]: ../sources/operator-decisions-2026-10.md#L105
 [103]: ../sources/operator-decisions-2026-10.md#L56
-[104]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/AGENTS.md#L64
-[105]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/STATE.md#L13-L14
+[104]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/AGENTS.md#L64
+[105]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/STATE.md#L13
 [106]: ../sources/operator-decisions-2026-10.md#L107
-[107]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/AGENTS.md#L25
-[108]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/NOTICE#L4-L7
-[109]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/package.json#L18
-[110]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/xyflow.ts#L1
-[111]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/package.json#L65
-[112]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/package.json#L32
-[113]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/AGENTS.md#L65
-[114]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/package.json#L59
-[115]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/package.json#L31
-[116]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0000-development-lifecycle.md#L33
-[117]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/AGENTS.md#L37-L51
-[118]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0000-development-lifecycle.md#L3
-[119]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L91
-[120]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/STATE.md#L1-L18
-[121]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/LICENSE#L1-L3
-[122]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/NOTICE#L1-L20
+[107]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/AGENTS.md#L25
+[108]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/NOTICE#L4-L7
+[109]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/packages/flow/package.json#L18
+[110]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/packages/flow/src/xyflow.ts#L1
+[111]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/package.json#L65
+[112]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/packages/flow/package.json#L32
+[113]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/AGENTS.md#L65
+[114]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/package.json#L59
+[115]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/packages/flow/package.json#L31
+[116]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/docs/specs/0000-development-lifecycle.md#L33
+[117]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/AGENTS.md#L37-L51
+[118]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/docs/specs/0000-development-lifecycle.md#L3
+[119]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/README.md#L91
+[120]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/STATE.md#L1-L17
+[121]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/LICENSE#L1-L3
+[122]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/NOTICE#L1-L20
 [123]: https://github.com/tsukuri-labs/foldkit-flow/pull/4
-[124]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L17
-[125]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/AGENTS.md#L48
-[126]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0000-development-lifecycle.md#L92
+[124]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/README.md#L17
+[125]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/AGENTS.md#L48
+[126]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/docs/specs/0000-development-lifecycle.md#L92

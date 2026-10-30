@@ -226,6 +226,10 @@ export const decodeTracker = Schema.decodeUnknownResult(TrackerSchema, strict);
 
 const TriageSchema = Schema.Struct({
   advice: Schema.Array(Schema.Struct({ advice: Text, id: Id })),
+  /** Elements whose cited lines another commit changed at the last re-pin: the statement may now disagree with its source. */
+  recheck: Schema.optionalKey(
+    Schema.Array(Schema.Struct({ id: Id, note: Text }))
+  ),
 });
 
 export type Triage = typeof TriageSchema.Type;

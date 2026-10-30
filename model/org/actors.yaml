@@ -90,7 +90,7 @@ elements:
     title: The GitHub organisation tsukuri-labs
     statement: The organisation that holds the repositories of the compiler, the editor and the graph library, and this model.
     status: decided
-    source: [tsukuri:README.md:42, log:118]
+    source: [tsukuri:README.md:43, log:118]
     canvas: [channels, key-resources]
 
   - id: resource-npm-org

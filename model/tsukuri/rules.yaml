@@ -28,7 +28,7 @@ elements:
       - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
       - tsukuri:docs/design/keyframe-engine.md:1220
       - tsukuri:tools/quality/tiers.ts:41-48
-      - tsukuri:AGENTS.md:60-62
+      - tsukuri:AGENTS.md:61-63
       - log:118
     links:
       serves: [goal-tsukuri-correct-by-construction, goal-tsukuri-plugin-sdk]
@@ -63,7 +63,7 @@ elements:
     status: decided
     source:
       - tsukuri:docs/design/keyframe-engine.md:1240
-      - tsukuri:GLOSSARY.md:108-110
+      - tsukuri:GLOSSARY.md:157-159
       - tsukuri:packages/cli/src/adapters.ts:1-5
       - log:118
     links:
@@ -82,7 +82,7 @@ elements:
     source:
       - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
       - tsukuri:docs/design/keyframe-engine.md:1240
-      - tsukuri:GLOSSARY.md:112-113
+      - tsukuri:GLOSSARY.md:161-162
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:262
       - log:118
     links:
@@ -101,7 +101,7 @@ elements:
     status: decided
     source:
       - tsukuri:packages/services/src/selection.ts:1-4
-      - tsukuri:GLOSSARY.md:112-113
+      - tsukuri:GLOSSARY.md:161-162
       - log:118
     links:
       serves: [goal-tsukuri-correct-by-construction]
@@ -117,7 +117,7 @@ elements:
     source:
       - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
       - tsukuri:docs/design/keyframe-engine.md:1225
-      - tsukuri:AGENTS.md:65
+      - tsukuri:AGENTS.md:66
       - log:118
     links:
       serves: [goal-tsukuri-plugin-sdk]
@@ -135,7 +135,7 @@ elements:
       - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
       - tsukuri:docs/design/keyframe-engine.md:1241
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:272
-      - tsukuri:AGENTS.md:64
+      - tsukuri:AGENTS.md:65
       - log:118
     links:
       serves: [goal-tsukuri-reproducible-builds, goal-tsukuri-plugin-sdk]
@@ -151,8 +151,8 @@ elements:
     source:
       - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
       - tsukuri:docs/design/keyframe-engine.md:1241
-      - tsukuri:GLOSSARY.md:119-120
-      - tsukuri:README.md:21
+      - tsukuri:GLOSSARY.md:168-169
+      - tsukuri:README.md:22
       - log:118
     links:
       serves: [goal-tsukuri-visible-egress]
@@ -168,7 +168,7 @@ elements:
     status: decided
     source:
       - tsukuri:docs/design/keyframe-engine.md:1242
-      - tsukuri:GLOSSARY.md:120
+      - tsukuri:GLOSSARY.md:169
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:277
       - log:118
     links:
@@ -186,7 +186,7 @@ elements:
     source:
       - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:82
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:48
-      - tsukuri:GLOSSARY.md:31-33
+      - tsukuri:GLOSSARY.md:41-43
       - log:94
     links:
       serves: [goal-tsukuri-screenplay-first, goal-tsukuri-accessible-artifacts]
@@ -203,7 +203,7 @@ elements:
     status: decided
     source:
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:32
-      - tsukuri:GLOSSARY.md:84
+      - tsukuri:GLOSSARY.md:133
       - log:118
     links:
       serves: [goal-tsukuri-explicit-source]
@@ -248,12 +248,12 @@ elements:
     ruleType: derivation
     title: The Plan keeps intent, the schedule resolves frames
     statement: >-
-      The Plan keeps what the author wrote. The schedule stage turns each anchor into an integer frame from the aligned
+      The Plan keeps what the author wrote. The schedule stage turns each anchor (a source of events) into an integer frame from the aligned
       words and the renderer's declared lifecycle. The Timeline holds the result.
     status: decided
     source:
       - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:34
-      - tsukuri:GLOSSARY.md:36
+      - tsukuri:GLOSSARY.md:46
       - tsukuri:packages/core/src/schedule.ts:1-8
       - log:118
     links:
@@ -322,7 +322,7 @@ elements:
     source:
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:86
       - tsukuri:docs/specs/0003-effect-4-1-upgrade.md:46
-      - tsukuri:AGENTS.md:54
+      - tsukuri:AGENTS.md:55
       - log:118
     links:
       serves: [goal-tsukuri-reproducible-builds]
@@ -398,7 +398,7 @@ elements:
     status: decided
     source:
       - tsukuri:docs/specs/0000-development-lifecycle.md:44
-      - tsukuri:AGENTS.md:46
+      - tsukuri:AGENTS.md:47
       - log:118
     links:
       serves: [goal-tsukuri-correct-by-construction]
@@ -431,7 +431,7 @@ elements:
     source:
       - tsukuri:docs/specs/0008-apache-2-licence.md:42
       - tsukuri:docs/design/third-party.md:86-91
-      - tsukuri:AGENTS.md:75
+      - tsukuri:AGENTS.md:76
       - log:118
     links:
       serves: [goal-tsukuri-apache-licence]
@@ -447,7 +447,7 @@ elements:
     status: decided
     source:
       - tsukuri:docs/specs/0000-development-lifecycle.md:99
-      - tsukuri:AGENTS.md:56
+      - tsukuri:AGENTS.md:57
       - log:118
     links:
       serves: [goal-org-stay-on-supported-stack, goal-tsukuri-correct-by-construction]
@@ -462,7 +462,7 @@ elements:
       in `-standin`. The sound checks stay active, because the sounds are real.
     status: decided
     source:
-      - tsukuri:README.md:30
+      - tsukuri:README.md:31
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:264
       - log:118
     links:
@@ -537,7 +537,7 @@ elements:
     status: decided
     source:
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:272
-      - tsukuri:AGENTS.md:64
+      - tsukuri:AGENTS.md:65
       - log:118
     links:
       serves: [goal-tsukuri-reproducible-builds]

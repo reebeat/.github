@@ -25,7 +25,7 @@ elements:
       - log:67-69
       - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213
       - tsukuri:README.md:3
-      - tsukuri:GLOSSARY.md:15-17
+      - tsukuri:GLOSSARY.md:21-23
     canvas: [value-propositions]
     links:
       subgoal-of: [goal-tsukuri-vision]
@@ -263,7 +263,7 @@ elements:
     source:
       - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
       - tsukuri:docs/design/keyframe-engine.md:1241-1242
-      - tsukuri:GLOSSARY.md:119-120
+      - tsukuri:GLOSSARY.md:168-169
       - log:118
     links:
       subgoal-of: [goal-tsukuri-correct-by-construction]
@@ -290,15 +290,13 @@ elements:
     kind: problem
     title: STATE.md is out of date
     statement: >-
-      STATE.md says specs 0001 and 0002 are in review. Both pull requests are merged. The file also lists "candidates for
-      0003" that are not the spec 0003 the repository holds.
+      STATE.md says spec 0004 (explicit state machines) is in review as PR 17. PR 17 is merged. The file lists the specs
+      0000 to 0003 as merged and 0004 as active, so it is one spec behind.
     status: decided
     source:
       - tsukuri:STATE.md:7
-      - tsukuri:STATE.md:13
-      - tsukuri:docs/specs/0003-effect-4-1-upgrade.md:1
-      - pr:tsukuri#3
-      - pr:tsukuri#4
+      - tsukuri:STATE.md:11
+      - pr:tsukuri#17
       - log:118
     gap:
       repo: tsukuri
@@ -334,7 +332,7 @@ elements:
     status: decided
     source:
       - issue:tsukuri#14
-      - tsukuri:AGENTS.md:46
+      - tsukuri:AGENTS.md:47
       - tsukuri:tools/quality/effectExceptions.ts:44
       - log:118
     refs: ["issue:tsukuri#14"]
@@ -371,7 +369,7 @@ elements:
     status: decided
     source:
       - absent:tsukuri:CONTRIBUTING.md
-      - tsukuri:README.md:50
+      - tsukuri:README.md:51
       - log:118
     gap:
       repo: tsukuri
@@ -613,12 +611,12 @@ elements:
     statement: >-
       Element ids are story-global: one id is one entity in the whole story, as a rule enforced by a lint. Until spec 0005,
       motion runs only between adjacent Scenes. Release 1 matches ids only between two consecutive Scenes joined by
-      AUTO-ANIMATE.
+      AUTO-ANIMATE (the glossary calls a Scene a compound State and the boundary of identity).
     status: decided
     source:
       - log:23
       - log:83
-      - tsukuri:GLOSSARY.md:19-21
+      - tsukuri:GLOSSARY.md:29-31
       - pr:tsukuri#17
     gap:
       repo: tsukuri
@@ -722,29 +720,12 @@ elements:
       tracks it. It is a finding of a review round and an issue, not an operator statement, so confirm it.
     source:
       - issue:tsukuri#25
-      - tsukuri:.agents/skills/verify-reebeat/scripts/cleanup.sh:4-6
-      - tsukuri:.agents/skills/verify-reebeat/scripts/run.sh:48
-      - tsukuri:.agents/skills/verify-reebeat/SKILL.md:83
+      - tsukuri:.agents/skills/verify-tsukuri/scripts/cleanup.sh:4-6
+      - tsukuri:.agents/skills/verify-tsukuri/scripts/run.sh:48
+      - tsukuri:.agents/skills/verify-tsukuri/SKILL.md:83
     refs: ["issue:tsukuri#25"]
     links:
       hinders: [process-tsukuri-verify-build]
-
-  - id: problem-tsukuri-state-machine-conformance
-    kind: problem
-    title: "Explicit state machines (PR #17) are not merged"
-    statement: >-
-      Spec 0004 (explicit state machines and timing combinators, pull request #17) is not merged at the pinned commit. Its
-      review findings change with each push and live on the pull request.
-    status: proposed
-    rationale: >-
-      Pull request #17 was open at head 9394420 on 2026-10-29, and no spec 0004 file exists at the pinned commit. The model
-      keeps the fact, not the review rounds, which belong to the tracker. Confirm it.
-    source:
-      - pr:tsukuri#17
-      - absent:tsukuri:docs/specs/0004-explicit-state-machines-and-timing-combinators.md
-    refs: ["pr:tsukuri#17"]
-    links:
-      hinders: [goal-tsukuri-statechart-model]
 
   # ---------------------------------------------------------- constraints
   - id: constraint-tsukuri-apache-2
@@ -774,7 +755,7 @@ elements:
     status: decided
     source:
       - tsukuri:docs/design/third-party.md:12
-      - tsukuri:README.md:46
+      - tsukuri:README.md:47
       - log:50
       - log:118
     links:
@@ -814,7 +795,7 @@ elements:
       - log:114
       - log:118
       - log:119
-      - tsukuri:README.md:42
+      - tsukuri:README.md:43
       - tsukuri:docs/design/open-core-boundary.md:68
     links:
       constrains: [comp-tsukuri-product]
@@ -829,7 +810,7 @@ elements:
     status: decided
     source:
       - tsukuri:package.json:70
-      - tsukuri:AGENTS.md:56
+      - tsukuri:AGENTS.md:57
       - log:55
       - log:118
     links:
@@ -861,7 +842,7 @@ elements:
     source:
       - log:89
       - tsukuri:README.md:12
-      - tsukuri:README.md:23
+      - tsukuri:README.md:24
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:190
     links:
       constrains: [process-tsukuri-capture-frames, process-tsukuri-encode-video]
@@ -893,7 +874,7 @@ elements:
     source:
       - log:23
       - log:83
-      - tsukuri:GLOSSARY.md:65-67
+      - tsukuri:GLOSSARY.md:114-116
     canvas: [value-propositions]
     links:
       supports: [goal-tsukuri-vision, goal-tsukuri-statechart-model]
@@ -924,8 +905,8 @@ elements:
     status: decided
     source:
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
-      - tsukuri:README.md:23
-      - tsukuri:GLOSSARY.md:115-117
+      - tsukuri:README.md:24
+      - tsukuri:GLOSSARY.md:164-166
       - log:118
     links:
       supports: [goal-tsukuri-plugin-sdk, goal-tsukuri-reproducible-builds]

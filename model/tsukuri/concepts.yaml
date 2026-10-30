@@ -15,7 +15,7 @@ elements:
       artifact (log:25, log:67-69). The glossary does not yet say so. The decision log defines Scene, State and Beat but
       does not define Story, so confirm it.
     source:
-      - tsukuri:GLOSSARY.md:11-13
+      - tsukuri:GLOSSARY.md:17-19
       - log:25
       - log:67-69
     relations:
@@ -34,7 +34,7 @@ elements:
     status: decided
     source:
       - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213
-      - tsukuri:GLOSSARY.md:15-17
+      - tsukuri:GLOSSARY.md:21-23
       - log:25
       - log:67-69
     relations:
@@ -89,24 +89,24 @@ elements:
     kind: concept
     title: Keyframe
     statement: >-
-      The visual state a Beat ends in: every visible Element with its properties.
+      The visual part of a State: every visible Element with its properties.
     status: decided
-    source: ["tsukuri:GLOSSARY.md:27-29", log:118]
+    source: ["tsukuri:GLOSSARY.md:37-39", log:118]
     relations:
       - type: relates
         to: concept-tsukuri-element
         label: shows
         multiplicity: "1 to 0..*"
       - type: relates
-        to: concept-tsukuri-beat
-        label: is the end state of
+        to: concept-tsukuri-state
+        label: is the visual part of
         multiplicity: "1 to 1"
 
   - id: concept-tsukuri-line
     kind: concept
     title: Line
     statement: >-
-      The narration that carries a Beat: the dialogue of the NARRATOR, aligned to words. Its narration text is the
+      The narration of a Scene: the dialogue of the NARRATOR, aligned to words. Its narration text is the
       dialogue itself. Subtitles and speaker notes carry exactly that text.
     attributes:
       - narration text
@@ -115,7 +115,7 @@ elements:
     status: decided
     source:
       - log:27
-      - tsukuri:GLOSSARY.md:31-33
+      - tsukuri:GLOSSARY.md:41-43
       - log:118
     relations:
       - type: relates
@@ -123,9 +123,9 @@ elements:
         label: may carry
         multiplicity: "1 to 0..*"
       - type: part-of
-        to: concept-tsukuri-beat
-        label: carries
-        multiplicity: "0..1 per Beat"
+        to: concept-tsukuri-scene
+        label: is spoken in
+        multiplicity: "0..* per Scene"
 
   - id: concept-tsukuri-effect
     kind: concept
@@ -136,7 +136,7 @@ elements:
     source:
       - record:tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:162
       - record:tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:163
-      - tsukuri:GLOSSARY.md:35-37
+      - tsukuri:GLOSSARY.md:45-47
       - log:118
     relations:
       - type: part-of
@@ -161,7 +161,7 @@ elements:
     source:
       - record:tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:163
       - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:15
-      - tsukuri:GLOSSARY.md:39-41
+      - tsukuri:GLOSSARY.md:49-51
       - log:118
     relations:
       - type: relates
@@ -178,7 +178,7 @@ elements:
     status: decided
     source:
       - record:tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:163
-      - tsukuri:GLOSSARY.md:47-49
+      - tsukuri:GLOSSARY.md:57-59
       - log:118
     relations:
       - type: isa
@@ -193,7 +193,7 @@ elements:
       update follow the renderer's declared easing. The others are linear in time.
     status: decided
     source:
-      - tsukuri:GLOSSARY.md:43-45
+      - tsukuri:GLOSSARY.md:53-55
       - log:118
     relations:
       - type: relates
@@ -212,7 +212,7 @@ elements:
       An optional instruction that the content alone does not carry: a delivery parenthetical before a Line, or a
       transition between Scenes.
     status: decided
-    source: ["tsukuri:GLOSSARY.md:51-53", log:118]
+    source: ["tsukuri:GLOSSARY.md:61-63", log:118]
     relations:
       - type: part-of
         to: concept-tsukuri-beat
@@ -245,7 +245,7 @@ elements:
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213
       - log:23
       - log:83
-      - tsukuri:GLOSSARY.md:65-67
+      - tsukuri:GLOSSARY.md:114-116
     relations:
       - type: relates
         to: concept-tsukuri-keyframe
@@ -374,7 +374,7 @@ elements:
     source:
       - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213
       - tsukuri:README.md:5
-      - tsukuri:GLOSSARY.md:78-80
+      - tsukuri:GLOSSARY.md:127-129
       - log:118
     relations:
       - type: isa
@@ -389,7 +389,7 @@ elements:
     source:
       - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213
       - tsukuri:README.md:6
-      - tsukuri:GLOSSARY.md:75-76
+      - tsukuri:GLOSSARY.md:124-125
       - log:118
     relations:
       - type: isa
@@ -402,7 +402,7 @@ elements:
       A named run of consecutive Scenes, introduced by a Section heading. A Video's chapter marks and a Deck's slide groups
       come from it.
     status: decided
-    source: ["tsukuri:GLOSSARY.md:124-125", "tsukuri:GLOSSARY.md:89", log:118]
+    source: ["tsukuri:GLOSSARY.md:173-174", "tsukuri:GLOSSARY.md:138", log:118]
     relations:
       - type: part-of
         to: concept-tsukuri-story
@@ -416,7 +416,7 @@ elements:
     status: decided
     source:
       - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
-      - tsukuri:GLOSSARY.md:101-102
+      - tsukuri:GLOSSARY.md:150-151
       - log:118
     relations:
       - type: relates
@@ -433,7 +433,7 @@ elements:
     source:
       - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
       - tsukuri:docs/design/keyframe-engine.md:1225
-      - tsukuri:GLOSSARY.md:104-106
+      - tsukuri:GLOSSARY.md:153-155
       - log:118
     relations:
       - type: relates
@@ -449,7 +449,7 @@ elements:
     status: decided
     source:
       - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
-      - tsukuri:GLOSSARY.md:108-110
+      - tsukuri:GLOSSARY.md:157-159
       - log:118
     relations:
       - type: relates
@@ -466,7 +466,7 @@ elements:
     status: decided
     source:
       - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
-      - tsukuri:GLOSSARY.md:112-113
+      - tsukuri:GLOSSARY.md:161-162
       - tsukuri:packages/services/src/selection.ts:18-26
       - log:118
     relations:
@@ -482,7 +482,7 @@ elements:
     status: decided
     source:
       - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
-      - tsukuri:GLOSSARY.md:115-117
+      - tsukuri:GLOSSARY.md:164-166
       - log:118
     relations:
       - type: isa
@@ -496,7 +496,7 @@ elements:
     status: decided
     source:
       - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
-      - tsukuri:GLOSSARY.md:119-120
+      - tsukuri:GLOSSARY.md:168-169
       - log:118
     relations:
       - type: part-of

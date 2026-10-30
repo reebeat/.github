@@ -150,7 +150,7 @@ elements:
       earlier.
     status: decided
     source:
-      - record:foldkit-flow:STATE.md:14
+      - record:foldkit-flow:STATE.md:13
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:111
       - log:118
     canvas: [key-partners, channels]
@@ -292,17 +292,15 @@ elements:
     kind: problem
     title: STATE says nothing is blocked
     statement: >-
-      STATE.md lists "Blocked: Nothing". The same file names the Foldkit plugin mismatch, and issue #3 about the Bun
-      toolchain is open.
+      STATE.md lists "Blocked: Nothing". Issue #3 about the Bun toolchain is open, and STATE.md does not name it.
     status: decided
     source:
-      - foldkit-flow:STATE.md:13
-      - foldkit-flow:STATE.md:16-18
+      - foldkit-flow:STATE.md:15-17
       - issue:foldkit-flow#3
       - log:118
     gap:
       repo: foldkit-flow
-      fix: 'Add a "Risks" list to STATE.md that names the plugin mismatch and issue #3.'
+      fix: 'Add a "Risks" list to STATE.md that names issue #3.'
     links:
       hinders: [goal-flow-lifecycle]
 
@@ -407,7 +405,7 @@ elements:
     source:
       - log:105
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:111
-      - foldkit-flow:STATE.md:14
+      - foldkit-flow:STATE.md:13
     gap:
       repo: foldkit-flow
       fix: Record what counts as a settled API, the date and the licence header in a spec revision.
@@ -426,25 +424,6 @@ elements:
     gap:
       repo: foldkit-flow
       fix: Decide each item or record that it stays deferred.
-    links:
-      hinders: [goal-flow-lifecycle]
-
-  - id: problem-flow-lint-mocking-gap
-    kind: problem
-    title: The module-mocking lint rule has a gap
-    statement: >-
-      The lint rule that forbids module mocking matches only the `vitest` import source, so a mock imported from
-      `vite-plus/test` passes.
-    status: decided
-    source:
-      - foldkit-flow:docs/specs/0001-first-felt-journey.md:142
-      - foldkit-flow:tools/oxlint/anti-slop/rules/no-module-mocking.ts:41-42
-      - issue:foldkit-flow#5
-      - log:118
-    refs: [issue:foldkit-flow#5]
-    gap:
-      repo: foldkit-flow
-      fix: Make the anti-slop module-mocking rule match the `vite-plus/test` source too.
     links:
       hinders: [goal-flow-lifecycle]
 
@@ -544,38 +523,6 @@ elements:
     links:
       constrains: [comp-flow-library]
 
-  - id: constraint-flow-effect-peer-mismatch
-    kind: constraint
-    constraintType: technical
-    title: Foldkit declares Effect 4.0.0, the repo runs 4.1.0
-    statement: >-
-      Foldkit 0.169.0 declares a peer of `effect@4.0.0`. The repository runs 4.1.0, so Bun prints peer warnings.
-    status: decided
-    source:
-      - foldkit-flow:AGENTS.md:64
-      - foldkit-flow:docs/specs/0000-development-lifecycle.md:103
-      - log:118
-    links:
-      hinders: [comp-flow-library]
-
-  - id: constraint-flow-vite-plugin-crypto
-    kind: constraint
-    constraintType: technical
-    title: The Foldkit Vite plugin cannot run on Effect 4.1.0
-    statement: >-
-      `@foldkit/vite-plugin` 0.28.0 imports `Crypto` from the Effect root, which 4.1.0 lacks, so the example does not
-      use it. The project waits for an upstream fix and does not work around it.
-    status: decided
-    source:
-      - log:56
-      - foldkit-flow:AGENTS.md:64
-      - foldkit-flow:STATE.md:13
-      - foldkit-flow:docs/specs/0000-development-lifecycle.md:104
-      - log:118
-    canvas: [key-partners]
-    links:
-      constrains: [comp-flow-example-app]
-
   - id: constraint-flow-xyflow-pinned
     kind: constraint
     constraintType: technical
@@ -619,7 +566,7 @@ elements:
     source:
       - log:48
       - log:108
-      - foldkit-flow:STATE.md:14
+      - foldkit-flow:STATE.md:13
     canvas: [customer-segments]
     links:
       supports: [goal-flow-upstream-offer]

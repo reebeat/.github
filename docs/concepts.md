@@ -112,9 +112,9 @@ classDiagram
     concept_tsukuri_state "0..*" -->  "0..*"concept_tsukuri_beat : is joined by
     concept_tsukuri_beat --> concept_tsukuri_state : joins
     concept_tsukuri_keyframe "1" -->  "0..*"concept_tsukuri_element : shows
-    concept_tsukuri_keyframe "1" -->  "1"concept_tsukuri_beat : is the end state of
+    concept_tsukuri_keyframe "1" -->  "1"concept_tsukuri_state : is the visual part of
     concept_tsukuri_line "1" -->  "0..*"concept_tsukuri_hint : may carry
-    concept_tsukuri_beat "0..1 per Beat" *-- concept_tsukuri_line : carries
+    concept_tsukuri_scene "0..* per Scene" *-- concept_tsukuri_line : is spoken in
     concept_tsukuri_scene "0..* per Scene" *-- concept_tsukuri_effect
     concept_tsukuri_effect "1" -->  "1"concept_tsukuri_anchor : is timed against
     concept_tsukuri_effect "0..*" -->  "0..1"concept_tsukuri_element : acts on
@@ -149,37 +149,37 @@ classDiagram
 
 | Element | Statement | Status | Links | Sources |
 | --- | --- | --- | --- | --- |
-| <a id="concept-tsukuri-screenplay"></a><code>concept-tsukuri-screenplay</code><br/>Concept | **Screenplay.** A Fountain file with tsukuri's fixed vocabulary. It is an input of the importer, which reads it into a Story, and an artifact that a renderer writes from a Story. In release 1 the importer is the only way to declare a Story. A Screenplay is not the persistent IR: JSON stays the IR. | decided |  | [record tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213][11], [tsukuri:GLOSSARY.md:15-17][12], [log L25][1], [log L67-69][3] |
+| <a id="concept-tsukuri-screenplay"></a><code>concept-tsukuri-screenplay</code><br/>Concept | **Screenplay.** A Fountain file with tsukuri's fixed vocabulary. It is an input of the importer, which reads it into a Story, and an artifact that a renderer writes from a Story. In release 1 the importer is the only way to declare a Story. A Screenplay is not the persistent IR: JSON stays the IR. | decided |  | [record tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213][11], [tsukuri:GLOSSARY.md:21-23][12], [log L25][1], [log L67-69][3] |
 | <a id="concept-tsukuri-scene"></a><code>concept-tsukuri-scene</code><br/>Concept | **Scene.** A Scene is a compound State: it groups States in the story's statechart. | decided |  | [log L19][13] |
 | <a id="concept-tsukuri-state"></a><code>concept-tsukuri-state</code><br/>Concept | **State.** A node of the story's statechart. Scenes and States are nodes, and Beats are the edges between them. | decided |  | [log L19][13] |
 | <a id="concept-tsukuri-beat"></a><code>concept-tsukuri-beat</code><br/>Concept | **Beat.** A Beat is a transition, an edge between States. | decided |  | [log L19][13] |
-| <a id="concept-tsukuri-keyframe"></a><code>concept-tsukuri-keyframe</code><br/>Concept | **Keyframe.** The visual state a Beat ends in: every visible Element with its properties. | decided |  | [tsukuri:GLOSSARY.md:27-29][14], [log L118][15] |
-| <a id="concept-tsukuri-line"></a><code>concept-tsukuri-line</code><br/>Concept | **Line.** The narration that carries a Beat: the dialogue of the NARRATOR, aligned to words. Its narration text is the dialogue itself. Subtitles and speaker notes carry exactly that text. Attributes: narration text; aligned word times; delivery hints. | decided |  | [log L27][16], [tsukuri:GLOSSARY.md:31-33][17], [log L118][15] |
-| <a id="concept-tsukuri-effect"></a><code>concept-tsukuri-effect</code><br/>Concept | **Effect.** An effect is declared in a Scene's effects block and is timed against an anchor. | decided |  | [record tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:162][18], [record tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:163][19], [tsukuri:GLOSSARY.md:35-37][20], [log L118][15] |
-| <a id="concept-tsukuri-anchor"></a><code>concept-tsukuri-anchor</code><br/>Concept | **Anchor.** A named moment an effect is timed against: a word, `scene.start`, `scene.end`, the transition into the Scene (its start, its end or a percent of the way), or an Element's lifecycle. | decided |  | [record tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:163][19], [tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:15][21], [tsukuri:GLOSSARY.md:39-41][22], [log L118][15] |
-| <a id="concept-tsukuri-transition-anchor"></a><code>concept-tsukuri-transition-anchor</code><br/>Concept | **Transition anchor.** The Scene's incoming slide transition as an anchor: its start, its end or a percent of the way. A sound that belongs to the slide change is anchored here, so it follows the motion and not the voice. | decided |  | [record tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:163][19], [tsukuri:GLOSSARY.md:47-49][23], [log L118][15] |
-| <a id="concept-tsukuri-lifecycle-event"></a><code>concept-tsukuri-lifecycle-event</code><br/>Concept | **Lifecycle event.** What happens to an Element in a Scene, from the identity diff: enter, exit, move or update. Enter, exit, move and update each have a start and an end, except an instant such as an exit, which has no window and no percent. Move and update follow the renderer's declared easing. The others are linear in time. | decided |  | [tsukuri:GLOSSARY.md:43-45][24], [log L118][15] |
-| <a id="concept-tsukuri-hint"></a><code>concept-tsukuri-hint</code><br/>Concept | **Hint.** An optional instruction that the content alone does not carry: a delivery parenthetical before a Line, or a transition between Scenes. | decided |  | [tsukuri:GLOSSARY.md:51-53][25], [log L118][15] |
+| <a id="concept-tsukuri-keyframe"></a><code>concept-tsukuri-keyframe</code><br/>Concept | **Keyframe.** The visual part of a State: every visible Element with its properties. | decided |  | [tsukuri:GLOSSARY.md:37-39][14], [log L118][15] |
+| <a id="concept-tsukuri-line"></a><code>concept-tsukuri-line</code><br/>Concept | **Line.** The narration of a Scene: the dialogue of the NARRATOR, aligned to words. Its narration text is the dialogue itself. Subtitles and speaker notes carry exactly that text. Attributes: narration text; aligned word times; delivery hints. | decided |  | [log L27][16], [tsukuri:GLOSSARY.md:41-43][17], [log L118][15] |
+| <a id="concept-tsukuri-effect"></a><code>concept-tsukuri-effect</code><br/>Concept | **Effect.** An effect is declared in a Scene's effects block and is timed against an anchor. | decided |  | [record tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:162][18], [record tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:163][19], [tsukuri:GLOSSARY.md:45-47][20], [log L118][15] |
+| <a id="concept-tsukuri-anchor"></a><code>concept-tsukuri-anchor</code><br/>Concept | **Anchor.** A named moment an effect is timed against: a word, `scene.start`, `scene.end`, the transition into the Scene (its start, its end or a percent of the way), or an Element's lifecycle. | decided |  | [record tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:163][19], [tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:15][21], [tsukuri:GLOSSARY.md:49-51][22], [log L118][15] |
+| <a id="concept-tsukuri-transition-anchor"></a><code>concept-tsukuri-transition-anchor</code><br/>Concept | **Transition anchor.** The Scene's incoming slide transition as an anchor: its start, its end or a percent of the way. A sound that belongs to the slide change is anchored here, so it follows the motion and not the voice. | decided |  | [record tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:163][19], [tsukuri:GLOSSARY.md:57-59][23], [log L118][15] |
+| <a id="concept-tsukuri-lifecycle-event"></a><code>concept-tsukuri-lifecycle-event</code><br/>Concept | **Lifecycle event.** What happens to an Element in a Scene, from the identity diff: enter, exit, move or update. Enter, exit, move and update each have a start and an end, except an instant such as an exit, which has no window and no percent. Move and update follow the renderer's declared easing. The others are linear in time. | decided |  | [tsukuri:GLOSSARY.md:53-55][24], [log L118][15] |
+| <a id="concept-tsukuri-hint"></a><code>concept-tsukuri-hint</code><br/>Concept | **Hint.** An optional instruction that the content alone does not carry: a delivery parenthetical before a Line, or a transition between Scenes. | decided |  | [tsukuri:GLOSSARY.md:61-63][25], [log L118][15] |
 | <a id="concept-tsukuri-element"></a><code>concept-tsukuri-element</code><br/>Concept | **Element.** A visible thing with an id. Elements declare styles and transitions, and the same id is the same entity across Scenes. | decided |  | [log L20][26], [log L23][27] |
-| <a id="concept-tsukuri-identity-diff"></a><code>concept-tsukuri-identity-diff</code><br/>Concept | **Identity diff.** The comparison of two Keyframes by Element id that derives motion. Ids are story-global, so one id is one entity. An id only in the second enters, an id only in the first exits, and an id in both updates. Until spec 0005 the comparison runs between adjacent Scenes. | decided |  | [tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213][11], [log L23][27], [log L83][28], [tsukuri:GLOSSARY.md:65-67][29] |
+| <a id="concept-tsukuri-identity-diff"></a><code>concept-tsukuri-identity-diff</code><br/>Concept | **Identity diff.** The comparison of two Keyframes by Element id that derives motion. Ids are story-global, so one id is one entity. An id only in the second enters, an id only in the first exits, and an id in both updates. Until spec 0005 the comparison runs between adjacent Scenes. | decided |  | [tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213][11], [log L23][27], [log L83][28], [tsukuri:GLOSSARY.md:114-116][29] |
 | <a id="concept-tsukuri-plan"></a><code>concept-tsukuri-plan</code><br/>Concept | **Plan.** The named compiler stage between the Story and the schedule. It lists every Element, effect and identity decision, keeps the author's intent, and is plain data for review and golden tests. `tsukuri plan` prints it. Attributes: source hash; Scenes, Elements, effects, identity; canonical JSON, byte-comparable. | decided |  | [tsukuri:docs/design/keyframe-engine.md:1112][30], [tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:90][31], [log L118][15] |
 | <a id="concept-tsukuri-timeline"></a><code>concept-tsukuri-timeline</code><br/>Concept | **Timeline.** The Plan with every Line, effect, step and slide change placed at an integer frame. The schedule stage builds it from the aligned words and the renderer's lifecycle. Attributes: total frames; frame of each effect. | decided |  | [tsukuri:docs/design/keyframe-engine.md:1112][30], [tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:68][32], [log L118][15] |
 | <a id="concept-tsukuri-model"></a><code>concept-tsukuri-model</code><br/>Concept | **Model.** The first of three layers: a statechart plus functional reactive and SMIL time. It may contain cycles, such as interactive loops and repeats. | decided |  | [log L62][10] |
 | <a id="concept-tsukuri-build-graph"></a><code>concept-tsukuri-build-graph</code><br/>Concept | **Build graph.** The third layer: an incremental graph with dynamic dependencies, early cutoff and content-addressed persistent traces. "DAG" applies to this graph only. | decided |  | [log L62][10] |
 | <a id="concept-tsukuri-ir"></a><code>concept-tsukuri-ir</code><br/>Concept | **Story IR and Timeline IR.** tsukuri's own JSON format, defined by an Effect Schema, for the story and for the timeline. The story IR is public and versioned. The timeline IR is an unstable build artifact, tagged unstable until the website Plan and the engine protocol exist. Exact time is stored in flicks. The JSON Schema is generated from the Effect Schema. | decided |  | [log L25][1], [log L85][33], [tsukuri:docs/specs/0007-scxml-persistent-ir-spike.md:23][34], [pr tsukuri#17][35] |
 | <a id="concept-tsukuri-rendering"></a><code>concept-tsukuri-rendering</code><br/>Concept | **Rendering.** An output derived from a Story. It is an artifact, and artifact formats are different from IR formats. | decided |  | [log L25][1] |
-| <a id="concept-tsukuri-deck"></a><code>concept-tsukuri-deck</code><br/>Concept | **Deck.** A rendering that is a reveal.js presentation. | decided |  | [record tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213][11], [tsukuri:README.md:5][36], [tsukuri:GLOSSARY.md:78-80][37], [log L118][15] |
-| <a id="concept-tsukuri-video"></a><code>concept-tsukuri-video</code><br/>Concept | **Video.** A rendering captured from the Deck's page on a controlled clock. | decided |  | [record tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213][11], [tsukuri:README.md:6][38], [tsukuri:GLOSSARY.md:75-76][39], [log L118][15] |
-| <a id="concept-tsukuri-chapter"></a><code>concept-tsukuri-chapter</code><br/>Concept | **Chapter.** A named run of consecutive Scenes, introduced by a Section heading. A Video's chapter marks and a Deck's slide groups come from it. | decided |  | [tsukuri:GLOSSARY.md:124-125][40], [tsukuri:GLOSSARY.md:89][41], [log L118][15] |
-| <a id="concept-tsukuri-library"></a><code>concept-tsukuri-library</code><br/>Concept | **Library.** Pure code with no runtime and no service. | decided |  | [record tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235][42], [tsukuri:GLOSSARY.md:101-102][43], [log L118][15] |
-| <a id="concept-tsukuri-service"></a><code>concept-tsukuri-service</code><br/>Concept | **Service.** An Effect interface plus a contract that every implementation passes. | decided |  | [record tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235][42], [tsukuri:docs/design/keyframe-engine.md:1225][44], [tsukuri:GLOSSARY.md:104-106][45], [log L118][15] |
-| <a id="concept-tsukuri-adapter"></a><code>concept-tsukuri-adapter</code><br/>Concept | **Adapter.** A Layer that implements a service on an outside runtime. It is an integration. | decided |  | [record tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235][42], [tsukuri:GLOSSARY.md:108-110][46], [log L118][15] |
-| <a id="concept-tsukuri-selection"></a><code>concept-tsukuri-selection</code><br/>Concept | **Selection.** Which adapter fills each service. Selection is explicit configuration at the composition root, and it never falls back silently. | decided |  | [record tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235][42], [tsukuri:GLOSSARY.md:112-113][47], [tsukuri:packages/services/src/selection.ts:18-26][48], [log L118][15] |
-| <a id="concept-tsukuri-stand-in"></a><code>concept-tsukuri-stand-in</code><br/>Concept | **Stand-in.** An offline stand-in for an integration, used in tests. | decided |  | [record tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235][42], [tsukuri:GLOSSARY.md:115-117][49], [log L118][15] |
-| <a id="concept-tsukuri-egress"></a><code>concept-tsukuri-egress</code><br/>Concept | **Egress.** What an integration sends out of the machine, declared by the integration. | decided |  | [record tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235][42], [tsukuri:GLOSSARY.md:119-120][50], [log L118][15] |
+| <a id="concept-tsukuri-deck"></a><code>concept-tsukuri-deck</code><br/>Concept | **Deck.** A rendering that is a reveal.js presentation. | decided |  | [record tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213][11], [tsukuri:README.md:5][36], [tsukuri:GLOSSARY.md:127-129][37], [log L118][15] |
+| <a id="concept-tsukuri-video"></a><code>concept-tsukuri-video</code><br/>Concept | **Video.** A rendering captured from the Deck's page on a controlled clock. | decided |  | [record tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213][11], [tsukuri:README.md:6][38], [tsukuri:GLOSSARY.md:124-125][39], [log L118][15] |
+| <a id="concept-tsukuri-chapter"></a><code>concept-tsukuri-chapter</code><br/>Concept | **Chapter.** A named run of consecutive Scenes, introduced by a Section heading. A Video's chapter marks and a Deck's slide groups come from it. | decided |  | [tsukuri:GLOSSARY.md:173-174][40], [tsukuri:GLOSSARY.md:138][41], [log L118][15] |
+| <a id="concept-tsukuri-library"></a><code>concept-tsukuri-library</code><br/>Concept | **Library.** Pure code with no runtime and no service. | decided |  | [record tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235][42], [tsukuri:GLOSSARY.md:150-151][43], [log L118][15] |
+| <a id="concept-tsukuri-service"></a><code>concept-tsukuri-service</code><br/>Concept | **Service.** An Effect interface plus a contract that every implementation passes. | decided |  | [record tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235][42], [tsukuri:docs/design/keyframe-engine.md:1225][44], [tsukuri:GLOSSARY.md:153-155][45], [log L118][15] |
+| <a id="concept-tsukuri-adapter"></a><code>concept-tsukuri-adapter</code><br/>Concept | **Adapter.** A Layer that implements a service on an outside runtime. It is an integration. | decided |  | [record tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235][42], [tsukuri:GLOSSARY.md:157-159][46], [log L118][15] |
+| <a id="concept-tsukuri-selection"></a><code>concept-tsukuri-selection</code><br/>Concept | **Selection.** Which adapter fills each service. Selection is explicit configuration at the composition root, and it never falls back silently. | decided |  | [record tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235][42], [tsukuri:GLOSSARY.md:161-162][47], [tsukuri:packages/services/src/selection.ts:18-26][48], [log L118][15] |
+| <a id="concept-tsukuri-stand-in"></a><code>concept-tsukuri-stand-in</code><br/>Concept | **Stand-in.** An offline stand-in for an integration, used in tests. | decided |  | [record tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235][42], [tsukuri:GLOSSARY.md:164-166][49], [log L118][15] |
+| <a id="concept-tsukuri-egress"></a><code>concept-tsukuri-egress</code><br/>Concept | **Egress.** What an integration sends out of the machine, declared by the integration. | decided |  | [record tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235][42], [tsukuri:GLOSSARY.md:168-169][50], [log L118][15] |
 | <a id="concept-tsukuri-contract-suite"></a><code>concept-tsukuri-contract-suite</code><br/>Concept | **Contract suite.** The suite that every adapter of one service must pass. | decided |  | [record tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235][42], [tsukuri:docs/design/keyframe-engine.md:1225][44], [tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:259][51], [log L118][15] |
 | <a id="concept-tsukuri-tier"></a><code>concept-tsukuri-tier</code><br/>Concept | **Tier.** One of three categories, library, service or integration, with one dependency direction. | decided |  | [record tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235][42], [log L118][15] |
-| <a id="concept-tsukuri-story"></a><code>concept-tsukuri-story</code><br/>Concept | **Story.** The largest unit with one concern and one audience. It contains Scenes. Its declaration is the story IR, and in release 1 a Story is imported from one Screenplay. A Video is a rendering of a Story, not the Story. Attributes: one concern and one audience; title, author and default speech speed. *Why proposed:* Observed in the repository: the glossary, which an agent wrote, defines Story and says its source is one Screenplay. The operator later said that JSON stays the persistent IR and that a Screenplay is both an importer input and an artifact (log:25, log:67-69). The glossary does not yet say so. The decision log defines Scene, State and Beat but does not define Story, so confirm it. | proposed |  | [tsukuri:GLOSSARY.md:11-13][52], [log L25][1], [log L67-69][3] |
+| <a id="concept-tsukuri-story"></a><code>concept-tsukuri-story</code><br/>Concept | **Story.** The largest unit with one concern and one audience. It contains Scenes. Its declaration is the story IR, and in release 1 a Story is imported from one Screenplay. A Video is a rendering of a Story, not the Story. Attributes: one concern and one audience; title, author and default speech speed. *Why proposed:* Observed in the repository: the glossary, which an agent wrote, defines Story and says its source is one Screenplay. The operator later said that JSON stays the persistent IR and that a Screenplay is both an importer input and an artifact (log:25, log:67-69). The glossary does not yet say so. The decision log defines Scene, State and Beat but does not define Story, so confirm it. | proposed |  | [tsukuri:GLOSSARY.md:17-19][52], [log L25][1], [log L67-69][3] |
 
 ## tsukuri studio
 
@@ -265,7 +265,7 @@ classDiagram
 | <a id="concept-studio-feature-map"></a><code>concept-studio-feature-map</code><br/>Concept | **Feature map.** The feature map lists each user-visible feature with how to observe it and what counts as broken. The verify skill drives it in a real browser. Attributes: entry id and spec; how to observe; broken when. | decided |  | [studio:docs/specs/0003-review-and-verify-skills.md:14][70], [studio:.agents/skills/verify-studio/features/README.md:3-5][71], [log L118][15] |
 | <a id="concept-studio-suggestion"></a><code>concept-studio-suggestion</code><br/>Concept | **Suggestion.** A suggestion is an edit proposed by an agent or a collaborator that is not yet applied. It carries who proposed it. Attributes: author (agent or person); patch that describes the edit; accepted or rejected, and by whom. *Why proposed:* Spec plan: the lenses note designs suggestion mode. The operator decided only the repair proposal. The operator should confirm the general suggestion and attribution semantics. | proposed |  | [studio:docs/design/lenses.md:67][72] |
 | <a id="concept-studio-sync-room"></a><code>concept-studio-sync-room</code><br/>Concept | **Sync room.** The sync room is one Cloudflare Durable Object for each story. It uses WebSocket hibernation, keeps an update log in SQLite and compacts it to a snapshot. Attributes: one object per story; update log compacted to a snapshot; snapshots over 2 MB are chunked. *Why proposed:* Spec plan: the operator decided a sync server with a gate, which is the Durable Object (log:47 and spec 0002 line 198). One object per story, hibernation, the SQLite log and chunking are the spike's recommendation, run only on local workerd. The operator should confirm these room-design details. | proposed |  | [studio:docs/specs/0002-collaboration-spike.md:28][73], [studio:docs/specs/0002-collaboration-spike.md:192][74] |
-| <a id="concept-studio-anchor-offset"></a><code>concept-studio-anchor-offset</code><br/>Concept | **Anchor and offset.** An effect is timed against an anchor, a named moment such as a word of the narration, a scene start or end, or another effect. An offset moves the effect from its anchor by a signed time or a share of a window. Retiming in studio changes the offset and keeps the anchor. *Why proposed:* Tsukuri's GLOSSARY.md defines the anchor and the offset (lines 39-40; the syntax came with spec 0002, merged in tsukuri PR 4 on 2026-10-29). The lenses note applies them to retiming in the Timeline lens (line 56). The operator should confirm that studio uses the terms as the tsukuri glossary defines them. | proposed |  | [studio:docs/design/lenses.md:56][75], [tsukuri:GLOSSARY.md:39-40][76] |
+| <a id="concept-studio-anchor-offset"></a><code>concept-studio-anchor-offset</code><br/>Concept | **Anchor and offset.** An effect is timed against an anchor, a named moment such as a word of the narration, a scene start or end, or another effect. An offset moves the effect from its anchor by a signed time or a share of a window. Retiming in studio changes the offset and keeps the anchor. *Why proposed:* Tsukuri's GLOSSARY.md defines the anchor and the offset (lines 39-40; the syntax came with spec 0002, merged in tsukuri PR 4 on 2026-10-29). The lenses note applies them to retiming in the Timeline lens (line 56). The operator should confirm that studio uses the terms as the tsukuri glossary defines them. | proposed |  | [studio:docs/design/lenses.md:56][75], [tsukuri:GLOSSARY.md:49-50][76] |
 
 ## foldkit-flow
 
@@ -359,103 +359,103 @@ classDiagram
 [6]: ../sources/operator-decisions-2026-10.md#L43
 [7]: ../sources/operator-decisions-2026-10.md#L28
 [8]: ../sources/operator-decisions-2026-10.md#L77
-[9]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/design/open-core-boundary.md#L25
+[9]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/docs/design/open-core-boundary.md#L25
 [10]: ../sources/operator-decisions-2026-10.md#L62
-[11]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L213
-[12]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L15-L17
+[11]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L213
+[12]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/GLOSSARY.md#L21-L23
 [13]: ../sources/operator-decisions-2026-10.md#L19
-[14]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L27-L29
+[14]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/GLOSSARY.md#L37-L39
 [15]: ../sources/operator-decisions-2026-10.md#L118
 [16]: ../sources/operator-decisions-2026-10.md#L27
-[17]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L31-L33
-[18]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0002-explicit-anchors-and-syntax.md#L162
-[19]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0002-explicit-anchors-and-syntax.md#L163
-[20]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L35-L37
-[21]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0002-explicit-anchors-and-syntax.md#L15
-[22]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L39-L41
-[23]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L47-L49
-[24]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L43-L45
-[25]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L51-L53
+[17]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/GLOSSARY.md#L41-L43
+[18]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/docs/specs/0002-explicit-anchors-and-syntax.md#L162
+[19]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/docs/specs/0002-explicit-anchors-and-syntax.md#L163
+[20]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/GLOSSARY.md#L45-L47
+[21]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/docs/specs/0002-explicit-anchors-and-syntax.md#L15
+[22]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/GLOSSARY.md#L49-L51
+[23]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/GLOSSARY.md#L57-L59
+[24]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/GLOSSARY.md#L53-L55
+[25]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/GLOSSARY.md#L61-L63
 [26]: ../sources/operator-decisions-2026-10.md#L20
 [27]: ../sources/operator-decisions-2026-10.md#L23
 [28]: ../sources/operator-decisions-2026-10.md#L83
-[29]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L65-L67
-[30]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/design/keyframe-engine.md#L1112
-[31]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L90
-[32]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L68
+[29]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/GLOSSARY.md#L114-L116
+[30]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/docs/design/keyframe-engine.md#L1112
+[31]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L90
+[32]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L68
 [33]: ../sources/operator-decisions-2026-10.md#L85
-[34]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0007-scxml-persistent-ir-spike.md#L23
+[34]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/docs/specs/0007-scxml-persistent-ir-spike.md#L23
 [35]: https://github.com/tsukuri-labs/tsukuri/pull/17
-[36]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/README.md#L5
-[37]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L78-L80
-[38]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/README.md#L6
-[39]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L75-L76
-[40]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L124-L125
-[41]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L89
-[42]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L235
-[43]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L101-L102
-[44]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/design/keyframe-engine.md#L1225
-[45]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L104-L106
-[46]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L108-L110
-[47]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L112-L113
-[48]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/services/src/selection.ts#L18-L26
-[49]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L115-L117
-[50]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L119-L120
-[51]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L259
-[52]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L11-L13
+[36]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/README.md#L5
+[37]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/GLOSSARY.md#L127-L129
+[38]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/README.md#L6
+[39]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/GLOSSARY.md#L124-L125
+[40]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/GLOSSARY.md#L173-L174
+[41]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/GLOSSARY.md#L138
+[42]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L235
+[43]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/GLOSSARY.md#L150-L151
+[44]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/docs/design/keyframe-engine.md#L1225
+[45]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/GLOSSARY.md#L153-L155
+[46]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/GLOSSARY.md#L157-L159
+[47]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/GLOSSARY.md#L161-L162
+[48]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/packages/services/src/selection.ts#L18-L26
+[49]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/GLOSSARY.md#L164-L166
+[50]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/GLOSSARY.md#L168-L169
+[51]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L259
+[52]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/GLOSSARY.md#L17-L19
 [53]: ../sources/operator-decisions-2026-10.md#L45
-[54]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L171
-[55]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L9
-[56]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L108
-[57]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L15
-[58]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L125
+[54]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/specs/0001-first-felt-journey.md#L171
+[55]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/design/lenses.md#L9
+[56]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/design/lenses.md#L108
+[57]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/design/lenses.md#L15
+[58]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/specs/0001-first-felt-journey.md#L125
 [59]: ../sources/operator-decisions-2026-10.md#L47
-[60]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L198
-[61]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L172
-[62]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L88
-[63]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L129
-[64]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L27
-[65]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L138
+[60]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/specs/0002-collaboration-spike.md#L198
+[61]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/specs/0001-first-felt-journey.md#L172
+[62]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/specs/0001-first-felt-journey.md#L88
+[63]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/specs/0002-collaboration-spike.md#L129
+[64]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/specs/0002-collaboration-spike.md#L27
+[65]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/specs/0002-collaboration-spike.md#L138
 [66]: ../sources/operator-decisions-2026-10.md#L98
-[67]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L38
-[68]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L91-L99
+[67]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/design/lenses.md#L38
+[68]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/design/lenses.md#L91-L99
 [69]: ../sources/operator-decisions-2026-10.md#L99
-[70]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0003-review-and-verify-skills.md#L14
-[71]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/.agents/skills/verify-studio/features/README.md#L3-L5
-[72]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L67
-[73]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L28
-[74]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L192
-[75]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L56
-[76]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L39-L40
+[70]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/specs/0003-review-and-verify-skills.md#L14
+[71]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/.agents/skills/verify-studio/features/README.md#L3-L5
+[72]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/design/lenses.md#L67
+[73]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/specs/0002-collaboration-spike.md#L28
+[74]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/specs/0002-collaboration-spike.md#L192
+[75]: https://github.com/tsukuri-labs/studio/blob/14df3cdacb15b1883da33abbf21ff8bed08f1e14/docs/design/lenses.md#L56
+[76]: https://github.com/tsukuri-labs/tsukuri/blob/215868c28f58ed9bbb6ad62dfa20870247e650ff/GLOSSARY.md#L49-L50
 [77]: ../sources/operator-decisions-2026-10.md#L48
-[78]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L3
-[79]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L24
-[80]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/model.ts#L14-L29
-[81]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L43
-[82]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/types.ts#L33-L38
-[83]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L53-L54
-[84]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/types.ts#L81-L89
-[85]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L45
-[86]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L66
-[87]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/types.ts#L52-L54
-[88]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L82
-[89]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/types.ts#L10-L14
-[90]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/selection.ts#L5-L7
+[78]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/README.md#L3
+[79]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/README.md#L24
+[80]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/packages/flow/src/model.ts#L14-L29
+[81]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/README.md#L43
+[82]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/packages/flow/src/types.ts#L33-L38
+[83]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/README.md#L53-L54
+[84]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/packages/flow/src/types.ts#L81-L89
+[85]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/README.md#L45
+[86]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/README.md#L66
+[87]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/packages/flow/src/types.ts#L52-L54
+[88]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/README.md#L82
+[89]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/packages/flow/src/types.ts#L10-L14
+[90]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/packages/flow/src/selection.ts#L5-L7
 [91]: ../sources/operator-decisions-2026-10.md#L106
-[92]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L86
-[93]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0000-development-lifecycle.md#L53
-[94]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/attribution.ts#L15-L22
-[95]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/AGENTS.md#L63
-[96]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/mounts.ts#L34-L39
-[97]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/xyflow.ts#L7-L20
+[92]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/README.md#L86
+[93]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/docs/specs/0000-development-lifecycle.md#L53
+[94]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/packages/flow/src/attribution.ts#L15-L22
+[95]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/AGENTS.md#L63
+[96]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/packages/flow/src/mounts.ts#L34-L39
+[97]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/packages/flow/src/xyflow.ts#L7-L20
 [98]: ../sources/operator-decisions-2026-10.md#L109
-[99]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L52
-[100]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/message.ts#L67-L83
-[101]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L35-L47
-[102]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/types.ts#L42-L59
-[103]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L47
-[104]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/types.ts#L63-L77
-[105]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/view.ts#L464-L478
-[106]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/view.ts#L499-L523
-[107]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L76
-[108]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/view.ts#L665-L673
+[99]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/README.md#L52
+[100]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/packages/flow/src/message.ts#L67-L83
+[101]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/README.md#L35-L47
+[102]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/packages/flow/src/types.ts#L42-L59
+[103]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/README.md#L47
+[104]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/packages/flow/src/types.ts#L63-L77
+[105]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/packages/flow/src/view.ts#L464-L478
+[106]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/packages/flow/src/view.ts#L499-L523
+[107]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/README.md#L76
+[108]: https://github.com/tsukuri-labs/foldkit-flow/blob/a31331a24360bcfc64fd8e3a1ef36914f41b047b/packages/flow/src/view.ts#L665-L673
