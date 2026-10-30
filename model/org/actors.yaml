@@ -4,10 +4,10 @@ elements:
     actorType: individual
     title: The operator and project owner
     statement: >-
-      The person who owns the reebeat projects, decides their direction and holds the copyright. His sole proprietorship
+      The person who owns the tsukuri projects, decides their direction and holds the copyright. His sole proprietorship
       is not a separate legal person.
     status: decided
-    source: [log:44, record:reebeat:docs/design/open-core-boundary.md:64]
+    source: [log:44, record:tsukuri:docs/design/open-core-boundary.md:64]
     links:
       responsible-for: [goal-org-vision, resource-github-org, resource-npm-org]
 
@@ -21,7 +21,7 @@ elements:
     status: proposed
     rationale: >-
       The repositories use agents as contributors in practice, but no decision line names them as a stakeholder.
-    source: [reebeat:AGENTS.md:15-17, studio:AGENTS.md:17]
+    source: [tsukuri:AGENTS.md:15-17, studio:AGENTS.md:17]
     links:
       performs: [process-org-ship-change]
 
@@ -102,20 +102,20 @@ elements:
   - id: resource-github-org
     kind: resource
     resourceType: service
-    title: The GitHub organisation reebeat
+    title: The GitHub organisation tsukuri-labs
     statement: The organisation that holds the repositories of the compiler, the editor and the graph library, and this model.
     status: proposed
     rationale: >-
       The organisation exists and the README says it is reserved. That is a fact the operator can see, not a line of
       the decision log, so it is not marked decided.
-    source: [reebeat:README.md:42]
+    source: [tsukuri:README.md:42]
     canvas: [channels, key-resources]
 
   - id: resource-npm-org
     kind: resource
     resourceType: service
-    title: The npm organisation reebeat
-    statement: The npm organisation under which `@reebeat/*` pre-releases are published. It exists.
+    title: The npm organisation tsukuri
+    statement: The npm organisation under which `@tsukuri/*` pre-releases are published. It exists.
     status: decided
     source: [log:49]
     canvas: [channels, key-resources]

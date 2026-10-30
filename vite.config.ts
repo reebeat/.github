@@ -1,4 +1,4 @@
-// Provenance: adapted from reebeat/studio @ d4fd75e (vite.config.ts), which adapted it from reebeat/reebeat @ f7c348877585f54b6bf00651608726dd7e5044d3.
+// Provenance: adapted from tsukuri-labs/studio @ d4fd75e (vite.config.ts), which adapted it from tsukuri-labs/tsukuri @ f7c348877585f54b6bf00651608726dd7e5044d3.
 // Deviations: no Foldkit plugin, no vendored anti-slop Effect rules, no exception-registry diagnostics (this repository has no
 // suppressions and no registry); the Effect roles are this repository's (tools/intent). See PROVENANCE.md.
 import { effectNative, strict } from "@effect/tsgo/oxlint-presets";

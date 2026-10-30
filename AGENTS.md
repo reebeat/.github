@@ -1,8 +1,8 @@
-# reebeat/.github
+# tsukuri-labs/.github
 
-The organisation profile of reebeat and the model of the intent behind its products: the compiler ([reebeat](https://github.com/reebeat/reebeat)), the editor ([reebeat studio](https://github.com/reebeat/studio)) and the graph library ([foldkit-flow](https://github.com/reebeat/foldkit-flow)). Read [`README.md`](README.md); [`STATE.md`](STATE.md) says what is active. This repository is **public**: no secret, no personal data and no course-private material, ever. The 4EM method is cited from the book, never copied from coursework.
+The organisation profile of tsukuri and the model of the intent behind its products: the compiler ([tsukuri](https://github.com/tsukuri-labs/tsukuri)), the editor ([tsukuri studio](https://github.com/tsukuri-labs/studio)) and the graph library ([foldkit-flow](https://github.com/tsukuri-labs/foldkit-flow)). Read [`README.md`](README.md); [`STATE.md`](STATE.md) says what is active. This repository is **public**: no secret, no personal data and no course-private material, ever. The 4EM method is cited from the book, never copied from coursework.
 
-The lifecycle below is specified in [`docs/specs/0000-intent-model.md`](docs/specs/0000-intent-model.md). This file links facts that live in scripts or in the spec; it does not copy them. It was adapted from reebeat studio's `AGENTS.md` (see [`PROVENANCE.md`](PROVENANCE.md)).
+The lifecycle below is specified in [`docs/specs/0000-intent-model.md`](docs/specs/0000-intent-model.md). This file links facts that live in scripts or in the spec; it does not copy them. It was adapted from tsukuri studio's `AGENTS.md` (see [`PROVENANCE.md`](PROVENANCE.md)).
 
 ## The one rule of this repository
 
@@ -67,7 +67,7 @@ Every agent that writes TypeScript here writes native Effect (v4, pinned in the 
 Branch protection includes administrators. To remove it (operator only, an external effect):
 
 ```sh
-gh api -X DELETE repos/reebeat/.github/branches/main/protection
+gh api -X DELETE repos/tsukuri-labs/.github/branches/main/protection
 ```
 
 Restore it afterwards: pull request required, status check `checks`, administrators included, no force push, no deletion.

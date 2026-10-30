@@ -44,7 +44,7 @@ describe("cutValues", () => {
   });
 
   it("accepts a hash without a space before it", () => {
-    assert.deepStrictEqual(cutValues("source: [issue:reebeat#19]\n"), []);
+    assert.deepStrictEqual(cutValues("source: [issue:tsukuri#19]\n"), []);
   });
 });
 

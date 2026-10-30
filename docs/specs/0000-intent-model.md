@@ -1,11 +1,11 @@
 # 0000 The intent model and its generated documents
 
-Status: **spec** (frozen when its PR opens). Date: 2026-10-29. Decided by: the operator's assignment of 2026-10-29 (analyse the recorded intentions and plans of reebeat, document them with business-modelling practice, including 4EM, and generate the write-ups).
+Status: **spec** (frozen when its PR opens). Date: 2026-10-29. Decided by: the operator's assignment of 2026-10-29 (analyse the recorded intentions and plans of tsukuri, document them with business-modelling practice, including 4EM, and generate the write-ups).
 Binding for: every later change to `model/`, `tools/intent/` and the generated documents. Implemented by the PR that carries this file.
 
 ## Goal
 
-Why the reebeat products exist, what they must do, who they are for and what is still undecided is written in one place, as data, with a source on every statement. People read it as documents; CI reads it as a model and fails when it contradicts itself. The documents (the organisation profile, the six 4EM sub-model pages, one page per product, a business-model canvas, a roadmap and a gap report) are generated from the data and are never edited by hand.
+Why the tsukuri products exist, what they must do, who they are for and what is still undecided is written in one place, as data, with a source on every statement. People read it as documents; CI reads it as a model and fails when it contradicts itself. The documents (the organisation profile, the six 4EM sub-model pages, one page per product, a business-model canvas, a roadmap and a gap report) are generated from the data and are never edited by hand.
 
 The model serves four readers: the operator, who confirms or rejects what the analysis inferred; contributors and agents, who need the reason behind a product; visitors of the GitHub organisation, who see the profile; and the owners of the product repositories, who get a list of what is missing and how to fix it.
 
@@ -17,7 +17,7 @@ The model serves four readers: the operator, who confirms or rejects what the an
 - **Honest.** Licences, blockers and unmeasured demand are named as problems and constraints, not left out.
 - **Public.** This repository is public. It holds no secret, no personal data and no course material. The 4EM method is cited from the book; no coursework, case or personal content is copied.
 - **Plain English.** Statements use short sentences and active voice.
-- **Default stack.** TypeScript 7, Bun, Effect v4 (the model schema is an Effect Schema), Oxfmt, Oxlint, Vite+, devenv. Lifecycle tooling is copied from `reebeat/studio` at `d4fd75e` (see `PROVENANCE.md`).
+- **Default stack.** TypeScript 7, Bun, Effect v4 (the model schema is an Effect Schema), Oxfmt, Oxlint, Vite+, devenv. Lifecycle tooling is copied from `tsukuri-labs/studio` at `d4fd75e` (see `PROVENANCE.md`).
 
 ## Journey
 
@@ -39,13 +39,13 @@ A reader who clones the repository and runs `devenv shell -- bun install` and `d
 
 | Part | Content |
 | --- | --- |
-| The model | `model/<scope>/<sub-model>.yaml` for the scopes `org`, `reebeat`, `studio` and `foldkit-flow`, one file per 4EM sub-model: Goals, Business Rules, Concepts, Business Process, Actors and Resources, Technical Components and Requirements. Every element has an id, a kind, a statement, a status, sources and links. |
+| The model | `model/<scope>/<sub-model>.yaml` for the scopes `org`, `tsukuri`, `studio` and `foldkit-flow`, one file per 4EM sub-model: Goals, Business Rules, Concepts, Business Process, Actors and Resources, Technical Components and Requirements. Every element has an id, a kind, a statement, a status, sources and links. |
 | The schema | `tools/intent/src/schema.ts`, an Effect Schema. A missing source, an empty source list, an unknown key or an unknown kind does not decode. |
 | The checks | `tools/intent/src/checks.ts`; each has a negative control in `tools/intent/test/checks.test.ts`. |
 | The generator | `tools/intent/src/generate.ts` and `tools/intent/src/render/`: Mermaid diagrams and tables. |
 | The generated documents | `profile/README.md`; `docs/README.md`; `docs/goals.md`, `business-rules.md`, `concepts.md`, `business-processes.md`, `actors-and-resources.md`, `technical-components.md`; `docs/products/<product>.md` (vision board, the goals served, actors, key processes, rules, components, quality goals); `docs/business-model.md`; `docs/roadmap.md`; `docs/gaps.md`; `docs/confirm.md` (every `proposed` and `open` element, with what the operator confirms). |
 | The source verifier | `bun run sources:verify [--show]`: every file source exists at the pinned commit, its lines exist, a `record:` line says "decided" or "operator", an `absent:` file is absent. Not in CI (CI has no checkouts); run by reviewers. |
-| The lifecycle | hooks, commitlint, gitleaks, review and merge scripts, CI, copied from `reebeat/studio`. |
+| The lifecycle | hooks, commitlint, gitleaks, review and merge scripts, CI, copied from `tsukuri-labs/studio`. |
 | Branch protection | `main`: pull request required (administrators included), required status check `checks`, no force push, no deletion. |
 
 ## The checks
@@ -118,6 +118,6 @@ Dated entries. A spec is revised only here; its text above is never edited silen
 - **2026-10-29, the decision log gained "Technical framing" (lines 58 to 65).** The log copy was refreshed; the three layers (Model, Plan, Build), Effect and XState, and React's core as a rejected alternative are in the model. Components gained the tiers `layer` and `external`, and the flag `rejected`.
 - **2026-10-29, two review rounds of the sources (before the PR opened).** Independent reviewers sampled every element against its sources. Every element whose only support was a spec header ("Status", "Decided by: the operator's assignment") became `proposed`; `record:` sources cite only lines that state the decision; decided statements were cut back to the wording of the line. `sources:verify` gained the header rule and now fails closed when a checkout or commit is missing (the first version reported every `absent:` source as present because a failed `git show` returned empty text).
 - **2026-10-29, the pricing marks.** The operator decided the principle and two paid features (multiplayer collaboration, integrated hosted AI agents). Every other `pricing` mark is `proposed`.
-- **2026-10-29, links to the technical note.** The organisation profile links `docs/design/how-it-works.md` of pull request 24 of reebeat (`url` on the component). The link points at the pull request until the note lands on `main`.
+- **2026-10-29, links to the technical note.** The organisation profile links `docs/design/how-it-works.md` of pull request 24 of tsukuri (`url` on the component). The link points at the pull request until the note lands on `main`.
 - **2026-10-29, review round 1 of the pull request.** (1) The profile prints the operator's intent line ("We take care of building; you focus on creating.", log line 7) under the tagline: `intentLine` on the vision goal. (2) `sources:verify` counted the empty text after the last newline as a line, so a citation one past the end of a file passed; it now counts real lines, rejects a range of blank lines, and has a boundary test; two citations were corrected. (3) `docs/confirm.md` gained a section that lists the decided elements that cite no line of the operator's decision log and rest on repository records only; the operator can ratify them into the log. (4) The negative-control script and its raw output (`controls.sh`, `controls.txt`) and the reviewer reports are in `docs/specs/0000-evidence/`; the PR body cites them. (5) First-person wording was removed from rationales.
 - **2026-10-29, review round 2 of the pull request (text only).** The remaining first-person and "we/us/our" wording in `model/` rationales and statements was replaced ("the project", "an inference"); the profile heading reads "What the products aim for". The evidence README says 49 tests. The job stories keep their first-person form ("I want ..."), which is the form of a job to be done.

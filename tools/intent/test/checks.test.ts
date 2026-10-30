@@ -52,7 +52,7 @@ describe("goal with no support", () => {
       "comp-org-c": (element) => without(element, "links"),
       "goal-org-g": (element) => ({
         ...element,
-        refs: ["reebeat:docs/specs/0001-x.md:1"],
+        refs: ["tsukuri:docs/specs/0001-x.md:1"],
       }),
       "process-org-p": (element) => without(element, "links"),
     });
@@ -63,7 +63,7 @@ describe("goal with no support", () => {
 
 describe("component that serves no goal", () => {
   it("fails when the component has no serves link", () => {
-    const model = withChange("comp-reebeat-c", (element) =>
+    const model = withChange("comp-tsukuri-c", (element) =>
       without(element, "links")
     );
 
@@ -71,7 +71,7 @@ describe("component that serves no goal", () => {
   });
 
   it("is exempt when it is a rejected alternative", () => {
-    const model = withChange("comp-reebeat-c", (element) => ({
+    const model = withChange("comp-tsukuri-c", (element) => ({
       ...without(element, "links"),
       rejected: true,
     }));
@@ -126,7 +126,7 @@ describe("decided element whose source is not an operator decision", () => {
   it("fails for a repository line that records no decision", () => {
     const model = withChange("goal-org-g", (element) => ({
       ...element,
-      source: ["reebeat:README.md:3"],
+      source: ["tsukuri:README.md:3"],
     }));
 
     assert.include(codes(model), "STATUS-DECIDED-NOT-OPERATOR");
@@ -135,7 +135,7 @@ describe("decided element whose source is not an operator decision", () => {
   it("passes for a recorded decision line", () => {
     const model = withChange("goal-org-g", (element) => ({
       ...element,
-      source: ["record:reebeat:docs/design/open-core-boundary.md:39"],
+      source: ["record:tsukuri:docs/design/open-core-boundary.md:39"],
     }));
 
     assert.notInclude(codes(model), "STATUS-DECIDED-NOT-OPERATOR");
@@ -145,7 +145,7 @@ describe("decided element whose source is not an operator decision", () => {
     const model = withChange("goal-org-g", (element) => ({
       ...element,
       rationale: "The README says so; the operator should confirm.",
-      source: ["reebeat:README.md:3"],
+      source: ["tsukuri:README.md:3"],
       status: "proposed",
     }));
 
@@ -218,7 +218,7 @@ describe("a decided problem that keeps a gap", () => {
             elements: [
               ...file.elements,
               {
-                gap: { fix: "Add the missing file.", repo: "reebeat" },
+                gap: { fix: "Add the missing file.", repo: "tsukuri" },
                 id: "problem-org-p",
                 kind: "problem",
                 links: { hinders: ["goal-org-g"] },
@@ -390,7 +390,7 @@ describe("identity and structure", () => {
   });
 
   it("fails when a product states no quality goal", () => {
-    const model = withChange("req-reebeat-q", () => {});
+    const model = withChange("req-tsukuri-q", () => {});
 
     assert.include(codes(model), "QUALITY-MISSING");
   });
@@ -414,7 +414,7 @@ describe("identity and structure", () => {
   it("fails when a cited issue is missing from the tracker", () => {
     const model = withChange("goal-org-g", (element) => ({
       ...element,
-      refs: ["issue:reebeat#7"],
+      refs: ["issue:tsukuri#7"],
     }));
 
     assert.include(codes(model), "TRACKER-MISSING");

@@ -91,8 +91,8 @@ export const modelOf = (files: readonly RawFile[]): Model =>
       pricingDecisions: [7],
       repos: {
         "foldkit-flow": Str.repeat(40)("a"),
-        reebeat: Str.repeat(40)("b"),
         studio: Str.repeat(40)("c"),
+        tsukuri: Str.repeat(40)("b"),
       },
     },
     tracker: { asOf: "2026-10-29", items: [] },

@@ -28,8 +28,8 @@ export const subModelPages: Readonly<Record<SubModel, string>> = {
 export const scopeTitles: Readonly<Record<Scope, string>> = {
   "foldkit-flow": "foldkit-flow",
   org: "The organisation",
-  reebeat: "reebeat (the compiler)",
-  studio: "reebeat studio",
+  studio: "tsukuri studio",
+  tsukuri: "tsukuri (the compiler)",
 };
 
 /** Link target of an item from a page in `docs/` (prefix "") or in `docs/products/` (prefix "../"). */

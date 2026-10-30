@@ -2,10 +2,10 @@ elements:
   # ---------------------------------------------------------------- goals
   - id: goal-studio-vision
     kind: goal
-    title: A collaborative editor for reebeat stories
-    tagline: The collaborative editor for reebeat stories
+    title: A collaborative editor for tsukuri stories
+    tagline: The collaborative editor for tsukuri stories
     statement: >-
-      reebeat studio is a collaborative editor for reebeat stories, a product built on the open compiler. It is proprietary,
+      tsukuri studio is a collaborative editor for tsukuri stories, a product built on the open compiler. It is proprietary,
       all rights reserved.
     status: decided
     source: [log:43, log:45, log:95, studio:README.md:3]
@@ -115,7 +115,7 @@ elements:
     status: proposed
     rationale: >-
       Spec 0001 states this journey, and its header calls the journey the operator's proposal of 2026-10-29. No line
-      records the operator accepting it, and the spec is blocked on reebeat. The operator must confirm the journey.
+      records the operator accepting it, and the spec is blocked on tsukuri. The operator must confirm the journey.
     source: [studio:docs/specs/0001-first-felt-journey.md:3, studio:docs/specs/0001-first-felt-journey.md:11-22]
     refs: ["studio:docs/specs/0001-first-felt-journey.md:1"]
     jtbd:
@@ -265,7 +265,7 @@ elements:
       must come from its primary source before it is built.
     status: proposed
     rationale: >-
-      The lenses note designs this lens and depends on reebeat issue 8. No operator decision names it. The operator must
+      The lenses note designs this lens and depends on tsukuri issue 8. No operator decision names it. The operator must
       confirm it.
     source: [studio:docs/design/lenses.md:27, studio:docs/design/lenses.md:71-73]
     links:
@@ -280,7 +280,7 @@ elements:
       absolute time.
     status: proposed
     rationale: >-
-      The lenses note designs this lens and depends on reebeat issue 10. The operator log asks for language variants with
+      The lenses note designs this lens and depends on tsukuri issue 10. The operator log asks for language variants with
       adjusted timings (log line 32) but does not name this lens.
       The operator should confirm the lens and its drift report.
     source: [studio:docs/design/lenses.md:28, studio:docs/design/lenses.md:75-77, log:32]
@@ -318,16 +318,16 @@ elements:
     kind: problem
     title: Studio has no glossary of its own
     statement: >-
-      At the pinned commit, studio uses reebeat's words (State, Beat, Scene, effect) but has no GLOSSARY.md. It points
-      readers to reebeat's glossary.
+      At the pinned commit, studio uses tsukuri's words (State, Beat, Scene, effect) but has no GLOSSARY.md. It points
+      readers to tsukuri's glossary.
     status: open
     rationale: >-
-      AGENTS.md and the lenses note send readers to reebeat's GLOSSARY.md, and PROVENANCE.md lists it as not copied. The
+      AGENTS.md and the lenses note send readers to tsukuri's GLOSSARY.md, and PROVENANCE.md lists it as not copied. The
       operator should confirm whether a pointer is enough or studio needs its own terms (lens, take, gate, scope).
     source: [absent:studio:GLOSSARY.md, studio:AGENTS.md:3, studio:docs/design/lenses.md:11, studio:PROVENANCE.md:29]
     gap:
       repo: studio
-      fix: Add a glossary for studio's own terms, or a clear pointer to reebeat's glossary.
+      fix: Add a glossary for studio's own terms, or a clear pointer to tsukuri's glossary.
     links:
       hinders: [goal-studio-lenses]
 
@@ -350,35 +350,35 @@ elements:
 
   - id: problem-studio-first-journey-blocked
     kind: problem
-    title: The first journey waits for the reebeat story IR
+    title: The first journey waits for the tsukuri story IR
     statement: >-
-      At the pinned commit, spec 0001 is blocked on reebeat specs 0004 and 0006, and needs spec 0005 for story-wide
+      At the pinned commit, spec 0001 is blocked on tsukuri specs 0004 and 0006, and needs spec 0005 for story-wide
       identity. Until the IR is stable, studio builds no editing feature.
     status: open
     rationale: >-
-      STATE.md and AGENTS.md record the block. It ends when reebeat merges those specs. The operator owns the sequence of
-      reebeat work.
-      The operator should confirm when reebeat specs 0004 to 0006 are enough.
+      STATE.md and AGENTS.md record the block. It ends when tsukuri merges those specs. The operator owns the sequence of
+      tsukuri work.
+      The operator should confirm when tsukuri specs 0004 to 0006 are enough.
     source: [studio:AGENTS.md:3, studio:STATE.md:12, studio:STATE.md:18, studio:docs/specs/0001-first-felt-journey.md:3, studio:docs/specs/0001-first-felt-journey.md:30-42]
     gap:
-      repo: reebeat
-      fix: Merge reebeat specs 0004 to 0006 so the story IR is closed, versioned and the committed source.
+      repo: tsukuri
+      fix: Merge tsukuri specs 0004 to 0006 so the story IR is closed, versioned and the committed source.
     links:
       hinders: [goal-studio-first-felt-journey]
 
   - id: problem-studio-browser-compile-gaps
     kind: problem
-    title: Browser compile and seek in reebeat are unverified
+    title: Browser compile and seek in tsukuri are unverified
     statement: >-
       The in-browser preview needs a browser-safe compile, a seekable Deck page and a Deck generator that does not read the
-      file system. Spec 0001 lists them as new reebeat work, and says the browser safety of the compile is not yet checked.
+      file system. Spec 0001 lists them as new tsukuri work, and says the browser safety of the compile is not yet checked.
     status: proposed
     rationale: >-
       Spec 0001 names the needs as D5 to D7 and marks the first one as not yet checked. The operator must confirm that
-      reebeat takes this work.
+      tsukuri takes this work.
     source: [studio:docs/specs/0001-first-felt-journey.md:38-42]
     gap:
-      repo: reebeat
+      repo: tsukuri
       fix: Add a browser-safe compile path, a seek(frame) on the Deck page and an assembleDeck that takes its assets as input.
     links:
       hinders: [goal-studio-preview-fidelity]
@@ -483,7 +483,7 @@ elements:
       service does not distribute it. This holds for now; in future multiple encoders sit behind an adapter. If a product
       ever bundles ffmpeg, it complies with the GPL for that binary.
     status: decided
-    source: [log:78, log:50, issue:reebeat#7, pr:studio#6]
+    source: [log:78, log:50, issue:tsukuri#7, pr:studio#6]
     gap:
       repo: studio
       fix: Keep ffmpeg out of every studio binary, as the binary does today; add an encoder adapter when a second encoder is wanted, and meet the GPL for any binary that bundles ffmpeg.
@@ -625,9 +625,9 @@ elements:
   - id: constraint-studio-ir-stability
     kind: constraint
     constraintType: process
-    title: No editing feature before the reebeat IR is stable
+    title: No editing feature before the tsukuri IR is stable
     statement: >-
-      Studio builds no editing feature against the story IR until reebeat specs 0004 to 0006 stabilise it. The shell,
+      Studio builds no editing feature against the story IR until tsukuri specs 0004 to 0006 stabilise it. The shell,
       toolchain and docs are allowed.
     status: proposed
     rationale: >-

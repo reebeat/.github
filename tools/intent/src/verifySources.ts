@@ -178,6 +178,6 @@ export const defaultRoots = (
   base: string
 ): Readonly<Record<RepoKey, string>> => ({
   "foldkit-flow": `${base}/foldkit-flow`,
-  reebeat: `${base}/reebeat`,
   studio: `${base}/reebeat-studio`,
+  tsukuri: `${base}/reebeat`,
 });

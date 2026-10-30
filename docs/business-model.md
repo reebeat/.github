@@ -7,8 +7,8 @@ A Business Model Canvas (Osterwalder and Pigneur, *Business Model Generation*, 2
 Elements marked `proposed` or `open` are not operator decisions. Demand and willingness to pay are not measured: see the [gap report](gaps.md).
 
 <table>
-<tr><td rowspan="2" valign="top"><b>Key partners</b><ul><li><a href="technical-components.md#comp-org-effect">Effect</a> <i>(decided)</i></li><li><a href="technical-components.md#comp-org-xstate">XState</a> <i>(decided)</i></li><li><a href="actors-and-resources.md#resource-reebeat-chromium">Chromium</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-reebeat-ffmpeg">ffmpeg and ffprobe</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-reebeat-whisper-cpp">whisper.cpp</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-reebeat-kokoro-model">Kokoro speech model</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-reebeat-reveal-js">reveal.js</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-studio-reebeat-compiler">The reebeat compiler and its IR</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-studio-foldkit">Foldkit, the UI framework</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-studio-effect">Effect 4.1.0</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-studio-loro">Loro, the CRDT library</a> <i>(decided)</i></li><li><a href="actors-and-resources.md#resource-studio-cloudflare">Cloudflare Workers and Durable Objects</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-studio-alchemy">Alchemy v2</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-studio-bun">Bun, the runtime and compiler</a> <i>(decided)</i></li><li><a href="actors-and-resources.md#actor-flow-xyflow">The xyflow project</a> <i>(decided)</i></li><li><a href="actors-and-resources.md#actor-flow-foldkit-project">The Foldkit project</a> <i>(decided)</i></li><li><a href="actors-and-resources.md#resource-flow-xyflow-system">@xyflow/system</a> <i>(decided)</i></li><li><a href="actors-and-resources.md#resource-flow-foldkit">Foldkit</a> <i>(decided)</i></li><li><a href="actors-and-resources.md#resource-flow-foldkit-pin">Foldkit 0.169.0 and its peer range</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-flow-effect">Effect 4.1.0</a> <i>(proposed)</i></li><li><a href="goals.md#goal-flow-upstream-offer">Offer the library to Foldkit</a> <i>(decided)</i></li><li><a href="goals.md#goal-flow-respect-xyflow">Credit and respect xyflow</a> <i>(decided)</i></li><li><a href="goals.md#constraint-flow-vite-plugin-crypto">The Foldkit Vite plugin cannot run on Effect 4.1.0</a> <i>(proposed)</i></li><li><a href="goals.md#opportunity-flow-xyflow-core">Reuse xyflow's framework-free core</a> <i>(decided)</i></li></ul></td><td  valign="top"><b>Key activities</b><ul><li><a href="goals.md#goal-org-correctness-by-construction">Correctness by construction</a> <i>(decided)</i></li><li><a href="goals.md#goal-org-written-intent">Intent written down, sourced and testable</a> <i>(proposed)</i></li><li><a href="technical-components.md#comp-org-intent-model">The intent model and its generator</a> <i>(proposed)</i></li><li><a href="business-processes.md#process-reebeat-author-story">Author a story</a> <i>(proposed)</i></li><li><a href="business-processes.md#process-reebeat-parse-story">Parse the screenplay</a> <i>(proposed)</i></li><li><a href="business-processes.md#process-reebeat-build-plan">Build the Plan</a> <i>(proposed)</i></li><li><a href="business-processes.md#process-reebeat-speech-stage">Make or reuse the narration audio</a> <i>(proposed)</i></li><li><a href="business-processes.md#process-reebeat-schedule">Schedule the Timeline</a> <i>(proposed)</i></li><li><a href="business-processes.md#process-reebeat-render-deck">Render the Deck</a> <i>(proposed)</i></li><li><a href="business-processes.md#process-reebeat-capture-frames">Capture the frames</a> <i>(proposed)</i></li><li><a href="business-processes.md#process-reebeat-encode-video">Encode and mux the Video</a> <i>(proposed)</i></li><li><a href="business-processes.md#process-reebeat-verify-build">Verify the written build</a> <i>(proposed)</i></li><li><a href="technical-components.md#comp-studio-product">reebeat studio</a> <i>(decided)</i></li><li><a href="goals.md#goal-flow-lifecycle">Every change travels spec, code, PR</a> <i>(proposed)</i></li><li><a href="business-processes.md#process-flow-adopt-library">A Foldkit app adopts the library</a> <i>(decided)</i></li><li><a href="business-processes.md#process-flow-ship-spec">Ship a spec as a PR</a> <i>(proposed)</i></li><li><a href="technical-components.md#req-flow-maintain-gates">Gates catch drift, dead code and copies</a> <i>(proposed)</i></li></ul></td><td rowspan="2" valign="top"><b>Value propositions</b><ul><li><a href="goals.md#goal-org-vision">Multimedia that authors declare and tools rebuild</a> <i>(decided)</i></li><li><a href="goals.md#goal-org-declarative-creation">Declare scenes and transitions, not build steps</a> <i>(decided)</i></li><li><a href="goals.md#goal-org-accessible-artifacts">Accessible artifacts for every audience</a> <i>(decided)</i></li><li><a href="goals.md#goal-org-reproducible-builds">Reproducible builds</a> <i>(decided)</i></li><li><a href="goals.md#goal-org-incremental-builds">Fast, incremental, reactive builds</a> <i>(decided)</i></li><li><a href="goals.md#goal-org-interactive-multimedia">Interactive multimedia for learning</a> <i>(decided)</i></li><li><a href="goals.md#goal-org-modular-extensible">Modular and extensible by users</a> <i>(decided)</i></li><li><a href="goals.md#goal-org-open-compiler">An open compiler and open formats</a> <i>(decided)</i></li><li><a href="goals.md#goal-org-product-family">A family of products on the open core</a> <i>(decided)</i></li><li><a href="goals.md#goal-reebeat-vision">Declare the story, reebeat builds the artifacts</a> <i>(decided)</i></li><li><a href="goals.md#goal-reebeat-screenplay-first">One screenplay, every rendering</a> <i>(decided)</i></li><li><a href="goals.md#goal-reebeat-deck-and-video">A Deck and a Video from one source</a> <i>(decided)</i></li><li><a href="goals.md#goal-reebeat-event-timing">Effects connect to produced events</a> <i>(decided)</i></li><li><a href="goals.md#goal-reebeat-accessible-artifacts">Accessible artifacts for different audiences</a> <i>(decided)</i></li><li><a href="goals.md#goal-reebeat-reproducible-builds">Reproducible builds</a> <i>(decided)</i></li><li><a href="goals.md#goal-reebeat-incremental-builds">Fast, incremental and reactive builds</a> <i>(decided)</i></li><li><a href="goals.md#goal-reebeat-interactive-website">An interactive website as an artifact type</a> <i>(decided)</i></li><li><a href="goals.md#goal-reebeat-plugin-sdk">Plugins and a render-engine SDK</a> <i>(decided)</i></li><li><a href="goals.md#opportunity-reebeat-identity-diff-motion">The identity diff derives motion</a> <i>(decided)</i></li><li><a href="technical-components.md#comp-reebeat-product">reebeat, the open compiler</a> <i>(decided)</i></li><li><a href="goals.md#goal-studio-vision">A collaborative editor for reebeat stories</a> <i>(decided)</i></li><li><a href="goals.md#goal-studio-people-and-agents">People and agents edit stories together</a> <i>(decided)</i></li><li><a href="goals.md#goal-studio-deck-view-narration">Record narration in a deck view</a> <i>(decided)</i></li><li><a href="goals.md#goal-studio-lenses">Organise the editor by lenses</a> <i>(decided)</i></li><li><a href="technical-components.md#comp-studio-product">reebeat studio</a> <i>(decided)</i></li><li><a href="goals.md#goal-flow-vision">A graph canvas for Foldkit applications</a> <i>(decided)</i></li><li><a href="goals.md#goal-flow-generic-library">A generic library with no product logic</a> <i>(proposed)</i></li><li><a href="goals.md#goal-flow-studio-story-graph">Carry reebeat studio's story graph</a> <i>(decided)</i></li><li><a href="goals.md#goal-flow-keyboard-access">Keyboard-accessible graph editing</a> <i>(decided)</i></li><li><a href="goals.md#goal-flow-performance">Stay smooth at 500 nodes and 700 edges</a> <i>(proposed)</i></li><li><a href="technical-components.md#comp-flow-product">foldkit-flow</a> <i>(decided)</i></li><li><a href="technical-components.md#req-flow-a11y-keyboard">Keyboard-only use with announcements</a> <i>(decided)</i></li></ul></td><td  valign="top"><b>Customer relationships</b><ul><li><a href="business-processes.md#process-org-upgrade-to-paid">A free user becomes a paying user</a> <i>(decided)</i></li><li><a href="goals.md#goal-studio-free-paid-split">Free tier for basic features, paid premium features</a> <i>(decided)</i></li><li><a href="goals.md#opportunity-studio-byo-agents-and-plugins">Users bring their own agents, and likely write plugins</a> <i>(decided)</i></li></ul></td><td rowspan="2" valign="top"><b>Customer segments</b><ul><li><a href="actors-and-resources.md#actor-creator">Creator</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#actor-learner">Learner</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#actor-presenter">Presenter</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#actor-agent-operator">Agent operator</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#actor-plugin-author">Plugin author</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#actor-reebeat-story-author">Story author</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#actor-reebeat-presenter">Presenter</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#actor-reebeat-agent-operator">Agent operator</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#actor-reebeat-plugin-author">Plugin author</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#actor-studio-story-author">Story author in studio</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#actor-studio-narrator">Narrator in the deck view</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#actor-studio-agent-owner">Person who brings their own agent</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#actor-studio-collaborator">Collaborator on a shared story</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#actor-flow-app-developer">Foldkit app developer</a> <i>(decided)</i></li><li><a href="actors-and-resources.md#actor-flow-studio">reebeat studio (consuming product)</a> <i>(decided)</i></li><li><a href="goals.md#opportunity-flow-other-foldkit-apps">Other Foldkit apps can use it</a> <i>(decided)</i></li></ul></td></tr>
-<tr><td  valign="top"><b>Key resources</b><ul><li><a href="actors-and-resources.md#resource-github-org">The GitHub organisation reebeat</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-npm-org">The npm organisation reebeat</a> <i>(decided)</i></li><li><a href="actors-and-resources.md#resource-decision-log">The operator's decision log</a> <i>(proposed)</i></li><li><a href="technical-components.md#comp-org-intent-model">The intent model and its generator</a> <i>(proposed)</i></li><li><a href="technical-components.md#comp-org-lifecycle-toolchain">The shared lifecycle toolchain</a> <i>(decided)</i></li><li><a href="technical-components.md#comp-org-layer-model">Layer 1, the Model</a> <i>(decided)</i></li><li><a href="technical-components.md#comp-org-layer-build">Layer 3, the Build</a> <i>(decided)</i></li><li><a href="actors-and-resources.md#resource-reebeat-chromium">Chromium</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-reebeat-ffmpeg">ffmpeg and ffprobe</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-reebeat-whisper-cpp">whisper.cpp</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-reebeat-kokoro-model">Kokoro speech model</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-reebeat-reveal-js">reveal.js</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-reebeat-licence-inventory">The licence inventory</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-reebeat-devenv">devenv shell</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-reebeat-speech-cache">The speech cache</a> <i>(proposed)</i></li><li><a href="technical-components.md#comp-reebeat-services">services, the seven contracts</a> <i>(proposed)</i></li><li><a href="technical-components.md#comp-reebeat-render-reveal">render-reveal, the Deck renderer</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-studio-repo">The public repository reebeat/studio</a> <i>(decided)</i></li><li><a href="actors-and-resources.md#resource-studio-reebeat-compiler">The reebeat compiler and its IR</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-flow-xyflow-system">@xyflow/system</a> <i>(decided)</i></li><li><a href="actors-and-resources.md#resource-flow-foldkit">Foldkit</a> <i>(decided)</i></li><li><a href="actors-and-resources.md#resource-flow-foldkit-pin">Foldkit 0.169.0 and its peer range</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-flow-effect">Effect 4.1.0</a> <i>(proposed)</i></li><li><a href="goals.md#constraint-flow-mit-licence">The library is MIT licensed</a> <i>(decided)</i></li><li><a href="goals.md#opportunity-flow-xyflow-core">Reuse xyflow's framework-free core</a> <i>(decided)</i></li><li><a href="technical-components.md#comp-flow-product">foldkit-flow</a> <i>(decided)</i></li></ul></td><td  valign="top"><b>Channels</b><ul><li><a href="actors-and-resources.md#resource-github-org">The GitHub organisation reebeat</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-npm-org">The npm organisation reebeat</a> <i>(decided)</i></li><li><a href="goals.md#goal-org-open-compiler">An open compiler and open formats</a> <i>(decided)</i></li><li><a href="technical-components.md#comp-org-profile">The organisation profile</a> <i>(proposed)</i></li><li><a href="technical-components.md#comp-org-how-it-works">How it works (the technical description)</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#actor-reebeat-cli">The reebeat command</a> <i>(proposed)</i></li><li><a href="business-processes.md#process-reebeat-release-publish">Publish pre-releases to npm</a> <i>(proposed)</i></li><li><a href="technical-components.md#comp-reebeat-cli">cli, the reebeat command</a> <i>(proposed)</i></li><li><a href="goals.md#goal-studio-web-and-binary">Ship web first and a single binary</a> <i>(decided)</i></li><li><a href="goals.md#opportunity-studio-offline-binary">One binary gives an offline local studio</a> <i>(proposed)</i></li><li><a href="technical-components.md#comp-studio-launcher">The single-binary launcher</a> <i>(proposed)</i></li><li><a href="technical-components.md#comp-studio-web-deploy">The web deploy (inert)</a> <i>(proposed)</i></li><li><a href="goals.md#goal-flow-upstream-offer">Offer the library to Foldkit</a> <i>(decided)</i></li><li><a href="goals.md#goal-flow-publish">Publish the package for others to use</a> <i>(decided)</i></li><li><a href="business-processes.md#process-flow-publish-package">Publish the package</a> <i>(decided)</i></li></ul></td></tr>
+<tr><td rowspan="2" valign="top"><b>Key partners</b><ul><li><a href="technical-components.md#comp-org-effect">Effect</a> <i>(decided)</i></li><li><a href="technical-components.md#comp-org-xstate">XState</a> <i>(decided)</i></li><li><a href="actors-and-resources.md#resource-tsukuri-chromium">Chromium</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-tsukuri-ffmpeg">ffmpeg and ffprobe</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-tsukuri-whisper-cpp">whisper.cpp</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-tsukuri-kokoro-model">Kokoro speech model</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-tsukuri-reveal-js">reveal.js</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-studio-tsukuri-compiler">The tsukuri compiler and its IR</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-studio-foldkit">Foldkit, the UI framework</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-studio-effect">Effect 4.1.0</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-studio-loro">Loro, the CRDT library</a> <i>(decided)</i></li><li><a href="actors-and-resources.md#resource-studio-cloudflare">Cloudflare Workers and Durable Objects</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-studio-alchemy">Alchemy v2</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-studio-bun">Bun, the runtime and compiler</a> <i>(decided)</i></li><li><a href="actors-and-resources.md#actor-flow-xyflow">The xyflow project</a> <i>(decided)</i></li><li><a href="actors-and-resources.md#actor-flow-foldkit-project">The Foldkit project</a> <i>(decided)</i></li><li><a href="actors-and-resources.md#resource-flow-xyflow-system">@xyflow/system</a> <i>(decided)</i></li><li><a href="actors-and-resources.md#resource-flow-foldkit">Foldkit</a> <i>(decided)</i></li><li><a href="actors-and-resources.md#resource-flow-foldkit-pin">Foldkit 0.169.0 and its peer range</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-flow-effect">Effect 4.1.0</a> <i>(proposed)</i></li><li><a href="goals.md#goal-flow-upstream-offer">Offer the library to Foldkit</a> <i>(decided)</i></li><li><a href="goals.md#goal-flow-respect-xyflow">Credit and respect xyflow</a> <i>(decided)</i></li><li><a href="goals.md#constraint-flow-vite-plugin-crypto">The Foldkit Vite plugin cannot run on Effect 4.1.0</a> <i>(proposed)</i></li><li><a href="goals.md#opportunity-flow-xyflow-core">Reuse xyflow's framework-free core</a> <i>(decided)</i></li></ul></td><td  valign="top"><b>Key activities</b><ul><li><a href="goals.md#goal-org-correctness-by-construction">Correctness by construction</a> <i>(decided)</i></li><li><a href="goals.md#goal-org-written-intent">Intent written down, sourced and testable</a> <i>(proposed)</i></li><li><a href="technical-components.md#comp-org-intent-model">The intent model and its generator</a> <i>(proposed)</i></li><li><a href="business-processes.md#process-tsukuri-author-story">Author a story</a> <i>(proposed)</i></li><li><a href="business-processes.md#process-tsukuri-parse-story">Parse the screenplay</a> <i>(proposed)</i></li><li><a href="business-processes.md#process-tsukuri-build-plan">Build the Plan</a> <i>(proposed)</i></li><li><a href="business-processes.md#process-tsukuri-speech-stage">Make or reuse the narration audio</a> <i>(proposed)</i></li><li><a href="business-processes.md#process-tsukuri-schedule">Schedule the Timeline</a> <i>(proposed)</i></li><li><a href="business-processes.md#process-tsukuri-render-deck">Render the Deck</a> <i>(proposed)</i></li><li><a href="business-processes.md#process-tsukuri-capture-frames">Capture the frames</a> <i>(proposed)</i></li><li><a href="business-processes.md#process-tsukuri-encode-video">Encode and mux the Video</a> <i>(proposed)</i></li><li><a href="business-processes.md#process-tsukuri-verify-build">Verify the written build</a> <i>(proposed)</i></li><li><a href="technical-components.md#comp-studio-product">tsukuri studio</a> <i>(decided)</i></li><li><a href="goals.md#goal-flow-lifecycle">Every change travels spec, code, PR</a> <i>(proposed)</i></li><li><a href="business-processes.md#process-flow-adopt-library">A Foldkit app adopts the library</a> <i>(decided)</i></li><li><a href="business-processes.md#process-flow-ship-spec">Ship a spec as a PR</a> <i>(proposed)</i></li><li><a href="technical-components.md#req-flow-maintain-gates">Gates catch drift, dead code and copies</a> <i>(proposed)</i></li></ul></td><td rowspan="2" valign="top"><b>Value propositions</b><ul><li><a href="goals.md#goal-org-vision">Multimedia that authors declare and tools rebuild</a> <i>(decided)</i></li><li><a href="goals.md#goal-org-declarative-creation">Declare scenes and transitions, not build steps</a> <i>(decided)</i></li><li><a href="goals.md#goal-org-accessible-artifacts">Accessible artifacts for every audience</a> <i>(decided)</i></li><li><a href="goals.md#goal-org-reproducible-builds">Reproducible builds</a> <i>(decided)</i></li><li><a href="goals.md#goal-org-incremental-builds">Fast, incremental, reactive builds</a> <i>(decided)</i></li><li><a href="goals.md#goal-org-interactive-multimedia">Interactive multimedia for learning</a> <i>(decided)</i></li><li><a href="goals.md#goal-org-modular-extensible">Modular and extensible by users</a> <i>(decided)</i></li><li><a href="goals.md#goal-org-open-compiler">An open compiler and open formats</a> <i>(decided)</i></li><li><a href="goals.md#goal-org-product-family">A family of products on the open core</a> <i>(decided)</i></li><li><a href="goals.md#goal-tsukuri-vision">Declare the story, tsukuri builds the artifacts</a> <i>(decided)</i></li><li><a href="goals.md#goal-tsukuri-screenplay-first">One screenplay, every rendering</a> <i>(decided)</i></li><li><a href="goals.md#goal-tsukuri-deck-and-video">A Deck and a Video from one source</a> <i>(decided)</i></li><li><a href="goals.md#goal-tsukuri-event-timing">Effects connect to produced events</a> <i>(decided)</i></li><li><a href="goals.md#goal-tsukuri-accessible-artifacts">Accessible artifacts for different audiences</a> <i>(decided)</i></li><li><a href="goals.md#goal-tsukuri-reproducible-builds">Reproducible builds</a> <i>(decided)</i></li><li><a href="goals.md#goal-tsukuri-incremental-builds">Fast, incremental and reactive builds</a> <i>(decided)</i></li><li><a href="goals.md#goal-tsukuri-interactive-website">An interactive website as an artifact type</a> <i>(decided)</i></li><li><a href="goals.md#goal-tsukuri-plugin-sdk">Plugins and a render-engine SDK</a> <i>(decided)</i></li><li><a href="goals.md#opportunity-tsukuri-identity-diff-motion">The identity diff derives motion</a> <i>(decided)</i></li><li><a href="technical-components.md#comp-tsukuri-product">tsukuri, the open compiler</a> <i>(decided)</i></li><li><a href="goals.md#goal-studio-vision">A collaborative editor for tsukuri stories</a> <i>(decided)</i></li><li><a href="goals.md#goal-studio-people-and-agents">People and agents edit stories together</a> <i>(decided)</i></li><li><a href="goals.md#goal-studio-deck-view-narration">Record narration in a deck view</a> <i>(decided)</i></li><li><a href="goals.md#goal-studio-lenses">Organise the editor by lenses</a> <i>(decided)</i></li><li><a href="technical-components.md#comp-studio-product">tsukuri studio</a> <i>(decided)</i></li><li><a href="goals.md#goal-flow-vision">A graph canvas for Foldkit applications</a> <i>(decided)</i></li><li><a href="goals.md#goal-flow-generic-library">A generic library with no product logic</a> <i>(proposed)</i></li><li><a href="goals.md#goal-flow-studio-story-graph">Carry tsukuri studio's story graph</a> <i>(decided)</i></li><li><a href="goals.md#goal-flow-keyboard-access">Keyboard-accessible graph editing</a> <i>(decided)</i></li><li><a href="goals.md#goal-flow-performance">Stay smooth at 500 nodes and 700 edges</a> <i>(proposed)</i></li><li><a href="technical-components.md#comp-flow-product">foldkit-flow</a> <i>(decided)</i></li><li><a href="technical-components.md#req-flow-a11y-keyboard">Keyboard-only use with announcements</a> <i>(decided)</i></li></ul></td><td  valign="top"><b>Customer relationships</b><ul><li><a href="business-processes.md#process-org-upgrade-to-paid">A free user becomes a paying user</a> <i>(decided)</i></li><li><a href="goals.md#goal-studio-free-paid-split">Free tier for basic features, paid premium features</a> <i>(decided)</i></li><li><a href="goals.md#opportunity-studio-byo-agents-and-plugins">Users bring their own agents, and likely write plugins</a> <i>(decided)</i></li></ul></td><td rowspan="2" valign="top"><b>Customer segments</b><ul><li><a href="actors-and-resources.md#actor-creator">Creator</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#actor-learner">Learner</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#actor-presenter">Presenter</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#actor-agent-operator">Agent operator</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#actor-plugin-author">Plugin author</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#actor-tsukuri-story-author">Story author</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#actor-tsukuri-presenter">Presenter</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#actor-tsukuri-agent-operator">Agent operator</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#actor-tsukuri-plugin-author">Plugin author</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#actor-studio-story-author">Story author in studio</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#actor-studio-narrator">Narrator in the deck view</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#actor-studio-agent-owner">Person who brings their own agent</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#actor-studio-collaborator">Collaborator on a shared story</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#actor-flow-app-developer">Foldkit app developer</a> <i>(decided)</i></li><li><a href="actors-and-resources.md#actor-flow-studio">tsukuri studio (consuming product)</a> <i>(decided)</i></li><li><a href="goals.md#opportunity-flow-other-foldkit-apps">Other Foldkit apps can use it</a> <i>(decided)</i></li></ul></td></tr>
+<tr><td  valign="top"><b>Key resources</b><ul><li><a href="actors-and-resources.md#resource-github-org">The GitHub organisation tsukuri-labs</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-npm-org">The npm organisation tsukuri</a> <i>(decided)</i></li><li><a href="actors-and-resources.md#resource-decision-log">The operator's decision log</a> <i>(proposed)</i></li><li><a href="technical-components.md#comp-org-intent-model">The intent model and its generator</a> <i>(proposed)</i></li><li><a href="technical-components.md#comp-org-lifecycle-toolchain">The shared lifecycle toolchain</a> <i>(decided)</i></li><li><a href="technical-components.md#comp-org-layer-model">Layer 1, the Model</a> <i>(decided)</i></li><li><a href="technical-components.md#comp-org-layer-build">Layer 3, the Build</a> <i>(decided)</i></li><li><a href="actors-and-resources.md#resource-tsukuri-chromium">Chromium</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-tsukuri-ffmpeg">ffmpeg and ffprobe</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-tsukuri-whisper-cpp">whisper.cpp</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-tsukuri-kokoro-model">Kokoro speech model</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-tsukuri-reveal-js">reveal.js</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-tsukuri-licence-inventory">The licence inventory</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-tsukuri-devenv">devenv shell</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-tsukuri-speech-cache">The speech cache</a> <i>(proposed)</i></li><li><a href="technical-components.md#comp-tsukuri-services">services, the seven contracts</a> <i>(proposed)</i></li><li><a href="technical-components.md#comp-tsukuri-render-reveal">render-reveal, the Deck renderer</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-studio-repo">The public repository tsukuri-labs/studio</a> <i>(decided)</i></li><li><a href="actors-and-resources.md#resource-studio-tsukuri-compiler">The tsukuri compiler and its IR</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-flow-xyflow-system">@xyflow/system</a> <i>(decided)</i></li><li><a href="actors-and-resources.md#resource-flow-foldkit">Foldkit</a> <i>(decided)</i></li><li><a href="actors-and-resources.md#resource-flow-foldkit-pin">Foldkit 0.169.0 and its peer range</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-flow-effect">Effect 4.1.0</a> <i>(proposed)</i></li><li><a href="goals.md#constraint-flow-mit-licence">The library is MIT licensed</a> <i>(decided)</i></li><li><a href="goals.md#opportunity-flow-xyflow-core">Reuse xyflow's framework-free core</a> <i>(decided)</i></li><li><a href="technical-components.md#comp-flow-product">foldkit-flow</a> <i>(decided)</i></li></ul></td><td  valign="top"><b>Channels</b><ul><li><a href="actors-and-resources.md#resource-github-org">The GitHub organisation tsukuri-labs</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-npm-org">The npm organisation tsukuri</a> <i>(decided)</i></li><li><a href="goals.md#goal-org-open-compiler">An open compiler and open formats</a> <i>(decided)</i></li><li><a href="technical-components.md#comp-org-profile">The organisation profile</a> <i>(proposed)</i></li><li><a href="technical-components.md#comp-org-how-it-works">How it works (the technical description)</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#actor-tsukuri-cli">The tsukuri command</a> <i>(proposed)</i></li><li><a href="business-processes.md#process-tsukuri-release-publish">Publish pre-releases to npm</a> <i>(proposed)</i></li><li><a href="technical-components.md#comp-tsukuri-cli">cli, the tsukuri command</a> <i>(proposed)</i></li><li><a href="goals.md#goal-studio-web-and-binary">Ship web first and a single binary</a> <i>(decided)</i></li><li><a href="goals.md#opportunity-studio-offline-binary">One binary gives an offline local studio</a> <i>(proposed)</i></li><li><a href="technical-components.md#comp-studio-launcher">The single-binary launcher</a> <i>(proposed)</i></li><li><a href="technical-components.md#comp-studio-web-deploy">The web deploy (inert)</a> <i>(proposed)</i></li><li><a href="goals.md#goal-flow-upstream-offer">Offer the library to Foldkit</a> <i>(decided)</i></li><li><a href="goals.md#goal-flow-publish">Publish the package for others to use</a> <i>(decided)</i></li><li><a href="business-processes.md#process-flow-publish-package">Publish the package</a> <i>(decided)</i></li></ul></td></tr>
 <tr><td colspan="2" valign="top"><b>Cost structure</b><ul><li><a href="business-rules.md#rule-org-paid-when-costly">A feature is paid when it costs the project money to run</a> <i>(decided)</i></li><li><a href="actors-and-resources.md#resource-studio-cloudflare">Cloudflare Workers and Durable Objects</a> <i>(proposed)</i></li><li><a href="actors-and-resources.md#resource-studio-hosting-cost">Cost of servers and inference</a> <i>(decided)</i></li><li><a href="technical-components.md#comp-studio-hosted-agent">Hosted agents</a> <i>(decided)</i></li><li><a href="technical-components.md#comp-studio-cloud-render">Cloud rendering</a> <i>(decided)</i></li><li><a href="technical-components.md#comp-studio-sync-server">The sync server (planned)</a> <i>(decided)</i></li></ul></td><td colspan="3" valign="top"><b>Revenue streams</b><ul><li><a href="goals.md#goal-org-sustainable-funding">Fund the work with paid features that cost money to run</a> <i>(decided)</i></li><li><a href="business-processes.md#process-org-upgrade-to-paid">A free user becomes a paying user</a> <i>(decided)</i></li><li><a href="business-rules.md#rule-org-paid-when-costly">A feature is paid when it costs the project money to run</a> <i>(decided)</i></li><li><a href="goals.md#goal-studio-free-paid-split">Free tier for basic features, paid premium features</a> <i>(decided)</i></li><li><a href="goals.md#opportunity-studio-paid-sync-and-agents">Paid sync and hosted agents fund the work</a> <i>(proposed)</i></li><li><a href="technical-components.md#comp-studio-hosted-agent">Hosted agents</a> <i>(decided)</i></li><li><a href="technical-components.md#comp-studio-hosted-speech">Hosted alignment, speech and translation</a> <i>(decided)</i></li><li><a href="technical-components.md#comp-studio-cloud-render">Cloud rendering</a> <i>(decided)</i></li><li><a href="technical-components.md#comp-studio-sync-server">The sync server (planned)</a> <i>(decided)</i></li></ul></td></tr>
 </table>
 
@@ -20,50 +20,50 @@ The operator decided the principle and two paid features: multiplayer collaborat
 
 | Mark | Mark status | Element | Scope | Status | Sources |
 | --- | --- | --- | --- | --- | --- |
-| free | decided | [reebeat, the open compiler](technical-components.md#comp-reebeat-product) | reebeat | decided | [log L7][1], [log L60][2], [log L44][3], [log L43][4], [record reebeat:docs/design/open-core-boundary.md:21][5], [record reebeat:docs/design/open-core-boundary.md:39-44][6] |
+| free | decided | [tsukuri, the open compiler](technical-components.md#comp-tsukuri-product) | tsukuri | decided | [log L7][1], [log L60][2], [log L44][3], [log L43][4], [record tsukuri:docs/design/open-core-boundary.md:21][5], [record tsukuri:docs/design/open-core-boundary.md:39-44][6] |
 | paid | decided | [Collaborate and merge edits](business-processes.md#process-studio-collaborate-merge) | studio | decided | [log L43][4], [log L45][7], [log L47][8] |
 | paid | decided | [Hosted agents](technical-components.md#comp-studio-hosted-agent) | studio | decided | [log L43][4] |
 | paid | decided | [The sync server (planned)](technical-components.md#comp-studio-sync-server) | studio | decided | [log L43][4], [log L47][8], [record studio:docs/specs/0002-collaboration-spike.md:198][9] |
-| free | proposed | [core, from screenplay to Plan and Timeline](technical-components.md#comp-reebeat-core) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:239][10], [reebeat:packages/core/src/index.ts:1-2][11], [reebeat:packages/core/package.json:5][12], [reebeat:docs/design/open-core-boundary.md:39][13] |
-| free | proposed | [subtitles, WebVTT and SubRip writers](technical-components.md#comp-reebeat-subtitles) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:240][14], [reebeat:packages/subtitles/src/index.ts:1-2][15] |
-| free | proposed | [lint, pure rules over a Plan](technical-components.md#comp-reebeat-lint) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:241][16], [reebeat:packages/lint/src/index.ts:1-4][17] |
-| free | proposed | [services, the seven contracts](technical-components.md#comp-reebeat-services) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:242][18], [reebeat:packages/services/src/index.ts:1-3][19], [reebeat:packages/services/package.json:22][20] |
-| free | proposed | [pipeline, the build program](technical-components.md#comp-reebeat-pipeline) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:243][21], [reebeat:packages/pipeline/src/index.ts:1-2][22] |
-| free | proposed | [speech-kokoro, local speech synthesis](technical-components.md#comp-reebeat-speech-kokoro) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:244][23], [reebeat:packages/speech-kokoro/src/index.ts:1][24] |
-| free | proposed | [align-whisper, word alignment](technical-components.md#comp-reebeat-align-whisper) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:245][25], [reebeat:packages/align-whisper/src/index.ts:1][26] |
-| free | proposed | [sounds-synth, built-in sound effects](technical-components.md#comp-reebeat-sounds-synth) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:246][27], [reebeat:docs/design/third-party.md:78][28] |
-| free | proposed | [render-reveal, the Deck renderer](technical-components.md#comp-reebeat-render-reveal) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:247][29], [reebeat:packages/render-reveal/src/index.ts:1-4][30] |
-| free | proposed | [capture-chromium, frame capture](technical-components.md#comp-reebeat-capture-chromium) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:248][31], [reebeat:packages/capture-chromium/src/index.ts:1-2][32] |
-| free | proposed | [encode-ffmpeg, mix and mux](technical-components.md#comp-reebeat-encode-ffmpeg) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:249][33], [reebeat:packages/encode-ffmpeg/src/index.ts:1-2][34] |
-| free | proposed | [cache-fs, the content-addressed cache](technical-components.md#comp-reebeat-cache-fs) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:250][35], [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:261][36] |
-| free | proposed | [verify, the output-side checks](technical-components.md#comp-reebeat-verify) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:251][37], [reebeat:packages/verify/src/index.ts:1-2][38] |
-| free | proposed | [cli, the reebeat command](technical-components.md#comp-reebeat-cli) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:252][39], [reebeat:packages/cli/src/cli.ts:70][40], [reebeat:packages/cli/package.json:17-28][41] |
-| free | proposed | [quality gates, the repository checks](technical-components.md#comp-reebeat-quality-gates) | reebeat | proposed | [reebeat:docs/specs/0000-development-lifecycle.md:9][42], [reebeat:AGENTS.md:26-42][43] |
-| free | proposed | [statechart-xstate, the build-time interpreter](technical-components.md#comp-reebeat-statechart-xstate) | reebeat | proposed | [log L26][44], [reebeat:docs/specs/0007-scxml-persistent-ir-spike.md:591][45], [reebeat:docs/specs/0007-scxml-persistent-ir-spike.md:620][46] |
-| free | proposed | [website renderer, a planned artifact renderer](technical-components.md#comp-reebeat-website-renderer) | reebeat | proposed | [log L36][47], [issue reebeat#19][48] |
-| free | proposed | [Print a reviewable Plan](technical-components.md#req-reebeat-plan) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:28][49], [reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:123][50], [reebeat:docs/design/open-core-boundary.md:39][13] |
-| free | proposed | [Build a Deck from the Plan](technical-components.md#req-reebeat-deck) | reebeat | proposed | [reebeat:README.md:5][51], [reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:162][52], [reebeat:docs/design/open-core-boundary.md:39][13] |
-| free | proposed | [Build a narrated Video from the Plan](technical-components.md#req-reebeat-video) | reebeat | proposed | [reebeat:README.md:6][53], [reebeat:docs/design/open-core-boundary.md:39][13] |
-| free | proposed | [Write a story as a Fountain screenplay](technical-components.md#req-reebeat-fountain-artifact-renderer) | reebeat | proposed | [log L67-69][54], [reebeat:docs/decisions/0000-extension-architecture.md:141][55] |
-| free | proposed | [Check a build against its source](technical-components.md#req-reebeat-check) | reebeat | proposed | [reebeat:README.md:8][56], [reebeat:README.md:18][57], [reebeat:docs/design/open-core-boundary.md:39][13] |
-| free | proposed | [Lint a story and say the fix](technical-components.md#req-reebeat-lint) | reebeat | proposed | [reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:123][50], [reebeat:packages/cli/src/cli.ts:118][58] |
-| free | proposed | [Select adapters by configuration](technical-components.md#req-reebeat-selection) | reebeat | proposed | [reebeat:README.md:23][59], [reebeat:packages/services/src/selection.ts:18-26][60] |
-| free | proposed | [Cache speech by content](technical-components.md#req-reebeat-speech-cache) | reebeat | proposed | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:78][61], [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:261][36], [reebeat:packages/cli/src/build.ts:26-31][62] |
-| free | proposed | [One command runs the whole road](technical-components.md#req-reebeat-journey) | reebeat | proposed | [reebeat:AGENTS.md:42][63], [reebeat:packages/cli/src/journey.ts:1-3][64] |
-| free | proposed | [A renderer declares its lifecycle timing](technical-components.md#req-reebeat-renderer-lifecycle) | reebeat | proposed | [reebeat:docs/design/keyframe-engine.md:1259][65], [reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:34][66] |
-| free | proposed | [Explicit state machines and timing combinators](technical-components.md#req-reebeat-state-machines) | reebeat | proposed | [pr reebeat#17][67], [log L24][68] |
-| free | proposed | [Generate captions, audio description and reduced motion](technical-components.md#req-reebeat-accessible-variants) | reebeat | proposed | [issue reebeat#12][69], [log L32][70] |
-| free | proposed | [Subtitles stay readable](technical-components.md#req-reebeat-readable-subtitles) | reebeat | decided | [issue reebeat#12][69], [log L27][71], [log L94][72] |
-| free | proposed | [Build one story in several narration languages](technical-components.md#req-reebeat-language-variants) | reebeat | decided | [issue reebeat#10][73], [log L32][70], [log L93][74] |
-| free | proposed | [Cache render segments](technical-components.md#req-reebeat-render-segment-cache) | reebeat | decided | [issue reebeat#9][75], [log L62][76], [log L88][77] |
-| free | proposed | [Emit a static interactive website](technical-components.md#req-reebeat-website-artifact) | reebeat | proposed | [issue reebeat#19][48], [log L36][47], [log L65][78] |
-| free | proposed | [One interaction declaration for every surface](technical-components.md#req-reebeat-interaction-declaration) | reebeat | decided | [issue reebeat#19][79], [log L38][80], [log L65][78], [log L87][81] |
-| free | proposed | [Renderers declare what they can realise](technical-components.md#req-reebeat-renderer-capabilities) | reebeat | decided | [issue reebeat#19][82], [log L28][83], [log L86][84] |
-| free | proposed | [Lint temporal contiguity, signalling, redundancy and coherence](technical-components.md#req-reebeat-teaching-lint) | reebeat | proposed | [issue reebeat#8][85] |
-| free | proposed | [Publish only built, audited packages](technical-components.md#req-reebeat-npm-prerelease) | reebeat | proposed | [pr reebeat#18][86], [log L49][87] |
-| free | proposed | [Any chosen encoder keeps decoded output identical](technical-components.md#req-reebeat-encoder-reproducible) | reebeat | decided | [issue reebeat#7][88], [log L78][89], [log L81][90] |
-| free | proposed | [The exception gate counts @effect-diagnostics comments](technical-components.md#req-reebeat-exception-directives) | reebeat | proposed | [issue reebeat#14][91] |
-| free | proposed | [Pin the package manager to the devenv Bun](technical-components.md#req-reebeat-pin-bun) | reebeat | proposed | [issue reebeat#15][92] |
+| free | proposed | [core, from screenplay to Plan and Timeline](technical-components.md#comp-tsukuri-core) | tsukuri | proposed | [tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:239][10], [tsukuri:packages/core/src/index.ts:1-2][11], [tsukuri:packages/core/package.json:5][12], [tsukuri:docs/design/open-core-boundary.md:39][13] |
+| free | proposed | [subtitles, WebVTT and SubRip writers](technical-components.md#comp-tsukuri-subtitles) | tsukuri | proposed | [tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:240][14], [tsukuri:packages/subtitles/src/index.ts:1-2][15] |
+| free | proposed | [lint, pure rules over a Plan](technical-components.md#comp-tsukuri-lint) | tsukuri | proposed | [tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:241][16], [tsukuri:packages/lint/src/index.ts:1-4][17] |
+| free | proposed | [services, the seven contracts](technical-components.md#comp-tsukuri-services) | tsukuri | proposed | [tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:242][18], [tsukuri:packages/services/src/index.ts:1-3][19], [tsukuri:packages/services/package.json:22][20] |
+| free | proposed | [pipeline, the build program](technical-components.md#comp-tsukuri-pipeline) | tsukuri | proposed | [tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:243][21], [tsukuri:packages/pipeline/src/index.ts:1-2][22] |
+| free | proposed | [speech-kokoro, local speech synthesis](technical-components.md#comp-tsukuri-speech-kokoro) | tsukuri | proposed | [tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:244][23], [tsukuri:packages/speech-kokoro/src/index.ts:1][24] |
+| free | proposed | [align-whisper, word alignment](technical-components.md#comp-tsukuri-align-whisper) | tsukuri | proposed | [tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:245][25], [tsukuri:packages/align-whisper/src/index.ts:1][26] |
+| free | proposed | [sounds-synth, built-in sound effects](technical-components.md#comp-tsukuri-sounds-synth) | tsukuri | proposed | [tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:246][27], [tsukuri:docs/design/third-party.md:78][28] |
+| free | proposed | [render-reveal, the Deck renderer](technical-components.md#comp-tsukuri-render-reveal) | tsukuri | proposed | [tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:247][29], [tsukuri:packages/render-reveal/src/index.ts:1-4][30] |
+| free | proposed | [capture-chromium, frame capture](technical-components.md#comp-tsukuri-capture-chromium) | tsukuri | proposed | [tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:248][31], [tsukuri:packages/capture-chromium/src/index.ts:1-2][32] |
+| free | proposed | [encode-ffmpeg, mix and mux](technical-components.md#comp-tsukuri-encode-ffmpeg) | tsukuri | proposed | [tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:249][33], [tsukuri:packages/encode-ffmpeg/src/index.ts:1-2][34] |
+| free | proposed | [cache-fs, the content-addressed cache](technical-components.md#comp-tsukuri-cache-fs) | tsukuri | proposed | [tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:250][35], [tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:261][36] |
+| free | proposed | [verify, the output-side checks](technical-components.md#comp-tsukuri-verify) | tsukuri | proposed | [tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:251][37], [tsukuri:packages/verify/src/index.ts:1-2][38] |
+| free | proposed | [cli, the tsukuri command](technical-components.md#comp-tsukuri-cli) | tsukuri | proposed | [tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:252][39], [tsukuri:packages/cli/src/cli.ts:70][40], [tsukuri:packages/cli/package.json:17-28][41] |
+| free | proposed | [quality gates, the repository checks](technical-components.md#comp-tsukuri-quality-gates) | tsukuri | proposed | [tsukuri:docs/specs/0000-development-lifecycle.md:9][42], [tsukuri:AGENTS.md:26-42][43] |
+| free | proposed | [statechart-xstate, the build-time interpreter](technical-components.md#comp-tsukuri-statechart-xstate) | tsukuri | proposed | [log L26][44], [tsukuri:docs/specs/0007-scxml-persistent-ir-spike.md:591][45], [tsukuri:docs/specs/0007-scxml-persistent-ir-spike.md:620][46] |
+| free | proposed | [website renderer, a planned artifact renderer](technical-components.md#comp-tsukuri-website-renderer) | tsukuri | proposed | [log L36][47], [issue tsukuri#19][48] |
+| free | proposed | [Print a reviewable Plan](technical-components.md#req-tsukuri-plan) | tsukuri | proposed | [tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:28][49], [tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:123][50], [tsukuri:docs/design/open-core-boundary.md:39][13] |
+| free | proposed | [Build a Deck from the Plan](technical-components.md#req-tsukuri-deck) | tsukuri | proposed | [tsukuri:README.md:5][51], [tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:162][52], [tsukuri:docs/design/open-core-boundary.md:39][13] |
+| free | proposed | [Build a narrated Video from the Plan](technical-components.md#req-tsukuri-video) | tsukuri | proposed | [tsukuri:README.md:6][53], [tsukuri:docs/design/open-core-boundary.md:39][13] |
+| free | proposed | [Write a story as a Fountain screenplay](technical-components.md#req-tsukuri-fountain-artifact-renderer) | tsukuri | proposed | [log L67-69][54], [tsukuri:docs/decisions/0000-extension-architecture.md:141][55] |
+| free | proposed | [Check a build against its source](technical-components.md#req-tsukuri-check) | tsukuri | proposed | [tsukuri:README.md:8][56], [tsukuri:README.md:18][57], [tsukuri:docs/design/open-core-boundary.md:39][13] |
+| free | proposed | [Lint a story and say the fix](technical-components.md#req-tsukuri-lint) | tsukuri | proposed | [tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:123][50], [tsukuri:packages/cli/src/cli.ts:118][58] |
+| free | proposed | [Select adapters by configuration](technical-components.md#req-tsukuri-selection) | tsukuri | proposed | [tsukuri:README.md:23][59], [tsukuri:packages/services/src/selection.ts:18-26][60] |
+| free | proposed | [Cache speech by content](technical-components.md#req-tsukuri-speech-cache) | tsukuri | proposed | [tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:78][61], [tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:261][36], [tsukuri:packages/cli/src/build.ts:26-31][62] |
+| free | proposed | [One command runs the whole road](technical-components.md#req-tsukuri-journey) | tsukuri | proposed | [tsukuri:AGENTS.md:42][63], [tsukuri:packages/cli/src/journey.ts:1-3][64] |
+| free | proposed | [A renderer declares its lifecycle timing](technical-components.md#req-tsukuri-renderer-lifecycle) | tsukuri | proposed | [tsukuri:docs/design/keyframe-engine.md:1259][65], [tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:34][66] |
+| free | proposed | [Explicit state machines and timing combinators](technical-components.md#req-tsukuri-state-machines) | tsukuri | proposed | [pr tsukuri#17][67], [log L24][68] |
+| free | proposed | [Generate captions, audio description and reduced motion](technical-components.md#req-tsukuri-accessible-variants) | tsukuri | proposed | [issue tsukuri#12][69], [log L32][70] |
+| free | proposed | [Subtitles stay readable](technical-components.md#req-tsukuri-readable-subtitles) | tsukuri | decided | [issue tsukuri#12][69], [log L27][71], [log L94][72] |
+| free | proposed | [Build one story in several narration languages](technical-components.md#req-tsukuri-language-variants) | tsukuri | decided | [issue tsukuri#10][73], [log L32][70], [log L93][74] |
+| free | proposed | [Cache render segments](technical-components.md#req-tsukuri-render-segment-cache) | tsukuri | decided | [issue tsukuri#9][75], [log L62][76], [log L88][77] |
+| free | proposed | [Emit a static interactive website](technical-components.md#req-tsukuri-website-artifact) | tsukuri | proposed | [issue tsukuri#19][48], [log L36][47], [log L65][78] |
+| free | proposed | [One interaction declaration for every surface](technical-components.md#req-tsukuri-interaction-declaration) | tsukuri | decided | [issue tsukuri#19][79], [log L38][80], [log L65][78], [log L87][81] |
+| free | proposed | [Renderers declare what they can realise](technical-components.md#req-tsukuri-renderer-capabilities) | tsukuri | decided | [issue tsukuri#19][82], [log L28][83], [log L86][84] |
+| free | proposed | [Lint temporal contiguity, signalling, redundancy and coherence](technical-components.md#req-tsukuri-teaching-lint) | tsukuri | proposed | [issue tsukuri#8][85] |
+| free | proposed | [Publish only built, audited packages](technical-components.md#req-tsukuri-npm-prerelease) | tsukuri | proposed | [pr tsukuri#18][86], [log L49][87] |
+| free | proposed | [Any chosen encoder keeps decoded output identical](technical-components.md#req-tsukuri-encoder-reproducible) | tsukuri | decided | [issue tsukuri#7][88], [log L78][89], [log L81][90] |
+| free | proposed | [The exception gate counts @effect-diagnostics comments](technical-components.md#req-tsukuri-exception-directives) | tsukuri | proposed | [issue tsukuri#14][91] |
+| free | proposed | [Pin the package manager to the devenv Bun](technical-components.md#req-tsukuri-pin-bun) | tsukuri | proposed | [issue tsukuri#15][92] |
 | free | proposed | [The first felt journey](business-processes.md#process-studio-first-journey) | studio | proposed | [studio:docs/specs/0001-first-felt-journey.md:11-22][93] |
 | free | proposed | [Open a story](business-processes.md#process-studio-open-story) | studio | proposed | [studio:docs/specs/0001-first-felt-journey.md:16][94], [studio:docs/specs/0001-first-felt-journey.md:36][95] |
 | free | proposed | [See the graph and the timeline](business-processes.md#process-studio-inspect-story) | studio | proposed | [studio:docs/specs/0001-first-felt-journey.md:17][96], [studio:docs/specs/0001-first-felt-journey.md:131][97] |
@@ -109,12 +109,12 @@ The operator decided the principle and two paid features: multiplayer collaborat
 | --- | --- | --- |
 | [Effect](technical-components.md#comp-org-effect) | org | decided |
 | [XState](technical-components.md#comp-org-xstate) | org | decided |
-| [Chromium](actors-and-resources.md#resource-reebeat-chromium) | reebeat | proposed |
-| [ffmpeg and ffprobe](actors-and-resources.md#resource-reebeat-ffmpeg) | reebeat | proposed |
-| [whisper.cpp](actors-and-resources.md#resource-reebeat-whisper-cpp) | reebeat | proposed |
-| [Kokoro speech model](actors-and-resources.md#resource-reebeat-kokoro-model) | reebeat | proposed |
-| [reveal.js](actors-and-resources.md#resource-reebeat-reveal-js) | reebeat | proposed |
-| [The reebeat compiler and its IR](actors-and-resources.md#resource-studio-reebeat-compiler) | studio | proposed |
+| [Chromium](actors-and-resources.md#resource-tsukuri-chromium) | tsukuri | proposed |
+| [ffmpeg and ffprobe](actors-and-resources.md#resource-tsukuri-ffmpeg) | tsukuri | proposed |
+| [whisper.cpp](actors-and-resources.md#resource-tsukuri-whisper-cpp) | tsukuri | proposed |
+| [Kokoro speech model](actors-and-resources.md#resource-tsukuri-kokoro-model) | tsukuri | proposed |
+| [reveal.js](actors-and-resources.md#resource-tsukuri-reveal-js) | tsukuri | proposed |
+| [The tsukuri compiler and its IR](actors-and-resources.md#resource-studio-tsukuri-compiler) | studio | proposed |
 | [Foldkit, the UI framework](actors-and-resources.md#resource-studio-foldkit) | studio | proposed |
 | [Effect 4.1.0](actors-and-resources.md#resource-studio-effect) | studio | proposed |
 | [Loro, the CRDT library](actors-and-resources.md#resource-studio-loro) | studio | decided |
@@ -139,16 +139,16 @@ The operator decided the principle and two paid features: multiplayer collaborat
 | [Correctness by construction](goals.md#goal-org-correctness-by-construction) | org | decided |
 | [Intent written down, sourced and testable](goals.md#goal-org-written-intent) | org | proposed |
 | [The intent model and its generator](technical-components.md#comp-org-intent-model) | org | proposed |
-| [Author a story](business-processes.md#process-reebeat-author-story) | reebeat | proposed |
-| [Parse the screenplay](business-processes.md#process-reebeat-parse-story) | reebeat | proposed |
-| [Build the Plan](business-processes.md#process-reebeat-build-plan) | reebeat | proposed |
-| [Make or reuse the narration audio](business-processes.md#process-reebeat-speech-stage) | reebeat | proposed |
-| [Schedule the Timeline](business-processes.md#process-reebeat-schedule) | reebeat | proposed |
-| [Render the Deck](business-processes.md#process-reebeat-render-deck) | reebeat | proposed |
-| [Capture the frames](business-processes.md#process-reebeat-capture-frames) | reebeat | proposed |
-| [Encode and mux the Video](business-processes.md#process-reebeat-encode-video) | reebeat | proposed |
-| [Verify the written build](business-processes.md#process-reebeat-verify-build) | reebeat | proposed |
-| [reebeat studio](technical-components.md#comp-studio-product) | studio | decided |
+| [Author a story](business-processes.md#process-tsukuri-author-story) | tsukuri | proposed |
+| [Parse the screenplay](business-processes.md#process-tsukuri-parse-story) | tsukuri | proposed |
+| [Build the Plan](business-processes.md#process-tsukuri-build-plan) | tsukuri | proposed |
+| [Make or reuse the narration audio](business-processes.md#process-tsukuri-speech-stage) | tsukuri | proposed |
+| [Schedule the Timeline](business-processes.md#process-tsukuri-schedule) | tsukuri | proposed |
+| [Render the Deck](business-processes.md#process-tsukuri-render-deck) | tsukuri | proposed |
+| [Capture the frames](business-processes.md#process-tsukuri-capture-frames) | tsukuri | proposed |
+| [Encode and mux the Video](business-processes.md#process-tsukuri-encode-video) | tsukuri | proposed |
+| [Verify the written build](business-processes.md#process-tsukuri-verify-build) | tsukuri | proposed |
+| [tsukuri studio](technical-components.md#comp-studio-product) | studio | decided |
 | [Every change travels spec, code, PR](goals.md#goal-flow-lifecycle) | foldkit-flow | proposed |
 | [A Foldkit app adopts the library](business-processes.md#process-flow-adopt-library) | foldkit-flow | decided |
 | [Ship a spec as a PR](business-processes.md#process-flow-ship-spec) | foldkit-flow | proposed |
@@ -158,25 +158,25 @@ The operator decided the principle and two paid features: multiplayer collaborat
 
 | Element | Scope | Status |
 | --- | --- | --- |
-| [The GitHub organisation reebeat](actors-and-resources.md#resource-github-org) | org | proposed |
-| [The npm organisation reebeat](actors-and-resources.md#resource-npm-org) | org | decided |
+| [The GitHub organisation tsukuri-labs](actors-and-resources.md#resource-github-org) | org | proposed |
+| [The npm organisation tsukuri](actors-and-resources.md#resource-npm-org) | org | decided |
 | [The operator's decision log](actors-and-resources.md#resource-decision-log) | org | proposed |
 | [The intent model and its generator](technical-components.md#comp-org-intent-model) | org | proposed |
 | [The shared lifecycle toolchain](technical-components.md#comp-org-lifecycle-toolchain) | org | decided |
 | [Layer 1, the Model](technical-components.md#comp-org-layer-model) | org | decided |
 | [Layer 3, the Build](technical-components.md#comp-org-layer-build) | org | decided |
-| [Chromium](actors-and-resources.md#resource-reebeat-chromium) | reebeat | proposed |
-| [ffmpeg and ffprobe](actors-and-resources.md#resource-reebeat-ffmpeg) | reebeat | proposed |
-| [whisper.cpp](actors-and-resources.md#resource-reebeat-whisper-cpp) | reebeat | proposed |
-| [Kokoro speech model](actors-and-resources.md#resource-reebeat-kokoro-model) | reebeat | proposed |
-| [reveal.js](actors-and-resources.md#resource-reebeat-reveal-js) | reebeat | proposed |
-| [The licence inventory](actors-and-resources.md#resource-reebeat-licence-inventory) | reebeat | proposed |
-| [devenv shell](actors-and-resources.md#resource-reebeat-devenv) | reebeat | proposed |
-| [The speech cache](actors-and-resources.md#resource-reebeat-speech-cache) | reebeat | proposed |
-| [services, the seven contracts](technical-components.md#comp-reebeat-services) | reebeat | proposed |
-| [render-reveal, the Deck renderer](technical-components.md#comp-reebeat-render-reveal) | reebeat | proposed |
-| [The public repository reebeat/studio](actors-and-resources.md#resource-studio-repo) | studio | decided |
-| [The reebeat compiler and its IR](actors-and-resources.md#resource-studio-reebeat-compiler) | studio | proposed |
+| [Chromium](actors-and-resources.md#resource-tsukuri-chromium) | tsukuri | proposed |
+| [ffmpeg and ffprobe](actors-and-resources.md#resource-tsukuri-ffmpeg) | tsukuri | proposed |
+| [whisper.cpp](actors-and-resources.md#resource-tsukuri-whisper-cpp) | tsukuri | proposed |
+| [Kokoro speech model](actors-and-resources.md#resource-tsukuri-kokoro-model) | tsukuri | proposed |
+| [reveal.js](actors-and-resources.md#resource-tsukuri-reveal-js) | tsukuri | proposed |
+| [The licence inventory](actors-and-resources.md#resource-tsukuri-licence-inventory) | tsukuri | proposed |
+| [devenv shell](actors-and-resources.md#resource-tsukuri-devenv) | tsukuri | proposed |
+| [The speech cache](actors-and-resources.md#resource-tsukuri-speech-cache) | tsukuri | proposed |
+| [services, the seven contracts](technical-components.md#comp-tsukuri-services) | tsukuri | proposed |
+| [render-reveal, the Deck renderer](technical-components.md#comp-tsukuri-render-reveal) | tsukuri | proposed |
+| [The public repository tsukuri-labs/studio](actors-and-resources.md#resource-studio-repo) | studio | decided |
+| [The tsukuri compiler and its IR](actors-and-resources.md#resource-studio-tsukuri-compiler) | studio | proposed |
 | [@xyflow/system](actors-and-resources.md#resource-flow-xyflow-system) | foldkit-flow | decided |
 | [Foldkit](actors-and-resources.md#resource-flow-foldkit) | foldkit-flow | decided |
 | [Foldkit 0.169.0 and its peer range](actors-and-resources.md#resource-flow-foldkit-pin) | foldkit-flow | proposed |
@@ -198,25 +198,25 @@ The operator decided the principle and two paid features: multiplayer collaborat
 | [Modular and extensible by users](goals.md#goal-org-modular-extensible) | org | decided |
 | [An open compiler and open formats](goals.md#goal-org-open-compiler) | org | decided |
 | [A family of products on the open core](goals.md#goal-org-product-family) | org | decided |
-| [Declare the story, reebeat builds the artifacts](goals.md#goal-reebeat-vision) | reebeat | decided |
-| [One screenplay, every rendering](goals.md#goal-reebeat-screenplay-first) | reebeat | decided |
-| [A Deck and a Video from one source](goals.md#goal-reebeat-deck-and-video) | reebeat | decided |
-| [Effects connect to produced events](goals.md#goal-reebeat-event-timing) | reebeat | decided |
-| [Accessible artifacts for different audiences](goals.md#goal-reebeat-accessible-artifacts) | reebeat | decided |
-| [Reproducible builds](goals.md#goal-reebeat-reproducible-builds) | reebeat | decided |
-| [Fast, incremental and reactive builds](goals.md#goal-reebeat-incremental-builds) | reebeat | decided |
-| [An interactive website as an artifact type](goals.md#goal-reebeat-interactive-website) | reebeat | decided |
-| [Plugins and a render-engine SDK](goals.md#goal-reebeat-plugin-sdk) | reebeat | decided |
-| [The identity diff derives motion](goals.md#opportunity-reebeat-identity-diff-motion) | reebeat | decided |
-| [reebeat, the open compiler](technical-components.md#comp-reebeat-product) | reebeat | decided |
-| [A collaborative editor for reebeat stories](goals.md#goal-studio-vision) | studio | decided |
+| [Declare the story, tsukuri builds the artifacts](goals.md#goal-tsukuri-vision) | tsukuri | decided |
+| [One screenplay, every rendering](goals.md#goal-tsukuri-screenplay-first) | tsukuri | decided |
+| [A Deck and a Video from one source](goals.md#goal-tsukuri-deck-and-video) | tsukuri | decided |
+| [Effects connect to produced events](goals.md#goal-tsukuri-event-timing) | tsukuri | decided |
+| [Accessible artifacts for different audiences](goals.md#goal-tsukuri-accessible-artifacts) | tsukuri | decided |
+| [Reproducible builds](goals.md#goal-tsukuri-reproducible-builds) | tsukuri | decided |
+| [Fast, incremental and reactive builds](goals.md#goal-tsukuri-incremental-builds) | tsukuri | decided |
+| [An interactive website as an artifact type](goals.md#goal-tsukuri-interactive-website) | tsukuri | decided |
+| [Plugins and a render-engine SDK](goals.md#goal-tsukuri-plugin-sdk) | tsukuri | decided |
+| [The identity diff derives motion](goals.md#opportunity-tsukuri-identity-diff-motion) | tsukuri | decided |
+| [tsukuri, the open compiler](technical-components.md#comp-tsukuri-product) | tsukuri | decided |
+| [A collaborative editor for tsukuri stories](goals.md#goal-studio-vision) | studio | decided |
 | [People and agents edit stories together](goals.md#goal-studio-people-and-agents) | studio | decided |
 | [Record narration in a deck view](goals.md#goal-studio-deck-view-narration) | studio | decided |
 | [Organise the editor by lenses](goals.md#goal-studio-lenses) | studio | decided |
-| [reebeat studio](technical-components.md#comp-studio-product) | studio | decided |
+| [tsukuri studio](technical-components.md#comp-studio-product) | studio | decided |
 | [A graph canvas for Foldkit applications](goals.md#goal-flow-vision) | foldkit-flow | decided |
 | [A generic library with no product logic](goals.md#goal-flow-generic-library) | foldkit-flow | proposed |
-| [Carry reebeat studio's story graph](goals.md#goal-flow-studio-story-graph) | foldkit-flow | decided |
+| [Carry tsukuri studio's story graph](goals.md#goal-flow-studio-story-graph) | foldkit-flow | decided |
 | [Keyboard-accessible graph editing](goals.md#goal-flow-keyboard-access) | foldkit-flow | decided |
 | [Stay smooth at 500 nodes and 700 edges](goals.md#goal-flow-performance) | foldkit-flow | proposed |
 | [foldkit-flow](technical-components.md#comp-flow-product) | foldkit-flow | decided |
@@ -234,14 +234,14 @@ The operator decided the principle and two paid features: multiplayer collaborat
 
 | Element | Scope | Status |
 | --- | --- | --- |
-| [The GitHub organisation reebeat](actors-and-resources.md#resource-github-org) | org | proposed |
-| [The npm organisation reebeat](actors-and-resources.md#resource-npm-org) | org | decided |
+| [The GitHub organisation tsukuri-labs](actors-and-resources.md#resource-github-org) | org | proposed |
+| [The npm organisation tsukuri](actors-and-resources.md#resource-npm-org) | org | decided |
 | [An open compiler and open formats](goals.md#goal-org-open-compiler) | org | decided |
 | [The organisation profile](technical-components.md#comp-org-profile) | org | proposed |
 | [How it works (the technical description)](technical-components.md#comp-org-how-it-works) | org | proposed |
-| [The reebeat command](actors-and-resources.md#actor-reebeat-cli) | reebeat | proposed |
-| [Publish pre-releases to npm](business-processes.md#process-reebeat-release-publish) | reebeat | proposed |
-| [cli, the reebeat command](technical-components.md#comp-reebeat-cli) | reebeat | proposed |
+| [The tsukuri command](actors-and-resources.md#actor-tsukuri-cli) | tsukuri | proposed |
+| [Publish pre-releases to npm](business-processes.md#process-tsukuri-release-publish) | tsukuri | proposed |
+| [cli, the tsukuri command](technical-components.md#comp-tsukuri-cli) | tsukuri | proposed |
 | [Ship web first and a single binary](goals.md#goal-studio-web-and-binary) | studio | decided |
 | [One binary gives an offline local studio](goals.md#opportunity-studio-offline-binary) | studio | proposed |
 | [The single-binary launcher](technical-components.md#comp-studio-launcher) | studio | proposed |
@@ -259,16 +259,16 @@ The operator decided the principle and two paid features: multiplayer collaborat
 | [Presenter](actors-and-resources.md#actor-presenter) | org | proposed |
 | [Agent operator](actors-and-resources.md#actor-agent-operator) | org | proposed |
 | [Plugin author](actors-and-resources.md#actor-plugin-author) | org | proposed |
-| [Story author](actors-and-resources.md#actor-reebeat-story-author) | reebeat | proposed |
-| [Presenter](actors-and-resources.md#actor-reebeat-presenter) | reebeat | proposed |
-| [Agent operator](actors-and-resources.md#actor-reebeat-agent-operator) | reebeat | proposed |
-| [Plugin author](actors-and-resources.md#actor-reebeat-plugin-author) | reebeat | proposed |
+| [Story author](actors-and-resources.md#actor-tsukuri-story-author) | tsukuri | proposed |
+| [Presenter](actors-and-resources.md#actor-tsukuri-presenter) | tsukuri | proposed |
+| [Agent operator](actors-and-resources.md#actor-tsukuri-agent-operator) | tsukuri | proposed |
+| [Plugin author](actors-and-resources.md#actor-tsukuri-plugin-author) | tsukuri | proposed |
 | [Story author in studio](actors-and-resources.md#actor-studio-story-author) | studio | proposed |
 | [Narrator in the deck view](actors-and-resources.md#actor-studio-narrator) | studio | proposed |
 | [Person who brings their own agent](actors-and-resources.md#actor-studio-agent-owner) | studio | proposed |
 | [Collaborator on a shared story](actors-and-resources.md#actor-studio-collaborator) | studio | proposed |
 | [Foldkit app developer](actors-and-resources.md#actor-flow-app-developer) | foldkit-flow | decided |
-| [reebeat studio (consuming product)](actors-and-resources.md#actor-flow-studio) | foldkit-flow | decided |
+| [tsukuri studio (consuming product)](actors-and-resources.md#actor-flow-studio) | foldkit-flow | decided |
 | [Other Foldkit apps can use it](goals.md#opportunity-flow-other-foldkit-apps) | foldkit-flow | decided |
 
 ### Cost structure
@@ -300,160 +300,160 @@ The operator decided the principle and two paid features: multiplayer collaborat
 [2]: ../sources/operator-decisions-2026-10.md#L60
 [3]: ../sources/operator-decisions-2026-10.md#L44
 [4]: ../sources/operator-decisions-2026-10.md#L43
-[5]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/design/open-core-boundary.md#L21
-[6]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/design/open-core-boundary.md#L39-L44
+[5]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/design/open-core-boundary.md#L21
+[6]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/design/open-core-boundary.md#L39-L44
 [7]: ../sources/operator-decisions-2026-10.md#L45
 [8]: ../sources/operator-decisions-2026-10.md#L47
-[9]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L198
-[10]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L239
-[11]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/core/src/index.ts#L1-L2
-[12]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/core/package.json#L5
-[13]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/design/open-core-boundary.md#L39
-[14]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L240
-[15]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/subtitles/src/index.ts#L1-L2
-[16]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L241
-[17]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/lint/src/index.ts#L1-L4
-[18]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L242
-[19]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/services/src/index.ts#L1-L3
-[20]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/services/package.json#L22
-[21]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L243
-[22]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/pipeline/src/index.ts#L1-L2
-[23]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L244
-[24]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/speech-kokoro/src/index.ts#L1
-[25]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L245
-[26]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/align-whisper/src/index.ts#L1
-[27]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L246
-[28]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/design/third-party.md#L78
-[29]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L247
-[30]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/render-reveal/src/index.ts#L1-L4
-[31]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L248
-[32]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/capture-chromium/src/index.ts#L1-L2
-[33]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L249
-[34]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/encode-ffmpeg/src/index.ts#L1-L2
-[35]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L250
-[36]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L261
-[37]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L251
-[38]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/verify/src/index.ts#L1-L2
-[39]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L252
-[40]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/cli/src/cli.ts#L70
-[41]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/cli/package.json#L17-L28
-[42]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0000-development-lifecycle.md#L9
-[43]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/AGENTS.md#L26-L42
+[9]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L198
+[10]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L239
+[11]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/core/src/index.ts#L1-L2
+[12]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/core/package.json#L5
+[13]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/design/open-core-boundary.md#L39
+[14]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L240
+[15]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/subtitles/src/index.ts#L1-L2
+[16]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L241
+[17]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/lint/src/index.ts#L1-L4
+[18]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L242
+[19]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/services/src/index.ts#L1-L3
+[20]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/services/package.json#L22
+[21]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L243
+[22]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/pipeline/src/index.ts#L1-L2
+[23]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L244
+[24]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/speech-kokoro/src/index.ts#L1
+[25]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L245
+[26]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/align-whisper/src/index.ts#L1
+[27]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L246
+[28]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/design/third-party.md#L78
+[29]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L247
+[30]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/render-reveal/src/index.ts#L1-L4
+[31]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L248
+[32]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/capture-chromium/src/index.ts#L1-L2
+[33]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L249
+[34]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/encode-ffmpeg/src/index.ts#L1-L2
+[35]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L250
+[36]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L261
+[37]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L251
+[38]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/verify/src/index.ts#L1-L2
+[39]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L252
+[40]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/cli/src/cli.ts#L70
+[41]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/cli/package.json#L17-L28
+[42]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0000-development-lifecycle.md#L9
+[43]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/AGENTS.md#L26-L42
 [44]: ../sources/operator-decisions-2026-10.md#L26
-[45]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0007-scxml-persistent-ir-spike.md#L591
-[46]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0007-scxml-persistent-ir-spike.md#L620
+[45]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0007-scxml-persistent-ir-spike.md#L591
+[46]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0007-scxml-persistent-ir-spike.md#L620
 [47]: ../sources/operator-decisions-2026-10.md#L36
-[48]: https://github.com/reebeat/reebeat/issues/19
-[49]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L28
-[50]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0002-explicit-anchors-and-syntax.md#L123
-[51]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/README.md#L5
-[52]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0002-explicit-anchors-and-syntax.md#L162
-[53]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/README.md#L6
+[48]: https://github.com/tsukuri-labs/tsukuri/issues/19
+[49]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L28
+[50]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0002-explicit-anchors-and-syntax.md#L123
+[51]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/README.md#L5
+[52]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0002-explicit-anchors-and-syntax.md#L162
+[53]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/README.md#L6
 [54]: ../sources/operator-decisions-2026-10.md#L67
-[55]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/decisions/0000-extension-architecture.md#L141
-[56]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/README.md#L8
-[57]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/README.md#L18
-[58]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/cli/src/cli.ts#L118
-[59]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/README.md#L23
-[60]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/services/src/selection.ts#L18-L26
-[61]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L78
-[62]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/cli/src/build.ts#L26-L31
-[63]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/AGENTS.md#L42
-[64]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/cli/src/journey.ts#L1-L3
-[65]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/design/keyframe-engine.md#L1259
-[66]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0002-explicit-anchors-and-syntax.md#L34
-[67]: https://github.com/reebeat/reebeat/pull/17
+[55]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/decisions/0000-extension-architecture.md#L141
+[56]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/README.md#L8
+[57]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/README.md#L18
+[58]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/cli/src/cli.ts#L118
+[59]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/README.md#L23
+[60]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/services/src/selection.ts#L18-L26
+[61]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L78
+[62]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/cli/src/build.ts#L26-L31
+[63]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/AGENTS.md#L42
+[64]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/cli/src/journey.ts#L1-L3
+[65]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/design/keyframe-engine.md#L1259
+[66]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0002-explicit-anchors-and-syntax.md#L34
+[67]: https://github.com/tsukuri-labs/tsukuri/pull/17
 [68]: ../sources/operator-decisions-2026-10.md#L24
-[69]: https://github.com/reebeat/reebeat/issues/12
+[69]: https://github.com/tsukuri-labs/tsukuri/issues/12
 [70]: ../sources/operator-decisions-2026-10.md#L32
 [71]: ../sources/operator-decisions-2026-10.md#L27
 [72]: ../sources/operator-decisions-2026-10.md#L94
-[73]: https://github.com/reebeat/reebeat/issues/10
+[73]: https://github.com/tsukuri-labs/tsukuri/issues/10
 [74]: ../sources/operator-decisions-2026-10.md#L93
-[75]: https://github.com/reebeat/reebeat/issues/9
+[75]: https://github.com/tsukuri-labs/tsukuri/issues/9
 [76]: ../sources/operator-decisions-2026-10.md#L62
 [77]: ../sources/operator-decisions-2026-10.md#L88
 [78]: ../sources/operator-decisions-2026-10.md#L65
-[79]: https://github.com/reebeat/reebeat/issues/19#issuecomment-6503203735
+[79]: https://github.com/tsukuri-labs/tsukuri/issues/19#issuecomment-6503203735
 [80]: ../sources/operator-decisions-2026-10.md#L38
 [81]: ../sources/operator-decisions-2026-10.md#L87
-[82]: https://github.com/reebeat/reebeat/issues/19#issuecomment-6503256239
+[82]: https://github.com/tsukuri-labs/tsukuri/issues/19#issuecomment-6503256239
 [83]: ../sources/operator-decisions-2026-10.md#L28
 [84]: ../sources/operator-decisions-2026-10.md#L86
-[85]: https://github.com/reebeat/reebeat/issues/8
-[86]: https://github.com/reebeat/reebeat/pull/18
+[85]: https://github.com/tsukuri-labs/tsukuri/issues/8
+[86]: https://github.com/tsukuri-labs/tsukuri/pull/18
 [87]: ../sources/operator-decisions-2026-10.md#L49
-[88]: https://github.com/reebeat/reebeat/issues/7
+[88]: https://github.com/tsukuri-labs/tsukuri/issues/7
 [89]: ../sources/operator-decisions-2026-10.md#L78
 [90]: ../sources/operator-decisions-2026-10.md#L81
-[91]: https://github.com/reebeat/reebeat/issues/14
-[92]: https://github.com/reebeat/reebeat/issues/15
-[93]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L11-L22
-[94]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L16
-[95]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L36
-[96]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L17
-[97]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L131
-[98]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L18
-[99]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L39
+[91]: https://github.com/tsukuri-labs/tsukuri/issues/14
+[92]: https://github.com/tsukuri-labs/tsukuri/issues/15
+[93]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L11-L22
+[94]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L16
+[95]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L36
+[96]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L17
+[97]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L131
+[98]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L18
+[99]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L39
 [100]: ../sources/operator-decisions-2026-10.md#L97
-[101]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L19-L21
-[102]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L133-L134
-[103]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L20-L21
-[104]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L93
-[105]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L136
+[101]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L19-L21
+[102]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L133-L134
+[103]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L20-L21
+[104]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L93
+[105]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L136
 [106]: ../sources/operator-decisions-2026-10.md#L102
-[107]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L59-L72
-[108]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L76-L93
-[109]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L172
-[110]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L21
-[111]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L34
-[112]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L22
-[113]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L36-L48
-[114]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L23
-[115]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L50-L52
-[116]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L24
-[117]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L54-L56
-[118]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L25
-[119]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L58-L60
-[120]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L26
-[121]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L62-L69
-[122]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L27
-[123]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L71-L73
-[124]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L28
-[125]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L75-L77
-[126]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L29
-[127]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L79-L87
-[128]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L30
-[129]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L89-L99
+[107]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L59-L72
+[108]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L76-L93
+[109]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L172
+[110]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L21
+[111]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L34
+[112]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L22
+[113]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L36-L48
+[114]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L23
+[115]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L50-L52
+[116]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L24
+[117]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L54-L56
+[118]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L25
+[119]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L58-L60
+[120]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L26
+[121]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L62-L69
+[122]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L27
+[123]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L71-L73
+[124]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L28
+[125]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L75-L77
+[126]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L29
+[127]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L79-L87
+[128]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L30
+[129]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L89-L99
 [130]: ../sources/operator-decisions-2026-10.md#L99
 [131]: ../sources/operator-decisions-2026-10.md#L77
-[132]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L108
-[133]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L118
-[134]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L151
-[135]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L38
-[136]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L95-L108
-[137]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L91-L99
-[138]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L59
-[139]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L132
-[140]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L138
-[141]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/.agents/skills/verify-studio/features/README.md#L26
-[142]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/apps/editor/src/main.ts#L62-L63
-[143]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/apps/editor/src/main.ts#L89
-[144]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0000-development-lifecycle.md#L63
+[132]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L108
+[133]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L118
+[134]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L151
+[135]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L38
+[136]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L95-L108
+[137]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L91-L99
+[138]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L59
+[139]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L132
+[140]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L138
+[141]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/.agents/skills/verify-studio/features/README.md#L26
+[142]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/apps/editor/src/main.ts#L62-L63
+[143]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/apps/editor/src/main.ts#L89
+[144]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0000-development-lifecycle.md#L63
 [145]: ../sources/operator-decisions-2026-10.md#L10
 [146]: ../sources/operator-decisions-2026-10.md#L105
 [147]: ../sources/operator-decisions-2026-10.md#L113
-[148]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/AGENTS.md#L25
-[149]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L5
-[150]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/index.ts#L1-L39
+[148]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/AGENTS.md#L25
+[149]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L5
+[150]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/index.ts#L1-L39
 [151]: ../sources/operator-decisions-2026-10.md#L104
-[152]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L123
-[153]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L163
-[154]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L87
-[155]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L122
-[156]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L25
-[157]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L111-L112
-[158]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L28
-[159]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L56
-[160]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L66
-[161]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L208
+[152]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L123
+[153]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L163
+[154]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L87
+[155]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L122
+[156]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L25
+[157]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L111-L112
+[158]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L28
+[159]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L56
+[160]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L66
+[161]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L208

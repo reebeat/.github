@@ -82,7 +82,7 @@ elements:
     ruleType: constraint
     title: No product logic in the library
     statement: >-
-      The library holds no reebeat product logic. Anything specific to one product lives in that product.
+      The library holds no tsukuri product logic. Anything specific to one product lives in that product.
     if: A change adds code that only one product needs.
     then: Put it in the product, not in packages/flow.
     status: proposed
@@ -177,7 +177,7 @@ elements:
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:56
     rationale: >-
       Observed in the repository: AGENTS.md and spec 0000 describe the protection. Spec 0000's header says only "branch
-      protection like reebeat's". The operator must confirm the detailed settings.
+      protection like tsukuri's". The operator must confirm the detailed settings.
     links:
       serves: [goal-flow-lifecycle]
       constrains: [resource-flow-repo]

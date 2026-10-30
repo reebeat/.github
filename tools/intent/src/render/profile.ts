@@ -22,13 +22,13 @@ import {
   table,
 } from "./format.ts";
 
-const site = "https://github.com/reebeat/.github/blob/main/";
+const site = "https://github.com/tsukuri-labs/.github/blob/main/";
 
 const productRow = (item: Item): string =>
   item.kind === "component"
     ? Arr.join(
         [
-          `### [${item.title}](https://github.com/reebeat/${item.repo ?? ""})`,
+          `### [${item.title}](https://github.com/tsukuri-labs/${item.repo ?? ""})`,
           "",
           item.tagline === undefined ? "" : `*${item.tagline}*`,
           "",
@@ -250,7 +250,7 @@ export const renderIndex = (model: Model): string => {
       "",
       "# The intent model",
       "",
-      "The reasons behind the reebeat products, modelled with the 4EM method and generated from `model/`. Read [the spec](specs/0000-intent-model.md) for the method, the rules and the checks.",
+      "The reasons behind the tsukuri products, modelled with the 4EM method and generated from `model/`. Read [the spec](specs/0000-intent-model.md) for the method, the rules and the checks.",
       "",
       "## Pages",
       "",

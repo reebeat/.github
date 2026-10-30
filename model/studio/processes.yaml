@@ -9,7 +9,7 @@ elements:
       undoes the edit. No server is needed.
     status: proposed
     rationale: >-
-      Spec 0001 plans the journey as a design. At the pinned commit it is blocked on reebeat. The operator should confirm
+      Spec 0001 plans the journey as a design. At the pinned commit it is blocked on tsukuri. The operator should confirm
       the journey.
     source: [studio:docs/specs/0001-first-felt-journey.md:11-22]
     proposedPricing: free
@@ -27,7 +27,7 @@ elements:
       where the browser has the File System Access API. It checks the story against the story schema.
     status: proposed
     rationale: >-
-      Step 1 of the journey in spec 0001. It depends on reebeat spec 0006. The operator should confirm this open-and-validate
+      Step 1 of the journey in spec 0001. It depends on tsukuri spec 0006. The operator should confirm this open-and-validate
       workflow.
     source: [studio:docs/specs/0001-first-felt-journey.md:16, studio:docs/specs/0001-first-felt-journey.md:36]
     proposedPricing: free
@@ -280,28 +280,28 @@ elements:
       uses: [comp-studio-verify-skill, concept-studio-feature-map]
 
   # ---------------------------------------------------------------- external processes
-  - id: extproc-studio-reebeat-ir-stable
+  - id: extproc-studio-tsukuri-ir-stable
     kind: external-process
-    title: Reebeat stabilises the story IR
+    title: Tsukuri stabilises the story IR
     statement: >-
-      Reebeat merges specs 0004 and 0006 and does spec 0005, so the IR is closed, versioned, story-wide in identity and
+      Tsukuri merges specs 0004 and 0006 and does spec 0005, so the IR is closed, versioned, story-wide in identity and
       the committed source. Studio's first journey starts after this.
     status: open
     rationale: >-
-      The work is reebeat's. STATE.md lists the first journey as blocked until it ends.
-      The operator should confirm which reebeat specs count as enough and in what order.
+      The work is tsukuri's. STATE.md lists the first journey as blocked until it ends.
+      The operator should confirm which tsukuri specs count as enough and in what order.
     source: [studio:STATE.md:12, studio:STATE.md:18, studio:docs/specs/0001-first-felt-journey.md:30-36]
     links:
       next: [process-studio-open-story]
 
-  - id: extproc-studio-reebeat-compile
+  - id: extproc-studio-tsukuri-compile
     kind: external-process
-    title: Reebeat compiles a story to a Deck and a Video
+    title: Tsukuri compiles a story to a Deck and a Video
     statement: >-
       The open compiler takes a story and produces a reveal.js Deck and a Video. Studio reads its IR and uses its renderers.
     status: proposed
     rationale: >-
-      Observed in the repository: the README and AGENTS.md say reebeat owns the IR and the renderers. The log decides that
+      Observed in the repository: the README and AGENTS.md say tsukuri owns the IR and the renderers. The log decides that
       the compiler and its formats are open (log:43), not this boundary. The operator must confirm it.
     source: [log:43, studio:README.md:3, studio:AGENTS.md:3]
     links:

@@ -24,9 +24,9 @@ elements:
   - id: actor-flow-studio
     kind: actor
     actorType: system
-    title: reebeat studio (consuming product)
+    title: tsukuri studio (consuming product)
     statement: >-
-      reebeat studio is an intended consumer of the library for its story graph, not a committed one. It has no
+      tsukuri studio is an intended consumer of the library for its story graph, not a committed one. It has no
       dependency on the library until a studio spec adopts it. It is a consumer, not part of the library.
     status: decided
     source:
@@ -116,7 +116,7 @@ elements:
     title: The Foldkit project
     statement: >-
       Foldkit makes the framework the library is built for. It owns the plugin the example cannot use yet. If it adopts
-      the library, the project publishes `@foldkit/flow` and deprecates `@reebeat/flow`.
+      the library, the project publishes `@foldkit/flow` and deprecates `@tsukuri/flow`.
     status: decided
     source:
       - log:105

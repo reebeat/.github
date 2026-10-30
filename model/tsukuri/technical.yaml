@@ -1,12 +1,12 @@
 elements:
   # -------------------------------------------------------------- product
-  - id: comp-reebeat-product
+  - id: comp-tsukuri-product
     kind: component
     tier: product
-    repo: reebeat
+    repo: tsukuri
     licence: Apache-2.0
     pricing: free
-    title: reebeat, the open compiler
+    title: tsukuri, the open compiler
     tagline: "Declarative multimedia: accessible, reproducible, rebuilt as you edit."
     statement: >-
       Semantically declared story beats, compiled into multimedia artifacts: statecharts for structure, functional reactive
@@ -18,18 +18,18 @@ elements:
       - log:60
       - log:44
       - log:43
-      - record:reebeat:docs/design/open-core-boundary.md:21
-      - record:reebeat:docs/design/open-core-boundary.md:39-44
+      - record:tsukuri:docs/design/open-core-boundary.md:21
+      - record:tsukuri:docs/design/open-core-boundary.md:39-44
     canvas: [value-propositions]
     links:
-      serves: [goal-reebeat-vision]
+      serves: [goal-tsukuri-vision]
       depends-on: [comp-org-effect]
 
   # ------------------------------------------------ libraries (pure code)
-  - id: comp-reebeat-core
+  - id: comp-tsukuri-core
     kind: component
     tier: library
-    package: "@reebeat/core"
+    package: "@tsukuri/core"
     licence: Apache-2.0
     proposedPricing: free
     title: core, from screenplay to Plan and Timeline
@@ -42,20 +42,20 @@ elements:
       the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
       log:62, so confirm them.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:239
-      - reebeat:packages/core/src/index.ts:1-2
-      - reebeat:packages/core/package.json:5
-      - reebeat:docs/design/open-core-boundary.md:39
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:239
+      - tsukuri:packages/core/src/index.ts:1-2
+      - tsukuri:packages/core/package.json:5
+      - tsukuri:docs/design/open-core-boundary.md:39
     links:
-      part-of: [comp-reebeat-product, comp-org-layer-model, comp-org-layer-plan]
-      depends-on: [comp-org-effect, resource-reebeat-fountain-format]
-      realizes: [req-reebeat-plan, req-reebeat-nfr-timing, req-reebeat-nfr-usability]
-      serves: [goal-reebeat-screenplay-first, goal-reebeat-statechart-model]
+      part-of: [comp-tsukuri-product, comp-org-layer-model, comp-org-layer-plan]
+      depends-on: [comp-org-effect, resource-tsukuri-fountain-format]
+      realizes: [req-tsukuri-plan, req-tsukuri-nfr-timing, req-tsukuri-nfr-usability]
+      serves: [goal-tsukuri-screenplay-first, goal-tsukuri-statechart-model]
 
-  - id: comp-reebeat-subtitles
+  - id: comp-tsukuri-subtitles
     kind: component
     tier: library
-    package: "@reebeat/subtitles"
+    package: "@tsukuri/subtitles"
     licence: Apache-2.0
     proposedPricing: free
     title: subtitles, WebVTT and SubRip writers
@@ -67,18 +67,18 @@ elements:
       the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
       log:62, so confirm them.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:240
-      - reebeat:packages/subtitles/src/index.ts:1-2
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:240
+      - tsukuri:packages/subtitles/src/index.ts:1-2
     links:
-      part-of: [comp-reebeat-product, comp-org-layer-plan]
-      depends-on: [comp-org-effect, comp-reebeat-core]
-      realizes: [req-reebeat-nfr-accessibility]
-      serves: [goal-reebeat-accessible-artifacts]
+      part-of: [comp-tsukuri-product, comp-org-layer-plan]
+      depends-on: [comp-org-effect, comp-tsukuri-core]
+      realizes: [req-tsukuri-nfr-accessibility]
+      serves: [goal-tsukuri-accessible-artifacts]
 
-  - id: comp-reebeat-lint
+  - id: comp-tsukuri-lint
     kind: component
     tier: library
-    package: "@reebeat/lint"
+    package: "@tsukuri/lint"
     licence: Apache-2.0
     proposedPricing: free
     title: lint, pure rules over a Plan
@@ -91,19 +91,19 @@ elements:
       the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
       log:62, so confirm them.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:241
-      - reebeat:packages/lint/src/index.ts:1-4
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:241
+      - tsukuri:packages/lint/src/index.ts:1-4
     links:
-      part-of: [comp-reebeat-product, comp-org-layer-plan]
-      depends-on: [comp-org-effect, comp-reebeat-core]
-      realizes: [req-reebeat-lint, req-reebeat-nfr-usability]
-      serves: [goal-reebeat-explicit-source]
+      part-of: [comp-tsukuri-product, comp-org-layer-plan]
+      depends-on: [comp-org-effect, comp-tsukuri-core]
+      realizes: [req-tsukuri-lint, req-tsukuri-nfr-usability]
+      serves: [goal-tsukuri-explicit-source]
 
   # ----------------------------------------------------------- the service
-  - id: comp-reebeat-services
+  - id: comp-tsukuri-services
     kind: component
     tier: service
-    package: "@reebeat/services"
+    package: "@tsukuri/services"
     licence: Apache-2.0
     proposedPricing: free
     title: services, the seven contracts
@@ -116,25 +116,25 @@ elements:
       the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
       log:62, so confirm them.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:242
-      - reebeat:packages/services/src/index.ts:1-3
-      - reebeat:packages/services/package.json:22
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:242
+      - tsukuri:packages/services/src/index.ts:1-3
+      - tsukuri:packages/services/package.json:22
     canvas: [key-resources]
     links:
-      part-of: [comp-reebeat-product, comp-org-layer-build]
-      depends-on: [comp-org-effect, comp-reebeat-core]
+      part-of: [comp-tsukuri-product, comp-org-layer-build]
+      depends-on: [comp-org-effect, comp-tsukuri-core]
       realizes:
-        - req-reebeat-selection
-        - req-reebeat-renderer-lifecycle
-        - req-reebeat-nfr-extensibility
-        - req-reebeat-nfr-security
-      serves: [goal-reebeat-plugin-sdk]
+        - req-tsukuri-selection
+        - req-tsukuri-renderer-lifecycle
+        - req-tsukuri-nfr-extensibility
+        - req-tsukuri-nfr-security
+      serves: [goal-tsukuri-plugin-sdk]
 
   # ------------------------------------------------------------ the program
-  - id: comp-reebeat-pipeline
+  - id: comp-tsukuri-pipeline
     kind: component
     tier: program
-    package: "@reebeat/pipeline"
+    package: "@tsukuri/pipeline"
     licence: Apache-2.0
     proposedPricing: free
     title: pipeline, the build program
@@ -147,19 +147,19 @@ elements:
       the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
       log:62, so confirm them.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:243
-      - reebeat:packages/pipeline/src/index.ts:1-2
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:243
+      - tsukuri:packages/pipeline/src/index.ts:1-2
     links:
-      part-of: [comp-reebeat-product, comp-org-layer-build]
-      depends-on: [comp-org-effect, comp-reebeat-core, comp-reebeat-services, comp-reebeat-subtitles]
-      realizes: [req-reebeat-deck, req-reebeat-video, req-reebeat-nfr-reliability]
-      serves: [goal-reebeat-deck-and-video]
+      part-of: [comp-tsukuri-product, comp-org-layer-build]
+      depends-on: [comp-org-effect, comp-tsukuri-core, comp-tsukuri-services, comp-tsukuri-subtitles]
+      realizes: [req-tsukuri-deck, req-tsukuri-video, req-tsukuri-nfr-reliability]
+      serves: [goal-tsukuri-deck-and-video]
 
   # ------------------------------------------------------------- adapters
-  - id: comp-reebeat-speech-kokoro
+  - id: comp-tsukuri-speech-kokoro
     kind: component
     tier: integration
-    package: "@reebeat/speech-kokoro"
+    package: "@tsukuri/speech-kokoro"
     licence: Apache-2.0
     proposedPricing: free
     title: speech-kokoro, local speech synthesis
@@ -171,18 +171,18 @@ elements:
       the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
       log:62, so confirm them.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:244
-      - reebeat:packages/speech-kokoro/src/index.ts:1
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:244
+      - tsukuri:packages/speech-kokoro/src/index.ts:1
     links:
-      part-of: [comp-reebeat-product, comp-org-layer-build]
-      depends-on: [comp-org-effect, comp-reebeat-services, resource-reebeat-kokoro-model]
-      realizes: [req-reebeat-speech-cache]
-      serves: [goal-reebeat-deck-and-video]
+      part-of: [comp-tsukuri-product, comp-org-layer-build]
+      depends-on: [comp-org-effect, comp-tsukuri-services, resource-tsukuri-kokoro-model]
+      realizes: [req-tsukuri-speech-cache]
+      serves: [goal-tsukuri-deck-and-video]
 
-  - id: comp-reebeat-align-whisper
+  - id: comp-tsukuri-align-whisper
     kind: component
     tier: integration
-    package: "@reebeat/align-whisper"
+    package: "@tsukuri/align-whisper"
     licence: Apache-2.0
     proposedPricing: free
     title: align-whisper, word alignment
@@ -195,23 +195,23 @@ elements:
       the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
       log:62, so confirm them.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:245
-      - reebeat:packages/align-whisper/src/index.ts:1
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:245
+      - tsukuri:packages/align-whisper/src/index.ts:1
     links:
-      part-of: [comp-reebeat-product, comp-org-layer-build]
+      part-of: [comp-tsukuri-product, comp-org-layer-build]
       depends-on:
         - comp-org-effect
-        - comp-reebeat-core
-        - comp-reebeat-services
-        - resource-reebeat-whisper-cpp
-        - resource-reebeat-whisper-model
-      realizes: [req-reebeat-speech-cache]
-      serves: [goal-reebeat-event-timing]
+        - comp-tsukuri-core
+        - comp-tsukuri-services
+        - resource-tsukuri-whisper-cpp
+        - resource-tsukuri-whisper-model
+      realizes: [req-tsukuri-speech-cache]
+      serves: [goal-tsukuri-event-timing]
 
-  - id: comp-reebeat-sounds-synth
+  - id: comp-tsukuri-sounds-synth
     kind: component
     tier: integration
-    package: "@reebeat/sounds-synth"
+    package: "@tsukuri/sounds-synth"
     licence: Apache-2.0
     proposedPricing: free
     title: sounds-synth, built-in sound effects
@@ -224,18 +224,18 @@ elements:
       the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
       log:62, so confirm them.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:246
-      - reebeat:docs/design/third-party.md:78
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:246
+      - tsukuri:docs/design/third-party.md:78
     links:
-      part-of: [comp-reebeat-product, comp-org-layer-build]
-      depends-on: [comp-org-effect, comp-reebeat-core, comp-reebeat-services]
-      realizes: [req-reebeat-video]
-      serves: [goal-reebeat-deck-and-video]
+      part-of: [comp-tsukuri-product, comp-org-layer-build]
+      depends-on: [comp-org-effect, comp-tsukuri-core, comp-tsukuri-services]
+      realizes: [req-tsukuri-video]
+      serves: [goal-tsukuri-deck-and-video]
 
-  - id: comp-reebeat-render-reveal
+  - id: comp-tsukuri-render-reveal
     kind: component
     tier: integration
-    package: "@reebeat/render-reveal"
+    package: "@tsukuri/render-reveal"
     licence: Apache-2.0
     proposedPricing: free
     title: render-reveal, the Deck renderer
@@ -248,24 +248,24 @@ elements:
       the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
       log:62, so confirm them.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:247
-      - reebeat:packages/render-reveal/src/index.ts:1-4
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:247
+      - tsukuri:packages/render-reveal/src/index.ts:1-4
     canvas: [key-resources]
     links:
-      part-of: [comp-reebeat-product, comp-org-layer-plan]
+      part-of: [comp-tsukuri-product, comp-org-layer-plan]
       depends-on:
         - comp-org-effect
-        - comp-reebeat-core
-        - comp-reebeat-lint
-        - comp-reebeat-services
-        - resource-reebeat-reveal-js
-      realizes: [req-reebeat-deck, req-reebeat-renderer-lifecycle, req-reebeat-nfr-accessibility]
-      serves: [goal-reebeat-deck-and-video, goal-reebeat-multi-renderer]
+        - comp-tsukuri-core
+        - comp-tsukuri-lint
+        - comp-tsukuri-services
+        - resource-tsukuri-reveal-js
+      realizes: [req-tsukuri-deck, req-tsukuri-renderer-lifecycle, req-tsukuri-nfr-accessibility]
+      serves: [goal-tsukuri-deck-and-video, goal-tsukuri-multi-renderer]
 
-  - id: comp-reebeat-capture-chromium
+  - id: comp-tsukuri-capture-chromium
     kind: component
     tier: integration
-    package: "@reebeat/capture-chromium"
+    package: "@tsukuri/capture-chromium"
     licence: Apache-2.0
     proposedPricing: free
     title: capture-chromium, frame capture
@@ -278,22 +278,22 @@ elements:
       the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
       log:62, so confirm them.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:248
-      - reebeat:packages/capture-chromium/src/index.ts:1-2
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:248
+      - tsukuri:packages/capture-chromium/src/index.ts:1-2
     links:
-      part-of: [comp-reebeat-product, comp-org-layer-build]
+      part-of: [comp-tsukuri-product, comp-org-layer-build]
       depends-on:
         - comp-org-effect
-        - comp-reebeat-core
-        - comp-reebeat-services
-        - resource-reebeat-chromium
-      realizes: [req-reebeat-video, req-reebeat-nfr-reproducibility]
-      serves: [goal-reebeat-reproducible-builds]
+        - comp-tsukuri-core
+        - comp-tsukuri-services
+        - resource-tsukuri-chromium
+      realizes: [req-tsukuri-video, req-tsukuri-nfr-reproducibility]
+      serves: [goal-tsukuri-reproducible-builds]
 
-  - id: comp-reebeat-encode-ffmpeg
+  - id: comp-tsukuri-encode-ffmpeg
     kind: component
     tier: integration
-    package: "@reebeat/encode-ffmpeg"
+    package: "@tsukuri/encode-ffmpeg"
     licence: Apache-2.0
     proposedPricing: free
     title: encode-ffmpeg, mix and mux
@@ -306,18 +306,18 @@ elements:
       the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
       log:62, so confirm them.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:249
-      - reebeat:packages/encode-ffmpeg/src/index.ts:1-2
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:249
+      - tsukuri:packages/encode-ffmpeg/src/index.ts:1-2
     links:
-      part-of: [comp-reebeat-product, comp-org-layer-build]
-      depends-on: [comp-org-effect, comp-reebeat-services, resource-reebeat-ffmpeg]
-      realizes: [req-reebeat-video, req-reebeat-nfr-reproducibility]
-      serves: [goal-reebeat-deck-and-video]
+      part-of: [comp-tsukuri-product, comp-org-layer-build]
+      depends-on: [comp-org-effect, comp-tsukuri-services, resource-tsukuri-ffmpeg]
+      realizes: [req-tsukuri-video, req-tsukuri-nfr-reproducibility]
+      serves: [goal-tsukuri-deck-and-video]
 
-  - id: comp-reebeat-cache-fs
+  - id: comp-tsukuri-cache-fs
     kind: component
     tier: integration
-    package: "@reebeat/cache-fs"
+    package: "@tsukuri/cache-fs"
     licence: Apache-2.0
     proposedPricing: free
     title: cache-fs, the content-addressed cache
@@ -330,19 +330,19 @@ elements:
       that the cache is content-addressed (spec 0001 line 234), not this adapter, its free mark or its layer. The layer is
       inferred from log:62, so confirm them.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:250
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:261
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:250
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:261
     links:
-      part-of: [comp-reebeat-product, comp-org-layer-build]
-      depends-on: [comp-org-effect, comp-reebeat-services]
-      realizes: [req-reebeat-speech-cache, req-reebeat-nfr-reproducibility]
-      serves: [goal-reebeat-incremental-builds, goal-reebeat-reproducible-builds]
+      part-of: [comp-tsukuri-product, comp-org-layer-build]
+      depends-on: [comp-org-effect, comp-tsukuri-services]
+      realizes: [req-tsukuri-speech-cache, req-tsukuri-nfr-reproducibility]
+      serves: [goal-tsukuri-incremental-builds, goal-tsukuri-reproducible-builds]
 
   # ---------------------------------------------------------------- tools
-  - id: comp-reebeat-verify
+  - id: comp-tsukuri-verify
     kind: component
     tier: tool
-    package: "@reebeat/verify"
+    package: "@tsukuri/verify"
     licence: Apache-2.0
     proposedPricing: free
     title: verify, the output-side checks
@@ -355,32 +355,32 @@ elements:
       the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
       log:62, so confirm them.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:251
-      - reebeat:packages/verify/src/index.ts:1-2
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:251
+      - tsukuri:packages/verify/src/index.ts:1-2
     links:
-      part-of: [comp-reebeat-product, comp-org-layer-build]
+      part-of: [comp-tsukuri-product, comp-org-layer-build]
       depends-on:
         - comp-org-effect
-        - comp-reebeat-core
-        - comp-reebeat-encode-ffmpeg
-        - comp-reebeat-lint
-        - comp-reebeat-pipeline
-        - comp-reebeat-render-reveal
-        - comp-reebeat-services
-        - comp-reebeat-sounds-synth
-        - comp-reebeat-subtitles
-      realizes: [req-reebeat-check, req-reebeat-nfr-timing, req-reebeat-nfr-reproducibility]
-      serves: [goal-reebeat-verified-output]
+        - comp-tsukuri-core
+        - comp-tsukuri-encode-ffmpeg
+        - comp-tsukuri-lint
+        - comp-tsukuri-pipeline
+        - comp-tsukuri-render-reveal
+        - comp-tsukuri-services
+        - comp-tsukuri-sounds-synth
+        - comp-tsukuri-subtitles
+      realizes: [req-tsukuri-check, req-tsukuri-nfr-timing, req-tsukuri-nfr-reproducibility]
+      serves: [goal-tsukuri-verified-output]
 
-  - id: comp-reebeat-cli
+  - id: comp-tsukuri-cli
     kind: component
     tier: tool
-    package: "@reebeat/cli"
+    package: "@tsukuri/cli"
     licence: Apache-2.0
     proposedPricing: free
-    title: cli, the reebeat command
+    title: cli, the tsukuri command
     statement: >-
-      The `reebeat` command with `plan`, `lint`, `build`, `check` and `journey`. It is the only place that chooses and
+      The `tsukuri` command with `plan`, `lint`, `build`, `check` and `journey`. It is the only place that chooses and
       composes adapters.
     status: proposed
     rationale: >-
@@ -388,30 +388,30 @@ elements:
       the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
       log:62, so confirm them.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:252
-      - reebeat:packages/cli/src/cli.ts:70
-      - reebeat:packages/cli/package.json:17-28
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:252
+      - tsukuri:packages/cli/src/cli.ts:70
+      - tsukuri:packages/cli/package.json:17-28
     canvas: [channels]
     links:
-      part-of: [comp-reebeat-product, comp-org-layer-build]
+      part-of: [comp-tsukuri-product, comp-org-layer-build]
       depends-on:
         - comp-org-effect
-        - comp-reebeat-align-whisper
-        - comp-reebeat-cache-fs
-        - comp-reebeat-capture-chromium
-        - comp-reebeat-core
-        - comp-reebeat-encode-ffmpeg
-        - comp-reebeat-lint
-        - comp-reebeat-pipeline
-        - comp-reebeat-render-reveal
-        - comp-reebeat-services
-        - comp-reebeat-sounds-synth
-        - comp-reebeat-speech-kokoro
-        - comp-reebeat-verify
-      realizes: [req-reebeat-plan, req-reebeat-lint, req-reebeat-check, req-reebeat-selection, req-reebeat-journey]
-      serves: [goal-reebeat-vision]
+        - comp-tsukuri-align-whisper
+        - comp-tsukuri-cache-fs
+        - comp-tsukuri-capture-chromium
+        - comp-tsukuri-core
+        - comp-tsukuri-encode-ffmpeg
+        - comp-tsukuri-lint
+        - comp-tsukuri-pipeline
+        - comp-tsukuri-render-reveal
+        - comp-tsukuri-services
+        - comp-tsukuri-sounds-synth
+        - comp-tsukuri-speech-kokoro
+        - comp-tsukuri-verify
+      realizes: [req-tsukuri-plan, req-tsukuri-lint, req-tsukuri-check, req-tsukuri-selection, req-tsukuri-journey]
+      serves: [goal-tsukuri-vision]
 
-  - id: comp-reebeat-quality-gates
+  - id: comp-tsukuri-quality-gates
     kind: component
     tier: tool
     proposedPricing: free
@@ -424,23 +424,23 @@ elements:
       Observed in the repository: spec 0000 and AGENTS.md list these tools. The operator has not decided this collection or
       its free mark, so confirm them.
     source:
-      - reebeat:docs/specs/0000-development-lifecycle.md:9
-      - reebeat:AGENTS.md:26-42
+      - tsukuri:docs/specs/0000-development-lifecycle.md:9
+      - tsukuri:AGENTS.md:26-42
     links:
-      part-of: [comp-reebeat-product]
+      part-of: [comp-tsukuri-product]
       depends-on: [comp-org-effect]
-      realizes: [req-reebeat-nfr-tier-gate, req-reebeat-nfr-licensing]
-      serves: [goal-reebeat-correct-by-construction, goal-reebeat-apache-licence]
+      realizes: [req-tsukuri-nfr-tier-gate, req-tsukuri-nfr-licensing]
+      serves: [goal-tsukuri-correct-by-construction, goal-tsukuri-apache-licence]
 
   # --------------------------------------------------- planned components
-  - id: comp-reebeat-statechart-xstate
+  - id: comp-tsukuri-statechart-xstate
     kind: component
     tier: integration
     proposedPricing: free
     title: statechart-xstate, the build-time interpreter
     statement: >-
       A planned integration package. It turns the resolved statechart into XState machine data and reads back a total order
-      of generated events through a reebeat-owned service. XState is its only dependency.
+      of generated events through a tsukuri-owned service. XState is its only dependency.
     status: proposed
     rationale: >-
       Spec 0007 names this package as the recommendation, and the operator decided that XState sits in an integration
@@ -448,15 +448,15 @@ elements:
       0005, is not written. Its name and tier come from the spike.
     source:
       - log:26
-      - reebeat:docs/specs/0007-scxml-persistent-ir-spike.md:591
-      - reebeat:docs/specs/0007-scxml-persistent-ir-spike.md:620
+      - tsukuri:docs/specs/0007-scxml-persistent-ir-spike.md:591
+      - tsukuri:docs/specs/0007-scxml-persistent-ir-spike.md:620
     links:
-      part-of: [comp-reebeat-product, comp-org-layer-plan]
-      depends-on: [comp-org-xstate, comp-org-effect, comp-reebeat-services]
-      realizes: [req-reebeat-statechart-interpreter]
-      serves: [goal-reebeat-statechart-model]
+      part-of: [comp-tsukuri-product, comp-org-layer-plan]
+      depends-on: [comp-org-xstate, comp-org-effect, comp-tsukuri-services]
+      realizes: [req-tsukuri-statechart-interpreter]
+      serves: [goal-tsukuri-statechart-model]
 
-  - id: comp-reebeat-website-renderer
+  - id: comp-tsukuri-website-renderer
     kind: component
     tier: integration
     proposedPricing: free
@@ -470,17 +470,17 @@ elements:
       that websites become an artifact type (log:36) but no renderer exists or is specified.
     source:
       - log:36
-      - issue:reebeat#19
-    refs: ["issue:reebeat#19"]
+      - issue:tsukuri#19
+    refs: ["issue:tsukuri#19"]
     links:
-      part-of: [comp-reebeat-product, comp-org-layer-plan]
-      depends-on: [comp-org-effect, comp-reebeat-services]
-      realizes: [req-reebeat-website-artifact, req-reebeat-interaction-declaration]
-      serves: [goal-reebeat-interactive-website]
+      part-of: [comp-tsukuri-product, comp-org-layer-plan]
+      depends-on: [comp-org-effect, comp-tsukuri-services]
+      realizes: [req-tsukuri-website-artifact, req-tsukuri-interaction-declaration]
+      serves: [goal-tsukuri-interactive-website]
 
   # ------------------------------------------------------ artifacts, assets
 
-  - id: comp-reebeat-plan-json
+  - id: comp-tsukuri-plan-json
     kind: component
     tier: artifact
     title: plan.json, the one input of the renderers
@@ -492,13 +492,13 @@ elements:
       Spec plan: spec 0001 sets out plan.json as the one renderer input. The operator has not decided the canonical JSON
       form, so confirm it.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:74
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:90
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:74
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:90
     links:
-      part-of: [comp-reebeat-product]
-      serves: [goal-reebeat-screenplay-first]
+      part-of: [comp-tsukuri-product]
+      serves: [goal-tsukuri-screenplay-first]
 
-  - id: comp-reebeat-build-manifest
+  - id: comp-tsukuri-build-manifest
     kind: component
     tier: artifact
     title: build.json, the build manifest
@@ -510,14 +510,14 @@ elements:
       Spec plan: spec 0001 sets out the manifest fields and the write order. The operator decided that the output manifest
       records provenance (spec 0001 line 234), so confirm the rest.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:263
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:224
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:263
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:224
     links:
-      part-of: [comp-reebeat-product]
-      realizes: [isgoal-reebeat-visible-provenance]
-      serves: [goal-reebeat-visible-egress]
+      part-of: [comp-tsukuri-product]
+      realizes: [isgoal-tsukuri-visible-provenance]
+      serves: [goal-tsukuri-visible-egress]
 
-  - id: comp-reebeat-deck-output
+  - id: comp-tsukuri-deck-output
     kind: component
     tier: artifact
     title: deck.html, the Deck artifact
@@ -529,13 +529,13 @@ elements:
       Spec plan: the README and spec 0001 describe the Deck output, and the third-party audit lists its assets. The
       operator has not decided this bundle, so confirm it.
     source:
-      - reebeat:README.md:5
-      - reebeat:docs/design/third-party.md:44
+      - tsukuri:README.md:5
+      - tsukuri:docs/design/third-party.md:44
     links:
-      part-of: [comp-reebeat-product]
-      serves: [goal-reebeat-deck-and-video]
+      part-of: [comp-tsukuri-product]
+      serves: [goal-tsukuri-deck-and-video]
 
-  - id: comp-reebeat-video-output
+  - id: comp-tsukuri-video-output
     kind: component
     tier: artifact
     title: the MP4 Video artifact
@@ -546,12 +546,12 @@ elements:
       Spec plan: the README and spec 0001 describe the MP4 with subtitles and chapters. The operator has not decided every
       detail, so confirm it.
     source:
-      - reebeat:README.md:6
+      - tsukuri:README.md:6
     links:
-      part-of: [comp-reebeat-product]
-      serves: [goal-reebeat-deck-and-video, goal-reebeat-accessible-artifacts]
+      part-of: [comp-tsukuri-product]
+      serves: [goal-tsukuri-deck-and-video, goal-tsukuri-accessible-artifacts]
 
-  - id: comp-reebeat-grammar-doc
+  - id: comp-tsukuri-grammar-doc
     kind: component
     tier: artifact
     title: The generated effects grammar document
@@ -563,12 +563,12 @@ elements:
       Spec plan: spec 0002 sets out the generated grammar document and its test. The operator picked the effects syntax,
       not this arrangement, so confirm it.
     source:
-      - reebeat:docs/grammar/effects.md:3
+      - tsukuri:docs/grammar/effects.md:3
     links:
-      part-of: [comp-reebeat-product]
-      serves: [goal-reebeat-explicit-source]
+      part-of: [comp-tsukuri-product]
+      serves: [goal-tsukuri-explicit-source]
 
-  - id: comp-reebeat-ci-workflow
+  - id: comp-tsukuri-ci-workflow
     kind: component
     tier: process-asset
     title: The CI workflow
@@ -580,13 +580,13 @@ elements:
       Observed in the repository: the workflow file sets these steps. The operator has not decided the exact workflow, so
       confirm it.
     source:
-      - reebeat:.github/workflows/checks.yml:15
-      - reebeat:.github/workflows/checks.yml:30-33
+      - tsukuri:.github/workflows/checks.yml:15
+      - tsukuri:.github/workflows/checks.yml:30-33
     links:
-      part-of: [comp-reebeat-product]
-      serves: [goal-reebeat-correct-by-construction]
+      part-of: [comp-tsukuri-product]
+      serves: [goal-tsukuri-correct-by-construction]
 
-  - id: comp-reebeat-review-skills
+  - id: comp-tsukuri-review-skills
     kind: component
     tier: process-asset
     title: The review and pull request skills
@@ -598,12 +598,12 @@ elements:
       Observed in the repository: spec 0000 names these skills and scripts. The operator has not decided them, so confirm
       them.
     source:
-      - reebeat:docs/specs/0000-development-lifecycle.md:52
+      - tsukuri:docs/specs/0000-development-lifecycle.md:52
     links:
-      part-of: [comp-reebeat-product]
-      serves: [goal-reebeat-correct-by-construction]
+      part-of: [comp-tsukuri-product]
+      serves: [goal-tsukuri-correct-by-construction]
 
-  - id: comp-reebeat-exception-registry
+  - id: comp-tsukuri-exception-registry
     kind: component
     tier: process-asset
     title: The suppression registry
@@ -615,14 +615,14 @@ elements:
       Observed in the repository: spec 0000 and AGENTS.md describe the registry. The operator has not decided its fields,
       so confirm it.
     source:
-      - reebeat:docs/specs/0000-development-lifecycle.md:44
-      - reebeat:AGENTS.md:46
+      - tsukuri:docs/specs/0000-development-lifecycle.md:44
+      - tsukuri:AGENTS.md:46
     links:
-      part-of: [comp-reebeat-quality-gates]
-      serves: [goal-reebeat-correct-by-construction]
+      part-of: [comp-tsukuri-quality-gates]
+      serves: [goal-tsukuri-correct-by-construction]
 
   # --------------------------------------------------- information system goals
-  - id: isgoal-reebeat-one-source
+  - id: isgoal-tsukuri-one-source
     kind: is-goal
     title: One declared story yields every rendering
     statement: >-
@@ -635,14 +635,14 @@ elements:
       log:67-69). That the speech cache is the only generated file kept is spec 0001's plan (falsifier F5). Confirm the
       wording.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:150
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:150
       - log:25
       - log:67-69
     links:
-      serves: [goal-reebeat-screenplay-first]
+      serves: [goal-tsukuri-screenplay-first]
 
-  - id: isgoal-reebeat-replaceable-pieces
+  - id: isgoal-tsukuri-replaceable-pieces
     kind: is-goal
     title: Every piece can be replaced one by one
     statement: >-
@@ -653,11 +653,11 @@ elements:
       Spec plan: design R3 says pieces can be replaced one by one. The operator accepted R3 as a whole, so confirm this
       goal.
     source:
-      - reebeat:docs/design/keyframe-engine.md:1220
+      - tsukuri:docs/design/keyframe-engine.md:1220
     links:
-      serves: [goal-reebeat-plugin-sdk]
+      serves: [goal-tsukuri-plugin-sdk]
 
-  - id: isgoal-reebeat-verifiable-output
+  - id: isgoal-tsukuri-verifiable-output
     kind: is-goal
     title: The system can prove what it built
     statement: >-
@@ -666,23 +666,23 @@ elements:
     rationale: >-
       Spec plan: spec 0001 sets out the output-side verification. The operator has not decided this goal, so confirm it.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:142
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:142
     links:
-      serves: [goal-reebeat-verified-output]
+      serves: [goal-tsukuri-verified-output]
 
-  - id: isgoal-reebeat-visible-provenance
+  - id: isgoal-tsukuri-visible-provenance
     kind: is-goal
     title: The manifest records provenance
     statement: >-
       The output manifest records provenance.
     status: decided
     source:
-      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:263
+      - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:263
     links:
-      serves: [goal-reebeat-visible-egress]
+      serves: [goal-tsukuri-visible-egress]
 
-  - id: isgoal-reebeat-agent-usable
+  - id: isgoal-tsukuri-agent-usable
     kind: is-goal
     title: An agent can write and repair a story
     statement: >-
@@ -693,33 +693,33 @@ elements:
       Spec 0002 says people and agents guess wrong at positional rules and rates an effects table best for agents. The
       operator decided that users can bring their own agents (log:43) but has not stated this as a system goal.
     source:
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:11
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:116
+      - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:11
+      - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:116
       - log:43
     links:
-      serves: [goal-reebeat-explicit-source, goal-reebeat-plugin-sdk]
+      serves: [goal-tsukuri-explicit-source, goal-tsukuri-plugin-sdk]
 
   # ------------------------------------------------ functional requirements
-  - id: req-reebeat-plan
+  - id: req-tsukuri-plan
     kind: requirement
     reqType: functional
     proposedPricing: free
     title: Print a reviewable Plan
     statement: >-
-      `reebeat plan` prints every Scene, Element, effect and identity decision, with the written intent and the resolved
+      `tsukuri plan` prints every Scene, Element, effect and identity decision, with the written intent and the resolved
       frame. It needs no audio and no browser, and two runs are equal.
     status: proposed
     rationale: >-
-      Spec plan: spec 0001 and spec 0002 set out `reebeat plan` and its output. The compiler is free (open-core-boundary
+      Spec plan: spec 0001 and spec 0002 set out `tsukuri plan` and its output. The compiler is free (open-core-boundary
       line 39), but the operator has not decided each field or this feature's mark, so confirm them.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:28
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:123
-      - reebeat:docs/design/open-core-boundary.md:39
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:28
+      - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:123
+      - tsukuri:docs/design/open-core-boundary.md:39
     links:
-      serves: [goal-reebeat-deck-and-video]
+      serves: [goal-tsukuri-deck-and-video]
 
-  - id: req-reebeat-deck
+  - id: req-tsukuri-deck
     kind: requirement
     reqType: functional
     proposedPricing: free
@@ -732,13 +732,13 @@ elements:
       Spec plan: spec 0001 and the README set out the Deck. The operator decided only that sounds ride along (spec 0002
       line 161), and has not decided this feature's free mark, so confirm them.
     source:
-      - reebeat:README.md:5
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:162
-      - reebeat:docs/design/open-core-boundary.md:39
+      - tsukuri:README.md:5
+      - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:162
+      - tsukuri:docs/design/open-core-boundary.md:39
     links:
-      serves: [goal-reebeat-deck-and-video]
+      serves: [goal-tsukuri-deck-and-video]
 
-  - id: req-reebeat-video
+  - id: req-tsukuri-video
     kind: requirement
     reqType: functional
     proposedPricing: free
@@ -751,12 +751,12 @@ elements:
       Spec plan: spec 0001 and the README set out the Video. The operator has not decided every detail or this feature's
       free mark, so confirm them.
     source:
-      - reebeat:README.md:6
-      - reebeat:docs/design/open-core-boundary.md:39
+      - tsukuri:README.md:6
+      - tsukuri:docs/design/open-core-boundary.md:39
     links:
-      serves: [goal-reebeat-deck-and-video]
+      serves: [goal-tsukuri-deck-and-video]
 
-  - id: req-reebeat-fountain-artifact-renderer
+  - id: req-tsukuri-fountain-artifact-renderer
     kind: requirement
     reqType: functional
     proposedPricing: free
@@ -771,48 +771,48 @@ elements:
       commit. The operator must confirm the requirement, its release and that the renderer is free.
     source:
       - log:67-69
-      - reebeat:docs/decisions/0000-extension-architecture.md:141
-    refs: ["pr:reebeat#23"]
+      - tsukuri:docs/decisions/0000-extension-architecture.md:141
+    refs: ["pr:tsukuri#23"]
     links:
-      serves: [goal-reebeat-screenplay-first]
+      serves: [goal-tsukuri-screenplay-first]
 
-  - id: req-reebeat-check
+  - id: req-tsukuri-check
     kind: requirement
     reqType: functional
     proposedPricing: free
     title: Check a build against its source
     statement: >-
-      `reebeat check` reads a written build and the source, gives one verdict per falsifier, and reports for every effect
+      `tsukuri check` reads a written build and the source, gives one verdict per falsifier, and reports for every effect
       where it was resolved and where the video and audio show it.
     status: proposed
     rationale: >-
-      Spec plan: spec 0001 and the README set out `reebeat check` and its output. The operator has not decided each detail
+      Spec plan: spec 0001 and the README set out `tsukuri check` and its output. The operator has not decided each detail
       or this feature's free mark, so confirm them.
     source:
-      - reebeat:README.md:8
-      - reebeat:README.md:18
-      - reebeat:docs/design/open-core-boundary.md:39
+      - tsukuri:README.md:8
+      - tsukuri:README.md:18
+      - tsukuri:docs/design/open-core-boundary.md:39
     links:
-      serves: [goal-reebeat-verified-output]
+      serves: [goal-tsukuri-verified-output]
 
-  - id: req-reebeat-lint
+  - id: req-tsukuri-lint
     kind: requirement
     reqType: functional
     proposedPricing: free
     title: Lint a story and say the fix
     statement: >-
-      `reebeat lint` prints every problem with its line and the fix, and lists every absolute time.
+      `tsukuri lint` prints every problem with its line and the fix, and lists every absolute time.
     status: proposed
     rationale: >-
-      Spec plan: spec 0002 sets out `reebeat lint`. The operator has not decided each diagnostic or this feature's free
+      Spec plan: spec 0002 sets out `tsukuri lint`. The operator has not decided each diagnostic or this feature's free
       mark, so confirm them.
     source:
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:123
-      - reebeat:packages/cli/src/cli.ts:118
+      - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:123
+      - tsukuri:packages/cli/src/cli.ts:118
     links:
-      serves: [goal-reebeat-explicit-source]
+      serves: [goal-tsukuri-explicit-source]
 
-  - id: req-reebeat-selection
+  - id: req-tsukuri-selection
     kind: requirement
     reqType: functional
     proposedPricing: free
@@ -825,12 +825,12 @@ elements:
       Observed in the repository: the README and the selection registry describe this behaviour. The operator decided that
       selection is explicit configuration at the composition root (spec 0001 line 234), not these details, so confirm them.
     source:
-      - reebeat:README.md:23
-      - reebeat:packages/services/src/selection.ts:18-26
+      - tsukuri:README.md:23
+      - tsukuri:packages/services/src/selection.ts:18-26
     links:
-      serves: [goal-reebeat-plugin-sdk, goal-reebeat-correct-by-construction]
+      serves: [goal-tsukuri-plugin-sdk, goal-tsukuri-correct-by-construction]
 
-  - id: req-reebeat-speech-cache
+  - id: req-tsukuri-speech-cache
     kind: requirement
     reqType: functional
     proposedPricing: free
@@ -845,30 +845,30 @@ elements:
       packages/cli/src/build.ts:26-31 at the pinned commit adds the silent stand-in exception. The operator has not decided
       those details or this feature's free mark, so confirm them.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:78
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:261
-      - reebeat:packages/cli/src/build.ts:26-31
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:78
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:261
+      - tsukuri:packages/cli/src/build.ts:26-31
     links:
-      serves: [goal-reebeat-reproducible-builds, goal-reebeat-incremental-builds]
+      serves: [goal-tsukuri-reproducible-builds, goal-tsukuri-incremental-builds]
 
-  - id: req-reebeat-journey
+  - id: req-tsukuri-journey
     kind: requirement
     reqType: functional
     proposedPricing: free
     title: One command runs the whole road
     statement: >-
-      `reebeat journey` builds a story, checks it, builds it again and compares the two builds.
+      `tsukuri journey` builds a story, checks it, builds it again and compares the two builds.
     status: proposed
     rationale: >-
       Observed in the repository: the `journey` command and AGENTS.md describe it. The operator has not decided the
       command or its free mark, so confirm them.
     source:
-      - reebeat:AGENTS.md:42
-      - reebeat:packages/cli/src/journey.ts:1-3
+      - tsukuri:AGENTS.md:42
+      - tsukuri:packages/cli/src/journey.ts:1-3
     links:
-      serves: [goal-reebeat-verified-output, goal-reebeat-reproducible-builds]
+      serves: [goal-tsukuri-verified-output, goal-tsukuri-reproducible-builds]
 
-  - id: req-reebeat-renderer-lifecycle
+  - id: req-tsukuri-renderer-lifecycle
     kind: requirement
     reqType: functional
     proposedPricing: free
@@ -881,25 +881,25 @@ elements:
       Spec plan: design R4 and spec 0002 set out the lifecycle declaration. The operator has not decided each field or this
       feature's free mark, so confirm them.
     source:
-      - reebeat:docs/design/keyframe-engine.md:1259
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:34
+      - tsukuri:docs/design/keyframe-engine.md:1259
+      - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:34
     links:
-      serves: [goal-reebeat-event-timing, goal-reebeat-multi-renderer]
+      serves: [goal-tsukuri-event-timing, goal-tsukuri-multi-renderer]
 
-  - id: req-reebeat-statechart-interpreter
+  - id: req-tsukuri-statechart-interpreter
     kind: requirement
     reqType: functional
     title: Interpreters pass one contract suite
     statement: >-
-      A reebeat-owned StatechartInterpreter service wraps the build-time interpreter. A hand-written interpreter must pass
+      A tsukuri-owned StatechartInterpreter service wraps the build-time interpreter. A hand-written interpreter must pass
       the same contract suite, which compares byte-equal logs across interpreters.
     status: decided
     source:
-      - record:reebeat:docs/specs/0007-scxml-persistent-ir-spike.md:616-620
+      - record:tsukuri:docs/specs/0007-scxml-persistent-ir-spike.md:616-620
     links:
-      serves: [goal-reebeat-statechart-model]
+      serves: [goal-tsukuri-statechart-model]
 
-  - id: req-reebeat-state-machines
+  - id: req-tsukuri-state-machines
     kind: requirement
     reqType: functional
     proposedPricing: free
@@ -912,12 +912,12 @@ elements:
       Read from the body of PR #17 (spec 0004), which is open and unmerged. The PR records two review rounds, both with
       verdict "changes", so it has not passed review. Its body still says no review rounds yet, which is out of date. Parts
       of it, such as the nearest-frame rule, are marked as operator decisions there, so confirm them.
-    source: ["pr:reebeat#17", "log:24"]
-    refs: ["pr:reebeat#17"]
+    source: ["pr:tsukuri#17", "log:24"]
+    refs: ["pr:tsukuri#17"]
     links:
-      serves: [goal-reebeat-statechart-model]
+      serves: [goal-tsukuri-statechart-model]
 
-  - id: req-reebeat-accessible-variants
+  - id: req-tsukuri-accessible-variants
     kind: requirement
     reqType: functional
     proposedPricing: free
@@ -930,12 +930,12 @@ elements:
     rationale: >-
       Issue #12 proposes it. The operator decided the audiences (log:32), but every threshold in the issue is noted from
       memory and must be checked against its source in the spec.
-    source: ["issue:reebeat#12", "log:32"]
-    refs: ["issue:reebeat#12"]
+    source: ["issue:tsukuri#12", "log:32"]
+    refs: ["issue:tsukuri#12"]
     links:
-      serves: [goal-reebeat-accessible-artifacts]
+      serves: [goal-tsukuri-accessible-artifacts]
 
-  - id: req-reebeat-readable-subtitles
+  - id: req-tsukuri-readable-subtitles
     kind: requirement
     reqType: functional
     proposedPricing: free
@@ -945,12 +945,12 @@ elements:
       subtitles and notes stay one string, so the repair for a pace that is too fast extends the State hold. Videos can
       slow down as a result.
     status: decided
-    source: ["issue:reebeat#12", "log:27", "log:94"]
-    refs: ["issue:reebeat#12"]
+    source: ["issue:tsukuri#12", "log:27", "log:94"]
+    refs: ["issue:tsukuri#12"]
     links:
-      serves: [goal-reebeat-accessible-artifacts]
+      serves: [goal-tsukuri-accessible-artifacts]
 
-  - id: req-reebeat-language-variants
+  - id: req-tsukuri-language-variants
     kind: requirement
     reqType: functional
     proposedPricing: free
@@ -960,12 +960,12 @@ elements:
       anchors use phrase ids declared once in a per-language phrase table, so narration stays pure prose. Not yet settled:
       whether subtitles and Deck notes are per language, and whether the speech cache is keyed by language and voice.
     status: decided
-    source: ["issue:reebeat#10", "log:32", "log:93"]
-    refs: ["issue:reebeat#10"]
+    source: ["issue:tsukuri#10", "log:32", "log:93"]
+    refs: ["issue:tsukuri#10"]
     links:
-      serves: [goal-reebeat-localisation]
+      serves: [goal-tsukuri-localisation]
 
-  - id: req-reebeat-render-segment-cache
+  - id: req-tsukuri-render-segment-cache
     kind: requirement
     reqType: functional
     proposedPricing: free
@@ -975,12 +975,12 @@ elements:
       engine. This comes in a later step, after stages become tasks. After a narration change it retimes and reuses the
       later segments instead of rendering them again.
     status: decided
-    source: ["issue:reebeat#9", "log:62", "log:88"]
-    refs: ["issue:reebeat#9"]
+    source: ["issue:tsukuri#9", "log:62", "log:88"]
+    refs: ["issue:tsukuri#9"]
     links:
-      serves: [goal-reebeat-incremental-builds]
+      serves: [goal-tsukuri-incremental-builds]
 
-  - id: req-reebeat-website-artifact
+  - id: req-tsukuri-website-artifact
     kind: requirement
     reqType: functional
     proposedPricing: free
@@ -993,12 +993,12 @@ elements:
     rationale: >-
       Issue #19 proposes it. The operator decided that websites become an artifact type (log:36), but the relation to the
       Deck and the reproducibility definition remain open in the issue.
-    source: ["issue:reebeat#19", "log:36", "log:65"]
-    refs: ["issue:reebeat#19"]
+    source: ["issue:tsukuri#19", "log:36", "log:65"]
+    refs: ["issue:tsukuri#19"]
     links:
-      serves: [goal-reebeat-interactive-website]
+      serves: [goal-tsukuri-interactive-website]
 
-  - id: req-reebeat-interaction-declaration
+  - id: req-tsukuri-interaction-declaration
     kind: requirement
     reqType: functional
     proposedPricing: free
@@ -1010,12 +1010,12 @@ elements:
       output, unless the author wrote an explicit fallback or a flag bypasses the failure for that output, so the drift is
       silent but explicit (a declared opt-out, never a default).
     status: decided
-    source: ["issue:reebeat#19@6503203735", "log:38", "log:65", "log:87"]
-    refs: ["issue:reebeat#19"]
+    source: ["issue:tsukuri#19@6503203735", "log:38", "log:65", "log:87"]
+    refs: ["issue:tsukuri#19"]
     links:
-      serves: [goal-reebeat-interactive-website, goal-reebeat-multi-renderer]
+      serves: [goal-tsukuri-interactive-website, goal-tsukuri-multi-renderer]
 
-  - id: req-reebeat-renderer-capabilities
+  - id: req-tsukuri-renderer-capabilities
     kind: requirement
     reqType: functional
     proposedPricing: free
@@ -1026,12 +1026,12 @@ elements:
       come through the extension ADR-0000, adopted in stages, and stay tagged unstable until a second real engine has run
       the protocol.
     status: decided
-    source: ["issue:reebeat#19@6503256239", "log:28", "log:86"]
-    refs: ["issue:reebeat#19"]
+    source: ["issue:tsukuri#19@6503256239", "log:28", "log:86"]
+    refs: ["issue:tsukuri#19"]
     links:
-      serves: [goal-reebeat-multi-renderer, goal-reebeat-plugin-sdk]
+      serves: [goal-tsukuri-multi-renderer, goal-tsukuri-plugin-sdk]
 
-  - id: req-reebeat-teaching-lint
+  - id: req-tsukuri-teaching-lint
     kind: requirement
     reqType: functional
     proposedPricing: free
@@ -1041,12 +1041,12 @@ elements:
       source before the rule is built.
     status: proposed
     rationale: "Issue #8 proposes it and says it follows specs 0004 to 0006. The operator has not decided it."
-    source: ["issue:reebeat#8"]
-    refs: ["issue:reebeat#8"]
+    source: ["issue:tsukuri#8"]
+    refs: ["issue:tsukuri#8"]
     links:
-      serves: [goal-reebeat-teaching-lint]
+      serves: [goal-tsukuri-teaching-lint]
 
-  - id: req-reebeat-npm-prerelease
+  - id: req-tsukuri-npm-prerelease
     kind: requirement
     reqType: functional
     proposedPricing: free
@@ -1058,12 +1058,12 @@ elements:
     rationale: >-
       Read from the body of PR #18, which was open at the pinned commit and has since merged (see the tracker). The operator
       decided to publish pre-releases (log:49), so confirm the release details.
-    source: ["pr:reebeat#18", "log:49"]
-    refs: ["pr:reebeat#18"]
+    source: ["pr:tsukuri#18", "log:49"]
+    refs: ["pr:tsukuri#18"]
     links:
-      serves: [goal-reebeat-npm-publication]
+      serves: [goal-tsukuri-npm-publication]
 
-  - id: req-reebeat-encoder-reproducible
+  - id: req-tsukuri-encoder-reproducible
     kind: requirement
     reqType: functional
     proposedPricing: free
@@ -1073,12 +1073,12 @@ elements:
       toolchain give identical decoded frames and audio samples, and container bytes are recorded. The determinism check is
       measured again when the encoder changes.
     status: decided
-    source: ["issue:reebeat#7", "log:78", "log:81"]
-    refs: ["issue:reebeat#7"]
+    source: ["issue:tsukuri#7", "log:78", "log:81"]
+    refs: ["issue:tsukuri#7"]
     links:
-      serves: [goal-reebeat-reproducible-builds]
+      serves: [goal-tsukuri-reproducible-builds]
 
-  - id: req-reebeat-exception-directives
+  - id: req-tsukuri-exception-directives
     kind: requirement
     reqType: functional
     proposedPricing: free
@@ -1088,12 +1088,12 @@ elements:
       and every existing directive is registered.
     status: proposed
     rationale: "Issue #14 proposes it. It is a gap in a gate, not a decided feature."
-    source: ["issue:reebeat#14"]
-    refs: ["issue:reebeat#14"]
+    source: ["issue:tsukuri#14"]
+    refs: ["issue:tsukuri#14"]
     links:
-      serves: [goal-reebeat-correct-by-construction]
+      serves: [goal-tsukuri-correct-by-construction]
 
-  - id: req-reebeat-pin-bun
+  - id: req-tsukuri-pin-bun
     kind: requirement
     reqType: functional
     proposedPricing: free
@@ -1103,13 +1103,13 @@ elements:
       revision. Both are bumped together.
     status: proposed
     rationale: "Issue #15 proposes it as the working fix."
-    source: ["issue:reebeat#15"]
-    refs: ["issue:reebeat#15"]
+    source: ["issue:tsukuri#15"]
+    refs: ["issue:tsukuri#15"]
     links:
-      serves: [goal-reebeat-reproducible-builds]
+      serves: [goal-tsukuri-reproducible-builds]
 
   # -------------------------------------------- non-functional requirements
-  - id: req-reebeat-nfr-reproducibility
+  - id: req-tsukuri-nfr-reproducibility
     kind: requirement
     reqType: non-functional
     quality: reproducibility
@@ -1119,19 +1119,19 @@ elements:
       same machine with the pinned toolchain, give identical decoded frames and identical decoded audio samples. Container
       bytes are compared and the result is recorded.
     scenario: >-
-      A developer builds `stories/same-id` twice with the same speech cache. `reebeat journey` compares every decoded frame
+      A developer builds `stories/same-id` twice with the same speech cache. `tsukuri journey` compares every decoded frame
       hash and the decoded audio hash. The check passes when all agree. Adding random jitter to the clock makes it fail and
       name the first differing frame.
     status: decided
     source:
       - log:10
       - log:81
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:151
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:225
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:151
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:225
     links:
-      serves: [goal-reebeat-reproducible-builds]
+      serves: [goal-tsukuri-reproducible-builds]
 
-  - id: req-reebeat-nfr-accessibility
+  - id: req-tsukuri-nfr-accessibility
     kind: requirement
     reqType: non-functional
     quality: accessibility
@@ -1149,12 +1149,12 @@ elements:
       acceptance scenario, and the variants are tracked in issue #12, so confirm it.
     source:
       - log:32
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:146-148
-    refs: ["issue:reebeat#12"]
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:146-148
+    refs: ["issue:tsukuri#12"]
     links:
-      serves: [goal-reebeat-accessible-artifacts]
+      serves: [goal-tsukuri-accessible-artifacts]
 
-  - id: req-reebeat-nfr-timing
+  - id: req-tsukuri-nfr-timing
     kind: requirement
     reqType: non-functional
     quality: correctness
@@ -1171,12 +1171,12 @@ elements:
       Spec plan: spec 0001 and spec 0002 set out the one-frame tolerance. The operator has not decided the threshold, so
       confirm it.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:146
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:129
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:146
+      - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:129
     links:
-      serves: [goal-reebeat-event-timing, goal-reebeat-verified-output]
+      serves: [goal-tsukuri-event-timing, goal-tsukuri-verified-output]
 
-  - id: req-reebeat-nfr-tier-gate
+  - id: req-tsukuri-nfr-tier-gate
     kind: requirement
     reqType: non-functional
     quality: correctness
@@ -1192,12 +1192,12 @@ elements:
       Observed in the repository: the tier gate and AGENTS.md describe this check. The operator decided the direction of
       dependency (spec 0001 line 234), not the gate, so confirm it.
     source:
-      - reebeat:AGENTS.md:35
-      - reebeat:tools/quality/tiers.ts:41-48
+      - tsukuri:AGENTS.md:35
+      - tsukuri:tools/quality/tiers.ts:41-48
     links:
-      serves: [goal-reebeat-correct-by-construction]
+      serves: [goal-tsukuri-correct-by-construction]
 
-  - id: req-reebeat-nfr-extensibility
+  - id: req-tsukuri-nfr-extensibility
     kind: requirement
     reqType: non-functional
     quality: extensibility
@@ -1214,12 +1214,12 @@ elements:
       Observed in the repository: AGENTS.md describes adding an adapter. The operator decided plugins are supported and
       every adapter passes a contract suite, but the adapter shape is marked proposed, so confirm this scenario.
     source:
-      - reebeat:docs/design/open-core-boundary.md:24
-      - reebeat:AGENTS.md:65
+      - tsukuri:docs/design/open-core-boundary.md:24
+      - tsukuri:AGENTS.md:65
     links:
-      serves: [goal-reebeat-plugin-sdk]
+      serves: [goal-tsukuri-plugin-sdk]
 
-  - id: req-reebeat-nfr-licensing
+  - id: req-tsukuri-nfr-licensing
     kind: requirement
     reqType: non-functional
     quality: licensing
@@ -1235,12 +1235,12 @@ elements:
       Spec plan: spec 0008 sets out the licence gate and its allowlist. The operator decided Apache-2.0 (log:44), not the
       gate, so confirm it.
     source:
-      - reebeat:docs/specs/0008-apache-2-licence.md:42
-      - reebeat:AGENTS.md:31
+      - tsukuri:docs/specs/0008-apache-2-licence.md:42
+      - tsukuri:AGENTS.md:31
     links:
-      serves: [goal-reebeat-apache-licence]
+      serves: [goal-tsukuri-apache-licence]
 
-  - id: req-reebeat-nfr-usability
+  - id: req-tsukuri-nfr-usability
     kind: requirement
     reqType: non-functional
     quality: usability
@@ -1255,12 +1255,12 @@ elements:
     rationale: >-
       Spec plan: spec 0002 sets out the error format. The operator has not decided it, so confirm it.
     source:
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:18
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:191
+      - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:18
+      - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:191
     links:
-      serves: [goal-reebeat-explicit-source]
+      serves: [goal-tsukuri-explicit-source]
 
-  - id: req-reebeat-nfr-reliability
+  - id: req-tsukuri-nfr-reliability
     kind: requirement
     reqType: non-functional
     quality: reliability
@@ -1276,12 +1276,12 @@ elements:
       Spec plan: spec 0001 falsifier F12 sets out the three failure cases. The operator has not decided them, so confirm
       it.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:157
-      - reebeat:packages/pipeline/src/buildProgram.ts:9-11
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:157
+      - tsukuri:packages/pipeline/src/buildProgram.ts:9-11
     links:
-      serves: [goal-reebeat-correct-by-construction]
+      serves: [goal-tsukuri-correct-by-construction]
 
-  - id: req-reebeat-nfr-security
+  - id: req-tsukuri-nfr-security
     kind: requirement
     reqType: non-functional
     quality: security
@@ -1297,12 +1297,12 @@ elements:
       Spec plan: design R3 rule 3 and spec 0001 set out the credential handling. The operator has not decided it, so
       confirm it.
     source:
-      - reebeat:docs/design/keyframe-engine.md:1242
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:263
+      - tsukuri:docs/design/keyframe-engine.md:1242
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:263
     links:
-      serves: [goal-reebeat-visible-egress]
+      serves: [goal-tsukuri-visible-egress]
 
-  - id: req-reebeat-nfr-incremental
+  - id: req-tsukuri-nfr-incremental
     kind: requirement
     reqType: non-functional
     quality: performance
@@ -1315,12 +1315,12 @@ elements:
       An author changes one narration line in a story. Only that Line's speech and the render segments that depend on its
       length are rebuilt. The output equals a cold build of the new story. This is planned and not built.
     status: decided
-    source: ["log:10", "log:62", "log:88", "issue:reebeat#9"]
-    refs: ["issue:reebeat#9"]
+    source: ["log:10", "log:62", "log:88", "issue:tsukuri#9"]
+    refs: ["issue:tsukuri#9"]
     links:
-      serves: [goal-reebeat-incremental-builds]
+      serves: [goal-tsukuri-incremental-builds]
 
-  - id: req-reebeat-nfr-portability
+  - id: req-tsukuri-nfr-portability
     kind: requirement
     reqType: non-functional
     quality: portability
@@ -1334,8 +1334,8 @@ elements:
     status: decided
     source:
       - log:89
-      - reebeat:README.md:12
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:190
-      - reebeat:devenv.nix:3
+      - tsukuri:README.md:12
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:190
+      - tsukuri:devenv.nix:3
     links:
-      serves: [goal-reebeat-reproducible-builds]
+      serves: [goal-tsukuri-reproducible-builds]

@@ -17,7 +17,7 @@ elements:
     kind: goal
     title: A generic library with no product logic
     statement: >-
-      foldkit-flow stays a generic library. It holds no reebeat product logic, so any Foldkit application can use it.
+      foldkit-flow stays a generic library. It holds no tsukuri product logic, so any Foldkit application can use it.
     status: proposed
     source:
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:3
@@ -34,10 +34,10 @@ elements:
 
   - id: goal-flow-studio-story-graph
     kind: goal
-    title: Carry reebeat studio's story graph
+    title: Carry tsukuri studio's story graph
     statement: >-
-      The library can draw a statechart map in which Scenes contain States, so reebeat studio can use it for its story
-      graph. reebeat studio is an intended consumer, not a committed one: it depends on the library only once a studio
+      The library can draw a statechart map in which Scenes contain States, so tsukuri studio can use it for its story
+      graph. tsukuri studio is an intended consumer, not a committed one: it depends on the library only once a studio
       spec adopts it.
     status: decided
     source:
@@ -172,9 +172,9 @@ elements:
     title: Publish the package for others to use
     statement: >-
       Once the name is cleared (the first npm publish is paused, log line 113), the project publishes pre-releases of the
-      library as `@reebeat/flow` under the reebeat npm organisation, so other applications can install it. The repository
+      library as `@tsukuri/flow` under the tsukuri npm organisation, so other applications can install it. The repository
       stays `foldkit-flow`. If Foldkit adopts the library, the project publishes `@foldkit/flow` and deprecates
-      `@reebeat/flow`.
+      `@tsukuri/flow`.
     status: decided
     source:
       - log:49
@@ -207,7 +207,7 @@ elements:
     kind: problem
     title: The package is unpublished and private
     statement: >-
-      The operator decided to publish `@reebeat/flow` pre-releases under the npm org. Nothing is published yet: the
+      The operator decided to publish `@tsukuri/flow` pre-releases under the npm org. Nothing is published yet: the
       library package is private at version 0.0.0 and still named `foldkit-flow`, and the README says it is not
       published yet. The first npm publish is paused until a Norwegian IP advisor has given an opinion on the name
       (log line 113).
@@ -220,7 +220,7 @@ elements:
     gap:
       repo: foldkit-flow
       fix: >-
-        Rename the package to `@reebeat/flow`, drop `private`, and publish a pre-release through the org's publish
+        Rename the package to `@tsukuri/flow`, drop `private`, and publish a pre-release through the org's publish
         process.
     links:
       hinders: [goal-flow-publish]
@@ -426,7 +426,7 @@ elements:
     title: Terms of the Foldkit offer remain to record
     statement: >-
       The operator decided to offer the library as `@foldkit/flow` once its API settles. If Foldkit adopts it, the
-      project publishes `@foldkit/flow` and deprecates `@reebeat/flow`. What counts as settled, the date and the licence
+      project publishes `@foldkit/flow` and deprecates `@tsukuri/flow`. What counts as settled, the date and the licence
       header are not yet recorded.
     status: decided
     source:
@@ -448,7 +448,7 @@ elements:
     source:
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:112-113
     rationale: >-
-      Spec 0000 leaves these as open questions for the operator. The deferral matches studio and reebeat.
+      Spec 0000 leaves these as open questions for the operator. The deferral matches studio and tsukuri.
     gap:
       repo: foldkit-flow
       fix: Decide each item or record that it stays deferred.

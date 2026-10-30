@@ -4,7 +4,7 @@ elements:
     category: primary
     title: Create and deliver a multimedia artifact
     statement: >-
-      The value stream of the product family: an author declares a story, reebeat builds the artifact, the author
+      The value stream of the product family: an author declares a story, tsukuri builds the artifact, the author
       reviews it, and the audience receives it.
     status: proposed
     rationale: >-
@@ -53,9 +53,9 @@ elements:
       again, or approve the result.
     status: proposed
     rationale: >-
-      The reebeat README describes a reviewable Plan and a check command, but the decision log does not describe an
+      The tsukuri README describes a reviewable Plan and a check command, but the decision log does not describe an
       author's review step; the operator should confirm it as a step of the value stream.
-    source: [reebeat:README.md:3, reebeat:README.md:12-18]
+    source: [tsukuri:README.md:3, tsukuri:README.md:12-18]
     links:
       part-of: [process-org-create-and-deliver]
       next: [process-org-deliver-artifact, process-org-declare-story]
@@ -96,9 +96,9 @@ elements:
       round before the guarded script merges it.
     status: proposed
     rationale: >-
-      Spec 0000 of reebeat and studio, whose headers say the operator decided them, set this road. The operator's
+      Spec 0000 of tsukuri and studio, whose headers say the operator decided them, set this road. The operator's
       decision log does not repeat the sequence, so the operator should confirm it as the road for every repository.
-    source: [reebeat:AGENTS.md:9-17, studio:AGENTS.md:17]
+    source: [tsukuri:AGENTS.md:9-17, studio:AGENTS.md:17]
     links:
       serves: [goal-org-correctness-by-construction]
       uses: [resource-github-org]
@@ -108,12 +108,12 @@ elements:
     category: supporting
     title: Publish packages to npm
     statement: >-
-      The compiler's libraries and services are to be published to npm as `@reebeat/*` pre-releases, so products and
+      The compiler's libraries and services are to be published to npm as `@tsukuri/*` pre-releases, so products and
       plugin authors can depend on them. The first publish is paused until a Norwegian IP advisor has given an opinion
       on the name; nothing is published before that.
     status: decided
     source: [log:49, log:113]
-    refs: ["pr:reebeat#18"]
+    refs: ["pr:tsukuri#18"]
     links:
       serves: [goal-org-open-compiler, goal-org-modular-extensible]
       uses: [resource-npm-org]
@@ -127,5 +127,5 @@ elements:
       waitlist for the sync server and hosted agents, interviews prospective creators and sets a threshold. Tiers are
       designed after that, and no pricing or billing code is written before the threshold is met.
     status: decided
-    source: [log:79, log:43, reebeat:docs/design/open-core-boundary.md:69]
+    source: [log:79, log:43, tsukuri:docs/design/open-core-boundary.md:69]
     canvas: [customer-relationships, revenue-streams]

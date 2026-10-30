@@ -1,5 +1,5 @@
 elements:
-  - id: concept-reebeat-story
+  - id: concept-tsukuri-story
     kind: concept
     title: Story
     statement: >-
@@ -15,35 +15,35 @@ elements:
       artifact (log:25, log:67-69). The glossary does not yet say so. The decision log defines Scene, State and Beat but
       does not define Story, so confirm it.
     source:
-      - reebeat:GLOSSARY.md:11-13
+      - tsukuri:GLOSSARY.md:11-13
       - log:25
       - log:67-69
     relations:
       - type: relates
-        to: concept-reebeat-screenplay
+        to: concept-tsukuri-screenplay
         label: is imported from, or written as
         multiplicity: "1 to 0..*"
 
-  - id: concept-reebeat-screenplay
+  - id: concept-tsukuri-screenplay
     kind: concept
     title: Screenplay
     statement: >-
-      A Fountain file with reebeat's fixed vocabulary. It is an input of the importer, which reads it into a Story, and an
+      A Fountain file with tsukuri's fixed vocabulary. It is an input of the importer, which reads it into a Story, and an
       artifact that a renderer writes from a Story. In release 1 the importer is the only way to declare a Story. A
       Screenplay is not the persistent IR: JSON stays the IR.
     status: decided
     source:
-      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213
-      - reebeat:GLOSSARY.md:15-17
+      - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213
+      - tsukuri:GLOSSARY.md:15-17
       - log:25
       - log:67-69
     relations:
       - type: relates
-        to: concept-reebeat-plan
+        to: concept-tsukuri-plan
         label: is read into
         multiplicity: "1 to 1"
 
-  - id: concept-reebeat-scene
+  - id: concept-tsukuri-scene
     kind: concept
     title: Scene
     statement: >-
@@ -53,13 +53,13 @@ elements:
       - log:19
     relations:
       - type: part-of
-        to: concept-reebeat-story
+        to: concept-tsukuri-story
         multiplicity: "1..* per Story"
       - type: isa
-        to: concept-reebeat-state
+        to: concept-tsukuri-state
         label: is a compound
 
-  - id: concept-reebeat-state
+  - id: concept-tsukuri-state
     kind: concept
     title: State
     statement: >-
@@ -68,11 +68,11 @@ elements:
     source: [log:19]
     relations:
       - type: relates
-        to: concept-reebeat-beat
+        to: concept-tsukuri-beat
         label: is joined by
         multiplicity: "0..* to 0..*"
 
-  - id: concept-reebeat-beat
+  - id: concept-tsukuri-beat
     kind: concept
     title: Beat
     statement: >-
@@ -82,10 +82,10 @@ elements:
       - log:19
     relations:
       - type: relates
-        to: concept-reebeat-state
+        to: concept-tsukuri-state
         label: joins
 
-  - id: concept-reebeat-keyframe
+  - id: concept-tsukuri-keyframe
     kind: concept
     title: Keyframe
     statement: >-
@@ -94,18 +94,18 @@ elements:
     rationale: >-
       Observed in the repository: the glossary defines the Keyframe as the state a Beat ends in. The log decides that an id
       carries identity across Scenes (log:23) but does not define Keyframe, so confirm the exact definition.
-    source: ["reebeat:GLOSSARY.md:27-29"]
+    source: ["tsukuri:GLOSSARY.md:27-29"]
     relations:
       - type: relates
-        to: concept-reebeat-element
+        to: concept-tsukuri-element
         label: shows
         multiplicity: "1 to 0..*"
       - type: relates
-        to: concept-reebeat-beat
+        to: concept-tsukuri-beat
         label: is the end state of
         multiplicity: "1 to 1"
 
-  - id: concept-reebeat-line
+  - id: concept-tsukuri-line
     kind: concept
     title: Line
     statement: >-
@@ -121,41 +121,41 @@ elements:
       The operator should confirm the definition.
     source:
       - log:27
-      - reebeat:GLOSSARY.md:31-33
+      - tsukuri:GLOSSARY.md:31-33
     relations:
       - type: relates
-        to: concept-reebeat-hint
+        to: concept-tsukuri-hint
         label: may carry
         multiplicity: "1 to 0..*"
       - type: part-of
-        to: concept-reebeat-beat
+        to: concept-tsukuri-beat
         label: carries
         multiplicity: "0..1 per Beat"
 
-  - id: concept-reebeat-effect
+  - id: concept-tsukuri-effect
     kind: concept
     title: Effect
     statement: >-
       An effect is declared in a Scene's effects block and is timed against an anchor.
     status: decided
     source:
-      - record:reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:162
-      - record:reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:163
-      - reebeat:GLOSSARY.md:35-37
+      - record:tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:162
+      - record:tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:163
+      - tsukuri:GLOSSARY.md:35-37
     relations:
       - type: part-of
-        to: concept-reebeat-scene
+        to: concept-tsukuri-scene
         multiplicity: "0..* per Scene"
       - type: relates
-        to: concept-reebeat-anchor
+        to: concept-tsukuri-anchor
         label: is timed against
         multiplicity: "1 to 1"
       - type: relates
-        to: concept-reebeat-element
+        to: concept-tsukuri-element
         label: acts on
         multiplicity: "0..* to 0..1"
 
-  - id: concept-reebeat-anchor
+  - id: concept-tsukuri-anchor
     kind: concept
     title: Anchor
     statement: >-
@@ -163,16 +163,16 @@ elements:
       start, its end or a percent of the way), or an Element's lifecycle.
     status: decided
     source:
-      - record:reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:163
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:15
-      - reebeat:GLOSSARY.md:39-41
+      - record:tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:163
+      - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:15
+      - tsukuri:GLOSSARY.md:39-41
     relations:
       - type: relates
-        to: concept-reebeat-lifecycle-event
+        to: concept-tsukuri-lifecycle-event
         label: may name
         multiplicity: "1 to 0..1"
 
-  - id: concept-reebeat-transition-anchor
+  - id: concept-tsukuri-transition-anchor
     kind: concept
     title: Transition anchor
     statement: >-
@@ -180,13 +180,13 @@ elements:
       to the slide change is anchored here, so it follows the motion and not the voice.
     status: decided
     source:
-      - record:reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:163
-      - reebeat:GLOSSARY.md:47-49
+      - record:tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:163
+      - tsukuri:GLOSSARY.md:47-49
     relations:
       - type: isa
-        to: concept-reebeat-anchor
+        to: concept-tsukuri-anchor
 
-  - id: concept-reebeat-lifecycle-event
+  - id: concept-tsukuri-lifecycle-event
     kind: concept
     title: Lifecycle event
     statement: >-
@@ -198,18 +198,18 @@ elements:
       Spec plan: spec 0002 and the glossary define enter, exit, move and update. The operator decided that lifecycles are
       anchors (spec 0002 line 162), not each event, so confirm them.
     source:
-      - reebeat:GLOSSARY.md:43-45
+      - tsukuri:GLOSSARY.md:43-45
     relations:
       - type: relates
-        to: concept-reebeat-element
+        to: concept-tsukuri-element
         label: happens to
         multiplicity: "0..* to 1"
       - type: relates
-        to: concept-reebeat-identity-diff
+        to: concept-tsukuri-identity-diff
         label: comes from
         multiplicity: "0..* to 1"
 
-  - id: concept-reebeat-hint
+  - id: concept-tsukuri-hint
     kind: concept
     title: Hint
     statement: >-
@@ -218,13 +218,13 @@ elements:
     status: proposed
     rationale: >-
       Observed in the repository: the glossary defines Hint. The operator's log does not name Hints, so confirm it.
-    source: ["reebeat:GLOSSARY.md:51-53"]
+    source: ["tsukuri:GLOSSARY.md:51-53"]
     relations:
       - type: part-of
-        to: concept-reebeat-beat
+        to: concept-tsukuri-beat
         multiplicity: "0..* per Beat"
 
-  - id: concept-reebeat-element
+  - id: concept-tsukuri-element
     kind: concept
     title: Element
     statement: >-
@@ -236,10 +236,10 @@ elements:
       - log:23
     relations:
       - type: part-of
-        to: concept-reebeat-scene
+        to: concept-tsukuri-scene
         multiplicity: "0..* per Scene"
 
-  - id: concept-reebeat-identity-diff
+  - id: concept-tsukuri-identity-diff
     kind: concept
     title: Identity diff
     statement: >-
@@ -248,26 +248,26 @@ elements:
       comparison runs between adjacent Scenes.
     status: decided
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213
       - log:23
       - log:83
-      - reebeat:GLOSSARY.md:65-67
+      - tsukuri:GLOSSARY.md:65-67
     relations:
       - type: relates
-        to: concept-reebeat-keyframe
+        to: concept-tsukuri-keyframe
         label: compares
         multiplicity: "1 to 2"
       - type: relates
-        to: concept-reebeat-plan
+        to: concept-tsukuri-plan
         label: is listed in
         multiplicity: "1 to 1"
 
-  - id: concept-reebeat-plan
+  - id: concept-tsukuri-plan
     kind: concept
     title: Plan
     statement: >-
       The named compiler stage between the Story and the schedule. It lists every Element, effect and identity decision,
-      keeps the author's intent, and is plain data for review and golden tests. `reebeat plan` prints it.
+      keeps the author's intent, and is plain data for review and golden tests. `tsukuri plan` prints it.
     attributes:
       - source hash
       - Scenes, Elements, effects, identity
@@ -277,22 +277,22 @@ elements:
       Spec plan: the design names the Plan as a stage and spec 0001 sets out its contents. The operator has not decided
       those contents, so confirm them.
     source:
-      - reebeat:docs/design/keyframe-engine.md:1112
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:90
+      - tsukuri:docs/design/keyframe-engine.md:1112
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:90
     relations:
       - type: relates
-        to: concept-reebeat-story
+        to: concept-tsukuri-story
         label: is derived from
         multiplicity: "1 to 1"
       - type: relates
-        to: concept-reebeat-timeline
+        to: concept-tsukuri-timeline
         label: is resolved into
         multiplicity: "1 to 0..1"
       - type: relates
         to: concept-org-ir
         label: is the release-1 form of
 
-  - id: concept-reebeat-timeline
+  - id: concept-tsukuri-timeline
     kind: concept
     title: Timeline
     statement: >-
@@ -306,15 +306,15 @@ elements:
       Spec plan: the design names the Timeline as a stage and spec 0001 sets out the integer-frame schedule. The operator
       has not decided those details, so confirm them.
     source:
-      - reebeat:docs/design/keyframe-engine.md:1112
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:68
+      - tsukuri:docs/design/keyframe-engine.md:1112
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:68
     relations:
       - type: relates
-        to: concept-reebeat-effect
+        to: concept-tsukuri-effect
         label: holds the frame of
         multiplicity: "1 to 0..*"
 
-  - id: concept-reebeat-model
+  - id: concept-tsukuri-model
     kind: concept
     title: Model
     statement: >-
@@ -324,11 +324,11 @@ elements:
     source: [log:62]
     relations:
       - type: relates
-        to: concept-reebeat-plan
+        to: concept-tsukuri-plan
         label: is unrolled into
         multiplicity: "1 to 1..* per artifact"
 
-  - id: concept-reebeat-build-graph
+  - id: concept-tsukuri-build-graph
     kind: concept
     title: Build graph
     statement: >-
@@ -338,28 +338,28 @@ elements:
     source: [log:62]
     relations:
       - type: relates
-        to: concept-reebeat-plan
+        to: concept-tsukuri-plan
         label: builds from
         multiplicity: "1 to 1..*"
 
-  - id: concept-reebeat-ir
+  - id: concept-tsukuri-ir
     kind: concept
     title: Story IR and Timeline IR
     statement: >-
-      reebeat's own JSON format, defined by an Effect Schema, for the story and for the timeline. The story IR is public
+      tsukuri's own JSON format, defined by an Effect Schema, for the story and for the timeline. The story IR is public
       and versioned. The timeline IR is an unstable build artifact, tagged unstable until the website Plan and the engine
       protocol exist. Exact time is stored in flicks. The JSON Schema is generated from the Effect Schema.
     status: decided
     source:
       - log:25
       - log:85
-      - reebeat:docs/specs/0007-scxml-persistent-ir-spike.md:23
-      - pr:reebeat#17
+      - tsukuri:docs/specs/0007-scxml-persistent-ir-spike.md:23
+      - pr:tsukuri#17
     relations:
       - type: isa
         to: concept-org-ir
 
-  - id: concept-reebeat-rendering
+  - id: concept-tsukuri-rendering
     kind: concept
     title: Rendering
     statement: >-
@@ -371,39 +371,39 @@ elements:
       - type: isa
         to: concept-org-artifact
       - type: relates
-        to: concept-reebeat-story
+        to: concept-tsukuri-story
         label: is derived from
         multiplicity: "0..* to 1"
 
-  - id: concept-reebeat-deck
+  - id: concept-tsukuri-deck
     kind: concept
     title: Deck
     statement: >-
       A rendering that is a reveal.js presentation.
     status: decided
     source:
-      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213
-      - reebeat:README.md:5
-      - reebeat:GLOSSARY.md:78-80
+      - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213
+      - tsukuri:README.md:5
+      - tsukuri:GLOSSARY.md:78-80
     relations:
       - type: isa
-        to: concept-reebeat-rendering
+        to: concept-tsukuri-rendering
 
-  - id: concept-reebeat-video
+  - id: concept-tsukuri-video
     kind: concept
     title: Video
     statement: >-
       A rendering captured from the Deck's page on a controlled clock.
     status: decided
     source:
-      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213
-      - reebeat:README.md:6
-      - reebeat:GLOSSARY.md:75-76
+      - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213
+      - tsukuri:README.md:6
+      - tsukuri:GLOSSARY.md:75-76
     relations:
       - type: isa
-        to: concept-reebeat-rendering
+        to: concept-tsukuri-rendering
 
-  - id: concept-reebeat-chapter
+  - id: concept-tsukuri-chapter
     kind: concept
     title: Chapter
     statement: >-
@@ -413,59 +413,59 @@ elements:
     rationale: >-
       Observed in the repository: the glossary lists Chapter among reserved groupings, yet its mapping table and the Plan
       use chapters. The operator should say whether it is modelled.
-    source: ["reebeat:GLOSSARY.md:124-125", "reebeat:GLOSSARY.md:89"]
+    source: ["tsukuri:GLOSSARY.md:124-125", "tsukuri:GLOSSARY.md:89"]
     relations:
       - type: part-of
-        to: concept-reebeat-story
+        to: concept-tsukuri-story
         multiplicity: "0..* per Story"
 
-  - id: concept-reebeat-library
+  - id: concept-tsukuri-library
     kind: concept
     title: Library
     statement: >-
       Pure code with no runtime and no service.
     status: decided
     source:
-      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
-      - reebeat:GLOSSARY.md:101-102
+      - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
+      - tsukuri:GLOSSARY.md:101-102
     relations:
       - type: relates
-        to: concept-reebeat-tier
+        to: concept-tsukuri-tier
         label: is a
         multiplicity: "1 to 1"
 
-  - id: concept-reebeat-service
+  - id: concept-tsukuri-service
     kind: concept
     title: Service
     statement: >-
       An Effect interface plus a contract that every implementation passes.
     status: decided
     source:
-      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
-      - reebeat:docs/design/keyframe-engine.md:1225
-      - reebeat:GLOSSARY.md:104-106
+      - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
+      - tsukuri:docs/design/keyframe-engine.md:1225
+      - tsukuri:GLOSSARY.md:104-106
     relations:
       - type: relates
-        to: concept-reebeat-contract-suite
+        to: concept-tsukuri-contract-suite
         label: is tested by
         multiplicity: "1 to 1"
 
-  - id: concept-reebeat-adapter
+  - id: concept-tsukuri-adapter
     kind: concept
     title: Adapter
     statement: >-
       A Layer that implements a service on an outside runtime. It is an integration.
     status: decided
     source:
-      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
-      - reebeat:GLOSSARY.md:108-110
+      - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
+      - tsukuri:GLOSSARY.md:108-110
     relations:
       - type: relates
-        to: concept-reebeat-service
+        to: concept-tsukuri-service
         label: fills
         multiplicity: "0..* to 1"
 
-  - id: concept-reebeat-selection
+  - id: concept-tsukuri-selection
     kind: concept
     title: Selection
     statement: >-
@@ -473,61 +473,61 @@ elements:
       back silently.
     status: decided
     source:
-      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
-      - reebeat:GLOSSARY.md:112-113
-      - reebeat:packages/services/src/selection.ts:18-26
+      - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
+      - tsukuri:GLOSSARY.md:112-113
+      - tsukuri:packages/services/src/selection.ts:18-26
     relations:
       - type: relates
-        to: concept-reebeat-adapter
+        to: concept-tsukuri-adapter
         label: chooses
 
-  - id: concept-reebeat-stand-in
+  - id: concept-tsukuri-stand-in
     kind: concept
     title: Stand-in
     statement: >-
       An offline stand-in for an integration, used in tests.
     status: decided
     source:
-      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
-      - reebeat:GLOSSARY.md:115-117
+      - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
+      - tsukuri:GLOSSARY.md:115-117
     relations:
       - type: isa
-        to: concept-reebeat-adapter
+        to: concept-tsukuri-adapter
 
-  - id: concept-reebeat-egress
+  - id: concept-tsukuri-egress
     kind: concept
     title: Egress
     statement: >-
       What an integration sends out of the machine, declared by the integration.
     status: decided
     source:
-      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
-      - reebeat:GLOSSARY.md:119-120
+      - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
+      - tsukuri:GLOSSARY.md:119-120
     relations:
       - type: part-of
-        to: concept-reebeat-adapter
+        to: concept-tsukuri-adapter
 
-  - id: concept-reebeat-contract-suite
+  - id: concept-tsukuri-contract-suite
     kind: concept
     title: Contract suite
     statement: >-
       The suite that every adapter of one service must pass.
     status: decided
     source:
-      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
-      - reebeat:docs/design/keyframe-engine.md:1225
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:259
+      - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
+      - tsukuri:docs/design/keyframe-engine.md:1225
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:259
     relations:
       - type: relates
-        to: concept-reebeat-adapter
+        to: concept-tsukuri-adapter
         label: is run against
         multiplicity: "1 to 1..*"
 
-  - id: concept-reebeat-tier
+  - id: concept-tsukuri-tier
     kind: concept
     title: Tier
     statement: >-
       One of three categories, library, service or integration, with one dependency direction.
     status: decided
     source:
-      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
+      - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235

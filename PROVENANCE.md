@@ -1,6 +1,8 @@
 # Provenance
 
-The development lifecycle is copied from [`reebeat/studio`](https://github.com/reebeat/studio) at commit `d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8` (`main`, 2026-10-29), which copied it from [`reebeat/reebeat`](https://github.com/reebeat/reebeat) at `f7c348877585f54b6bf00651608726dd7e5044d3` and adapted it from [`phibkro/vektorprogrammet-reimagined`](https://github.com/phibkro/vektorprogrammet-reimagined) at `797e9e41d96194b9479ff224ac1c40bbc0545888` (the donor). The headers that name the donor were kept. The operator confirmed on 2026-10-29 that the donor's code is his work (see reebeat's `docs/design/third-party.md`).
+> Since the rename to tsukuri (formerly the working name `reebeat`) a file listed here as identical to its source may differ from it in that word alone, and the names of the source's own files and packages are written with the current brand although the cited commit carries the old name.
+
+The development lifecycle is copied from [`tsukuri-labs/studio`](https://github.com/tsukuri-labs/studio) at commit `d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8` (`main`, 2026-10-29), which copied it from [`tsukuri-labs/tsukuri`](https://github.com/tsukuri-labs/tsukuri) at `f7c348877585f54b6bf00651608726dd7e5044d3` and adapted it from [`phibkro/vektorprogrammet-reimagined`](https://github.com/phibkro/vektorprogrammet-reimagined) at `797e9e41d96194b9479ff224ac1c40bbc0545888` (the donor). The headers that name the donor were kept. The operator confirmed on 2026-10-29 that the donor's code is his work (see tsukuri's `docs/design/third-party.md`).
 
 **Identical** means the file's git blob hash equals the source's, checked with `git hash-object <file>` against `git rev-parse d4fd75e:<file>` in a studio checkout.
 

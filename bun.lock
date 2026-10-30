@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "reebeat-org",
+      "name": "tsukuri-org",
       "devDependencies": {
         "@commitlint/cli": "21.2.3",
         "@commitlint/config-conventional": "21.2.3",
@@ -19,7 +19,7 @@
       },
     },
     "tools/intent": {
-      "name": "@reebeat-org/intent",
+      "name": "@tsukuri-org/intent",
       "version": "0.0.0",
       "dependencies": {
         "@effect/platform-node": "catalog:",
@@ -330,7 +330,7 @@
 
     "@redis/time-series": ["@redis/time-series@6.3.1", "", { "peerDependencies": { "@redis/client": "^6.3.1" } }, "sha512-MNDgrm+i63M/1a+XA+HcDsScwt4uBh/fGGJ84swTQZTFK5K5wMmxdlTRa4ZgmNJzjxMaszW/ipPScMUGV3aAMg=="],
 
-    "@reebeat-org/intent": ["@reebeat-org/intent@workspace:tools/intent"],
+    "@tsukuri-org/intent": ["@tsukuri-org/intent@workspace:tools/intent"],
 
     "@sec-ant/readable-stream": ["@sec-ant/readable-stream@0.4.1", "", {}, "sha512-831qok9r2t8AlxLko40y2ebgSDhenenCatLVeW/uBtnHPyhHOvG0C7TvfgecV+wHzIm5KUICgzmVpWS+IMEAeg=="],
 

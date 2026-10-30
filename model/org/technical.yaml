@@ -63,7 +63,7 @@ elements:
     tier: artifact
     title: The organisation profile
     statement: >-
-      `profile/README.md` is the page that visitors see on the reebeat organisation: vision, tagline, the product family,
+      `profile/README.md` is the page that visitors see on the tsukuri organisation: vision, tagline, the product family,
       status and roadmap links.
     package: profile/README.md
     licence: Apache-2.0
@@ -82,7 +82,7 @@ elements:
     title: The shared lifecycle toolchain
     statement: >-
       Git hooks, commitlint, gitleaks, the review and merge scripts and the CI workflow stay as copies in each of the four
-      repositories, with a provenance record. A drift test in `reebeat/.github` compares blob hashes of the files that
+      repositories, with a provenance record. A drift test in `tsukuri-labs/.github` compares blob hashes of the files that
       should be identical and fails on a difference; unifying the copies stays manual.
     status: decided
     source: [log:80, studio:PROVENANCE.md:3, foldkit-flow:PROVENANCE.md:3]
@@ -137,9 +137,9 @@ elements:
     status: proposed
     rationale: >-
       The operator decided the incremental build graph with dynamic dependencies and early cutoff (log line 62). The
-      narration scenario is an example drawn from issue 9 of reebeat; the operator should confirm it as the acceptance
+      narration scenario is an example drawn from issue 9 of tsukuri; the operator should confirm it as the acceptance
       scenario.
-    source: [log:62, log:10, "issue:reebeat#9"]
+    source: [log:62, log:10, "issue:tsukuri#9"]
     links:
       serves: [goal-org-incremental-builds]
 
@@ -156,7 +156,7 @@ elements:
       The same story is built twice, once warm and once cold. The text and data artifacts are byte-identical; the video
       has identical decoded frames and audio samples, and its container bytes are recorded.
     status: decided
-    source: [log:81, log:62, log:10, "issue:reebeat#9"]
+    source: [log:81, log:62, log:10, "issue:tsukuri#9"]
     links:
       serves: [goal-org-reproducible-builds]
 
@@ -207,7 +207,7 @@ elements:
     tier: external
     title: Effect
     statement: >-
-      reebeat is written in Effect. Packages that use unstable Effect APIs cap their version range below the next minor.
+      tsukuri is written in Effect. Packages that use unstable Effect APIs cap their version range below the next minor.
     licence: MIT
     status: decided
     source: [log:60, log:55]
@@ -306,15 +306,15 @@ elements:
     tier: artifact
     title: How it works (the technical description)
     statement: >-
-      A note in the reebeat repository that explains, for technical readers, how the qualities come from the mechanisms:
+      A note in the tsukuri repository that explains, for technical readers, how the qualities come from the mechanisms:
       the Model, Plan and Build layers, Effect and XState, prior art, the novelty claim and why React's core was rejected.
-    url: https://github.com/reebeat/reebeat/pull/24
+    url: https://github.com/tsukuri-labs/tsukuri/pull/24
     status: proposed
     rationale: >-
-      It is `docs/design/how-it-works.md` in open pull request 24 of reebeat, written for the operator's accepted technical
+      It is `docs/design/how-it-works.md` in open pull request 24 of tsukuri, written for the operator's accepted technical
       framing (log lines 58 to 65). It is not merged; the link goes to the pull request until it lands on `main`.
-    source: [log:58-65, "pr:reebeat#24"]
-    refs: ["pr:reebeat#24"]
+    source: [log:58-65, "pr:tsukuri#24"]
+    refs: ["pr:tsukuri#24"]
     canvas: [channels]
     links:
       serves: [goal-org-vision]

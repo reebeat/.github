@@ -324,7 +324,7 @@ const renderProductPage = (model: Model, scope: Scope): string => {
           oneLine(item.statement),
           "",
           item.kind === "component"
-            ? `Repository: ${item.repo === undefined ? "n/a" : `[reebeat/${item.repo}](https://github.com/reebeat/${item.repo})`}. Licence: ${item.licence ?? "not stated"}. Status of this description: ${item.status}.`
+            ? `Repository: ${item.repo === undefined ? "n/a" : `[tsukuri-labs/${item.repo}](https://github.com/tsukuri-labs/${item.repo})`}. Licence: ${item.licence ?? "not stated"}. Status of this description: ${item.status}.`
             : "",
           "",
         ],

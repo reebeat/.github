@@ -165,8 +165,8 @@ elements:
     ruleType: constraint
     title: Studio states no narration timing rule
     statement: >-
-      Studio states no rule for how a narration piece drives timing or follows an event. Reebeat writes that rule once, in
-      its spec 0004 or 0005, and studio shows reebeat's diagnostics in the Wiring lens.
+      Studio states no rule for how a narration piece drives timing or follows an event. Tsukuri writes that rule once, in
+      its spec 0004 or 0005, and studio shows tsukuri's diagnostics in the Wiring lens.
     status: decided
     source: [log:103, log:27]
     links:
@@ -175,11 +175,11 @@ elements:
   - id: rule-studio-no-narration-cycles
     kind: rule
     ruleType: event-action
-    title: The Wiring lens shows reebeat's cycle diagnostics
+    title: The Wiring lens shows tsukuri's cycle diagnostics
     statement: >-
-      Studio states no rule on narration cycles. When reebeat's lint reports a cycle, where a piece follows an event that
+      Studio states no rule on narration cycles. When tsukuri's lint reports a cycle, where a piece follows an event that
       waits for the same piece, the Wiring lens shows the loop.
-    when: Reebeat's lint reports a narration cycle
+    when: Tsukuri's lint reports a narration cycle
     then: The Wiring lens shows the loop with the line it comes from
     status: decided
     source: [log:103, studio:docs/design/lenses.md:60]
@@ -197,7 +197,7 @@ elements:
     then: Studio changes the offset and keeps the anchor
     status: proposed
     rationale: >-
-      The lenses note states it and says reebeat already requires a written reason for an absolute time. No operator line
+      The lenses note states it and says tsukuri already requires a written reason for an absolute time. No operator line
       records the rule.
       The operator should confirm retiming by offset.
     source: [studio:docs/design/lenses.md:56]
@@ -294,7 +294,7 @@ elements:
       deletion are blocked.
     status: proposed
     rationale: >-
-      Observed in the repository: spec 0000 builds the protection, and its header names branch protection like reebeat's
+      Observed in the repository: spec 0000 builds the protection, and its header names branch protection like tsukuri's
       among the operator's assignment. No line records the exact settings as decided. The operator must confirm them.
     source: [studio:docs/specs/0000-development-lifecycle.md:55, studio:AGENTS.md:20]
     links:

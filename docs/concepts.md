@@ -46,142 +46,142 @@ classDiagram
 
 | Element | Statement | Status | Links | Sources |
 | --- | --- | --- | --- | --- |
-| <a id="concept-org-ir"></a><code>concept-org-ir</code><br/>Concept | **Persistent IR.** The intermediate representation of a story: JSON owned by reebeat, with a schema for a chosen subset of SMIL, SCXML and FRP constructs. It is a format authors and tools edit, not an artifact. Attributes: a schema for a chosen subset of SMIL, SCXML and FRP constructs; isomorphic codecs where formats round-trip. | decided |  | [log L25][1] |
+| <a id="concept-org-ir"></a><code>concept-org-ir</code><br/>Concept | **Persistent IR.** The intermediate representation of a story: JSON owned by tsukuri, with a schema for a chosen subset of SMIL, SCXML and FRP constructs. It is a format authors and tools edit, not an artifact. Attributes: a schema for a chosen subset of SMIL, SCXML and FRP constructs; isomorphic codecs where formats round-trip. | decided |  | [log L25][1] |
 | <a id="concept-org-artifact"></a><code>concept-org-artifact</code><br/>Concept | **Artifact.** A produced file or site that people consume: a video, a presentation deck, or an interactive website. Artifact formats are not IR formats. Fountain is both an importer (a screenplay becomes a story) and an artifact renderer (a story becomes a screenplay); it is not the persistent IR, which stays JSON. Attributes: static or dynamic interface; interaction surfaces. | decided |  | [log L25][1], [log L37][2], [log L67-69][3] |
 | <a id="concept-org-interaction"></a><code>concept-org-interaction</code><br/>Concept | **Interaction.** An interaction is an element that can trigger events. It is surfaced to people and agents as a function, a tool call or a web control, and in a video as a scheduled event with a visible cursor. | decided |  | [log L37][2], [log L38][4], [log L39][5] |
 | <a id="concept-org-tier"></a><code>concept-org-tier</code><br/>Concept | **Free and paid tier.** A free tier holds the basic features that cost nothing to run. Costly premium features, such as multiplayer collaboration and heavily integrated hosted AI agents, sit behind a paywall. Attributes: feature; run cost. | decided |  | [log L43][6] |
 | <a id="concept-org-plugin"></a><code>concept-org-plugin</code><br/>Concept | **Plugin or extension.** A piece written by a user that extends the compiler or a product, such as a plugin, an extension or a render engine built with the SDK. It builds on the modular contracts and building blocks of the compiler. | decided |  | [log L28][7], [log L43][6] |
-| <a id="concept-org-agent-tool-protocol"></a><code>concept-org-agent-tool-protocol</code><br/>Concept | **Agent tool protocol.** Each tool through which an agent reads a story, applies an edit and runs the checks is declared once, in a protocol-neutral way. MCP is the first adapter, and its schema is generated from the declaration. A user's own agent gets the same tools as a hosted one, through MCP. Attributes: Name; Input Schema; Output Schema; Annotation; Effect. | decided |  | [log L77][8], [log L43][6], [reebeat:docs/design/open-core-boundary.md:25][9] |
+| <a id="concept-org-agent-tool-protocol"></a><code>concept-org-agent-tool-protocol</code><br/>Concept | **Agent tool protocol.** Each tool through which an agent reads a story, applies an edit and runs the checks is declared once, in a protocol-neutral way. MCP is the first adapter, and its schema is generated from the declaration. A user's own agent gets the same tools as a hosted one, through MCP. Attributes: Name; Input Schema; Output Schema; Annotation; Effect. | decided |  | [log L77][8], [log L43][6], [tsukuri:docs/design/open-core-boundary.md:25][9] |
 | <a id="concept-org-model"></a><code>concept-org-model</code><br/>Concept | **Model.** The statechart-plus-time form of a story. It may contain cycles, such as interactive loops and repeats. | decided |  | [log L62][10] |
 | <a id="concept-org-plan"></a><code>concept-org-plan</code><br/>Concept | **Plan.** The unrolling of the Model for one artifact: a timeline for video, steps for a deck, a navigable graph for a website. | decided |  | [log L62][10] |
 | <a id="concept-org-build-graph"></a><code>concept-org-build-graph</code><br/>Concept | **Build graph.** The incremental DAG of build tasks with dynamic dependencies, early cutoff and content-addressed persistent traces. Only this graph is a DAG. Attributes: dynamic dependencies; early cutoff; content-addressed trace. | decided |  | [log L62][10] |
 
-## reebeat (the compiler)
+## tsukuri (the compiler)
 
 31 elements: 23 decided, 8 proposed, 0 open.
 
 ```mermaid
 classDiagram
-    class concept_reebeat_story["Story"]
-    concept_reebeat_story : one concern and one audience
-    concept_reebeat_story : title, author and default speech speed
-    class concept_reebeat_screenplay["Screenplay"]
-    class concept_reebeat_scene["Scene"]
-    class concept_reebeat_state["State"]
-    class concept_reebeat_beat["Beat"]
-    class concept_reebeat_keyframe["Keyframe"]
-    class concept_reebeat_line["Line"]
-    concept_reebeat_line : narration text
-    concept_reebeat_line : aligned word times
-    concept_reebeat_line : delivery hints
-    class concept_reebeat_effect["Effect"]
-    class concept_reebeat_anchor["Anchor"]
-    class concept_reebeat_transition_anchor["Transition anchor"]
-    class concept_reebeat_lifecycle_event["Lifecycle event"]
-    class concept_reebeat_hint["Hint"]
-    class concept_reebeat_element["Element"]
-    class concept_reebeat_identity_diff["Identity diff"]
-    class concept_reebeat_plan["Plan"]
-    concept_reebeat_plan : source hash
-    concept_reebeat_plan : Scenes, Elements, effects, identity
-    concept_reebeat_plan : canonical JSON, byte-comparable
-    class concept_reebeat_timeline["Timeline"]
-    concept_reebeat_timeline : total frames
-    concept_reebeat_timeline : frame of each effect
-    class concept_reebeat_model["Model"]
-    class concept_reebeat_build_graph["Build graph"]
-    class concept_reebeat_ir["Story IR and Timeline IR"]
-    class concept_reebeat_rendering["Rendering"]
-    class concept_reebeat_deck["Deck"]
-    class concept_reebeat_video["Video"]
-    class concept_reebeat_chapter["Chapter"]
-    class concept_reebeat_library["Library"]
-    class concept_reebeat_service["Service"]
-    class concept_reebeat_adapter["Adapter"]
-    class concept_reebeat_selection["Selection"]
-    class concept_reebeat_stand_in["Stand-in"]
-    class concept_reebeat_egress["Egress"]
-    class concept_reebeat_contract_suite["Contract suite"]
-    class concept_reebeat_tier["Tier"]
+    class concept_tsukuri_story["Story"]
+    concept_tsukuri_story : one concern and one audience
+    concept_tsukuri_story : title, author and default speech speed
+    class concept_tsukuri_screenplay["Screenplay"]
+    class concept_tsukuri_scene["Scene"]
+    class concept_tsukuri_state["State"]
+    class concept_tsukuri_beat["Beat"]
+    class concept_tsukuri_keyframe["Keyframe"]
+    class concept_tsukuri_line["Line"]
+    concept_tsukuri_line : narration text
+    concept_tsukuri_line : aligned word times
+    concept_tsukuri_line : delivery hints
+    class concept_tsukuri_effect["Effect"]
+    class concept_tsukuri_anchor["Anchor"]
+    class concept_tsukuri_transition_anchor["Transition anchor"]
+    class concept_tsukuri_lifecycle_event["Lifecycle event"]
+    class concept_tsukuri_hint["Hint"]
+    class concept_tsukuri_element["Element"]
+    class concept_tsukuri_identity_diff["Identity diff"]
+    class concept_tsukuri_plan["Plan"]
+    concept_tsukuri_plan : source hash
+    concept_tsukuri_plan : Scenes, Elements, effects, identity
+    concept_tsukuri_plan : canonical JSON, byte-comparable
+    class concept_tsukuri_timeline["Timeline"]
+    concept_tsukuri_timeline : total frames
+    concept_tsukuri_timeline : frame of each effect
+    class concept_tsukuri_model["Model"]
+    class concept_tsukuri_build_graph["Build graph"]
+    class concept_tsukuri_ir["Story IR and Timeline IR"]
+    class concept_tsukuri_rendering["Rendering"]
+    class concept_tsukuri_deck["Deck"]
+    class concept_tsukuri_video["Video"]
+    class concept_tsukuri_chapter["Chapter"]
+    class concept_tsukuri_library["Library"]
+    class concept_tsukuri_service["Service"]
+    class concept_tsukuri_adapter["Adapter"]
+    class concept_tsukuri_selection["Selection"]
+    class concept_tsukuri_stand_in["Stand-in"]
+    class concept_tsukuri_egress["Egress"]
+    class concept_tsukuri_contract_suite["Contract suite"]
+    class concept_tsukuri_tier["Tier"]
     class concept_org_ir["Persistent IR"]
     class concept_org_artifact["Artifact"]
-    concept_reebeat_story "1" -->  "0..*"concept_reebeat_screenplay : is imported from, or written as
-    concept_reebeat_screenplay "1" -->  "1"concept_reebeat_plan : is read into
-    concept_reebeat_story "1..* per Story" *-- concept_reebeat_scene
-    concept_reebeat_state <|-- concept_reebeat_scene : is a compound
-    concept_reebeat_state "0..*" -->  "0..*"concept_reebeat_beat : is joined by
-    concept_reebeat_beat --> concept_reebeat_state : joins
-    concept_reebeat_keyframe "1" -->  "0..*"concept_reebeat_element : shows
-    concept_reebeat_keyframe "1" -->  "1"concept_reebeat_beat : is the end state of
-    concept_reebeat_line "1" -->  "0..*"concept_reebeat_hint : may carry
-    concept_reebeat_beat "0..1 per Beat" *-- concept_reebeat_line : carries
-    concept_reebeat_scene "0..* per Scene" *-- concept_reebeat_effect
-    concept_reebeat_effect "1" -->  "1"concept_reebeat_anchor : is timed against
-    concept_reebeat_effect "0..*" -->  "0..1"concept_reebeat_element : acts on
-    concept_reebeat_anchor "1" -->  "0..1"concept_reebeat_lifecycle_event : may name
-    concept_reebeat_anchor <|-- concept_reebeat_transition_anchor
-    concept_reebeat_lifecycle_event "0..*" -->  "1"concept_reebeat_element : happens to
-    concept_reebeat_lifecycle_event "0..*" -->  "1"concept_reebeat_identity_diff : comes from
-    concept_reebeat_beat "0..* per Beat" *-- concept_reebeat_hint
-    concept_reebeat_scene "0..* per Scene" *-- concept_reebeat_element
-    concept_reebeat_identity_diff "1" -->  "2"concept_reebeat_keyframe : compares
-    concept_reebeat_identity_diff "1" -->  "1"concept_reebeat_plan : is listed in
-    concept_reebeat_plan "1" -->  "1"concept_reebeat_story : is derived from
-    concept_reebeat_plan "1" -->  "0..1"concept_reebeat_timeline : is resolved into
-    concept_reebeat_plan --> concept_org_ir : is the release-1 form of
-    concept_reebeat_timeline "1" -->  "0..*"concept_reebeat_effect : holds the frame of
-    concept_reebeat_model "1" -->  "1..* per artifact"concept_reebeat_plan : is unrolled into
-    concept_reebeat_build_graph "1" -->  "1..*"concept_reebeat_plan : builds from
-    concept_org_ir <|-- concept_reebeat_ir
-    concept_org_artifact <|-- concept_reebeat_rendering
-    concept_reebeat_rendering "0..*" -->  "1"concept_reebeat_story : is derived from
-    concept_reebeat_rendering <|-- concept_reebeat_deck
-    concept_reebeat_rendering <|-- concept_reebeat_video
-    concept_reebeat_story "0..* per Story" *-- concept_reebeat_chapter
-    concept_reebeat_library "1" -->  "1"concept_reebeat_tier : is a
-    concept_reebeat_service "1" -->  "1"concept_reebeat_contract_suite : is tested by
-    concept_reebeat_adapter "0..*" -->  "1"concept_reebeat_service : fills
-    concept_reebeat_selection --> concept_reebeat_adapter : chooses
-    concept_reebeat_adapter <|-- concept_reebeat_stand_in
-    concept_reebeat_adapter *-- concept_reebeat_egress
-    concept_reebeat_contract_suite "1" -->  "1..*"concept_reebeat_adapter : is run against
+    concept_tsukuri_story "1" -->  "0..*"concept_tsukuri_screenplay : is imported from, or written as
+    concept_tsukuri_screenplay "1" -->  "1"concept_tsukuri_plan : is read into
+    concept_tsukuri_story "1..* per Story" *-- concept_tsukuri_scene
+    concept_tsukuri_state <|-- concept_tsukuri_scene : is a compound
+    concept_tsukuri_state "0..*" -->  "0..*"concept_tsukuri_beat : is joined by
+    concept_tsukuri_beat --> concept_tsukuri_state : joins
+    concept_tsukuri_keyframe "1" -->  "0..*"concept_tsukuri_element : shows
+    concept_tsukuri_keyframe "1" -->  "1"concept_tsukuri_beat : is the end state of
+    concept_tsukuri_line "1" -->  "0..*"concept_tsukuri_hint : may carry
+    concept_tsukuri_beat "0..1 per Beat" *-- concept_tsukuri_line : carries
+    concept_tsukuri_scene "0..* per Scene" *-- concept_tsukuri_effect
+    concept_tsukuri_effect "1" -->  "1"concept_tsukuri_anchor : is timed against
+    concept_tsukuri_effect "0..*" -->  "0..1"concept_tsukuri_element : acts on
+    concept_tsukuri_anchor "1" -->  "0..1"concept_tsukuri_lifecycle_event : may name
+    concept_tsukuri_anchor <|-- concept_tsukuri_transition_anchor
+    concept_tsukuri_lifecycle_event "0..*" -->  "1"concept_tsukuri_element : happens to
+    concept_tsukuri_lifecycle_event "0..*" -->  "1"concept_tsukuri_identity_diff : comes from
+    concept_tsukuri_beat "0..* per Beat" *-- concept_tsukuri_hint
+    concept_tsukuri_scene "0..* per Scene" *-- concept_tsukuri_element
+    concept_tsukuri_identity_diff "1" -->  "2"concept_tsukuri_keyframe : compares
+    concept_tsukuri_identity_diff "1" -->  "1"concept_tsukuri_plan : is listed in
+    concept_tsukuri_plan "1" -->  "1"concept_tsukuri_story : is derived from
+    concept_tsukuri_plan "1" -->  "0..1"concept_tsukuri_timeline : is resolved into
+    concept_tsukuri_plan --> concept_org_ir : is the release-1 form of
+    concept_tsukuri_timeline "1" -->  "0..*"concept_tsukuri_effect : holds the frame of
+    concept_tsukuri_model "1" -->  "1..* per artifact"concept_tsukuri_plan : is unrolled into
+    concept_tsukuri_build_graph "1" -->  "1..*"concept_tsukuri_plan : builds from
+    concept_org_ir <|-- concept_tsukuri_ir
+    concept_org_artifact <|-- concept_tsukuri_rendering
+    concept_tsukuri_rendering "0..*" -->  "1"concept_tsukuri_story : is derived from
+    concept_tsukuri_rendering <|-- concept_tsukuri_deck
+    concept_tsukuri_rendering <|-- concept_tsukuri_video
+    concept_tsukuri_story "0..* per Story" *-- concept_tsukuri_chapter
+    concept_tsukuri_library "1" -->  "1"concept_tsukuri_tier : is a
+    concept_tsukuri_service "1" -->  "1"concept_tsukuri_contract_suite : is tested by
+    concept_tsukuri_adapter "0..*" -->  "1"concept_tsukuri_service : fills
+    concept_tsukuri_selection --> concept_tsukuri_adapter : chooses
+    concept_tsukuri_adapter <|-- concept_tsukuri_stand_in
+    concept_tsukuri_adapter *-- concept_tsukuri_egress
+    concept_tsukuri_contract_suite "1" -->  "1..*"concept_tsukuri_adapter : is run against
 ```
 
 | Element | Statement | Status | Links | Sources |
 | --- | --- | --- | --- | --- |
-| <a id="concept-reebeat-screenplay"></a><code>concept-reebeat-screenplay</code><br/>Concept | **Screenplay.** A Fountain file with reebeat's fixed vocabulary. It is an input of the importer, which reads it into a Story, and an artifact that a renderer writes from a Story. In release 1 the importer is the only way to declare a Story. A Screenplay is not the persistent IR: JSON stays the IR. | decided |  | [record reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213][11], [reebeat:GLOSSARY.md:15-17][12], [log L25][1], [log L67-69][3] |
-| <a id="concept-reebeat-scene"></a><code>concept-reebeat-scene</code><br/>Concept | **Scene.** A Scene is a compound State: it groups States in the story's statechart. | decided |  | [log L19][13] |
-| <a id="concept-reebeat-state"></a><code>concept-reebeat-state</code><br/>Concept | **State.** A node of the story's statechart. Scenes and States are nodes, and Beats are the edges between them. | decided |  | [log L19][13] |
-| <a id="concept-reebeat-beat"></a><code>concept-reebeat-beat</code><br/>Concept | **Beat.** A Beat is a transition, an edge between States. | decided |  | [log L19][13] |
-| <a id="concept-reebeat-effect"></a><code>concept-reebeat-effect</code><br/>Concept | **Effect.** An effect is declared in a Scene's effects block and is timed against an anchor. | decided |  | [record reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:162][14], [record reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:163][15], [reebeat:GLOSSARY.md:35-37][16] |
-| <a id="concept-reebeat-anchor"></a><code>concept-reebeat-anchor</code><br/>Concept | **Anchor.** A named moment an effect is timed against: a word, `scene.start`, `scene.end`, the transition into the Scene (its start, its end or a percent of the way), or an Element's lifecycle. | decided |  | [record reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:163][15], [reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:15][17], [reebeat:GLOSSARY.md:39-41][18] |
-| <a id="concept-reebeat-transition-anchor"></a><code>concept-reebeat-transition-anchor</code><br/>Concept | **Transition anchor.** The Scene's incoming slide transition as an anchor: its start, its end or a percent of the way. A sound that belongs to the slide change is anchored here, so it follows the motion and not the voice. | decided |  | [record reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:163][15], [reebeat:GLOSSARY.md:47-49][19] |
-| <a id="concept-reebeat-element"></a><code>concept-reebeat-element</code><br/>Concept | **Element.** A visible thing with an id. Elements declare styles and transitions, and the same id is the same entity across Scenes. | decided |  | [log L20][20], [log L23][21] |
-| <a id="concept-reebeat-identity-diff"></a><code>concept-reebeat-identity-diff</code><br/>Concept | **Identity diff.** The comparison of two Keyframes by Element id that derives motion. Ids are story-global, so one id is one entity. An id only in the second enters, an id only in the first exits, and an id in both updates. Until spec 0005 the comparison runs between adjacent Scenes. | decided |  | [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213][11], [log L23][21], [log L83][22], [reebeat:GLOSSARY.md:65-67][23] |
-| <a id="concept-reebeat-model"></a><code>concept-reebeat-model</code><br/>Concept | **Model.** The first of three layers: a statechart plus functional reactive and SMIL time. It may contain cycles, such as interactive loops and repeats. | decided |  | [log L62][10] |
-| <a id="concept-reebeat-build-graph"></a><code>concept-reebeat-build-graph</code><br/>Concept | **Build graph.** The third layer: an incremental graph with dynamic dependencies, early cutoff and content-addressed persistent traces. "DAG" applies to this graph only. | decided |  | [log L62][10] |
-| <a id="concept-reebeat-ir"></a><code>concept-reebeat-ir</code><br/>Concept | **Story IR and Timeline IR.** reebeat's own JSON format, defined by an Effect Schema, for the story and for the timeline. The story IR is public and versioned. The timeline IR is an unstable build artifact, tagged unstable until the website Plan and the engine protocol exist. Exact time is stored in flicks. The JSON Schema is generated from the Effect Schema. | decided |  | [log L25][1], [log L85][24], [reebeat:docs/specs/0007-scxml-persistent-ir-spike.md:23][25], [pr reebeat#17][26] |
-| <a id="concept-reebeat-rendering"></a><code>concept-reebeat-rendering</code><br/>Concept | **Rendering.** An output derived from a Story. It is an artifact, and artifact formats are different from IR formats. | decided |  | [log L25][1] |
-| <a id="concept-reebeat-deck"></a><code>concept-reebeat-deck</code><br/>Concept | **Deck.** A rendering that is a reveal.js presentation. | decided |  | [record reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213][11], [reebeat:README.md:5][27], [reebeat:GLOSSARY.md:78-80][28] |
-| <a id="concept-reebeat-video"></a><code>concept-reebeat-video</code><br/>Concept | **Video.** A rendering captured from the Deck's page on a controlled clock. | decided |  | [record reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213][11], [reebeat:README.md:6][29], [reebeat:GLOSSARY.md:75-76][30] |
-| <a id="concept-reebeat-library"></a><code>concept-reebeat-library</code><br/>Concept | **Library.** Pure code with no runtime and no service. | decided |  | [record reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235][31], [reebeat:GLOSSARY.md:101-102][32] |
-| <a id="concept-reebeat-service"></a><code>concept-reebeat-service</code><br/>Concept | **Service.** An Effect interface plus a contract that every implementation passes. | decided |  | [record reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235][31], [reebeat:docs/design/keyframe-engine.md:1225][33], [reebeat:GLOSSARY.md:104-106][34] |
-| <a id="concept-reebeat-adapter"></a><code>concept-reebeat-adapter</code><br/>Concept | **Adapter.** A Layer that implements a service on an outside runtime. It is an integration. | decided |  | [record reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235][31], [reebeat:GLOSSARY.md:108-110][35] |
-| <a id="concept-reebeat-selection"></a><code>concept-reebeat-selection</code><br/>Concept | **Selection.** Which adapter fills each service. Selection is explicit configuration at the composition root, and it never falls back silently. | decided |  | [record reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235][31], [reebeat:GLOSSARY.md:112-113][36], [reebeat:packages/services/src/selection.ts:18-26][37] |
-| <a id="concept-reebeat-stand-in"></a><code>concept-reebeat-stand-in</code><br/>Concept | **Stand-in.** An offline stand-in for an integration, used in tests. | decided |  | [record reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235][31], [reebeat:GLOSSARY.md:115-117][38] |
-| <a id="concept-reebeat-egress"></a><code>concept-reebeat-egress</code><br/>Concept | **Egress.** What an integration sends out of the machine, declared by the integration. | decided |  | [record reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235][31], [reebeat:GLOSSARY.md:119-120][39] |
-| <a id="concept-reebeat-contract-suite"></a><code>concept-reebeat-contract-suite</code><br/>Concept | **Contract suite.** The suite that every adapter of one service must pass. | decided |  | [record reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235][31], [reebeat:docs/design/keyframe-engine.md:1225][33], [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:259][40] |
-| <a id="concept-reebeat-tier"></a><code>concept-reebeat-tier</code><br/>Concept | **Tier.** One of three categories, library, service or integration, with one dependency direction. | decided |  | [record reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235][31] |
-| <a id="concept-reebeat-story"></a><code>concept-reebeat-story</code><br/>Concept | **Story.** The largest unit with one concern and one audience. It contains Scenes. Its declaration is the story IR, and in release 1 a Story is imported from one Screenplay. A Video is a rendering of a Story, not the Story. Attributes: one concern and one audience; title, author and default speech speed. *Why proposed:* Observed in the repository: the glossary, which an agent wrote, defines Story and says its source is one Screenplay. The operator later said that JSON stays the persistent IR and that a Screenplay is both an importer input and an artifact (log:25, log:67-69). The glossary does not yet say so. The decision log defines Scene, State and Beat but does not define Story, so confirm it. | proposed |  | [reebeat:GLOSSARY.md:11-13][41], [log L25][1], [log L67-69][3] |
-| <a id="concept-reebeat-keyframe"></a><code>concept-reebeat-keyframe</code><br/>Concept | **Keyframe.** The visual state a Beat ends in: every visible Element with its properties. *Why proposed:* Observed in the repository: the glossary defines the Keyframe as the state a Beat ends in. The log decides that an id carries identity across Scenes (log:23) but does not define Keyframe, so confirm the exact definition. | proposed |  | [reebeat:GLOSSARY.md:27-29][42] |
-| <a id="concept-reebeat-line"></a><code>concept-reebeat-line</code><br/>Concept | **Line.** The narration that carries a Beat: the dialogue of the NARRATOR, aligned to words. Its narration text is the dialogue itself. Subtitles and speaker notes carry exactly that text. Attributes: narration text; aligned word times; delivery hints. *Why proposed:* Observed in the repository: the glossary defines Line, and the log describes narration (log:27) without defining it. The operator should confirm the definition. | proposed |  | [log L27][43], [reebeat:GLOSSARY.md:31-33][44] |
-| <a id="concept-reebeat-lifecycle-event"></a><code>concept-reebeat-lifecycle-event</code><br/>Concept | **Lifecycle event.** What happens to an Element in a Scene, from the identity diff: enter, exit, move or update. Enter, exit, move and update each have a start and an end, except an instant such as an exit, which has no window and no percent. Move and update follow the renderer's declared easing. The others are linear in time. *Why proposed:* Spec plan: spec 0002 and the glossary define enter, exit, move and update. The operator decided that lifecycles are anchors (spec 0002 line 162), not each event, so confirm them. | proposed |  | [reebeat:GLOSSARY.md:43-45][45] |
-| <a id="concept-reebeat-hint"></a><code>concept-reebeat-hint</code><br/>Concept | **Hint.** An optional instruction that the content alone does not carry: a delivery parenthetical before a Line, or a transition between Scenes. *Why proposed:* Observed in the repository: the glossary defines Hint. The operator's log does not name Hints, so confirm it. | proposed |  | [reebeat:GLOSSARY.md:51-53][46] |
-| <a id="concept-reebeat-plan"></a><code>concept-reebeat-plan</code><br/>Concept | **Plan.** The named compiler stage between the Story and the schedule. It lists every Element, effect and identity decision, keeps the author's intent, and is plain data for review and golden tests. `reebeat plan` prints it. Attributes: source hash; Scenes, Elements, effects, identity; canonical JSON, byte-comparable. *Why proposed:* Spec plan: the design names the Plan as a stage and spec 0001 sets out its contents. The operator has not decided those contents, so confirm them. | proposed |  | [reebeat:docs/design/keyframe-engine.md:1112][47], [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:90][48] |
-| <a id="concept-reebeat-timeline"></a><code>concept-reebeat-timeline</code><br/>Concept | **Timeline.** The Plan with every Line, effect, step and slide change placed at an integer frame. The schedule stage builds it from the aligned words and the renderer's lifecycle. Attributes: total frames; frame of each effect. *Why proposed:* Spec plan: the design names the Timeline as a stage and spec 0001 sets out the integer-frame schedule. The operator has not decided those details, so confirm them. | proposed |  | [reebeat:docs/design/keyframe-engine.md:1112][47], [reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:68][49] |
-| <a id="concept-reebeat-chapter"></a><code>concept-reebeat-chapter</code><br/>Concept | **Chapter.** A named run of consecutive Scenes, introduced by a Section heading. A Video's chapter marks and a Deck's slide groups come from it. *Why proposed:* Observed in the repository: the glossary lists Chapter among reserved groupings, yet its mapping table and the Plan use chapters. The operator should say whether it is modelled. | proposed |  | [reebeat:GLOSSARY.md:124-125][50], [reebeat:GLOSSARY.md:89][51] |
+| <a id="concept-tsukuri-screenplay"></a><code>concept-tsukuri-screenplay</code><br/>Concept | **Screenplay.** A Fountain file with tsukuri's fixed vocabulary. It is an input of the importer, which reads it into a Story, and an artifact that a renderer writes from a Story. In release 1 the importer is the only way to declare a Story. A Screenplay is not the persistent IR: JSON stays the IR. | decided |  | [record tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213][11], [tsukuri:GLOSSARY.md:15-17][12], [log L25][1], [log L67-69][3] |
+| <a id="concept-tsukuri-scene"></a><code>concept-tsukuri-scene</code><br/>Concept | **Scene.** A Scene is a compound State: it groups States in the story's statechart. | decided |  | [log L19][13] |
+| <a id="concept-tsukuri-state"></a><code>concept-tsukuri-state</code><br/>Concept | **State.** A node of the story's statechart. Scenes and States are nodes, and Beats are the edges between them. | decided |  | [log L19][13] |
+| <a id="concept-tsukuri-beat"></a><code>concept-tsukuri-beat</code><br/>Concept | **Beat.** A Beat is a transition, an edge between States. | decided |  | [log L19][13] |
+| <a id="concept-tsukuri-effect"></a><code>concept-tsukuri-effect</code><br/>Concept | **Effect.** An effect is declared in a Scene's effects block and is timed against an anchor. | decided |  | [record tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:162][14], [record tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:163][15], [tsukuri:GLOSSARY.md:35-37][16] |
+| <a id="concept-tsukuri-anchor"></a><code>concept-tsukuri-anchor</code><br/>Concept | **Anchor.** A named moment an effect is timed against: a word, `scene.start`, `scene.end`, the transition into the Scene (its start, its end or a percent of the way), or an Element's lifecycle. | decided |  | [record tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:163][15], [tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:15][17], [tsukuri:GLOSSARY.md:39-41][18] |
+| <a id="concept-tsukuri-transition-anchor"></a><code>concept-tsukuri-transition-anchor</code><br/>Concept | **Transition anchor.** The Scene's incoming slide transition as an anchor: its start, its end or a percent of the way. A sound that belongs to the slide change is anchored here, so it follows the motion and not the voice. | decided |  | [record tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:163][15], [tsukuri:GLOSSARY.md:47-49][19] |
+| <a id="concept-tsukuri-element"></a><code>concept-tsukuri-element</code><br/>Concept | **Element.** A visible thing with an id. Elements declare styles and transitions, and the same id is the same entity across Scenes. | decided |  | [log L20][20], [log L23][21] |
+| <a id="concept-tsukuri-identity-diff"></a><code>concept-tsukuri-identity-diff</code><br/>Concept | **Identity diff.** The comparison of two Keyframes by Element id that derives motion. Ids are story-global, so one id is one entity. An id only in the second enters, an id only in the first exits, and an id in both updates. Until spec 0005 the comparison runs between adjacent Scenes. | decided |  | [tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213][11], [log L23][21], [log L83][22], [tsukuri:GLOSSARY.md:65-67][23] |
+| <a id="concept-tsukuri-model"></a><code>concept-tsukuri-model</code><br/>Concept | **Model.** The first of three layers: a statechart plus functional reactive and SMIL time. It may contain cycles, such as interactive loops and repeats. | decided |  | [log L62][10] |
+| <a id="concept-tsukuri-build-graph"></a><code>concept-tsukuri-build-graph</code><br/>Concept | **Build graph.** The third layer: an incremental graph with dynamic dependencies, early cutoff and content-addressed persistent traces. "DAG" applies to this graph only. | decided |  | [log L62][10] |
+| <a id="concept-tsukuri-ir"></a><code>concept-tsukuri-ir</code><br/>Concept | **Story IR and Timeline IR.** tsukuri's own JSON format, defined by an Effect Schema, for the story and for the timeline. The story IR is public and versioned. The timeline IR is an unstable build artifact, tagged unstable until the website Plan and the engine protocol exist. Exact time is stored in flicks. The JSON Schema is generated from the Effect Schema. | decided |  | [log L25][1], [log L85][24], [tsukuri:docs/specs/0007-scxml-persistent-ir-spike.md:23][25], [pr tsukuri#17][26] |
+| <a id="concept-tsukuri-rendering"></a><code>concept-tsukuri-rendering</code><br/>Concept | **Rendering.** An output derived from a Story. It is an artifact, and artifact formats are different from IR formats. | decided |  | [log L25][1] |
+| <a id="concept-tsukuri-deck"></a><code>concept-tsukuri-deck</code><br/>Concept | **Deck.** A rendering that is a reveal.js presentation. | decided |  | [record tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213][11], [tsukuri:README.md:5][27], [tsukuri:GLOSSARY.md:78-80][28] |
+| <a id="concept-tsukuri-video"></a><code>concept-tsukuri-video</code><br/>Concept | **Video.** A rendering captured from the Deck's page on a controlled clock. | decided |  | [record tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213][11], [tsukuri:README.md:6][29], [tsukuri:GLOSSARY.md:75-76][30] |
+| <a id="concept-tsukuri-library"></a><code>concept-tsukuri-library</code><br/>Concept | **Library.** Pure code with no runtime and no service. | decided |  | [record tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235][31], [tsukuri:GLOSSARY.md:101-102][32] |
+| <a id="concept-tsukuri-service"></a><code>concept-tsukuri-service</code><br/>Concept | **Service.** An Effect interface plus a contract that every implementation passes. | decided |  | [record tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235][31], [tsukuri:docs/design/keyframe-engine.md:1225][33], [tsukuri:GLOSSARY.md:104-106][34] |
+| <a id="concept-tsukuri-adapter"></a><code>concept-tsukuri-adapter</code><br/>Concept | **Adapter.** A Layer that implements a service on an outside runtime. It is an integration. | decided |  | [record tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235][31], [tsukuri:GLOSSARY.md:108-110][35] |
+| <a id="concept-tsukuri-selection"></a><code>concept-tsukuri-selection</code><br/>Concept | **Selection.** Which adapter fills each service. Selection is explicit configuration at the composition root, and it never falls back silently. | decided |  | [record tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235][31], [tsukuri:GLOSSARY.md:112-113][36], [tsukuri:packages/services/src/selection.ts:18-26][37] |
+| <a id="concept-tsukuri-stand-in"></a><code>concept-tsukuri-stand-in</code><br/>Concept | **Stand-in.** An offline stand-in for an integration, used in tests. | decided |  | [record tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235][31], [tsukuri:GLOSSARY.md:115-117][38] |
+| <a id="concept-tsukuri-egress"></a><code>concept-tsukuri-egress</code><br/>Concept | **Egress.** What an integration sends out of the machine, declared by the integration. | decided |  | [record tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235][31], [tsukuri:GLOSSARY.md:119-120][39] |
+| <a id="concept-tsukuri-contract-suite"></a><code>concept-tsukuri-contract-suite</code><br/>Concept | **Contract suite.** The suite that every adapter of one service must pass. | decided |  | [record tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235][31], [tsukuri:docs/design/keyframe-engine.md:1225][33], [tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:259][40] |
+| <a id="concept-tsukuri-tier"></a><code>concept-tsukuri-tier</code><br/>Concept | **Tier.** One of three categories, library, service or integration, with one dependency direction. | decided |  | [record tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235][31] |
+| <a id="concept-tsukuri-story"></a><code>concept-tsukuri-story</code><br/>Concept | **Story.** The largest unit with one concern and one audience. It contains Scenes. Its declaration is the story IR, and in release 1 a Story is imported from one Screenplay. A Video is a rendering of a Story, not the Story. Attributes: one concern and one audience; title, author and default speech speed. *Why proposed:* Observed in the repository: the glossary, which an agent wrote, defines Story and says its source is one Screenplay. The operator later said that JSON stays the persistent IR and that a Screenplay is both an importer input and an artifact (log:25, log:67-69). The glossary does not yet say so. The decision log defines Scene, State and Beat but does not define Story, so confirm it. | proposed |  | [tsukuri:GLOSSARY.md:11-13][41], [log L25][1], [log L67-69][3] |
+| <a id="concept-tsukuri-keyframe"></a><code>concept-tsukuri-keyframe</code><br/>Concept | **Keyframe.** The visual state a Beat ends in: every visible Element with its properties. *Why proposed:* Observed in the repository: the glossary defines the Keyframe as the state a Beat ends in. The log decides that an id carries identity across Scenes (log:23) but does not define Keyframe, so confirm the exact definition. | proposed |  | [tsukuri:GLOSSARY.md:27-29][42] |
+| <a id="concept-tsukuri-line"></a><code>concept-tsukuri-line</code><br/>Concept | **Line.** The narration that carries a Beat: the dialogue of the NARRATOR, aligned to words. Its narration text is the dialogue itself. Subtitles and speaker notes carry exactly that text. Attributes: narration text; aligned word times; delivery hints. *Why proposed:* Observed in the repository: the glossary defines Line, and the log describes narration (log:27) without defining it. The operator should confirm the definition. | proposed |  | [log L27][43], [tsukuri:GLOSSARY.md:31-33][44] |
+| <a id="concept-tsukuri-lifecycle-event"></a><code>concept-tsukuri-lifecycle-event</code><br/>Concept | **Lifecycle event.** What happens to an Element in a Scene, from the identity diff: enter, exit, move or update. Enter, exit, move and update each have a start and an end, except an instant such as an exit, which has no window and no percent. Move and update follow the renderer's declared easing. The others are linear in time. *Why proposed:* Spec plan: spec 0002 and the glossary define enter, exit, move and update. The operator decided that lifecycles are anchors (spec 0002 line 162), not each event, so confirm them. | proposed |  | [tsukuri:GLOSSARY.md:43-45][45] |
+| <a id="concept-tsukuri-hint"></a><code>concept-tsukuri-hint</code><br/>Concept | **Hint.** An optional instruction that the content alone does not carry: a delivery parenthetical before a Line, or a transition between Scenes. *Why proposed:* Observed in the repository: the glossary defines Hint. The operator's log does not name Hints, so confirm it. | proposed |  | [tsukuri:GLOSSARY.md:51-53][46] |
+| <a id="concept-tsukuri-plan"></a><code>concept-tsukuri-plan</code><br/>Concept | **Plan.** The named compiler stage between the Story and the schedule. It lists every Element, effect and identity decision, keeps the author's intent, and is plain data for review and golden tests. `tsukuri plan` prints it. Attributes: source hash; Scenes, Elements, effects, identity; canonical JSON, byte-comparable. *Why proposed:* Spec plan: the design names the Plan as a stage and spec 0001 sets out its contents. The operator has not decided those contents, so confirm them. | proposed |  | [tsukuri:docs/design/keyframe-engine.md:1112][47], [tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:90][48] |
+| <a id="concept-tsukuri-timeline"></a><code>concept-tsukuri-timeline</code><br/>Concept | **Timeline.** The Plan with every Line, effect, step and slide change placed at an integer frame. The schedule stage builds it from the aligned words and the renderer's lifecycle. Attributes: total frames; frame of each effect. *Why proposed:* Spec plan: the design names the Timeline as a stage and spec 0001 sets out the integer-frame schedule. The operator has not decided those details, so confirm them. | proposed |  | [tsukuri:docs/design/keyframe-engine.md:1112][47], [tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:68][49] |
+| <a id="concept-tsukuri-chapter"></a><code>concept-tsukuri-chapter</code><br/>Concept | **Chapter.** A named run of consecutive Scenes, introduced by a Section heading. A Video's chapter marks and a Deck's slide groups come from it. *Why proposed:* Observed in the repository: the glossary lists Chapter among reserved groupings, yet its mapping table and the Plan use chapters. The operator should say whether it is modelled. | proposed |  | [tsukuri:GLOSSARY.md:124-125][50], [tsukuri:GLOSSARY.md:89][51] |
 
-## reebeat studio
+## tsukuri studio
 
 19 elements: 11 decided, 8 proposed, 0 open.
 
@@ -264,7 +264,7 @@ classDiagram
 | <a id="concept-studio-suggestion"></a><code>concept-studio-suggestion</code><br/>Concept | **Suggestion.** A suggestion is an edit proposed by an agent or a collaborator that is not yet applied. It carries who proposed it. Attributes: author (agent or person); patch that describes the edit; accepted or rejected, and by whom. *Why proposed:* Spec plan: the lenses note designs suggestion mode. The operator decided only the repair proposal. The operator should confirm the general suggestion and attribution semantics. | proposed |  | [studio:docs/design/lenses.md:67][68] |
 | <a id="concept-studio-sync-room"></a><code>concept-studio-sync-room</code><br/>Concept | **Sync room.** The sync room is one Cloudflare Durable Object for each story. It uses WebSocket hibernation, keeps an update log in SQLite and compacts it to a snapshot. Attributes: one object per story; update log compacted to a snapshot; snapshots over 2 MB are chunked. *Why proposed:* Spec plan: the operator decided a sync server with a gate, which is the Durable Object (log:47 and spec 0002 line 198). One object per story, hibernation, the SQLite log and chunking are the spike's recommendation, run only on local workerd. The operator should confirm these room-design details. | proposed |  | [studio:docs/specs/0002-collaboration-spike.md:28][69], [studio:docs/specs/0002-collaboration-spike.md:192][70] |
 | <a id="concept-studio-take"></a><code>concept-studio-take</code><br/>Concept | **Take.** A take is one recording of a Line. A Line can have several takes, and the author picks the best one. *Why proposed:* Spec plan: the lenses note describes takes, a teleprompter and word alignment. The operator log names cut narration pieces, not takes. The operator should confirm the take model. | proposed |  | [studio:docs/design/lenses.md:38][71], [log L45][52] |
-| <a id="concept-studio-anchor-offset"></a><code>concept-studio-anchor-offset</code><br/>Concept | **Anchor and offset.** An effect is timed against an anchor, a named moment such as a word of the narration, a scene start or end, or another effect. An offset moves the effect from its anchor by a signed time or a share of a window. Retiming in studio changes the offset and keeps the anchor. *Why proposed:* Reebeat's GLOSSARY.md defines the anchor and the offset (lines 39-40; the syntax came with spec 0002, merged in reebeat PR 4 on 2026-10-29). The lenses note applies them to retiming in the Timeline lens (line 56). The operator should confirm that studio uses the terms as the reebeat glossary defines them. | proposed |  | [studio:docs/design/lenses.md:56][72], [reebeat:GLOSSARY.md:39-40][73] |
+| <a id="concept-studio-anchor-offset"></a><code>concept-studio-anchor-offset</code><br/>Concept | **Anchor and offset.** An effect is timed against an anchor, a named moment such as a word of the narration, a scene start or end, or another effect. An offset moves the effect from its anchor by a signed time or a share of a window. Retiming in studio changes the offset and keeps the anchor. *Why proposed:* Tsukuri's GLOSSARY.md defines the anchor and the offset (lines 39-40; the syntax came with spec 0002, merged in tsukuri PR 4 on 2026-10-29). The lenses note applies them to retiming in the Timeline lens (line 56). The operator should confirm that studio uses the terms as the tsukuri glossary defines them. | proposed |  | [studio:docs/design/lenses.md:56][72], [tsukuri:GLOSSARY.md:39-40][73] |
 | <a id="concept-studio-feature-map"></a><code>concept-studio-feature-map</code><br/>Concept | **Feature map.** The feature map lists each user-visible feature with how to observe it and what counts as broken. The verify skill drives it in a real browser. Attributes: entry id and spec; how to observe; broken when. *Why proposed:* Observed in the repository: spec 0003 defines it. The operator assigned a verification skill but did not define the map. The operator should confirm the feature map as the way to keep the verify skill true. | proposed |  | [studio:docs/specs/0003-review-and-verify-skills.md:14][74], [studio:.agents/skills/verify-studio/features/README.md:3-5][75] |
 
 ## foldkit-flow
@@ -359,102 +359,102 @@ classDiagram
 [6]: ../sources/operator-decisions-2026-10.md#L43
 [7]: ../sources/operator-decisions-2026-10.md#L28
 [8]: ../sources/operator-decisions-2026-10.md#L77
-[9]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/design/open-core-boundary.md#L25
+[9]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/design/open-core-boundary.md#L25
 [10]: ../sources/operator-decisions-2026-10.md#L62
-[11]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L213
-[12]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L15-L17
+[11]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L213
+[12]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L15-L17
 [13]: ../sources/operator-decisions-2026-10.md#L19
-[14]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0002-explicit-anchors-and-syntax.md#L162
-[15]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0002-explicit-anchors-and-syntax.md#L163
-[16]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L35-L37
-[17]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0002-explicit-anchors-and-syntax.md#L15
-[18]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L39-L41
-[19]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L47-L49
+[14]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0002-explicit-anchors-and-syntax.md#L162
+[15]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0002-explicit-anchors-and-syntax.md#L163
+[16]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L35-L37
+[17]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0002-explicit-anchors-and-syntax.md#L15
+[18]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L39-L41
+[19]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L47-L49
 [20]: ../sources/operator-decisions-2026-10.md#L20
 [21]: ../sources/operator-decisions-2026-10.md#L23
 [22]: ../sources/operator-decisions-2026-10.md#L83
-[23]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L65-L67
+[23]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L65-L67
 [24]: ../sources/operator-decisions-2026-10.md#L85
-[25]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0007-scxml-persistent-ir-spike.md#L23
-[26]: https://github.com/reebeat/reebeat/pull/17
-[27]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/README.md#L5
-[28]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L78-L80
-[29]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/README.md#L6
-[30]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L75-L76
-[31]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L235
-[32]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L101-L102
-[33]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/design/keyframe-engine.md#L1225
-[34]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L104-L106
-[35]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L108-L110
-[36]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L112-L113
-[37]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/services/src/selection.ts#L18-L26
-[38]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L115-L117
-[39]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L119-L120
-[40]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L259
-[41]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L11-L13
-[42]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L27-L29
+[25]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0007-scxml-persistent-ir-spike.md#L23
+[26]: https://github.com/tsukuri-labs/tsukuri/pull/17
+[27]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/README.md#L5
+[28]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L78-L80
+[29]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/README.md#L6
+[30]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L75-L76
+[31]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L235
+[32]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L101-L102
+[33]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/design/keyframe-engine.md#L1225
+[34]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L104-L106
+[35]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L108-L110
+[36]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L112-L113
+[37]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/packages/services/src/selection.ts#L18-L26
+[38]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L115-L117
+[39]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L119-L120
+[40]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L259
+[41]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L11-L13
+[42]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L27-L29
 [43]: ../sources/operator-decisions-2026-10.md#L27
-[44]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L31-L33
-[45]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L43-L45
-[46]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L51-L53
-[47]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/design/keyframe-engine.md#L1112
-[48]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L90
-[49]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L68
-[50]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L124-L125
-[51]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L89
+[44]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L31-L33
+[45]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L43-L45
+[46]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L51-L53
+[47]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/design/keyframe-engine.md#L1112
+[48]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L90
+[49]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/docs/specs/0001-release-1-screenplay-to-deck-and-video.md#L68
+[50]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L124-L125
+[51]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L89
 [52]: ../sources/operator-decisions-2026-10.md#L45
-[53]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L171
+[53]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L171
 [54]: ../sources/operator-decisions-2026-10.md#L47
-[55]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L198
-[56]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L172
-[57]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L27
-[58]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L138
+[55]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L198
+[56]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L172
+[57]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L27
+[58]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L138
 [59]: ../sources/operator-decisions-2026-10.md#L98
-[60]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L91-L99
+[60]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L91-L99
 [61]: ../sources/operator-decisions-2026-10.md#L99
-[62]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L9
-[63]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L108
-[64]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L15
-[65]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L125
-[66]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L88
-[67]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L129
-[68]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L67
-[69]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L28
-[70]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L192
-[71]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L38
-[72]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L56
-[73]: https://github.com/reebeat/reebeat/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L39-L40
-[74]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0003-review-and-verify-skills.md#L14
-[75]: https://github.com/reebeat/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/.agents/skills/verify-studio/features/README.md#L3-L5
+[62]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L9
+[63]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L108
+[64]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L15
+[65]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L125
+[66]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L88
+[67]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L129
+[68]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L67
+[69]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L28
+[70]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L192
+[71]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L38
+[72]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L56
+[73]: https://github.com/tsukuri-labs/tsukuri/blob/82ee66f8806558460917b33ad9ad8d21c47a9a5b/GLOSSARY.md#L39-L40
+[74]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0003-review-and-verify-skills.md#L14
+[75]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/.agents/skills/verify-studio/features/README.md#L3-L5
 [76]: ../sources/operator-decisions-2026-10.md#L106
-[77]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L86
-[78]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0000-development-lifecycle.md#L53
-[79]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/attribution.ts#L15-L22
+[77]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L86
+[78]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0000-development-lifecycle.md#L53
+[79]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/attribution.ts#L15-L22
 [80]: ../sources/operator-decisions-2026-10.md#L109
-[81]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L52
-[82]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/message.ts#L67-L83
+[81]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L52
+[82]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/message.ts#L67-L83
 [83]: ../sources/operator-decisions-2026-10.md#L48
-[84]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L3
-[85]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L24
-[86]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/model.ts#L14-L29
-[87]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L35-L47
-[88]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/types.ts#L42-L59
-[89]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L47
-[90]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L66
-[91]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/types.ts#L63-L77
-[92]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L43
-[93]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/types.ts#L33-L38
-[94]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L53-L54
-[95]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/types.ts#L81-L89
-[96]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L45
-[97]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/types.ts#L52-L54
-[98]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L82
-[99]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/types.ts#L10-L14
-[100]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/selection.ts#L5-L7
-[101]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/view.ts#L464-L478
-[102]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/view.ts#L499-L523
-[103]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/AGENTS.md#L63
-[104]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/mounts.ts#L34-L39
-[105]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/xyflow.ts#L7-L20
-[106]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L76
-[107]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/view.ts#L665-L673
+[84]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L3
+[85]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L24
+[86]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/model.ts#L14-L29
+[87]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L35-L47
+[88]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/types.ts#L42-L59
+[89]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L47
+[90]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L66
+[91]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/types.ts#L63-L77
+[92]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L43
+[93]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/types.ts#L33-L38
+[94]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L53-L54
+[95]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/types.ts#L81-L89
+[96]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L45
+[97]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/types.ts#L52-L54
+[98]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L82
+[99]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/types.ts#L10-L14
+[100]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/selection.ts#L5-L7
+[101]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/view.ts#L464-L478
+[102]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/view.ts#L499-L523
+[103]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/AGENTS.md#L63
+[104]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/mounts.ts#L34-L39
+[105]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/xyflow.ts#L7-L20
+[106]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L76
+[107]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/view.ts#L665-L673
