@@ -236,19 +236,44 @@ elements:
   - id: constraint-org-working-name
     kind: constraint
     constraintType: organisational
-    title: The name reebeat stays for now
+    title: The name reebeat was the working name
     statement: >-
-      The name `reebeat` stays the working name. The clearance check found no register hit for REEBEAT itself, but a
-      registered EU mark REBEAT (classes 9, 35, 41, to 2034) and an active Norwegian registration FREEBEAT (classes 16,
-      28, 38, 41, 42). The operator paused the first npm publish until a Norwegian IP advisor has given an opinion. If
-      the advisor flags a conflict, the project renames before any package exists. The GitHub and npm organisations named
-      reebeat are reserved. A trademark policy follows once the name is cleared.
+      `reebeat` was the working name until 2026-10-30; the operator replaced it with Tsukuri (see
+      constraint-org-final-name). The clearance check found no register hit for REEBEAT itself, but a registered EU mark
+      REBEAT (classes 9, 35, 41, to 2034) and an active Norwegian registration FREEBEAT (classes 16, 28, 38, 41, 42). The
+      operator paused the first npm publish for a Norwegian IP advisor's opinion (line 113), then named Tsukuri the
+      preferred replacement (line 114) and decided on 2026-10-30 not to wait for the advisor (lines 118 and 119). The GitHub and npm organisations named reebeat
+      were reserved. A trademark policy is not written yet.
     status: decided
     source:
       - log:75
       - log:113
+      - log:114
+      - log:118
+      - log:119
       - tsukuri:README.md:42
       - tsukuri:docs/design/open-core-boundary.md:68
+
+  - id: constraint-org-final-name
+    kind: constraint
+    constraintType: organisational
+    title: The product is published as Tsukuri, without an advisor's clearance, at the operator's risk
+    statement: >-
+      The operator said Tsukuri (作り) is good and named it the preferred replacement for the working name `reebeat` (line
+      114), and decided on 2026-10-30 to publish `@tsukuri/*` now, without waiting for the Norwegian IP advisor (lines 118
+      and 119). No advisor has cleared Tsukuri; line 114 had asked for that opinion, and the operator accepts the trademark
+      risk (line 119, D4). The npm organisation `tsukuri` is owned by the operator (line 118). The GitHub organisation
+      handle is `tsukuri-labs`: the operator decided to rename the organisation and never to delete it (lines 117 and 118).
+      The domain `tsukuri.dev` is registered and managed in Cloudflare (line 123). A published npm name is permanent.
+    status: decided
+    source:
+      - log:114
+      - log:117
+      - log:118
+      - log:119
+      - log:123
+    links:
+      constrains: [comp-tsukuri-product]
 
   - id: opportunity-org-one-declaration-many-surfaces
     kind: opportunity

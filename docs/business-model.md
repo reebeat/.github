@@ -94,12 +94,12 @@ The operator decided the principle and two paid features: multiplayer collaborat
 | free | proposed | [A preview frame equals the Video frame](technical-components.md#req-studio-preview-equals-video) | studio | decided | [studio:docs/specs/0001-first-felt-journey.md:59][138], [studio:docs/specs/0001-first-felt-journey.md:132][139], [log L97][100] |
 | free | proposed | [The free journey works offline](technical-components.md#req-studio-offline-free-tier) | studio | proposed | [studio:docs/specs/0001-first-felt-journey.md:138][140], [studio:.agents/skills/verify-studio/features/README.md:26][141] |
 | free | proposed | [Every editor region has an accessible name](technical-components.md#req-studio-accessible-regions) | studio | proposed | [studio:apps/editor/src/main.ts:62-63][142], [studio:apps/editor/src/main.ts:89][143], [studio:docs/specs/0000-development-lifecycle.md:63][144], [log L10][145] |
-| free | proposed | [packages/flow (the library)](technical-components.md#comp-flow-library) | foldkit-flow | decided | [log L105][146], [log L113][147], [foldkit-flow:AGENTS.md:25][148], [foldkit-flow:README.md:5][149], [foldkit-flow:packages/flow/src/index.ts:1-39][150] |
-| paid | proposed | [Hosted alignment, speech and translation](technical-components.md#comp-studio-hosted-speech) | studio | decided | [log L104][151], [studio:docs/design/lenses.md:22][112], [studio:docs/design/lenses.md:28][124], [studio:docs/specs/0001-first-felt-journey.md:123][152], [studio:docs/specs/0001-first-felt-journey.md:163][153] |
-| paid | proposed | [Cloud rendering](technical-components.md#comp-studio-cloud-render) | studio | decided | [log L78][89], [studio:docs/design/lenses.md:29][126], [studio:docs/design/lenses.md:87][154], [studio:docs/specs/0001-first-felt-journey.md:122][155] |
-| paid | proposed | [The sync server refuses an invalid merge with a reason](technical-components.md#req-studio-gate-refuses-invalid) | studio | proposed | [log L47][8], [studio:docs/specs/0002-collaboration-spike.md:25][156], [studio:docs/specs/0002-collaboration-spike.md:111-112][157] |
-| paid | proposed | [The sync room stores an update log and a snapshot](technical-components.md#req-studio-sync-persistence) | studio | proposed | [studio:docs/specs/0002-collaboration-spike.md:28][158], [studio:docs/specs/0002-collaboration-spike.md:56][159], [studio:docs/specs/0002-collaboration-spike.md:66][160] |
-| paid | proposed | [A merged story is valid or refused](technical-components.md#req-studio-validity-under-merge) | studio | proposed | [log L47][8], [studio:docs/specs/0002-collaboration-spike.md:25][156], [studio:docs/specs/0002-collaboration-spike.md:208][161] |
+| free | proposed | [packages/flow (the library)](technical-components.md#comp-flow-library) | foldkit-flow | decided | [log L105][146], [log L113][147], [log L118][148], [foldkit-flow:AGENTS.md:25][149], [foldkit-flow:README.md:5][150], [foldkit-flow:packages/flow/src/index.ts:1-39][151] |
+| paid | proposed | [Hosted alignment, speech and translation](technical-components.md#comp-studio-hosted-speech) | studio | decided | [log L104][152], [studio:docs/design/lenses.md:22][112], [studio:docs/design/lenses.md:28][124], [studio:docs/specs/0001-first-felt-journey.md:123][153], [studio:docs/specs/0001-first-felt-journey.md:163][154] |
+| paid | proposed | [Cloud rendering](technical-components.md#comp-studio-cloud-render) | studio | decided | [log L78][89], [studio:docs/design/lenses.md:29][126], [studio:docs/design/lenses.md:87][155], [studio:docs/specs/0001-first-felt-journey.md:122][156] |
+| paid | proposed | [The sync server refuses an invalid merge with a reason](technical-components.md#req-studio-gate-refuses-invalid) | studio | proposed | [log L47][8], [studio:docs/specs/0002-collaboration-spike.md:25][157], [studio:docs/specs/0002-collaboration-spike.md:111-112][158] |
+| paid | proposed | [The sync room stores an update log and a snapshot](technical-components.md#req-studio-sync-persistence) | studio | proposed | [studio:docs/specs/0002-collaboration-spike.md:28][159], [studio:docs/specs/0002-collaboration-spike.md:56][160], [studio:docs/specs/0002-collaboration-spike.md:66][161] |
+| paid | proposed | [A merged story is valid or refused](technical-components.md#req-studio-validity-under-merge) | studio | proposed | [log L47][8], [studio:docs/specs/0002-collaboration-spike.md:25][157], [studio:docs/specs/0002-collaboration-spike.md:208][162] |
 
 ## The blocks in detail
 
@@ -443,17 +443,18 @@ The operator decided the principle and two paid features: multiplayer collaborat
 [145]: ../sources/operator-decisions-2026-10.md#L10
 [146]: ../sources/operator-decisions-2026-10.md#L105
 [147]: ../sources/operator-decisions-2026-10.md#L113
-[148]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/AGENTS.md#L25
-[149]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L5
-[150]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/index.ts#L1-L39
-[151]: ../sources/operator-decisions-2026-10.md#L104
-[152]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L123
-[153]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L163
-[154]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L87
-[155]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L122
-[156]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L25
-[157]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L111-L112
-[158]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L28
-[159]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L56
-[160]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L66
-[161]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L208
+[148]: ../sources/operator-decisions-2026-10.md#L118
+[149]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/AGENTS.md#L25
+[150]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L5
+[151]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/index.ts#L1-L39
+[152]: ../sources/operator-decisions-2026-10.md#L104
+[153]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L123
+[154]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L163
+[155]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/design/lenses.md#L87
+[156]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0001-first-felt-journey.md#L122
+[157]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L25
+[158]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L111-L112
+[159]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L28
+[160]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L56
+[161]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L66
+[162]: https://github.com/tsukuri-labs/studio/blob/d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8/docs/specs/0002-collaboration-spike.md#L208
