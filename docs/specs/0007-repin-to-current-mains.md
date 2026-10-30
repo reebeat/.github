@@ -51,4 +51,4 @@ lead / operator
 
 ## Revisions
 
-(none yet)
+- **2026-10-30, review round 1 (RevIntent1).** The Goal above states the spec as built after the round. Changes against the first head: a seventh deletion (`problem-flow-lint-mocking-gap`: the rule matches `vite-plus/test` at the pin); four more corrections (`concept-tsukuri-keyframe`, `concept-tsukuri-line`, `rule-tsukuri-intent-resolved-in-schedule`, `problem-tsukuri-identity-scene-bounded`); the 50 kept citations are now shown (`recheck` in `model/triage.yaml`, check `RECHECK-UNKNOWN-ID`, a section of `docs/confirm.md`, two tests); the tracker refresh; the base is `main`; the evidence says which part is reproducible.
