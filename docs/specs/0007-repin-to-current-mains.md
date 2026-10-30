@@ -18,7 +18,7 @@ Process: [spec 0000](0000-intent-model.md). Spec 0006 (#7) is merged; this PR is
 7. **Lows of the review of spec 0004 and 0006.** `constraint-org-final-name` no longer says "A published npm name is permanent" (an npm policy, not a log line). The advice that `comp-org-how-it-works` waits until the compiler's PR 24 merges is overridden by the operator's bulk confirmation (log line 118): it stays `decided` with the PR as its URL.
 8. **`AGENTS.md`** says which directory names `verify-sources` reads: `<base>/reebeat`, `<base>/reebeat-studio` and `<base>/foldkit-flow` (the local checkouts keep their old names).
 
-**What is reproducible from this repository.** The pins, `sources:verify` and the citation table are. The re-pin itself was made with two local scripts that need the rename tool's engine, which is not part of this repository: `docs/specs/0007-evidence/tools/repin.ts.txt` (the mapped diff, TypeScript) and `repin-fallback.py.txt` (the best-matching line by `difflib`, a throwaway Python script). They are kept for audit, not as runnable tools. A reviewer re-checks by sampling `changed-citations.tsv`: none of its 74 matches is byte-identical, and 67 are not deleted elements.
+**What is reproducible from this repository.** The pins, `sources:verify`, the table `changed-citations.tsv` and its counts are checkable here. The mapped diff that found the 74 changed citations is `docs/specs/0007-evidence/tools/repin.ts.txt` (TypeScript, kept for audit): it imports the rename tool's engine from outside this repository, so it does not run from here alone. How the 74 were re-pointed (to the best-matching line of the new file, by a throwaway script that is not kept) and what was done to the elements (7 deleted, 15 corrected, 50 listed) was a manual pass: the table records the result, not a rerunnable procedure. A reviewer re-checks by sampling the table: none of the 74 matches is byte-identical.
 
 ## Journey
 
@@ -47,7 +47,7 @@ lead / operator
 
 ## What is built
 
-`model/sources.yaml`, the citation strings of `model/*/*.yaml`, the twelve corrections and seven deletions of item 4, the `recheck` list and its tool code, the regenerated `profile/` and `docs/`, `docs/specs/0007-evidence/`, one sentence of `AGENTS.md`, and this spec. The re-pin was made by `rename-prep/repin.ts` and `repin-fallback.py` (a local tool, not a repository).
+`model/sources.yaml`, the citation strings of `model/*/*.yaml`, the twelve corrections and seven deletions of item 4, the `recheck` list and its tool code, the regenerated `profile/` and `docs/`, `docs/specs/0007-evidence/`, one sentence of `AGENTS.md`, and this spec. The re-pin was made with local scripts that are not part of this repository (see above).
 
 ## Revisions
 
