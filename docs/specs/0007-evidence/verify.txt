@@ -6,9 +6,9 @@
 +  studio: 14df3cdacb15b1883da33abbf21ff8bed08f1e14
 +  foldkit-flow: a31331a24360bcfc64fd8e3a1ef36914f41b047b
 == F1: sources:verify
-[05:31:17.904] INFO (#2): Every file source resolves.
-== F3: statuses against feat/0006-triage-ratification (REF=feat/0006-triage-ratification until that PR merges)
-[05:31:18.717] INFO (#2): against feat/0006-triage-ratification: 0 status changes, 0 added, 6 removed
-[05:31:18.720] INFO (#2): removed: constraint-flow-effect-peer-mismatch, constraint-flow-vite-plugin-crypto, problem-studio-foldkit-vite-plugin, constraint-studio-effect-foldkit-peer, constraint-studio-foldkit-plugin-off, problem-tsukuri-state-machine-conformance
+[05:58:27.895] INFO (#2): Every file source resolves.
+== F3: statuses against origin/main
+[05:58:28.762] INFO (#2): against origin/main: 0 status changes, 0 added, 7 removed
+[05:58:28.764] INFO (#2): removed: problem-flow-lint-mocking-gap, constraint-flow-effect-peer-mismatch, constraint-flow-vite-plugin-crypto, problem-studio-foldkit-vite-plugin, constraint-studio-effect-foldkit-peer, constraint-studio-foldkit-plugin-off, problem-tsukuri-state-machine-conformance
 == F4: rows
 74

@@ -1,0 +1,45 @@
+#!/usr/bin/env python3
+"""repin-fallback.py <org worktree> <repin report> <evidence out>: for citations repin.ts reported as CHANGED (another commit changed
+the cited lines), point them at the best-matching lines of the new file (first line, same length) and write what was matched to an
+evidence file, with a flag where the match is not the same text. A human reads the flagged ones; nothing here decides that an
+element's statement is still true."""
+import re, subprocess, json, difflib, sys
+wt, report, out = sys.argv[1:4]
+clones = {'tsukuri': '/srv/share/projects/reebeat', 'studio': '/srv/share/projects/reebeat-studio', 'foldkit-flow': '/srv/share/projects/foldkit-flow'}
+oldp = json.load(open('/tmp/oldpins.json')); newp = json.load(open('/tmp/newpins.json'))
+cache = {}
+def show(key, sha, path):
+    k = (key, sha, path)
+    if k not in cache:
+        r = subprocess.run(['/run/current-system/sw/bin/git', '-C', clones[key], 'show', f'{sha}:{path}'], capture_output=True, text=True)
+        cache[k] = r.stdout.split('\n')
+    return cache[k]
+norm = lambda s: re.sub('reebeat', 'tsukuri', s, flags=re.I)
+lines_out = ['# Citations whose cited lines another commit changed between the old and the new pin (spec 0004).',
+             '# Each was re-pointed at the best-matching lines of the new file. "same" = identical after the rename mapping; "SIMILAR" or "GONE" need a human to',
+             '# check that the element still says what the new lines say. Columns: element, old citation, new citation, ratio, verdict.']
+edits = {}
+for line in open(report):
+    m = re.match(r'CHANGED (\S+) (\S+) (record:)?(tsukuri|studio|foldkit-flow):(\S+):(\d+)(?:-(\d+))? -> (\S+)', line)
+    if not m: continue
+    loc, eid, rec, key, path, a, b, newpath = m.groups(); a = int(a); b = int(b or a)
+    old = show(key, oldp[key], path); new = show(key, newp[key], newpath)
+    tgt = norm(old[a - 1])
+    best = max(range(len(new)), key=lambda i: difflib.SequenceMatcher(None, tgt, new[i]).ratio())
+    # a whole-file range keeps its start
+    na = best + 1; nb = na + (b - a)
+    if a == 1 and best == 0: na, nb = 1, b
+    r = difflib.SequenceMatcher(None, tgt, new[best]).ratio()
+    same = all(norm(old[a - 1 + k]) == new[na - 1 + k] for k in range(b - a + 1) if na - 1 + k < len(new))
+    verdict = 'same' if same else ('SIMILAR' if r >= 0.6 else 'GONE')
+    edits.setdefault(loc, []).append((f'{rec or ""}{key}:{path}:{a}' + (f'-{b}' if m.group(7) else ''), f'{rec or ""}{key}:{newpath}:{na}' + (f'-{nb}' if m.group(7) else '')))
+    lines_out.append(f'{loc}\t{eid}\t{key}:{path}:{a}-{b}\t{newpath}:{na}-{nb}\t{r:.2f}\t{verdict}')
+for loc, items in edits.items():
+    f, ln = loc.rsplit(':', 1); p = f'{wt}/model/{f}'
+    L = open(p).read().split('\n')
+    for o, n in items:
+        assert o in L[int(ln) - 1], (loc, o)
+        L[int(ln) - 1] = L[int(ln) - 1].replace(o, n, 1)
+    open(p, 'w').write('\n'.join(L))
+open(out, 'w').write('\n'.join(lines_out) + '\n')
+print(len(lines_out) - 3, 'citations re-pointed;', sum(1 for l in lines_out if l.endswith('same')), 'same text,', sum(1 for l in lines_out if l.endswith('SIMILAR')), 'similar,', sum(1 for l in lines_out if l.endswith('GONE')), 'gone')

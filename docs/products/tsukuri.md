@@ -106,7 +106,7 @@ Scope `tsukuri`: 232 elements.
 - [No gate for experimental types in the API](../goals.md#problem-tsukuri-experimental-gate-open) (decided): The rule that experimental types stay out of the public API is decided, but no test enforces it. Whether to scan exported declarations is open.
 - [Extension points are staged under ADR-0000](../goals.md#problem-tsukuri-extension-points-open) (decided): The extension ADR-0000 is adopted in stages, decision by decision. Extension points that are still open are tagged unstable until a second real engine has run the protocol. Adapter seams are the plugin API today; new effect kinds, new importers and the agent tool protocol come through the ADR.
 - [The build engine is incremental, built in steps](../goals.md#problem-tsukuri-no-incremental-render) (decided): The build reuses work with the decided incremental build engine, built in steps: a build library with tasks, a trace store and early cutoff. Stages become tasks first and render segments later. Until then speech assets are cached by content, and an edit still rebuilds the whole timeline and the whole render.
-- [Element ids are story-global; motion is adjacent first](../goals.md#problem-tsukuri-identity-scene-bounded) (decided): Element ids are story-global: one id is one entity in the whole story, as a rule enforced by a lint. Until spec 0005, motion runs only between adjacent Scenes. Release 1 matches ids only between two consecutive Scenes joined by AUTO-ANIMATE.
+- [Element ids are story-global; motion is adjacent first](../goals.md#problem-tsukuri-identity-scene-bounded) (decided): Element ids are story-global: one id is one entity in the whole story, as a rule enforced by a lint. Until spec 0005, motion runs only between adjacent Scenes. Release 1 matches ids only between two consecutive Scenes joined by AUTO-ANIMATE (the glossary calls a Scene a compound State and the boundary of identity).
 - [Transition lines stay Fountain's, the IR is explicit](../goals.md#problem-tsukuri-transition-lines-positional) (decided): Fountain's own transition line stays, and the IR carries each Scene's incoming transition explicitly as a property. The positional reading, where a transition line applies to the Scene below, lives in one adapter only.
 - [Two anchor kinds have no probe](../goals.md#problem-tsukuri-anchor-probes-missing) (decided): The `update` and `scene.end` anchors exist in code, but no check observes them in the written media. No lint reports an Element that is declared and never used.
 - [One Line keeps an interim speed hint](../goals.md#problem-tsukuri-speed-interim) (decided): The story `same-id` keeps `(speed 1.05)` on one Line as an interim fix. Removal waits for word timings from the synthesiser or for alignment judged by its path.
@@ -490,8 +490,8 @@ Full tables and diagrams: [Concepts Model](../concepts.md).
 
 | Item | Title | State | Element |
 | --- | --- | --- | --- |
-| pr:tsukuri#17 | feat: explicit state machines and timing combinators (spec 0004) | open | [Story IR and Timeline IR](../concepts.md#concept-tsukuri-ir) |
-| pr:tsukuri#17 | feat: explicit state machines and timing combinators (spec 0004) | open | [Declare the implicit state machine explicitly](../goals.md#goal-tsukuri-statechart-model) |
+| pr:tsukuri#17 | feat: explicit state machines and timing combinators (spec 0004) | merged | [Story IR and Timeline IR](../concepts.md#concept-tsukuri-ir) |
+| pr:tsukuri#17 | feat: explicit state machines and timing combinators (spec 0004) | merged | [Declare the implicit state machine explicitly](../goals.md#goal-tsukuri-statechart-model) |
 | issue:tsukuri#12 | Accessible artifacts: captions, audio description, reduced motion and readable subtitles | open | [Accessible artifacts for different audiences](../goals.md#goal-tsukuri-accessible-artifacts) |
 | issue:tsukuri#10 | Localisation: one story, several narration languages | open | [One story, several narration languages](../goals.md#goal-tsukuri-localisation) |
 | issue:tsukuri#9 | Incremental builds: cache render segments, not only speech | open | [Fast, incremental and reactive builds](../goals.md#goal-tsukuri-incremental-builds) |
@@ -500,7 +500,7 @@ Full tables and diagrams: [Concepts Model](../concepts.md).
 | issue:tsukuri#8 | Teaching lint: check explainer stories against multimedia-learning principles | open | [A teaching lint for explainer stories](../goals.md#goal-tsukuri-teaching-lint) |
 | pr:tsukuri#18 | feat(release): publish @reebeat/* pre-releases to npm by trusted publishing (spec 0009) | merged | [Publish @tsukuri packages to npm](../goals.md#goal-tsukuri-npm-publication) |
 | issue:tsukuri#7 | ffmpeg with libx264 is GPL: decide before distributing a binary | open | [ffmpeg is GPL, so it is never bundled](../goals.md#problem-tsukuri-ffmpeg-gpl) |
-| pr:tsukuri#17 | feat: explicit state machines and timing combinators (spec 0004) | open | [STATE.md is out of date](../goals.md#problem-tsukuri-state-stale) |
+| pr:tsukuri#17 | feat: explicit state machines and timing combinators (spec 0004) | merged | [STATE.md is out of date](../goals.md#problem-tsukuri-state-stale) |
 | issue:tsukuri#14 | check:exceptions ignores @effect-diagnostics suppression comments | open | [The exception gate ignores @effect-diagnostics comments](../goals.md#problem-tsukuri-exceptions-gate-blind) |
 | issue:tsukuri#15 | vp run uses a downloaded Bun, not the devenv Bun (devEngines ^1.4.2) | open | [vp run uses its own Bun](../goals.md#problem-tsukuri-bun-not-pinned) |
 | issue:tsukuri#19 | Roadmap: interactive website as an artifact type | open | [The README does not link the generated roadmap](../goals.md#problem-tsukuri-roadmap-only-in-issues) |
@@ -509,7 +509,7 @@ Full tables and diagrams: [Concepts Model](../concepts.md).
 | pr:tsukuri#23 | docs: extension architecture, ADR-0000 and spec 0012 | merged | [Extension points are staged under ADR-0000](../goals.md#problem-tsukuri-extension-points-open) |
 | issue:tsukuri#19 | Roadmap: interactive website as an artifact type | open | [Extension points are staged under ADR-0000](../goals.md#problem-tsukuri-extension-points-open) |
 | issue:tsukuri#9 | Incremental builds: cache render segments, not only speech | open | [The build engine is incremental, built in steps](../goals.md#problem-tsukuri-no-incremental-render) |
-| pr:tsukuri#17 | feat: explicit state machines and timing combinators (spec 0004) | open | [Element ids are story-global; motion is adjacent first](../goals.md#problem-tsukuri-identity-scene-bounded) |
+| pr:tsukuri#17 | feat: explicit state machines and timing combinators (spec 0004) | merged | [Element ids are story-global; motion is adjacent first](../goals.md#problem-tsukuri-identity-scene-bounded) |
 | issue:tsukuri#25 | verify-reebeat cleanup does not stop a capture Chromium started by build or journey | open | [Verify cleanup misses a Chromium from build or journey](../goals.md#problem-tsukuri-review-cleanup) |
 | issue:tsukuri#19 | Roadmap: interactive website as an artifact type | open | [One declaration, many surfaces](../goals.md#opportunity-tsukuri-one-declaration-many-surfaces) |
 | issue:tsukuri#8 | Teaching lint: check explainer stories against multimedia-learning principles | open | [Lint in the compiler, fixes in the editor](../goals.md#opportunity-tsukuri-lint-open-fixes-paid) |
@@ -521,7 +521,7 @@ Full tables and diagrams: [Concepts Model](../concepts.md).
 | issue:tsukuri#10 | Localisation: one story, several narration languages | open | [Word anchors retime per language](../business-rules.md#rule-tsukuri-localised-absolute-times) |
 | issue:tsukuri#19 | Roadmap: interactive website as an artifact type | open | [website renderer, a planned artifact renderer](../technical-components.md#comp-tsukuri-website-renderer) |
 | pr:tsukuri#23 | docs: extension architecture, ADR-0000 and spec 0012 | merged | [Write a story as a Fountain screenplay](../technical-components.md#req-tsukuri-fountain-artifact-renderer) |
-| pr:tsukuri#17 | feat: explicit state machines and timing combinators (spec 0004) | open | [Explicit state machines and timing combinators](../technical-components.md#req-tsukuri-state-machines) |
+| pr:tsukuri#17 | feat: explicit state machines and timing combinators (spec 0004) | merged | [Explicit state machines and timing combinators](../technical-components.md#req-tsukuri-state-machines) |
 | issue:tsukuri#12 | Accessible artifacts: captions, audio description, reduced motion and readable subtitles | open | [Generate captions, audio description and reduced motion](../technical-components.md#req-tsukuri-accessible-variants) |
 | issue:tsukuri#12 | Accessible artifacts: captions, audio description, reduced motion and readable subtitles | open | [Subtitles stay readable](../technical-components.md#req-tsukuri-readable-subtitles) |
 | issue:tsukuri#10 | Localisation: one story, several narration languages | open | [Build one story in several narration languages](../technical-components.md#req-tsukuri-language-variants) |

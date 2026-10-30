@@ -3,6 +3,7 @@
 // deleting it. Pure function: Model in, Markdown out.
 import { Array as Arr, String as Str } from "effect";
 
+import { itemsById } from "../model.ts";
 import type { Item, Model } from "../model.ts";
 import { kindInfo, scopes } from "../vocabulary.ts";
 import {
@@ -87,6 +88,37 @@ const recordsOnlySection = (model: Model): string => {
   );
 };
 
+const recheckSection = (model: Model): string => {
+  const byId = itemsById(model);
+
+  const rows = Arr.flatMap(model.triage.recheck ?? [], (entry) => {
+    const item = byId.get(entry.id);
+
+    return item === undefined
+      ? []
+      : [
+          [
+            `[${item.title}](${href(item, "")})`,
+            item.scope,
+            item.status,
+            oneLine(entry.note),
+          ],
+        ];
+  });
+
+  return Arr.join(
+    [
+      "## Citations to re-read",
+      "",
+      `${rows.length} elements cite lines that another commit changed between two pins of \`model/sources.yaml\`. The citation was moved to the new lines and still resolves, but the statement was written from the old text and may now disagree with it. Read the new lines, then correct the statement and delete the entry from \`recheck\` in \`model/triage.yaml\`.`,
+      "",
+      table(["Element", "Scope", "Status", "What changed"], rows),
+      "",
+    ],
+    "\n"
+  );
+};
+
 export const renderConfirm = (model: Model): string =>
   Arr.join(
     [
@@ -94,12 +126,13 @@ export const renderConfirm = (model: Model): string =>
       "",
       "# What the operator confirms or rejects",
       "",
-      'Every element in the scope tables is not an operator decision. `proposed` means an agent, a spec or an inference put it forward; `open` means a gap, a question or an undecided choice. Each row says why it waits and what to confirm. The column "Triage advice" holds the lead\'s advice where there is one ("Recommended: confirm", or a recommended default); the operator has not answered it, so it is not a decision. The last section lists decided elements that rest on repository records alone.',
+      'Every element in the scope tables is not an operator decision. `proposed` means an agent, a spec or an inference put it forward; `open` means a gap, a question or an undecided choice. Each row says why it waits and what to confirm. The column "Triage advice" holds the lead\'s advice where there is one ("Recommended: confirm", or a recommended default); the operator has not answered it, so it is not a decision. The next section lists decided elements that rest on repository records alone; the last lists elements whose cited lines changed at a re-pin.',
       "",
       "To confirm an element, change its `status` to `decided` in `model/` and cite the line that shows the decision (a line of the decision log, or a repository line that records it); to reject it, delete it. Run `bun run model:check` and `bun run generate`.",
       "",
       ...Arr.map(scopes, (scope) => scopeSection(model, scope)),
       recordsOnlySection(model),
+      recheckSection(model),
     ],
     "\n"
   );

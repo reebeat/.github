@@ -112,9 +112,9 @@ classDiagram
     concept_tsukuri_state "0..*" -->  "0..*"concept_tsukuri_beat : is joined by
     concept_tsukuri_beat --> concept_tsukuri_state : joins
     concept_tsukuri_keyframe "1" -->  "0..*"concept_tsukuri_element : shows
-    concept_tsukuri_keyframe "1" -->  "1"concept_tsukuri_beat : is the end state of
+    concept_tsukuri_keyframe "1" -->  "1"concept_tsukuri_state : is the visual part of
     concept_tsukuri_line "1" -->  "0..*"concept_tsukuri_hint : may carry
-    concept_tsukuri_beat "0..1 per Beat" *-- concept_tsukuri_line : carries
+    concept_tsukuri_scene "0..* per Scene" *-- concept_tsukuri_line : is spoken in
     concept_tsukuri_scene "0..* per Scene" *-- concept_tsukuri_effect
     concept_tsukuri_effect "1" -->  "1"concept_tsukuri_anchor : is timed against
     concept_tsukuri_effect "0..*" -->  "0..1"concept_tsukuri_element : acts on
@@ -153,8 +153,8 @@ classDiagram
 | <a id="concept-tsukuri-scene"></a><code>concept-tsukuri-scene</code><br/>Concept | **Scene.** A Scene is a compound State: it groups States in the story's statechart. | decided |  | [log L19][13] |
 | <a id="concept-tsukuri-state"></a><code>concept-tsukuri-state</code><br/>Concept | **State.** A node of the story's statechart. Scenes and States are nodes, and Beats are the edges between them. | decided |  | [log L19][13] |
 | <a id="concept-tsukuri-beat"></a><code>concept-tsukuri-beat</code><br/>Concept | **Beat.** A Beat is a transition, an edge between States. | decided |  | [log L19][13] |
-| <a id="concept-tsukuri-keyframe"></a><code>concept-tsukuri-keyframe</code><br/>Concept | **Keyframe.** The visual state a Beat ends in: every visible Element with its properties. | decided |  | [tsukuri:GLOSSARY.md:37-39][14], [log L118][15] |
-| <a id="concept-tsukuri-line"></a><code>concept-tsukuri-line</code><br/>Concept | **Line.** The narration that carries a Beat: the dialogue of the NARRATOR, aligned to words. Its narration text is the dialogue itself. Subtitles and speaker notes carry exactly that text. Attributes: narration text; aligned word times; delivery hints. | decided |  | [log L27][16], [tsukuri:GLOSSARY.md:41-43][17], [log L118][15] |
+| <a id="concept-tsukuri-keyframe"></a><code>concept-tsukuri-keyframe</code><br/>Concept | **Keyframe.** The visual part of a State: every visible Element with its properties. | decided |  | [tsukuri:GLOSSARY.md:37-39][14], [log L118][15] |
+| <a id="concept-tsukuri-line"></a><code>concept-tsukuri-line</code><br/>Concept | **Line.** The narration of a Scene: the dialogue of the NARRATOR, aligned to words. Its narration text is the dialogue itself. Subtitles and speaker notes carry exactly that text. Attributes: narration text; aligned word times; delivery hints. | decided |  | [log L27][16], [tsukuri:GLOSSARY.md:41-43][17], [log L118][15] |
 | <a id="concept-tsukuri-effect"></a><code>concept-tsukuri-effect</code><br/>Concept | **Effect.** An effect is declared in a Scene's effects block and is timed against an anchor. | decided |  | [record tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:162][18], [record tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:163][19], [tsukuri:GLOSSARY.md:45-47][20], [log L118][15] |
 | <a id="concept-tsukuri-anchor"></a><code>concept-tsukuri-anchor</code><br/>Concept | **Anchor.** A named moment an effect is timed against: a word, `scene.start`, `scene.end`, the transition into the Scene (its start, its end or a percent of the way), or an Element's lifecycle. | decided |  | [record tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:163][19], [tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:15][21], [tsukuri:GLOSSARY.md:49-51][22], [log L118][15] |
 | <a id="concept-tsukuri-transition-anchor"></a><code>concept-tsukuri-transition-anchor</code><br/>Concept | **Transition anchor.** The Scene's incoming slide transition as an anchor: its start, its end or a percent of the way. A sound that belongs to the slide change is anchored here, so it follows the motion and not the voice. | decided |  | [record tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:163][19], [tsukuri:GLOSSARY.md:57-59][23], [log L118][15] |

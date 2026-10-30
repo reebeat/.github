@@ -1,77 +1,77 @@
 # Citations whose cited lines another commit changed between the old pin and the new pin (spec 0007).
-# The tool (rename-prep/repin.ts) maps the old file through the rename first, so a line that only the rename changed is not listed.
-# Columns: model file:line, element, old citation, new citation, similarity of the first line, verdict of the match, what this spec did.
-foldkit-flow/actors.yaml:120	actor-flow-foldkit-project	foldkit-flow:AGENTS.md:64-64	AGENTS.md:64-64	0.42	CHANGED-IN-SUBSTANCE	statement fixed
-foldkit-flow/actors.yaml:121	actor-flow-foldkit-project	foldkit-flow:STATE.md:13-14	STATE.md:13-14	0.31	CHANGED-IN-SUBSTANCE	statement fixed
-foldkit-flow/actors.yaml:165	resource-flow-foldkit-pin	foldkit-flow:package.json:65-65	package.json:65-65	0.92	SIMILAR	statement fixed
-foldkit-flow/actors.yaml:166	resource-flow-foldkit-pin	foldkit-flow:packages/flow/package.json:32-32	packages/flow/package.json:32-32	0.92	SIMILAR	statement fixed
-foldkit-flow/actors.yaml:180	resource-flow-effect	foldkit-flow:AGENTS.md:65-65	AGENTS.md:65-65	1.00	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-foldkit-flow/actors.yaml:210	resource-flow-toolchain	foldkit-flow:AGENTS.md:37-51	AGENTS.md:37-51	1.00	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-foldkit-flow/actors.yaml:237	resource-flow-state-file	foldkit-flow:STATE.md:1-18	STATE.md:1-18	1.00	SIMILAR	statement fixed
-foldkit-flow/actors.yaml:268	resource-flow-chromium	foldkit-flow:AGENTS.md:48-48	AGENTS.md:48-48	0.87	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-foldkit-flow/concepts.yaml:137	concept-flow-viewport	foldkit-flow:README.md:82-82	README.md:82-82	0.86	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-foldkit-flow/goals.yaml:108	goal-flow-performance	foldkit-flow:README.md:82-82	README.md:82-82	0.86	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-foldkit-flow/goals.yaml:123	goal-flow-browser-proof	foldkit-flow:AGENTS.md:48-48	AGENTS.md:48-48	0.87	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-foldkit-flow/goals.yaml:267	problem-flow-goals-undocumented	foldkit-flow:STATE.md:7-7	STATE.md:7-7	0.49	CHANGED-IN-SUBSTANCE	statement kept, citation re-pointed: needs a model-owner pass
-foldkit-flow/goals.yaml:299	problem-flow-state-blocked-nothing	foldkit-flow:STATE.md:13-13	STATE.md:13-13	0.31	CHANGED-IN-SUBSTANCE	statement fixed
-foldkit-flow/goals.yaml:340	problem-flow-keyboard-connect-missing	foldkit-flow:STATE.md:11-11	STATE.md:11-11	0.80	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-foldkit-flow/goals.yaml:358	problem-flow-journey-not-in-ci	foldkit-flow:AGENTS.md:48-48	AGENTS.md:48-48	0.87	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-foldkit-flow/goals.yaml:441	problem-flow-lint-mocking-gap	foldkit-flow:tools/oxlint/anti-slop/rules/no-module-mocking.ts:41-42	tools/oxlint/anti-slop/rules/no-module-mocking.ts:42-43	0.78	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-foldkit-flow/goals.yaml:542	constraint-flow-effect-range	foldkit-flow:AGENTS.md:65-65	AGENTS.md:65-65	1.00	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-foldkit-flow/goals.yaml:543	constraint-flow-effect-range	foldkit-flow:packages/flow/package.json:30-33	packages/flow/package.json:30-33	1.00	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-foldkit-flow/goals.yaml:555	constraint-flow-effect-peer-mismatch	foldkit-flow:AGENTS.md:64-64	AGENTS.md:64-64	0.42	CHANGED-IN-SUBSTANCE	deleted
-foldkit-flow/goals.yaml:571	constraint-flow-vite-plugin-crypto	foldkit-flow:AGENTS.md:64-64	AGENTS.md:64-64	0.42	CHANGED-IN-SUBSTANCE	deleted
-foldkit-flow/goals.yaml:572	constraint-flow-vite-plugin-crypto	foldkit-flow:STATE.md:13-13	STATE.md:13-13	0.31	CHANGED-IN-SUBSTANCE	deleted
-foldkit-flow/processes.yaml:50	process-flow-pan-zoom	foldkit-flow:README.md:82-82	README.md:82-82	0.86	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-foldkit-flow/processes.yaml:224	process-flow-run-journey-gate	foldkit-flow:AGENTS.md:48-48	AGENTS.md:48-48	0.87	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-foldkit-flow/rules.yaml:198	rule-flow-effect-range-by-stability	foldkit-flow:AGENTS.md:65-65	AGENTS.md:65-65	1.00	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-foldkit-flow/rules.yaml:300	rule-flow-memoised-views	foldkit-flow:README.md:82-82	README.md:82-82	0.86	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-foldkit-flow/technical.yaml:57	comp-flow-example-app	foldkit-flow:apps/example/package.json:16-16	apps/example/package.json:14-14	0.79	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-foldkit-flow/technical.yaml:107	comp-flow-journey-tool	foldkit-flow:AGENTS.md:48-48	AGENTS.md:48-48	0.87	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-foldkit-flow/technical.yaml:260	isgoal-flow-measured-budget	foldkit-flow:README.md:82-82	README.md:82-82	0.86	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-foldkit-flow/technical.yaml:275	req-flow-pan-zoom	foldkit-flow:README.md:82-82	README.md:82-82	0.86	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-foldkit-flow/technical.yaml:491	req-flow-browser-gate	foldkit-flow:AGENTS.md:48-48	AGENTS.md:48-48	0.87	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-foldkit-flow/technical.yaml:514	req-flow-perf-drag	foldkit-flow:README.md:82-82	README.md:82-82	0.86	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-foldkit-flow/technical.yaml:604	req-flow-maintain-tiers	foldkit-flow:apps/example/package.json:16-16	apps/example/package.json:14-14	0.79	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-foldkit-flow/technical.yaml:662	req-flow-effect-range-gated	foldkit-flow:AGENTS.md:65-65	AGENTS.md:65-65	1.00	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-org/concepts.yaml:77	concept-org-agent-tool-protocol	tsukuri:docs/design/open-core-boundary.md:25-25	docs/design/open-core-boundary.md:25-25	0.36	CHANGED-IN-SUBSTANCE	statement kept, citation re-pointed: needs a model-owner pass
-org/processes.yaml:52	process-org-review-artifact	tsukuri:README.md:3-3	README.md:3-3	0.80	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-org/rules.yaml:50	rule-org-byo-agents	tsukuri:docs/design/open-core-boundary.md:25-25	docs/design/open-core-boundary.md:25-25	0.36	CHANGED-IN-SUBSTANCE	statement kept, citation re-pointed: needs a model-owner pass
-studio/actors.yaml:185	resource-studio-foldkit	studio:AGENTS.md:54-54	AGENTS.md:54-54	0.24	CHANGED-IN-SUBSTANCE	statement fixed
-studio/actors.yaml:200	resource-studio-effect	studio:AGENTS.md:54-54	AGENTS.md:54-54	0.24	CHANGED-IN-SUBSTANCE	statement kept, citation re-pointed: needs a model-owner pass
-studio/actors.yaml:302	resource-studio-specs	studio:STATE.md:7-7	STATE.md:7-7	0.92	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-studio/concepts.yaml:205	concept-studio-anchor-offset	tsukuri:GLOSSARY.md:39-40	GLOSSARY.md:49-50	1.00	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-studio/goals.yaml:367	problem-studio-foldkit-vite-plugin	studio:AGENTS.md:54-54	AGENTS.md:54-54	0.24	CHANGED-IN-SUBSTANCE	deleted
-studio/goals.yaml:475	problem-studio-stale-state	studio:STATE.md:7-7	STATE.md:7-7	0.92	SIMILAR	statement fixed
-studio/goals.yaml:475	problem-studio-stale-state	studio:STATE.md:11-11	STATE.md:13-13	0.27	CHANGED-IN-SUBSTANCE	statement fixed
-studio/goals.yaml:591	constraint-studio-effect-foldkit-peer	studio:AGENTS.md:54-54	AGENTS.md:54-54	0.24	CHANGED-IN-SUBSTANCE	deleted
-studio/goals.yaml:608	constraint-studio-foldkit-plugin-off	studio:AGENTS.md:54-54	AGENTS.md:54-54	0.24	CHANGED-IN-SUBSTANCE	deleted
-studio/rules.yaml:229	rule-studio-effect-one-version	studio:AGENTS.md:54-54	AGENTS.md:54-54	0.24	CHANGED-IN-SUBSTANCE	statement kept, citation re-pointed: needs a model-owner pass
-tsukuri/actors.yaml:12	actor-tsukuri-story-author	tsukuri:README.md:3-3	README.md:3-3	0.80	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-tsukuri/actors.yaml:27	actor-tsukuri-presenter	tsukuri:GLOSSARY.md:78-80	GLOSSARY.md:127-129	1.00	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-tsukuri/actors.yaml:332	resource-tsukuri-same-id-story	tsukuri:README.md:8-8	README.md:8-8	0.78	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-tsukuri/concepts.yaml:94	concept-tsukuri-keyframe	tsukuri:GLOSSARY.md:27-29	GLOSSARY.md:37-39	1.00	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-tsukuri/concepts.yaml:118	concept-tsukuri-line	tsukuri:GLOSSARY.md:31-33	GLOSSARY.md:41-43	1.00	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-tsukuri/concepts.yaml:139	concept-tsukuri-effect	tsukuri:GLOSSARY.md:35-37	GLOSSARY.md:45-47	1.00	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-tsukuri/concepts.yaml:164	concept-tsukuri-anchor	tsukuri:GLOSSARY.md:39-41	GLOSSARY.md:49-51	1.00	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-tsukuri/concepts.yaml:181	concept-tsukuri-transition-anchor	tsukuri:GLOSSARY.md:47-49	GLOSSARY.md:57-59	1.00	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-tsukuri/concepts.yaml:196	concept-tsukuri-lifecycle-event	tsukuri:GLOSSARY.md:43-45	GLOSSARY.md:53-55	1.00	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-tsukuri/concepts.yaml:377	concept-tsukuri-deck	tsukuri:GLOSSARY.md:78-80	GLOSSARY.md:127-129	1.00	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-tsukuri/concepts.yaml:419	concept-tsukuri-library	tsukuri:GLOSSARY.md:101-102	GLOSSARY.md:150-151	1.00	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-tsukuri/goals.yaml:27	goal-tsukuri-screenplay-first	tsukuri:README.md:3-3	README.md:3-3	0.80	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-tsukuri/goals.yaml:43	goal-tsukuri-deck-and-video	tsukuri:README.md:3-6	README.md:3-6	0.80	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-tsukuri/goals.yaml:297	problem-tsukuri-state-stale	tsukuri:STATE.md:7-7	STATE.md:7-7	0.21	CHANGED-IN-SUBSTANCE	statement fixed
-tsukuri/goals.yaml:298	problem-tsukuri-state-stale	tsukuri:STATE.md:13-13	STATE.md:14-14	0.97	SIMILAR	statement fixed
-tsukuri/goals.yaml:456	problem-tsukuri-goals-not-in-readme	tsukuri:README.md:1-3	README.md:1-3	1.00	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-tsukuri/goals.yaml:477	problem-tsukuri-roadmap-only-in-issues	tsukuri:README.md:1-50	README.md:1-50	1.00	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-tsukuri/goals.yaml:478	problem-tsukuri-roadmap-only-in-issues	tsukuri:STATE.md:7-7	STATE.md:7-7	0.21	CHANGED-IN-SUBSTANCE	statement kept, citation re-pointed: needs a model-owner pass
-tsukuri/goals.yaml:495	problem-tsukuri-demand-unmeasured	tsukuri:README.md:1-50	README.md:1-50	1.00	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-tsukuri/goals.yaml:526	problem-tsukuri-packages-private	tsukuri:.github/workflows/release.yml:1-5	.github/workflows/release.yml:1-5	1.00	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-tsukuri/goals.yaml:579	problem-tsukuri-extension-points-open	tsukuri:docs/design/open-core-boundary.md:24-25	docs/design/open-core-boundary.md:24-25	1.00	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-tsukuri/goals.yaml:621	problem-tsukuri-identity-scene-bounded	tsukuri:GLOSSARY.md:19-21	GLOSSARY.md:29-31	1.00	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-tsukuri/goals.yaml:669	problem-tsukuri-speed-interim	tsukuri:STATE.md:12-12	STATE.md:12-12	0.99	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-tsukuri/processes.yaml:13	process-tsukuri-author-story	tsukuri:README.md:3-3	README.md:3-3	0.80	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-tsukuri/rules.yaml:189	rule-tsukuri-narration-text-equal	tsukuri:GLOSSARY.md:31-33	GLOSSARY.md:41-43	1.00	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-tsukuri/rules.yaml:240	rule-tsukuri-absolute-time-needs-reason	tsukuri:packages/lint/src/absoluteTimes.ts:1-5	packages/lint/src/absoluteTimes.ts:1-5	0.93	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
-tsukuri/rules.yaml:256	rule-tsukuri-intent-resolved-in-schedule	tsukuri:GLOSSARY.md:36-36	GLOSSARY.md:46-46	0.29	CHANGED-IN-SUBSTANCE	statement kept, citation re-pointed: needs a model-owner pass
-tsukuri/technical.yaml:716	req-tsukuri-check	tsukuri:README.md:8-8	README.md:8-8	0.78	SIMILAR	statement kept, citation re-pointed: needs a model-owner pass
+# The tool maps the OLD file through the rename mapping first, so a line that only the rename changed is not listed. None of the 74 matches is byte-identical.
+# Columns: model file:line, element, old citation, new citation, similarity of the first line (difflib ratio), verdict (SIMILAR >= 0.6, CHANGED-IN-SUBSTANCE below), what this spec did.
+foldkit-flow/actors.yaml:120	actor-flow-foldkit-project	foldkit-flow:AGENTS.md:64-64	AGENTS.md:64-64	0.42	CHANGED-IN-SUBSTANCE	statement corrected
+foldkit-flow/actors.yaml:121	actor-flow-foldkit-project	foldkit-flow:STATE.md:13-14	STATE.md:13-14	0.31	CHANGED-IN-SUBSTANCE	statement corrected
+foldkit-flow/actors.yaml:165	resource-flow-foldkit-pin	foldkit-flow:package.json:65-65	package.json:65-65	0.92	SIMILAR	statement corrected
+foldkit-flow/actors.yaml:166	resource-flow-foldkit-pin	foldkit-flow:packages/flow/package.json:32-32	packages/flow/package.json:32-32	0.92	SIMILAR	statement corrected
+foldkit-flow/actors.yaml:180	resource-flow-effect	foldkit-flow:AGENTS.md:65-65	AGENTS.md:65-65	1.00	SIMILAR	kept, listed in model/triage.yaml recheck
+foldkit-flow/actors.yaml:210	resource-flow-toolchain	foldkit-flow:AGENTS.md:37-51	AGENTS.md:37-51	1.00	SIMILAR	kept, listed in model/triage.yaml recheck
+foldkit-flow/actors.yaml:237	resource-flow-state-file	foldkit-flow:STATE.md:1-18	STATE.md:1-18	1.00	SIMILAR	statement corrected
+foldkit-flow/actors.yaml:268	resource-flow-chromium	foldkit-flow:AGENTS.md:48-48	AGENTS.md:48-48	0.87	SIMILAR	kept, listed in model/triage.yaml recheck
+foldkit-flow/concepts.yaml:137	concept-flow-viewport	foldkit-flow:README.md:82-82	README.md:82-82	0.86	SIMILAR	kept, listed in model/triage.yaml recheck
+foldkit-flow/goals.yaml:108	goal-flow-performance	foldkit-flow:README.md:82-82	README.md:82-82	0.86	SIMILAR	kept, listed in model/triage.yaml recheck
+foldkit-flow/goals.yaml:123	goal-flow-browser-proof	foldkit-flow:AGENTS.md:48-48	AGENTS.md:48-48	0.87	SIMILAR	kept, listed in model/triage.yaml recheck
+foldkit-flow/goals.yaml:267	problem-flow-goals-undocumented	foldkit-flow:STATE.md:7-7	STATE.md:7-7	0.49	CHANGED-IN-SUBSTANCE	kept, listed in model/triage.yaml recheck
+foldkit-flow/goals.yaml:299	problem-flow-state-blocked-nothing	foldkit-flow:STATE.md:13-13	STATE.md:13-13	0.31	CHANGED-IN-SUBSTANCE	statement corrected
+foldkit-flow/goals.yaml:340	problem-flow-keyboard-connect-missing	foldkit-flow:STATE.md:11-11	STATE.md:11-11	0.80	SIMILAR	kept, listed in model/triage.yaml recheck
+foldkit-flow/goals.yaml:358	problem-flow-journey-not-in-ci	foldkit-flow:AGENTS.md:48-48	AGENTS.md:48-48	0.87	SIMILAR	kept, listed in model/triage.yaml recheck
+foldkit-flow/goals.yaml:441	problem-flow-lint-mocking-gap	foldkit-flow:tools/oxlint/anti-slop/rules/no-module-mocking.ts:41-42	tools/oxlint/anti-slop/rules/no-module-mocking.ts:42-43	0.78	SIMILAR	element deleted
+foldkit-flow/goals.yaml:542	constraint-flow-effect-range	foldkit-flow:AGENTS.md:65-65	AGENTS.md:65-65	1.00	SIMILAR	kept, listed in model/triage.yaml recheck
+foldkit-flow/goals.yaml:543	constraint-flow-effect-range	foldkit-flow:packages/flow/package.json:30-33	packages/flow/package.json:30-33	1.00	SIMILAR	kept, listed in model/triage.yaml recheck
+foldkit-flow/goals.yaml:555	constraint-flow-effect-peer-mismatch	foldkit-flow:AGENTS.md:64-64	AGENTS.md:64-64	0.42	CHANGED-IN-SUBSTANCE	element deleted
+foldkit-flow/goals.yaml:571	constraint-flow-vite-plugin-crypto	foldkit-flow:AGENTS.md:64-64	AGENTS.md:64-64	0.42	CHANGED-IN-SUBSTANCE	element deleted
+foldkit-flow/goals.yaml:572	constraint-flow-vite-plugin-crypto	foldkit-flow:STATE.md:13-13	STATE.md:13-13	0.31	CHANGED-IN-SUBSTANCE	element deleted
+foldkit-flow/processes.yaml:50	process-flow-pan-zoom	foldkit-flow:README.md:82-82	README.md:82-82	0.86	SIMILAR	kept, listed in model/triage.yaml recheck
+foldkit-flow/processes.yaml:224	process-flow-run-journey-gate	foldkit-flow:AGENTS.md:48-48	AGENTS.md:48-48	0.87	SIMILAR	kept, listed in model/triage.yaml recheck
+foldkit-flow/rules.yaml:198	rule-flow-effect-range-by-stability	foldkit-flow:AGENTS.md:65-65	AGENTS.md:65-65	1.00	SIMILAR	kept, listed in model/triage.yaml recheck
+foldkit-flow/rules.yaml:300	rule-flow-memoised-views	foldkit-flow:README.md:82-82	README.md:82-82	0.86	SIMILAR	kept, listed in model/triage.yaml recheck
+foldkit-flow/technical.yaml:57	comp-flow-example-app	foldkit-flow:apps/example/package.json:16-16	apps/example/package.json:14-14	0.79	SIMILAR	kept, listed in model/triage.yaml recheck
+foldkit-flow/technical.yaml:107	comp-flow-journey-tool	foldkit-flow:AGENTS.md:48-48	AGENTS.md:48-48	0.87	SIMILAR	kept, listed in model/triage.yaml recheck
+foldkit-flow/technical.yaml:260	isgoal-flow-measured-budget	foldkit-flow:README.md:82-82	README.md:82-82	0.86	SIMILAR	kept, listed in model/triage.yaml recheck
+foldkit-flow/technical.yaml:275	req-flow-pan-zoom	foldkit-flow:README.md:82-82	README.md:82-82	0.86	SIMILAR	kept, listed in model/triage.yaml recheck
+foldkit-flow/technical.yaml:491	req-flow-browser-gate	foldkit-flow:AGENTS.md:48-48	AGENTS.md:48-48	0.87	SIMILAR	kept, listed in model/triage.yaml recheck
+foldkit-flow/technical.yaml:514	req-flow-perf-drag	foldkit-flow:README.md:82-82	README.md:82-82	0.86	SIMILAR	kept, listed in model/triage.yaml recheck
+foldkit-flow/technical.yaml:604	req-flow-maintain-tiers	foldkit-flow:apps/example/package.json:16-16	apps/example/package.json:14-14	0.79	SIMILAR	kept, listed in model/triage.yaml recheck
+foldkit-flow/technical.yaml:662	req-flow-effect-range-gated	foldkit-flow:AGENTS.md:65-65	AGENTS.md:65-65	1.00	SIMILAR	kept, listed in model/triage.yaml recheck
+org/concepts.yaml:77	concept-org-agent-tool-protocol	tsukuri:docs/design/open-core-boundary.md:25-25	docs/design/open-core-boundary.md:25-25	0.36	CHANGED-IN-SUBSTANCE	kept, listed in model/triage.yaml recheck
+org/processes.yaml:52	process-org-review-artifact	tsukuri:README.md:3-3	README.md:3-3	0.80	SIMILAR	kept, listed in model/triage.yaml recheck
+org/rules.yaml:50	rule-org-byo-agents	tsukuri:docs/design/open-core-boundary.md:25-25	docs/design/open-core-boundary.md:25-25	0.36	CHANGED-IN-SUBSTANCE	kept, listed in model/triage.yaml recheck
+studio/actors.yaml:185	resource-studio-foldkit	studio:AGENTS.md:54-54	AGENTS.md:54-54	0.24	CHANGED-IN-SUBSTANCE	statement corrected
+studio/actors.yaml:200	resource-studio-effect	studio:AGENTS.md:54-54	AGENTS.md:54-54	0.24	CHANGED-IN-SUBSTANCE	kept, listed in model/triage.yaml recheck
+studio/actors.yaml:302	resource-studio-specs	studio:STATE.md:7-7	STATE.md:7-7	0.92	SIMILAR	kept, listed in model/triage.yaml recheck
+studio/concepts.yaml:205	concept-studio-anchor-offset	tsukuri:GLOSSARY.md:39-40	GLOSSARY.md:49-50	1.00	SIMILAR	kept, listed in model/triage.yaml recheck
+studio/goals.yaml:367	problem-studio-foldkit-vite-plugin	studio:AGENTS.md:54-54	AGENTS.md:54-54	0.24	CHANGED-IN-SUBSTANCE	element deleted
+studio/goals.yaml:475	problem-studio-stale-state	studio:STATE.md:7-7	STATE.md:7-7	0.92	SIMILAR	statement corrected
+studio/goals.yaml:475	problem-studio-stale-state	studio:STATE.md:11-11	STATE.md:13-13	0.27	CHANGED-IN-SUBSTANCE	statement corrected
+studio/goals.yaml:591	constraint-studio-effect-foldkit-peer	studio:AGENTS.md:54-54	AGENTS.md:54-54	0.24	CHANGED-IN-SUBSTANCE	element deleted
+studio/goals.yaml:608	constraint-studio-foldkit-plugin-off	studio:AGENTS.md:54-54	AGENTS.md:54-54	0.24	CHANGED-IN-SUBSTANCE	element deleted
+studio/rules.yaml:229	rule-studio-effect-one-version	studio:AGENTS.md:54-54	AGENTS.md:54-54	0.24	CHANGED-IN-SUBSTANCE	kept, listed in model/triage.yaml recheck
+tsukuri/actors.yaml:12	actor-tsukuri-story-author	tsukuri:README.md:3-3	README.md:3-3	0.80	SIMILAR	kept, listed in model/triage.yaml recheck
+tsukuri/actors.yaml:27	actor-tsukuri-presenter	tsukuri:GLOSSARY.md:78-80	GLOSSARY.md:127-129	1.00	SIMILAR	kept, listed in model/triage.yaml recheck
+tsukuri/actors.yaml:332	resource-tsukuri-same-id-story	tsukuri:README.md:8-8	README.md:8-8	0.78	SIMILAR	kept, listed in model/triage.yaml recheck
+tsukuri/concepts.yaml:94	concept-tsukuri-keyframe	tsukuri:GLOSSARY.md:27-29	GLOSSARY.md:37-39	1.00	SIMILAR	statement corrected
+tsukuri/concepts.yaml:118	concept-tsukuri-line	tsukuri:GLOSSARY.md:31-33	GLOSSARY.md:41-43	1.00	SIMILAR	statement corrected
+tsukuri/concepts.yaml:139	concept-tsukuri-effect	tsukuri:GLOSSARY.md:35-37	GLOSSARY.md:45-47	1.00	SIMILAR	kept, listed in model/triage.yaml recheck
+tsukuri/concepts.yaml:164	concept-tsukuri-anchor	tsukuri:GLOSSARY.md:39-41	GLOSSARY.md:49-51	1.00	SIMILAR	kept, listed in model/triage.yaml recheck
+tsukuri/concepts.yaml:181	concept-tsukuri-transition-anchor	tsukuri:GLOSSARY.md:47-49	GLOSSARY.md:57-59	1.00	SIMILAR	kept, listed in model/triage.yaml recheck
+tsukuri/concepts.yaml:196	concept-tsukuri-lifecycle-event	tsukuri:GLOSSARY.md:43-45	GLOSSARY.md:53-55	1.00	SIMILAR	kept, listed in model/triage.yaml recheck
+tsukuri/concepts.yaml:377	concept-tsukuri-deck	tsukuri:GLOSSARY.md:78-80	GLOSSARY.md:127-129	1.00	SIMILAR	kept, listed in model/triage.yaml recheck
+tsukuri/concepts.yaml:419	concept-tsukuri-library	tsukuri:GLOSSARY.md:101-102	GLOSSARY.md:150-151	1.00	SIMILAR	kept, listed in model/triage.yaml recheck
+tsukuri/goals.yaml:27	goal-tsukuri-screenplay-first	tsukuri:README.md:3-3	README.md:3-3	0.80	SIMILAR	kept, listed in model/triage.yaml recheck
+tsukuri/goals.yaml:43	goal-tsukuri-deck-and-video	tsukuri:README.md:3-6	README.md:3-6	0.80	SIMILAR	kept, listed in model/triage.yaml recheck
+tsukuri/goals.yaml:297	problem-tsukuri-state-stale	tsukuri:STATE.md:7-7	STATE.md:7-7	0.21	CHANGED-IN-SUBSTANCE	statement corrected
+tsukuri/goals.yaml:298	problem-tsukuri-state-stale	tsukuri:STATE.md:13-13	STATE.md:14-14	0.97	SIMILAR	statement corrected
+tsukuri/goals.yaml:456	problem-tsukuri-goals-not-in-readme	tsukuri:README.md:1-3	README.md:1-3	1.00	SIMILAR	kept, listed in model/triage.yaml recheck
+tsukuri/goals.yaml:477	problem-tsukuri-roadmap-only-in-issues	tsukuri:README.md:1-50	README.md:1-50	1.00	SIMILAR	kept, listed in model/triage.yaml recheck
+tsukuri/goals.yaml:478	problem-tsukuri-roadmap-only-in-issues	tsukuri:STATE.md:7-7	STATE.md:7-7	0.21	CHANGED-IN-SUBSTANCE	kept, listed in model/triage.yaml recheck
+tsukuri/goals.yaml:495	problem-tsukuri-demand-unmeasured	tsukuri:README.md:1-50	README.md:1-50	1.00	SIMILAR	kept, listed in model/triage.yaml recheck
+tsukuri/goals.yaml:526	problem-tsukuri-packages-private	tsukuri:.github/workflows/release.yml:1-5	.github/workflows/release.yml:1-5	1.00	SIMILAR	kept, listed in model/triage.yaml recheck
+tsukuri/goals.yaml:579	problem-tsukuri-extension-points-open	tsukuri:docs/design/open-core-boundary.md:24-25	docs/design/open-core-boundary.md:24-25	1.00	SIMILAR	kept, listed in model/triage.yaml recheck
+tsukuri/goals.yaml:621	problem-tsukuri-identity-scene-bounded	tsukuri:GLOSSARY.md:19-21	GLOSSARY.md:29-31	1.00	SIMILAR	statement corrected
+tsukuri/goals.yaml:669	problem-tsukuri-speed-interim	tsukuri:STATE.md:12-12	STATE.md:12-12	0.99	SIMILAR	kept, listed in model/triage.yaml recheck
+tsukuri/processes.yaml:13	process-tsukuri-author-story	tsukuri:README.md:3-3	README.md:3-3	0.80	SIMILAR	kept, listed in model/triage.yaml recheck
+tsukuri/rules.yaml:189	rule-tsukuri-narration-text-equal	tsukuri:GLOSSARY.md:31-33	GLOSSARY.md:41-43	1.00	SIMILAR	kept, listed in model/triage.yaml recheck
+tsukuri/rules.yaml:240	rule-tsukuri-absolute-time-needs-reason	tsukuri:packages/lint/src/absoluteTimes.ts:1-5	packages/lint/src/absoluteTimes.ts:1-5	0.93	SIMILAR	kept, listed in model/triage.yaml recheck
+tsukuri/rules.yaml:256	rule-tsukuri-intent-resolved-in-schedule	tsukuri:GLOSSARY.md:36-36	GLOSSARY.md:46-46	0.29	CHANGED-IN-SUBSTANCE	statement corrected
+tsukuri/technical.yaml:716	req-tsukuri-check	tsukuri:README.md:8-8	README.md:8-8	0.78	SIMILAR	kept, listed in model/triage.yaml recheck

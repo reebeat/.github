@@ -441,11 +441,11 @@ elements:
     title: STATE.md still says spec 0005 is in review
     statement: >-
       At the pinned commit, STATE.md says spec 0005 (Foldkit 0.170.0 and the Vite plugin) is in review as PR 9 and lists
-      its review as the next step. PR 9 is merged: the pinned main commit is its merge. STATE.md is wrong until a later
+      its review as the next step. PR 9 is merged; the pinned main commit is the merge of PR 10, the rename, which came after it. STATE.md is wrong until a later
       change rewrites it.
     status: open
     rationale: >-
-      The pinned main commit is the merge of PR 9 (`git log`), yet STATE.md line 7 still says "in review". Compare line 7
+      PR 9 merged before the pinned main commit (`git log`), yet STATE.md line 7 still says "in review". Compare line 7
       with the repository log. The operator should confirm that the next spec updates STATE.md.
     source: [studio:STATE.md:7, studio:STATE.md:11, pr:studio#5, pr:studio#6]
     gap:

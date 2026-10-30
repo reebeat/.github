@@ -611,7 +611,7 @@ elements:
     statement: >-
       Element ids are story-global: one id is one entity in the whole story, as a rule enforced by a lint. Until spec 0005,
       motion runs only between adjacent Scenes. Release 1 matches ids only between two consecutive Scenes joined by
-      AUTO-ANIMATE.
+      AUTO-ANIMATE (the glossary calls a Scene a compound State and the boundary of identity).
     status: decided
     source:
       - log:23

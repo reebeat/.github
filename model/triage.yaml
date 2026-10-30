@@ -3,3 +3,104 @@
 # shows the operator decided it, and its entry here is then deleted (the check TRIAGE-DECIDED fails on a decided element).
 # docs/confirm.md prints each entry beside its element.
 advice: []
+recheck:
+    - id: actor-tsukuri-presenter
+      note: "cited text changed: tsukuri:GLOSSARY.md:78-80 -> GLOSSARY.md:127-129 (1.00, SIMILAR)"
+    - id: actor-tsukuri-story-author
+      note: "cited text changed: tsukuri:README.md:3-3 -> README.md:3-3 (0.80, SIMILAR)"
+    - id: comp-flow-example-app
+      note: "cited text changed: foldkit-flow:apps/example/package.json:16-16 -> apps/example/package.json:14-14 (0.79, SIMILAR)"
+    - id: comp-flow-journey-tool
+      note: "cited text changed: foldkit-flow:AGENTS.md:48-48 -> AGENTS.md:48-48 (0.87, SIMILAR)"
+    - id: concept-flow-viewport
+      note: "cited text changed: foldkit-flow:README.md:82-82 -> README.md:82-82 (0.86, SIMILAR)"
+    - id: concept-org-agent-tool-protocol
+      note: "cited text changed: tsukuri:docs/design/open-core-boundary.md:25-25 -> docs/design/open-core-boundary.md:25-25 (0.36, CHANGED-IN-SUBSTANCE)"
+    - id: concept-studio-anchor-offset
+      note: "cited text changed: tsukuri:GLOSSARY.md:39-40 -> GLOSSARY.md:49-50 (1.00, SIMILAR)"
+    - id: concept-tsukuri-anchor
+      note: "cited text changed: tsukuri:GLOSSARY.md:39-41 -> GLOSSARY.md:49-51 (1.00, SIMILAR)"
+    - id: concept-tsukuri-deck
+      note: "cited text changed: tsukuri:GLOSSARY.md:78-80 -> GLOSSARY.md:127-129 (1.00, SIMILAR)"
+    - id: concept-tsukuri-effect
+      note: "cited text changed: tsukuri:GLOSSARY.md:35-37 -> GLOSSARY.md:45-47 (1.00, SIMILAR)"
+    - id: concept-tsukuri-library
+      note: "cited text changed: tsukuri:GLOSSARY.md:101-102 -> GLOSSARY.md:150-151 (1.00, SIMILAR)"
+    - id: concept-tsukuri-lifecycle-event
+      note: "cited text changed: tsukuri:GLOSSARY.md:43-45 -> GLOSSARY.md:53-55 (1.00, SIMILAR)"
+    - id: concept-tsukuri-transition-anchor
+      note: "cited text changed: tsukuri:GLOSSARY.md:47-49 -> GLOSSARY.md:57-59 (1.00, SIMILAR)"
+    - id: constraint-flow-effect-range
+      note: "cited text changed: foldkit-flow:AGENTS.md:65-65 -> AGENTS.md:65-65 (1.00, SIMILAR); foldkit-flow:packages/flow/package.json:30-33 -> packages/flow/package.json:30-33 (1.00, SIMILAR)"
+    - id: goal-flow-browser-proof
+      note: "cited text changed: foldkit-flow:AGENTS.md:48-48 -> AGENTS.md:48-48 (0.87, SIMILAR)"
+    - id: goal-flow-performance
+      note: "cited text changed: foldkit-flow:README.md:82-82 -> README.md:82-82 (0.86, SIMILAR)"
+    - id: goal-tsukuri-deck-and-video
+      note: "cited text changed: tsukuri:README.md:3-6 -> README.md:3-6 (0.80, SIMILAR)"
+    - id: goal-tsukuri-screenplay-first
+      note: "cited text changed: tsukuri:README.md:3-3 -> README.md:3-3 (0.80, SIMILAR)"
+    - id: isgoal-flow-measured-budget
+      note: "cited text changed: foldkit-flow:README.md:82-82 -> README.md:82-82 (0.86, SIMILAR)"
+    - id: problem-flow-goals-undocumented
+      note: "cited text changed: foldkit-flow:STATE.md:7-7 -> STATE.md:7-7 (0.49, CHANGED-IN-SUBSTANCE)"
+    - id: problem-flow-journey-not-in-ci
+      note: "cited text changed: foldkit-flow:AGENTS.md:48-48 -> AGENTS.md:48-48 (0.87, SIMILAR)"
+    - id: problem-flow-keyboard-connect-missing
+      note: "cited text changed: foldkit-flow:STATE.md:11-11 -> STATE.md:11-11 (0.80, SIMILAR)"
+    - id: problem-tsukuri-demand-unmeasured
+      note: "cited text changed: tsukuri:README.md:1-50 -> README.md:1-50 (1.00, SIMILAR)"
+    - id: problem-tsukuri-extension-points-open
+      note: "cited text changed: tsukuri:docs/design/open-core-boundary.md:24-25 -> docs/design/open-core-boundary.md:24-25 (1.00, SIMILAR)"
+    - id: problem-tsukuri-goals-not-in-readme
+      note: "cited text changed: tsukuri:README.md:1-3 -> README.md:1-3 (1.00, SIMILAR)"
+    - id: problem-tsukuri-packages-private
+      note: "cited text changed: tsukuri:.github/workflows/release.yml:1-5 -> .github/workflows/release.yml:1-5 (1.00, SIMILAR)"
+    - id: problem-tsukuri-roadmap-only-in-issues
+      note: "cited text changed: tsukuri:README.md:1-50 -> README.md:1-50 (1.00, SIMILAR); tsukuri:STATE.md:7-7 -> STATE.md:7-7 (0.21, CHANGED-IN-SUBSTANCE)"
+    - id: problem-tsukuri-speed-interim
+      note: "cited text changed: tsukuri:STATE.md:12-12 -> STATE.md:12-12 (0.99, SIMILAR)"
+    - id: process-flow-pan-zoom
+      note: "cited text changed: foldkit-flow:README.md:82-82 -> README.md:82-82 (0.86, SIMILAR)"
+    - id: process-flow-run-journey-gate
+      note: "cited text changed: foldkit-flow:AGENTS.md:48-48 -> AGENTS.md:48-48 (0.87, SIMILAR)"
+    - id: process-org-review-artifact
+      note: "cited text changed: tsukuri:README.md:3-3 -> README.md:3-3 (0.80, SIMILAR)"
+    - id: process-tsukuri-author-story
+      note: "cited text changed: tsukuri:README.md:3-3 -> README.md:3-3 (0.80, SIMILAR)"
+    - id: req-flow-browser-gate
+      note: "cited text changed: foldkit-flow:AGENTS.md:48-48 -> AGENTS.md:48-48 (0.87, SIMILAR)"
+    - id: req-flow-effect-range-gated
+      note: "cited text changed: foldkit-flow:AGENTS.md:65-65 -> AGENTS.md:65-65 (1.00, SIMILAR)"
+    - id: req-flow-maintain-tiers
+      note: "cited text changed: foldkit-flow:apps/example/package.json:16-16 -> apps/example/package.json:14-14 (0.79, SIMILAR)"
+    - id: req-flow-pan-zoom
+      note: "cited text changed: foldkit-flow:README.md:82-82 -> README.md:82-82 (0.86, SIMILAR)"
+    - id: req-flow-perf-drag
+      note: "cited text changed: foldkit-flow:README.md:82-82 -> README.md:82-82 (0.86, SIMILAR)"
+    - id: req-tsukuri-check
+      note: "cited text changed: tsukuri:README.md:8-8 -> README.md:8-8 (0.78, SIMILAR)"
+    - id: resource-flow-chromium
+      note: "cited text changed: foldkit-flow:AGENTS.md:48-48 -> AGENTS.md:48-48 (0.87, SIMILAR)"
+    - id: resource-flow-effect
+      note: "cited text changed: foldkit-flow:AGENTS.md:65-65 -> AGENTS.md:65-65 (1.00, SIMILAR)"
+    - id: resource-flow-toolchain
+      note: "cited text changed: foldkit-flow:AGENTS.md:37-51 -> AGENTS.md:37-51 (1.00, SIMILAR)"
+    - id: resource-studio-effect
+      note: "cited text changed: studio:AGENTS.md:54-54 -> AGENTS.md:54-54 (0.24, CHANGED-IN-SUBSTANCE)"
+    - id: resource-studio-specs
+      note: "cited text changed: studio:STATE.md:7-7 -> STATE.md:7-7 (0.92, SIMILAR)"
+    - id: resource-tsukuri-same-id-story
+      note: "cited text changed: tsukuri:README.md:8-8 -> README.md:8-8 (0.78, SIMILAR)"
+    - id: rule-flow-effect-range-by-stability
+      note: "cited text changed: foldkit-flow:AGENTS.md:65-65 -> AGENTS.md:65-65 (1.00, SIMILAR)"
+    - id: rule-flow-memoised-views
+      note: "cited text changed: foldkit-flow:README.md:82-82 -> README.md:82-82 (0.86, SIMILAR)"
+    - id: rule-org-byo-agents
+      note: "cited text changed: tsukuri:docs/design/open-core-boundary.md:25-25 -> docs/design/open-core-boundary.md:25-25 (0.36, CHANGED-IN-SUBSTANCE)"
+    - id: rule-studio-effect-one-version
+      note: "cited text changed: studio:AGENTS.md:54-54 -> AGENTS.md:54-54 (0.24, CHANGED-IN-SUBSTANCE)"
+    - id: rule-tsukuri-absolute-time-needs-reason
+      note: "cited text changed: tsukuri:packages/lint/src/absoluteTimes.ts:1-5 -> packages/lint/src/absoluteTimes.ts:1-5 (0.93, SIMILAR)"
+    - id: rule-tsukuri-narration-text-equal
+      note: "cited text changed: tsukuri:GLOSSARY.md:31-33 -> GLOSSARY.md:41-43 (1.00, SIMILAR)"

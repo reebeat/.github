@@ -89,7 +89,7 @@ elements:
     kind: concept
     title: Keyframe
     statement: >-
-      The visual state a Beat ends in: every visible Element with its properties.
+      The visual part of a State: every visible Element with its properties.
     status: decided
     source: ["tsukuri:GLOSSARY.md:37-39", log:118]
     relations:
@@ -98,15 +98,15 @@ elements:
         label: shows
         multiplicity: "1 to 0..*"
       - type: relates
-        to: concept-tsukuri-beat
-        label: is the end state of
+        to: concept-tsukuri-state
+        label: is the visual part of
         multiplicity: "1 to 1"
 
   - id: concept-tsukuri-line
     kind: concept
     title: Line
     statement: >-
-      The narration that carries a Beat: the dialogue of the NARRATOR, aligned to words. Its narration text is the
+      The narration of a Scene: the dialogue of the NARRATOR, aligned to words. Its narration text is the
       dialogue itself. Subtitles and speaker notes carry exactly that text.
     attributes:
       - narration text
@@ -123,9 +123,9 @@ elements:
         label: may carry
         multiplicity: "1 to 0..*"
       - type: part-of
-        to: concept-tsukuri-beat
-        label: carries
-        multiplicity: "0..1 per Beat"
+        to: concept-tsukuri-scene
+        label: is spoken in
+        multiplicity: "0..* per Scene"
 
   - id: concept-tsukuri-effect
     kind: concept

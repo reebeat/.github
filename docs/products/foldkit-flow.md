@@ -6,7 +6,7 @@ A node-based graph UI for Foldkit, like React Flow or Svelte Flow, in its own re
 
 Repository: [tsukuri-labs/foldkit-flow][1]. Licence: MIT. Status of this description: decided.
 
-135 model elements: 112 decided, 21 proposed, 2 open.
+134 model elements: 111 decided, 21 proposed, 2 open.
 
 ## Product vision board
 
@@ -20,7 +20,7 @@ After Roman Pichler's product vision board. Each cell is built from the model; c
 | Product (key features) | [packages/flow (the library)](../technical-components.md#comp-flow-library) (decided)<br/>[apps/example (the example app)](../technical-components.md#comp-flow-example-app) (decided)<br/>[tools/quality (repository checks)](../technical-components.md#comp-flow-quality-tools) (decided)<br/>[tools/oxlint (vendored lint rules)](../technical-components.md#comp-flow-oxlint-rules) (decided)<br/>[tools/journey (browser gate)](../technical-components.md#comp-flow-journey-tool) (proposed)<br/>[CI workflow (checks)](../technical-components.md#comp-flow-ci) (decided)<br/>[Review and PR skills](../technical-components.md#comp-flow-agent-skills) (decided)<br/>[Attribution option and view](../technical-components.md#comp-flow-attribution) (decided)<br/>[Flow Submodel (Model, update, view)](../technical-components.md#comp-flow-flow-submodel) (decided)<br/>[Mounts that own the xyflow controllers](../technical-components.md#comp-flow-mounts) (proposed)<br/>[Pan and zoom by wheel and drag](../technical-components.md#req-flow-pan-zoom) (proposed)<br/>[Drag a node, edges follow](../technical-components.md#req-flow-drag-node) (proposed)<br/>[Connect handles with validation](../technical-components.md#req-flow-connect) (proposed)<br/>[Reconnect an edge end](../technical-components.md#req-flow-reconnect) (proposed)<br/>[Select with a box](../technical-components.md#req-flow-box-select) (proposed)<br/>[Controls, fit view and minimap](../technical-components.md#req-flow-controls-minimap) (proposed)<br/>[Compound nodes with relative positions](../technical-components.md#req-flow-compound-nodes) (proposed)<br/>[Delete a parent with its descendants and edges](../technical-components.md#req-flow-delete-closure) (proposed)<br/>[Edit the graph by keyboard](../technical-components.md#req-flow-keyboard-edit) (decided)<br/>[The app draws node content](../technical-components.md#req-flow-custom-nodes) (decided)<br/>[Show the xyflow credit by default, allow hiding](../technical-components.md#req-flow-attribution-toggle) (decided)<br/>[A browser journey gate](../technical-components.md#req-flow-browser-gate) (decided) |
 | Business goals | [Accessible artifacts for every audience](../goals.md#goal-org-accessible-artifacts) (decided)<br/>[Correctness by construction](../goals.md#goal-org-correctness-by-construction) (decided)<br/>[Intent written down, sourced and testable](../goals.md#goal-org-written-intent) (decided) |
 
-Scope `foldkit-flow`: 135 elements.
+Scope `foldkit-flow`: 134 elements.
 
 ## Goals and quality requirements (arc42 sections 1 and 10)
 
@@ -82,7 +82,6 @@ Scope `foldkit-flow`: 135 elements.
 - [Demand and users are not measured](../goals.md#problem-flow-demand-unmeasured) (decided): The cited sources show no measure of who needs the library or who uses it. Nothing is published, and the sources record no user count or request.
 - [Terms of the Foldkit offer remain to record](../goals.md#problem-flow-upstream-terms-open) (decided): The operator decided to offer the library as `@foldkit/flow` once its API settles. If Foldkit adopts it, the project publishes `@foldkit/flow` and deprecates `@tsukuri/flow`. What counts as settled, the date and the licence header are not yet recorded.
 - [Workflow hardening is deferred](../goals.md#problem-flow-deferred-workflow-questions) (decided): Vendoring Foldkit as a subtree, requiring human approval, signed commits and Renovate are all deferred.
-- [The module-mocking lint rule has a gap](../goals.md#problem-flow-lint-mocking-gap) (decided): The lint rule that forbids module mocking matches only the `vitest` import source, so a mock imported from `vite-plus/test` passes.
 - [No security, conduct or contributing files](../goals.md#problem-flow-community-files) (decided): The public repository has no SECURITY.md, CODE_OF_CONDUCT.md or CONTRIBUTING.md. The README has a short contributing section.
 - [The library is MIT licensed](../goals.md#constraint-flow-mit-licence) (decided): foldkit-flow is released under the MIT licence.
 - [The repository is public and holds no secrets](../goals.md#constraint-flow-public-repo) (decided): The repository is public. It never holds a secret or personal data.
@@ -123,7 +122,6 @@ flowchart BT
     problem_flow_demand_unmeasured{{"Demand and users are not<br/>measured"}}:::decided
     problem_flow_upstream_terms_open{{"Terms of the Foldkit offer<br/>remain to record"}}:::decided
     problem_flow_deferred_workflow_questions{{"Workflow hardening is<br/>deferred"}}:::decided
-    problem_flow_lint_mocking_gap{{"The module-mocking lint rule<br/>has a gap"}}:::decided
     problem_flow_community_files{{"No security, conduct or<br/>contributing files"}}:::decided
     constraint_flow_mit_licence[/"The library is MIT licensed"/]:::decided
     constraint_flow_public_repo[/"The repository is public and<br/>holds no secrets"/]:::decided
@@ -159,7 +157,6 @@ flowchart BT
     problem_flow_demand_unmeasured -.->|hinders| goal_flow_publish
     problem_flow_upstream_terms_open -.->|hinders| goal_flow_upstream_offer
     problem_flow_deferred_workflow_questions -.->|hinders| goal_flow_lifecycle
-    problem_flow_lint_mocking_gap -.->|hinders| goal_flow_lifecycle
     problem_flow_community_files -.->|hinders| goal_flow_publish
     constraint_flow_xyflow_notice -.->|hinders| goal_flow_publish
     opportunity_flow_xyflow_core -->|supports| goal_flow_first_journey
@@ -335,7 +332,6 @@ Full tables and diagrams: [Concepts Model](../concepts.md).
 | issue:foldkit-flow#3 | vp run uses a downloaded Bun, not the devenv Bun (devEngines ^1.4.2) | open | [STATE says nothing is blocked](../goals.md#problem-flow-state-blocked-nothing) |
 | issue:foldkit-flow#3 | vp run uses a downloaded Bun, not the devenv Bun (devEngines ^1.4.2) | open | [vp run may use a different Bun than devenv](../goals.md#problem-flow-bun-mismatch) |
 | pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [Only Chromium and mouse input were tested](../goals.md#problem-flow-browsers-untested) |
-| issue:foldkit-flow#5 | anti-slop/no-module-mocking misses vi from vite-plus/test | open | [The module-mocking lint rule has a gap](../goals.md#problem-flow-lint-mocking-gap) |
 | pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [A real browser finds defects unit tests miss](../goals.md#opportunity-flow-real-browser-defects) |
 | pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [A Foldkit app adopts the library](../business-processes.md#process-flow-adopt-library) |
 | pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [A person works on the graph canvas](../business-processes.md#process-flow-use-canvas) |

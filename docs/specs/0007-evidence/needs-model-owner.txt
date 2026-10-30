@@ -8,10 +8,8 @@ concept-studio-anchor-offset
 concept-tsukuri-anchor
 concept-tsukuri-deck
 concept-tsukuri-effect
-concept-tsukuri-keyframe
 concept-tsukuri-library
 concept-tsukuri-lifecycle-event
-concept-tsukuri-line
 concept-tsukuri-transition-anchor
 constraint-flow-effect-range
 goal-flow-browser-proof
@@ -22,11 +20,9 @@ isgoal-flow-measured-budget
 problem-flow-goals-undocumented
 problem-flow-journey-not-in-ci
 problem-flow-keyboard-connect-missing
-problem-flow-lint-mocking-gap
 problem-tsukuri-demand-unmeasured
 problem-tsukuri-extension-points-open
 problem-tsukuri-goals-not-in-readme
-problem-tsukuri-identity-scene-bounded
 problem-tsukuri-packages-private
 problem-tsukuri-roadmap-only-in-issues
 problem-tsukuri-speed-interim
@@ -51,5 +47,4 @@ rule-flow-memoised-views
 rule-org-byo-agents
 rule-studio-effect-one-version
 rule-tsukuri-absolute-time-needs-reason
-rule-tsukuri-intent-resolved-in-schedule
 rule-tsukuri-narration-text-equal

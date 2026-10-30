@@ -1,15 +1,9 @@
 # A snapshot of the GitHub issues and pull requests the model cites. Written by `bun run tracker:refresh`; do not edit.
-asOf: 2026-10-29
+asOf: 2026-10-30
 items:
   - ref: issue:foldkit-flow#3
     state: open
     title: vp run uses a downloaded Bun, not the devenv Bun (devEngines ^1.4.2)
-  - ref: issue:foldkit-flow#5
-    state: open
-    title: anti-slop/no-module-mocking misses vi from vite-plus/test
-  - ref: issue:studio#4
-    state: open
-    title: Re-enable @foldkit/vite-plugin when a release supports effect 4.1.0
   - ref: issue:studio#7
     state: open
     title: check:exceptions ignores @effect-diagnostics suppression comments
@@ -57,7 +51,7 @@ items:
     title: "feat: distribution, a single binary now and the web deploy when Alchemy
       supports effect 4.1 (spec 0004)"
   - ref: pr:tsukuri#17
-    state: open
+    state: merged
     title: "feat: explicit state machines and timing combinators (spec 0004)"
   - ref: pr:tsukuri#18
     state: merged
@@ -69,10 +63,3 @@ items:
   - ref: pr:tsukuri#24
     state: open
     title: "docs: positioning, how it works and the intent of reebeat (spec 0011)"
-  - ref: pr:tsukuri#3
-    state: merged
-    title: "feat: screenplay to deck and video, release 1 (spec 0001)"
-  - ref: pr:tsukuri#4
-    state: merged
-    title: "feat: effects anchored to lifecycle events and an explicit syntax (spec
-      0002)"

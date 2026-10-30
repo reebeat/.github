@@ -248,7 +248,7 @@ elements:
     ruleType: derivation
     title: The Plan keeps intent, the schedule resolves frames
     statement: >-
-      The Plan keeps what the author wrote. The schedule stage turns each anchor into an integer frame from the aligned
+      The Plan keeps what the author wrote. The schedule stage turns each anchor (a source of events) into an integer frame from the aligned
       words and the renderer's declared lifecycle. The Timeline holds the result.
     status: decided
     source:

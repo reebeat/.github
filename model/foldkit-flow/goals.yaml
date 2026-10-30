@@ -427,25 +427,6 @@ elements:
     links:
       hinders: [goal-flow-lifecycle]
 
-  - id: problem-flow-lint-mocking-gap
-    kind: problem
-    title: The module-mocking lint rule has a gap
-    statement: >-
-      The lint rule that forbids module mocking matches only the `vitest` import source, so a mock imported from
-      `vite-plus/test` passes.
-    status: decided
-    source:
-      - foldkit-flow:docs/specs/0001-first-felt-journey.md:142
-      - foldkit-flow:tools/oxlint/anti-slop/rules/no-module-mocking.ts:42-43
-      - issue:foldkit-flow#5
-      - log:118
-    refs: [issue:foldkit-flow#5]
-    gap:
-      repo: foldkit-flow
-      fix: Make the anti-slop module-mocking rule match the `vite-plus/test` source too.
-    links:
-      hinders: [goal-flow-lifecycle]
-
   - id: problem-flow-community-files
     kind: problem
     title: No security, conduct or contributing files
