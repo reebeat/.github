@@ -51,7 +51,7 @@ Not in CI: `bun run sources:verify` (needs checkouts of the product repositories
 
 ## Effect
 
-Every agent that writes TypeScript here writes native Effect (v4, pinned in the root `catalog`). Lookup order before writing: this file, then `tools/intent/node_modules/effect/AGENTS.md` and the `ai-docs/src` examples it links, then `node_modules/effect/src`, never memory or another copy. A total deterministic transformation (the checks, the renderers) stays a plain function. Files, processes and the network sit behind Effect services at the composition root, `tools/intent/src/cli.ts`. No lint suppression is used in this repository; fix the code, not the rule.
+Every agent that writes TypeScript here writes native Effect (v4, pinned in the root `catalog`). Lookup order before writing: this file, then `tools/intent/node_modules/effect/AGENTS.md` and the `ai-docs/src` examples it links, then `node_modules/effect/src`, never memory or another copy. A total deterministic transformation (the checks, the renderers) stays a plain function. Files, processes and the network sit behind Effect services at the composition root, `tools/intent/src/cli.ts`. No lint suppression is used in this repository; fix the code, not the rule. Git runs through `tools/intent/src/git.ts` (`gitIn`), which removes the repository variables that a hook exports: without it the tests, run by the pre-push hook of a linked worktree, worked on the real repository (spec 0005).
 
 ## Conventions
 

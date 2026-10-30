@@ -1,0 +1,16 @@
+worktree /srv/share/projects/reebeat-org/.worktrees/gitenv pushes feat/0005-tests-clear-git-env; main clone /srv/share/projects/reebeat-org
+$ vp run -r --no-cache test
+~/tools/intent$ bunx vp test ⊘ cache disabled
+
+ RUN  v5.0.4 /srv/share/projects/reebeat-org/.worktrees/gitenv/tools/intent
+
+
+ Test Files  8 passed (8)
+      Tests  75 passed (75)
+   Start at  05:00:27
+   Duration  2.38s (import 50%, tests 48%, transform 1%)
+
+
+To https://github.com/tsukuri-labs/.github.git
+   f031045..f0c52b1  feat/0005-tests-clear-git-env -> feat/0005-tests-clear-git-env
+main clone unchanged by the push (refs, HEAD, core.bare, status)

@@ -11,9 +11,10 @@ import {
   Schema,
   String as Str,
 } from "effect";
-import { ChildProcess, ChildProcessSpawner } from "effect/process";
+import { ChildProcessSpawner } from "effect/process";
 import { parse } from "yaml";
 
+import { gitIn } from "./git.ts";
 import { scopes } from "./vocabulary.ts";
 
 const StatusFile = Schema.Struct({
@@ -75,8 +76,7 @@ const statusesAtRef = Effect.fn("statusesAtRef")(function* statusesAtRef(
 ) {
   const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
 
-  const git = (...args: readonly string[]) =>
-    spawner.string(ChildProcess.make("git", ["-C", root, ...args]));
+  const git = (...args: readonly string[]) => spawner.string(gitIn(root, args));
 
   const listing = yield* git(
     "ls-tree",

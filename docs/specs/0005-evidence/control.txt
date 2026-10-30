@@ -1,0 +1,6 @@
+[04:58:27.900] ERROR (#2): Error [AssertionError]: expected 'fd0f360668e7b31a73707dbb83424234190bf…' to not equal 'fd0f360668e7b31a73707dbb83424234190bf…'
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+ FAIL  test/gitEnv.test.ts > git in a hook environment > leaves the repository that started the hook untouched
+AssertionError: expected 'fd0f360668e7b31a73707dbb83424234190bf…' to not equal 'fd0f360668e7b31a73707dbb83424234190bf…'
+      Tests  1 failed | 74 passed (75)
+--- restored:       Tests  75 passed (75)
