@@ -5,102 +5,102 @@
 advice: []
 recheck:
     - id: actor-tsukuri-presenter
-      note: "cited text changed: tsukuri:GLOSSARY.md:78-80 -> GLOSSARY.md:127-129 (1.00, SIMILAR)"
+      note: "cited text changed, tsukuri:GLOSSARY.md:78-80 -> GLOSSARY.md:127-129: was \"…a presentation the speaker steps through Beat by Beat, with the Lines as speaker notes. _Avoid_: Slides (as the unit),…\" now \"…a presentation the speaker steps through fragment by fragment (one for each Beat a `show` or `focus` causes), with the…\""
     - id: actor-tsukuri-story-author
-      note: "cited text changed: tsukuri:README.md:3-3 -> README.md:3-3 (0.80, SIMILAR)"
+      note: "cited text changed, tsukuri:README.md:3 -> README.md:3: was \"…`show` and `focus` effect says **when**, at a word, at the slide change or at a moment of an Element's own motion). ts…\" now \"…`show` and `focus` effect says **when**, as an **event**: at a word, at the slide change, at a moment of an Element's …\""
     - id: comp-flow-example-app
-      note: "cited text changed: foldkit-flow:apps/example/package.json:16-16 -> apps/example/package.json:14-14 (0.79, SIMILAR)"
+      note: "cited text changed, foldkit-flow:apps/example/package.json:16 -> apps/example/package.json:14: was \"\"foldkit-flow\": \"workspace:*\"\" now \"\"@tsukuri/flow\": \"workspace:*\",\""
     - id: comp-flow-journey-tool
-      note: "cited text changed: foldkit-flow:AGENTS.md:48-48 -> AGENTS.md:48-48 (0.87, SIMILAR)"
+      note: "cited text changed, foldkit-flow:AGENTS.md:48 -> AGENTS.md:48: was \"…failed, **75 inconclusive**: nothing failed but J9 was not timed because the host was busy or unreadable (load average…\" now \"…failed, **75 inconclusive**: nothing failed but the J9 timing check was not judged, because the host was busy or unrea…\""
     - id: concept-flow-viewport
-      note: "cited text changed: foldkit-flow:README.md:82-82 -> README.md:82-82 (0.86, SIMILAR)"
+      note: "cited text changed, foldkit-flow:README.md:82 -> README.md:82: was \"…the numbers (spec 0001, falsifier J9). It times only on a quiet host: when the load average is above half the cores, o…\" now \"…the numbers (spec 0001, falsifier J9). The timing is judged only on a quiet host: when the load average is above half …\""
     - id: concept-org-agent-tool-protocol
-      note: "cited text changed: tsukuri:docs/design/open-core-boundary.md:25-25 -> docs/design/open-core-boundary.md:25-25 (0.36, CHANGED-IN-SUBSTANCE)"
+      note: "cited text changed, tsukuri:docs/design/open-core-boundary.md:25 -> docs/design/open-core-boundary.md:25: was \"…editing tools | Decided 2026-10-29: supported. Proposed: an open tool protocol for agents that edit the IR (for exampl…\" now \"…editing tools | Decided 2026-10-29: supported. Decided 2026-10-29 (`agent-protocol`): tools are declared once, protoco…\""
     - id: concept-studio-anchor-offset
-      note: "cited text changed: tsukuri:GLOSSARY.md:39-40 -> GLOSSARY.md:49-50 (1.00, SIMILAR)"
+      note: "cited text changed, tsukuri:GLOSSARY.md:39-40 -> GLOSSARY.md:49-50: was \"…timed against, never a guess: a word or phrase of the Scene's narration (`word(\"matches\").end`; `, 2` picks the second…\" now \"…timed against, never a guess: a source of Events. It is a word or phrase of the Scene's narration (`word(\"matches\").en…\""
     - id: concept-tsukuri-anchor
-      note: "cited text changed: tsukuri:GLOSSARY.md:39-41 -> GLOSSARY.md:49-51 (1.00, SIMILAR)"
+      note: "cited text changed, tsukuri:GLOSSARY.md:39-41 -> GLOSSARY.md:49-51: was \"…timed against, never a guess: a word or phrase of the Scene's narration (`word(\"matches\").end`; `, 2` picks the second…\" now \"…timed against, never a guess: a source of Events. It is a word or phrase of the Scene's narration (`word(\"matches\").en…\""
     - id: concept-tsukuri-deck
-      note: "cited text changed: tsukuri:GLOSSARY.md:78-80 -> GLOSSARY.md:127-129 (1.00, SIMILAR)"
+      note: "cited text changed, tsukuri:GLOSSARY.md:78-80 -> GLOSSARY.md:127-129: was \"…a presentation the speaker steps through Beat by Beat, with the Lines as speaker notes. _Avoid_: Slides (as the unit),…\" now \"…a presentation the speaker steps through fragment by fragment (one for each Beat a `show` or `focus` causes), with the…\""
     - id: concept-tsukuri-effect
-      note: "cited text changed: tsukuri:GLOSSARY.md:35-37 -> GLOSSARY.md:45-47 (1.00, SIMILAR)"
+      note: "cited text changed, tsukuri:GLOSSARY.md:35-37 -> GLOSSARY.md:45-47: was \"…`[[effects]]` block: `<id>: <verb> <argument> at <when>`. The verb is `sound` (plays a sound of the catalogue), `show`…\" now \"…`[[effects]]` block: `<id>: <verb> <argument> at <event> [until <event>]`. The verb is `sound` (plays a sound of the c…\""
     - id: concept-tsukuri-library
-      note: "cited text changed: tsukuri:GLOSSARY.md:101-102 -> GLOSSARY.md:150-151 (1.00, SIMILAR)"
+      note: "cited text changed, tsukuri:GLOSSARY.md:101-102 -> GLOSSARY.md:150-151: was \"…types with no runtime: the Fountain reader and the Plan (`core`), the subtitle writers (`subtitles`), the lint rules (…\" now \"…types with no runtime: the Fountain importer, the IR and the Plan (`core`), the subtitle writers (`subtitles`), the li…\""
     - id: concept-tsukuri-lifecycle-event
-      note: "cited text changed: tsukuri:GLOSSARY.md:43-45 -> GLOSSARY.md:53-55 (1.00, SIMILAR)"
+      note: "cited text changed, tsukuri:GLOSSARY.md:43-45 -> GLOSSARY.md:53-55: was \"…`update` (the class or text changes). Each has a start, an end and so a percent of the way; `move` and `update` follow…\" now \"…`update` (the class or text changes). They are the Transitions of the Element's three Machines (`presence`, `position`…\""
     - id: concept-tsukuri-transition-anchor
-      note: "cited text changed: tsukuri:GLOSSARY.md:47-49 -> GLOSSARY.md:57-59 (1.00, SIMILAR)"
+      note: "cited text changed, tsukuri:GLOSSARY.md:47-49 -> GLOSSARY.md:57-59: was \"…Scene's incoming slide transition as an Anchor: `transition.start` (the frame the slide change is shown), `transition.…\" now \"…Scene's incoming slide transition as an Anchor, the Transition of the `slide` Machine (the Beat between two Scenes): `…\""
     - id: constraint-flow-effect-range
-      note: "cited text changed: foldkit-flow:AGENTS.md:65-65 -> AGENTS.md:65-65 (1.00, SIMILAR); foldkit-flow:packages/flow/package.json:30-33 -> packages/flow/package.json:30-33 (1.00, SIMILAR)"
+      note: "cited text changed, foldkit-flow:AGENTS.md:65 -> AGENTS.md:65: was \"…the same rule. `foldkit` is 0.x: `~0.169.0`. `tools/quality/test/publishedEffectRange.test.ts` fails otherwise. `@xyfl…\" now \"…the same rule. `foldkit` is 0.x: `~0.170.0`. `tools/quality/test/publishedEffectRange.test.ts` fails otherwise. `@xyfl…\" | foldkit-flow:packages/flow/package.json:30-33 -> packages/flow/package.json:30-33: was \"\"peerDependencies\": { \"effect\": \"~4.1.0\", \"foldkit\": \"~0.169.0\" }\" now \"\"peerDependencies\": { \"effect\": \"~4.1.0\", \"foldkit\": \"~0.170.0\" }\""
     - id: goal-flow-browser-proof
-      note: "cited text changed: foldkit-flow:AGENTS.md:48-48 -> AGENTS.md:48-48 (0.87, SIMILAR)"
+      note: "cited text changed, foldkit-flow:AGENTS.md:48 -> AGENTS.md:48: was \"…failed, **75 inconclusive**: nothing failed but J9 was not timed because the host was busy or unreadable (load average…\" now \"…failed, **75 inconclusive**: nothing failed but the J9 timing check was not judged, because the host was busy or unrea…\""
     - id: goal-flow-performance
-      note: "cited text changed: foldkit-flow:README.md:82-82 -> README.md:82-82 (0.86, SIMILAR)"
+      note: "cited text changed, foldkit-flow:README.md:82 -> README.md:82: was \"…the numbers (spec 0001, falsifier J9). It times only on a quiet host: when the load average is above half the cores, o…\" now \"…the numbers (spec 0001, falsifier J9). The timing is judged only on a quiet host: when the load average is above half …\""
     - id: goal-tsukuri-deck-and-video
-      note: "cited text changed: tsukuri:README.md:3-6 -> README.md:3-6 (0.80, SIMILAR)"
+      note: "cited text changed, tsukuri:README.md:3-6 -> README.md:3-6: was \"…`show` and `focus` effect says **when**, at a word, at the slide change or at a moment of an Element's own motion). ts…\" now \"…`show` and `focus` effect says **when**, as an **event**: at a word, at the slide change, at a moment of an Element's …\""
     - id: goal-tsukuri-screenplay-first
-      note: "cited text changed: tsukuri:README.md:3-3 -> README.md:3-3 (0.80, SIMILAR)"
+      note: "cited text changed, tsukuri:README.md:3 -> README.md:3: was \"…`show` and `focus` effect says **when**, at a word, at the slide change or at a moment of an Element's own motion). ts…\" now \"…`show` and `focus` effect says **when**, as an **event**: at a word, at the slide change, at a moment of an Element's …\""
     - id: isgoal-flow-measured-budget
-      note: "cited text changed: foldkit-flow:README.md:82-82 -> README.md:82-82 (0.86, SIMILAR)"
+      note: "cited text changed, foldkit-flow:README.md:82 -> README.md:82: was \"…the numbers (spec 0001, falsifier J9). It times only on a quiet host: when the load average is above half the cores, o…\" now \"…the numbers (spec 0001, falsifier J9). The timing is judged only on a quiet host: when the load average is above half …\""
     - id: problem-flow-goals-undocumented
-      note: "cited text changed: foldkit-flow:STATE.md:7-7 -> STATE.md:7-7 (0.49, CHANGED-IN-SUBSTANCE)"
+      note: "cited text changed, foldkit-flow:STATE.md:7 -> STATE.md:7: was \"…`@xyflow/system`; MIT). Spec 0000 (the development lifecycle copied from tsukuri studio, the workspace, the xyflow att…\" now \"…`@xyflow/system`; MIT). Spec 0000 (the development lifecycle, the workspace, the xyflow attribution) and spec 0001 (th…\""
     - id: problem-flow-journey-not-in-ci
-      note: "cited text changed: foldkit-flow:AGENTS.md:48-48 -> AGENTS.md:48-48 (0.87, SIMILAR)"
+      note: "cited text changed, foldkit-flow:AGENTS.md:48 -> AGENTS.md:48: was \"…failed, **75 inconclusive**: nothing failed but J9 was not timed because the host was busy or unreadable (load average…\" now \"…failed, **75 inconclusive**: nothing failed but the J9 timing check was not judged, because the host was busy or unrea…\""
     - id: problem-flow-keyboard-connect-missing
-      note: "cited text changed: foldkit-flow:STATE.md:11-11 -> STATE.md:11-11 (0.80, SIMILAR)"
+      note: "cited text changed, foldkit-flow:STATE.md:11 -> STATE.md:11: was \"- Review and merge spec 0001 (`docs/specs/0001-first-felt-journey.md`), then pick the next journey: keyboard connect (o…\" now \"- Pick the next journey: keyboard connect (open question 2 of spec 0001), node resizing (`XYResizer`), an ELK.js layout…\""
     - id: problem-tsukuri-demand-unmeasured
-      note: "cited text changed: tsukuri:README.md:1-50 -> README.md:1-50 (1.00, SIMILAR)"
+      note: "cited text changed, tsukuri:README.md:1-50 -> README.md:1-50: was \"…`show` and `focus` effect says **when**, at a word, at the slide change or at a moment of an Element's own motion). ts…\" now \"…`show` and `focus` effect says **when**, as an **event**: at a word, at the slide change, at a moment of an Element's …\""
     - id: problem-tsukuri-extension-points-open
-      note: "cited text changed: tsukuri:docs/design/open-core-boundary.md:24-25 -> docs/design/open-core-boundary.md:24-25 (1.00, SIMILAR)"
+      note: "cited text changed, tsukuri:docs/design/open-core-boundary.md:24-25 -> docs/design/open-core-boundary.md:24-25: was \"…editing tools | Decided 2026-10-29: supported. Proposed: an open tool protocol for agents that edit the IR (for exampl…\" now \"…editing tools | Decided 2026-10-29: supported. Decided 2026-10-29 (`agent-protocol`): tools are declared once, protoco…\""
     - id: problem-tsukuri-goals-not-in-readme
-      note: "cited text changed: tsukuri:README.md:1-3 -> README.md:1-3 (1.00, SIMILAR)"
+      note: "cited text changed, tsukuri:README.md:1-3 -> README.md:1-3: was \"…`show` and `focus` effect says **when**, at a word, at the slide change or at a moment of an Element's own motion). ts…\" now \"…`show` and `focus` effect says **when**, as an **event**: at a word, at the slide change, at a moment of an Element's …\""
     - id: problem-tsukuri-packages-private
-      note: "cited text changed: tsukuri:.github/workflows/release.yml:1-5 -> .github/workflows/release.yml:1-5 (1.00, SIMILAR)"
+      note: "cited text changed, tsukuri:.github/workflows/release.yml:1-5 -> .github/workflows/release.yml:1-5: was \"…Packages\" commit (`bun run release:version`) has merged. No npm token exists anywhere: npm's trusted # publishing (OID…\" now \"…Packages\" commit (`bun run release:version`) has merged, and chooses a mode: # check no publish: prints who the token …\""
     - id: problem-tsukuri-roadmap-only-in-issues
-      note: "cited text changed: tsukuri:README.md:1-50 -> README.md:1-50 (1.00, SIMILAR); tsukuri:STATE.md:7-7 -> STATE.md:7-7 (0.21, CHANGED-IN-SUBSTANCE)"
+      note: "cited text changed, tsukuri:README.md:1-50 -> README.md:1-50: was \"…`show` and `focus` effect says **when**, at a word, at the slide change or at a moment of an Element's own motion). ts…\" now \"…`show` and `focus` effect says **when**, as an **event**: at a word, at the slide change, at a moment of an Element's …\" | tsukuri:STATE.md:7 -> STATE.md:7: was \"…reveal.js Deck and a captured Video. Spec 0000 (development lifecycle) is merged. Spec 0001 (release 1) and spec 0002 …\" now \"…reveal.js Deck and a captured Video. Specs 0000 (development lifecycle), 0001 (release 1), 0002 (explicit anchors and …\""
     - id: problem-tsukuri-speed-interim
-      note: "cited text changed: tsukuri:STATE.md:12-12 -> STATE.md:12-12 (0.99, SIMILAR)"
+      note: "cited text changed, tsukuri:STATE.md:12 -> STATE.md:12: was \"…Follow-up to 0001, not part of 0002: remove the `(speed 1.05)` interim on one Line of `stories/same-id` (word timings …\" now \"…Follow-up to 0001, not part of 0004: remove the `(speed 1.05)` interim on one Line of `stories/same-id` (word timings …\""
     - id: process-flow-pan-zoom
-      note: "cited text changed: foldkit-flow:README.md:82-82 -> README.md:82-82 (0.86, SIMILAR)"
+      note: "cited text changed, foldkit-flow:README.md:82 -> README.md:82: was \"…the numbers (spec 0001, falsifier J9). It times only on a quiet host: when the load average is above half the cores, o…\" now \"…the numbers (spec 0001, falsifier J9). The timing is judged only on a quiet host: when the load average is above half …\""
     - id: process-flow-run-journey-gate
-      note: "cited text changed: foldkit-flow:AGENTS.md:48-48 -> AGENTS.md:48-48 (0.87, SIMILAR)"
+      note: "cited text changed, foldkit-flow:AGENTS.md:48 -> AGENTS.md:48: was \"…failed, **75 inconclusive**: nothing failed but J9 was not timed because the host was busy or unreadable (load average…\" now \"…failed, **75 inconclusive**: nothing failed but the J9 timing check was not judged, because the host was busy or unrea…\""
     - id: process-org-review-artifact
-      note: "cited text changed: tsukuri:README.md:3-3 -> README.md:3-3 (0.80, SIMILAR)"
+      note: "cited text changed, tsukuri:README.md:3 -> README.md:3: was \"…`show` and `focus` effect says **when**, at a word, at the slide change or at a moment of an Element's own motion). ts…\" now \"…`show` and `focus` effect says **when**, as an **event**: at a word, at the slide change, at a moment of an Element's …\""
     - id: process-tsukuri-author-story
-      note: "cited text changed: tsukuri:README.md:3-3 -> README.md:3-3 (0.80, SIMILAR)"
+      note: "cited text changed, tsukuri:README.md:3 -> README.md:3: was \"…`show` and `focus` effect says **when**, at a word, at the slide change or at a moment of an Element's own motion). ts…\" now \"…`show` and `focus` effect says **when**, as an **event**: at a word, at the slide change, at a moment of an Element's …\""
     - id: req-flow-browser-gate
-      note: "cited text changed: foldkit-flow:AGENTS.md:48-48 -> AGENTS.md:48-48 (0.87, SIMILAR)"
+      note: "cited text changed, foldkit-flow:AGENTS.md:48 -> AGENTS.md:48: was \"…failed, **75 inconclusive**: nothing failed but J9 was not timed because the host was busy or unreadable (load average…\" now \"…failed, **75 inconclusive**: nothing failed but the J9 timing check was not judged, because the host was busy or unrea…\""
     - id: req-flow-effect-range-gated
-      note: "cited text changed: foldkit-flow:AGENTS.md:65-65 -> AGENTS.md:65-65 (1.00, SIMILAR)"
+      note: "cited text changed, foldkit-flow:AGENTS.md:65 -> AGENTS.md:65: was \"…the same rule. `foldkit` is 0.x: `~0.169.0`. `tools/quality/test/publishedEffectRange.test.ts` fails otherwise. `@xyfl…\" now \"…the same rule. `foldkit` is 0.x: `~0.170.0`. `tools/quality/test/publishedEffectRange.test.ts` fails otherwise. `@xyfl…\""
     - id: req-flow-maintain-tiers
-      note: "cited text changed: foldkit-flow:apps/example/package.json:16-16 -> apps/example/package.json:14-14 (0.79, SIMILAR)"
+      note: "cited text changed, foldkit-flow:apps/example/package.json:16 -> apps/example/package.json:14: was \"\"foldkit-flow\": \"workspace:*\"\" now \"\"@tsukuri/flow\": \"workspace:*\",\""
     - id: req-flow-pan-zoom
-      note: "cited text changed: foldkit-flow:README.md:82-82 -> README.md:82-82 (0.86, SIMILAR)"
+      note: "cited text changed, foldkit-flow:README.md:82 -> README.md:82: was \"…the numbers (spec 0001, falsifier J9). It times only on a quiet host: when the load average is above half the cores, o…\" now \"…the numbers (spec 0001, falsifier J9). The timing is judged only on a quiet host: when the load average is above half …\""
     - id: req-flow-perf-drag
-      note: "cited text changed: foldkit-flow:README.md:82-82 -> README.md:82-82 (0.86, SIMILAR)"
+      note: "cited text changed, foldkit-flow:README.md:82 -> README.md:82: was \"…the numbers (spec 0001, falsifier J9). It times only on a quiet host: when the load average is above half the cores, o…\" now \"…the numbers (spec 0001, falsifier J9). The timing is judged only on a quiet host: when the load average is above half …\""
     - id: req-tsukuri-check
-      note: "cited text changed: tsukuri:README.md:8-8 -> README.md:8-8 (0.78, SIMILAR)"
+      note: "cited text changed, tsukuri:README.md:8 -> README.md:8: was \"Status: **release 1** ([spec 0001](docs/specs/0001-release-1-screenplay-to-deck-and-video.md)) and the explicit anchors…\" now \"Status: **release 1** ([spec 0001](docs/specs/0001-release-1-screenplay-to-deck-and-video.md)), the explicit anchors of…\""
     - id: resource-flow-chromium
-      note: "cited text changed: foldkit-flow:AGENTS.md:48-48 -> AGENTS.md:48-48 (0.87, SIMILAR)"
+      note: "cited text changed, foldkit-flow:AGENTS.md:48 -> AGENTS.md:48: was \"…failed, **75 inconclusive**: nothing failed but J9 was not timed because the host was busy or unreadable (load average…\" now \"…failed, **75 inconclusive**: nothing failed but the J9 timing check was not judged, because the host was busy or unrea…\""
     - id: resource-flow-effect
-      note: "cited text changed: foldkit-flow:AGENTS.md:65-65 -> AGENTS.md:65-65 (1.00, SIMILAR)"
+      note: "cited text changed, foldkit-flow:AGENTS.md:65 -> AGENTS.md:65: was \"…the same rule. `foldkit` is 0.x: `~0.169.0`. `tools/quality/test/publishedEffectRange.test.ts` fails otherwise. `@xyfl…\" now \"…the same rule. `foldkit` is 0.x: `~0.170.0`. `tools/quality/test/publishedEffectRange.test.ts` fails otherwise. `@xyfl…\""
     - id: resource-flow-toolchain
-      note: "cited text changed: foldkit-flow:AGENTS.md:37-51 -> AGENTS.md:37-51 (1.00, SIMILAR)"
+      note: "cited text changed, foldkit-flow:AGENTS.md:37-51 -> AGENTS.md:37-51: was \"…failed, **75 inconclusive**: nothing failed but J9 was not timed because the host was busy or unreadable (load average…\" now \"…failed, **75 inconclusive**: nothing failed but the J9 timing check was not judged, because the host was busy or unrea…\""
     - id: resource-studio-effect
-      note: "cited text changed: studio:AGENTS.md:54-54 -> AGENTS.md:54-54 (0.24, CHANGED-IN-SUBSTANCE)"
+      note: "cited text changed, studio:AGENTS.md:54 -> AGENTS.md:54: was \"…package are one version (`tools/quality/effectFamily.ts`): 4.1.0. **Foldkit 0.169.0 declares a peer `effect@4.0.0`**, …\" now \"…package are one version (`tools/quality/effectFamily.ts`): 4.1.0. Foldkit 0.170.0, `@foldkit/ui` 0.170.0 and `@foldkit…\""
     - id: resource-studio-specs
-      note: "cited text changed: studio:STATE.md:7-7 -> STATE.md:7-7 (0.92, SIMILAR)"
+      note: "cited text changed, studio:STATE.md:7 -> STATE.md:7: was \"…Foldkit app `apps/editor` as a placeholder shell) and 0002 (collaboration spike) are merged. Spec 0003 (review, PR cre…\" now \"…Foldkit app `apps/editor` as a placeholder shell), 0002 (collaboration spike) and 0003 (review, PR creation and verifi…\""
     - id: resource-tsukuri-same-id-story
-      note: "cited text changed: tsukuri:README.md:8-8 -> README.md:8-8 (0.78, SIMILAR)"
+      note: "cited text changed, tsukuri:README.md:8 -> README.md:8: was \"Status: **release 1** ([spec 0001](docs/specs/0001-release-1-screenplay-to-deck-and-video.md)) and the explicit anchors…\" now \"Status: **release 1** ([spec 0001](docs/specs/0001-release-1-screenplay-to-deck-and-video.md)), the explicit anchors of…\""
     - id: rule-flow-effect-range-by-stability
-      note: "cited text changed: foldkit-flow:AGENTS.md:65-65 -> AGENTS.md:65-65 (1.00, SIMILAR)"
+      note: "cited text changed, foldkit-flow:AGENTS.md:65 -> AGENTS.md:65: was \"…the same rule. `foldkit` is 0.x: `~0.169.0`. `tools/quality/test/publishedEffectRange.test.ts` fails otherwise. `@xyfl…\" now \"…the same rule. `foldkit` is 0.x: `~0.170.0`. `tools/quality/test/publishedEffectRange.test.ts` fails otherwise. `@xyfl…\""
     - id: rule-flow-memoised-views
-      note: "cited text changed: foldkit-flow:README.md:82-82 -> README.md:82-82 (0.86, SIMILAR)"
+      note: "cited text changed, foldkit-flow:README.md:82 -> README.md:82: was \"…the numbers (spec 0001, falsifier J9). It times only on a quiet host: when the load average is above half the cores, o…\" now \"…the numbers (spec 0001, falsifier J9). The timing is judged only on a quiet host: when the load average is above half …\""
     - id: rule-org-byo-agents
-      note: "cited text changed: tsukuri:docs/design/open-core-boundary.md:25-25 -> docs/design/open-core-boundary.md:25-25 (0.36, CHANGED-IN-SUBSTANCE)"
+      note: "cited text changed, tsukuri:docs/design/open-core-boundary.md:25 -> docs/design/open-core-boundary.md:25: was \"…editing tools | Decided 2026-10-29: supported. Proposed: an open tool protocol for agents that edit the IR (for exampl…\" now \"…editing tools | Decided 2026-10-29: supported. Decided 2026-10-29 (`agent-protocol`): tools are declared once, protoco…\""
     - id: rule-studio-effect-one-version
-      note: "cited text changed: studio:AGENTS.md:54-54 -> AGENTS.md:54-54 (0.24, CHANGED-IN-SUBSTANCE)"
+      note: "cited text changed, studio:AGENTS.md:54 -> AGENTS.md:54: was \"…package are one version (`tools/quality/effectFamily.ts`): 4.1.0. **Foldkit 0.169.0 declares a peer `effect@4.0.0`**, …\" now \"…package are one version (`tools/quality/effectFamily.ts`): 4.1.0. Foldkit 0.170.0, `@foldkit/ui` 0.170.0 and `@foldkit…\""
     - id: rule-tsukuri-absolute-time-needs-reason
-      note: "cited text changed: tsukuri:packages/lint/src/absoluteTimes.ts:1-5 -> packages/lint/src/absoluteTimes.ts:1-5 (0.93, SIMILAR)"
+      note: "cited text changed, tsukuri:packages/lint/src/absoluteTimes.ts:1-5 -> packages/lint/src/absoluteTimes.ts:1-5: was \"…(design 4.4.1 rule 4; spec 0002, F5): an effect that pins an absolute time // (`at 12.5s because \"<reason>\"`) must say…\" now \"…(design 4.4.1 rule 4; spec 0002, F5; spec 0004): an effect that pins an absolute // time (`at 12.5s because \"<reason>\"…\""
     - id: rule-tsukuri-narration-text-equal
-      note: "cited text changed: tsukuri:GLOSSARY.md:31-33 -> GLOSSARY.md:41-43 (1.00, SIMILAR)"
+      note: "cited text changed, tsukuri:GLOSSARY.md:31-33 -> GLOSSARY.md:41-43: was \"**Line**: The narration that carries a Beat: the dialogue of the `NARRATOR`, as manuscript text aligned to words. Its *…\" now \"**Line**: The narration of a Scene: the dialogue of the `NARRATOR`, as manuscript text aligned to words. Its **narratio…\""
