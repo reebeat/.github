@@ -1,7 +1,9 @@
 // A throwaway git repository with one commit, for the tests of the source verifier. The commit identity is passed per
 // command and never configured. The directory is removed with the scope of the test.
 import { Effect, FileSystem, Path, Record as Rec, String as Str } from "effect";
-import { ChildProcess, ChildProcessSpawner } from "effect/process";
+import { ChildProcessSpawner } from "effect/process";
+
+import { gitIn } from "../src/git.ts";
 
 export const makeGitRepo = (
   name: string,
@@ -18,9 +20,7 @@ export const makeGitRepo = (
 
     const git = (...args: readonly string[]) =>
       spawner.string(
-        ChildProcess.make("git", [
-          "-C",
-          dir,
+        gitIn(dir, [
           "-c",
           "user.name=fixture",
           "-c",
