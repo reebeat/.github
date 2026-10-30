@@ -27,14 +27,12 @@ elements:
     statement: >-
       A person pans and zooms, drags nodes, connects handles, reconnects edges, selects, and edits by keyboard on the
       canvas of an application that uses the library.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:README.md:20
       - foldkit-flow:README.md:66
       - foldkit-flow:README.md:74-77
-    rationale: >-
-      README line 20 lists the gestures of the example: pan and zoom, drag, connect, reconnect and box select. Lines 66
-      and 74 to 77 add the minimap, the zoom controls and keyboard control. The operator must confirm the journey.
+      - log:118
     refs: [pr:foldkit-flow#4]
     links:
       serves: [goal-flow-first-journey]
@@ -117,16 +115,12 @@ elements:
     statement: >-
       A person selects an edge and drags one end to another handle. The library reports it as Reconnected, and the
       opposite end stays where it was.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:packages/flow/src/view.ts:270-281
       - foldkit-flow:packages/flow/src/mounts.ts:723-755
       - foldkit-flow:docs/specs/0001-first-felt-journey.md:130
-    rationale: >-
-      A selected edge shows an anchor on each end (view.ts lines 270 to 281). Dragging one starts a connection from
-      the opposite end (mounts.ts lines 723 to 755), and `update` reports `Reconnected` (update.ts lines 522 to 529).
-      Spec 0001 sets falsifier J3 (line 85) and line 130 says the first build used the wrong end and was fixed. The
-      operator must confirm the reconnection behaviour, including that the opposite end stays fixed.
+      - log:118
     refs: [pr:foldkit-flow#4]
     links:
       part-of: [process-flow-use-canvas]
@@ -164,15 +158,12 @@ elements:
     statement: >-
       A person presses Tab to reach a node, Enter or Space to select it, arrow keys to move it and Escape to clear. A
       live region announces each result.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:README.md:74-77
       - foldkit-flow:packages/flow/src/update.ts:413-435
       - foldkit-flow:docs/specs/0001-first-felt-journey.md:87
-    rationale: >-
-      README lines 74 to 77 describe the keyboard contract, and update.ts lines 413 to 435 implement the node keys
-      (spec 0001 falsifier J5, line 87). Creating a connection by keyboard is not part of it (see
-      problem-flow-keyboard-connect-missing). The operator must confirm the keyboard contract (keys and announcements).
+      - log:118
     refs: [pr:foldkit-flow#4]
     links:
       part-of: [process-flow-use-canvas]
@@ -187,16 +178,12 @@ elements:
     statement: >-
       A person presses Delete or Backspace. The selected nodes go, with their descendants and every attached edge, and
       the library reports all of it.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:README.md:75
       - foldkit-flow:packages/flow/src/update.ts:289-343
       - foldkit-flow:docs/specs/0001-first-felt-journey.md:135
-    rationale: >-
-      README line 75 says Delete or Backspace removes the selection with every node below a deleted parent and every
-      edge that ends on a removed node. update.ts lines 289 to 343 compute that closure and report it. Spec 0001 sets
-      falsifier J5 (line 87), and its round-1 entry (line 135) records the fix for parent deletion. The operator must
-      confirm that deletion removes descendants and all attached edges and reports them.
+      - log:118
     refs: [pr:foldkit-flow#4]
     links:
       part-of: [process-flow-use-canvas]
@@ -230,17 +217,13 @@ elements:
     statement: >-
       A contributor builds the example, then runs the journey in headless Chromium with real pointer and keyboard input.
       The run also measures performance.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:package.json:18
       - foldkit-flow:README.md:17
       - foldkit-flow:AGENTS.md:48
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:92
-    rationale: >-
-      The gate is built: `bun run journey` runs tools/journey (package.json line 18, README line 17, AGENTS.md line
-      48). It runs locally only, not in `ready` or CI (see problem-flow-journey-not-in-ci). It exits 0 when the checks
-      hold, 1 when a check fails and 75 when the performance check could not be timed on a busy host, which is not a
-      pass. The operator must confirm it as a standing gate.
+      - log:118
     refs: [pr:foldkit-flow#4]
     links:
       part-of: [process-flow-ship-spec]
@@ -254,13 +237,11 @@ elements:
     statement: >-
       A contributor writes a spec, branches, commits through the hooks, pushes, opens the PR, passes CI and a recorded
       review round, and merges.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:13-24
       - foldkit-flow:AGENTS.md:13-19
-    rationale: >-
-      Observed in the repository: spec 0000 and AGENTS.md describe these steps. The operator's assignment of spec 0000
-      accepted the plan as a whole, not each step. The operator must confirm.
+      - log:118
     canvas: [key-activities]
     links:
       part-of: [process-org-ship-change]
@@ -299,6 +280,7 @@ elements:
     source:
       - record:foldkit-flow:STATE.md:14
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:111
+      - log:118
     links:
       serves: [goal-flow-upstream-offer]
       next: [extproc-flow-foldkit-decision]

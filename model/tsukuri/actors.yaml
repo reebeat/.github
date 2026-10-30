@@ -8,11 +8,8 @@ elements:
     statement: >-
       A creator who writes one Fountain screenplay and runs `plan`, `build` and `check`. They declare the story and leave
       the building to tsukuri.
-    status: proposed
-    rationale: >-
-      The README addresses a person who writes a screenplay (README.md:3). Mapping that person to the organisation's
-      Creator persona is the model author's reading.
-    source: ["tsukuri:README.md:3", "tsukuri:README.md:14-19", "log:7"]
+    status: decided
+    source: ["tsukuri:README.md:3", "tsukuri:README.md:14-19", "log:7", log:118]
     canvas: [customer-segments]
     links:
       part-of: [actor-creator]
@@ -26,11 +23,8 @@ elements:
     title: Presenter
     statement: >-
       A speaker who steps through the Deck with the arrow keys and reads the narration as speaker notes.
-    status: proposed
-    rationale: >-
-      README.md:21 tells the reader to step through the Deck and open speaker notes. Treating this reader as the
-      organisation's Presenter persona is the model author's reading.
-    source: ["tsukuri:README.md:21", "tsukuri:GLOSSARY.md:78-80"]
+    status: decided
+    source: ["tsukuri:README.md:21", "tsukuri:GLOSSARY.md:78-80", log:118]
     canvas: [customer-segments]
     links:
       part-of: [actor-presenter]
@@ -44,11 +38,8 @@ elements:
     title: Agent operator
     statement: >-
       A person whose own agent writes and repairs stories with the compiler's text source and its line-numbered messages.
-    status: proposed
-    rationale: >-
-      The operator decided that users can bring their own agents (log:43). That an agent works through `plan`, `lint` and
-      `check` is the model author's reading of spec 0002.
-    source: ["log:43", "tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:11"]
+    status: decided
+    source: ["log:43", "tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:11", log:118]
     canvas: [customer-segments]
     links:
       part-of: [actor-agent-operator]
@@ -62,14 +53,12 @@ elements:
     title: Plugin author
     statement: >-
       A developer who writes an adapter for one service and proves it with the service's contract suite.
-    status: proposed
-    rationale: >-
-      Observed in the repository: open-core-boundary.md and AGENTS.md describe this role. The operator decided that
-      plugins are supported, but the adapter-and-contract shape is marked proposed there, so confirm it.
+    status: decided
     source:
       - log:43
       - tsukuri:docs/design/open-core-boundary.md:24
       - tsukuri:AGENTS.md:65
+      - log:118
     canvas: [customer-segments]
     links:
       part-of: [actor-plugin-author]
@@ -83,14 +72,12 @@ elements:
     statement: >-
       The `tsukuri` command with `plan`, `lint`, `build`, `check` and `journey`. It is the one composition root that reads
       the selection and fills each service with an adapter.
-    status: proposed
-    rationale: >-
-      Observed in the repository: the command source lists these subcommands. The operator decided explicit selection at a
-      composition root, not the command list, so confirm it.
+    status: decided
     source:
       - tsukuri:packages/cli/src/cli.ts:70
       - tsukuri:packages/cli/src/cli.ts:321
       - tsukuri:AGENTS.md:62
+      - log:118
     canvas: [channels]
     links:
       performs: [process-tsukuri-select-adapters, process-tsukuri-run-journey]
@@ -104,12 +91,10 @@ elements:
     statement: >-
       One Effect program over the seven services. It runs every stage from the story to a finished build directory and
       knows no model, browser or binary.
-    status: proposed
-    rationale: >-
-      Observed in the repository: the pipeline source describes the seven-service program. The operator has not decided its
-      exact shape, so confirm it.
+    status: decided
     source:
       - tsukuri:packages/pipeline/src/buildProgram.ts:1-3
+      - log:118
     links:
       performs:
         - process-tsukuri-parse-story
@@ -127,13 +112,11 @@ elements:
     statement: >-
       The adapters for Kokoro, whisper.cpp, synthesised sounds, reveal.js, Chromium, ffmpeg and the file cache. Each runs
       on the user's machine and sends nothing out.
-    status: proposed
-    rationale: >-
-      Observed in the repository: the README and spec 0001 describe the local adapters and their egress. The operator has
-      not decided this inventory, so confirm it.
+    status: decided
     source:
       - tsukuri:README.md:21
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:260
+      - log:118
     links:
       performs: [process-tsukuri-capture-frames, process-tsukuri-encode-video]
       uses: [resource-tsukuri-chromium, resource-tsukuri-ffmpeg, resource-tsukuri-whisper-cpp]
@@ -145,11 +128,10 @@ elements:
     statement: >-
       The `verify` tool reads a written build and the source, and prints one verdict per falsifier. It never reads the
       pipeline's memory.
-    status: proposed
-    rationale: >-
-      Spec plan: spec 0001 describes the output-side verifier. The operator has not decided this actor, so confirm it.
+    status: decided
     source:
       - tsukuri:packages/verify/src/index.ts:1-2
+      - log:118
     links:
       performs: [process-tsukuri-verify-build]
       uses: [comp-tsukuri-verify]
@@ -161,13 +143,11 @@ elements:
     statement: >-
       A verification reviewer and a conformance reviewer judge the plan, the code and their agreement. A fixer addresses
       the findings. Reviewers are read-only on product code.
-    status: proposed
-    rationale: >-
-      Spec plan: spec 0000 describes the reviewer and fixer roles. The operator has not decided each responsibility, so
-      confirm it.
+    status: decided
     source:
       - tsukuri:docs/specs/0000-development-lifecycle.md:75
       - tsukuri:docs/specs/0000-development-lifecycle.md:79
+      - log:118
     links:
       part-of: [actor-contributor-agent]
       performs: [process-tsukuri-review-round]
@@ -180,13 +160,11 @@ elements:
     statement: >-
       The person who owns the repository. They answer operator-owned forks, merge a pull request that has a passing
       recorded round, and provision the npm and GitHub environment for a release.
-    status: proposed
-    rationale: >-
-      Observed in the repository: spec 0000 and AGENTS.md describe these duties. The npm provisioning duty comes from PR
-      #18. The operator has not decided this role, so confirm it.
+    status: decided
     source:
       - tsukuri:docs/specs/0000-development-lifecycle.md:23
       - tsukuri:AGENTS.md:77-85
+      - log:118
     links:
       part-of: [actor-operator]
       performs: [process-tsukuri-release-publish]
@@ -200,14 +178,12 @@ elements:
     statement: >-
       The browser that renders the Deck page for frame capture, driven by Playwright under a virtual clock. It runs as a
       separate process.
-    status: proposed
-    rationale: >-
-      Spec plan: spec 0001 and the third-party audit describe Chromium, Playwright and the process boundary. The operator
-      has not decided this arrangement, so confirm it.
+    status: decided
     source:
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:86
       - tsukuri:docs/design/third-party.md:56
       - tsukuri:AGENTS.md:91
+      - log:118
     canvas: [key-partners, key-resources]
     links:
       serves: [goal-tsukuri-deck-and-video]
@@ -219,14 +195,12 @@ elements:
     statement: >-
       The tools that encode lossless audio, mix, mux the Video and measure written files. The configured build is
       GPL-3.0-or-later because it includes libx264.
-    status: proposed
-    rationale: >-
-      Observed in the repository: the third-party audit reads the configured build as GPL-3.0-or-later. The operator noted
-      the GPL concern for later (log:50) but has not decided this inventory, so confirm it.
+    status: decided
     source:
       - tsukuri:docs/design/third-party.md:57
       - tsukuri:AGENTS.md:92
       - log:50
+      - log:118
     canvas: [key-partners, key-resources]
     links:
       serves: [goal-tsukuri-deck-and-video]
@@ -238,13 +212,11 @@ elements:
     statement: >-
       The `whisper-cli` program that gives word timestamps for the aligned narration. It is MIT licensed and runs as a
       separate process.
-    status: proposed
-    rationale: >-
-      Spec plan: spec 0001 and the third-party audit describe whisper-cli, its MIT licence and the process boundary. The
-      operator has not decided this arrangement, so confirm it.
+    status: decided
     source:
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:78
       - tsukuri:docs/design/third-party.md:59
+      - log:118
     canvas: [key-partners, key-resources]
     links:
       serves: [goal-tsukuri-event-timing]
@@ -256,13 +228,11 @@ elements:
     statement: >-
       The Kokoro-82M model, with its voices, run locally through `kokoro-js`. It is Apache-2.0, is downloaded on first use,
       and is never stored in the repository.
-    status: proposed
-    rationale: >-
-      Spec plan: spec 0001 and the third-party audit describe the Kokoro model, its licence and its download. The operator
-      has not decided this arrangement, so confirm it.
+    status: decided
     source:
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:78
       - tsukuri:docs/design/third-party.md:71
+      - log:118
     canvas: [key-partners, key-resources]
     links:
       serves: [goal-tsukuri-deck-and-video]
@@ -274,13 +244,11 @@ elements:
     statement: >-
       The `ggml-base.en` model file that whisper.cpp reads. It is MIT licensed. It is not in the repository or in devenv,
       so the user downloads it.
-    status: proposed
-    rationale: >-
-      Observed in the repository: the third-party audit and AGENTS.md describe the whisper model file. The operator has not
-      decided this arrangement, so confirm it.
+    status: decided
     source:
       - tsukuri:docs/design/third-party.md:72
       - tsukuri:AGENTS.md:93
+      - log:118
     links:
       serves: [goal-tsukuri-event-timing]
 
@@ -291,13 +259,11 @@ elements:
     statement: >-
       The presentation framework that renders the Deck. Its Auto-Animate matches Elements by id and is the animator and the
       identity diff in release 1. It is MIT licensed.
-    status: proposed
-    rationale: >-
-      Observed in the repository: the third-party audit gives the MIT licence. The operator decided reveal.js Auto-Animate
-      as the release-1 animator (spec 0001 line 212), not the licence detail, so confirm it.
+    status: decided
     source:
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213
       - tsukuri:docs/design/third-party.md:44
+      - log:118
     canvas: [key-partners, key-resources]
     links:
       serves: [goal-tsukuri-deck-and-video]
@@ -329,13 +295,11 @@ elements:
     statement: >-
       One file lists every locked npm package with its licence, taken from the package's own manifest. A test ties it to
       the lockfile, so nothing else lists packages.
-    status: proposed
-    rationale: >-
-      Spec plan: spec 0008 describes the inventory file and its test. The operator has not decided each detail, so confirm
-      it.
+    status: decided
     source:
       - tsukuri:docs/design/third-party.md:33
       - tsukuri:docs/specs/0008-apache-2-licence.md:61
+      - log:118
     canvas: [key-resources]
     links:
       serves: [goal-tsukuri-apache-licence]
@@ -347,12 +311,11 @@ elements:
     statement: >-
       The pinned toolchain that provides Bun, Node, gitleaks, Chromium, ffmpeg and whisper.cpp for builds, hooks and CI. It
       runs on Linux, and elsewhere the user sets the Chromium path.
-    status: proposed
-    rationale: >-
-      Observed in the repository: devenv.nix lists the tools. The operator has not decided this inventory, so confirm it.
+    status: decided
     source:
       - tsukuri:devenv.nix:16-23
       - tsukuri:README.md:12
+      - log:118
     canvas: [key-resources]
     links:
       serves: [goal-tsukuri-reproducible-builds]
@@ -364,13 +327,11 @@ elements:
     statement: >-
       The one original, public story that builds end to end. It holds the screenplay and a committed speech cache, and it
       is the subject of every journey check.
-    status: proposed
-    rationale: >-
-      Observed in the repository: the README and spec 0001 name this story and its cache. Spec 0001 leaves the committed
-      cache as an open question for the operator, so this is the current default only.
+    status: decided
     source:
       - tsukuri:README.md:8
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:14
+      - log:118
     links:
       serves: [goal-tsukuri-verified-output]
 
@@ -381,13 +342,11 @@ elements:
     statement: >-
       Content-addressed FLAC audio and word timings, keyed by the narration text and the adapter settings. It is the only
       generated asset kept in git, so a build needs no model.
-    status: proposed
-    rationale: >-
-      Observed in the repository: the speech cache is committed. Spec 0001 asks the operator whether that is acceptable and
-      the question stays open, so this is the current default only.
+    status: decided
     source:
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:78
       - tsukuri:README.md:21
+      - log:118
     canvas: [key-resources]
     links:
       serves: [goal-tsukuri-reproducible-builds]

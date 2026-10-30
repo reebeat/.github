@@ -5,11 +5,8 @@ elements:
     statement: >-
       The organisation profile, the sub-model pages, the product pages, the canvas, the roadmap and the gap report are
       generated from the model. No one edits them by hand.
-    status: proposed
-    rationale: >-
-      Follows the operator's single-source rule (log line 54) applied to this repository. The assignment of 2026-10-29
-      asks for it; the decision log does not.
-    source: [log:54]
+    status: decided
+    source: [log:54, log:118]
     links:
       supports: [goal-org-written-intent]
 
@@ -20,9 +17,8 @@ elements:
     statement: >-
       CI fails on a goal with no support, a component that serves no goal, a rule that cites no goal, an element with no
       source, and a "decided" element whose source is not an operator decision.
-    status: proposed
-    rationale: Required by the assignment of 2026-10-29. The operator should confirm it as a standing requirement.
-    source: [log:54]
+    status: decided
+    source: [log:54, log:118]
     links:
       serves: [goal-org-written-intent]
 
@@ -34,9 +30,8 @@ elements:
     statement: A test fails when a committed generated document differs from what the generator makes from the model.
     scenario: >-
       Someone edits a generated page by hand. The drift test fails in CI and names the page.
-    status: proposed
-    rationale: Applies the generate, then test, then convention ladder of the operator's single-source rule (log line 54).
-    source: [log:54]
+    status: decided
+    source: [log:54, log:118]
     links:
       serves: [goal-org-written-intent, goal-org-correctness-by-construction]
 
@@ -49,9 +44,8 @@ elements:
       hand-written source of this repository's documents.
     package: tools/intent
     licence: Apache-2.0
-    status: proposed
-    rationale: Built for the assignment of 2026-10-29; it waits for the operator's confirmation of the goal it serves.
-    source: [log:3]
+    status: decided
+    source: [log:3, log:118]
     canvas: [key-activities, key-resources]
     links:
       serves: [goal-org-written-intent]
@@ -67,9 +61,8 @@ elements:
       status and roadmap links.
     package: profile/README.md
     licence: Apache-2.0
-    status: proposed
-    rationale: Generated from the model for the assignment of 2026-10-29.
-    source: [log:7]
+    status: decided
+    source: [log:7, log:118]
     canvas: [channels]
     links:
       serves: [goal-org-vision, goal-org-written-intent]
@@ -134,12 +127,8 @@ elements:
     scenario: >-
       An author edits one line of narration. Only the speech, the timing and the frames that depend on that line are
       rebuilt; the rest comes from the cache.
-    status: proposed
-    rationale: >-
-      The operator decided the incremental build graph with dynamic dependencies and early cutoff (log line 62). The
-      narration scenario is an example drawn from issue 9 of tsukuri; the operator should confirm it as the acceptance
-      scenario.
-    source: [log:62, log:10, "issue:tsukuri#9"]
+    status: decided
+    source: [log:62, log:10, "issue:tsukuri#9", log:118]
     links:
       serves: [goal-org-incremental-builds]
 
@@ -245,9 +234,8 @@ elements:
     tier: integration
     title: React as a render engine
     statement: React stays possible as one render engine among others, behind the render-engine contract.
-    status: proposed
-    rationale: The operator kept React "as a possible render engine" (log line 64); nothing is built or scheduled.
-    source: [log:64, log:28]
+    status: decided
+    source: [log:64, log:28, log:118]
     links:
       serves: [goal-org-modular-extensible]
 
@@ -256,9 +244,8 @@ elements:
     tier: integration
     title: JSX as an authoring importer
     statement: JSX stays possible as an authoring importer that reads JSX and writes the IR.
-    status: proposed
-    rationale: The operator kept JSX "as a possible authoring importer" (log line 64); nothing is built or scheduled.
-    source: [log:64]
+    status: decided
+    source: [log:64, log:118]
     links:
       serves: [goal-org-modular-extensible]
 
@@ -309,11 +296,8 @@ elements:
       A note in the tsukuri repository that explains, for technical readers, how the qualities come from the mechanisms:
       the Model, Plan and Build layers, Effect and XState, prior art, the novelty claim and why React's core was rejected.
     url: https://github.com/tsukuri-labs/tsukuri/pull/24
-    status: proposed
-    rationale: >-
-      It is `docs/design/how-it-works.md` in open pull request 24 of tsukuri, written for the operator's accepted technical
-      framing (log lines 58 to 65). It is not merged; the link goes to the pull request until it lands on `main`.
-    source: [log:58-65, "pr:tsukuri#24"]
+    status: decided
+    source: [log:58-65, "pr:tsukuri#24", log:118]
     refs: ["pr:tsukuri#24"]
     canvas: [channels]
     links:

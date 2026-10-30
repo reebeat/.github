@@ -26,11 +26,8 @@ elements:
     statement: >-
       A Foldkit single-page app. Today it is a placeholder shell with four named regions and an inspector toggle, and it
       edits nothing.
-    status: proposed
-    rationale: >-
-      Observed in the repository: the README and spec 0000 describe the shell. The spec header says the operator assigned a
-      scaffolded Foldkit app as a whole. The operator must confirm the app as stated.
-    source: [studio:README.md:5, studio:README.md:23, studio:docs/specs/0000-development-lifecycle.md:53]
+    status: decided
+    source: [studio:README.md:5, studio:README.md:23, studio:docs/specs/0000-development-lifecycle.md:53, log:118]
     links:
       part-of: [comp-studio-product]
       serves: [goal-studio-first-felt-journey, goal-studio-lenses]
@@ -61,11 +58,8 @@ elements:
     statement: >-
       The edit path applies an edit, decodes the result with the story schema and computes the revision. Undo reverts the
       person's own changes per peer. A bad edit returns a tagged error and changes nothing.
-    status: proposed
-    rationale: >-
-      Spec 0001 plans it, and its later revision changes only what peers replicate. It has no code at the pinned commit. The
-      operator should confirm the validated edit path.
-    source: [studio:docs/specs/0001-first-felt-journey.md:76-93, studio:docs/specs/0001-first-felt-journey.md:172]
+    status: decided
+    source: [studio:docs/specs/0001-first-felt-journey.md:76-93, studio:docs/specs/0001-first-felt-journey.md:172, log:118]
     proposedPricing: free
     links:
       part-of: [comp-studio-editor]
@@ -80,11 +74,8 @@ elements:
     statement: >-
       A read-only reading view of the screenplay, drawn from the IR as a Fountain document. It needs a Fountain writer from
       tsukuri.
-    status: proposed
-    rationale: >-
-      The operator named a manuscript view (log line 45). The read-only Fountain output, the writer dependency and the tier
-      are the lenses note's proposal. The operator should confirm the view behaviour and the tier.
-    source: [log:45, studio:docs/design/lenses.md:21, studio:docs/design/lenses.md:34]
+    status: decided
+    source: [log:45, studio:docs/design/lenses.md:21, studio:docs/design/lenses.md:34, log:118]
     proposedPricing: free
     links:
       part-of: [comp-studio-editor]
@@ -97,11 +88,8 @@ elements:
     statement: >-
       The deck view with a teleprompter, several takes for each Line and word-aligned cuts tied to beat lifecycle events.
       Recording and alignment on the user's machine are free. Hosted alignment is out of scope until demand shows.
-    status: proposed
-    rationale: >-
-      The operator decided the deck view (log line 45). The teleprompter, the takes, the word alignment and the free tier of
-      local recording are the lenses note's proposal. The operator should confirm those details and the tier split.
-    source: [log:45, studio:docs/design/lenses.md:22, studio:docs/design/lenses.md:36-48]
+    status: decided
+    source: [log:45, studio:docs/design/lenses.md:22, studio:docs/design/lenses.md:36-48, log:118]
     proposedPricing: free
     links:
       part-of: [comp-studio-editor]
@@ -115,11 +103,8 @@ elements:
     statement: >-
       A statechart map of Scenes, States and the Beats the engine generates. The first journey builds a read-only version
       with one property edit.
-    status: proposed
-    rationale: >-
-      The operator named a scene, state and beat view (log line 45). Generated Beats, the read-only first version and the
-      tier are the lenses note's proposal. The operator should confirm those behaviours and the tier.
-    source: [log:45, studio:docs/design/lenses.md:23, studio:docs/design/lenses.md:50-52]
+    status: decided
+    source: [log:45, studio:docs/design/lenses.md:23, studio:docs/design/lenses.md:50-52, log:118]
     proposedPricing: free
     links:
       part-of: [comp-studio-editor]
@@ -133,11 +118,8 @@ elements:
     statement: >-
       Lanes for Elements and Lines with effects at resolved times, and a scrub-linked preview. Retiming writes a new offset
       from the anchor. The first journey builds it read-only.
-    status: proposed
-    rationale: >-
-      The operator named a timeline view (log line 45). Retiming by anchored offset and the tier are the lenses note's
-      proposal. The operator should confirm the retiming behaviour and the tier.
-    source: [log:45, studio:docs/design/lenses.md:24, studio:docs/design/lenses.md:54-56]
+    status: decided
+    source: [log:45, studio:docs/design/lenses.md:24, studio:docs/design/lenses.md:54-56, log:118]
     proposedPricing: free
     links:
       part-of: [comp-studio-editor]
@@ -150,11 +132,8 @@ elements:
     statement: >-
       For each effect, the event it follows and a trace to the frame. It reads what tsukuri's timing plan prints and adds the
       chain.
-    status: proposed
-    rationale: >-
-      Design only. The lens, its tier and its tsukuri needs (event resolution, cycle lint, clocks) are the lenses note's
-      proposal. The operator should confirm this lens and its tier.
-    source: [studio:docs/design/lenses.md:25, studio:docs/design/lenses.md:58-60]
+    status: decided
+    source: [studio:docs/design/lenses.md:25, studio:docs/design/lenses.md:58-60, log:118]
     proposedPricing: free
     links:
       part-of: [comp-studio-editor]
@@ -168,11 +147,8 @@ elements:
       A meaning-level diff of two versions with renders side by side, and suggestion mode. It is free for one person and
       local agents. Suggestions from others need the paid sync server, and suggestions from hosted agents need the paid
       hosted agents.
-    status: proposed
-    rationale: >-
-      Design only. The semantic diff, the suggestion workflow and the tier split are the lenses note's proposal. The
-      operator should confirm the review behaviour and the tier.
-    source: [studio:docs/design/lenses.md:26, studio:docs/design/lenses.md:62-69]
+    status: decided
+    source: [studio:docs/design/lenses.md:26, studio:docs/design/lenses.md:62-69, log:118]
     proposedPricing: free
     links:
       part-of: [comp-studio-editor]
@@ -186,11 +162,8 @@ elements:
     statement: >-
       Shows the findings of tsukuri's teaching lint on the timeline. The lint is free. The lenses note says guided fixes may
       be a paid tier.
-    status: proposed
-    rationale: >-
-      Design only. It depends on tsukuri issue 8, and the lens, its findings view and the tier are the lenses note's
-      proposal. The operator should confirm the lens and its tier.
-    source: [studio:docs/design/lenses.md:27, studio:docs/design/lenses.md:71-73]
+    status: decided
+    source: [studio:docs/design/lenses.md:27, studio:docs/design/lenses.md:71-73, log:118]
     proposedPricing: free
     links:
       part-of: [comp-studio-editor]
@@ -203,11 +176,8 @@ elements:
     statement: >-
       Compares narration versions and shows timing drift for each language. The drift report is free. Hosted translation and
       speech are out of scope until demand shows.
-    status: proposed
-    rationale: >-
-      Design only. It depends on tsukuri issue 10, and the drift view and the tier are the lenses note's proposal. The
-      operator should confirm those functions and the tier.
-    source: [studio:docs/design/lenses.md:28, studio:docs/design/lenses.md:75-77]
+    status: decided
+    source: [studio:docs/design/lenses.md:28, studio:docs/design/lenses.md:75-77, log:118]
     proposedPricing: free
     links:
       part-of: [comp-studio-editor]
@@ -220,11 +190,8 @@ elements:
     statement: >-
       Video with aspect variants, the Deck in present mode and build receipts. A render on the user's machine is free. A
       render in the project's cloud is a separate paid service.
-    status: proposed
-    rationale: >-
-      The operator named a render view (log line 45). The outputs and the tier split are the lenses note's proposal, and
-      aspect variants are new tsukuri work. The operator should confirm the delivery scope and the tiers.
-    source: [log:45, studio:docs/design/lenses.md:29, studio:docs/design/lenses.md:79-87]
+    status: decided
+    source: [log:45, studio:docs/design/lenses.md:29, studio:docs/design/lenses.md:79-87, log:118]
     proposedPricing: free
     links:
       part-of: [comp-studio-editor]
@@ -343,7 +310,7 @@ elements:
     statement: >-
       Loro sits behind a ten-method document port.
     status: decided
-    source: [record:studio:docs/specs/0002-collaboration-spike.md:198]
+    source: [record:studio:docs/specs/0002-collaboration-spike.md:198, log:118]
     links:
       serves: [goal-studio-collaboration]
       depends-on: [resource-studio-loro]
@@ -370,7 +337,7 @@ elements:
       A repair for an invalid merge is offered as a proposal and is never applied without a person. A function makes the
       repair.
     status: decided
-    source: [record:studio:docs/specs/0002-collaboration-spike.md:198]
+    source: [record:studio:docs/specs/0002-collaboration-spike.md:198, log:118]
     links:
       serves: [goal-studio-human-control]
       realizes: [req-studio-repair-proposal]
@@ -383,11 +350,8 @@ elements:
     statement: >-
       A small Bun server compiled with the editor embedded. It serves the editor on a loopback address, answers GET and HEAD
       only, and builds for five targets.
-    status: proposed
-    rationale: >-
-      The operator decided the single binary (log line 46). The launcher is in PR 6, a draft that was not on main at the
-      pinned commit, so the design is the PR's. The operator should confirm the launcher behaviour and the targets.
-    source: [log:46, pr:studio#6]
+    status: decided
+    source: [log:46, pr:studio#6, log:118]
     refs: [pr:studio#6]
     links:
       part-of: [comp-studio-product]
@@ -403,11 +367,8 @@ elements:
     statement: >-
       An Alchemy file deploys the editor as a Cloudflare Worker, one stage for each pull request and one for main. At the
       pinned commit it had type-checked but had not run.
-    status: proposed
-    rationale: >-
-      The operator decided web first (log line 46). The deploy design is in PR 6 and was blocked on an Alchemy release and
-      on credentials. The operator should confirm the per-pull-request Worker stages (an open question in PR 6).
-    source: [log:46, pr:studio#6]
+    status: decided
+    source: [log:46, pr:studio#6, log:118]
     refs: [pr:studio#6]
     links:
       part-of: [comp-studio-product]
@@ -424,11 +385,8 @@ elements:
     statement: >-
       The exception registry check, the Effect family check, the feature-map test, the review-record test, the headroom test
       and the Foldkit lint adapter.
-    status: proposed
-    rationale: >-
-      Observed in the repository: the README and AGENTS.md list the tools. The spec header says the operator assigned the
-      lifecycle as a whole, which does not decide this inventory. The operator must confirm it.
-    source: [studio:README.md:23, studio:AGENTS.md:33-37]
+    status: decided
+    source: [studio:README.md:23, studio:AGENTS.md:33-37, log:118]
     links:
       serves: [goal-studio-checked-change]
       realizes: [req-studio-maintainable-gates]
@@ -439,11 +397,8 @@ elements:
     title: CI checks workflow
     statement: >-
       Runs each gate as its own step on every pull request and on main. Its status check, named checks, must pass to merge.
-    status: proposed
-    rationale: >-
-      Observed in the repository: the workflow file and AGENTS.md describe it. The operator decided the lifecycle only as a
-      whole. The operator must confirm the workflow.
-    source: [studio:.github/workflows/checks.yml:16-18, studio:AGENTS.md:20]
+    status: decided
+    source: [studio:.github/workflows/checks.yml:16-18, studio:AGENTS.md:20, log:118]
     links:
       serves: [goal-studio-checked-change]
       depends-on: [resource-studio-ci]
@@ -455,11 +410,8 @@ elements:
     statement: >-
       The review-pr skill with its record and merge scripts, and the pr-create skill. A pass cannot be recorded by the
       author, and a merge needs a passing record on the head.
-    status: proposed
-    rationale: >-
-      Spec plan: spec 0003 designs the author check and the merge script. The operator assigned adopting review and PR
-      procedures, not these details. The operator must confirm them.
-    source: [studio:docs/specs/0003-review-and-verify-skills.md:13, studio:docs/specs/0003-review-and-verify-skills.md:46]
+    status: decided
+    source: [studio:docs/specs/0003-review-and-verify-skills.md:13, studio:docs/specs/0003-review-and-verify-skills.md:46, log:118]
     links:
       serves: [goal-studio-checked-change]
 
@@ -470,11 +422,8 @@ elements:
     statement: >-
       Launches a disposable editor, drives it in a real browser, keeps evidence outside the worktree and cleans up. Its
       feature map lists what a person can see or do and what counts as broken.
-    status: proposed
-    rationale: >-
-      Spec plan: the operator assigned a verification skill for each repository. The disposable instance, the browser drive
-      and the feature map are spec 0003's design. The operator must confirm them.
-    source: [studio:docs/specs/0003-review-and-verify-skills.md:14, studio:docs/specs/0003-review-and-verify-skills.md:52-58]
+    status: decided
+    source: [studio:docs/specs/0003-review-and-verify-skills.md:14, studio:docs/specs/0003-review-and-verify-skills.md:52-58, log:118]
     links:
       serves: [goal-studio-checked-change]
       depends-on: [resource-studio-host-chromium]
@@ -486,11 +435,8 @@ elements:
     title: The graph is the engine's graph
     statement: >-
       The States and Beats the editor draws equal the ones tsukuri's timing plan lists, with the same ids, count and order.
-    status: proposed
-    rationale: >-
-      Falsifier F1 of spec 0001. It has no code at the pinned commit. The operator should confirm the graph equality
-      requirement.
-    source: [studio:docs/specs/0001-first-felt-journey.md:17, studio:docs/specs/0001-first-felt-journey.md:131]
+    status: decided
+    source: [studio:docs/specs/0001-first-felt-journey.md:17, studio:docs/specs/0001-first-felt-journey.md:131, log:118]
     refs: ["studio:docs/specs/0001-first-felt-journey.md:1"]
     proposedPricing: free
     links:
@@ -516,11 +462,8 @@ elements:
     statement: >-
       Setting an Element property changes the story by exactly one replace. An invalid result is refused with a reason and
       leaves the story unchanged.
-    status: proposed
-    rationale: >-
-      Falsifiers F3 and F4 of spec 0001. They have no code at the pinned commit. The operator should confirm these edit
-      semantics.
-    source: [studio:docs/specs/0001-first-felt-journey.md:19-21, studio:docs/specs/0001-first-felt-journey.md:133-134]
+    status: decided
+    source: [studio:docs/specs/0001-first-felt-journey.md:19-21, studio:docs/specs/0001-first-felt-journey.md:133-134, log:118]
     proposedPricing: free
     links:
       serves: [goal-studio-first-felt-journey]
@@ -544,11 +487,8 @@ elements:
     title: Record several takes with a teleprompter
     statement: >-
       The presenter reads a Line from a teleprompter, keeps several takes and picks the best one.
-    status: proposed
-    rationale: >-
-      The lenses note describes the deck view. The operator named the view but not these details. The operator should
-      confirm the teleprompter and take model.
-    source: [log:45, studio:docs/design/lenses.md:38]
+    status: decided
+    source: [log:45, studio:docs/design/lenses.md:38, log:118]
     proposedPricing: free
     links:
       serves: [goal-studio-deck-view-narration]
@@ -571,11 +511,8 @@ elements:
     statement: >-
       The server applies a change set to a copy and keeps it only when the result decodes as a valid story. It returns the
       reason so the author can rebase.
-    status: proposed
-    rationale: >-
-      Spec plan: the operator decided a validation gate in the sync server (log:47). Applying to a copy and returning a
-      reason for a rebase are the spike's recommendation. The operator must confirm the protocol.
-    source: [log:47, studio:docs/specs/0002-collaboration-spike.md:25, studio:docs/specs/0002-collaboration-spike.md:111-112]
+    status: decided
+    source: [log:47, studio:docs/specs/0002-collaboration-spike.md:25, studio:docs/specs/0002-collaboration-spike.md:111-112, log:118]
     proposedPricing: paid
     links:
       serves: [goal-studio-valid-shared-story]
@@ -587,7 +524,7 @@ elements:
     statement: >-
       When a repair is offered for an invalid merge, it applies only after a person accepts.
     status: decided
-    source: [record:studio:docs/specs/0002-collaboration-spike.md:198]
+    source: [record:studio:docs/specs/0002-collaboration-spike.md:198, log:118]
     links:
       serves: [goal-studio-human-control]
 
@@ -598,11 +535,8 @@ elements:
     statement: >-
       The room appends each update to storage, compacts the log to a snapshot and chunks a snapshot over 2 MB. A new object
       started from storage returns the same document.
-    status: proposed
-    rationale: >-
-      The spike ran this on local workerd for three libraries and the operator decided the sync server. The Durable Object
-      design is a recommendation. The operator should confirm the persistence protocol.
-    source: [studio:docs/specs/0002-collaboration-spike.md:28, studio:docs/specs/0002-collaboration-spike.md:56, studio:docs/specs/0002-collaboration-spike.md:66]
+    status: decided
+    source: [studio:docs/specs/0002-collaboration-spike.md:28, studio:docs/specs/0002-collaboration-spike.md:56, studio:docs/specs/0002-collaboration-spike.md:66, log:118]
     proposedPricing: paid
     links:
       serves: [goal-studio-collaboration]
@@ -653,11 +587,8 @@ elements:
     title: The binary opens the editor in the user's browser
     statement: >-
       Running the binary starts a local server and opens the browser on a loopback address and port.
-    status: proposed
-    rationale: >-
-      PR 6 describes it, and it was a draft at the pinned commit. The operator should confirm the local server and the
-      browser-opening behaviour.
-    source: [pr:studio#6, log:46]
+    status: decided
+    source: [pr:studio#6, log:46, log:118]
     links:
       serves: [goal-studio-web-and-binary]
 
@@ -689,11 +620,8 @@ elements:
     scenario: >-
       With the network off and the static assets served, a person opens a story, sees the graph and timeline, scrubs, edits
       one property and undoes it. The page makes no request except for its own files.
-    status: proposed
-    rationale: >-
-      Falsifier F8 of spec 0001, and the shell's feature map already checks that the page requests only its own files. The
-      operator should confirm offline behaviour and its free tier.
-    source: [studio:docs/specs/0001-first-felt-journey.md:138, studio:.agents/skills/verify-studio/features/README.md:26]
+    status: decided
+    source: [studio:docs/specs/0001-first-felt-journey.md:138, studio:.agents/skills/verify-studio/features/README.md:26, log:118]
     proposedPricing: free
     links:
       serves: [goal-studio-offline-free-journey]
@@ -709,11 +637,8 @@ elements:
     scenario: >-
       A screen reader user lists the landmarks and finds Story graph, Preview, Timeline and Inspector by name. The Hide
       inspector button reports aria-expanded true while the inspector shows, and false when it is hidden.
-    status: proposed
-    rationale: >-
-      The shell builds it and the feature map checks it. The operator names accessibility as a quality of the artifacts
-      (log line 10), not of the editor itself. The operator must confirm it for the editor.
-    source: [studio:apps/editor/src/main.ts:62-63, studio:apps/editor/src/main.ts:89, studio:docs/specs/0000-development-lifecycle.md:63, log:10]
+    status: decided
+    source: [studio:apps/editor/src/main.ts:62-63, studio:apps/editor/src/main.ts:89, studio:docs/specs/0000-development-lifecycle.md:63, log:10, log:118]
     proposedPricing: free
     links:
       serves: [goal-studio-vision]
@@ -728,12 +653,8 @@ elements:
     scenario: >-
       Two peers edit a story at the same time and then merge. If the merged document does not decode as a valid story, the
       server refuses it and names the reason. Over the 66 valid spike outcomes, it refused none.
-    status: proposed
-    rationale: >-
-      Spec plan: the operator decided a validation gate in the sync server (log:47). The refusal behaviour and the
-      zero-false-refusal measurement over 66 valid spike outcomes are the spike's evidence. The operator must confirm the
-      requirement as stated.
-    source: [log:47, studio:docs/specs/0002-collaboration-spike.md:25, studio:docs/specs/0002-collaboration-spike.md:208]
+    status: decided
+    source: [log:47, studio:docs/specs/0002-collaboration-spike.md:25, studio:docs/specs/0002-collaboration-spike.md:208, log:118]
     proposedPricing: paid
     links:
       serves: [goal-studio-valid-shared-story]
@@ -748,11 +669,8 @@ elements:
     scenario: >-
       Replay the same updates in 200 random orders into fresh replicas. Every replica gives the same story text, with 0
       differing texts, on Bun and on Node.
-    status: proposed
-    rationale: >-
-      The spike measured this for three libraries. The operator chose Loro but did not set this requirement. The operator
-      should confirm the convergence requirement and its test scope.
-    source: [studio:docs/specs/0002-collaboration-spike.md:26, studio:docs/specs/0002-collaboration-spike.md:122-128]
+    status: decided
+    source: [studio:docs/specs/0002-collaboration-spike.md:26, studio:docs/specs/0002-collaboration-spike.md:122-128, log:118]
     links:
       serves: [goal-studio-collaboration]
 
@@ -767,12 +685,8 @@ elements:
     scenario: >-
       Milestone M0 measures the compile and render time of the same-id story in a browser and sets the budget for one edit.
       A Cloudflare edge run measures the gate's bundle size, cold start and load with many sockets.
-    status: open
-    rationale: >-
-      Spec 0001 says a number written before M0 would be a guess, and spec 0002 lists the gate's size and cold start as not
-      measured. No performance target is set. The operator should confirm the latency and edge targets after they are
-      measured.
-    source: [studio:docs/specs/0001-first-felt-journey.md:142, studio:docs/specs/0001-first-felt-journey.md:148, studio:docs/specs/0002-collaboration-spike.md:215]
+    status: decided
+    source: [studio:docs/specs/0001-first-felt-journey.md:142, studio:docs/specs/0001-first-felt-journey.md:148, studio:docs/specs/0002-collaboration-spike.md:215, log:118]
     links:
       serves: [goal-studio-first-felt-journey, goal-studio-collaboration]
 
@@ -786,11 +700,8 @@ elements:
     scenario: >-
       A client on a non-loopback address of the same machine cannot connect. A POST returns 405. A request path with dot-dot
       segments reaches no file outside the embedded set, although a normalised path can answer with an embedded file.
-    status: proposed
-    rationale: >-
-      PR 6 reports these as falsifiers F3 to F5 that passed in CI, and the PR was a draft at the pinned commit. The operator
-      should confirm this security requirement.
-    source: [pr:studio#6]
+    status: decided
+    source: [pr:studio#6, log:118]
     refs: [pr:studio#6]
     links:
       serves: [goal-studio-web-and-binary]
@@ -807,11 +718,8 @@ elements:
       On the runners that run the full smoke (Linux x64 and arm64, macOS arm64 and x64), the binary starts, serves and exits
       cleanly on a stop signal. On Windows only the start-and-check step runs. A file-type check fails any Linux binary that
       names /nix/store.
-    status: proposed
-    rationale: >-
-      PR 6 reports all five runners passing, and the PR was a draft at the pinned commit. The operator should confirm the
-      platform matrix and the required checks.
-    source: [pr:studio#6]
+    status: decided
+    source: [pr:studio#6, log:118]
     refs: [pr:studio#6]
     links:
       serves: [goal-studio-web-and-binary]
@@ -843,12 +751,8 @@ elements:
     scenario: >-
       On a clean tree, the ready command exits 0. Adding a lint suppression with no registry entry makes the exception check
       fail and name the file and line.
-    status: proposed
-    rationale: >-
-      Observed in the repository: spec 0000 and AGENTS.md describe the gates. The spec header says the operator assigned the
-      lifecycle as a whole. The exception check does not yet see effect-diagnostics comments (issue 7). The operator must
-      confirm the requirement.
-    source: [studio:docs/specs/0000-development-lifecycle.md:71-75, studio:AGENTS.md:22-24]
+    status: decided
+    source: [studio:docs/specs/0000-development-lifecycle.md:71-75, studio:AGENTS.md:22-24, log:118]
     links:
       serves: [goal-studio-checked-change]
 
@@ -874,11 +778,8 @@ elements:
     title: Every change enters through one validated path
     statement: >-
       The system accepts changes from the UI, the tools and sync through one path that validates the result.
-    status: proposed
-    rationale: >-
-      Spec 0001 plans one edit path, one validation and one undo. The merge model changed what peers exchange but not this
-      aim. The operator should confirm one validated path across the UI, the tools and sync.
-    source: [studio:docs/specs/0001-first-felt-journey.md:76, studio:docs/specs/0001-first-felt-journey.md:172]
+    status: decided
+    source: [studio:docs/specs/0001-first-felt-journey.md:76, studio:docs/specs/0001-first-felt-journey.md:172, log:118]
     links:
       supports: [goal-studio-first-felt-journey]
 

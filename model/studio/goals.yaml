@@ -112,11 +112,8 @@ elements:
     statement: >-
       A person or an agent opens a story, sees its States and Beats as a graph and a timeline, scrubs a preview, edits one
       Element property and sees the preview update. No server is needed.
-    status: proposed
-    rationale: >-
-      Spec 0001 states this journey, and its header calls the journey the operator's proposal of 2026-10-29. No line
-      records the operator accepting it, and the spec is blocked on tsukuri. The operator must confirm the journey.
-    source: [studio:docs/specs/0001-first-felt-journey.md:3, studio:docs/specs/0001-first-felt-journey.md:11-22]
+    status: decided
+    source: [studio:docs/specs/0001-first-felt-journey.md:3, studio:docs/specs/0001-first-felt-journey.md:11-22, log:118]
     refs: ["studio:docs/specs/0001-first-felt-journey.md:1"]
     jtbd:
       persona: actor-creator
@@ -134,11 +131,8 @@ elements:
     statement: >-
       The first journey works offline, with no account. The story lives in the browser's private storage, with import and
       export of IR JSON, and the preview runs in the user's browser.
-    status: proposed
-    rationale: >-
-      Spec 0001 proposes falsifier F8 (no network) and the free rule says the free tier costs the project nothing. The operator log
-      says only that basic non-cost features are free (log:43). The operator must confirm that offline is a goal.
-    source: [studio:docs/specs/0001-first-felt-journey.md:13, studio:docs/specs/0001-first-felt-journey.md:138, studio:docs/design/lenses.md:15]
+    status: decided
+    source: [studio:docs/specs/0001-first-felt-journey.md:13, studio:docs/specs/0001-first-felt-journey.md:138, studio:docs/design/lenses.md:15, log:118]
     links:
       subgoal-of: [goal-studio-first-felt-journey]
 
@@ -177,13 +171,11 @@ elements:
     statement: >-
       A change reaches main only through spec, code and pull request. It passes the same gates locally, in CI and in a
       recorded review round.
-    status: proposed
-    rationale: >-
-      Observed in the repository: spec 0000 and AGENTS.md describe the lifecycle. The spec header says the operator
-      assigned the lifecycle as a whole, which does not decide each gate. The operator must confirm the gates as a goal.
+    status: decided
     source:
       - studio:docs/specs/0000-development-lifecycle.md:9
       - studio:AGENTS.md:13-20
+      - log:118
     links:
       supports: [goal-org-correctness-by-construction]
 
@@ -235,11 +227,8 @@ elements:
     statement: >-
       For each effect, the lens shows the event it follows and a trace down to the exact time and frame. It shows
       unresolved anchors and cycles with the line they come from.
-    status: proposed
-    rationale: >-
-      The lenses note designs this lens (design only). The operator named the manuscript, state, timeline and render views
-      in log line 45, not this one. The operator must confirm it.
-    source: [studio:docs/design/lenses.md:25, studio:docs/design/lenses.md:58-60]
+    status: decided
+    source: [studio:docs/design/lenses.md:25, studio:docs/design/lenses.md:58-60, log:118]
     links:
       subgoal-of: [goal-studio-lenses]
 
@@ -249,11 +238,8 @@ elements:
     statement: >-
       The lens shows a meaning-level diff between two versions with both renders side by side. Suggestions from agents and
       collaborators wait there for a person.
-    status: proposed
-    rationale: >-
-      The lenses note designs this lens (design only). The operator decided only that repairs are proposals. The operator
-      must confirm the lens.
-    source: [studio:docs/design/lenses.md:26, studio:docs/design/lenses.md:62-67]
+    status: decided
+    source: [studio:docs/design/lenses.md:26, studio:docs/design/lenses.md:62-67, log:118]
     links:
       subgoal-of: [goal-studio-lenses, goal-studio-human-control]
 
@@ -263,11 +249,8 @@ elements:
     statement: >-
       Checks of an explainer against multimedia-learning principles show their findings on the timeline. Each threshold
       must come from its primary source before it is built.
-    status: proposed
-    rationale: >-
-      The lenses note designs this lens and depends on tsukuri issue 8. No operator decision names it. The operator must
-      confirm it.
-    source: [studio:docs/design/lenses.md:27, studio:docs/design/lenses.md:71-73]
+    status: decided
+    source: [studio:docs/design/lenses.md:27, studio:docs/design/lenses.md:71-73, log:118]
     links:
       subgoal-of: [goal-studio-lenses]
       supports: [goal-org-interactive-multimedia]
@@ -278,12 +261,8 @@ elements:
     statement: >-
       The lens compares narration versions and shows timing drift: which effects move and which cannot, because they use an
       absolute time.
-    status: proposed
-    rationale: >-
-      The lenses note designs this lens and depends on tsukuri issue 10. The operator log asks for language variants with
-      adjusted timings (log line 32) but does not name this lens.
-      The operator should confirm the lens and its drift report.
-    source: [studio:docs/design/lenses.md:28, studio:docs/design/lenses.md:75-77, log:32]
+    status: decided
+    source: [studio:docs/design/lenses.md:28, studio:docs/design/lenses.md:75-77, log:32, log:118]
     links:
       subgoal-of: [goal-studio-lenses]
       supports: [goal-org-accessible-artifacts]
@@ -320,11 +299,8 @@ elements:
     statement: >-
       At the pinned commit, studio uses tsukuri's words (State, Beat, Scene, effect) but has no GLOSSARY.md. It points
       readers to tsukuri's glossary.
-    status: open
-    rationale: >-
-      AGENTS.md and the lenses note send readers to tsukuri's GLOSSARY.md, and PROVENANCE.md lists it as not copied. The
-      operator should confirm whether a pointer is enough or studio needs its own terms (lens, take, gate, scope).
-    source: [absent:studio:GLOSSARY.md, studio:AGENTS.md:3, studio:docs/design/lenses.md:11, studio:PROVENANCE.md:29]
+    status: decided
+    source: [absent:studio:GLOSSARY.md, studio:AGENTS.md:3, studio:docs/design/lenses.md:11, studio:PROVENANCE.md:29, log:118]
     gap:
       repo: studio
       fix: Add a glossary for studio's own terms, or a clear pointer to tsukuri's glossary.
@@ -337,11 +313,8 @@ elements:
     statement: >-
       At the pinned commit, the README gives a one-line purpose and the status of a placeholder shell. It does not state the
       product goals, the free and paid split or the roadmap.
-    status: open
-    rationale: >-
-      The goals sit in the lenses note and in specs 0001 and 0002. Spec 0000 states the lifecycle as its goal. The operator
-      should say where product goals belong.
-    source: [studio:README.md:3-5, studio:docs/specs/0001-first-felt-journey.md:11-13, studio:docs/specs/0000-development-lifecycle.md:9]
+    status: decided
+    source: [studio:README.md:3-5, studio:docs/specs/0001-first-felt-journey.md:11-13, studio:docs/specs/0000-development-lifecycle.md:9, log:118]
     gap:
       repo: studio
       fix: Add a product goals section to the README that links to the generated intent model.
@@ -354,12 +327,8 @@ elements:
     statement: >-
       At the pinned commit, spec 0001 is blocked on tsukuri specs 0004 and 0006, and needs spec 0005 for story-wide
       identity. Until the IR is stable, studio builds no editing feature.
-    status: open
-    rationale: >-
-      STATE.md and AGENTS.md record the block. It ends when tsukuri merges those specs. The operator owns the sequence of
-      tsukuri work.
-      The operator should confirm when tsukuri specs 0004 to 0006 are enough.
-    source: [studio:AGENTS.md:3, studio:STATE.md:12, studio:STATE.md:18, studio:docs/specs/0001-first-felt-journey.md:3, studio:docs/specs/0001-first-felt-journey.md:30-42]
+    status: decided
+    source: [studio:AGENTS.md:3, studio:STATE.md:12, studio:STATE.md:18, studio:docs/specs/0001-first-felt-journey.md:3, studio:docs/specs/0001-first-felt-journey.md:30-42, log:118]
     gap:
       repo: tsukuri
       fix: Merge tsukuri specs 0004 to 0006 so the story IR is closed, versioned and the committed source.
@@ -372,11 +341,8 @@ elements:
     statement: >-
       The in-browser preview needs a browser-safe compile, a seekable Deck page and a Deck generator that does not read the
       file system. Spec 0001 lists them as new tsukuri work, and says the browser safety of the compile is not yet checked.
-    status: proposed
-    rationale: >-
-      Spec 0001 names the needs as D5 to D7 and marks the first one as not yet checked. The operator must confirm that
-      tsukuri takes this work.
-    source: [studio:docs/specs/0001-first-felt-journey.md:38-42]
+    status: decided
+    source: [studio:docs/specs/0001-first-felt-journey.md:38-42, log:118]
     gap:
       repo: tsukuri
       fix: Add a browser-safe compile path, a seek(frame) on the Deck page and an assembleDeck that takes its assets as input.
@@ -412,12 +378,8 @@ elements:
     statement: >-
       At the pinned commit, the current Alchemy release imports an Effect module that Effect 4.1 does not have. The fix,
       alchemy-run/alchemy#2754, was merged but not released, so pull request 6 was a draft.
-    status: open
-    rationale: >-
-      PR 6 says the binary is built and tested and the web deploy has not run. The deploy needs a release after
-      2.0.0-beta.84 that contains the fix.
-      The operator should confirm the bump once that release exists.
-    source: [pr:studio#6, studio:docs/specs/0000-development-lifecycle.md:34]
+    status: decided
+    source: [pr:studio#6, studio:docs/specs/0000-development-lifecycle.md:34, log:118]
     refs: [pr:studio#6]
     gap:
       repo: studio
@@ -431,11 +393,8 @@ elements:
     statement: >-
       At the pinned commit, the suppression pattern in tools/quality does not match effect-diagnostics comments. Such a
       comment can silence a rule with no registry entry.
-    status: open
-    rationale: >-
-      Issue 7 tracks the fix: extend the pattern and add a negative control.
-      The operator should confirm the fix.
-    source: [studio:tools/quality/effectExceptions.ts:44-45, issue:studio#7]
+    status: decided
+    source: [studio:tools/quality/effectExceptions.ts:44-45, issue:studio#7, log:118]
     refs: [issue:studio#7]
     gap:
       repo: studio
@@ -464,11 +423,8 @@ elements:
     statement: >-
       The free and paid split follows running cost. No source measures whether people want studio or would pay for sync or
       hosted agents.
-    status: open
-    rationale: >-
-      The lenses note and spec 0001 justify each tier by cost driver only. The org model holds the same gap for the whole
-      project. The operator should decide how to measure demand.
-    source: [studio:docs/design/lenses.md:13-15, studio:docs/specs/0001-first-felt-journey.md:112-123]
+    status: decided
+    source: [studio:docs/design/lenses.md:13-15, studio:docs/specs/0001-first-felt-journey.md:112-123, log:118]
     gap:
       repo: studio
       fix: Measure demand and willingness to pay before building the paid tier.
@@ -495,10 +451,8 @@ elements:
     title: The binaries are not signed
     statement: >-
       The macOS and Windows binaries are not signed or notarised, so those systems warn the user.
-    status: open
-    rationale: >-
-      PR 6 records signing and notarisation as not done. The operator must decide when to sign.
-    source: [pr:studio#6]
+    status: decided
+    source: [pr:studio#6, log:118]
     gap:
       repo: studio
       fix: Sign and notarise the macOS and Windows binaries before a public release.
@@ -545,11 +499,8 @@ elements:
     statement: >-
       The lenses note does not decide the build order of lenses after spec 0001, whether the playhead is shared between
       collaborators, or how lenses use Foldkit Submodels.
-    status: open
-    rationale: >-
-      The note lists these under what it does not decide. The shared-state question belongs to the sync spec.
-      The operator should decide the order of the lenses and whether the playhead is shared.
-    source: [studio:docs/design/lenses.md:105-109]
+    status: decided
+    source: [studio:docs/design/lenses.md:105-109, log:118]
     links:
       hinders: [goal-studio-lenses]
 
@@ -559,11 +510,8 @@ elements:
     statement: >-
       In the spike, 31 of 57 runs on a naive IR-shaped document merged to an invalid story, and 17 of 57 on a keyed one. A
       repair made 15 of the 17 valid and could not fix the other two (one left an Element hidden and never revealed).
-    status: proposed
-    rationale: >-
-      Observed in the repository: these are spike measurements (spec 0002, cases a1 to e4). The operator decided the
-      validation gate that answers them (log:47), not the measurements. The operator must confirm the problem as stated.
-    source: [studio:docs/specs/0002-collaboration-spike.md:24-25, studio:docs/specs/0002-collaboration-spike.md:94, studio:docs/specs/0002-collaboration-spike.md:111]
+    status: decided
+    source: [studio:docs/specs/0002-collaboration-spike.md:24-25, studio:docs/specs/0002-collaboration-spike.md:94, studio:docs/specs/0002-collaboration-spike.md:111, log:118]
     links:
       motivates: [goal-studio-valid-shared-story]
 
@@ -574,12 +522,8 @@ elements:
       Effect's JSON Patch compares arrays by position. In the spike, one inserted effect became 26 operations that rewrite
       the next effects field by field, and applied to a document that moved on, that patch gave an invalid story. A
       one-operation patch applied by index to a document that moved on edited the wrong effect, and the story stayed valid.
-    status: proposed
-    rationale: >-
-      This is a finding of the spike (T2). The operator decided the keyed model that removes it, but no line records the
-      finding itself as accepted.
-      The operator should confirm the finding.
-    source: [studio:docs/specs/0002-collaboration-spike.md:27, studio:docs/specs/0002-collaboration-spike.md:140-142]
+    status: decided
+    source: [studio:docs/specs/0002-collaboration-spike.md:27, studio:docs/specs/0002-collaboration-spike.md:140-142, log:118]
     links:
       motivates: [rule-studio-edit-by-element-id]
 
@@ -614,11 +558,8 @@ elements:
     title: A public repository holds no secret or private material
     statement: >-
       The operator made the studio repository public. So it never holds a secret, personal data or course-private material.
-    status: proposed
-    rationale: >-
-      Observed in the repository: AGENTS.md and spec 0000 state the hygiene rule. The operator log decides only that the
-      repository is public (log:45). The operator must confirm the rule for studio.
-    source: [log:45, studio:AGENTS.md:3, studio:docs/specs/0000-development-lifecycle.md:35]
+    status: decided
+    source: [log:45, studio:AGENTS.md:3, studio:docs/specs/0000-development-lifecycle.md:35, log:118]
     links:
       constrains: [resource-studio-repo]
 
@@ -629,12 +570,8 @@ elements:
     statement: >-
       Studio builds no editing feature against the story IR until tsukuri specs 0004 to 0006 stabilise it. The shell,
       toolchain and docs are allowed.
-    status: proposed
-    rationale: >-
-      AGENTS.md, STATE.md and spec 0001 all state it. The spec header attributes the plan to the operator's proposal, but
-      no line records the operator deciding this rule.
-      The operator should confirm the rule.
-    source: [studio:AGENTS.md:3, studio:STATE.md:12, studio:docs/specs/0001-first-felt-journey.md:30-42, studio:docs/specs/0000-development-lifecycle.md:89]
+    status: decided
+    source: [studio:AGENTS.md:3, studio:STATE.md:12, studio:docs/specs/0001-first-felt-journey.md:30-42, studio:docs/specs/0000-development-lifecycle.md:89, log:118]
     links:
       constrains: [comp-studio-editor]
 
@@ -679,12 +616,8 @@ elements:
     statement: >-
       The development environment provides Bun, Node and gitleaks only. Browser runs use the host Chromium, and CI has no
       browser gate.
-    status: proposed
-    rationale: >-
-      devenv.nix and spec 0000 show the choice, and the verify skill needs a host Chromium. No line records the operator
-      deciding it. A CI browser job is an open question in spec 0003.
-      The operator should confirm whether a CI browser job is wanted.
-    source: [studio:devenv.nix:7-11, studio:docs/specs/0000-development-lifecycle.md:42, studio:docs/specs/0000-development-lifecycle.md:120, studio:docs/specs/0003-review-and-verify-skills.md:100]
+    status: decided
+    source: [studio:devenv.nix:7-11, studio:docs/specs/0000-development-lifecycle.md:42, studio:docs/specs/0000-development-lifecycle.md:120, studio:docs/specs/0003-review-and-verify-skills.md:100, log:118]
     links:
       constrains: [comp-studio-verify-skill]
 
@@ -695,11 +628,8 @@ elements:
     statement: >-
       A SQLite value or row in a Durable Object is at most 2 MB, so a larger snapshot must be chunked. A received WebSocket
       message is at most 32 MiB.
-    status: proposed
-    rationale: >-
-      The spike took the limits from Cloudflare's documentation. The room design is a proposal, not a decision.
-      The operator should confirm the room design.
-    source: [studio:docs/specs/0002-collaboration-spike.md:66, studio:docs/specs/0002-collaboration-spike.md:192]
+    status: decided
+    source: [studio:docs/specs/0002-collaboration-spike.md:66, studio:docs/specs/0002-collaboration-spike.md:192, log:118]
     links:
       constrains: [comp-studio-sync-server]
 
@@ -709,12 +639,8 @@ elements:
     title: Paid sync and hosted agents fund the work
     statement: >-
       Multiplayer sync and hosted agents cost the project money to run, so they can earn revenue.
-    status: proposed
-    rationale: >-
-      The operator decided to gate these features (log line 43). No source gives a price, a plan or evidence that anyone
-      would pay, so the revenue claim is an inference.
-      The operator should confirm that revenue from these features is a goal.
-    source: [log:43, studio:docs/specs/0001-first-felt-journey.md:120-122]
+    status: decided
+    source: [log:43, studio:docs/specs/0001-first-felt-journey.md:120-122, log:118]
     links:
       supports: [goal-studio-free-paid-split]
     canvas: [revenue-streams]
@@ -737,11 +663,8 @@ elements:
     statement: >-
       Loro names the last editor of a field, records change messages and forks a document at an older version. These
       features suit agent attribution and suggestions.
-    status: proposed
-    rationale: >-
-      Spec 0002 measured them (getLastEditor, commit messages, forkAt). The operator chose Loro, but not for this reason.
-      The operator should confirm that attribution is a reason to keep Loro.
-    source: [studio:docs/specs/0002-collaboration-spike.md:23, studio:docs/specs/0002-collaboration-spike.md:150-152]
+    status: decided
+    source: [studio:docs/specs/0002-collaboration-spike.md:23, studio:docs/specs/0002-collaboration-spike.md:150-152, log:118]
     links:
       supports: [goal-studio-human-control]
 
@@ -761,11 +684,8 @@ elements:
     title: One binary gives an offline local studio
     statement: >-
       The single binary serves the editor on the user's own machine. It reaches users with no account or server of ours.
-    status: proposed
-    rationale: >-
-      PR 6 builds the binary and reports it tested. The link to the free offline journey is an inference.
-      The operator should confirm that the binary serves the free offline journey.
-    source: [pr:studio#6, log:46]
+    status: decided
+    source: [pr:studio#6, log:46, log:118]
     links:
       supports: [goal-studio-offline-free-journey]
     canvas: [channels]

@@ -70,11 +70,8 @@ elements:
     statement: >-
       A derivation that is a pure function of its core is generated. If it cannot be generated, a test fails when it
       differs from the core. Keeping the two in step by hand is the last resort.
-    status: proposed
-    rationale: >-
-      The decision log names the single-source value (line 54). The three-step ladder is from the operator's governing
-      document, which the log cites but does not quote; the operator should confirm this repository applies it.
-    source: [log:54]
+    status: decided
+    source: [log:54, log:118]
     links:
       serves: [goal-org-correctness-by-construction, goal-org-written-intent]
 
@@ -119,11 +116,8 @@ elements:
     statement: >-
       Every change travels spec, then code, then pull request, one to one. The plan is revised while building, in dated
       Revisions entries, and freezes when the pull request opens. Review judges the plan, the code and their agreement.
-    status: proposed
-    rationale: >-
-      Spec 0000 of tsukuri and studio sets this rule, and their headers say the operator decided the spec as a whole. No
-      line of the decision log states the rule itself, so the operator should confirm it as the rule of every repository.
-    source: [tsukuri:AGENTS.md:9-17]
+    status: decided
+    source: [tsukuri:AGENTS.md:9-17, log:118]
     links:
       serves: [goal-org-correctness-by-construction]
       triggers: [process-org-ship-change]
@@ -135,11 +129,8 @@ elements:
     statement: >-
       The tsukuri repositories are public. They never hold a secret, personal data or course-private material. Hooks and
       CI scan for secrets.
-    status: proposed
-    rationale: >-
-      Stated in each repository's AGENTS.md. The operator's decision log does not repeat it, so the operator should
-      confirm it as a standing rule.
-    source: [tsukuri:AGENTS.md:3]
+    status: decided
+    source: [tsukuri:AGENTS.md:3, log:118]
     links:
       serves: [goal-org-correctness-by-construction]
 
@@ -162,9 +153,7 @@ elements:
     statement: >-
       In this model, an element is decided only when a source shows the operator decided it. Anything inferred is
       proposed, with its reasoning.
-    status: proposed
-    rationale: >-
-      This is the rule of the model-building assignment of 2026-10-29, not a line of the decision log. CI enforces it.
-    source: [log:3]
+    status: decided
+    source: [log:3, log:118]
     links:
       serves: [goal-org-written-intent]

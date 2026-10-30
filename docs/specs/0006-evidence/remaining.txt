@@ -1,0 +1,55 @@
+{
+  decided: 609,
+  proposed: 43,
+  open: 7,
+}
+proposed	concept-flow-node
+proposed	concept-flow-edge
+proposed	concept-flow-minimap
+proposed	concept-flow-live-region
+proposed	goal-flow-first-journey
+open	problem-flow-licence-scan-missing
+open	problem-flow-library-applies-deletion
+proposed	process-flow-pan-zoom
+proposed	process-flow-drag-node
+proposed	process-flow-connect-handles
+proposed	process-flow-box-select
+proposed	rule-flow-invalid-connection-refused
+proposed	comp-flow-journey-tool
+proposed	comp-flow-mounts
+proposed	req-flow-pan-zoom
+proposed	req-flow-drag-node
+proposed	req-flow-connect
+proposed	req-flow-reconnect
+proposed	req-flow-box-select
+proposed	req-flow-controls-minimap
+proposed	req-flow-compound-nodes
+proposed	req-flow-delete-closure
+proposed	req-flow-correct-lifetimes
+open	problem-org-no-written-roadmap
+proposed	resource-studio-foldkit
+proposed	resource-studio-effect
+proposed	resource-studio-cloudflare
+proposed	concept-studio-suggestion
+proposed	concept-studio-sync-room
+proposed	concept-studio-anchor-offset
+proposed	goal-studio-human-control
+open	problem-studio-foldkit-vite-plugin
+open	problem-studio-stale-state
+proposed	constraint-studio-effect-foldkit-peer
+proposed	constraint-studio-foldkit-plugin-off
+proposed	opportunity-studio-foldkit-flow-graph
+proposed	process-studio-review-suggestion
+proposed	rule-studio-suggestions-need-human-accept
+proposed	req-studio-agent-tools
+proposed	resource-tsukuri-fountain-format
+proposed	concept-tsukuri-story
+open	problem-tsukuri-roadmap-only-in-issues
+open	problem-tsukuri-packages-private
+proposed	problem-tsukuri-review-cleanup
+proposed	problem-tsukuri-state-machine-conformance
+proposed	comp-tsukuri-website-renderer
+proposed	isgoal-tsukuri-one-source
+proposed	req-tsukuri-fountain-artifact-renderer
+proposed	req-tsukuri-state-machines
+proposed	req-tsukuri-website-artifact

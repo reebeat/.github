@@ -42,6 +42,7 @@ elements:
       - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213
       - tsukuri:README.md:3-6
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:9-12
+      - log:118
     canvas: [value-propositions]
     links:
       subgoal-of: [goal-tsukuri-screenplay-first]
@@ -52,13 +53,11 @@ elements:
     statement: >-
       Every reference in a screenplay is written down: Elements, Scenes, effects and anchors each have an id. Nothing
       means "the next one" or "the one above". Errors say the file and line, what was found and the nearest valid form.
-    status: proposed
-    rationale: >-
-      Spec plan: spec 0002 states this goal. The operator picked the effects syntax and named properties (spec 0002 line
-      161), not the universal rule on references and errors, so confirm it.
+    status: decided
     source:
       - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:11
       - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:16-18
+      - log:118
     links:
       subgoal-of: [goal-tsukuri-screenplay-first]
 
@@ -163,11 +162,8 @@ elements:
     statement: >-
       Interactive lessons would add learner input, branching, progress and feedback to the website artifact. The
       operator deferred them for later investigation. Nothing is planned.
-    status: open
-    rationale: >-
-      The operator deferred this item (log:36). It stays open until the investigation of prior art (issue #20) starts and
-      the operator decides whether to plan it.
-    source: [log:36]
+    status: decided
+    source: [log:36, log:118]
     refs: ["issue:tsukuri#20"]
     links:
       subgoal-of: [goal-tsukuri-interactive-website]
@@ -178,11 +174,8 @@ elements:
     statement: >-
       The compiler checks explainer stories against multimedia-learning principles: temporal contiguity, signalling,
       redundancy and coherence. Each threshold comes from its primary source.
-    status: proposed
-    rationale: >-
-      Issue #8 was queued by the operator on 2026-10-29, but the decision log does not mention a teaching lint. The
-      operator should confirm it as a product goal.
-    source: ["issue:tsukuri#8"]
+    status: decided
+    source: ["issue:tsukuri#8", log:118]
     refs: ["issue:tsukuri#8"]
     links:
       supports: [goal-tsukuri-interactive-website, goal-org-interactive-multimedia]
@@ -252,13 +245,11 @@ elements:
     statement: >-
       A check reads the files a build wrote and the source, never the build's internal state. Each falsifier has a
       negative control that fails at the stated place.
-    status: proposed
-    rationale: >-
-      Spec plan: spec 0001 sets out the output-side check and the negative controls. The operator has not decided them, so
-      confirm it.
+    status: decided
     source:
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:28
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:142
+      - log:118
     links:
       subgoal-of: [goal-tsukuri-correct-by-construction]
       supports: [goal-tsukuri-reproducible-builds]
@@ -273,6 +264,7 @@ elements:
       - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
       - tsukuri:docs/design/keyframe-engine.md:1241-1242
       - tsukuri:GLOSSARY.md:119-120
+      - log:118
     links:
       subgoal-of: [goal-tsukuri-correct-by-construction]
 
@@ -300,16 +292,14 @@ elements:
     statement: >-
       STATE.md says specs 0001 and 0002 are in review. Both pull requests are merged. The file also lists "candidates for
       0003" that are not the spec 0003 the repository holds.
-    status: open
-    rationale: >-
-      Found by reading STATE.md against the pinned repository: spec 0003 is the Effect 4.1 upgrade
-      (docs/specs/0003-effect-4-1-upgrade.md:1) and PRs #3 and #4 are merged. The fix belongs to the repository owner.
+    status: decided
     source:
       - tsukuri:STATE.md:7
       - tsukuri:STATE.md:13
       - tsukuri:docs/specs/0003-effect-4-1-upgrade.md:1
       - pr:tsukuri#3
       - pr:tsukuri#4
+      - log:118
     gap:
       repo: tsukuri
       fix: Rewrite STATE.md from the merged pull requests and the specs that exist, or generate it from this model.
@@ -322,16 +312,13 @@ elements:
     statement: >-
       Spec 0002 says "built; in review (PR #4)" and spec 0001 and spec 0003 say "plan", but all three pull requests are
       merged. A reader cannot tell the state of a spec from the spec.
-    status: open
-    rationale: >-
-      Spec 0000 freezes a spec when its pull request opens, so a stale status line may be by design. The mismatch with
-      STATE.md and with GitHub is a real gap in the single current state; the operator should say how a spec shows that
-      it is merged.
+    status: decided
     source:
       - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:3
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:3
       - tsukuri:docs/specs/0003-effect-4-1-upgrade.md:3
       - tsukuri:docs/specs/0000-development-lifecycle.md:129
+      - log:118
     gap:
       repo: tsukuri
       fix: Show merge state from GitHub in generated views and leave the frozen spec text alone.
@@ -344,12 +331,12 @@ elements:
     statement: >-
       `check:exceptions` does not count `@effect-diagnostics` directives. One such comment can silence an Effect rule
       with no registry entry, which breaks the rule that every suppression is registered.
-    status: open
-    rationale: "Issue #14 reports it, found in a foldkit-flow review. The fix and its negative control are proposed there."
+    status: decided
     source:
       - issue:tsukuri#14
       - tsukuri:AGENTS.md:46
       - tsukuri:tools/quality/effectExceptions.ts:44
+      - log:118
     refs: ["issue:tsukuri#14"]
     gap:
       repo: tsukuri
@@ -363,12 +350,12 @@ elements:
     statement: >-
       The repository declares Bun as `^1.4.2` and asks to download when the installed Bun does not match. `vp run` then
       uses its own Bun, not the one devenv pins, so scripts may run on another version.
-    status: open
-    rationale: "Issue #15 reports it and proposes to pin the version exactly and to bump it together with devenv."
+    status: decided
     source:
       - issue:tsukuri#15
       - tsukuri:package.json:55-61
       - tsukuri:devenv.nix:17
+      - log:118
     refs: ["issue:tsukuri#15"]
     gap:
       repo: tsukuri
@@ -381,13 +368,11 @@ elements:
     title: No CONTRIBUTING.md
     statement: >-
       The repository has no CONTRIBUTING.md. The README points contributors to AGENTS.md and spec 0000 instead.
-    status: open
-    rationale: >-
-      The path does not exist at the pinned commit. Whether a standalone file is wanted is the operator's choice, since
-      the README already links the procedure.
+    status: decided
     source:
       - absent:tsukuri:CONTRIBUTING.md
       - tsukuri:README.md:50
+      - log:118
     gap:
       repo: tsukuri
       fix: Add a short CONTRIBUTING.md that links AGENTS.md and the spec, code and pull request road.
@@ -433,11 +418,8 @@ elements:
     statement: >-
       The .github directory holds only a workflow. There are no issue templates, so a report may arrive without the spec,
       journey or version that a maintainer needs.
-    status: open
-    rationale: >-
-      The path does not exist at the pinned commit, which is all the source shows. The risk to reports is an inference.
-      Whether to add templates is the operator's choice.
-    source: [absent:tsukuri:.github/ISSUE_TEMPLATE]
+    status: decided
+    source: [absent:tsukuri:.github/ISSUE_TEMPLATE, log:118]
     gap:
       repo: tsukuri
       fix: Add issue templates for a bug and for a roadmap item under .github/ISSUE_TEMPLATE.
@@ -450,11 +432,11 @@ elements:
     statement: >-
       The repository has no pull request template. The report format of spec 0000 lives in a skill, so a contributor
       without the skill does not see it.
-    status: open
-    rationale: The file does not exist at the pinned commit. Spec 0000 lines 59-70 define the eight sections of the report.
+    status: decided
     source:
       - absent:tsukuri:.github/PULL_REQUEST_TEMPLATE.md
       - tsukuri:docs/specs/0000-development-lifecycle.md:60-71
+      - log:118
     gap:
       repo: tsukuri
       fix: Add .github/PULL_REQUEST_TEMPLATE.md with the eight report sections.
@@ -467,14 +449,12 @@ elements:
     statement: >-
       The README opens with the mechanism, "explainer videos from a screenplay". It does not state the tagline or the
       qualities the operator wants to promote.
-    status: open
-    rationale: >-
-      The operator said the compiler framing feels too internal and asked to promote the qualities (log:9). The README
-      at the pinned commit has no tagline.
+    status: decided
     source:
       - log:7
       - log:9
       - tsukuri:README.md:1-3
+      - log:118
     gap:
       repo: tsukuri
       fix: Open the README with the tagline and the four qualities, and generate that text from this model.
@@ -561,14 +541,12 @@ elements:
     statement: >-
       The planned build-time interpreter, XState v6, is an alpha. Its releases renamed public names without aliases, and
       its declarations failed under the stricter compiler flags of the packages.
-    status: proposed
-    rationale: >-
-      The operator accepted an exactly pinned alpha behind a tsukuri-owned boundary (spec 0007 decisions). That the alpha
-      is a risk to keep watching is the spike's own finding, not an operator statement.
+    status: decided
     source:
       - tsukuri:docs/specs/0007-scxml-persistent-ir-spike.md:582-584
       - tsukuri:docs/specs/0007-scxml-persistent-ir-spike.md:586-588
       - log:26
+      - log:118
     links:
       hinders: [comp-tsukuri-statechart-xstate]
 
@@ -578,11 +556,11 @@ elements:
     statement: >-
       The rule that experimental types stay out of the public API is decided, but no test enforces it. Whether to scan
       exported declarations is open.
-    status: open
-    rationale: Open-core-boundary says the gate is open. Today none of the locked dependencies is experimental, so nothing leaks yet.
+    status: decided
     source:
       - tsukuri:docs/design/open-core-boundary.md:58
       - tsukuri:docs/design/third-party.md:48
+      - log:118
     gap:
       repo: tsukuri
       fix: Add a test that scans exported declarations for imports from a list of experimental packages.
@@ -671,9 +649,8 @@ elements:
     statement: >-
       The `update` and `scene.end` anchors exist in code, but no check observes them in the written media. No lint reports
       an Element that is declared and never used.
-    status: open
-    rationale: Spec 0002 lists them as not done at its as-built entry.
-    source: ["tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:200"]
+    status: decided
+    source: ["tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:200", log:118]
     gap:
       repo: tsukuri
       fix: Add probes for update and scene.end and an unusedElement lint rule.
@@ -686,11 +663,11 @@ elements:
     statement: >-
       The story `same-id` keeps `(speed 1.05)` on one Line as an interim fix. Removal waits for word timings from the
       synthesiser or for alignment judged by its path.
-    status: open
-    rationale: Spec 0001 names it a follow-up to release 1, not part of spec 0002. STATE.md lists it too.
+    status: decided
     source:
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:275
       - tsukuri:STATE.md:12
+      - log:118
     gap:
       repo: tsukuri
       fix: Remove the speed hint once word timings come from the synthesiser or alignment is judged by its path.
@@ -703,10 +680,8 @@ elements:
     statement: >-
       The licence gate reads the `license` field of each package. It does not read licence files inside packages, the
       licences of what a package bundles, or the binaries and models.
-    status: open
-    rationale: >-
-      The audit states the limit itself. A package can declare a licence wrongly, so assurance is partial.
-    source: ["tsukuri:docs/design/third-party.md:93"]
+    status: decided
+    source: ["tsukuri:docs/design/third-party.md:93", log:118]
     gap:
       repo: tsukuri
       fix: Read licence files inside packages for those that bundle components.
@@ -796,14 +771,12 @@ elements:
     statement: >-
       tsukuri calls ffmpeg, ffprobe, whisper-cli and Chromium as external processes. It neither links nor bundles them, so
       their licences do not reach tsukuri's code.
-    status: proposed
-    rationale: >-
-      The third-party audit states the reading and says it is not legal advice. The operator noted the GPL status (log:50)
-      but has not recorded this reading as a decision.
+    status: decided
     source:
       - tsukuri:docs/design/third-party.md:12
       - tsukuri:README.md:46
       - log:50
+      - log:118
     links:
       constrains: [comp-tsukuri-encode-ffmpeg, comp-tsukuri-capture-chromium, comp-tsukuri-align-whisper]
 
@@ -814,14 +787,12 @@ elements:
     statement: >-
       The repository is public. It holds no secret, no personal data and no course-private material. A regression
       baseline derived from course material stays outside the repository.
-    status: proposed
-    rationale: >-
-      AGENTS.md and spec 0000 state it, and gitleaks enforces part of it. The decision log does not repeat it, so the
-      operator should confirm it as standing.
+    status: decided
     source:
       - tsukuri:AGENTS.md:3
       - tsukuri:docs/specs/0000-development-lifecycle.md:34
       - tsukuri:docs/design/4em-regression-baseline.md:11-12
+      - log:118
     links:
       constrains: [comp-tsukuri-product]
 
@@ -855,14 +826,12 @@ elements:
     statement: >-
       `effect` and every `@effect/*` runtime package share one version, 4.1.0, pinned in the root catalog. `@effect/tsgo`
       is one version for the whole repository. An upgrade is its own spec.
-    status: proposed
-    rationale: >-
-      Observed in the repository: the catalog pins 4.1.0 and the family check enforces one version. Spec 0003 says the
-      operator asked for the latest Effect in every repository, but not this pin, so confirm it.
+    status: decided
     source:
       - tsukuri:package.json:70
       - tsukuri:AGENTS.md:56
       - log:55
+      - log:118
     links:
       constrains: [comp-tsukuri-product]
 
@@ -904,14 +873,12 @@ elements:
     statement: >-
       The release-1 canvas is 1280 by 720 at 30 frames per second. Frame rate is meant to be explicit configuration with
       presets 24, 30 and 60. A larger canvas costs more capture time.
-    status: open
-    rationale: >-
-      The operator asked for explicit frame rates with presets (log:22). Spec 0001 asks whether 1920 by 1080 is wanted and
-      the question stays open.
+    status: decided
     source:
       - log:22
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:80-82
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:209
+      - log:118
     links:
       constrains: [process-tsukuri-capture-frames]
 
@@ -954,14 +921,12 @@ elements:
     statement: >-
       A silent narrator, an even aligner, tone sounds and an in-memory cache let anyone build and test the whole pipeline
       with no model, key or network.
-    status: proposed
-    rationale: >-
-      Observed in the repository: the README and the glossary describe the stand-ins. The operator decided only that every
-      integration has a stand-in (spec 0001 line 234), so confirm the benefit.
+    status: decided
     source:
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
       - tsukuri:README.md:23
       - tsukuri:GLOSSARY.md:115-117
+      - log:118
     links:
       supports: [goal-tsukuri-plugin-sdk, goal-tsukuri-reproducible-builds]
 
@@ -971,14 +936,12 @@ elements:
     statement: >-
       A story is one text file, and `plan`, `lint` and `check` print line-numbered results. A user's own agent can write
       and repair stories with the same tools as a hosted agent.
-    status: proposed
-    rationale: >-
-      The operator decided that users can bring their own agents (log:43). That a line-numbered text source suits agents is
-      the spec's reading of the earlier positional grammar.
+    status: decided
     source:
       - log:43
       - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:11
       - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:119
+      - log:118
     links:
       supports: [goal-tsukuri-plugin-sdk, goal-tsukuri-explicit-source]
 

@@ -90,11 +90,8 @@ elements:
     title: Keyframe
     statement: >-
       The visual state a Beat ends in: every visible Element with its properties.
-    status: proposed
-    rationale: >-
-      Observed in the repository: the glossary defines the Keyframe as the state a Beat ends in. The log decides that an id
-      carries identity across Scenes (log:23) but does not define Keyframe, so confirm the exact definition.
-    source: ["tsukuri:GLOSSARY.md:27-29"]
+    status: decided
+    source: ["tsukuri:GLOSSARY.md:27-29", log:118]
     relations:
       - type: relates
         to: concept-tsukuri-element
@@ -115,13 +112,11 @@ elements:
       - narration text
       - aligned word times
       - delivery hints
-    status: proposed
-    rationale: >-
-      Observed in the repository: the glossary defines Line, and the log describes narration (log:27) without defining it.
-      The operator should confirm the definition.
+    status: decided
     source:
       - log:27
       - tsukuri:GLOSSARY.md:31-33
+      - log:118
     relations:
       - type: relates
         to: concept-tsukuri-hint
@@ -142,6 +137,7 @@ elements:
       - record:tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:162
       - record:tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:163
       - tsukuri:GLOSSARY.md:35-37
+      - log:118
     relations:
       - type: part-of
         to: concept-tsukuri-scene
@@ -166,6 +162,7 @@ elements:
       - record:tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:163
       - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:15
       - tsukuri:GLOSSARY.md:39-41
+      - log:118
     relations:
       - type: relates
         to: concept-tsukuri-lifecycle-event
@@ -182,6 +179,7 @@ elements:
     source:
       - record:tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:163
       - tsukuri:GLOSSARY.md:47-49
+      - log:118
     relations:
       - type: isa
         to: concept-tsukuri-anchor
@@ -193,12 +191,10 @@ elements:
       What happens to an Element in a Scene, from the identity diff: enter, exit, move or update. Enter, exit, move and
       update each have a start and an end, except an instant such as an exit, which has no window and no percent. Move and
       update follow the renderer's declared easing. The others are linear in time.
-    status: proposed
-    rationale: >-
-      Spec plan: spec 0002 and the glossary define enter, exit, move and update. The operator decided that lifecycles are
-      anchors (spec 0002 line 162), not each event, so confirm them.
+    status: decided
     source:
       - tsukuri:GLOSSARY.md:43-45
+      - log:118
     relations:
       - type: relates
         to: concept-tsukuri-element
@@ -215,10 +211,8 @@ elements:
     statement: >-
       An optional instruction that the content alone does not carry: a delivery parenthetical before a Line, or a
       transition between Scenes.
-    status: proposed
-    rationale: >-
-      Observed in the repository: the glossary defines Hint. The operator's log does not name Hints, so confirm it.
-    source: ["tsukuri:GLOSSARY.md:51-53"]
+    status: decided
+    source: ["tsukuri:GLOSSARY.md:51-53", log:118]
     relations:
       - type: part-of
         to: concept-tsukuri-beat
@@ -272,13 +266,11 @@ elements:
       - source hash
       - Scenes, Elements, effects, identity
       - canonical JSON, byte-comparable
-    status: proposed
-    rationale: >-
-      Spec plan: the design names the Plan as a stage and spec 0001 sets out its contents. The operator has not decided
-      those contents, so confirm them.
+    status: decided
     source:
       - tsukuri:docs/design/keyframe-engine.md:1112
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:90
+      - log:118
     relations:
       - type: relates
         to: concept-tsukuri-story
@@ -301,13 +293,11 @@ elements:
     attributes:
       - total frames
       - frame of each effect
-    status: proposed
-    rationale: >-
-      Spec plan: the design names the Timeline as a stage and spec 0001 sets out the integer-frame schedule. The operator
-      has not decided those details, so confirm them.
+    status: decided
     source:
       - tsukuri:docs/design/keyframe-engine.md:1112
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:68
+      - log:118
     relations:
       - type: relates
         to: concept-tsukuri-effect
@@ -385,6 +375,7 @@ elements:
       - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213
       - tsukuri:README.md:5
       - tsukuri:GLOSSARY.md:78-80
+      - log:118
     relations:
       - type: isa
         to: concept-tsukuri-rendering
@@ -399,6 +390,7 @@ elements:
       - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213
       - tsukuri:README.md:6
       - tsukuri:GLOSSARY.md:75-76
+      - log:118
     relations:
       - type: isa
         to: concept-tsukuri-rendering
@@ -409,11 +401,8 @@ elements:
     statement: >-
       A named run of consecutive Scenes, introduced by a Section heading. A Video's chapter marks and a Deck's slide groups
       come from it.
-    status: proposed
-    rationale: >-
-      Observed in the repository: the glossary lists Chapter among reserved groupings, yet its mapping table and the Plan
-      use chapters. The operator should say whether it is modelled.
-    source: ["tsukuri:GLOSSARY.md:124-125", "tsukuri:GLOSSARY.md:89"]
+    status: decided
+    source: ["tsukuri:GLOSSARY.md:124-125", "tsukuri:GLOSSARY.md:89", log:118]
     relations:
       - type: part-of
         to: concept-tsukuri-story
@@ -428,6 +417,7 @@ elements:
     source:
       - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
       - tsukuri:GLOSSARY.md:101-102
+      - log:118
     relations:
       - type: relates
         to: concept-tsukuri-tier
@@ -444,6 +434,7 @@ elements:
       - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
       - tsukuri:docs/design/keyframe-engine.md:1225
       - tsukuri:GLOSSARY.md:104-106
+      - log:118
     relations:
       - type: relates
         to: concept-tsukuri-contract-suite
@@ -459,6 +450,7 @@ elements:
     source:
       - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
       - tsukuri:GLOSSARY.md:108-110
+      - log:118
     relations:
       - type: relates
         to: concept-tsukuri-service
@@ -476,6 +468,7 @@ elements:
       - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
       - tsukuri:GLOSSARY.md:112-113
       - tsukuri:packages/services/src/selection.ts:18-26
+      - log:118
     relations:
       - type: relates
         to: concept-tsukuri-adapter
@@ -490,6 +483,7 @@ elements:
     source:
       - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
       - tsukuri:GLOSSARY.md:115-117
+      - log:118
     relations:
       - type: isa
         to: concept-tsukuri-adapter
@@ -503,6 +497,7 @@ elements:
     source:
       - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
       - tsukuri:GLOSSARY.md:119-120
+      - log:118
     relations:
       - type: part-of
         to: concept-tsukuri-adapter
@@ -517,6 +512,7 @@ elements:
       - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
       - tsukuri:docs/design/keyframe-engine.md:1225
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:259
+      - log:118
     relations:
       - type: relates
         to: concept-tsukuri-adapter
@@ -531,3 +527,4 @@ elements:
     status: decided
     source:
       - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
+      - log:118

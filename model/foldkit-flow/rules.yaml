@@ -28,16 +28,12 @@ elements:
       The library attaches every xyflow controller in a Foldkit Mount and destroys it when the Mount is released.
     if: A controller is created for pan and zoom, drag, handles or the minimap.
     then: Create it in a Mount that owns its lifetime, and destroy it on unmount.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:AGENTS.md:63
       - foldkit-flow:packages/flow/src/mounts.ts:34-39
       - foldkit-flow:packages/flow/src/controllers.test.ts:42-67
-    rationale: >-
-      AGENTS.md states the rule for agents. mounts.ts lines 34 to 39 apply it: each controller is created in a Mount
-      and destroyed when the Mount is released, and controllers.test.ts lines 42 to 67 check that every created
-      controller is destroyed once after dispose. No operator line records the rule. The operator must confirm it as a
-      standing rule.
+      - log:118
     links:
       serves: [goal-flow-first-journey]
       constrains: [comp-flow-mounts]
@@ -49,13 +45,11 @@ elements:
     statement: >-
       Model functions, update and view are total and pure. Work leaves update only as a Command, a Subscription, a
       Mount or a managed resource.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:AGENTS.md:63
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:69
-    rationale: >-
-      The rule is written in AGENTS.md and applied in the scaffold. It follows the Foldkit style. The operator must
-      confirm it.
+      - log:118
     links:
       serves: [goal-flow-generic-library]
       constrains: [comp-flow-flow-submodel]
@@ -66,13 +60,11 @@ elements:
     title: Tools, packages and apps depend one way
     statement: >-
       Tools depend on neither apps nor packages. The app depends on the library, never the reverse.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:AGENTS.md:31
       - foldkit-flow:AGENTS.md:21-29
-    rationale: >-
-      AGENTS.md states the direction. No check in the gate table enforces it. The operator must confirm it as a
-      standing rule.
+      - log:118
     links:
       serves: [goal-flow-generic-library]
       constrains: [comp-flow-library, comp-flow-example-app, comp-flow-quality-tools]
@@ -85,14 +77,11 @@ elements:
       The library holds no tsukuri product logic. Anything specific to one product lives in that product.
     if: A change adds code that only one product needs.
     then: Put it in the product, not in packages/flow.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:35
       - foldkit-flow:README.md:7
-    rationale: >-
-      Observed in the repository: README and spec 0000 state the rule, and the spec 0000 header says the operator's
-      assignment named a "generic library with no reebeat product logic". The decision log does not say it, and the
-      "put it in the product" placement is an inference from that wording. The operator must confirm.
+      - log:118
     links:
       serves: [goal-flow-generic-library]
       constrains: [comp-flow-library]
@@ -140,12 +129,10 @@ elements:
     statement: >-
       Each change has one spec in docs/specs, one branch named feat/NNNN-slug and one PR. A spec that needs two PRs was
       two specs.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:AGENTS.md:13-15
-    rationale: >-
-      Observed in the repository: AGENTS.md states the rule. The log has no line on this lifecycle. The operator must
-      confirm.
+      - log:118
     links:
       serves: [goal-flow-lifecycle]
       triggers: [process-flow-ship-spec]
@@ -156,11 +143,10 @@ elements:
     title: Open the PR only after the journey is built
     statement: >-
       A PR opens only when the whole journey is built and `bun run ready` passed on the head. The PR freezes the spec.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:AGENTS.md:15
-    rationale: >-
-      Observed in the repository: AGENTS.md states the rule. No operator line decides it. The operator must confirm.
+      - log:118
     links:
       serves: [goal-flow-lifecycle]
 
@@ -171,13 +157,11 @@ elements:
     statement: >-
       Main requires a pull request, even from administrators, and a passing `checks` status. No force push and no branch
       deletion.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:AGENTS.md:19
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:56
-    rationale: >-
-      Observed in the repository: AGENTS.md and spec 0000 describe the protection. Spec 0000's header says only "branch
-      protection like tsukuri's". The operator must confirm the detailed settings.
+      - log:118
     links:
       serves: [goal-flow-lifecycle]
       constrains: [resource-flow-repo]
@@ -191,13 +175,11 @@ elements:
       check fails otherwise.
     if: A file contains a suppression directive such as oxlint-disable.
     then: Require a registry entry with a reason and a retirement trigger.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:AGENTS.md:44
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:45
-    rationale: >-
-      Observed in the repository: AGENTS.md and spec 0000 describe the registry and its check. No operator line decides
-      this rule. The operator must confirm.
+      - log:118
     links:
       serves: [goal-flow-lifecycle]
       constrains: [comp-flow-quality-tools]
@@ -228,15 +210,12 @@ elements:
       them. The library reports the full set to the application and the live region.
     when: A selection that includes a parent node is deleted.
     then: Remove the parent, all descendants and every edge attached to them, and report all of it.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:packages/flow/src/update.ts:289-343
       - foldkit-flow:README.md:75
       - foldkit-flow:docs/specs/0001-first-felt-journey.md:135
-    rationale: >-
-      update.ts lines 289 to 343 collect every descendant of a deleted node and every edge that ends on one, and
-      `Deleted` and the live region report both sets. Spec 0001 line 135 records that review round 1 found child edges
-      and a dangling grandchild left behind, and that the closure fixed it. The operator must confirm the rule.
+      - log:118
     refs: [pr:foldkit-flow#4]
     links:
       serves: [goal-flow-studio-story-graph]
@@ -277,17 +256,13 @@ elements:
       outside.
     if: A child node is clamped to its parent.
     then: Limit its position to the parent's bounds.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:packages/flow/src/geometry.ts:88
       - foldkit-flow:packages/flow/src/geometry.ts:451-474
       - foldkit-flow:packages/flow/src/update.ts:369-385
       - foldkit-flow:docs/specs/0001-first-felt-journey.md:89
-    rationale: >-
-      A node with `isClampedToParent` gets an xyflow parent extent for pointer drags (geometry.ts line 88), and a key
-      move is clamped to the parent's bounds (geometry.ts lines 451 to 474; update.ts lines 369 to 385). Spec 0001 sets
-      falsifier J7 (line 89). The rule supports compound graphs such as Scenes holding States. The operator must
-      confirm that clamping a child inside its parent is the intended behaviour.
+      - log:118
     refs: [pr:foldkit-flow#4]
     links:
       serves: [goal-flow-studio-story-graph]
@@ -302,13 +277,11 @@ elements:
       Delete or Backspace removes the selection and Escape clears it. A live region announces the result.
     when: A key is pressed on a focused node.
     then: Select, move, delete or clear, and announce the result.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:README.md:75-77
       - foldkit-flow:packages/flow/src/update.ts:413-435
-    rationale: >-
-      README lines 75 to 77 and update.ts lines 413 to 435 give these keys. Shift, Ctrl or Meta add to the selection on
-      Enter or Space (README line 75). The operator must confirm this key contract (keys, step sizes, announcements).
+      - log:118
     refs: [pr:foldkit-flow#4]
     links:
       serves: [goal-flow-keyboard-access]
@@ -321,17 +294,13 @@ elements:
     statement: >-
       Node and edge views are keyed and memoised with simple arguments. Pan and zoom change only the viewport
       transform, and a drag re-renders the dragged node and its edges.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:README.md:68
       - foldkit-flow:README.md:82
       - foldkit-flow:packages/flow/src/view.ts:40-43
       - foldkit-flow:docs/specs/0001-first-felt-journey.md:130
-    rationale: >-
-      README lines 68 and 82 and view.ts lines 40 to 43 say node and edge views are keyed lazy views, so a drag renders
-      only the dragged node and its edges. Spec 0001 line 130 reports that a cache miss on every node gave a scripting
-      p50 of 21 ms per pointer move, against p50 3.3 ms after the fix. The operator must confirm it as a standing
-      rule.
+      - log:118
     refs: [pr:foldkit-flow#4]
     links:
       serves: [goal-flow-performance]

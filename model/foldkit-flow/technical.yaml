@@ -50,16 +50,13 @@ elements:
     statement: >-
       A Foldkit app that is the library's first user. It exercises every feature and shows how an application applies
       outcomes.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:AGENTS.md:3
       - foldkit-flow:AGENTS.md:24
       - foldkit-flow:apps/example/package.json:16
       - foldkit-flow:README.md:20
-    rationale: >-
-      The app holds three graphs (Small, Compound and Large; README line 20) and shows how an application applies
-      outcomes (spec 0001 line 74). No operator line decides its role. The operator must confirm that it stays an
-      example and ships nothing else.
+      - log:118
     links:
       part-of: [comp-flow-product]
       serves: [goal-flow-first-journey]
@@ -71,13 +68,11 @@ elements:
     title: tools/quality (repository checks)
     statement: >-
       Checks for the exception registry, the Effect family, the published Effect range and the Foldkit lint adapter.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:AGENTS.md:26
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:45-47
-    rationale: >-
-      Observed in the repository: AGENTS.md and spec 0000 list these checks. No operator line decides this inventory.
-      The operator must confirm.
+      - log:118
     links:
       part-of: [comp-flow-product]
       realizes: [req-flow-maintain-gates, req-flow-effect-range-gated]
@@ -88,13 +83,11 @@ elements:
     title: tools/oxlint (vendored lint rules)
     statement: >-
       The anti-slop Oxlint rules, copied from studio with their provenance.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:AGENTS.md:28
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:48
-    rationale: >-
-      Observed in the repository: AGENTS.md and spec 0000 list this tool as copied from studio. No operator line decides
-      it. The operator must confirm.
+      - log:118
     links:
       part-of: [comp-flow-product]
       realizes: [req-flow-maintain-gates]
@@ -128,13 +121,11 @@ elements:
     title: CI workflow (checks)
     statement: >-
       The GitHub Actions workflow that runs every gate script on each PR and on pushes to main. It has no browser.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:.github/workflows/checks.yml:3-10
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:50
-    rationale: >-
-      Observed in the repository: the workflow is as described. The operator's assignment of spec 0000 asked for branch
-      protection like tsukuri's, not this workflow. The operator must confirm.
+      - log:118
     links:
       part-of: [comp-flow-product]
       serves: [goal-flow-lifecycle]
@@ -147,12 +138,10 @@ elements:
     statement: >-
       The agent skills `review-pr` and `pr-create`, with scripts that record a review round and refuse to merge without a
       passing one.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:51
-    rationale: >-
-      Observed in the repository: spec 0000 lists these skills and scripts. Its header only says to copy the lifecycle
-      from studio. The operator must confirm.
+      - log:118
     links:
       part-of: [comp-flow-product]
       serves: [goal-flow-lifecycle]
@@ -252,13 +241,11 @@ elements:
     statement: >-
       A gate that can be made structural is structural. One command, `bun run ready`, runs them all, and CI runs the
       same scripts.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:30-31
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:55
-    rationale: >-
-      Observed in the repository: spec 0000 states the value and the single command. The log has "correctness by
-      construction" as a value (line 54) but not this goal. The operator must confirm.
+      - log:118
     links:
       supports: [goal-flow-lifecycle]
 
@@ -267,13 +254,11 @@ elements:
     title: Measure the performance budget
     statement: >-
       The performance target is measured in a real browser on every journey run, not assumed from design.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:docs/specs/0001-first-felt-journey.md:91
       - foldkit-flow:README.md:82
-    rationale: >-
-      Spec 0001 sets measurement as the gate (line 91), and README line 82 says `bun run journey` reports the numbers.
-      The operator must confirm.
+      - log:118
     links:
       supports: [goal-flow-performance]
 
@@ -448,15 +433,12 @@ elements:
     statement: >-
       Nodes take focus. Enter or Space selects, arrow keys move (Shift makes a larger step), Delete removes, Escape
       clears, and a live region announces each result.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:README.md:74-78
       - foldkit-flow:packages/flow/src/update.ts:413-435
       - foldkit-flow:docs/specs/0001-first-felt-journey.md:87
-    rationale: >-
-      Built: README lines 74 to 78 and update.ts lines 413 to 435 implement spec 0001 falsifier J5 (line 87). Creating a
-      connection by keyboard is not included (see problem-flow-keyboard-connect-missing). The operator must confirm
-      these keyboard requirements.
+      - log:118
     refs: [pr:foldkit-flow#4]
     links:
       serves: [goal-flow-keyboard-access]
@@ -502,17 +484,13 @@ elements:
     statement: >-
       One command drives the built example in headless Chromium with real pointer and keyboard input and fails if a
       journey step fails.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:package.json:18
       - foldkit-flow:README.md:17
       - foldkit-flow:AGENTS.md:48
       - pr:foldkit-flow#4
-    rationale: >-
-      Built: `bun run journey` drives the built example in headless Chromium (package.json line 18, README line 17).
-      AGENTS.md line 48 says it exits 0 when the checks hold, 1 when a check fails and 75 when the timing was not run
-      because the host was busy; 75 is never a pass. The gate runs locally only. The PR body reports three passing runs
-      (12 of 12 checks) on an earlier head. The operator must confirm it as the standing gate.
+      - log:118
     refs: [pr:foldkit-flow#4]
     links:
       serves: [goal-flow-browser-proof]
@@ -530,15 +508,12 @@ elements:
       A person drags one node of the Large graph (500 nodes, 700 edges) for 150 pointer moves, three times, in headless
       Chromium on the production build. The median of the three p95 scripting times per move is under 8 ms, and 95
       percent of frame intervals are within 33.5 ms. Ten wheel steps change no node or edge.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:docs/specs/0001-first-felt-journey.md:91
       - foldkit-flow:README.md:82
       - pr:foldkit-flow#4
-    rationale: >-
-      The numbers are the gate in spec 0001 (J9, line 91). README line 82 says the journey times it only on a quiet
-      host and otherwise exits 75, not run. The PR reports a median p95 of 4.31 to 5.76 ms over three runs on a loaded
-      host; that is the author's report. The operator must confirm the budget.
+      - log:118
     refs: [pr:foldkit-flow#4]
     links:
       serves: [goal-flow-performance]
@@ -603,13 +578,11 @@ elements:
     scenario: >-
       A contributor pastes a 40-token block twice and `bun run cpd` fails. A contributor adds a suppression directive
       with no registry entry and `bun run check:exceptions` fails.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:AGENTS.md:44
       - foldkit-flow:AGENTS.md:49-50
-    rationale: >-
-      Observed in the repository: AGENTS.md describes these gates. No operator line decides them. The operator must
-      confirm.
+      - log:118
     canvas: [key-activities]
     links:
       serves: [goal-flow-lifecycle]
@@ -624,14 +597,12 @@ elements:
     scenario: >-
       A reader lists the workspaces and finds apps, packages and tools apart. The example app declares the library as a
       workspace dependency, and the library does not depend on the app.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:AGENTS.md:21-31
       - foldkit-flow:package.json:5-9
       - foldkit-flow:apps/example/package.json:16
-    rationale: >-
-      The layout is the same at the pin. No gate enforces the direction, so the scenario is a reading check. The operator must
-      confirm and may add a gate.
+      - log:118
     links:
       serves: [goal-flow-generic-library]
 
@@ -645,12 +616,11 @@ elements:
     scenario: >-
       A contributor runs `vp exec -- bun --revision` and `bun --revision` in devenv. Both print the same version. The
       check does not show that every gate gives the same result in both.
-    status: open
+    status: decided
     source:
       - issue:foldkit-flow#3
       - foldkit-flow:package.json:44-48
-    rationale: >-
-      Issue #3 proposes this check and pinning Bun exactly. It is not fixed yet.
+      - log:118
     refs: [issue:foldkit-flow#3]
     links:
       serves: [goal-org-reproducible-builds]
@@ -687,14 +657,12 @@ elements:
     scenario: >-
       A contributor changes the library's Effect peer range to `^4.1.0` and imports an unstable API from the `effect`
       root. `bun run test` fails in the published-range test.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:AGENTS.md:65
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:89
       - log:55
-    rationale: >-
-      Observed in the repository: the operator's cap rule (log line 55, AGENTS.md line 65) is decided, but the test that
-      enforces it is spec 0000's design (falsifier F13). The operator must confirm it as a requirement.
+      - log:118
     links:
       serves: [goal-org-stay-on-supported-stack]
 
@@ -708,11 +676,9 @@ elements:
     scenario: >-
       The journey runs in each supported browser and input type and passes. Today it runs in one Chromium with mouse and
       keyboard.
-    status: open
+    status: decided
     source:
       - pr:foldkit-flow#4
-    rationale: >-
-      No source sets a support target. PR #4 lists Firefox, WebKit and touch as not run. The operator must set the
-      target.
+      - log:118
     links:
       serves: [goal-flow-browser-proof]

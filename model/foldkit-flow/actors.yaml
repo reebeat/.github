@@ -46,13 +46,11 @@ elements:
     title: End user of a graph canvas
     statement: >-
       A person who uses an application built with the library. They pan, zoom, drag, connect and select with a pointer.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:README.md:3
       - foldkit-flow:README.md:20
-    rationale: >-
-      README lines 3 and 20 describe this person: they pan, zoom, drag, connect and select on the canvas of the
-      example. The operator must confirm the persona.
+      - log:118
     links:
       performs:
         - process-flow-use-canvas
@@ -86,12 +84,10 @@ elements:
     title: Contributor (human or agent)
     statement: >-
       A person or an agent who writes specs and code, opens PRs and takes part in review rounds.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:14
-    rationale: >-
-      Observed in the repository: spec 0000 names the contributor as a human or an agent. No operator line decides the
-      role. The operator must confirm.
+      - log:118
     links:
       performs: [process-flow-ship-spec, process-flow-run-journey-gate]
       serves: [goal-flow-lifecycle]
@@ -164,13 +160,11 @@ elements:
     title: Foldkit 0.169.0 and its peer range
     statement: >-
       The repository uses Foldkit 0.169.0, and the library declares a peer of `~0.169.0`.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:package.json:65
       - foldkit-flow:packages/flow/package.json:32
-    rationale: >-
-      Observed in the repository: the version and the peer range are in package.json. The log chooses Foldkit, not a
-      version. The operator must confirm.
+      - log:118
     canvas: [key-partners, key-resources]
     links:
       serves: [goal-flow-vision]
@@ -181,15 +175,12 @@ elements:
     title: Effect 4.1.0
     statement: >-
       The Effect runtime and libraries the repository pins at 4.1.0. The library declares a peer of `~4.1.0`.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:AGENTS.md:65
       - foldkit-flow:package.json:59
       - foldkit-flow:packages/flow/package.json:31
-    rationale: >-
-      Observed in the repository: the pin and peer range are in package.json. The operator's rule at AGENTS.md line 65
-      sets how a package declares its range (see constraint-flow-effect-range), not the exact version. The operator
-      must confirm.
+      - log:118
     canvas: [key-partners, key-resources]
     links:
       serves: [goal-org-stay-on-supported-stack]
@@ -213,13 +204,11 @@ elements:
     statement: >-
       The tools the gates run on: devenv (Bun, Node, gitleaks), Bun, Vite+, Oxfmt, Oxlint, `@effect/tsgo`, knip, jscpd and
       commitlint.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:33
       - foldkit-flow:AGENTS.md:37-51
-    rationale: >-
-      Observed in the repository: spec 0000 and AGENTS.md list these tools. The log does not decide the list. The
-      operator must confirm.
+      - log:118
     links:
       serves: [goal-flow-lifecycle]
 
@@ -229,13 +218,11 @@ elements:
     title: Specs in docs/specs
     statement: >-
       One spec per felt journey, with its falsifiers and dated revisions. STATE.md says which is active.
-    status: proposed
-    rationale: >-
-      Observed in the repository: README and spec 0000 describe the specs. The operator's assignment of spec 0000
-      accepted the plan as a whole. The operator must confirm.
+    status: decided
     source:
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:3
       - foldkit-flow:README.md:91
+      - log:118
     links:
       serves: [goal-flow-lifecycle]
 
@@ -245,12 +232,10 @@ elements:
     title: STATE.md
     statement: >-
       The mission-state file: lifecycle stage, what is happening now, what is next and what is blocked.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:STATE.md:1-18
-    rationale: >-
-      The file exists and has this shape. See problem-flow-state-blocked-nothing for a gap in it. The operator must
-      confirm it as the single place for state.
+      - log:118
     links:
       serves: [goal-flow-lifecycle]
 
@@ -276,14 +261,12 @@ elements:
     title: Chromium for the journey gate
     statement: >-
       A Chromium browser on the path or named by `FLOW_CHROMIUM`. The journey needs it. CI has none.
-    status: proposed
+    status: decided
     source:
       - pr:foldkit-flow#4
       - foldkit-flow:README.md:17
       - foldkit-flow:AGENTS.md:48
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:92
-    rationale: >-
-      README line 17 says the journey needs a Chromium on the path or in `FLOW_CHROMIUM`, and AGENTS.md line 48 says CI
-      has none. Only PR #4 reports a run, on Chromium 155. The operator must decide which browser CI should provide.
+      - log:118
     links:
       serves: [goal-flow-browser-proof]

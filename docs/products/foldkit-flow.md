@@ -6,7 +6,7 @@ A node-based graph UI for Foldkit, like React Flow or Svelte Flow, in its own re
 
 Repository: [tsukuri-labs/foldkit-flow][1]. Licence: MIT. Status of this description: decided.
 
-137 model elements: 47 decided, 75 proposed, 15 open.
+137 model elements: 114 decided, 21 proposed, 2 open.
 
 ## Product vision board
 
@@ -15,10 +15,10 @@ After Roman Pichler's product vision board. Each cell is built from the model; c
 | Cell | Content |
 | --- | --- |
 | Vision | [A graph canvas for Foldkit applications](../goals.md#goal-flow-vision) (decided): foldkit-flow is a node-based graph UI for Foldkit, like React Flow or Svelte Flow, in its own repository. |
-| Target group | [Foldkit app developer](../actors-and-resources.md#actor-flow-app-developer) (decided)<br/>[Keyboard-only user](../actors-and-resources.md#actor-flow-keyboard-user) (decided)<br/>[End user of a graph canvas](../actors-and-resources.md#actor-flow-end-user) (proposed)<br/>[Contributor (human or agent)](../actors-and-resources.md#actor-flow-contributor) (proposed) |
+| Target group | [Foldkit app developer](../actors-and-resources.md#actor-flow-app-developer) (decided)<br/>[Keyboard-only user](../actors-and-resources.md#actor-flow-keyboard-user) (decided)<br/>[End user of a graph canvas](../actors-and-resources.md#actor-flow-end-user) (decided)<br/>[Contributor (human or agent)](../actors-and-resources.md#actor-flow-contributor) (decided) |
 | Needs (jobs to be done) | When I build a Foldkit application that shows a graph, I want a ready canvas with pan, zoom, drag, connect and selection, so that I do not write that interaction code myself (proposed)<br/>When I cannot or do not use a pointer, I want to select, move and delete nodes with keys, so that I can edit the same graph as a pointer user (decided) |
-| Product (key features) | [packages/flow (the library)](../technical-components.md#comp-flow-library) (decided)<br/>[apps/example (the example app)](../technical-components.md#comp-flow-example-app) (proposed)<br/>[tools/quality (repository checks)](../technical-components.md#comp-flow-quality-tools) (proposed)<br/>[tools/oxlint (vendored lint rules)](../technical-components.md#comp-flow-oxlint-rules) (proposed)<br/>[tools/journey (browser gate)](../technical-components.md#comp-flow-journey-tool) (proposed)<br/>[CI workflow (checks)](../technical-components.md#comp-flow-ci) (proposed)<br/>[Review and PR skills](../technical-components.md#comp-flow-agent-skills) (proposed)<br/>[Attribution option and view](../technical-components.md#comp-flow-attribution) (decided)<br/>[Flow Submodel (Model, update, view)](../technical-components.md#comp-flow-flow-submodel) (decided)<br/>[Mounts that own the xyflow controllers](../technical-components.md#comp-flow-mounts) (proposed)<br/>[Pan and zoom by wheel and drag](../technical-components.md#req-flow-pan-zoom) (proposed)<br/>[Drag a node, edges follow](../technical-components.md#req-flow-drag-node) (proposed)<br/>[Connect handles with validation](../technical-components.md#req-flow-connect) (proposed)<br/>[Reconnect an edge end](../technical-components.md#req-flow-reconnect) (proposed)<br/>[Select with a box](../technical-components.md#req-flow-box-select) (proposed)<br/>[Controls, fit view and minimap](../technical-components.md#req-flow-controls-minimap) (proposed)<br/>[Compound nodes with relative positions](../technical-components.md#req-flow-compound-nodes) (proposed)<br/>[Delete a parent with its descendants and edges](../technical-components.md#req-flow-delete-closure) (proposed)<br/>[Edit the graph by keyboard](../technical-components.md#req-flow-keyboard-edit) (proposed)<br/>[The app draws node content](../technical-components.md#req-flow-custom-nodes) (decided)<br/>[Show the xyflow credit by default, allow hiding](../technical-components.md#req-flow-attribution-toggle) (decided)<br/>[A browser journey gate](../technical-components.md#req-flow-browser-gate) (proposed) |
-| Business goals | [Accessible artifacts for every audience](../goals.md#goal-org-accessible-artifacts) (decided)<br/>[Correctness by construction](../goals.md#goal-org-correctness-by-construction) (decided)<br/>[Intent written down, sourced and testable](../goals.md#goal-org-written-intent) (proposed) |
+| Product (key features) | [packages/flow (the library)](../technical-components.md#comp-flow-library) (decided)<br/>[apps/example (the example app)](../technical-components.md#comp-flow-example-app) (decided)<br/>[tools/quality (repository checks)](../technical-components.md#comp-flow-quality-tools) (decided)<br/>[tools/oxlint (vendored lint rules)](../technical-components.md#comp-flow-oxlint-rules) (decided)<br/>[tools/journey (browser gate)](../technical-components.md#comp-flow-journey-tool) (proposed)<br/>[CI workflow (checks)](../technical-components.md#comp-flow-ci) (decided)<br/>[Review and PR skills](../technical-components.md#comp-flow-agent-skills) (decided)<br/>[Attribution option and view](../technical-components.md#comp-flow-attribution) (decided)<br/>[Flow Submodel (Model, update, view)](../technical-components.md#comp-flow-flow-submodel) (decided)<br/>[Mounts that own the xyflow controllers](../technical-components.md#comp-flow-mounts) (proposed)<br/>[Pan and zoom by wheel and drag](../technical-components.md#req-flow-pan-zoom) (proposed)<br/>[Drag a node, edges follow](../technical-components.md#req-flow-drag-node) (proposed)<br/>[Connect handles with validation](../technical-components.md#req-flow-connect) (proposed)<br/>[Reconnect an edge end](../technical-components.md#req-flow-reconnect) (proposed)<br/>[Select with a box](../technical-components.md#req-flow-box-select) (proposed)<br/>[Controls, fit view and minimap](../technical-components.md#req-flow-controls-minimap) (proposed)<br/>[Compound nodes with relative positions](../technical-components.md#req-flow-compound-nodes) (proposed)<br/>[Delete a parent with its descendants and edges](../technical-components.md#req-flow-delete-closure) (proposed)<br/>[Edit the graph by keyboard](../technical-components.md#req-flow-keyboard-edit) (decided)<br/>[The app draws node content](../technical-components.md#req-flow-custom-nodes) (decided)<br/>[Show the xyflow credit by default, allow hiding](../technical-components.md#req-flow-attribution-toggle) (decided)<br/>[A browser journey gate](../technical-components.md#req-flow-browser-gate) (decided) |
+| Business goals | [Accessible artifacts for every audience](../goals.md#goal-org-accessible-artifacts) (decided)<br/>[Correctness by construction](../goals.md#goal-org-correctness-by-construction) (decided)<br/>[Intent written down, sourced and testable](../goals.md#goal-org-written-intent) (decided) |
 
 Scope `foldkit-flow`: 137 elements.
 
@@ -36,24 +36,24 @@ Scope `foldkit-flow`: 137 elements.
 | [Controls, fit view and minimap](../technical-components.md#req-flow-controls-minimap) | Buttons zoom in, zoom out and fit the view. A minimap shows the nodes and pans when dragged. | proposed | [foldkit-flow:README.md:66][15], [foldkit-flow:packages/flow/src/view.ts:464-478][17], [foldkit-flow:packages/flow/src/view.ts:499-523][18], [foldkit-flow:docs/specs/0001-first-felt-journey.md:88][19] |
 | [Compound nodes with relative positions](../technical-components.md#req-flow-compound-nodes) | A child node has a position relative to its parent. Dragging the parent moves the child, and a clamped child stays inside the parent. | proposed | [foldkit-flow:packages/flow/src/geometry.ts:88][20], [foldkit-flow:packages/flow/src/geometry.ts:451-474][21], [foldkit-flow:README.md:20][13], [log L19][22] |
 | [Delete a parent with its descendants and edges](../technical-components.md#req-flow-delete-closure) | Deleting a parent removes all its descendants and every edge attached to any of them, and reports the full sets. | proposed | [foldkit-flow:packages/flow/src/update.ts:289-343][23], [foldkit-flow:README.md:75][24], [foldkit-flow:docs/specs/0001-first-felt-journey.md:135][25] |
-| [Edit the graph by keyboard](../technical-components.md#req-flow-keyboard-edit) | Nodes take focus. Enter or Space selects, arrow keys move (Shift makes a larger step), Delete removes, Escape clears, and a live region announces each result. | proposed | [foldkit-flow:README.md:74-78][26], [foldkit-flow:packages/flow/src/update.ts:413-435][27], [foldkit-flow:docs/specs/0001-first-felt-journey.md:87][28] |
-| [The app draws node content](../technical-components.md#req-flow-custom-nodes) | The application draws node content, as it owns the graph and the layout. Nodes render through one callback that the application supplies. Handles are declared on the node. Edges come in three kinds with an optional arrow. | decided | [log L109][29], [foldkit-flow:README.md:56-63][30], [foldkit-flow:packages/flow/src/view.ts:45-54][31], [foldkit-flow:packages/flow/src/types.ts:33-38][32], [foldkit-flow:docs/specs/0001-first-felt-journey.md:30-33][33] |
-| [Show the xyflow credit by default, allow hiding](../technical-components.md#req-flow-attribution-toggle) | The "Built with xyflow" link shows by default. It hides only when the application sets Attribution to Hidden. | decided | [log L106][34], [foldkit-flow:docs/specs/0000-development-lifecycle.md:53][35], [foldkit-flow:docs/specs/0000-development-lifecycle.md:90][36], [foldkit-flow:README.md:86][37] |
-| [A browser journey gate](../technical-components.md#req-flow-browser-gate) | One command drives the built example in headless Chromium with real pointer and keyboard input and fails if a journey step fails. | proposed | [foldkit-flow:package.json:18][38], [foldkit-flow:README.md:17][39], [foldkit-flow:AGENTS.md:48][40], [pr foldkit-flow#4][41] |
+| [Edit the graph by keyboard](../technical-components.md#req-flow-keyboard-edit) | Nodes take focus. Enter or Space selects, arrow keys move (Shift makes a larger step), Delete removes, Escape clears, and a live region announces each result. | decided | [foldkit-flow:README.md:74-78][26], [foldkit-flow:packages/flow/src/update.ts:413-435][27], [foldkit-flow:docs/specs/0001-first-felt-journey.md:87][28], [log L118][29] |
+| [The app draws node content](../technical-components.md#req-flow-custom-nodes) | The application draws node content, as it owns the graph and the layout. Nodes render through one callback that the application supplies. Handles are declared on the node. Edges come in three kinds with an optional arrow. | decided | [log L109][30], [foldkit-flow:README.md:56-63][31], [foldkit-flow:packages/flow/src/view.ts:45-54][32], [foldkit-flow:packages/flow/src/types.ts:33-38][33], [foldkit-flow:docs/specs/0001-first-felt-journey.md:30-33][34] |
+| [Show the xyflow credit by default, allow hiding](../technical-components.md#req-flow-attribution-toggle) | The "Built with xyflow" link shows by default. It hides only when the application sets Attribution to Hidden. | decided | [log L106][35], [foldkit-flow:docs/specs/0000-development-lifecycle.md:53][36], [foldkit-flow:docs/specs/0000-development-lifecycle.md:90][37], [foldkit-flow:README.md:86][38] |
+| [A browser journey gate](../technical-components.md#req-flow-browser-gate) | One command drives the built example in headless Chromium with real pointer and keyboard input and fails if a journey step fails. | decided | [foldkit-flow:package.json:18][39], [foldkit-flow:README.md:17][40], [foldkit-flow:AGENTS.md:48][41], [pr foldkit-flow#4][42], [log L118][29] |
 
 ### 1.2 Quality goals
 
 | Quality | Goal | Scenario | Status |
 | --- | --- | --- | --- |
-| performance | [Dragging stays fast at 500 nodes and 700 edges](../technical-components.md#req-flow-perf-drag): Dragging one node of 500 nodes and 700 edges has a median p95 scripting time per pointer move under 8 ms. At least 95 percent of frame intervals are within 33.5 ms. | A person drags one node of the Large graph (500 nodes, 700 edges) for 150 pointer moves, three times, in headless Chromium on the production build. The median of the three p95 scripting times per move is under 8 ms, and 95 percent of frame intervals are within 33.5 ms. Ten wheel steps change no node or edge. | proposed |
+| performance | [Dragging stays fast at 500 nodes and 700 edges](../technical-components.md#req-flow-perf-drag): Dragging one node of 500 nodes and 700 edges has a median p95 scripting time per pointer move under 8 ms. At least 95 percent of frame intervals are within 33.5 ms. | A person drags one node of the Large graph (500 nodes, 700 edges) for 150 pointer moves, three times, in headless Chromium on the production build. The median of the three p95 scripting times per move is under 8 ms, and 95 percent of frame intervals are within 33.5 ms. Ten wheel steps change no node or edge. | decided |
 | accessibility | [Keyboard-only use with announcements](../technical-components.md#req-flow-a11y-keyboard): Selecting, moving, deleting and clearing nodes works with the keyboard alone, and results are announced to assistive technology. Creating a connection by keyboard is a documented gap in 0.x, and 1.0 waits for it. Reconnecting an edge and using the minimap by keyboard are not specified. | A keyboard-only user presses Tab to reach a node, Enter to select it, an arrow key to move it by 10, Shift and an arrow to move it by 40, Escape to clear, Enter again and Delete to remove it. The canvas has role application, each node has role group and a name, and a polite live region says what happened. | decided |
 | correctness | [Controllers never leak after unmount](../technical-components.md#req-flow-correct-lifetimes): Every controller is destroyed when its Mount is released, and no listener it added remains. | A test mounts the Flow, presses a handle before the drag threshold, then disposes the runtime. Every created controller is destroyed once, and no document or window listener from the library remains. | proposed |
-| maintainability | [Gates catch drift, dead code and copies](../technical-components.md#req-flow-maintain-gates): Gates catch suppressions without a registry entry, unused code and copy-paste, and every gate runs locally and in CI. | A contributor pastes a 40-token block twice and `bun run cpd` fails. A contributor adds a suppression directive with no registry entry and `bun run check:exceptions` fails. | proposed |
-| maintainability | [Tools, packages and apps stay separate](../technical-components.md#req-flow-maintain-tiers): Apps, packages and tools are separate workspaces. The app depends on the library and tools depend on neither. | A reader lists the workspaces and finds apps, packages and tools apart. The example app declares the library as a workspace dependency, and the library does not depend on the app. | proposed |
-| reproducibility | [The same Bun runs everywhere](../technical-components.md#req-flow-reproducible-toolchain): `vp run` and devenv use the same Bun version. | A contributor runs `vp exec -- bun --revision` and `bun --revision` in devenv. Both print the same version. The check does not show that every gate gives the same result in both. | open |
+| maintainability | [Gates catch drift, dead code and copies](../technical-components.md#req-flow-maintain-gates): Gates catch suppressions without a registry entry, unused code and copy-paste, and every gate runs locally and in CI. | A contributor pastes a 40-token block twice and `bun run cpd` fails. A contributor adds a suppression directive with no registry entry and `bun run check:exceptions` fails. | decided |
+| maintainability | [Tools, packages and apps stay separate](../technical-components.md#req-flow-maintain-tiers): Apps, packages and tools are separate workspaces. The app depends on the library and tools depend on neither. | A reader lists the workspaces and finds apps, packages and tools apart. The example app declares the library as a workspace dependency, and the library does not depend on the app. | decided |
+| reproducibility | [The same Bun runs everywhere](../technical-components.md#req-flow-reproducible-toolchain): `vp run` and devenv use the same Bun version. | A contributor runs `vp exec -- bun --revision` and `bun --revision` in devenv. Both print the same version. The check does not show that every gate gives the same result in both. | decided |
 | licensing | [MIT library, xyflow credited, no copyleft dependency](../technical-components.md#req-flow-licence-hygiene): The library is MIT licensed with xyflow's notice kept. No package under `packages/` depends on ELK.js or another copyleft package. The project adds a licence scan of the published dependencies to check it. A private example may use ELK.js. | A reader opens LICENSE, NOTICE and packages/flow/package.json. They find MIT and the xyflow copyright and licence. The licence scan of the published dependencies lists no EPL or GPL licence and fails if one appears. | decided |
-| reliability | [A new Effect minor cannot break the library](../technical-components.md#req-flow-effect-range-gated): A published package that uses an unstable or experimental Effect API cannot accept the next Effect minor, and a test fails if it does. | A contributor changes the library's Effect peer range to `^4.1.0` and imports an unstable API from the `effect` root. `bun run test` fails in the published-range test. | proposed |
-| portability | [Supported browsers and input types](../technical-components.md#req-flow-portability-browsers): The library states which browsers and input types it supports, and the journey covers them. | The journey runs in each supported browser and input type and passes. Today it runs in one Chromium with mouse and keyboard. | open |
+| reliability | [A new Effect minor cannot break the library](../technical-components.md#req-flow-effect-range-gated): A published package that uses an unstable or experimental Effect API cannot accept the next Effect minor, and a test fails if it does. | A contributor changes the library's Effect peer range to `^4.1.0` and imports an unstable API from the `effect` root. `bun run test` fails in the published-range test. | decided |
+| portability | [Supported browsers and input types](../technical-components.md#req-flow-portability-browsers): The library states which browsers and input types it supports, and the journey covers them. | The journey runs in each supported browser and input type and passes. Today it runs in one Chromium with mouse and keyboard. | decided |
 
 ### 1.3 Stakeholders
 
@@ -61,9 +61,9 @@ Scope `foldkit-flow`: 137 elements.
 | --- | --- | --- |
 | [Foldkit app developer](../actors-and-resources.md#actor-flow-app-developer) | A person who builds a Foldkit application and wants a graph canvas in it. They are the library's audience. They add the library and own the application's graph data, layout and node views, and they apply the outcomes the library reports. | decided |
 | [tsukuri studio (consuming product)](../actors-and-resources.md#actor-flow-studio) | tsukuri studio is an intended consumer of the library for its story graph, not a committed one. It has no dependency on the library until a studio spec adopts it. It is a consumer, not part of the library. | decided |
-| [End user of a graph canvas](../actors-and-resources.md#actor-flow-end-user) | A person who uses an application built with the library. They pan, zoom, drag, connect and select with a pointer. | proposed |
+| [End user of a graph canvas](../actors-and-resources.md#actor-flow-end-user) | A person who uses an application built with the library. They pan, zoom, drag, connect and select with a pointer. | decided |
 | [Keyboard-only user](../actors-and-resources.md#actor-flow-keyboard-user) | A person who uses only the keyboard, and may use a screen reader. In the 0.x releases they can reach, select, move and delete nodes without a pointer. Connecting nodes by keyboard is a documented gap, and 1.0 waits for it. | decided |
-| [Contributor (human or agent)](../actors-and-resources.md#actor-flow-contributor) | A person or an agent who writes specs and code, opens PRs and takes part in review rounds. | proposed |
+| [Contributor (human or agent)](../actors-and-resources.md#actor-flow-contributor) | A person or an agent who writes specs and code, opens PRs and takes part in review rounds. | decided |
 | [The xyflow project](../actors-and-resources.md#actor-flow-xyflow) | xyflow (webkid GmbH) makes React Flow, Svelte Flow and `@xyflow/system`. It asks its users to keep its attribution or to support the project. The library shows the credit by default and lets an application hide it. | decided |
 | [The Foldkit project](../actors-and-resources.md#actor-flow-foldkit-project) | Foldkit makes the framework the library is built for. It owns the plugin the example cannot use yet. If it adopts the library, the project publishes `@foldkit/flow` and deprecates `@tsukuri/flow`. | decided |
 
@@ -72,25 +72,25 @@ Scope `foldkit-flow`: 137 elements.
 - [The package is unpublished and private](../goals.md#problem-flow-unpublished) (decided): The operator decided to publish `@tsukuri/flow` pre-releases under the npm org. Nothing is published yet: the library package is private at version 0.0.0 and still named `foldkit-flow`, and the README says it is not published yet. On 2026-10-30 the operator decided to publish without waiting for the Norwegian IP advisor (log line 118).
 - [No licence scan of published dependencies](../goals.md#problem-flow-licence-scan-missing) (open): The operator decided to add a licence scan of the published dependencies, so that no copyleft licence reaches `packages/`. No gate runs it: the `ready` script lists no licence check.
 - [The library applies a deletion itself](../goals.md#problem-flow-library-applies-deletion) (open): The operator decided that the library reports outcomes and the app applies graph changes (log line 109). For a deletion, the Flow removes the deleted nodes and edges from its own Model and then reports them.
-- [No stated goals beyond the README](../goals.md#problem-flow-goals-undocumented) (open): The README gives one sentence of purpose, and spec 0000 states the goal of its lifecycle. No file gives the library's own product goals, users or success measures.
-- [No glossary for the graph terms](../goals.md#problem-flow-no-glossary) (open): The repository has no GLOSSARY.md. Terms such as node, handle, connection and controller have no single definition.
-- [STATE says nothing is blocked](../goals.md#problem-flow-state-blocked-nothing) (open): STATE.md lists "Blocked: Nothing". The same file names the Foldkit plugin mismatch, and issue #3 about the Bun toolchain is open.
-- [vp run may use a different Bun than devenv](../goals.md#problem-flow-bun-mismatch) (open): The package manager range is `^1.4.2` with download on failure. `vp run` can download its own Bun and so differ from the Bun that devenv pins.
+- [No stated goals beyond the README](../goals.md#problem-flow-goals-undocumented) (decided): The README gives one sentence of purpose, and spec 0000 states the goal of its lifecycle. No file gives the library's own product goals, users or success measures.
+- [No glossary for the graph terms](../goals.md#problem-flow-no-glossary) (decided): The repository has no GLOSSARY.md. Terms such as node, handle, connection and controller have no single definition.
+- [STATE says nothing is blocked](../goals.md#problem-flow-state-blocked-nothing) (decided): STATE.md lists "Blocked: Nothing". The same file names the Foldkit plugin mismatch, and issue #3 about the Bun toolchain is open.
+- [vp run may use a different Bun than devenv](../goals.md#problem-flow-bun-mismatch) (decided): The package manager range is `^1.4.2` with download on failure. `vp run` can download its own Bun and so differ from the Bun that devenv pins.
 - [Keyboard users cannot create connections](../goals.md#problem-flow-keyboard-connect-missing) (decided): The operator decided to publish 0.x with keyboard connect documented as a gap, to build it as the next spec, and to block 1.0 on it. Today the built journey does not let a keyboard-only person connect two handles: README line 78 says keyboard connect is not built, and spec 0001 lists it as an open question.
-- [The browser journey does not run in CI](../goals.md#problem-flow-journey-not-in-ci) (open): CI has no browser. The journey and the performance check run only on a developer's machine.
-- [Only Chromium and mouse input were tested](../goals.md#problem-flow-browsers-untested) (open): The journey ran in one Chromium version. Firefox, WebKit and touch input were not run.
-- [Demand and users are not measured](../goals.md#problem-flow-demand-unmeasured) (open): The cited sources show no measure of who needs the library or who uses it. Nothing is published, and the sources record no user count or request.
+- [The browser journey does not run in CI](../goals.md#problem-flow-journey-not-in-ci) (decided): CI has no browser. The journey and the performance check run only on a developer's machine.
+- [Only Chromium and mouse input were tested](../goals.md#problem-flow-browsers-untested) (decided): The journey ran in one Chromium version. Firefox, WebKit and touch input were not run.
+- [Demand and users are not measured](../goals.md#problem-flow-demand-unmeasured) (decided): The cited sources show no measure of who needs the library or who uses it. Nothing is published, and the sources record no user count or request.
 - [Terms of the Foldkit offer remain to record](../goals.md#problem-flow-upstream-terms-open) (decided): The operator decided to offer the library as `@foldkit/flow` once its API settles. If Foldkit adopts it, the project publishes `@foldkit/flow` and deprecates `@tsukuri/flow`. What counts as settled, the date and the licence header are not yet recorded.
-- [Workflow hardening is deferred](../goals.md#problem-flow-deferred-workflow-questions) (open): Vendoring Foldkit as a subtree, requiring human approval, signed commits and Renovate are all deferred.
-- [The module-mocking lint rule has a gap](../goals.md#problem-flow-lint-mocking-gap) (open): The lint rule that forbids module mocking matches only the `vitest` import source, so a mock imported from `vite-plus/test` passes.
-- [No security, conduct or contributing files](../goals.md#problem-flow-community-files) (open): The public repository has no SECURITY.md, CODE_OF_CONDUCT.md or CONTRIBUTING.md. The README has a short contributing section.
+- [Workflow hardening is deferred](../goals.md#problem-flow-deferred-workflow-questions) (decided): Vendoring Foldkit as a subtree, requiring human approval, signed commits and Renovate are all deferred.
+- [The module-mocking lint rule has a gap](../goals.md#problem-flow-lint-mocking-gap) (decided): The lint rule that forbids module mocking matches only the `vitest` import source, so a mock imported from `vite-plus/test` passes.
+- [No security, conduct or contributing files](../goals.md#problem-flow-community-files) (decided): The public repository has no SECURITY.md, CODE_OF_CONDUCT.md or CONTRIBUTING.md. The README has a short contributing section.
 - [The library is MIT licensed](../goals.md#constraint-flow-mit-licence) (decided): foldkit-flow is released under the MIT licence.
-- [The repository is public and holds no secrets](../goals.md#constraint-flow-public-repo) (proposed): The repository is public. It never holds a secret or personal data.
+- [The repository is public and holds no secrets](../goals.md#constraint-flow-public-repo) (decided): The repository is public. It never holds a secret or personal data.
 - [Keep xyflow's licence notice and credit](../goals.md#constraint-flow-xyflow-notice) (decided): xyflow's code is MIT licensed. The project keeps its notice in NOTICE, credits it in the README and shows the credit link by default. An application may hide the link.
 - [ELK stays out of the library](../goals.md#constraint-flow-no-elk) (decided): ELK.js is licensed EPL-2.0 OR GPL-3.0. It stays out of `packages/`, so the library does not depend on it. A private example may use it, and layout stays with the application.
 - [Cap the Effect range for unstable API use](../goals.md#constraint-flow-effect-range) (decided): A package that uses an unstable or experimental Effect API accepts nothing above the next minor.
-- [Foldkit declares Effect 4.0.0, the repo runs 4.1.0](../goals.md#constraint-flow-effect-peer-mismatch) (open): Foldkit 0.169.0 declares a peer of `effect@4.0.0`. The repository runs 4.1.0, so Bun prints peer warnings.
-- [The Foldkit Vite plugin cannot run on Effect 4.1.0](../goals.md#constraint-flow-vite-plugin-crypto) (proposed): `@foldkit/vite-plugin` 0.28.0 imports `Crypto` from the Effect root, which 4.1.0 lacks, so the example does not use it. The project waits for an upstream fix and does not work around it.
+- [Foldkit declares Effect 4.0.0, the repo runs 4.1.0](../goals.md#constraint-flow-effect-peer-mismatch) (decided): Foldkit 0.169.0 declares a peer of `effect@4.0.0`. The repository runs 4.1.0, so Bun prints peer warnings.
+- [The Foldkit Vite plugin cannot run on Effect 4.1.0](../goals.md#constraint-flow-vite-plugin-crypto) (decided): `@foldkit/vite-plugin` 0.28.0 imports `Crypto` from the Effect root, which 4.1.0 lacks, so the example does not use it. The project waits for an upstream fix and does not work around it.
 - [Pin @xyflow/system exactly](../goals.md#constraint-flow-xyflow-pinned) (decided): The library depends on `@xyflow/system` at the exact version 0.0.83, because a 0.0.x release may break. The project bumps the pin on purpose, and the journey gate decides each bump.
 
 ## Goals it serves
@@ -102,42 +102,42 @@ flowchart BT
     classDef open fill:#f8d7d7,stroke:#a02020,color:#111
     classDef outside fill:#eee,stroke:#999,color:#333,stroke-dasharray:4 3
     goal_flow_vision("A graph canvas for Foldkit<br/>applications"):::decided
-    goal_flow_generic_library("A generic library with no<br/>product logic"):::proposed
+    goal_flow_generic_library("A generic library with no<br/>product logic"):::decided
     goal_flow_studio_story_graph("Carry tsukuri studio's story<br/>graph"):::decided
     goal_flow_first_journey("One felt journey works end<br/>to end"):::proposed
     goal_flow_keyboard_access("Keyboard-accessible graph<br/>editing"):::decided
-    goal_flow_performance("Stay smooth at 500 nodes and<br/>700 edges"):::proposed
-    goal_flow_browser_proof("Prove interaction in a real<br/>browser"):::proposed
-    goal_flow_lifecycle("Every change travels spec,<br/>code, PR"):::proposed
+    goal_flow_performance("Stay smooth at 500 nodes and<br/>700 edges"):::decided
+    goal_flow_browser_proof("Prove interaction in a real<br/>browser"):::decided
+    goal_flow_lifecycle("Every change travels spec,<br/>code, PR"):::decided
     goal_flow_upstream_offer("Offer the library to Foldkit"):::decided
     goal_flow_publish("Publish the package for<br/>others to use"):::decided
     goal_flow_respect_xyflow("Credit and respect xyflow"):::decided
     problem_flow_unpublished{{"The package is unpublished<br/>and private"}}:::decided
     problem_flow_licence_scan_missing{{"No licence scan of published<br/>dependencies"}}:::open
     problem_flow_library_applies_deletion{{"The library applies a<br/>deletion itself"}}:::open
-    problem_flow_goals_undocumented{{"No stated goals beyond the<br/>README"}}:::open
-    problem_flow_no_glossary{{"No glossary for the graph<br/>terms"}}:::open
-    problem_flow_state_blocked_nothing{{"STATE says nothing is<br/>blocked"}}:::open
-    problem_flow_bun_mismatch{{"vp run may use a different<br/>Bun than devenv"}}:::open
+    problem_flow_goals_undocumented{{"No stated goals beyond the<br/>README"}}:::decided
+    problem_flow_no_glossary{{"No glossary for the graph<br/>terms"}}:::decided
+    problem_flow_state_blocked_nothing{{"STATE says nothing is<br/>blocked"}}:::decided
+    problem_flow_bun_mismatch{{"vp run may use a different<br/>Bun than devenv"}}:::decided
     problem_flow_keyboard_connect_missing{{"Keyboard users cannot create<br/>connections"}}:::decided
-    problem_flow_journey_not_in_ci{{"The browser journey does not<br/>run in CI"}}:::open
-    problem_flow_browsers_untested{{"Only Chromium and mouse<br/>input were tested"}}:::open
-    problem_flow_demand_unmeasured{{"Demand and users are not<br/>measured"}}:::open
+    problem_flow_journey_not_in_ci{{"The browser journey does not<br/>run in CI"}}:::decided
+    problem_flow_browsers_untested{{"Only Chromium and mouse<br/>input were tested"}}:::decided
+    problem_flow_demand_unmeasured{{"Demand and users are not<br/>measured"}}:::decided
     problem_flow_upstream_terms_open{{"Terms of the Foldkit offer<br/>remain to record"}}:::decided
-    problem_flow_deferred_workflow_questions{{"Workflow hardening is<br/>deferred"}}:::open
-    problem_flow_lint_mocking_gap{{"The module-mocking lint rule<br/>has a gap"}}:::open
-    problem_flow_community_files{{"No security, conduct or<br/>contributing files"}}:::open
+    problem_flow_deferred_workflow_questions{{"Workflow hardening is<br/>deferred"}}:::decided
+    problem_flow_lint_mocking_gap{{"The module-mocking lint rule<br/>has a gap"}}:::decided
+    problem_flow_community_files{{"No security, conduct or<br/>contributing files"}}:::decided
     constraint_flow_mit_licence[/"The library is MIT licensed"/]:::decided
-    constraint_flow_public_repo[/"The repository is public and<br/>holds no secrets"/]:::proposed
+    constraint_flow_public_repo[/"The repository is public and<br/>holds no secrets"/]:::decided
     constraint_flow_xyflow_notice[/"Keep xyflow's licence notice<br/>and credit"/]:::decided
     constraint_flow_no_elk[/"ELK stays out of the library"/]:::decided
     constraint_flow_effect_range[/"Cap the Effect range for<br/>unstable API use"/]:::decided
-    constraint_flow_effect_peer_mismatch[/"Foldkit declares Effect<br/>4.0.0, the repo runs 4.1.0"/]:::open
-    constraint_flow_vite_plugin_crypto[/"The Foldkit Vite plugin<br/>cannot run on Effect 4.1.0"/]:::proposed
+    constraint_flow_effect_peer_mismatch[/"Foldkit declares Effect<br/>4.0.0, the repo runs 4.1.0"/]:::decided
+    constraint_flow_vite_plugin_crypto[/"The Foldkit Vite plugin<br/>cannot run on Effect 4.1.0"/]:::decided
     constraint_flow_xyflow_pinned[/"Pin @xyflow/system exactly"/]:::decided
     opportunity_flow_xyflow_core(["Reuse xyflow's<br/>framework-free core"]):::decided
     opportunity_flow_other_foldkit_apps(["Other Foldkit apps can use<br/>it"]):::decided
-    opportunity_flow_real_browser_defects(["A real browser finds defects<br/>unit tests miss"]):::proposed
+    opportunity_flow_real_browser_defects(["A real browser finds defects<br/>unit tests miss"]):::decided
     goal_org_product_family("A family of products on the<br/>open core"):::outside
     goal_org_accessible_artifacts("Accessible artifacts for<br/>every audience"):::outside
     goal_org_correctness_by_construction("Correctness by construction"):::outside
@@ -180,17 +180,17 @@ flowchart LR
     classDef open fill:#f8d7d7,stroke:#a02020,color:#111
     classDef outside fill:#eee,stroke:#999,color:#333,stroke-dasharray:4 3
     process_flow_adopt_library["A Foldkit app adopts the<br/>library"]:::decided
-    process_flow_use_canvas["A person works on the graph<br/>canvas"]:::proposed
+    process_flow_use_canvas["A person works on the graph<br/>canvas"]:::decided
     process_flow_pan_zoom["Pan and zoom the canvas"]:::proposed
     process_flow_drag_node["Drag a node"]:::proposed
     process_flow_connect_handles["Connect two handles"]:::proposed
-    process_flow_reconnect_edge["Reconnect an edge end"]:::proposed
+    process_flow_reconnect_edge["Reconnect an edge end"]:::decided
     process_flow_box_select["Select with a box"]:::proposed
-    process_flow_keyboard_navigate["Work the graph by keyboard"]:::proposed
-    process_flow_delete_selection["Delete the selection"]:::proposed
+    process_flow_keyboard_navigate["Work the graph by keyboard"]:::decided
+    process_flow_delete_selection["Delete the selection"]:::decided
     process_flow_apply_outcome["The application applies an<br/>outcome"]:::decided
-    process_flow_run_journey_gate["Run the browser journey gate"]:::proposed
-    process_flow_ship_spec["Ship a spec as a PR"]:::proposed
+    process_flow_run_journey_gate["Run the browser journey gate"]:::decided
+    process_flow_ship_spec["Ship a spec as a PR"]:::decided
     process_flow_publish_package["Publish the package"]:::decided
     process_flow_offer_upstream["Offer the library to Foldkit"]:::decided
     extproc_flow_foldkit_decision[["Foldkit decides on the offer"]]:::decided
@@ -228,22 +228,22 @@ flowchart LR
 Full tables and diagrams: [Business Rules Model](../business-rules.md).
 
 - [The library reports outcomes; the app changes the graph](../business-rules.md#rule-flow-outcomes-not-mutations) (business rule, decided)
-- [Controllers attach in Mounts and die on unmount](../business-rules.md#rule-flow-controllers-in-mounts) (business rule, proposed)
-- [Model, update and view stay pure](../business-rules.md#rule-flow-pure-update) (business rule, proposed)
-- [Tools, packages and apps depend one way](../business-rules.md#rule-flow-dependency-direction) (business rule, proposed)
-- [No product logic in the library](../business-rules.md#rule-flow-no-product-logic) (business rule, proposed)
+- [Controllers attach in Mounts and die on unmount](../business-rules.md#rule-flow-controllers-in-mounts) (business rule, decided)
+- [Model, update and view stay pure](../business-rules.md#rule-flow-pure-update) (business rule, decided)
+- [Tools, packages and apps depend one way](../business-rules.md#rule-flow-dependency-direction) (business rule, decided)
+- [No product logic in the library](../business-rules.md#rule-flow-no-product-logic) (business rule, decided)
 - [The application owns node layout](../business-rules.md#rule-flow-layout-by-app) (business rule, decided)
 - [Credit xyflow by default](../business-rules.md#rule-flow-attribution-default) (business rule, decided)
-- [One spec, one branch, one PR](../business-rules.md#rule-flow-spec-code-pr) (business rule, proposed)
-- [Open the PR only after the journey is built](../business-rules.md#rule-flow-pr-after-ready) (business rule, proposed)
-- [Main takes PRs that pass checks](../business-rules.md#rule-flow-main-protected) (business rule, proposed)
-- [Every lint suppression has a registry entry](../business-rules.md#rule-flow-exceptions-registered) (business rule, proposed)
+- [One spec, one branch, one PR](../business-rules.md#rule-flow-spec-code-pr) (business rule, decided)
+- [Open the PR only after the journey is built](../business-rules.md#rule-flow-pr-after-ready) (business rule, decided)
+- [Main takes PRs that pass checks](../business-rules.md#rule-flow-main-protected) (business rule, decided)
+- [Every lint suppression has a registry entry](../business-rules.md#rule-flow-exceptions-registered) (business rule, decided)
 - [A package accepts only the Effect versions it can trust](../business-rules.md#rule-flow-effect-range-by-stability) (business rule, decided)
-- [Deleting a parent deletes its descendants and their edges](../business-rules.md#rule-flow-delete-closure) (business rule, proposed)
+- [Deleting a parent deletes its descendants and their edges](../business-rules.md#rule-flow-delete-closure) (business rule, decided)
 - [A connection the app refuses makes no edge](../business-rules.md#rule-flow-invalid-connection-refused) (business rule, proposed)
-- [A clamped child stays inside its parent](../business-rules.md#rule-flow-child-clamp) (business rule, proposed)
-- [Keys select, move, delete and clear](../business-rules.md#rule-flow-keyboard-actions) (business rule, proposed)
-- [Pointer moves re-render only what changed](../business-rules.md#rule-flow-memoised-views) (business rule, proposed)
+- [A clamped child stays inside its parent](../business-rules.md#rule-flow-child-clamp) (business rule, decided)
+- [Keys select, move, delete and clear](../business-rules.md#rule-flow-keyboard-actions) (business rule, decided)
+- [Pointer moves re-render only what changed](../business-rules.md#rule-flow-memoised-views) (business rule, decided)
 
 ## Actors and resources
 
@@ -251,21 +251,21 @@ Full tables and diagrams: [Actors and Resources Model](../actors-and-resources.m
 
 - [Foldkit app developer](../actors-and-resources.md#actor-flow-app-developer) (actor, decided)
 - [tsukuri studio (consuming product)](../actors-and-resources.md#actor-flow-studio) (actor, decided)
-- [End user of a graph canvas](../actors-and-resources.md#actor-flow-end-user) (actor, proposed)
+- [End user of a graph canvas](../actors-and-resources.md#actor-flow-end-user) (actor, decided)
 - [Keyboard-only user](../actors-and-resources.md#actor-flow-keyboard-user) (actor, decided)
-- [Contributor (human or agent)](../actors-and-resources.md#actor-flow-contributor) (actor, proposed)
+- [Contributor (human or agent)](../actors-and-resources.md#actor-flow-contributor) (actor, decided)
 - [The xyflow project](../actors-and-resources.md#actor-flow-xyflow) (actor, decided)
 - [The Foldkit project](../actors-and-resources.md#actor-flow-foldkit-project) (actor, decided)
 - [@xyflow/system](../actors-and-resources.md#resource-flow-xyflow-system) (resource, decided)
 - [Foldkit](../actors-and-resources.md#resource-flow-foldkit) (resource, decided)
-- [Foldkit 0.169.0 and its peer range](../actors-and-resources.md#resource-flow-foldkit-pin) (resource, proposed)
-- [Effect 4.1.0](../actors-and-resources.md#resource-flow-effect) (resource, proposed)
+- [Foldkit 0.169.0 and its peer range](../actors-and-resources.md#resource-flow-foldkit-pin) (resource, decided)
+- [Effect 4.1.0](../actors-and-resources.md#resource-flow-effect) (resource, decided)
 - [The project's own repository](../actors-and-resources.md#resource-flow-repo) (resource, decided)
-- [Devenv, Bun, Vite+ and Oxlint toolchain](../actors-and-resources.md#resource-flow-toolchain) (resource, proposed)
-- [Specs in docs/specs](../actors-and-resources.md#resource-flow-specs) (resource, proposed)
-- [STATE.md](../actors-and-resources.md#resource-flow-state-file) (resource, proposed)
+- [Devenv, Bun, Vite+ and Oxlint toolchain](../actors-and-resources.md#resource-flow-toolchain) (resource, decided)
+- [Specs in docs/specs](../actors-and-resources.md#resource-flow-specs) (resource, decided)
+- [STATE.md](../actors-and-resources.md#resource-flow-state-file) (resource, decided)
 - [LICENSE and NOTICE](../actors-and-resources.md#resource-flow-notice) (resource, decided)
-- [Chromium for the journey gate](../actors-and-resources.md#resource-flow-chromium) (resource, proposed)
+- [Chromium for the journey gate](../actors-and-resources.md#resource-flow-chromium) (resource, decided)
 
 ## Components, requirements and IS goals
 
@@ -273,19 +273,19 @@ Full tables and diagrams: [Technical Components and Requirements Model](../techn
 
 - [foldkit-flow](../technical-components.md#comp-flow-product) (technical component, decided)
 - [packages/flow (the library)](../technical-components.md#comp-flow-library) (technical component, decided)
-- [apps/example (the example app)](../technical-components.md#comp-flow-example-app) (technical component, proposed)
-- [tools/quality (repository checks)](../technical-components.md#comp-flow-quality-tools) (technical component, proposed)
-- [tools/oxlint (vendored lint rules)](../technical-components.md#comp-flow-oxlint-rules) (technical component, proposed)
+- [apps/example (the example app)](../technical-components.md#comp-flow-example-app) (technical component, decided)
+- [tools/quality (repository checks)](../technical-components.md#comp-flow-quality-tools) (technical component, decided)
+- [tools/oxlint (vendored lint rules)](../technical-components.md#comp-flow-oxlint-rules) (technical component, decided)
 - [tools/journey (browser gate)](../technical-components.md#comp-flow-journey-tool) (technical component, proposed)
-- [CI workflow (checks)](../technical-components.md#comp-flow-ci) (technical component, proposed)
-- [Review and PR skills](../technical-components.md#comp-flow-agent-skills) (technical component, proposed)
+- [CI workflow (checks)](../technical-components.md#comp-flow-ci) (technical component, decided)
+- [Review and PR skills](../technical-components.md#comp-flow-agent-skills) (technical component, decided)
 - [Attribution option and view](../technical-components.md#comp-flow-attribution) (technical component, decided)
 - [Flow Submodel (Model, update, view)](../technical-components.md#comp-flow-flow-submodel) (technical component, decided)
 - [Mounts that own the xyflow controllers](../technical-components.md#comp-flow-mounts) (technical component, proposed)
 - [The graph lives in the app's Model](../technical-components.md#isgoal-flow-elm-boundary) (information system goal, decided)
 - [Reuse xyflow's controllers](../technical-components.md#isgoal-flow-reuse-controllers) (information system goal, decided)
-- [Gates make bad changes impossible to merge](../technical-components.md#isgoal-flow-structural-gates) (information system goal, proposed)
-- [Measure the performance budget](../technical-components.md#isgoal-flow-measured-budget) (information system goal, proposed)
+- [Gates make bad changes impossible to merge](../technical-components.md#isgoal-flow-structural-gates) (information system goal, decided)
+- [Measure the performance budget](../technical-components.md#isgoal-flow-measured-budget) (information system goal, decided)
 - [Pan and zoom by wheel and drag](../technical-components.md#req-flow-pan-zoom) (requirement, proposed)
 - [Drag a node, edges follow](../technical-components.md#req-flow-drag-node) (requirement, proposed)
 - [Connect handles with validation](../technical-components.md#req-flow-connect) (requirement, proposed)
@@ -294,36 +294,36 @@ Full tables and diagrams: [Technical Components and Requirements Model](../techn
 - [Controls, fit view and minimap](../technical-components.md#req-flow-controls-minimap) (requirement, proposed)
 - [Compound nodes with relative positions](../technical-components.md#req-flow-compound-nodes) (requirement, proposed)
 - [Delete a parent with its descendants and edges](../technical-components.md#req-flow-delete-closure) (requirement, proposed)
-- [Edit the graph by keyboard](../technical-components.md#req-flow-keyboard-edit) (requirement, proposed)
+- [Edit the graph by keyboard](../technical-components.md#req-flow-keyboard-edit) (requirement, decided)
 - [The app draws node content](../technical-components.md#req-flow-custom-nodes) (requirement, decided)
 - [Show the xyflow credit by default, allow hiding](../technical-components.md#req-flow-attribution-toggle) (requirement, decided)
-- [A browser journey gate](../technical-components.md#req-flow-browser-gate) (requirement, proposed)
-- [Dragging stays fast at 500 nodes and 700 edges](../technical-components.md#req-flow-perf-drag) (requirement, proposed)
+- [A browser journey gate](../technical-components.md#req-flow-browser-gate) (requirement, decided)
+- [Dragging stays fast at 500 nodes and 700 edges](../technical-components.md#req-flow-perf-drag) (requirement, decided)
 - [Keyboard-only use with announcements](../technical-components.md#req-flow-a11y-keyboard) (requirement, decided)
 - [Controllers never leak after unmount](../technical-components.md#req-flow-correct-lifetimes) (requirement, proposed)
-- [Gates catch drift, dead code and copies](../technical-components.md#req-flow-maintain-gates) (requirement, proposed)
-- [Tools, packages and apps stay separate](../technical-components.md#req-flow-maintain-tiers) (requirement, proposed)
-- [The same Bun runs everywhere](../technical-components.md#req-flow-reproducible-toolchain) (requirement, open)
+- [Gates catch drift, dead code and copies](../technical-components.md#req-flow-maintain-gates) (requirement, decided)
+- [Tools, packages and apps stay separate](../technical-components.md#req-flow-maintain-tiers) (requirement, decided)
+- [The same Bun runs everywhere](../technical-components.md#req-flow-reproducible-toolchain) (requirement, decided)
 - [MIT library, xyflow credited, no copyleft dependency](../technical-components.md#req-flow-licence-hygiene) (requirement, decided)
-- [A new Effect minor cannot break the library](../technical-components.md#req-flow-effect-range-gated) (requirement, proposed)
-- [Supported browsers and input types](../technical-components.md#req-flow-portability-browsers) (requirement, open)
+- [A new Effect minor cannot break the library](../technical-components.md#req-flow-effect-range-gated) (requirement, decided)
+- [Supported browsers and input types](../technical-components.md#req-flow-portability-browsers) (requirement, decided)
 
 ## Concepts
 
 Full tables and diagrams: [Concepts Model](../concepts.md).
 
-- [Flow](../concepts.md#concept-flow-flow) (concept, proposed)
+- [Flow](../concepts.md#concept-flow-flow) (concept, decided)
 - [Node](../concepts.md#concept-flow-node) (concept, proposed)
 - [Edge](../concepts.md#concept-flow-edge) (concept, proposed)
-- [Handle](../concepts.md#concept-flow-handle) (concept, proposed)
-- [Connection](../concepts.md#concept-flow-connection) (concept, proposed)
-- [Compound (parent) node](../concepts.md#concept-flow-parent-node) (concept, proposed)
-- [Viewport](../concepts.md#concept-flow-viewport) (concept, proposed)
-- [Selection](../concepts.md#concept-flow-selection) (concept, proposed)
+- [Handle](../concepts.md#concept-flow-handle) (concept, decided)
+- [Connection](../concepts.md#concept-flow-connection) (concept, decided)
+- [Compound (parent) node](../concepts.md#concept-flow-parent-node) (concept, decided)
+- [Viewport](../concepts.md#concept-flow-viewport) (concept, decided)
+- [Selection](../concepts.md#concept-flow-selection) (concept, decided)
 - [Minimap and controls](../concepts.md#concept-flow-minimap) (concept, proposed)
 - [Attribution](../concepts.md#concept-flow-attribution) (concept, decided)
-- [Mount](../concepts.md#concept-flow-mount) (concept, proposed)
-- [Controller](../concepts.md#concept-flow-controller) (concept, proposed)
+- [Mount](../concepts.md#concept-flow-mount) (concept, decided)
+- [Controller](../concepts.md#concept-flow-controller) (concept, decided)
 - [Out-message (outcome)](../concepts.md#concept-flow-out-message) (concept, decided)
 - [Live region](../concepts.md#concept-flow-live-region) (concept, proposed)
 
@@ -407,16 +407,17 @@ Full tables and diagrams: [Concepts Model](../concepts.md).
 [26]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L74-L78
 [27]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/update.ts#L413-L435
 [28]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0001-first-felt-journey.md#L87
-[29]: ../../sources/operator-decisions-2026-10.md#L109
-[30]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L56-L63
-[31]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/view.ts#L45-L54
-[32]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/types.ts#L33-L38
-[33]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0001-first-felt-journey.md#L30-L33
-[34]: ../../sources/operator-decisions-2026-10.md#L106
-[35]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0000-development-lifecycle.md#L53
-[36]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0000-development-lifecycle.md#L90
-[37]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L86
-[38]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/package.json#L18
-[39]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L17
-[40]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/AGENTS.md#L48
-[41]: https://github.com/tsukuri-labs/foldkit-flow/pull/4
+[29]: ../../sources/operator-decisions-2026-10.md#L118
+[30]: ../../sources/operator-decisions-2026-10.md#L109
+[31]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L56-L63
+[32]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/view.ts#L45-L54
+[33]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/types.ts#L33-L38
+[34]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0001-first-felt-journey.md#L30-L33
+[35]: ../../sources/operator-decisions-2026-10.md#L106
+[36]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0000-development-lifecycle.md#L53
+[37]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0000-development-lifecycle.md#L90
+[38]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L86
+[39]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/package.json#L18
+[40]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L17
+[41]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/AGENTS.md#L48
+[42]: https://github.com/tsukuri-labs/foldkit-flow/pull/4

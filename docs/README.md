@@ -22,39 +22,39 @@ The reasons behind the tsukuri products, modelled with the 4EM method and genera
 
 | Sub-model | The organisation | tsukuri (the compiler) | tsukuri studio | foldkit-flow | decided | proposed | open |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| [Goals Model](goals.md) | 29 | 60 | 53 | 37 | 96 | 43 | 40 |
-| [Business Rules Model](business-rules.md) | 13 | 33 | 24 | 17 | 34 | 53 | 0 |
-| [Concepts Model](concepts.md) | 9 | 31 | 19 | 14 | 45 | 28 | 0 |
-| [Business Process Model](business-processes.md) | 9 | 22 | 19 | 16 | 14 | 49 | 3 |
-| [Actors and Resources Model](actors-and-resources.md) | 10 | 21 | 26 | 17 | 20 | 54 | 0 |
-| [Technical Components and Requirements Model](technical-components.md) | 20 | 66 | 58 | 36 | 58 | 119 | 3 |
+| [Goals Model](goals.md) | 29 | 60 | 53 | 37 | 165 | 7 | 7 |
+| [Business Rules Model](business-rules.md) | 13 | 33 | 24 | 17 | 85 | 2 | 0 |
+| [Concepts Model](concepts.md) | 9 | 31 | 19 | 14 | 65 | 8 | 0 |
+| [Business Process Model](business-processes.md) | 9 | 22 | 19 | 16 | 61 | 5 | 0 |
+| [Actors and Resources Model](actors-and-resources.md) | 10 | 21 | 26 | 17 | 70 | 4 | 0 |
+| [Technical Components and Requirements Model](technical-components.md) | 20 | 66 | 58 | 36 | 163 | 17 | 0 |
 
 ## Elements by scope and status
 
 | Scope | Elements | decided | proposed | open |
 | --- | --- | --- | --- | --- |
-| The organisation | 90 | 60 | 29 | 1 |
-| [tsukuri (the compiler)](products/tsukuri.md) | 233 | 82 | 135 | 16 |
-| [tsukuri studio](products/studio.md) | 199 | 78 | 107 | 14 |
-| [foldkit-flow](products/foldkit-flow.md) | 137 | 47 | 75 | 15 |
+| The organisation | 90 | 89 | 0 | 1 |
+| [tsukuri (the compiler)](products/tsukuri.md) | 233 | 222 | 9 | 2 |
+| [tsukuri studio](products/studio.md) | 199 | 184 | 13 | 2 |
+| [foldkit-flow](products/foldkit-flow.md) | 137 | 114 | 21 | 2 |
 
 ## Elements by kind
 
 | Kind | Sub-model | decided | proposed | open |
 | --- | --- | --- | --- | --- |
-| Goal | Goals Model | 48 | 17 | 1 |
-| Problem | Goals Model | 24 | 6 | 37 |
-| Constraint | Goals Model | 16 | 11 | 2 |
-| Opportunity | Goals Model | 8 | 9 | 0 |
-| Business rule | Business Rules Model | 34 | 53 | 0 |
-| Concept | Concepts Model | 45 | 28 | 0 |
-| Process | Business Process Model | 12 | 43 | 1 |
-| External process | Business Process Model | 2 | 6 | 2 |
-| Actor | Actors and Resources Model | 10 | 24 | 0 |
-| Resource | Actors and Resources Model | 10 | 30 | 0 |
-| Information system goal | Technical Components and Requirements Model | 8 | 8 | 0 |
-| Technical component | Technical Components and Requirements Model | 24 | 54 | 0 |
-| Requirement | Technical Components and Requirements Model | 26 | 57 | 3 |
+| Goal | Goals Model | 64 | 2 | 0 |
+| Problem | Goals Model | 58 | 2 | 7 |
+| Constraint | Goals Model | 27 | 2 | 0 |
+| Opportunity | Goals Model | 16 | 1 | 0 |
+| Business rule | Business Rules Model | 85 | 2 | 0 |
+| Concept | Concepts Model | 65 | 8 | 0 |
+| Process | Business Process Model | 51 | 5 | 0 |
+| External process | Business Process Model | 10 | 0 | 0 |
+| Actor | Actors and Resources Model | 34 | 0 | 0 |
+| Resource | Actors and Resources Model | 36 | 4 | 0 |
+| Information system goal | Technical Components and Requirements Model | 15 | 1 | 0 |
+| Technical component | Technical Components and Requirements Model | 75 | 3 | 0 |
+| Requirement | Technical Components and Requirements Model | 73 | 13 | 0 |
 
 ## Inter-model links
 

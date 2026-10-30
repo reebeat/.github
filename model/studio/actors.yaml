@@ -7,11 +7,8 @@ elements:
     statement: >-
       A person who opens a story in the editor, looks at its graph and timeline, and edits it. This is the creator persona
       at work in studio.
-    status: proposed
-    rationale: >-
-      The README says people edit stories in studio. The org model names the creator persona, and the link to this role is
-      an inference. The operator must confirm the persona.
-    source: [studio:README.md:3, studio:docs/specs/0001-first-felt-journey.md:11-13]
+    status: decided
+    source: [studio:README.md:3, studio:docs/specs/0001-first-felt-journey.md:11-13, log:118]
     links:
       part-of: [actor-creator]
       performs:
@@ -32,11 +29,8 @@ elements:
     statement: >-
       A person who records the voice of a story, picks the best take and ties the cut pieces to beat events. This is the
       presenter persona at work in studio.
-    status: proposed
-    rationale: >-
-      The operator named recording narration in a deck view (log line 45). Linking it to the presenter persona is an
-      inference. The operator must confirm the persona.
-    source: [log:45, studio:docs/design/lenses.md:36-41]
+    status: decided
+    source: [log:45, studio:docs/design/lenses.md:36-41, log:118]
     links:
       part-of: [actor-presenter]
       performs: [process-studio-record-narration, process-studio-cut-narration]
@@ -50,11 +44,8 @@ elements:
     statement: >-
       A person who connects an agent of their choice to studio's editing tools and sets what the agent may do. This is the
       agent operator persona at work in studio.
-    status: proposed
-    rationale: >-
-      The operator wants users to bring their own agents (log line 43). The scopes they set are the lenses note's design.
-      The persona link is an inference. The operator should confirm the role mapping and the scope model.
-    source: [log:43, studio:docs/design/lenses.md:91-99]
+    status: decided
+    source: [log:43, studio:docs/design/lenses.md:91-99, log:118]
     links:
       part-of: [actor-agent-operator]
       performs: [process-studio-collaborate-merge]
@@ -67,11 +58,8 @@ elements:
     title: Collaborator on a shared story
     statement: >-
       A person who edits the same story as others through the sync server. Their suggested edits wait for a person's decision.
-    status: proposed
-    rationale: >-
-      The operator wants human and human collaboration (log line 45). The role name and its suggestion flow come from the
-      lenses note. The operator should confirm the role and the suggestion flow.
-    source: [log:45, studio:docs/design/lenses.md:67-69]
+    status: decided
+    source: [log:45, studio:docs/design/lenses.md:67-69, log:118]
     links:
       performs: [process-studio-collaborate-merge]
       serves: [goal-studio-collaboration]
@@ -96,11 +84,8 @@ elements:
     title: Contributor who writes a spec and its pull request
     statement: >-
       A human or an agent who writes a spec, builds it on its own branch and opens one pull request.
-    status: proposed
-    rationale: >-
-      Observed in the repository: spec 0000 and AGENTS.md describe the contributor's steps. The spec header says the operator
-      assigned the lifecycle as a whole. The operator must confirm the role.
-    source: [studio:docs/specs/0000-development-lifecycle.md:14, studio:AGENTS.md:13]
+    status: decided
+    source: [studio:docs/specs/0000-development-lifecycle.md:14, studio:AGENTS.md:13, log:118]
     links:
       part-of: [actor-contributor-agent]
       performs: [process-studio-pr-review-loop]
@@ -113,11 +98,8 @@ elements:
     statement: >-
       A reviewer judges the plan, the code and their agreement, and runs the verify skill for the changed behaviour. A
       reviewer is never the author of the head.
-    status: proposed
-    rationale: >-
-      Observed in the repository: spec 0003 and AGENTS.md describe the reviewer's work. The spec header says the operator
-      assigned the review procedures as a whole, which does not decide this role. The operator must confirm it.
-    source: [studio:AGENTS.md:17, studio:docs/specs/0003-review-and-verify-skills.md:22-24]
+    status: decided
+    source: [studio:AGENTS.md:17, studio:docs/specs/0003-review-and-verify-skills.md:22-24, log:118]
     links:
       part-of: [actor-contributor-agent]
       performs: [process-studio-pr-review-loop, process-studio-verify-journey]
@@ -181,11 +163,8 @@ elements:
     statement: >-
       Tsukuri owns the story IR, the vocabulary and the Deck and Video renderers. Studio consumes them and builds none of
       them.
-    status: proposed
-    rationale: >-
-      Observed in the repository: the README and AGENTS.md state this boundary. The operator log decides that the compiler
-      and its formats are open (log:43), not the exact boundary. The operator must confirm it.
-    source: [studio:AGENTS.md:3, studio:README.md:3, log:43]
+    status: decided
+    source: [studio:AGENTS.md:3, studio:README.md:3, log:43, log:118]
     links:
       serves: [goal-studio-vision]
     canvas: [key-resources, key-partners]
@@ -241,11 +220,8 @@ elements:
     title: loro-crdt 1.17.1 under the MIT licence
     statement: >-
       The spike used loro-crdt 1.17.1, which is under the MIT licence. It is the release the studio spec plans to use.
-    status: proposed
-    rationale: >-
-      Observed in the repository: spec 0002 pins the release and its licence. The operator chose Loro (log:47) but not a
-      release. The operator must confirm the pin.
-    source: [studio:docs/specs/0002-collaboration-spike.md:23, studio:docs/specs/0002-collaboration-spike.md:43]
+    status: decided
+    source: [studio:docs/specs/0002-collaboration-spike.md:23, studio:docs/specs/0002-collaboration-spike.md:43, log:118]
     links:
       serves: [goal-studio-collaboration]
 
@@ -272,11 +248,8 @@ elements:
     statement: >-
       Alchemy declares the Cloudflare resources. At the pinned commit studio does not use it yet, and the web deploy needs a
       newer release.
-    status: proposed
-    rationale: >-
-      Spec 0000 says Alchemy v2 is not used yet and PR 6 prepares its use. The operator's stack default names Alchemy, but
-      studio's use is not decided. The operator should confirm Alchemy for the deploy.
-    source: [studio:docs/specs/0000-development-lifecycle.md:34, pr:studio#6]
+    status: decided
+    source: [studio:docs/specs/0000-development-lifecycle.md:34, pr:studio#6, log:118]
     links:
       serves: [goal-studio-web-and-binary]
     canvas: [key-partners]
@@ -313,11 +286,8 @@ elements:
     statement: >-
       The preview uses tsukuri's committed speech cache or a silent stand-in narrator. Making speech needs tools that do not
       run in a browser.
-    status: proposed
-    rationale: >-
-      Spec 0001 states this as a stand-in for the first journey. Hosted speech is out of scope until demand shows (log:104).
-      The operator should confirm the stand-in.
-    source: [studio:docs/specs/0001-first-felt-journey.md:26, studio:docs/specs/0001-first-felt-journey.md:56]
+    status: decided
+    source: [studio:docs/specs/0001-first-felt-journey.md:26, studio:docs/specs/0001-first-felt-journey.md:56, log:118]
     links:
       serves: [goal-studio-deck-view-narration]
 
@@ -328,11 +298,8 @@ elements:
     statement: >-
       The specs 0000 to 0003 and the lenses note record the plan, the evidence and the revisions. STATE.md says which spec
       is active.
-    status: proposed
-    rationale: >-
-      Observed in the repository: the README and STATE.md name these documents. The spec header says the operator assigned
-      the lifecycle as a whole, which does not decide the inventory. The operator must confirm it.
-    source: [studio:README.md:19-21, studio:STATE.md:7]
+    status: decided
+    source: [studio:README.md:19-21, studio:STATE.md:7, log:118]
     links:
       serves: [goal-studio-checked-change]
 
@@ -343,11 +310,8 @@ elements:
     statement: >-
       The throwaway measurement code and raw outputs live on the branch spike/collaboration-code. They back every number in
       spec 0002.
-    status: proposed
-    rationale: >-
-      The branch and its commit are named in spec 0002. No line records the operator accepting it as a kept resource. The
-      operator should confirm whether the spike code stays as a resource.
-    source: [studio:docs/specs/0002-collaboration-spike.md:32]
+    status: decided
+    source: [studio:docs/specs/0002-collaboration-spike.md:32, log:118]
     links:
       serves: [goal-studio-collaboration]
 
@@ -357,12 +321,8 @@ elements:
     title: GitHub Actions checks
     statement: >-
       A workflow runs each gate as its own step on every pull request and push to main. The check named checks must pass.
-    status: proposed
-    rationale: >-
-      Observed in the repository: spec 0000 builds the workflow and AGENTS.md names the check. The spec header names branch
-      protection like tsukuri's among the operator's assignment, which does not decide the workflow. The operator must
-      confirm it.
-    source: [studio:.github/workflows/checks.yml:16-18, studio:AGENTS.md:20]
+    status: decided
+    source: [studio:.github/workflows/checks.yml:16-18, studio:AGENTS.md:20, log:118]
     links:
       serves: [goal-studio-checked-change]
 
@@ -372,11 +332,8 @@ elements:
     title: The host Chromium for browser runs
     statement: >-
       devenv has no browser. The verify skill and browser smoke runs use the Chromium on the host machine.
-    status: proposed
-    rationale: >-
-      The choice follows from devenv having no Chromium (itself a proposal). The verify skill says a host Chromium must be
-      on the path. The operator should confirm that the host Chromium is the intended verification dependency.
-    source: [studio:docs/specs/0000-development-lifecycle.md:120, studio:.agents/skills/verify-studio/features/README.md:25]
+    status: decided
+    source: [studio:docs/specs/0000-development-lifecycle.md:120, studio:.agents/skills/verify-studio/features/README.md:25, log:118]
     links:
       serves: [goal-studio-checked-change]
 

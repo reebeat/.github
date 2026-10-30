@@ -1,0 +1,16 @@
+{
+ "base": "feat/0004-final-name-decision",
+ "advised": 342,
+ "moved": {
+  "proposed -> decided": 303,
+  "open -> decided": 39
+ },
+ "recordsOnlyRatified": 34,
+ "expectedRecordsOnly": 34,
+ "statusesAfter": {
+  "decided": 609,
+  "proposed": 43,
+  "open": 7
+ },
+ "problems": 0
+}

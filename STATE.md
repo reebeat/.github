@@ -8,7 +8,7 @@ Spec 0000 (the intent model and its generated documents) and spec 0001 (model co
 
 Next:
 
-- The operator confirms or rejects the `proposed` elements: `docs/confirm.md` lists them with the lead's advice (`model/triage.yaml`).
+- The operator confirms or rejects the 50 elements that still wait (`docs/confirm.md`).
 - The operator decided on 2026-10-30 to publish `@tsukuri/*` without waiting for the Norwegian IP advisor (log line 118); the compiler's release hold is the operator's to lift.
 - Follow-ups for the product repositories come from `docs/gaps.md`; the lead files them.
 - Refresh the tracker snapshot (`bun run tracker:refresh`, then `bun run generate`) when cited issues or pull requests change.
