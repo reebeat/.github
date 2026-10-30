@@ -7,7 +7,7 @@
 //   issue:<repo>#<n>[@<comment id>]         a GitHub issue (or one of its comments)
 //   pr:<repo>#<n>[@<comment id>]            a GitHub pull request (or one of its comments)
 //
-// <repo> is `reebeat`, `studio` or `foldkit-flow`.
+// <repo> is `tsukuri`, `studio` or `foldkit-flow`.
 import { Array as Arr, Option } from "effect";
 
 import { repoKeys, repoSlugs } from "./vocabulary.ts";

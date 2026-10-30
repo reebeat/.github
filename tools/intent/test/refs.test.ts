@@ -27,12 +27,12 @@ describe("source grammar", () => {
 
   it("parses a file line, a record line and an absence", () => {
     assert.deepStrictEqual(
-      Option.getOrNull(parseSource("reebeat:README.md:12")),
+      Option.getOrNull(parseSource("tsukuri:README.md:12")),
       {
         from: 12,
         kind: "file",
         path: "README.md",
-        repo: "reebeat",
+        repo: "tsukuri",
         to: 12,
       }
     );
@@ -49,13 +49,13 @@ describe("source grammar", () => {
 
   it("parses issues, pull requests and comments", () => {
     const comment = Option.getOrNull(
-      parseSource("issue:reebeat#19@6503203735")
+      parseSource("issue:tsukuri#19@6503203735")
     );
 
     assert.strictEqual(comment?.kind, "issue");
     assert.strictEqual(
       sourceLabel(comment ?? { from: 1, kind: "log", to: 1 }),
-      "issue reebeat#19"
+      "issue tsukuri#19"
     );
     assert.strictEqual(
       Option.getOrNull(parseSource("pr:studio#6"))?.kind,
@@ -70,8 +70,8 @@ describe("source grammar", () => {
       "log:0",
       "log:5-3",
       "nowhere:README.md:1",
-      "reebeat:README.md",
-      "issue:reebeat#x",
+      "tsukuri:README.md",
+      "issue:tsukuri#x",
     ]) {
       assert.isTrue(Option.isNone(parseSource(text)), text);
     }
@@ -79,19 +79,19 @@ describe("source grammar", () => {
 
   it("counts only the log and recorded decisions as operator decisions", () => {
     assert.isTrue(decision("log:7"));
-    assert.isTrue(decision("record:reebeat:docs/a.md:3"));
-    assert.isFalse(decision("reebeat:docs/a.md:3"));
-    assert.isFalse(decision("issue:reebeat#7"));
-    assert.isFalse(decision("absent:reebeat:SECURITY.md"));
+    assert.isTrue(decision("record:tsukuri:docs/a.md:3"));
+    assert.isFalse(decision("tsukuri:docs/a.md:3"));
+    assert.isFalse(decision("issue:tsukuri#7"));
+    assert.isFalse(decision("absent:tsukuri:SECURITY.md"));
   });
 });
 
 describe("ref grammar", () => {
   it("accepts issues, pull requests and spec files, and nothing else", () => {
-    assert.isTrue(Option.isSome(parseRef("issue:reebeat#7")));
-    assert.isTrue(Option.isSome(parseRef("pr:reebeat#18")));
-    assert.isTrue(Option.isSome(parseRef("reebeat:docs/specs/0007-x.md:1")));
-    assert.isTrue(Option.isNone(parseRef("reebeat:README.md:1")));
+    assert.isTrue(Option.isSome(parseRef("issue:tsukuri#7")));
+    assert.isTrue(Option.isSome(parseRef("pr:tsukuri#18")));
+    assert.isTrue(Option.isSome(parseRef("tsukuri:docs/specs/0007-x.md:1")));
+    assert.isTrue(Option.isNone(parseRef("tsukuri:README.md:1")));
     assert.isTrue(Option.isNone(parseRef("log:3")));
   });
 });

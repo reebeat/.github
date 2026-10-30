@@ -3,7 +3,7 @@ elements:
     kind: goal
     title: Multimedia that authors declare and tools rebuild
     statement: >-
-      People make multimedia by declaring its narrative and structure. reebeat builds the artifacts, so they stay
+      People make multimedia by declaring its narrative and structure. tsukuri builds the artifacts, so they stay
       accessible and reproducible and are rebuilt as the author edits.
     tagline: "Declarative multimedia: accessible, reproducible, rebuilt as you edit."
     intentLine: "We take care of building; you focus on creating."
@@ -11,7 +11,7 @@ elements:
       Semantically declared story beats, compiled into multimedia artifacts: statecharts for structure, functional
       reactive time, and an incremental build graph, written in Effect.
     elevator: >-
-      You declare the story's beats and what they mean; reebeat derives motion, timing and every artifact, reproducibly,
+      You declare the story's beats and what they mean; tsukuri derives motion, timing and every artifact, reproducibly,
       rebuilding only what an edit changes.
     status: decided
     source: [log:7, log:9, log:10, log:60-61]
@@ -171,7 +171,7 @@ elements:
       written before the threshold is met. The repositories read hold no measure of demand yet, so this work is still to
       do.
     status: decided
-    source: [log:79, reebeat:docs/design/open-core-boundary.md:69]
+    source: [log:79, tsukuri:docs/design/open-core-boundary.md:69]
     links:
       hinders: [goal-org-sustainable-funding]
 
@@ -180,7 +180,7 @@ elements:
     title: The lifecycle toolchain is copied into every repository
     statement: >-
       The four repositories keep their own copies of the lifecycle toolchain (hooks, scripts and CI), each with a
-      provenance note. A drift test in `reebeat/.github` compares blob hashes of the files that should be identical and
+      provenance note. A drift test in `tsukuri-labs/.github` compares blob hashes of the files that should be identical and
       fails on a difference; unifying the copies stays manual. The test does not exist yet.
     status: decided
     source: [log:80, studio:PROVENANCE.md:3, foldkit-flow:PROVENANCE.md:3]
@@ -188,25 +188,25 @@ elements:
       hinders: [comp-org-lifecycle-toolchain]
     gap:
       repo: org
-      fix: Add a script to reebeat/.github that compares blob hashes of the files that should be identical across the four repositories and fails on a difference.
+      fix: Add a script to tsukuri-labs/.github that compares blob hashes of the files that should be identical across the four repositories and fails on a difference.
 
   - id: problem-org-no-written-roadmap
     kind: problem
     title: The product READMEs do not link the generated roadmap
     statement: >-
-      The roadmap is generated in the `reebeat/.github` repository (`docs/roadmap.md`) and linked from the organisation
-      profile. The READMEs of reebeat and studio do not link it, and neither contains the word "roadmap". The root of
+      The roadmap is generated in the `tsukuri-labs/.github` repository (`docs/roadmap.md`) and linked from the organisation
+      profile. The READMEs of tsukuri and studio do not link it, and neither contains the word "roadmap". The root of
       both repositories has no ROADMAP file.
     status: open
     rationale: >-
-      Checked at the pinned commits of reebeat and studio. Issues 19 and 20 of reebeat are roadmap entries kept as
+      Checked at the pinned commits of tsukuri and studio. Issues 19 and 20 of tsukuri are roadmap entries kept as
       issues. The gap is one link in each README. The operator should confirm that the generated roadmap is the place
       to link.
     source:
-      ["absent:reebeat:ROADMAP.md", "absent:studio:ROADMAP.md", "reebeat:README.md:1", "studio:README.md:1"]
+      ["absent:tsukuri:ROADMAP.md", "absent:studio:ROADMAP.md", "tsukuri:README.md:1", "studio:README.md:1"]
     gap:
-      repo: reebeat
-      fix: Link the generated roadmap of the reebeat/.github repository from the README of reebeat and of studio.
+      repo: tsukuri
+      fix: Link the generated roadmap of the tsukuri-labs/.github repository from the README of tsukuri and of studio.
 
   - id: constraint-org-apache-2
     kind: constraint
@@ -216,7 +216,7 @@ elements:
       The compiler and its formats are licensed under Apache-2.0. The copyright holder is the operator as an individual;
       contributions stay with their authors under the same licence.
     status: decided
-    source: [log:44, record:reebeat:docs/design/open-core-boundary.md:64]
+    source: [log:44, record:tsukuri:docs/design/open-core-boundary.md:64]
     links:
       hinders: [goal-org-sustainable-funding]
 
@@ -229,7 +229,7 @@ elements:
       if a product ever bundles it (issue 7).
     status: decided
     source: [log:50, log:78]
-    refs: ["issue:reebeat#7"]
+    refs: ["issue:tsukuri#7"]
     links:
       hinders: [goal-org-product-family]
 
@@ -247,8 +247,8 @@ elements:
     source:
       - log:75
       - log:113
-      - reebeat:README.md:42
-      - reebeat:docs/design/open-core-boundary.md:68
+      - tsukuri:README.md:42
+      - tsukuri:docs/design/open-core-boundary.md:68
 
   - id: opportunity-org-one-declaration-many-surfaces
     kind: opportunity
@@ -260,7 +260,7 @@ elements:
     rationale: >-
       Proposed in comments on issue 19. The operator's log states the interaction model (lines 37 to 39) but not this
       slogan or the capability negotiation it needs.
-    source: [log:37-39, "issue:reebeat#19@6503203735"]
+    source: [log:37-39, "issue:tsukuri#19@6503203735"]
     links:
       supports: [goal-org-interactive-multimedia]
 
@@ -274,7 +274,7 @@ elements:
     rationale: >-
       The operator names accessibility as the project's power (log line 10). That derived variants beat hand-made ones
       is an inference from issue 12, not an operator statement.
-    source: [log:10, "issue:reebeat#12"]
+    source: [log:10, "issue:tsukuri#12"]
     links:
       supports: [goal-org-accessible-artifacts]
 
@@ -292,14 +292,14 @@ elements:
   - id: constraint-org-ffmpeg-process-boundary
     kind: constraint
     constraintType: legal
-    title: reebeat calls ffmpeg as a separate process
+    title: tsukuri calls ffmpeg as a separate process
     statement: >-
-      For now reebeat keeps libx264 and never bundles ffmpeg: it runs the user's own ffmpeg (or the devenv one) as a
-      separate process, so the GPL of ffmpeg does not reach the reebeat code. A hosted service does not distribute ffmpeg.
+      For now tsukuri keeps libx264 and never bundles ffmpeg: it runs the user's own ffmpeg (or the devenv one) as a
+      separate process, so the GPL of ffmpeg does not reach the tsukuri code. A hosted service does not distribute ffmpeg.
       In future, several encoders may sit behind an adapter. If a product ever bundles ffmpeg, it takes on GPL duties for
       that binary.
     status: decided
-    source: [log:78, reebeat:docs/design/third-party.md:5-12]
-    refs: ["issue:reebeat#7"]
+    source: [log:78, tsukuri:docs/design/third-party.md:5-12]
+    refs: ["issue:tsukuri#7"]
     links:
       hinders: [goal-org-product-family]

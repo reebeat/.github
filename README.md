@@ -1,6 +1,6 @@
-# reebeat/.github
+# tsukuri-labs/.github
 
-The organisation profile of [reebeat](https://github.com/reebeat), and the model of the intent behind its products: why they exist, what they must do, who they are for, and what is still undecided.
+The organisation profile of [tsukuri](https://github.com/tsukuri-labs), and the model of the intent behind its products: why they exist, what they must do, who they are for, and what is still undecided.
 
 - [`profile/README.md`](profile/README.md) is the page that GitHub shows on the organisation.
 - [`docs/README.md`](docs/README.md) is the index of the model: the six sub-model pages (goals, business rules, concepts, business processes, actors and resources, technical components and requirements), one page per product, the business-model canvas, the roadmap and the gap report.

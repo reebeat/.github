@@ -7,7 +7,7 @@ Binding for: the PR that carries this file. Builds on [spec 0000](0000-intent-mo
 
 Make the merged model true again, and make the same faults impossible to repeat:
 
-1. **Cut text.** Nine rationales in `model/reebeat/` stopped at the first ` #`: a plain YAML scalar ends there, so `rationale: Issue #15 reports it` decoded to "Issue", and `docs/confirm.md` showed "Issue" as the reason. A tenth, in `model/foldkit-flow/`, was cut the same way. The model must fail to load when text is cut like this, and a check must catch text that stops at a dangling word.
+1. **Cut text.** Nine rationales in `model/tsukuri/` stopped at the first ` #`: a plain YAML scalar ends there, so `rationale: Issue #15 reports it` decoded to "Issue", and `docs/confirm.md` showed "Issue" as the reason. A tenth, in `model/foldkit-flow/`, was cut the same way. The model must fail to load when text is cut like this, and a check must catch text that stops at a dangling word.
 2. **The Fountain decision.** The operator added lines 67 to 69 to the decision log: Fountain is both an importer (a screenplay becomes a story) and an artifact renderer (a story becomes a screenplay), and it is not the persistent IR. The copy of the log in `sources/` is updated, and the elements that said "one Fountain file is the source" or "Fountain is only an artifact" say what the log says.
 3. **A new pin.** The product repositories moved. `model/sources.yaml` pins their current mains; every citation follows; the elements that the move made stale are corrected (the triage files of the lead name them).
 4. **A fresh tracker.**
@@ -41,7 +41,7 @@ lead / operator
 | Status diff | `bun run status:diff [--ref <ref>]` (`tools/intent/src/statusDiff.ts`) compares every element's status with its status at a git ref (default `main`) and exits 1 when an element that exists on both sides has another status. |
 | The ten cut values | quoted. |
 | The log | `sources/operator-decisions-2026-10.md` equals the operator's file (69 lines). |
-| The pins | reebeat `82ee66f`, studio `d4fd75e` (unchanged), foldkit-flow `8124d5b`. |
+| The pins | tsukuri `82ee66f`, studio `d4fd75e` (unchanged), foldkit-flow `8124d5b`. |
 | The corrections | see the PR body and the diff of `model/`. |
 | The tracker | `model/tracker.yaml` refreshed. |
 
@@ -73,4 +73,4 @@ The raw output of the controls is in `docs/specs/0001-evidence/`.
 Dated entries. A spec is revised only here; its text above is never edited silently after the PR opens.
 
 - **2026-10-29, plan written** with the build.
-- **2026-10-29, review round 1** (three findings). (a) The figures of the PR (191 reebeat and 64 foldkit-flow citations renumbered, 20 re-read; the npm facts) now have their commands and raw output in `docs/specs/0001-evidence/`: `remap.sh` with `remap.ts.txt` and `remap.txt`, and `registry.sh` with `registry.txt`. (b) F5 compared the log copy with the live log, which has grown; it now compares with the SHA-256 of the 69-line log that this spec copied (`controls.sh`). The limit: the pin proves the copy is the log of 2026-10-29, not that the operator's file is unchanged since. (c) `status:diff` also fails when an element is added as `decided` (a decision cannot arrive as a new element); `--allow-added-decided` lets a PR that records a real decision pass, and the PR says why.
+- **2026-10-29, review round 1** (three findings). (a) The figures of the PR (191 tsukuri and 64 foldkit-flow citations renumbered, 20 re-read; the npm facts) now have their commands and raw output in `docs/specs/0001-evidence/`: `remap.sh` with `remap.ts.txt` and `remap.txt`, and `registry.sh` with `registry.txt`. (b) F5 compared the log copy with the live log, which has grown; it now compares with the SHA-256 of the 69-line log that this spec copied (`controls.sh`). The limit: the pin proves the copy is the log of 2026-10-29, not that the operator's file is unchanged since. (c) `status:diff` also fails when an element is added as `decided` (a decision cannot arrive as a new element); `--allow-added-decided` lets a PR that records a real decision pass, and the PR says why.

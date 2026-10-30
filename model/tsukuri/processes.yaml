@@ -1,6 +1,6 @@
 elements:
   # ------------------------------------------------- the creation journey
-  - id: process-reebeat-author-story
+  - id: process-tsukuri-author-story
     kind: process
     category: primary
     title: Author a story
@@ -12,17 +12,17 @@ elements:
       Spec plan: spec 0001 and the screenplay-first revision describe this step. The operator decided that the source is
       one Fountain file, not the effects-block syntax or the explicit-id rules, so confirm the detail.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213
-      - reebeat:README.md:3
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:61-80
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213
+      - tsukuri:README.md:3
+      - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:61-80
     canvas: [key-activities]
     links:
-      serves: [goal-reebeat-screenplay-first]
-      produces: [concept-reebeat-screenplay]
-      uses: [resource-reebeat-fountain-format]
-      next: [process-reebeat-parse-story]
+      serves: [goal-tsukuri-screenplay-first]
+      produces: [concept-tsukuri-screenplay]
+      uses: [resource-tsukuri-fountain-format]
+      next: [process-tsukuri-parse-story]
 
-  - id: process-reebeat-select-adapters
+  - id: process-tsukuri-select-adapters
     kind: process
     category: supporting
     title: Select the adapters
@@ -30,16 +30,16 @@ elements:
       Adapter selection is explicit configuration read at the composition root. It never falls back silently.
     status: decided
     source:
-      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
-      - reebeat:README.md:23
-      - reebeat:AGENTS.md:63
-      - reebeat:packages/services/src/selection.ts:1-4
+      - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
+      - tsukuri:README.md:23
+      - tsukuri:AGENTS.md:63
+      - tsukuri:packages/services/src/selection.ts:1-4
     links:
-      serves: [goal-reebeat-correct-by-construction, goal-reebeat-visible-egress]
-      uses: [concept-reebeat-selection]
-      next: [process-reebeat-parse-story]
+      serves: [goal-tsukuri-correct-by-construction, goal-tsukuri-visible-egress]
+      uses: [concept-tsukuri-selection]
+      next: [process-tsukuri-parse-story]
 
-  - id: process-reebeat-parse-story
+  - id: process-tsukuri-parse-story
     kind: process
     category: primary
     title: Parse the screenplay
@@ -51,38 +51,38 @@ elements:
       Spec plan: spec 0001 sets out the parser adapter and the closed vocabulary. The operator has not decided each error
       and line-number rule, so confirm the detail.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:32
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:64-66
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:32
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:64-66
     canvas: [key-activities]
     links:
-      serves: [goal-reebeat-explicit-source]
-      uses: [concept-reebeat-screenplay]
-      produces: [concept-reebeat-story]
-      next: [process-reebeat-build-plan]
+      serves: [goal-tsukuri-explicit-source]
+      uses: [concept-tsukuri-screenplay]
+      produces: [concept-tsukuri-story]
+      next: [process-tsukuri-build-plan]
 
-  - id: process-reebeat-build-plan
+  - id: process-tsukuri-build-plan
     kind: process
     category: primary
     title: Build the Plan
     statement: >-
-      The compiler runs the identity diff and the reference checks over the Story and writes the Plan. `reebeat plan`
+      The compiler runs the identity diff and the reference checks over the Story and writes the Plan. `tsukuri plan`
       prints it and needs no audio and no browser.
     status: proposed
     rationale: >-
-      Spec plan: the design names the Plan as a stage and `reebeat plan` as its output. The operator has not decided the
+      Spec plan: the design names the Plan as a stage and `tsukuri plan` as its output. The operator has not decided the
       exact compilation steps, so confirm them.
     source:
-      - reebeat:docs/design/keyframe-engine.md:1112
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:28
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:66
+      - tsukuri:docs/design/keyframe-engine.md:1112
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:28
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:66
     canvas: [key-activities]
     links:
-      serves: [goal-reebeat-deck-and-video, goal-reebeat-statechart-model]
-      uses: [concept-reebeat-identity-diff]
-      produces: [concept-reebeat-plan]
-      next: [process-reebeat-review-plan, process-reebeat-speech-stage]
+      serves: [goal-tsukuri-deck-and-video, goal-tsukuri-statechart-model]
+      uses: [concept-tsukuri-identity-diff]
+      produces: [concept-tsukuri-plan]
+      next: [process-tsukuri-review-plan, process-tsukuri-speech-stage]
 
-  - id: process-reebeat-review-plan
+  - id: process-tsukuri-review-plan
     kind: process
     category: supporting
     title: Review the Plan
@@ -94,13 +94,13 @@ elements:
       Spec plan: the design and spec 0002 describe a reviewer reading the Plan before media is built. The operator has not
       decided this review step or the fields it lists, so confirm it.
     source:
-      - reebeat:docs/design/keyframe-engine.md:1112
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:123
+      - tsukuri:docs/design/keyframe-engine.md:1112
+      - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:123
     links:
-      serves: [goal-reebeat-deck-and-video, goal-reebeat-verified-output]
-      uses: [concept-reebeat-plan]
+      serves: [goal-tsukuri-deck-and-video, goal-tsukuri-verified-output]
+      uses: [concept-tsukuri-plan]
 
-  - id: process-reebeat-speech-stage
+  - id: process-tsukuri-speech-stage
     kind: process
     category: primary
     title: Make or reuse the narration audio
@@ -114,17 +114,17 @@ elements:
       packages/cli/src/build.ts:26-31 at the pinned commit refills a miss when refreshing, or always for the `silent`
       stand-in. The operator has not decided those details, so confirm them and the stand-in exception.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:78
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:261
-      - reebeat:packages/cli/src/build.ts:26-31
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:78
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:261
+      - tsukuri:packages/cli/src/build.ts:26-31
     canvas: [key-activities]
     links:
-      serves: [goal-reebeat-reproducible-builds, goal-reebeat-incremental-builds]
-      uses: [resource-reebeat-kokoro-model, resource-reebeat-whisper-cpp]
-      produces: [resource-reebeat-speech-cache]
-      next: [process-reebeat-schedule]
+      serves: [goal-tsukuri-reproducible-builds, goal-tsukuri-incremental-builds]
+      uses: [resource-tsukuri-kokoro-model, resource-tsukuri-whisper-cpp]
+      produces: [resource-tsukuri-speech-cache]
+      next: [process-tsukuri-schedule]
 
-  - id: process-reebeat-schedule
+  - id: process-tsukuri-schedule
     kind: process
     category: primary
     title: Schedule the Timeline
@@ -136,16 +136,16 @@ elements:
       Spec plan: spec 0002 describes the schedule stage. The operator picked the effects syntax, not the integer-frame
       scheduling, so confirm the detail.
     source:
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:34
-      - reebeat:packages/core/src/schedule.ts:1-8
+      - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:34
+      - tsukuri:packages/core/src/schedule.ts:1-8
     canvas: [key-activities]
     links:
-      serves: [goal-reebeat-event-timing]
-      uses: [concept-reebeat-anchor]
-      produces: [concept-reebeat-timeline]
-      next: [process-reebeat-render-deck]
+      serves: [goal-tsukuri-event-timing]
+      uses: [concept-tsukuri-anchor]
+      produces: [concept-tsukuri-timeline]
+      next: [process-tsukuri-render-deck]
 
-  - id: process-reebeat-render-deck
+  - id: process-tsukuri-render-deck
     kind: process
     category: primary
     title: Render the Deck
@@ -157,17 +157,17 @@ elements:
       Spec plan: the operator decided only that sounds ride along in the Deck (spec 0002 line 161). The rest of the Deck
       rendering comes from the README and spec 0001, so confirm it.
     source:
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:162
-      - reebeat:README.md:5
-      - reebeat:packages/pipeline/src/buildProgram.ts:5-7
+      - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:162
+      - tsukuri:README.md:5
+      - tsukuri:packages/pipeline/src/buildProgram.ts:5-7
     canvas: [key-activities]
     links:
-      serves: [goal-reebeat-deck-and-video]
-      uses: [resource-reebeat-reveal-js]
-      produces: [concept-reebeat-deck]
-      next: [process-reebeat-capture-frames]
+      serves: [goal-tsukuri-deck-and-video]
+      uses: [resource-tsukuri-reveal-js]
+      produces: [concept-tsukuri-deck]
+      next: [process-tsukuri-capture-frames]
 
-  - id: process-reebeat-capture-frames
+  - id: process-tsukuri-capture-frames
     kind: process
     category: primary
     title: Capture the frames
@@ -178,15 +178,15 @@ elements:
       Spec plan: spec 0001 and the README describe capture in Chromium on a virtual clock. The operator has not decided
       the one-screenshot-per-frame mechanism, so confirm it.
     source:
-      - reebeat:README.md:6
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:86
+      - tsukuri:README.md:6
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:86
     canvas: [key-activities]
     links:
-      serves: [goal-reebeat-reproducible-builds, goal-reebeat-deck-and-video]
-      uses: [resource-reebeat-chromium]
-      next: [process-reebeat-encode-video]
+      serves: [goal-tsukuri-reproducible-builds, goal-tsukuri-deck-and-video]
+      uses: [resource-tsukuri-chromium]
+      next: [process-tsukuri-encode-video]
 
-  - id: process-reebeat-encode-video
+  - id: process-tsukuri-encode-video
     kind: process
     category: primary
     title: Encode and mux the Video
@@ -198,16 +198,16 @@ elements:
       Spec plan: spec 0001 and the README describe the mix, subtitles, chapters, title and source hash. The operator has
       not decided these details, so confirm them.
     source:
-      - reebeat:README.md:6
-      - reebeat:packages/pipeline/src/buildProgram.ts:5-7
+      - tsukuri:README.md:6
+      - tsukuri:packages/pipeline/src/buildProgram.ts:5-7
     canvas: [key-activities]
     links:
-      serves: [goal-reebeat-deck-and-video, goal-reebeat-accessible-artifacts]
-      uses: [resource-reebeat-ffmpeg]
-      produces: [concept-reebeat-video]
-      next: [process-reebeat-write-manifest]
+      serves: [goal-tsukuri-deck-and-video, goal-tsukuri-accessible-artifacts]
+      uses: [resource-tsukuri-ffmpeg]
+      produces: [concept-tsukuri-video]
+      next: [process-tsukuri-write-manifest]
 
-  - id: process-reebeat-write-manifest
+  - id: process-tsukuri-write-manifest
     kind: process
     category: primary
     title: Write the manifest and commit the build
@@ -219,50 +219,50 @@ elements:
       Spec plan: spec 0001 describes the manifest and the final rename. The operator decided that the output manifest
       records provenance, not the write order, so confirm the detail.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:263
-      - reebeat:packages/pipeline/src/buildProgram.ts:9-11
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:263
+      - tsukuri:packages/pipeline/src/buildProgram.ts:9-11
     links:
-      serves: [goal-reebeat-visible-egress, goal-reebeat-verified-output]
-      next: [process-reebeat-verify-build]
+      serves: [goal-tsukuri-visible-egress, goal-tsukuri-verified-output]
+      next: [process-tsukuri-verify-build]
 
-  - id: process-reebeat-verify-build
+  - id: process-tsukuri-verify-build
     kind: process
     category: supporting
     title: Verify the written build
     statement: >-
-      `reebeat check` reads the written files and the source and gives one verdict per falsifier: effect timing, subtitles,
+      `tsukuri check` reads the written files and the source and gives one verdict per falsifier: effect timing, subtitles,
       notes, fragments, source hash, transitions, narration, chapters and provenance.
     status: proposed
     rationale: >-
-      Spec plan: spec 0001 lists the falsifiers that `reebeat check` reports. The operator has not decided the complete
+      Spec plan: spec 0001 lists the falsifiers that `tsukuri check` reports. The operator has not decided the complete
       list, so confirm it.
     source:
-      - reebeat:README.md:18
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:142
+      - tsukuri:README.md:18
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:142
     canvas: [key-activities]
     links:
-      serves: [goal-reebeat-verified-output]
+      serves: [goal-tsukuri-verified-output]
 
-  - id: process-reebeat-run-journey
+  - id: process-tsukuri-run-journey
     kind: process
     category: supporting
     title: Run the whole journey on one story
     statement: >-
-      `reebeat journey` builds a story, checks the build, builds it again and compares the two for determinism. The first
+      `tsukuri journey` builds a story, checks the build, builds it again and compares the two for determinism. The first
       failure stops it.
     status: proposed
     rationale: >-
       Observed in the repository: the `journey` command and AGENTS.md describe this sequence. The operator has not decided
       the command, so confirm it.
     source:
-      - reebeat:packages/cli/src/journey.ts:1-3
-      - reebeat:AGENTS.md:42
+      - tsukuri:packages/cli/src/journey.ts:1-3
+      - tsukuri:AGENTS.md:42
     links:
-      serves: [goal-reebeat-reproducible-builds, goal-reebeat-verified-output]
-      requires: [process-reebeat-verify-build]
+      serves: [goal-tsukuri-reproducible-builds, goal-tsukuri-verified-output]
+      requires: [process-tsukuri-verify-build]
 
   # ------------------------------------------------------ change and ship
-  - id: process-reebeat-add-adapter
+  - id: process-tsukuri-add-adapter
     kind: process
     category: supporting
     title: Add an adapter
@@ -275,13 +275,13 @@ elements:
       Observed in the repository: AGENTS.md lists these five steps. The operator decided that every adapter passes a
       contract suite, not the checklist, so confirm it.
     source:
-      - reebeat:AGENTS.md:65
-      - reebeat:docs/design/keyframe-engine.md:1225
+      - tsukuri:AGENTS.md:65
+      - tsukuri:docs/design/keyframe-engine.md:1225
     links:
-      serves: [goal-reebeat-plugin-sdk]
-      uses: [concept-reebeat-contract-suite, concept-reebeat-adapter]
+      serves: [goal-tsukuri-plugin-sdk]
+      uses: [concept-tsukuri-contract-suite, concept-tsukuri-adapter]
 
-  - id: process-reebeat-spec-lifecycle
+  - id: process-tsukuri-spec-lifecycle
     kind: process
     category: governance
     title: Take a spec to an open pull request
@@ -293,14 +293,14 @@ elements:
       Spec plan: spec 0000 lists this road. Its header shows the operator accepted the spec as a whole, but not each step,
       so confirm the detail.
     source:
-      - reebeat:docs/specs/0000-development-lifecycle.md:13-21
-      - reebeat:AGENTS.md:13-16
+      - tsukuri:docs/specs/0000-development-lifecycle.md:13-21
+      - tsukuri:AGENTS.md:13-16
     links:
       part-of: [process-org-ship-change]
-      serves: [goal-reebeat-correct-by-construction]
-      next: [extproc-reebeat-github-ci]
+      serves: [goal-tsukuri-correct-by-construction]
+      next: [extproc-tsukuri-github-ci]
 
-  - id: process-reebeat-review-round
+  - id: process-tsukuri-review-round
     kind: process
     category: governance
     title: Hold a recorded review round
@@ -312,14 +312,14 @@ elements:
       Spec plan: spec 0000 describes the reviewer roles and the pass rule. The operator has not decided each detail, so
       confirm it.
     source:
-      - reebeat:docs/specs/0000-development-lifecycle.md:75
-      - reebeat:docs/specs/0000-development-lifecycle.md:79
+      - tsukuri:docs/specs/0000-development-lifecycle.md:75
+      - tsukuri:docs/specs/0000-development-lifecycle.md:79
     links:
       part-of: [process-org-ship-change]
-      serves: [goal-reebeat-correct-by-construction]
-      next: [process-reebeat-guarded-merge]
+      serves: [goal-tsukuri-correct-by-construction]
+      next: [process-tsukuri-guarded-merge]
 
-  - id: process-reebeat-guarded-merge
+  - id: process-tsukuri-guarded-merge
     kind: process
     category: governance
     title: Merge only a head with a passing record
@@ -331,14 +331,14 @@ elements:
       Spec plan: spec 0000 describes the merge script and branch protection. The operator has not decided each condition,
       so confirm it.
     source:
-      - reebeat:docs/specs/0000-development-lifecycle.md:23
-      - reebeat:docs/specs/0000-development-lifecycle.md:100-101
-      - reebeat:AGENTS.md:20
+      - tsukuri:docs/specs/0000-development-lifecycle.md:23
+      - tsukuri:docs/specs/0000-development-lifecycle.md:100-101
+      - tsukuri:AGENTS.md:20
     links:
       part-of: [process-org-ship-change]
-      serves: [goal-reebeat-correct-by-construction]
+      serves: [goal-tsukuri-correct-by-construction]
 
-  - id: process-reebeat-release-publish
+  - id: process-tsukuri-release-publish
     kind: process
     category: supporting
     title: Publish pre-releases to npm
@@ -351,17 +351,17 @@ elements:
       Read from the body of PR #18. It was not part of the pinned commit and has since merged, as the tracker shows. The
       model does not observe a real publish, the trusted-publisher match or a first live release, and the operator must
       provision the npm and GitHub environment.
-    source: ["pr:reebeat#18", "log:49"]
-    refs: ["pr:reebeat#18"]
+    source: ["pr:tsukuri#18", "log:49"]
+    refs: ["pr:tsukuri#18"]
     canvas: [channels]
     links:
       part-of: [process-org-publish-packages]
-      serves: [goal-reebeat-npm-publication]
+      serves: [goal-tsukuri-npm-publication]
       uses: [resource-npm-org]
-      next: [extproc-reebeat-npm-trusted-publishing]
+      next: [extproc-tsukuri-npm-trusted-publishing]
 
   # -------------------------------------------------- external processes
-  - id: extproc-reebeat-github-ci
+  - id: extproc-tsukuri-github-ci
     kind: external-process
     title: GitHub Actions runs the gates
     statement: >-
@@ -372,12 +372,12 @@ elements:
       Observed in the repository: the workflow file sets these triggers and steps. The operator has not decided the exact
       workflow, so confirm it.
     source:
-      - reebeat:.github/workflows/checks.yml:6-9
-      - reebeat:.github/workflows/checks.yml:15
+      - tsukuri:.github/workflows/checks.yml:6-9
+      - tsukuri:.github/workflows/checks.yml:15
     links:
-      next: [process-reebeat-review-round]
+      next: [process-tsukuri-review-round]
 
-  - id: extproc-reebeat-npm-trusted-publishing
+  - id: extproc-tsukuri-npm-trusted-publishing
     kind: external-process
     title: npm accepts a trusted-publisher release
     statement: >-
@@ -387,10 +387,10 @@ elements:
     rationale: >-
       Described in PR #18. The OIDC exchange, the trusted-publisher match and the first live release are not yet observed,
       and the operator must provision the npm and GitHub environment.
-    source: ["pr:reebeat#18"]
-    refs: ["pr:reebeat#18"]
+    source: ["pr:tsukuri#18"]
+    refs: ["pr:tsukuri#18"]
 
-  - id: extproc-reebeat-model-download
+  - id: extproc-tsukuri-model-download
     kind: external-process
     title: Hugging Face serves the speech models
     statement: >-
@@ -401,11 +401,11 @@ elements:
       Observed in the repository: the third-party audit describes the model downloads. The operator has not decided this
       arrangement, so confirm it.
     source:
-      - reebeat:docs/design/third-party.md:71-72
+      - tsukuri:docs/design/third-party.md:71-72
     links:
-      next: [process-reebeat-speech-stage]
+      next: [process-tsukuri-speech-stage]
 
-  - id: extproc-reebeat-branch-protection
+  - id: extproc-tsukuri-branch-protection
     kind: external-process
     title: GitHub enforces branch protection on main
     statement: >-
@@ -416,5 +416,5 @@ elements:
       Observed in the repository: spec 0000 and AGENTS.md describe these settings. The operator has not decided each
       setting, and the live state is not read here, so confirm it.
     source:
-      - reebeat:docs/specs/0000-development-lifecycle.md:53
-      - reebeat:AGENTS.md:20
+      - tsukuri:docs/specs/0000-development-lifecycle.md:53
+      - tsukuri:AGENTS.md:20

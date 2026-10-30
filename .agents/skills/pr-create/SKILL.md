@@ -1,10 +1,10 @@
 ---
 name: pr-create
-description: "Open a reebeat/.github pull request: the PR body is the report, in eight fixed sections, and the PR opens only when the whole journey is built and `bun run ready` passed on the head. Use when a spec's work is finished and a PR is to be opened, or when drafting a PR body for this repository."
+description: "Open a tsukuri-labs/.github pull request: the PR body is the report, in eight fixed sections, and the PR opens only when the whole journey is built and `bun run ready` passed on the head. Use when a spec's work is finished and a PR is to be opened, or when drafting a PR body for this repository."
 ---
 
-<!-- Provenance: adapted from reebeat/studio @ d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8 (.agents/skills/pr-create/SKILL.md), which adapted it from
-     reebeat/reebeat @ f7c348877585f54b6bf00651608726dd7e5044d3. Deviations: the description names this repository; the verify-studio parts
+<!-- Provenance: adapted from tsukuri-labs/studio @ d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8 (.agents/skills/pr-create/SKILL.md), which adapted it from
+     tsukuri-labs/tsukuri @ f7c348877585f54b6bf00651608726dd7e5044d3. Deviations: the description names this repository; the verify-studio parts
      are removed (this repository has no user interface). Credits: builds on the machine skill `pr` (`skill://pr`), whose Summary, Evidence and
      Merge Danger sections it reuses; the Summary's menu of visuals comes from Dex Horthy's `show-me` skill
      (https://github.com/humanlayer/skills/blob/main/plugins/show-me/skills/show-me/SKILL.md). See PROVENANCE.md. -->

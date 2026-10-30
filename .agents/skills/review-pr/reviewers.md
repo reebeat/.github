@@ -1,4 +1,4 @@
-<!-- Provenance: adapted from reebeat/studio @ d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8 (.agents/skills/review-pr/reviewers.md). Deviations:
+<!-- Provenance: adapted from tsukuri-labs/studio @ d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8 (.agents/skills/review-pr/reviewers.md). Deviations:
      the verify-studio and Foldkit checks are replaced by checks of the model's sources. See PROVENANCE.md. -->
 
 # Reviewer briefs

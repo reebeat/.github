@@ -66,8 +66,8 @@ describe("statusesOfText", () => {
 describe("statusDiffAgainst", () => {
   const emptyScopes = {
     "model/foldkit-flow/goals.yaml": "elements: []\n",
-    "model/reebeat/goals.yaml": "elements: []\n",
     "model/studio/goals.yaml": "elements: []\n",
+    "model/tsukuri/goals.yaml": "elements: []\n",
   };
 
   it.effect("sees no change in a clean tree and a change after an edit", () =>

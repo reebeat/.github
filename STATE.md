@@ -12,7 +12,7 @@ Next:
 - The first npm publish is paused until a Norwegian IP advisor has given an opinion on the name (log line 113).
 - Follow-ups for the product repositories come from `docs/gaps.md`; the lead files them.
 - Refresh the tracker snapshot (`bun run tracker:refresh`, then `bun run generate`) when cited issues or pull requests change.
-- Link `docs/design/how-it-works.md` of reebeat from the profile once its pull request exists.
+- Link `docs/design/how-it-works.md` of tsukuri from the profile once its pull request exists.
 
 Blocked:
 

@@ -195,8 +195,8 @@ const SourcesSchema = Schema.Struct({
   pricingDecisions: Schema.NonEmptyArray(Schema.Int),
   repos: Schema.Struct({
     "foldkit-flow": Sha,
-    reebeat: Sha,
     studio: Sha,
+    tsukuri: Sha,
   }),
 });
 

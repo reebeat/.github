@@ -165,7 +165,7 @@ elements:
   - id: resource-studio-repo
     kind: resource
     resourceType: service
-    title: The public repository reebeat/studio
+    title: The public repository tsukuri-labs/studio
     statement: >-
       The studio repository is public. The operator made it public.
     status: decided
@@ -174,12 +174,12 @@ elements:
       serves: [goal-studio-vision]
     canvas: [key-resources]
 
-  - id: resource-studio-reebeat-compiler
+  - id: resource-studio-tsukuri-compiler
     kind: resource
     resourceType: software
-    title: The reebeat compiler and its IR
+    title: The tsukuri compiler and its IR
     statement: >-
-      Reebeat owns the story IR, the vocabulary and the Deck and Video renderers. Studio consumes them and builds none of
+      Tsukuri owns the story IR, the vocabulary and the Deck and Video renderers. Studio consumes them and builds none of
       them.
     status: proposed
     rationale: >-
@@ -311,7 +311,7 @@ elements:
     resourceType: data
     title: Narration speech cache
     statement: >-
-      The preview uses reebeat's committed speech cache or a silent stand-in narrator. Making speech needs tools that do not
+      The preview uses tsukuri's committed speech cache or a silent stand-in narrator. Making speech needs tools that do not
       run in a browser.
     status: proposed
     rationale: >-
@@ -360,7 +360,7 @@ elements:
     status: proposed
     rationale: >-
       Observed in the repository: spec 0000 builds the workflow and AGENTS.md names the check. The spec header names branch
-      protection like reebeat's among the operator's assignment, which does not decide the workflow. The operator must
+      protection like tsukuri's among the operator's assignment, which does not decide the workflow. The operator must
       confirm it.
     source: [studio:.github/workflows/checks.yml:16-18, studio:AGENTS.md:20]
     links:

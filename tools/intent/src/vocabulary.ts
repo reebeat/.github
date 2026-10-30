@@ -91,17 +91,17 @@ export const kindInfo: Readonly<Record<Kind, KindInfo>> = {
 export const statuses = ["decided", "proposed", "open"] as const;
 
 /** The scopes of the model: the organisation, then one per product. */
-export const scopes = ["org", "reebeat", "studio", "foldkit-flow"] as const;
+export const scopes = ["org", "tsukuri", "studio", "foldkit-flow"] as const;
 
 export type Scope = (typeof scopes)[number];
 
-export const productScopes = ["reebeat", "studio", "foldkit-flow"] as const;
+export const productScopes = ["tsukuri", "studio", "foldkit-flow"] as const;
 
 /** The repositories a source may cite, and their GitHub slugs. */
 export const repoSlugs = {
-  "foldkit-flow": "reebeat/foldkit-flow",
-  reebeat: "reebeat/reebeat",
-  studio: "reebeat/studio",
+  "foldkit-flow": "tsukuri-labs/foldkit-flow",
+  studio: "tsukuri-labs/studio",
+  tsukuri: "tsukuri-labs/tsukuri",
 } as const;
 
 export type RepoKey = keyof typeof repoSlugs;

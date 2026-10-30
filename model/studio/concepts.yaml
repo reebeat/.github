@@ -214,10 +214,10 @@ elements:
       - {type: relates, to: concept-studio-narration-piece, label: an anchor can be a narration word}
     status: proposed
     rationale: >-
-      Reebeat's GLOSSARY.md defines the anchor and the offset (lines 39-40; the syntax came with spec 0002, merged in
-      reebeat PR 4 on 2026-10-29). The lenses note applies them to retiming in the Timeline lens (line 56). The operator
-      should confirm that studio uses the terms as the reebeat glossary defines them.
-    source: [studio:docs/design/lenses.md:56, reebeat:GLOSSARY.md:39-40]
+      Tsukuri's GLOSSARY.md defines the anchor and the offset (lines 39-40; the syntax came with spec 0002, merged in
+      tsukuri PR 4 on 2026-10-29). The lenses note applies them to retiming in the Timeline lens (line 56). The operator
+      should confirm that studio uses the terms as the tsukuri glossary defines them.
+    source: [studio:docs/design/lenses.md:56, tsukuri:GLOSSARY.md:39-40]
 
   - id: concept-studio-agent-scope
     kind: concept

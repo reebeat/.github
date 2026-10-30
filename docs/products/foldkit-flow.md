@@ -4,7 +4,7 @@
 
 A node-based graph UI for Foldkit, like React Flow or Svelte Flow, in its own repository under the MIT licence.
 
-Repository: [reebeat/foldkit-flow][1]. Licence: MIT. Status of this description: decided.
+Repository: [tsukuri-labs/foldkit-flow][1]. Licence: MIT. Status of this description: decided.
 
 137 model elements: 47 decided, 75 proposed, 15 open.
 
@@ -60,16 +60,16 @@ Scope `foldkit-flow`: 137 elements.
 | Stakeholder | Role in the product | Status |
 | --- | --- | --- |
 | [Foldkit app developer](../actors-and-resources.md#actor-flow-app-developer) | A person who builds a Foldkit application and wants a graph canvas in it. They are the library's audience. They add the library and own the application's graph data, layout and node views, and they apply the outcomes the library reports. | decided |
-| [reebeat studio (consuming product)](../actors-and-resources.md#actor-flow-studio) | reebeat studio is an intended consumer of the library for its story graph, not a committed one. It has no dependency on the library until a studio spec adopts it. It is a consumer, not part of the library. | decided |
+| [tsukuri studio (consuming product)](../actors-and-resources.md#actor-flow-studio) | tsukuri studio is an intended consumer of the library for its story graph, not a committed one. It has no dependency on the library until a studio spec adopts it. It is a consumer, not part of the library. | decided |
 | [End user of a graph canvas](../actors-and-resources.md#actor-flow-end-user) | A person who uses an application built with the library. They pan, zoom, drag, connect and select with a pointer. | proposed |
 | [Keyboard-only user](../actors-and-resources.md#actor-flow-keyboard-user) | A person who uses only the keyboard, and may use a screen reader. In the 0.x releases they can reach, select, move and delete nodes without a pointer. Connecting nodes by keyboard is a documented gap, and 1.0 waits for it. | decided |
 | [Contributor (human or agent)](../actors-and-resources.md#actor-flow-contributor) | A person or an agent who writes specs and code, opens PRs and takes part in review rounds. | proposed |
 | [The xyflow project](../actors-and-resources.md#actor-flow-xyflow) | xyflow (webkid GmbH) makes React Flow, Svelte Flow and `@xyflow/system`. It asks its users to keep its attribution or to support the project. The library shows the credit by default and lets an application hide it. | decided |
-| [The Foldkit project](../actors-and-resources.md#actor-flow-foldkit-project) | Foldkit makes the framework the library is built for. It owns the plugin the example cannot use yet. If it adopts the library, the project publishes `@foldkit/flow` and deprecates `@reebeat/flow`. | decided |
+| [The Foldkit project](../actors-and-resources.md#actor-flow-foldkit-project) | Foldkit makes the framework the library is built for. It owns the plugin the example cannot use yet. If it adopts the library, the project publishes `@foldkit/flow` and deprecates `@tsukuri/flow`. | decided |
 
 ## Problems and constraints
 
-- [The package is unpublished and private](../goals.md#problem-flow-unpublished) (decided): The operator decided to publish `@reebeat/flow` pre-releases under the npm org. Nothing is published yet: the library package is private at version 0.0.0 and still named `foldkit-flow`, and the README says it is not published yet. The first npm publish is paused until a Norwegian IP advisor has given an opinion on the name (log line 113).
+- [The package is unpublished and private](../goals.md#problem-flow-unpublished) (decided): The operator decided to publish `@tsukuri/flow` pre-releases under the npm org. Nothing is published yet: the library package is private at version 0.0.0 and still named `foldkit-flow`, and the README says it is not published yet. The first npm publish is paused until a Norwegian IP advisor has given an opinion on the name (log line 113).
 - [No licence scan of published dependencies](../goals.md#problem-flow-licence-scan-missing) (open): The operator decided to add a licence scan of the published dependencies, so that no copyleft licence reaches `packages/`. No gate runs it: the `ready` script lists no licence check.
 - [The library applies a deletion itself](../goals.md#problem-flow-library-applies-deletion) (open): The operator decided that the library reports outcomes and the app applies graph changes (log line 109). For a deletion, the Flow removes the deleted nodes and edges from its own Model and then reports them.
 - [No stated goals beyond the README](../goals.md#problem-flow-goals-undocumented) (open): The README gives one sentence of purpose, and spec 0000 states the goal of its lifecycle. No file gives the library's own product goals, users or success measures.
@@ -80,7 +80,7 @@ Scope `foldkit-flow`: 137 elements.
 - [The browser journey does not run in CI](../goals.md#problem-flow-journey-not-in-ci) (open): CI has no browser. The journey and the performance check run only on a developer's machine.
 - [Only Chromium and mouse input were tested](../goals.md#problem-flow-browsers-untested) (open): The journey ran in one Chromium version. Firefox, WebKit and touch input were not run.
 - [Demand and users are not measured](../goals.md#problem-flow-demand-unmeasured) (open): The cited sources show no measure of who needs the library or who uses it. Nothing is published, and the sources record no user count or request.
-- [Terms of the Foldkit offer remain to record](../goals.md#problem-flow-upstream-terms-open) (decided): The operator decided to offer the library as `@foldkit/flow` once its API settles. If Foldkit adopts it, the project publishes `@foldkit/flow` and deprecates `@reebeat/flow`. What counts as settled, the date and the licence header are not yet recorded.
+- [Terms of the Foldkit offer remain to record](../goals.md#problem-flow-upstream-terms-open) (decided): The operator decided to offer the library as `@foldkit/flow` once its API settles. If Foldkit adopts it, the project publishes `@foldkit/flow` and deprecates `@tsukuri/flow`. What counts as settled, the date and the licence header are not yet recorded.
 - [Workflow hardening is deferred](../goals.md#problem-flow-deferred-workflow-questions) (open): Vendoring Foldkit as a subtree, requiring human approval, signed commits and Renovate are all deferred.
 - [The module-mocking lint rule has a gap](../goals.md#problem-flow-lint-mocking-gap) (open): The lint rule that forbids module mocking matches only the `vitest` import source, so a mock imported from `vite-plus/test` passes.
 - [No security, conduct or contributing files](../goals.md#problem-flow-community-files) (open): The public repository has no SECURITY.md, CODE_OF_CONDUCT.md or CONTRIBUTING.md. The README has a short contributing section.
@@ -103,7 +103,7 @@ flowchart BT
     classDef outside fill:#eee,stroke:#999,color:#333,stroke-dasharray:4 3
     goal_flow_vision("A graph canvas for Foldkit<br/>applications"):::decided
     goal_flow_generic_library("A generic library with no<br/>product logic"):::proposed
-    goal_flow_studio_story_graph("Carry reebeat studio's story<br/>graph"):::decided
+    goal_flow_studio_story_graph("Carry tsukuri studio's story<br/>graph"):::decided
     goal_flow_first_journey("One felt journey works end<br/>to end"):::proposed
     goal_flow_keyboard_access("Keyboard-accessible graph<br/>editing"):::decided
     goal_flow_performance("Stay smooth at 500 nodes and<br/>700 edges"):::proposed
@@ -250,7 +250,7 @@ Full tables and diagrams: [Business Rules Model](../business-rules.md).
 Full tables and diagrams: [Actors and Resources Model](../actors-and-resources.md).
 
 - [Foldkit app developer](../actors-and-resources.md#actor-flow-app-developer) (actor, decided)
-- [reebeat studio (consuming product)](../actors-and-resources.md#actor-flow-studio) (actor, decided)
+- [tsukuri studio (consuming product)](../actors-and-resources.md#actor-flow-studio) (actor, decided)
 - [End user of a graph canvas](../actors-and-resources.md#actor-flow-end-user) (actor, proposed)
 - [Keyboard-only user](../actors-and-resources.md#actor-flow-keyboard-user) (actor, decided)
 - [Contributor (human or agent)](../actors-and-resources.md#actor-flow-contributor) (actor, proposed)
@@ -379,44 +379,44 @@ Full tables and diagrams: [Concepts Model](../concepts.md).
 | issue:foldkit-flow#3 | vp run uses a downloaded Bun, not the devenv Bun (devEngines ^1.4.2) | open | [The same Bun runs everywhere](../technical-components.md#req-flow-reproducible-toolchain) |
 | pr:foldkit-flow#4 | feat: first felt journey (spec 0001) | merged | [Supported browsers and input types](../technical-components.md#req-flow-portability-browsers) |
 
-[1]: https://github.com/reebeat/foldkit-flow
-[2]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/mounts.ts#L157-L208
-[3]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L82
-[4]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0001-first-felt-journey.md#L83
-[5]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/mounts.ts#L384-L470
-[6]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/update.ts#L183-L186
-[7]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0001-first-felt-journey.md#L84
-[8]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/mounts.ts#L601-L625
-[9]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/update.ts#L266-L281
-[10]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0001-first-felt-journey.md#L85
-[11]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/mounts.ts#L723-L755
-[12]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/update.ts#L522-L529
-[13]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L20
-[14]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/mounts.ts#L235-L252
-[15]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L66
-[16]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0001-first-felt-journey.md#L86
-[17]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/view.ts#L464-L478
-[18]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/view.ts#L499-L523
-[19]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0001-first-felt-journey.md#L88
-[20]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/geometry.ts#L88
-[21]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/geometry.ts#L451-L474
+[1]: https://github.com/tsukuri-labs/foldkit-flow
+[2]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/mounts.ts#L157-L208
+[3]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L82
+[4]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0001-first-felt-journey.md#L83
+[5]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/mounts.ts#L384-L470
+[6]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/update.ts#L183-L186
+[7]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0001-first-felt-journey.md#L84
+[8]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/mounts.ts#L601-L625
+[9]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/update.ts#L266-L281
+[10]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0001-first-felt-journey.md#L85
+[11]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/mounts.ts#L723-L755
+[12]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/update.ts#L522-L529
+[13]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L20
+[14]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/mounts.ts#L235-L252
+[15]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L66
+[16]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0001-first-felt-journey.md#L86
+[17]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/view.ts#L464-L478
+[18]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/view.ts#L499-L523
+[19]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0001-first-felt-journey.md#L88
+[20]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/geometry.ts#L88
+[21]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/geometry.ts#L451-L474
 [22]: ../../sources/operator-decisions-2026-10.md#L19
-[23]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/update.ts#L289-L343
-[24]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L75
-[25]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0001-first-felt-journey.md#L135
-[26]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L74-L78
-[27]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/update.ts#L413-L435
-[28]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0001-first-felt-journey.md#L87
+[23]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/update.ts#L289-L343
+[24]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L75
+[25]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0001-first-felt-journey.md#L135
+[26]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L74-L78
+[27]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/update.ts#L413-L435
+[28]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0001-first-felt-journey.md#L87
 [29]: ../../sources/operator-decisions-2026-10.md#L109
-[30]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L56-L63
-[31]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/view.ts#L45-L54
-[32]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/types.ts#L33-L38
-[33]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0001-first-felt-journey.md#L30-L33
+[30]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L56-L63
+[31]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/view.ts#L45-L54
+[32]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/packages/flow/src/types.ts#L33-L38
+[33]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0001-first-felt-journey.md#L30-L33
 [34]: ../../sources/operator-decisions-2026-10.md#L106
-[35]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0000-development-lifecycle.md#L53
-[36]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0000-development-lifecycle.md#L90
-[37]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L86
-[38]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/package.json#L18
-[39]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L17
-[40]: https://github.com/reebeat/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/AGENTS.md#L48
-[41]: https://github.com/reebeat/foldkit-flow/pull/4
+[35]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0000-development-lifecycle.md#L53
+[36]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/docs/specs/0000-development-lifecycle.md#L90
+[37]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L86
+[38]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/package.json#L18
+[39]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/README.md#L17
+[40]: https://github.com/tsukuri-labs/foldkit-flow/blob/8124d5b08fe5e87c75c85b067c3079e2ce46a5a6/AGENTS.md#L48
+[41]: https://github.com/tsukuri-labs/foldkit-flow/pull/4

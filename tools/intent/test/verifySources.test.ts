@@ -29,13 +29,13 @@ const problemsFor = (source: string) =>
         ...fixture,
         sources: {
           ...fixture.sources,
-          repos: { ...fixture.sources.repos, reebeat: sha },
+          repos: { ...fixture.sources.repos, tsukuri: sha },
         },
       };
 
       const roots = {
         ...defaultRoots(base),
-        reebeat: `${base}/reebeat`,
+        tsukuri: `${base}/reebeat`,
       };
 
       const found = yield* verifySources(model, roots, false);
@@ -47,13 +47,13 @@ const problemsFor = (source: string) =>
 describe("verifySources", () => {
   it.effect("accepts a record line that states the decision", () =>
     Effect.gen(function* accepted() {
-      assert.deepStrictEqual(yield* problemsFor("record:reebeat:doc.md:2"), []);
+      assert.deepStrictEqual(yield* problemsFor("record:tsukuri:doc.md:2"), []);
     })
   );
 
   it.effect("rejects a record line that is only a status header", () =>
     Effect.gen(function* header() {
-      const found = yield* problemsFor("record:reebeat:doc.md:1");
+      const found = yield* problemsFor("record:tsukuri:doc.md:1");
 
       assert.lengthOf(found, 1);
       assert.include(found[0], "header or heading");
@@ -62,7 +62,7 @@ describe("verifySources", () => {
 
   it.effect("rejects a record line that does not say it was decided", () =>
     Effect.gen(function* plain() {
-      const found = yield* problemsFor("record:reebeat:doc.md:3");
+      const found = yield* problemsFor("record:tsukuri:doc.md:3");
 
       assert.lengthOf(found, 1);
       assert.include(found[0], "does not say");
@@ -71,7 +71,7 @@ describe("verifySources", () => {
 
   it.effect("rejects lines beyond the end of the file", () =>
     Effect.gen(function* beyond() {
-      const found = yield* problemsFor("reebeat:doc.md:2-9");
+      const found = yield* problemsFor("tsukuri:doc.md:2-9");
 
       assert.lengthOf(found, 1);
       assert.include(found[0], "beyond");
@@ -80,9 +80,9 @@ describe("verifySources", () => {
 
   it.effect("accepts the last line and rejects the line one past it", () =>
     Effect.gen(function* boundary() {
-      assert.deepStrictEqual(yield* problemsFor("reebeat:doc.md:5"), []);
+      assert.deepStrictEqual(yield* problemsFor("tsukuri:doc.md:5"), []);
 
-      const found = yield* problemsFor("reebeat:doc.md:6");
+      const found = yield* problemsFor("tsukuri:doc.md:6");
 
       assert.lengthOf(found, 1);
       assert.include(found[0], "beyond the 5 lines");
@@ -91,7 +91,7 @@ describe("verifySources", () => {
 
   it.effect("rejects a range that cites only blank lines", () =>
     Effect.gen(function* blank() {
-      const found = yield* problemsFor("reebeat:doc.md:4");
+      const found = yield* problemsFor("tsukuri:doc.md:4");
 
       assert.lengthOf(found, 1);
       assert.include(found[0], "only blank lines");
@@ -100,7 +100,7 @@ describe("verifySources", () => {
 
   it.effect("rejects a file that does not exist at the pinned commit", () =>
     Effect.gen(function* missing() {
-      const found = yield* problemsFor("reebeat:nowhere.md:1");
+      const found = yield* problemsFor("tsukuri:nowhere.md:1");
 
       assert.lengthOf(found, 1);
       assert.include(found[0], "does not exist");
@@ -112,11 +112,11 @@ describe("verifySources", () => {
     () =>
       Effect.gen(function* absent() {
         assert.deepStrictEqual(
-          yield* problemsFor("absent:reebeat:SECURITY.md"),
+          yield* problemsFor("absent:tsukuri:SECURITY.md"),
           []
         );
 
-        const found = yield* problemsFor("absent:reebeat:doc.md");
+        const found = yield* problemsFor("absent:tsukuri:doc.md");
 
         assert.lengthOf(found, 1);
         assert.include(found[0], "cited as absent");

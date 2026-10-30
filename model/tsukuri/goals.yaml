@@ -1,18 +1,18 @@
 elements:
   # ---------------------------------------------------------------- goals
-  - id: goal-reebeat-vision
+  - id: goal-tsukuri-vision
     kind: goal
-    title: Declare the story, reebeat builds the artifacts
+    title: Declare the story, tsukuri builds the artifacts
     statement: >-
-      reebeat takes care of building, so you can focus on creating. You declare the story's beats and what they mean.
-      reebeat derives motion, timing and every artifact, reproducibly, and rebuilds only what an edit changes.
+      tsukuri takes care of building, so you can focus on creating. You declare the story's beats and what they mean.
+      tsukuri derives motion, timing and every artifact, reproducibly, and rebuilds only what an edit changes.
     status: decided
     source: [log:7, log:9, log:10, log:61]
     canvas: [value-propositions]
     links:
       subgoal-of: [goal-org-vision]
 
-  - id: goal-reebeat-screenplay-first
+  - id: goal-tsukuri-screenplay-first
     kind: goal
     title: One screenplay, every rendering
     statement: >-
@@ -23,15 +23,15 @@ elements:
       - log:11
       - log:25
       - log:67-69
-      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213
-      - reebeat:README.md:3
-      - reebeat:GLOSSARY.md:15-17
+      - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213
+      - tsukuri:README.md:3
+      - tsukuri:GLOSSARY.md:15-17
     canvas: [value-propositions]
     links:
-      subgoal-of: [goal-reebeat-vision]
+      subgoal-of: [goal-tsukuri-vision]
       supports: [goal-org-declarative-creation]
 
-  - id: goal-reebeat-deck-and-video
+  - id: goal-tsukuri-deck-and-video
     kind: goal
     title: A Deck and a Video from one source
     statement: >-
@@ -39,14 +39,14 @@ elements:
       one source.
     status: decided
     source:
-      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213
-      - reebeat:README.md:3-6
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:9-12
+      - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213
+      - tsukuri:README.md:3-6
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:9-12
     canvas: [value-propositions]
     links:
-      subgoal-of: [goal-reebeat-screenplay-first]
+      subgoal-of: [goal-tsukuri-screenplay-first]
 
-  - id: goal-reebeat-explicit-source
+  - id: goal-tsukuri-explicit-source
     kind: goal
     title: An explicit source nobody can misread
     statement: >-
@@ -57,12 +57,12 @@ elements:
       Spec plan: spec 0002 states this goal. The operator picked the effects syntax and named properties (spec 0002 line
       161), not the universal rule on references and errors, so confirm it.
     source:
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:11
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:16-18
+      - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:11
+      - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:16-18
     links:
-      subgoal-of: [goal-reebeat-screenplay-first]
+      subgoal-of: [goal-tsukuri-screenplay-first]
 
-  - id: goal-reebeat-event-timing
+  - id: goal-tsukuri-event-timing
     kind: goal
     title: Effects connect to produced events
     statement: >-
@@ -72,12 +72,12 @@ elements:
     source:
       - log:20
       - log:27
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:15
+      - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:15
     canvas: [value-propositions]
     links:
       subgoal-of: [goal-org-declarative-creation]
 
-  - id: goal-reebeat-statechart-model
+  - id: goal-tsukuri-statechart-model
     kind: goal
     title: Declare the implicit state machine explicitly
     statement: >-
@@ -86,11 +86,11 @@ elements:
       Plan.
     status: decided
     source: [log:19, log:24, log:62]
-    refs: ["pr:reebeat#17"]
+    refs: ["pr:tsukuri#17"]
     links:
       subgoal-of: [goal-org-declarative-creation]
 
-  - id: goal-reebeat-accessible-artifacts
+  - id: goal-tsukuri-accessible-artifacts
     kind: goal
     title: Accessible artifacts for different audiences
     statement: >-
@@ -98,24 +98,24 @@ elements:
       reduced motion. Subtitles stay readable at a reasonable pace.
     status: decided
     source: [log:10, log:27, log:32]
-    refs: ["issue:reebeat#12"]
+    refs: ["issue:tsukuri#12"]
     canvas: [value-propositions]
     links:
-      subgoal-of: [goal-reebeat-vision]
+      subgoal-of: [goal-tsukuri-vision]
       supports: [goal-org-accessible-artifacts]
 
-  - id: goal-reebeat-localisation
+  - id: goal-tsukuri-localisation
     kind: goal
     title: One story, several narration languages
     statement: >-
       One story can have language variants, and each variant adjusts the timings.
     status: decided
     source: [log:32]
-    refs: ["issue:reebeat#10"]
+    refs: ["issue:tsukuri#10"]
     links:
-      subgoal-of: [goal-reebeat-accessible-artifacts]
+      subgoal-of: [goal-tsukuri-accessible-artifacts]
 
-  - id: goal-reebeat-reproducible-builds
+  - id: goal-tsukuri-reproducible-builds
     kind: goal
     title: Reproducible builds
     statement: >-
@@ -123,13 +123,13 @@ elements:
     status: decided
     source:
       - log:10
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:151
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:151
     canvas: [value-propositions]
     links:
-      subgoal-of: [goal-reebeat-vision]
+      subgoal-of: [goal-tsukuri-vision]
       supports: [goal-org-reproducible-builds]
 
-  - id: goal-reebeat-incremental-builds
+  - id: goal-tsukuri-incremental-builds
     kind: goal
     title: Fast, incremental and reactive builds
     statement: >-
@@ -137,13 +137,13 @@ elements:
       and content-addressed traces that persist between builds.
     status: decided
     source: [log:10, log:62]
-    refs: ["issue:reebeat#9"]
+    refs: ["issue:tsukuri#9"]
     canvas: [value-propositions]
     links:
-      subgoal-of: [goal-reebeat-vision]
+      subgoal-of: [goal-tsukuri-vision]
       supports: [goal-org-incremental-builds]
 
-  - id: goal-reebeat-interactive-website
+  - id: goal-tsukuri-interactive-website
     kind: goal
     title: An interactive website as an artifact type
     statement: >-
@@ -151,13 +151,13 @@ elements:
       Websites support clicking and other interactions.
     status: decided
     source: [log:36, log:37]
-    refs: ["issue:reebeat#19"]
+    refs: ["issue:tsukuri#19"]
     canvas: [value-propositions]
     links:
-      subgoal-of: [goal-reebeat-vision]
+      subgoal-of: [goal-tsukuri-vision]
       supports: [goal-org-interactive-multimedia]
 
-  - id: goal-reebeat-interactive-lessons
+  - id: goal-tsukuri-interactive-lessons
     kind: goal
     title: Interactive lessons, deferred for later
     statement: >-
@@ -168,11 +168,11 @@ elements:
       The operator deferred this item (log:36). It stays open until the investigation of prior art (issue #20) starts and
       the operator decides whether to plan it.
     source: [log:36]
-    refs: ["issue:reebeat#20"]
+    refs: ["issue:tsukuri#20"]
     links:
-      subgoal-of: [goal-reebeat-interactive-website]
+      subgoal-of: [goal-tsukuri-interactive-website]
 
-  - id: goal-reebeat-teaching-lint
+  - id: goal-tsukuri-teaching-lint
     kind: goal
     title: A teaching lint for explainer stories
     statement: >-
@@ -182,12 +182,12 @@ elements:
     rationale: >-
       Issue #8 was queued by the operator on 2026-10-29, but the decision log does not mention a teaching lint. The
       operator should confirm it as a product goal.
-    source: ["issue:reebeat#8"]
-    refs: ["issue:reebeat#8"]
+    source: ["issue:tsukuri#8"]
+    refs: ["issue:tsukuri#8"]
     links:
-      supports: [goal-reebeat-interactive-website, goal-org-interactive-multimedia]
+      supports: [goal-tsukuri-interactive-website, goal-org-interactive-multimedia]
 
-  - id: goal-reebeat-plugin-sdk
+  - id: goal-tsukuri-plugin-sdk
     kind: goal
     title: Plugins and a render-engine SDK
     statement: >-
@@ -199,7 +199,7 @@ elements:
     links:
       subgoal-of: [goal-org-modular-extensible]
 
-  - id: goal-reebeat-multi-renderer
+  - id: goal-tsukuri-multi-renderer
     kind: goal
     title: Several render engines in one story
     statement: >-
@@ -208,21 +208,21 @@ elements:
     status: decided
     source: [log:28]
     links:
-      subgoal-of: [goal-reebeat-plugin-sdk]
+      subgoal-of: [goal-tsukuri-plugin-sdk]
 
-  - id: goal-reebeat-npm-publication
+  - id: goal-tsukuri-npm-publication
     kind: goal
-    title: Publish @reebeat packages to npm
+    title: Publish @tsukuri packages to npm
     statement: >-
-      reebeat publishes `@reebeat/*` pre-releases to npm, so products and plugin authors can depend on them. The npm
-      organisation `reebeat` exists.
+      tsukuri publishes `@tsukuri/*` pre-releases to npm, so products and plugin authors can depend on them. The npm
+      organisation `tsukuri` exists.
     status: decided
     source: [log:49]
-    refs: ["pr:reebeat#18"]
+    refs: ["pr:tsukuri#18"]
     links:
       supports: [goal-org-open-compiler, goal-org-modular-extensible]
 
-  - id: goal-reebeat-apache-licence
+  - id: goal-tsukuri-apache-licence
     kind: goal
     title: License the compiler and its formats under Apache-2.0
     statement: >-
@@ -230,11 +230,11 @@ elements:
     status: decided
     source:
       - log:44
-      - record:reebeat:docs/design/open-core-boundary.md:21-22
+      - record:tsukuri:docs/design/open-core-boundary.md:21-22
     links:
       supports: [goal-org-open-compiler]
 
-  - id: goal-reebeat-correct-by-construction
+  - id: goal-tsukuri-correct-by-construction
     kind: goal
     title: A compiler whose structure prevents bad states
     statement: >-
@@ -246,7 +246,7 @@ elements:
     links:
       supports: [goal-org-correctness-by-construction]
 
-  - id: goal-reebeat-verified-output
+  - id: goal-tsukuri-verified-output
     kind: goal
     title: Check the written files, not the pipeline's memory
     statement: >-
@@ -257,27 +257,27 @@ elements:
       Spec plan: spec 0001 sets out the output-side check and the negative controls. The operator has not decided them, so
       confirm it.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:28
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:142
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:28
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:142
     links:
-      subgoal-of: [goal-reebeat-correct-by-construction]
-      supports: [goal-reebeat-reproducible-builds]
+      subgoal-of: [goal-tsukuri-correct-by-construction]
+      supports: [goal-tsukuri-reproducible-builds]
 
-  - id: goal-reebeat-visible-egress
+  - id: goal-tsukuri-visible-egress
     kind: goal
     title: Every build says what leaves the machine
     statement: >-
       Every integration declares what it sends out, and the output manifest records provenance.
     status: decided
     source:
-      - record:reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
-      - reebeat:docs/design/keyframe-engine.md:1241-1242
-      - reebeat:GLOSSARY.md:119-120
+      - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
+      - tsukuri:docs/design/keyframe-engine.md:1241-1242
+      - tsukuri:GLOSSARY.md:119-120
     links:
-      subgoal-of: [goal-reebeat-correct-by-construction]
+      subgoal-of: [goal-tsukuri-correct-by-construction]
 
   # ------------------------------------------------------------- problems
-  - id: problem-reebeat-ffmpeg-gpl
+  - id: problem-tsukuri-ffmpeg-gpl
     kind: problem
     title: ffmpeg is GPL, so it is never bundled
     statement: >-
@@ -288,13 +288,13 @@ elements:
     source:
       - log:50
       - log:78
-      - issue:reebeat#7
-      - reebeat:docs/design/third-party.md:18-20
-    refs: ["issue:reebeat#7"]
+      - issue:tsukuri#7
+      - tsukuri:docs/design/third-party.md:18-20
+    refs: ["issue:tsukuri#7"]
     links:
-      hinders: [comp-reebeat-encode-ffmpeg, goal-reebeat-npm-publication]
+      hinders: [comp-tsukuri-encode-ffmpeg, goal-tsukuri-npm-publication]
 
-  - id: problem-reebeat-state-stale
+  - id: problem-tsukuri-state-stale
     kind: problem
     title: STATE.md is out of date
     statement: >-
@@ -305,18 +305,18 @@ elements:
       Found by reading STATE.md against the pinned repository: spec 0003 is the Effect 4.1 upgrade
       (docs/specs/0003-effect-4-1-upgrade.md:1) and PRs #3 and #4 are merged. The fix belongs to the repository owner.
     source:
-      - reebeat:STATE.md:7
-      - reebeat:STATE.md:13
-      - reebeat:docs/specs/0003-effect-4-1-upgrade.md:1
-      - pr:reebeat#3
-      - pr:reebeat#4
+      - tsukuri:STATE.md:7
+      - tsukuri:STATE.md:13
+      - tsukuri:docs/specs/0003-effect-4-1-upgrade.md:1
+      - pr:tsukuri#3
+      - pr:tsukuri#4
     gap:
-      repo: reebeat
+      repo: tsukuri
       fix: Rewrite STATE.md from the merged pull requests and the specs that exist, or generate it from this model.
     links:
       hinders: [goal-org-correctness-by-construction]
 
-  - id: problem-reebeat-spec-status-mismatch
+  - id: problem-tsukuri-spec-status-mismatch
     kind: problem
     title: Spec status lines disagree with the pull requests
     statement: >-
@@ -328,17 +328,17 @@ elements:
       STATE.md and with GitHub is a real gap in the single current state; the operator should say how a spec shows that
       it is merged.
     source:
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:3
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:3
-      - reebeat:docs/specs/0003-effect-4-1-upgrade.md:3
-      - reebeat:docs/specs/0000-development-lifecycle.md:129
+      - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:3
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:3
+      - tsukuri:docs/specs/0003-effect-4-1-upgrade.md:3
+      - tsukuri:docs/specs/0000-development-lifecycle.md:129
     gap:
-      repo: reebeat
+      repo: tsukuri
       fix: Show merge state from GitHub in generated views and leave the frozen spec text alone.
     links:
       hinders: [goal-org-correctness-by-construction]
 
-  - id: problem-reebeat-exceptions-gate-blind
+  - id: problem-tsukuri-exceptions-gate-blind
     kind: problem
     title: The exception gate ignores @effect-diagnostics comments
     statement: >-
@@ -347,17 +347,17 @@ elements:
     status: open
     rationale: "Issue #14 reports it, found in a foldkit-flow review. The fix and its negative control are proposed there."
     source:
-      - issue:reebeat#14
-      - reebeat:AGENTS.md:46
-      - reebeat:tools/quality/effectExceptions.ts:44
-    refs: ["issue:reebeat#14"]
+      - issue:tsukuri#14
+      - tsukuri:AGENTS.md:46
+      - tsukuri:tools/quality/effectExceptions.ts:44
+    refs: ["issue:tsukuri#14"]
     gap:
-      repo: reebeat
+      repo: tsukuri
       fix: Add both @effect-diagnostics forms to the directive pattern, add a negative control and register existing directives.
     links:
-      hinders: [comp-reebeat-quality-gates]
+      hinders: [comp-tsukuri-quality-gates]
 
-  - id: problem-reebeat-bun-not-pinned
+  - id: problem-tsukuri-bun-not-pinned
     kind: problem
     title: vp run uses its own Bun
     statement: >-
@@ -366,17 +366,17 @@ elements:
     status: open
     rationale: "Issue #15 reports it and proposes to pin the version exactly and to bump it together with devenv."
     source:
-      - issue:reebeat#15
-      - reebeat:package.json:55-61
-      - reebeat:devenv.nix:17
-    refs: ["issue:reebeat#15"]
+      - issue:tsukuri#15
+      - tsukuri:package.json:55-61
+      - tsukuri:devenv.nix:17
+    refs: ["issue:tsukuri#15"]
     gap:
-      repo: reebeat
+      repo: tsukuri
       fix: Pin devEngines.packageManager to the devenv Bun version exactly and check that both report the same revision.
     links:
-      hinders: [goal-reebeat-reproducible-builds]
+      hinders: [goal-tsukuri-reproducible-builds]
 
-  - id: problem-reebeat-no-contributing
+  - id: problem-tsukuri-no-contributing
     kind: problem
     title: No CONTRIBUTING.md
     statement: >-
@@ -386,48 +386,48 @@ elements:
       The path does not exist at the pinned commit. Whether a standalone file is wanted is the operator's choice, since
       the README already links the procedure.
     source:
-      - absent:reebeat:CONTRIBUTING.md
-      - reebeat:README.md:50
+      - absent:tsukuri:CONTRIBUTING.md
+      - tsukuri:README.md:50
     gap:
-      repo: reebeat
+      repo: tsukuri
       fix: Add a short CONTRIBUTING.md that links AGENTS.md and the spec, code and pull request road.
     links:
       hinders: [goal-org-open-compiler]
 
-  - id: problem-reebeat-no-security-policy
+  - id: problem-tsukuri-no-security-policy
     kind: problem
-    title: Security reporting comes from reebeat/.github
+    title: Security reporting comes from tsukuri-labs/.github
     statement: >-
-      The security policy comes from the organisation-level defaults in reebeat/.github, which this repository inherits,
+      The security policy comes from the organisation-level defaults in tsukuri-labs/.github, which this repository inherits,
       and private vulnerability reporting is enabled for this repository. A SECURITY.md in this repository would override
       the default. This repository has none yet.
     status: decided
     source:
       - log:90
-      - absent:reebeat:SECURITY.md
+      - absent:tsukuri:SECURITY.md
     gap:
-      repo: reebeat
-      fix: Enable private vulnerability reporting for this repository, and add SECURITY.md to the organisation defaults in reebeat/.github.
+      repo: tsukuri
+      fix: Enable private vulnerability reporting for this repository, and add SECURITY.md to the organisation defaults in tsukuri-labs/.github.
     links:
       hinders: [goal-org-open-compiler]
 
-  - id: problem-reebeat-no-code-of-conduct
+  - id: problem-tsukuri-no-code-of-conduct
     kind: problem
-    title: Conduct defaults come from reebeat/.github
+    title: Conduct defaults come from tsukuri-labs/.github
     statement: >-
-      The code of conduct comes from the organisation-level defaults in reebeat/.github, which this repository inherits. A
+      The code of conduct comes from the organisation-level defaults in tsukuri-labs/.github, which this repository inherits. A
       CODE_OF_CONDUCT.md in this repository would override them. This repository has none yet.
     status: decided
     source:
       - log:90
-      - absent:reebeat:CODE_OF_CONDUCT.md
+      - absent:tsukuri:CODE_OF_CONDUCT.md
     gap:
       repo: org
-      fix: Add CODE_OF_CONDUCT.md to the organisation defaults in reebeat/.github.
+      fix: Add CODE_OF_CONDUCT.md to the organisation defaults in tsukuri-labs/.github.
     links:
       hinders: [goal-org-open-compiler]
 
-  - id: problem-reebeat-no-issue-templates
+  - id: problem-tsukuri-no-issue-templates
     kind: problem
     title: No issue templates
     statement: >-
@@ -437,14 +437,14 @@ elements:
     rationale: >-
       The path does not exist at the pinned commit, which is all the source shows. The risk to reports is an inference.
       Whether to add templates is the operator's choice.
-    source: [absent:reebeat:.github/ISSUE_TEMPLATE]
+    source: [absent:tsukuri:.github/ISSUE_TEMPLATE]
     gap:
-      repo: reebeat
+      repo: tsukuri
       fix: Add issue templates for a bug and for a roadmap item under .github/ISSUE_TEMPLATE.
     links:
       hinders: [goal-org-open-compiler]
 
-  - id: problem-reebeat-no-pr-template
+  - id: problem-tsukuri-no-pr-template
     kind: problem
     title: No pull request template
     statement: >-
@@ -453,15 +453,15 @@ elements:
     status: open
     rationale: The file does not exist at the pinned commit. Spec 0000 lines 59-70 define the eight sections of the report.
     source:
-      - absent:reebeat:.github/PULL_REQUEST_TEMPLATE.md
-      - reebeat:docs/specs/0000-development-lifecycle.md:60-71
+      - absent:tsukuri:.github/PULL_REQUEST_TEMPLATE.md
+      - tsukuri:docs/specs/0000-development-lifecycle.md:60-71
     gap:
-      repo: reebeat
+      repo: tsukuri
       fix: Add .github/PULL_REQUEST_TEMPLATE.md with the eight report sections.
     links:
       hinders: [goal-org-open-compiler]
 
-  - id: problem-reebeat-goals-not-in-readme
+  - id: problem-tsukuri-goals-not-in-readme
     kind: problem
     title: The README does not state the goals
     statement: >-
@@ -474,37 +474,37 @@ elements:
     source:
       - log:7
       - log:9
-      - reebeat:README.md:1-3
+      - tsukuri:README.md:1-3
     gap:
-      repo: reebeat
+      repo: tsukuri
       fix: Open the README with the tagline and the four qualities, and generate that text from this model.
     links:
-      hinders: [goal-reebeat-vision]
+      hinders: [goal-tsukuri-vision]
 
-  - id: problem-reebeat-roadmap-only-in-issues
+  - id: problem-tsukuri-roadmap-only-in-issues
     kind: problem
     title: The README does not link the generated roadmap
     statement: >-
-      The reebeat README has no link to the roadmap that reebeat/.github generates from the model and the tracker, and
-      STATE.md is out of date. The reebeat repository holds no roadmap file.
+      The tsukuri README has no link to the roadmap that tsukuri-labs/.github generates from the model and the tracker, and
+      STATE.md is out of date. The tsukuri repository holds no roadmap file.
     status: open
     rationale: >-
       No roadmap file exists at the pinned commit, and the README does not mention a roadmap. The roadmap now exists as
-      `docs/roadmap.md` of reebeat/.github, generated from this model, which keeps a single source. The open item is the
-      link. The stale STATE.md is also recorded in problem-reebeat-state-stale.
+      `docs/roadmap.md` of tsukuri-labs/.github, generated from this model, which keeps a single source. The open item is the
+      link. The stale STATE.md is also recorded in problem-tsukuri-state-stale.
     source:
-      - absent:reebeat:ROADMAP.md
-      - reebeat:README.md:1-50
-      - reebeat:STATE.md:7
-      - issue:reebeat#19
-      - issue:reebeat#20
+      - absent:tsukuri:ROADMAP.md
+      - tsukuri:README.md:1-50
+      - tsukuri:STATE.md:7
+      - issue:tsukuri#19
+      - issue:tsukuri#20
     gap:
-      repo: reebeat
+      repo: tsukuri
       fix: Link the generated roadmap from the README and bring STATE.md up to date.
     links:
       hinders: [goal-org-written-intent]
 
-  - id: problem-reebeat-demand-unmeasured
+  - id: problem-tsukuri-demand-unmeasured
     kind: problem
     title: Demand is measured with pilot users and a waitlist
     statement: >-
@@ -512,50 +512,50 @@ elements:
       README and the specs read for this model report no usage or uptake yet.
     status: decided
     source:
-      - "reebeat:README.md:1-50"
+      - "tsukuri:README.md:1-50"
       - log:92
     gap:
-      repo: reebeat
+      repo: tsukuri
       fix: Recruit named pilot users, open a waitlist and record the activation step, a story built end to end.
     links:
-      hinders: [goal-reebeat-vision]
+      hinders: [goal-tsukuri-vision]
 
-  - id: problem-reebeat-packages-private
+  - id: problem-tsukuri-packages-private
     kind: problem
     title: No pre-release yet; cli and adapters unpublished
     statement: >-
-      No `@reebeat/*` package is on npm yet: the registry answered 404 for `@reebeat/core` on 2026-10-29. Seven packages are
-      set up to publish (core, subtitles, lint, services, pipeline, sounds-synth, render-reveal). The `reebeat` command
+      No `@tsukuri/*` package is on npm yet: the registry answered 404 for `@tsukuri/core` on 2026-10-29. Seven packages are
+      set up to publish (core, subtitles, lint, services, pipeline, sounds-synth, render-reveal). The `tsukuri` command
       (`cli`), `verify` and the five Node adapters stay `"private": true`, so they have no distribution path.
     status: open
     rationale: >-
       Observed at the pinned commit: seven of the 14 manifests under `packages/` carry no `"private": true`, and
       `.github/workflows/release.yml` exists (PR #18, merged). The other seven are private by design (spec 0009). A lookup of
-      `@reebeat/core` in the npm registry returned 404 on 2026-10-29, which a pinned file cannot show. Spec 0009 says the
+      `@tsukuri/core` in the npm registry returned 404 on 2026-10-29, which a pinned file cannot show. Spec 0009 says the
       first release needs operator steps (claim the names, configure trusted publishers); whether they are done is not
-      verified. The operator should confirm the gap and say how the `reebeat` command and the adapters are distributed.
+      verified. The operator should confirm the gap and say how the `tsukuri` command and the adapters are distributed.
     source:
-      - reebeat:packages/core/package.json:11-14
-      - reebeat:packages/cli/package.json:4
-      - reebeat:packages/verify/package.json:4
-      - reebeat:packages/speech-kokoro/package.json:4
-      - reebeat:packages/align-whisper/package.json:4
-      - reebeat:packages/capture-chromium/package.json:4
-      - reebeat:packages/encode-ffmpeg/package.json:4
-      - reebeat:packages/cache-fs/package.json:4
-      - reebeat:.github/workflows/release.yml:1-5
-      - reebeat:docs/design/open-core-boundary.md:26
-      - reebeat:docs/specs/0009-npm-prereleases.md:23
-      - reebeat:docs/specs/0009-npm-prereleases.md:36-38
-      - pr:reebeat#18
-    refs: ["pr:reebeat#18"]
+      - tsukuri:packages/core/package.json:11-14
+      - tsukuri:packages/cli/package.json:4
+      - tsukuri:packages/verify/package.json:4
+      - tsukuri:packages/speech-kokoro/package.json:4
+      - tsukuri:packages/align-whisper/package.json:4
+      - tsukuri:packages/capture-chromium/package.json:4
+      - tsukuri:packages/encode-ffmpeg/package.json:4
+      - tsukuri:packages/cache-fs/package.json:4
+      - tsukuri:.github/workflows/release.yml:1-5
+      - tsukuri:docs/design/open-core-boundary.md:26
+      - tsukuri:docs/specs/0009-npm-prereleases.md:23
+      - tsukuri:docs/specs/0009-npm-prereleases.md:36-38
+      - pr:tsukuri#18
+    refs: ["pr:tsukuri#18"]
     gap:
-      repo: reebeat
+      repo: tsukuri
       fix: Publish the first alpha release after the operator steps, and decide how the cli and the Node adapters are distributed.
     links:
-      hinders: [goal-reebeat-npm-publication]
+      hinders: [goal-tsukuri-npm-publication]
 
-  - id: problem-reebeat-xstate-alpha-risk
+  - id: problem-tsukuri-xstate-alpha-risk
     kind: problem
     title: XState v6 is an alpha with breaking releases
     statement: >-
@@ -563,16 +563,16 @@ elements:
       its declarations failed under the stricter compiler flags of the packages.
     status: proposed
     rationale: >-
-      The operator accepted an exactly pinned alpha behind a reebeat-owned boundary (spec 0007 decisions). That the alpha
+      The operator accepted an exactly pinned alpha behind a tsukuri-owned boundary (spec 0007 decisions). That the alpha
       is a risk to keep watching is the spike's own finding, not an operator statement.
     source:
-      - reebeat:docs/specs/0007-scxml-persistent-ir-spike.md:582-584
-      - reebeat:docs/specs/0007-scxml-persistent-ir-spike.md:586-588
+      - tsukuri:docs/specs/0007-scxml-persistent-ir-spike.md:582-584
+      - tsukuri:docs/specs/0007-scxml-persistent-ir-spike.md:586-588
       - log:26
     links:
-      hinders: [comp-reebeat-statechart-xstate]
+      hinders: [comp-tsukuri-statechart-xstate]
 
-  - id: problem-reebeat-experimental-gate-open
+  - id: problem-tsukuri-experimental-gate-open
     kind: problem
     title: No gate for experimental types in the API
     statement: >-
@@ -581,15 +581,15 @@ elements:
     status: open
     rationale: Open-core-boundary says the gate is open. Today none of the locked dependencies is experimental, so nothing leaks yet.
     source:
-      - reebeat:docs/design/open-core-boundary.md:58
-      - reebeat:docs/design/third-party.md:48
+      - tsukuri:docs/design/open-core-boundary.md:58
+      - tsukuri:docs/design/third-party.md:48
     gap:
-      repo: reebeat
+      repo: tsukuri
       fix: Add a test that scans exported declarations for imports from a list of experimental packages.
     links:
-      hinders: [comp-reebeat-quality-gates]
+      hinders: [comp-tsukuri-quality-gates]
 
-  - id: problem-reebeat-extension-points-open
+  - id: problem-tsukuri-extension-points-open
     kind: problem
     title: Extension points are staged under ADR-0000
     statement: >-
@@ -598,17 +598,17 @@ elements:
       new importers and the agent tool protocol come through the ADR.
     status: decided
     source:
-      - reebeat:docs/design/open-core-boundary.md:24-25
-      - issue:reebeat#19
+      - tsukuri:docs/design/open-core-boundary.md:24-25
+      - issue:tsukuri#19
       - log:86
-    refs: ["pr:reebeat#23"]
+    refs: ["pr:tsukuri#23"]
     gap:
-      repo: reebeat
+      repo: tsukuri
       fix: Write ADR-0000 in stages, including capability declarations and the agent tool protocol, and tag open points unstable.
     links:
-      hinders: [goal-reebeat-plugin-sdk, goal-reebeat-multi-renderer]
+      hinders: [goal-tsukuri-plugin-sdk, goal-tsukuri-multi-renderer]
 
-  - id: problem-reebeat-no-incremental-render
+  - id: problem-tsukuri-no-incremental-render
     kind: problem
     title: The build engine is incremental, built in steps
     statement: >-
@@ -617,19 +617,19 @@ elements:
       content, and an edit still rebuilds the whole timeline and the whole render.
     status: decided
     source:
-      - issue:reebeat#9
+      - issue:tsukuri#9
       - log:62
       - log:88
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:78
-      - reebeat:packages/pipeline/src/buildProgram.ts:5-7
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:78
+      - tsukuri:packages/pipeline/src/buildProgram.ts:5-7
     gap:
-      repo: reebeat
+      repo: tsukuri
       fix: Build the incremental build engine in steps, with stages as tasks first and render segments later.
-    refs: ["issue:reebeat#9"]
+    refs: ["issue:tsukuri#9"]
     links:
-      hinders: [goal-reebeat-incremental-builds]
+      hinders: [goal-tsukuri-incremental-builds]
 
-  - id: problem-reebeat-identity-scene-bounded
+  - id: problem-tsukuri-identity-scene-bounded
     kind: problem
     title: Element ids are story-global; motion is adjacent first
     statement: >-
@@ -640,15 +640,15 @@ elements:
     source:
       - log:23
       - log:83
-      - reebeat:GLOSSARY.md:19-21
-      - pr:reebeat#17
+      - tsukuri:GLOSSARY.md:19-21
+      - pr:tsukuri#17
     gap:
-      repo: reebeat
+      repo: tsukuri
       fix: Add the story-global id lint, change the glossary to story-wide identity now, and build non-adjacent motion in spec 0005.
     links:
-      hinders: [goal-reebeat-statechart-model]
+      hinders: [goal-tsukuri-statechart-model]
 
-  - id: problem-reebeat-transition-lines-positional
+  - id: problem-tsukuri-transition-lines-positional
     kind: problem
     title: Transition lines stay Fountain's, the IR is explicit
     statement: >-
@@ -657,15 +657,15 @@ elements:
     status: decided
     source:
       - log:84
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:203
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:11
+      - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:203
+      - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:11
     gap:
-      repo: reebeat
+      repo: tsukuri
       fix: Add each Scene's incoming transition as an explicit IR property, and keep the positional reading in the Fountain adapter only.
     links:
-      hinders: [goal-reebeat-explicit-source]
+      hinders: [goal-tsukuri-explicit-source]
 
-  - id: problem-reebeat-anchor-probes-missing
+  - id: problem-tsukuri-anchor-probes-missing
     kind: problem
     title: Two anchor kinds have no probe
     statement: >-
@@ -673,14 +673,14 @@ elements:
       an Element that is declared and never used.
     status: open
     rationale: Spec 0002 lists them as not done at its as-built entry.
-    source: ["reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:200"]
+    source: ["tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:200"]
     gap:
-      repo: reebeat
+      repo: tsukuri
       fix: Add probes for update and scene.end and an unusedElement lint rule.
     links:
-      hinders: [goal-reebeat-verified-output]
+      hinders: [goal-tsukuri-verified-output]
 
-  - id: problem-reebeat-speed-interim
+  - id: problem-tsukuri-speed-interim
     kind: problem
     title: One Line keeps an interim speed hint
     statement: >-
@@ -689,15 +689,15 @@ elements:
     status: open
     rationale: Spec 0001 names it a follow-up to release 1, not part of spec 0002. STATE.md lists it too.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:275
-      - reebeat:STATE.md:12
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:275
+      - tsukuri:STATE.md:12
     gap:
-      repo: reebeat
+      repo: tsukuri
       fix: Remove the speed hint once word timings come from the synthesiser or alignment is judged by its path.
     links:
-      hinders: [goal-reebeat-event-timing]
+      hinders: [goal-tsukuri-event-timing]
 
-  - id: problem-reebeat-licence-gate-declared-only
+  - id: problem-tsukuri-licence-gate-declared-only
     kind: problem
     title: The licence gate trusts the declared licence field
     statement: >-
@@ -706,14 +706,14 @@ elements:
     status: open
     rationale: >-
       The audit states the limit itself. A package can declare a licence wrongly, so assurance is partial.
-    source: ["reebeat:docs/design/third-party.md:93"]
+    source: ["tsukuri:docs/design/third-party.md:93"]
     gap:
-      repo: reebeat
+      repo: tsukuri
       fix: Read licence files inside packages for those that bundle components.
     links:
-      hinders: [goal-reebeat-apache-licence]
+      hinders: [goal-tsukuri-apache-licence]
 
-  - id: problem-reebeat-dco-and-trademark-open
+  - id: problem-tsukuri-dco-and-trademark-open
     kind: problem
     title: DCO is enforced now; the trademark policy waits
     statement: >-
@@ -722,19 +722,19 @@ elements:
     status: decided
     source:
       - log:82
-      - reebeat:docs/design/open-core-boundary.md:63
-      - reebeat:docs/design/open-core-boundary.md:68
+      - tsukuri:docs/design/open-core-boundary.md:63
+      - tsukuri:docs/design/open-core-boundary.md:68
     gap:
-      repo: reebeat
+      repo: tsukuri
       fix: Add a CI check for the Signed-off-by trailer, and write the trademark policy once the name is cleared.
     links:
-      hinders: [goal-reebeat-apache-licence]
+      hinders: [goal-tsukuri-apache-licence]
 
-  - id: problem-reebeat-review-cleanup
+  - id: problem-tsukuri-review-cleanup
     kind: problem
     title: Verify cleanup misses a Chromium from build or journey
     statement: >-
-      The `verify-reebeat` cleanup does not stop a Chromium that `reebeat build` or `journey` starts through
+      The `verify-tsukuri` cleanup does not stop a Chromium that `tsukuri build` or `journey` starts through
       capture-chromium. Playwright launches it detached, in its own process group, and nothing records it in `pids.txt`.
       After an interrupted build it can stay running.
     status: proposed
@@ -742,15 +742,15 @@ elements:
       PR #16 merged at the pinned commit and disclosed this gap in the `cleanup.sh` header and in the skill. Issue #25 (open)
       tracks it. It is a finding of a review round and an issue, not an operator statement, so confirm it.
     source:
-      - issue:reebeat#25
-      - reebeat:.agents/skills/verify-reebeat/scripts/cleanup.sh:4-6
-      - reebeat:.agents/skills/verify-reebeat/scripts/run.sh:48
-      - reebeat:.agents/skills/verify-reebeat/SKILL.md:83
-    refs: ["issue:reebeat#25"]
+      - issue:tsukuri#25
+      - tsukuri:.agents/skills/verify-reebeat/scripts/cleanup.sh:4-6
+      - tsukuri:.agents/skills/verify-reebeat/scripts/run.sh:48
+      - tsukuri:.agents/skills/verify-reebeat/SKILL.md:83
+    refs: ["issue:tsukuri#25"]
     links:
-      hinders: [process-reebeat-verify-build]
+      hinders: [process-tsukuri-verify-build]
 
-  - id: problem-reebeat-state-machine-conformance
+  - id: problem-tsukuri-state-machine-conformance
     kind: problem
     title: "Explicit state machines (PR #17) are not merged"
     statement: >-
@@ -761,14 +761,14 @@ elements:
       Pull request #17 was open at head 9394420 on 2026-10-29, and no spec 0004 file exists at the pinned commit. The model
       keeps the fact, not the review rounds, which belong to the tracker. Confirm it.
     source:
-      - pr:reebeat#17
-      - absent:reebeat:docs/specs/0004-explicit-state-machines-and-timing-combinators.md
-    refs: ["pr:reebeat#17"]
+      - pr:tsukuri#17
+      - absent:tsukuri:docs/specs/0004-explicit-state-machines-and-timing-combinators.md
+    refs: ["pr:tsukuri#17"]
     links:
-      hinders: [goal-reebeat-statechart-model]
+      hinders: [goal-tsukuri-statechart-model]
 
   # ---------------------------------------------------------- constraints
-  - id: constraint-reebeat-apache-2
+  - id: constraint-tsukuri-apache-2
     kind: constraint
     constraintType: legal
     title: The compiler and its formats are Apache-2.0
@@ -778,32 +778,32 @@ elements:
     status: decided
     source:
       - log:44
-      - reebeat:NOTICE:2
-      - record:reebeat:docs/design/open-core-boundary.md:21
-      - record:reebeat:docs/design/open-core-boundary.md:62
-      - record:reebeat:docs/design/open-core-boundary.md:64
+      - tsukuri:NOTICE:2
+      - record:tsukuri:docs/design/open-core-boundary.md:21
+      - record:tsukuri:docs/design/open-core-boundary.md:62
+      - record:tsukuri:docs/design/open-core-boundary.md:64
     links:
-      constrains: [comp-reebeat-product]
+      constrains: [comp-tsukuri-product]
 
-  - id: constraint-reebeat-ffmpeg-process-only
+  - id: constraint-tsukuri-ffmpeg-process-only
     kind: constraint
     constraintType: legal
     title: External tools run as separate processes
     statement: >-
-      reebeat calls ffmpeg, ffprobe, whisper-cli and Chromium as external processes. It neither links nor bundles them, so
-      their licences do not reach reebeat's code.
+      tsukuri calls ffmpeg, ffprobe, whisper-cli and Chromium as external processes. It neither links nor bundles them, so
+      their licences do not reach tsukuri's code.
     status: proposed
     rationale: >-
       The third-party audit states the reading and says it is not legal advice. The operator noted the GPL status (log:50)
       but has not recorded this reading as a decision.
     source:
-      - reebeat:docs/design/third-party.md:12
-      - reebeat:README.md:46
+      - tsukuri:docs/design/third-party.md:12
+      - tsukuri:README.md:46
       - log:50
     links:
-      constrains: [comp-reebeat-encode-ffmpeg, comp-reebeat-capture-chromium, comp-reebeat-align-whisper]
+      constrains: [comp-tsukuri-encode-ffmpeg, comp-tsukuri-capture-chromium, comp-tsukuri-align-whisper]
 
-  - id: constraint-reebeat-public-repo
+  - id: constraint-tsukuri-public-repo
     kind: constraint
     constraintType: process
     title: The repository is public, no private material
@@ -815,11 +815,11 @@ elements:
       AGENTS.md and spec 0000 state it, and gitleaks enforces part of it. The decision log does not repeat it, so the
       operator should confirm it as standing.
     source:
-      - reebeat:AGENTS.md:3
-      - reebeat:docs/specs/0000-development-lifecycle.md:34
-      - reebeat:docs/design/4em-regression-baseline.md:11-12
+      - tsukuri:AGENTS.md:3
+      - tsukuri:docs/specs/0000-development-lifecycle.md:34
+      - tsukuri:docs/design/4em-regression-baseline.md:11-12
     links:
-      constrains: [comp-reebeat-product]
+      constrains: [comp-tsukuri-product]
 
   - id: constraint-reebeat-working-name
     kind: constraint
@@ -834,12 +834,12 @@ elements:
     source:
       - log:75
       - log:113
-      - reebeat:README.md:42
-      - reebeat:docs/design/open-core-boundary.md:68
+      - tsukuri:README.md:42
+      - tsukuri:docs/design/open-core-boundary.md:68
     links:
-      constrains: [comp-reebeat-product]
+      constrains: [comp-tsukuri-product]
 
-  - id: constraint-reebeat-effect-pin
+  - id: constraint-tsukuri-effect-pin
     kind: constraint
     constraintType: technical
     title: Effect is pinned at 4.1.0 as one family
@@ -851,27 +851,27 @@ elements:
       Observed in the repository: the catalog pins 4.1.0 and the family check enforces one version. Spec 0003 says the
       operator asked for the latest Effect in every repository, but not this pin, so confirm it.
     source:
-      - reebeat:package.json:70
-      - reebeat:AGENTS.md:56
+      - tsukuri:package.json:70
+      - tsukuri:AGENTS.md:56
       - log:55
     links:
-      constrains: [comp-reebeat-product]
+      constrains: [comp-tsukuri-product]
 
-  - id: constraint-reebeat-xstate-pinned
+  - id: constraint-tsukuri-xstate-pinned
     kind: constraint
     constraintType: technical
     title: XState is a pinned alpha behind a boundary
     statement: >-
       The build-time interpreter is XState v6 alpha, pinned exactly at alpha.71, using its pure system API. It sits in an
-      integration package behind a reebeat-owned service, and its types never appear in the public API.
+      integration package behind a tsukuri-owned service, and its types never appear in the public API.
     status: decided
     source:
       - log:26
-      - record:reebeat:docs/specs/0007-scxml-persistent-ir-spike.md:616-620
+      - record:tsukuri:docs/specs/0007-scxml-persistent-ir-spike.md:616-620
     links:
-      constrains: [comp-reebeat-statechart-xstate]
+      constrains: [comp-tsukuri-statechart-xstate]
 
-  - id: constraint-reebeat-local-tools
+  - id: constraint-tsukuri-local-tools
     kind: constraint
     constraintType: technical
     title: A local build needs Linux, Chromium and ffmpeg
@@ -882,13 +882,13 @@ elements:
     status: decided
     source:
       - log:89
-      - reebeat:README.md:12
-      - reebeat:README.md:23
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:190
+      - tsukuri:README.md:12
+      - tsukuri:README.md:23
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:190
     links:
-      constrains: [process-reebeat-capture-frames, process-reebeat-encode-video]
+      constrains: [process-tsukuri-capture-frames, process-tsukuri-encode-video]
 
-  - id: constraint-reebeat-canvas
+  - id: constraint-tsukuri-canvas
     kind: constraint
     constraintType: technical
     title: Release 1 renders 1280x720 at 30 fps
@@ -901,13 +901,13 @@ elements:
       the question stays open.
     source:
       - log:22
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:80-82
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:209
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:80-82
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:209
     links:
-      constrains: [process-reebeat-capture-frames]
+      constrains: [process-tsukuri-capture-frames]
 
   # -------------------------------------------------------- opportunities
-  - id: opportunity-reebeat-identity-diff-motion
+  - id: opportunity-tsukuri-identity-diff-motion
     kind: opportunity
     title: The identity diff derives motion
     statement: >-
@@ -917,12 +917,12 @@ elements:
     source:
       - log:23
       - log:83
-      - reebeat:GLOSSARY.md:65-67
+      - tsukuri:GLOSSARY.md:65-67
     canvas: [value-propositions]
     links:
-      supports: [goal-reebeat-vision, goal-reebeat-statechart-model]
+      supports: [goal-tsukuri-vision, goal-tsukuri-statechart-model]
 
-  - id: opportunity-reebeat-one-declaration-many-surfaces
+  - id: opportunity-tsukuri-one-declaration-many-surfaces
     kind: opportunity
     title: One declaration, many surfaces
     statement: >-
@@ -932,14 +932,14 @@ elements:
       explicit (a declared opt-out, never a default).
     status: decided
     source:
-      - issue:reebeat#19@6503203735
+      - issue:tsukuri#19@6503203735
       - log:38
       - log:87
-    refs: ["issue:reebeat#19"]
+    refs: ["issue:tsukuri#19"]
     links:
-      supports: [goal-reebeat-interactive-website, goal-reebeat-multi-renderer]
+      supports: [goal-tsukuri-interactive-website, goal-tsukuri-multi-renderer]
 
-  - id: opportunity-reebeat-offline-standins
+  - id: opportunity-tsukuri-offline-standins
     kind: opportunity
     title: Offline stand-ins need no model
     statement: >-
@@ -950,13 +950,13 @@ elements:
       Observed in the repository: the README and the glossary describe the stand-ins. The operator decided only that every
       integration has a stand-in (spec 0001 line 234), so confirm the benefit.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
-      - reebeat:README.md:23
-      - reebeat:GLOSSARY.md:115-117
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
+      - tsukuri:README.md:23
+      - tsukuri:GLOSSARY.md:115-117
     links:
-      supports: [goal-reebeat-plugin-sdk, goal-reebeat-reproducible-builds]
+      supports: [goal-tsukuri-plugin-sdk, goal-tsukuri-reproducible-builds]
 
-  - id: opportunity-reebeat-byo-agents
+  - id: opportunity-tsukuri-byo-agents
     kind: opportunity
     title: A text source agents can write and repair
     statement: >-
@@ -968,24 +968,24 @@ elements:
       the spec's reading of the earlier positional grammar.
     source:
       - log:43
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:11
-      - reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:119
+      - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:11
+      - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:119
     links:
-      supports: [goal-reebeat-plugin-sdk, goal-reebeat-explicit-source]
+      supports: [goal-tsukuri-plugin-sdk, goal-tsukuri-explicit-source]
 
-  - id: opportunity-reebeat-lint-open-fixes-paid
+  - id: opportunity-tsukuri-lint-open-fixes-paid
     kind: opportunity
     title: Lint in the compiler, fixes in the editor
     statement: >-
       The lint and its deterministic `--fix` are open and live in the compiler. Only hosted-AI guided fixes in the editor
       are paid, because they cost inference money.
     status: decided
-    source: ["issue:reebeat#8", "log:43", "log:91"]
-    refs: ["issue:reebeat#8"]
+    source: ["issue:tsukuri#8", "log:43", "log:91"]
+    refs: ["issue:tsukuri#8"]
     links:
-      supports: [goal-reebeat-teaching-lint]
+      supports: [goal-tsukuri-teaching-lint]
 
-  - id: opportunity-reebeat-react-engine
+  - id: opportunity-tsukuri-react-engine
     kind: opportunity
     title: React as render engine, JSX as importer
     statement: >-
@@ -994,4 +994,4 @@ elements:
     status: decided
     source: [log:64]
     links:
-      supports: [goal-reebeat-multi-renderer]
+      supports: [goal-tsukuri-multi-renderer]

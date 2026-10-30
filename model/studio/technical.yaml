@@ -3,24 +3,24 @@ elements:
   - id: comp-studio-product
     kind: component
     tier: product
-    title: reebeat studio
-    tagline: The collaborative editor for reebeat stories
+    title: tsukuri studio
+    tagline: The collaborative editor for tsukuri stories
     repo: studio
     licence: "proprietary; all rights reserved (LICENSE file and third-party notices still to be added)"
     statement: >-
-      Studio is a collaborative editor for reebeat stories, a product built on the open compiler. It ships web first and as
+      Studio is a collaborative editor for tsukuri stories, a product built on the open compiler. It ships web first and as
       one binary built with Bun. It is proprietary, all rights reserved.
     status: decided
     source: [log:43, log:45, log:46, log:95]
     links:
       serves: [goal-studio-vision]
-      depends-on: [resource-studio-reebeat-compiler]
+      depends-on: [resource-studio-tsukuri-compiler]
     canvas: [value-propositions, key-activities]
 
   - id: comp-studio-editor
     kind: component
     tier: app
-    package: "@reebeat-studio/editor"
+    package: "@tsukuri-studio/editor"
     repo: studio
     title: The editor app (apps/editor)
     statement: >-
@@ -34,7 +34,7 @@ elements:
     links:
       part-of: [comp-studio-product]
       serves: [goal-studio-first-felt-journey, goal-studio-lenses]
-      depends-on: [resource-studio-foldkit, resource-studio-effect, resource-studio-reebeat-compiler]
+      depends-on: [resource-studio-foldkit, resource-studio-effect, resource-studio-tsukuri-compiler]
       realizes: [req-studio-accessible-regions, req-studio-offline-free-tier]
 
   - id: comp-studio-preview
@@ -42,16 +42,16 @@ elements:
     tier: app
     title: In-browser Deck preview
     statement: >-
-      The preview is a hybrid. It renders the compiled timeline with reebeat's Deck renderer in an iframe and seeks it to the
+      The preview is a hybrid. It renders the compiled timeline with tsukuri's Deck renderer in an iframe and seeks it to the
       playhead, and the Video stays the export. Gate F2 checks that a preview frame and the Video frame are byte for byte
-      equal, and it needs new reebeat API: a browser-safe compile, a seekable Deck page and an asset-free Deck generator.
+      equal, and it needs new tsukuri API: a browser-safe compile, a seekable Deck page and an asset-free Deck generator.
     status: decided
     source: [studio:docs/specs/0001-first-felt-journey.md:59-72, log:97]
     proposedPricing: free
     links:
       part-of: [comp-studio-editor]
       serves: [goal-studio-preview-fidelity]
-      depends-on: [resource-studio-reebeat-compiler]
+      depends-on: [resource-studio-tsukuri-compiler]
       realizes: [req-studio-preview-equals-video, req-studio-scrub-frame]
 
   - id: comp-studio-edit-path
@@ -79,7 +79,7 @@ elements:
     title: Manuscript lens
     statement: >-
       A read-only reading view of the screenplay, drawn from the IR as a Fountain document. It needs a Fountain writer from
-      reebeat.
+      tsukuri.
     status: proposed
     rationale: >-
       The operator named a manuscript view (log line 45). The read-only Fountain output, the writer dependency and the tier
@@ -148,11 +148,11 @@ elements:
     tier: app
     title: Wiring lens
     statement: >-
-      For each effect, the event it follows and a trace to the frame. It reads what reebeat's timing plan prints and adds the
+      For each effect, the event it follows and a trace to the frame. It reads what tsukuri's timing plan prints and adds the
       chain.
     status: proposed
     rationale: >-
-      Design only. The lens, its tier and its reebeat needs (event resolution, cycle lint, clocks) are the lenses note's
+      Design only. The lens, its tier and its tsukuri needs (event resolution, cycle lint, clocks) are the lenses note's
       proposal. The operator should confirm this lens and its tier.
     source: [studio:docs/design/lenses.md:25, studio:docs/design/lenses.md:58-60]
     proposedPricing: free
@@ -184,11 +184,11 @@ elements:
     tier: app
     title: Coach lens
     statement: >-
-      Shows the findings of reebeat's teaching lint on the timeline. The lint is free. The lenses note says guided fixes may
+      Shows the findings of tsukuri's teaching lint on the timeline. The lint is free. The lenses note says guided fixes may
       be a paid tier.
     status: proposed
     rationale: >-
-      Design only. It depends on reebeat issue 8, and the lens, its findings view and the tier are the lenses note's
+      Design only. It depends on tsukuri issue 8, and the lens, its findings view and the tier are the lenses note's
       proposal. The operator should confirm the lens and its tier.
     source: [studio:docs/design/lenses.md:27, studio:docs/design/lenses.md:71-73]
     proposedPricing: free
@@ -205,7 +205,7 @@ elements:
       speech are out of scope until demand shows.
     status: proposed
     rationale: >-
-      Design only. It depends on reebeat issue 10, and the drift view and the tier are the lenses note's proposal. The
+      Design only. It depends on tsukuri issue 10, and the drift view and the tier are the lenses note's proposal. The
       operator should confirm those functions and the tier.
     source: [studio:docs/design/lenses.md:28, studio:docs/design/lenses.md:75-77]
     proposedPricing: free
@@ -223,7 +223,7 @@ elements:
     status: proposed
     rationale: >-
       The operator named a render view (log line 45). The outputs and the tier split are the lenses note's proposal, and
-      aspect variants are new reebeat work. The operator should confirm the delivery scope and the tiers.
+      aspect variants are new tsukuri work. The operator should confirm the delivery scope and the tiers.
     source: [log:45, studio:docs/design/lenses.md:29, studio:docs/design/lenses.md:79-87]
     proposedPricing: free
     links:
@@ -268,7 +268,7 @@ elements:
     title: Reference tool server over a local story file
     statement: >-
       A small server that offers the tools through the MCP adapter over one story file on the user's machine. It is part of
-      the open core and lives in reebeat under Apache-2.0.
+      the open core and lives in tsukuri under Apache-2.0.
     status: decided
     source: [log:77, studio:docs/specs/0001-first-felt-journey.md:108, studio:docs/specs/0001-first-felt-journey.md:118, studio:docs/specs/0001-first-felt-journey.md:151]
     proposedPricing: free
@@ -359,7 +359,7 @@ elements:
     source: [log:47, record:studio:docs/specs/0002-collaboration-spike.md:198]
     links:
       serves: [goal-studio-valid-shared-story]
-      depends-on: [resource-studio-reebeat-compiler]
+      depends-on: [resource-studio-tsukuri-compiler]
       realizes: [req-studio-gate-refuses-invalid, isgoal-studio-story-always-valid]
 
   - id: comp-studio-repair
@@ -419,7 +419,7 @@ elements:
   - id: comp-studio-quality-tools
     kind: component
     tier: tool
-    package: "@reebeat-studio/quality"
+    package: "@tsukuri-studio/quality"
     title: Quality tools (tools/quality)
     statement: >-
       The exception registry check, the Effect family check, the feature-map test, the review-record test, the headroom test
@@ -485,7 +485,7 @@ elements:
     reqType: functional
     title: The graph is the engine's graph
     statement: >-
-      The States and Beats the editor draws equal the ones reebeat's timing plan lists, with the same ids, count and order.
+      The States and Beats the editor draws equal the ones tsukuri's timing plan lists, with the same ids, count and order.
     status: proposed
     rationale: >-
       Falsifier F1 of spec 0001. It has no code at the pinned commit. The operator should confirm the graph equality
@@ -502,7 +502,7 @@ elements:
     title: The playhead seeks the preview to any frame
     statement: >-
       Dragging the playhead seeks the Deck in the preview iframe to that frame and shows its narration word. It needs a
-      seekable Deck page from reebeat.
+      seekable Deck page from tsukuri.
     status: decided
     source: [studio:docs/specs/0001-first-felt-journey.md:18, studio:docs/specs/0001-first-felt-journey.md:39, log:97]
     proposedPricing: free

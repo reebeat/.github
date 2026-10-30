@@ -4,9 +4,9 @@
 
 *We take care of building; you focus on creating.*
 
-People make multimedia by declaring its narrative and structure. reebeat builds the artifacts, so they stay accessible and reproducible and are rebuilt as the author edits.
+People make multimedia by declaring its narrative and structure. tsukuri builds the artifacts, so they stay accessible and reproducible and are rebuilt as the author edits.
 
-**In one line:** You declare the story's beats and what they mean; reebeat derives motion, timing and every artifact, reproducibly, rebuilding only what an edit changes.
+**In one line:** You declare the story's beats and what they mean; tsukuri derives motion, timing and every artifact, reproducibly, rebuilding only what an edit changes.
 
 **How it works, technically:** Semantically declared story beats, compiled into multimedia artifacts: statecharts for structure, functional reactive time, and an incremental build graph, written in Effect.
 
@@ -22,38 +22,38 @@ People make multimedia by declaring its narrative and structure. reebeat builds 
 
 ## The product family
 
-### [reebeat, the open compiler](https://github.com/reebeat/reebeat)
+### [tsukuri, the open compiler](https://github.com/tsukuri-labs/tsukuri)
 
 *Declarative multimedia: accessible, reproducible, rebuilt as you edit.*
 
 Semantically declared story beats, compiled into multimedia artifacts: statecharts for structure, functional reactive time, and an incremental build graph, written in Effect. The compiler and its formats are open source, and running them locally is free.
 
-Licence: Apache-2.0. Model status: decided. [Product page](https://github.com/reebeat/.github/blob/main/docs/products/reebeat.md).
+Licence: Apache-2.0. Model status: decided. [Product page](https://github.com/tsukuri-labs/.github/blob/main/docs/products/tsukuri.md).
 
-### [reebeat studio](https://github.com/reebeat/studio)
+### [tsukuri studio](https://github.com/tsukuri-labs/studio)
 
-*The collaborative editor for reebeat stories*
+*The collaborative editor for tsukuri stories*
 
-Studio is a collaborative editor for reebeat stories, a product built on the open compiler. It ships web first and as one binary built with Bun. It is proprietary, all rights reserved.
+Studio is a collaborative editor for tsukuri stories, a product built on the open compiler. It ships web first and as one binary built with Bun. It is proprietary, all rights reserved.
 
-Licence: proprietary; all rights reserved (LICENSE file and third-party notices still to be added). Model status: decided. [Product page](https://github.com/reebeat/.github/blob/main/docs/products/studio.md).
+Licence: proprietary; all rights reserved (LICENSE file and third-party notices still to be added). Model status: decided. [Product page](https://github.com/tsukuri-labs/.github/blob/main/docs/products/studio.md).
 
-### [foldkit-flow](https://github.com/reebeat/foldkit-flow)
+### [foldkit-flow](https://github.com/tsukuri-labs/foldkit-flow)
 
 A node-based graph UI for Foldkit, like React Flow or Svelte Flow, in its own repository under the MIT licence.
 
-Licence: MIT. Model status: decided. [Product page](https://github.com/reebeat/.github/blob/main/docs/products/foldkit-flow.md).
+Licence: MIT. Model status: decided. [Product page](https://github.com/tsukuri-labs/.github/blob/main/docs/products/foldkit-flow.md).
 
 ## Read more
 
-- [How it works (the technical description)](https://github.com/reebeat/reebeat/pull/24): A note in the reebeat repository that explains, for technical readers, how the qualities come from the mechanisms: the Model, Plan and Build layers, Effect and XState, prior art, the novelty claim and why React's core was rejected. (proposed)
+- [How it works (the technical description)](https://github.com/tsukuri-labs/tsukuri/pull/24): A note in the tsukuri repository that explains, for technical readers, how the qualities come from the mechanisms: the Model, Plan and Build layers, Effect and XState, prior art, the novelty claim and why React's core was rejected. (proposed)
 
 ## Status and roadmap
 
 The model holds 658 elements: 266 decided by the operator, 346 proposed and 46 open. 17 tracked issues and pull requests are open (snapshot of 2026-10-29).
 
-- [Roadmap](https://github.com/reebeat/.github/blob/main/docs/roadmap.md): generated from the model and the issue tracker.
-- [Goals](https://github.com/reebeat/.github/blob/main/docs/goals.md) and the other [4EM sub-model pages](https://github.com/reebeat/.github/blob/main/docs/README.md).
-- [Business model](https://github.com/reebeat/.github/blob/main/docs/business-model.md): the canvas, and the free and paid split.
-- [Gap report](https://github.com/reebeat/.github/blob/main/docs/gaps.md): what is missing in the repositories, and how to fix it.
-- [To confirm](https://github.com/reebeat/.github/blob/main/docs/confirm.md): what waits for the operator to confirm or reject.
+- [Roadmap](https://github.com/tsukuri-labs/.github/blob/main/docs/roadmap.md): generated from the model and the issue tracker.
+- [Goals](https://github.com/tsukuri-labs/.github/blob/main/docs/goals.md) and the other [4EM sub-model pages](https://github.com/tsukuri-labs/.github/blob/main/docs/README.md).
+- [Business model](https://github.com/tsukuri-labs/.github/blob/main/docs/business-model.md): the canvas, and the free and paid split.
+- [Gap report](https://github.com/tsukuri-labs/.github/blob/main/docs/gaps.md): what is missing in the repositories, and how to fix it.
+- [To confirm](https://github.com/tsukuri-labs/.github/blob/main/docs/confirm.md): what waits for the operator to confirm or reject.

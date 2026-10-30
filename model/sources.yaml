@@ -7,6 +7,6 @@ decisionLog: sources/operator-decisions-2026-10.md
 # `proposedPricing`.
 pricingDecisions: [43, 91]
 repos:
-  reebeat: 82ee66f8806558460917b33ad9ad8d21c47a9a5b
+  tsukuri: 82ee66f8806558460917b33ad9ad8d21c47a9a5b
   studio: d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8
   foldkit-flow: 8124d5b08fe5e87c75c85b067c3079e2ce46a5a6

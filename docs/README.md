@@ -2,7 +2,7 @@
 
 # The intent model
 
-The reasons behind the reebeat products, modelled with the 4EM method and generated from `model/`. Read [the spec](specs/0000-intent-model.md) for the method, the rules and the checks.
+The reasons behind the tsukuri products, modelled with the 4EM method and generated from `model/`. Read [the spec](specs/0000-intent-model.md) for the method, the rules and the checks.
 
 ## Pages
 
@@ -14,13 +14,13 @@ The reasons behind the reebeat products, modelled with the 4EM method and genera
 - [Technical Components and Requirements Model](technical-components.md)
 - [Business model](business-model.md): a Business Model Canvas, with the free and paid split.
 - [Roadmap](roadmap.md), [gap report](gaps.md) and [what the operator confirms](confirm.md).
-- Product page: [reebeat (the compiler)](products/reebeat.md)
-- Product page: [reebeat studio](products/studio.md)
+- Product page: [tsukuri (the compiler)](products/tsukuri.md)
+- Product page: [tsukuri studio](products/studio.md)
 - Product page: [foldkit-flow](products/foldkit-flow.md)
 
 ## Elements by sub-model and scope
 
-| Sub-model | The organisation | reebeat (the compiler) | reebeat studio | foldkit-flow | decided | proposed | open |
+| Sub-model | The organisation | tsukuri (the compiler) | tsukuri studio | foldkit-flow | decided | proposed | open |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | [Goals Model](goals.md) | 28 | 60 | 53 | 37 | 95 | 43 | 40 |
 | [Business Rules Model](business-rules.md) | 13 | 33 | 24 | 17 | 34 | 53 | 0 |
@@ -34,8 +34,8 @@ The reasons behind the reebeat products, modelled with the 4EM method and genera
 | Scope | Elements | decided | proposed | open |
 | --- | --- | --- | --- | --- |
 | The organisation | 89 | 59 | 29 | 1 |
-| [reebeat (the compiler)](products/reebeat.md) | 233 | 82 | 135 | 16 |
-| [reebeat studio](products/studio.md) | 199 | 78 | 107 | 14 |
+| [tsukuri (the compiler)](products/tsukuri.md) | 233 | 82 | 135 | 16 |
+| [tsukuri studio](products/studio.md) | 199 | 78 | 107 | 14 |
 | [foldkit-flow](products/foldkit-flow.md) | 137 | 47 | 75 | 15 |
 
 ## Elements by kind

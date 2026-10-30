@@ -1,25 +1,25 @@
 elements:
   # --------------------------------------------------------------- actors
-  - id: actor-reebeat-story-author
+  - id: actor-tsukuri-story-author
     kind: actor
     actorType: role
     persona: true
     title: Story author
     statement: >-
       A creator who writes one Fountain screenplay and runs `plan`, `build` and `check`. They declare the story and leave
-      the building to reebeat.
+      the building to tsukuri.
     status: proposed
     rationale: >-
       The README addresses a person who writes a screenplay (README.md:3). Mapping that person to the organisation's
       Creator persona is the model author's reading.
-    source: ["reebeat:README.md:3", "reebeat:README.md:14-19", "log:7"]
+    source: ["tsukuri:README.md:3", "tsukuri:README.md:14-19", "log:7"]
     canvas: [customer-segments]
     links:
       part-of: [actor-creator]
-      performs: [process-reebeat-author-story, process-reebeat-review-plan]
-      serves: [goal-reebeat-vision]
+      performs: [process-tsukuri-author-story, process-tsukuri-review-plan]
+      serves: [goal-tsukuri-vision]
 
-  - id: actor-reebeat-presenter
+  - id: actor-tsukuri-presenter
     kind: actor
     actorType: role
     persona: true
@@ -30,14 +30,14 @@ elements:
     rationale: >-
       README.md:21 tells the reader to step through the Deck and open speaker notes. Treating this reader as the
       organisation's Presenter persona is the model author's reading.
-    source: ["reebeat:README.md:21", "reebeat:GLOSSARY.md:78-80"]
+    source: ["tsukuri:README.md:21", "tsukuri:GLOSSARY.md:78-80"]
     canvas: [customer-segments]
     links:
       part-of: [actor-presenter]
-      uses: [concept-reebeat-deck]
-      serves: [goal-reebeat-deck-and-video]
+      uses: [concept-tsukuri-deck]
+      serves: [goal-tsukuri-deck-and-video]
 
-  - id: actor-reebeat-agent-operator
+  - id: actor-tsukuri-agent-operator
     kind: actor
     actorType: role
     persona: true
@@ -48,14 +48,14 @@ elements:
     rationale: >-
       The operator decided that users can bring their own agents (log:43). That an agent works through `plan`, `lint` and
       `check` is the model author's reading of spec 0002.
-    source: ["log:43", "reebeat:docs/specs/0002-explicit-anchors-and-syntax.md:11"]
+    source: ["log:43", "tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:11"]
     canvas: [customer-segments]
     links:
       part-of: [actor-agent-operator]
-      performs: [process-reebeat-author-story]
-      serves: [goal-reebeat-explicit-source]
+      performs: [process-tsukuri-author-story]
+      serves: [goal-tsukuri-explicit-source]
 
-  - id: actor-reebeat-plugin-author
+  - id: actor-tsukuri-plugin-author
     kind: actor
     actorType: role
     persona: true
@@ -68,36 +68,36 @@ elements:
       plugins are supported, but the adapter-and-contract shape is marked proposed there, so confirm it.
     source:
       - log:43
-      - reebeat:docs/design/open-core-boundary.md:24
-      - reebeat:AGENTS.md:65
+      - tsukuri:docs/design/open-core-boundary.md:24
+      - tsukuri:AGENTS.md:65
     canvas: [customer-segments]
     links:
       part-of: [actor-plugin-author]
-      performs: [process-reebeat-add-adapter]
-      serves: [goal-reebeat-plugin-sdk]
+      performs: [process-tsukuri-add-adapter]
+      serves: [goal-tsukuri-plugin-sdk]
 
-  - id: actor-reebeat-cli
+  - id: actor-tsukuri-cli
     kind: actor
     actorType: system
-    title: The reebeat command
+    title: The tsukuri command
     statement: >-
-      The `reebeat` command with `plan`, `lint`, `build`, `check` and `journey`. It is the one composition root that reads
+      The `tsukuri` command with `plan`, `lint`, `build`, `check` and `journey`. It is the one composition root that reads
       the selection and fills each service with an adapter.
     status: proposed
     rationale: >-
       Observed in the repository: the command source lists these subcommands. The operator decided explicit selection at a
       composition root, not the command list, so confirm it.
     source:
-      - reebeat:packages/cli/src/cli.ts:70
-      - reebeat:packages/cli/src/cli.ts:321
-      - reebeat:AGENTS.md:62
+      - tsukuri:packages/cli/src/cli.ts:70
+      - tsukuri:packages/cli/src/cli.ts:321
+      - tsukuri:AGENTS.md:62
     canvas: [channels]
     links:
-      performs: [process-reebeat-select-adapters, process-reebeat-run-journey]
-      responsible-for: [rule-reebeat-only-cli-composes]
-      uses: [comp-reebeat-cli]
+      performs: [process-tsukuri-select-adapters, process-tsukuri-run-journey]
+      responsible-for: [rule-tsukuri-only-cli-composes]
+      uses: [comp-tsukuri-cli]
 
-  - id: actor-reebeat-build-program
+  - id: actor-tsukuri-build-program
     kind: actor
     actorType: system
     title: The build program
@@ -109,18 +109,18 @@ elements:
       Observed in the repository: the pipeline source describes the seven-service program. The operator has not decided its
       exact shape, so confirm it.
     source:
-      - reebeat:packages/pipeline/src/buildProgram.ts:1-3
+      - tsukuri:packages/pipeline/src/buildProgram.ts:1-3
     links:
       performs:
-        - process-reebeat-parse-story
-        - process-reebeat-build-plan
-        - process-reebeat-speech-stage
-        - process-reebeat-schedule
-        - process-reebeat-render-deck
-        - process-reebeat-write-manifest
-      uses: [comp-reebeat-pipeline]
+        - process-tsukuri-parse-story
+        - process-tsukuri-build-plan
+        - process-tsukuri-speech-stage
+        - process-tsukuri-schedule
+        - process-tsukuri-render-deck
+        - process-tsukuri-write-manifest
+      uses: [comp-tsukuri-pipeline]
 
-  - id: actor-reebeat-local-adapters
+  - id: actor-tsukuri-local-adapters
     kind: actor
     actorType: system
     title: The local adapters
@@ -132,13 +132,13 @@ elements:
       Observed in the repository: the README and spec 0001 describe the local adapters and their egress. The operator has
       not decided this inventory, so confirm it.
     source:
-      - reebeat:README.md:21
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:260
+      - tsukuri:README.md:21
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:260
     links:
-      performs: [process-reebeat-capture-frames, process-reebeat-encode-video]
-      uses: [resource-reebeat-chromium, resource-reebeat-ffmpeg, resource-reebeat-whisper-cpp]
+      performs: [process-tsukuri-capture-frames, process-tsukuri-encode-video]
+      uses: [resource-tsukuri-chromium, resource-tsukuri-ffmpeg, resource-tsukuri-whisper-cpp]
 
-  - id: actor-reebeat-verifier
+  - id: actor-tsukuri-verifier
     kind: actor
     actorType: system
     title: The verifier
@@ -149,12 +149,12 @@ elements:
     rationale: >-
       Spec plan: spec 0001 describes the output-side verifier. The operator has not decided this actor, so confirm it.
     source:
-      - reebeat:packages/verify/src/index.ts:1-2
+      - tsukuri:packages/verify/src/index.ts:1-2
     links:
-      performs: [process-reebeat-verify-build]
-      uses: [comp-reebeat-verify]
+      performs: [process-tsukuri-verify-build]
+      uses: [comp-tsukuri-verify]
 
-  - id: actor-reebeat-reviewers
+  - id: actor-tsukuri-reviewers
     kind: actor
     actorType: role
     title: Independent reviewers and the fixer
@@ -166,14 +166,14 @@ elements:
       Spec plan: spec 0000 describes the reviewer and fixer roles. The operator has not decided each responsibility, so
       confirm it.
     source:
-      - reebeat:docs/specs/0000-development-lifecycle.md:75
-      - reebeat:docs/specs/0000-development-lifecycle.md:79
+      - tsukuri:docs/specs/0000-development-lifecycle.md:75
+      - tsukuri:docs/specs/0000-development-lifecycle.md:79
     links:
       part-of: [actor-contributor-agent]
-      performs: [process-reebeat-review-round]
-      serves: [goal-reebeat-correct-by-construction]
+      performs: [process-tsukuri-review-round]
+      serves: [goal-tsukuri-correct-by-construction]
 
-  - id: actor-reebeat-maintainer
+  - id: actor-tsukuri-maintainer
     kind: actor
     actorType: role
     title: Maintainer
@@ -185,15 +185,15 @@ elements:
       Observed in the repository: spec 0000 and AGENTS.md describe these duties. The npm provisioning duty comes from PR
       #18. The operator has not decided this role, so confirm it.
     source:
-      - reebeat:docs/specs/0000-development-lifecycle.md:23
-      - reebeat:AGENTS.md:77-85
+      - tsukuri:docs/specs/0000-development-lifecycle.md:23
+      - tsukuri:AGENTS.md:77-85
     links:
       part-of: [actor-operator]
-      performs: [process-reebeat-release-publish]
-      responsible-for: [goal-reebeat-npm-publication]
+      performs: [process-tsukuri-release-publish]
+      responsible-for: [goal-tsukuri-npm-publication]
 
   # ------------------------------------------------------------ resources
-  - id: resource-reebeat-chromium
+  - id: resource-tsukuri-chromium
     kind: resource
     resourceType: external-tool
     title: Chromium
@@ -205,14 +205,14 @@ elements:
       Spec plan: spec 0001 and the third-party audit describe Chromium, Playwright and the process boundary. The operator
       has not decided this arrangement, so confirm it.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:86
-      - reebeat:docs/design/third-party.md:56
-      - reebeat:AGENTS.md:91
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:86
+      - tsukuri:docs/design/third-party.md:56
+      - tsukuri:AGENTS.md:91
     canvas: [key-partners, key-resources]
     links:
-      serves: [goal-reebeat-deck-and-video]
+      serves: [goal-tsukuri-deck-and-video]
 
-  - id: resource-reebeat-ffmpeg
+  - id: resource-tsukuri-ffmpeg
     kind: resource
     resourceType: external-tool
     title: ffmpeg and ffprobe
@@ -224,14 +224,14 @@ elements:
       Observed in the repository: the third-party audit reads the configured build as GPL-3.0-or-later. The operator noted
       the GPL concern for later (log:50) but has not decided this inventory, so confirm it.
     source:
-      - reebeat:docs/design/third-party.md:57
-      - reebeat:AGENTS.md:92
+      - tsukuri:docs/design/third-party.md:57
+      - tsukuri:AGENTS.md:92
       - log:50
     canvas: [key-partners, key-resources]
     links:
-      serves: [goal-reebeat-deck-and-video]
+      serves: [goal-tsukuri-deck-and-video]
 
-  - id: resource-reebeat-whisper-cpp
+  - id: resource-tsukuri-whisper-cpp
     kind: resource
     resourceType: external-tool
     title: whisper.cpp
@@ -243,13 +243,13 @@ elements:
       Spec plan: spec 0001 and the third-party audit describe whisper-cli, its MIT licence and the process boundary. The
       operator has not decided this arrangement, so confirm it.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:78
-      - reebeat:docs/design/third-party.md:59
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:78
+      - tsukuri:docs/design/third-party.md:59
     canvas: [key-partners, key-resources]
     links:
-      serves: [goal-reebeat-event-timing]
+      serves: [goal-tsukuri-event-timing]
 
-  - id: resource-reebeat-kokoro-model
+  - id: resource-tsukuri-kokoro-model
     kind: resource
     resourceType: model-asset
     title: Kokoro speech model
@@ -261,13 +261,13 @@ elements:
       Spec plan: spec 0001 and the third-party audit describe the Kokoro model, its licence and its download. The operator
       has not decided this arrangement, so confirm it.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:78
-      - reebeat:docs/design/third-party.md:71
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:78
+      - tsukuri:docs/design/third-party.md:71
     canvas: [key-partners, key-resources]
     links:
-      serves: [goal-reebeat-deck-and-video]
+      serves: [goal-tsukuri-deck-and-video]
 
-  - id: resource-reebeat-whisper-model
+  - id: resource-tsukuri-whisper-model
     kind: resource
     resourceType: model-asset
     title: Whisper base English model
@@ -279,12 +279,12 @@ elements:
       Observed in the repository: the third-party audit and AGENTS.md describe the whisper model file. The operator has not
       decided this arrangement, so confirm it.
     source:
-      - reebeat:docs/design/third-party.md:72
-      - reebeat:AGENTS.md:93
+      - tsukuri:docs/design/third-party.md:72
+      - tsukuri:AGENTS.md:93
     links:
-      serves: [goal-reebeat-event-timing]
+      serves: [goal-tsukuri-event-timing]
 
-  - id: resource-reebeat-reveal-js
+  - id: resource-tsukuri-reveal-js
     kind: resource
     resourceType: software
     title: reveal.js
@@ -296,19 +296,19 @@ elements:
       Observed in the repository: the third-party audit gives the MIT licence. The operator decided reveal.js Auto-Animate
       as the release-1 animator (spec 0001 line 212), not the licence detail, so confirm it.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213
-      - reebeat:docs/design/third-party.md:44
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213
+      - tsukuri:docs/design/third-party.md:44
     canvas: [key-partners, key-resources]
     links:
-      serves: [goal-reebeat-deck-and-video]
+      serves: [goal-tsukuri-deck-and-video]
 
-  - id: resource-reebeat-fountain-format
+  - id: resource-tsukuri-fountain-format
     kind: resource
     resourceType: document
     title: The Fountain screenplay format
     statement: >-
-      The plain-text screenplay syntax, version 1.1. reebeat reads it through an existing parser and defines a small fixed
-      vocabulary on top; that is the importer. reebeat is also to write Fountain as an artifact, which is not built at the
+      The plain-text screenplay syntax, version 1.1. tsukuri reads it through an existing parser and defines a small fixed
+      vocabulary on top; that is the importer. tsukuri is also to write Fountain as an artifact, which is not built at the
       pinned commit.
     status: proposed
     rationale: >-
@@ -316,13 +316,13 @@ elements:
       the fixed vocabulary come from the spec plan, so confirm them. The operator also said Fountain is both an importer
       and an artifact renderer (log:67-69); confirm that the renderer shares this vocabulary.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:32
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:32
       - log:67-69
     links:
-      serves: [goal-reebeat-screenplay-first]
+      serves: [goal-tsukuri-screenplay-first]
 
-  - id: resource-reebeat-licence-inventory
+  - id: resource-tsukuri-licence-inventory
     kind: resource
     resourceType: data
     title: The licence inventory
@@ -334,13 +334,13 @@ elements:
       Spec plan: spec 0008 describes the inventory file and its test. The operator has not decided each detail, so confirm
       it.
     source:
-      - reebeat:docs/design/third-party.md:33
-      - reebeat:docs/specs/0008-apache-2-licence.md:61
+      - tsukuri:docs/design/third-party.md:33
+      - tsukuri:docs/specs/0008-apache-2-licence.md:61
     canvas: [key-resources]
     links:
-      serves: [goal-reebeat-apache-licence]
+      serves: [goal-tsukuri-apache-licence]
 
-  - id: resource-reebeat-devenv
+  - id: resource-tsukuri-devenv
     kind: resource
     resourceType: external-tool
     title: devenv shell
@@ -351,13 +351,13 @@ elements:
     rationale: >-
       Observed in the repository: devenv.nix lists the tools. The operator has not decided this inventory, so confirm it.
     source:
-      - reebeat:devenv.nix:16-23
-      - reebeat:README.md:12
+      - tsukuri:devenv.nix:16-23
+      - tsukuri:README.md:12
     canvas: [key-resources]
     links:
-      serves: [goal-reebeat-reproducible-builds]
+      serves: [goal-tsukuri-reproducible-builds]
 
-  - id: resource-reebeat-same-id-story
+  - id: resource-tsukuri-same-id-story
     kind: resource
     resourceType: document
     title: The story same-id
@@ -369,12 +369,12 @@ elements:
       Observed in the repository: the README and spec 0001 name this story and its cache. Spec 0001 leaves the committed
       cache as an open question for the operator, so this is the current default only.
     source:
-      - reebeat:README.md:8
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:14
+      - tsukuri:README.md:8
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:14
     links:
-      serves: [goal-reebeat-verified-output]
+      serves: [goal-tsukuri-verified-output]
 
-  - id: resource-reebeat-speech-cache
+  - id: resource-tsukuri-speech-cache
     kind: resource
     resourceType: data
     title: The speech cache
@@ -386,8 +386,8 @@ elements:
       Observed in the repository: the speech cache is committed. Spec 0001 asks the operator whether that is acceptable and
       the question stays open, so this is the current default only.
     source:
-      - reebeat:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:78
-      - reebeat:README.md:21
+      - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:78
+      - tsukuri:README.md:21
     canvas: [key-resources]
     links:
-      serves: [goal-reebeat-reproducible-builds]
+      serves: [goal-tsukuri-reproducible-builds]

@@ -1,10 +1,10 @@
 ---
 name: review-pr
-description: "The pull-request loop for reebeat/.github: independent reviewers judge the plan, the implementation and their agreement, a fixer addresses findings, each round is recorded on the PR, and a passing PR is merged by merge.sh. Use when a PR is ready for review, when asked to review or merge a PR, or when a review round finishes."
+description: "The pull-request loop for tsukuri-labs/.github: independent reviewers judge the plan, the implementation and their agreement, a fixer addresses findings, each round is recorded on the PR, and a passing PR is merged by merge.sh. Use when a PR is ready for review, when asked to review or merge a PR, or when a review round finishes."
 ---
 
-<!-- Provenance: adapted from reebeat/studio @ d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8 (.agents/skills/review-pr/SKILL.md), which adapted it
-     from reebeat/reebeat @ f7c348877585f54b6bf00651608726dd7e5044d3 and phibkro/vektorprogrammet-reimagined @ 1104c3019a76c619c4c8e9ee04c71ce191467ed4.
+<!-- Provenance: adapted from tsukuri-labs/studio @ d4fd75eaca83b9e8a98f073d5b1d957da5d6b8b8 (.agents/skills/review-pr/SKILL.md), which adapted it
+     from tsukuri-labs/tsukuri @ f7c348877585f54b6bf00651608726dd7e5044d3 and phibkro/vektorprogrammet-reimagined @ 1104c3019a76c619c4c8e9ee04c71ce191467ed4.
      Deviations: this repository has no browser, no Foldkit app and no verify skill, so those parts are removed; the reviewers check the
      model's sources instead (reviewers.md). `merge.sh` and `record-round.sh` are copied byte for byte. See PROVENANCE.md. -->
 

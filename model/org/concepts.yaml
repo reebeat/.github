@@ -3,7 +3,7 @@ elements:
     kind: concept
     title: Persistent IR
     statement: >-
-      The intermediate representation of a story: JSON owned by reebeat, with a schema for a chosen subset of SMIL,
+      The intermediate representation of a story: JSON owned by tsukuri, with a schema for a chosen subset of SMIL,
       SCXML and FRP constructs. It is a format authors and tools edit, not an artifact.
     attributes:
       - a schema for a chosen subset of SMIL, SCXML and FRP constructs
@@ -74,7 +74,7 @@ elements:
       protocol-neutral way. MCP is the first adapter, and its schema is generated from the declaration. A user's own agent
       gets the same tools as a hosted one, through MCP.
     status: decided
-    source: [log:77, log:43, reebeat:docs/design/open-core-boundary.md:25]
+    source: [log:77, log:43, tsukuri:docs/design/open-core-boundary.md:25]
     attributes:
       - Name
       - Input Schema
