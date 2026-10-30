@@ -18,16 +18,12 @@ elements:
     title: A generic library with no product logic
     statement: >-
       foldkit-flow stays a generic library. It holds no tsukuri product logic, so any Foldkit application can use it.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:3
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:35
       - foldkit-flow:README.md:7
-    rationale: >-
-      Observed in the repository: AGENTS.md, README and spec 0000 say the library has no product logic, and the spec
-      0000 header says the operator's assignment named a "generic library with no reebeat product logic". The decision
-      log does not say it (line 48 gives a separate MIT repository), and a spec header shows only that the operator
-      accepted the plan as a whole. "Any Foldkit application can use it" is an inference. The operator must confirm.
+      - log:118
     canvas: [value-propositions]
     links:
       subgoal-of: [goal-flow-vision]
@@ -106,15 +102,11 @@ elements:
     title: Stay smooth at 500 nodes and 700 edges
     statement: >-
       Dragging one node in a graph of 500 nodes and 700 edges feels smooth, and zoom and pan re-render no node.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:docs/specs/0001-first-felt-journey.md:91
       - foldkit-flow:README.md:82
-    rationale: >-
-      Spec 0001 sets this budget as falsifier J9 (line 91): the median of three p95 scripting times per pointer move
-      is under 8 ms. README line 82 says `bun run journey` measures it, and that the command exits 75 (not run, never
-      passed) when the host is busy. The budget is a spec's plan and not an operator line. The operator must confirm
-      500 nodes and 700 edges as the target size.
+      - log:118
     refs: [pr:foldkit-flow#4]
     canvas: [value-propositions]
     links:
@@ -125,15 +117,12 @@ elements:
     title: Prove interaction in a real browser
     statement: >-
       Graph behaviour is checked with real pointer and keyboard input in a real browser, not only in unit tests.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:92
       - foldkit-flow:AGENTS.md:48
       - foldkit-flow:docs/specs/0001-first-felt-journey.md:130
-    rationale: >-
-      Spec 0000 plans the browser journey as a local gate (line 92). The gate is built: `bun run journey` (AGENTS.md
-      line 48). Spec 0001 line 130 says the real Chromium runs found five defects that unit tests missed, all fixed.
-      The operator must confirm this as a standing goal, not a one-off.
+      - log:118
     refs: [pr:foldkit-flow#4]
     links:
       supports: [goal-flow-first-journey]
@@ -143,14 +132,12 @@ elements:
     title: Every change travels spec, code, PR
     statement: >-
       Each change has one spec, one branch and one PR. It passes the same gates locally, in CI and in a recorded review.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:3
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:9
       - foldkit-flow:AGENTS.md:13-19
-    rationale: >-
-      Observed in the repository: spec 0000 and AGENTS.md state the goal. The operator's assignment of spec 0000 (its
-      header) accepted the plan as a whole, not this wording. The operator must confirm.
+      - log:118
     canvas: [key-activities]
     links:
       supports: [goal-org-correctness-by-construction, goal-org-written-intent]
@@ -165,6 +152,7 @@ elements:
     source:
       - record:foldkit-flow:STATE.md:14
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:111
+      - log:118
     canvas: [key-partners, channels]
 
   - id: goal-flow-publish
@@ -272,15 +260,12 @@ elements:
     statement: >-
       The README gives one sentence of purpose, and spec 0000 states the goal of its lifecycle. No file gives the
       library's own product goals, users or success measures.
-    status: open
+    status: decided
     source:
       - foldkit-flow:README.md:3-7
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:9
       - foldkit-flow:STATE.md:7
-    rationale: >-
-      The README intro and STATE.md describe what the library is; spec 0000 lists goals for the development lifecycle,
-      not for the product. This model is the first written list of product goals. The operator must confirm which
-      goals hold.
+      - log:118
     gap:
       repo: foldkit-flow
       fix: Link this model's goals from the README so the purpose is written once.
@@ -293,11 +278,10 @@ elements:
     statement: >-
       The repository has no GLOSSARY.md. Terms such as node, handle, connection and controller have no single
       definition.
-    status: open
+    status: decided
     source:
       - absent:foldkit-flow:GLOSSARY.md
-    rationale: >-
-      Terms come from xyflow and Foldkit and are used across README, specs and code. A glossary would fix their meaning.
+      - log:118
     gap:
       repo: foldkit-flow
       fix: Add a GLOSSARY.md generated from the concepts in this model.
@@ -310,14 +294,12 @@ elements:
     statement: >-
       STATE.md lists "Blocked: Nothing". The same file names the Foldkit plugin mismatch, and issue #3 about the Bun
       toolchain is open.
-    status: open
+    status: decided
     source:
       - foldkit-flow:STATE.md:13
       - foldkit-flow:STATE.md:16-18
       - issue:foldkit-flow#3
-    rationale: >-
-      The plugin and Bun problems do not stop work today, so "nothing" may be right. But the file does not say they are
-      known risks. The maintainer must decide how STATE.md reports risks that do not block.
+      - log:118
     gap:
       repo: foldkit-flow
       fix: 'Add a "Risks" list to STATE.md that names the plugin mismatch and issue #3.'
@@ -330,14 +312,12 @@ elements:
     statement: >-
       The package manager range is `^1.4.2` with download on failure. `vp run` can download its own Bun and so differ
       from the Bun that devenv pins.
-    status: open
+    status: decided
     source:
       - issue:foldkit-flow#3
       - foldkit-flow:package.json:44-48
       - foldkit-flow:devenv.nix:8
-    rationale: >-
-      Issue #3 reports a downloaded Bun 1.4.3 where devenv pins 1.4.2. It proposes pinning the version exactly. The fix
-      is not made yet.
+      - log:118
     refs: [issue:foldkit-flow#3]
     gap:
       repo: foldkit-flow
@@ -371,16 +351,13 @@ elements:
     title: The browser journey does not run in CI
     statement: >-
       CI has no browser. The journey and the performance check run only on a developer's machine.
-    status: open
+    status: decided
     source:
       - foldkit-flow:.github/workflows/checks.yml:3
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:92
       - foldkit-flow:AGENTS.md:48
       - foldkit-flow:STATE.md:12
-    rationale: >-
-      The workflow header says it has no journey step (checks.yml line 3). AGENTS.md line 48 says the journey runs
-      locally, not in `ready` or CI, and STATE.md line 12 plans to add it once CI has a Chromium. A regression in
-      pointer or keyboard behaviour could merge without a failing check.
+      - log:118
     gap:
       repo: foldkit-flow
       fix: Run the journey in CI with a pinned Chromium, or record who runs it before each merge.
@@ -392,11 +369,10 @@ elements:
     title: Only Chromium and mouse input were tested
     statement: >-
       The journey ran in one Chromium version. Firefox, WebKit and touch input were not run.
-    status: open
+    status: decided
     source:
       - pr:foldkit-flow#4
-    rationale: >-
-      PR #4 lists these runs as "not run". Support for other browsers is unknown, and no goal sets a target.
+      - log:118
     gap:
       repo: foldkit-flow
       fix: Choose which browsers and input types the library supports, then add them to the journey.
@@ -409,14 +385,11 @@ elements:
     statement: >-
       The cited sources show no measure of who needs the library or who uses it. Nothing is published, and the sources
       record no user count or request.
-    status: open
+    status: decided
     source:
       - foldkit-flow:README.md:5
       - foldkit-flow:packages/flow/package.json:4
-    rationale: >-
-      The library exists because the operator wants it (log line 48). The cited sources hold no evidence of other users,
-      and not every place a measure could live was searched. The organisation has the same gap. The operator must
-      decide what evidence of demand would count.
+      - log:118
     gap:
       repo: foldkit-flow
       fix: Choose a signal to read after publishing, such as downloads or issues, and write it down.
@@ -446,11 +419,10 @@ elements:
     title: Workflow hardening is deferred
     statement: >-
       Vendoring Foldkit as a subtree, requiring human approval, signed commits and Renovate are all deferred.
-    status: open
+    status: decided
     source:
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:112-113
-    rationale: >-
-      Spec 0000 leaves these as open questions for the operator. The deferral matches studio and tsukuri.
+      - log:118
     gap:
       repo: foldkit-flow
       fix: Decide each item or record that it stays deferred.
@@ -463,15 +435,12 @@ elements:
     statement: >-
       The lint rule that forbids module mocking matches only the `vitest` import source, so a mock imported from
       `vite-plus/test` passes.
-    status: open
+    status: decided
     source:
       - foldkit-flow:docs/specs/0001-first-felt-journey.md:142
       - foldkit-flow:tools/oxlint/anti-slop/rules/no-module-mocking.ts:41-42
       - issue:foldkit-flow#5
-    rationale: >-
-      Spec 0001 records in its round-2 revision (line 142) that the rule matches only the `vitest` import source
-      (no-module-mocking.ts lines 41 and 42). The library test now injects controller factories instead of mocking a
-      module, but the rule is not fixed. Issue #5 tracks it.
+      - log:118
     refs: [issue:foldkit-flow#5]
     gap:
       repo: foldkit-flow
@@ -485,15 +454,13 @@ elements:
     statement: >-
       The public repository has no SECURITY.md, CODE_OF_CONDUCT.md or CONTRIBUTING.md. The README has a short
       contributing section.
-    status: open
+    status: decided
     source:
       - absent:foldkit-flow:SECURITY.md
       - absent:foldkit-flow:CODE_OF_CONDUCT.md
       - absent:foldkit-flow:CONTRIBUTING.md
       - foldkit-flow:README.md:98-100
-    rationale: >-
-      A published library needs a way to report vulnerabilities and a conduct policy. The operator must decide the
-      content.
+      - log:118
     gap:
       repo: foldkit-flow
       fix: Add the three files before the first publish.
@@ -522,15 +489,11 @@ elements:
     title: The repository is public and holds no secrets
     statement: >-
       The repository is public. It never holds a secret or personal data.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:3
       - foldkit-flow:AGENTS.md:3
-    rationale: >-
-      Observed in the repository: AGENTS.md says it is public and holds no secret or personal data. The spec 0000 header
-      says the operator's assignment named "its own public repository"; the decision log (line 48) says only "its own
-      repository", and the no-secret rule is in neither. The operator must confirm public visibility and the content
-      rule.
+      - log:118
     links:
       constrains: [resource-flow-repo]
 
@@ -587,14 +550,11 @@ elements:
     title: Foldkit declares Effect 4.0.0, the repo runs 4.1.0
     statement: >-
       Foldkit 0.169.0 declares a peer of `effect@4.0.0`. The repository runs 4.1.0, so Bun prints peer warnings.
-    status: open
+    status: decided
     source:
       - foldkit-flow:AGENTS.md:64
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:103
-    rationale: >-
-      AGENTS.md line 64 says the warnings stay until a Foldkit release lists 4.1. On 2026-10-29 npm lists foldkit
-      0.170.0 with a peer of `effect ~4.1.0`; the repository still pins 0.169.0 and has not tried it. The operator
-      must decide when to upgrade.
+      - log:118
     links:
       hinders: [comp-flow-library]
 
@@ -605,18 +565,13 @@ elements:
     statement: >-
       `@foldkit/vite-plugin` 0.28.0 imports `Crypto` from the Effect root, which 4.1.0 lacks, so the example does not
       use it. The project waits for an upstream fix and does not work around it.
-    status: proposed
-    rationale: >-
-      Observed in the repository: AGENTS.md and spec 0000 describe the mismatch and the choice to wait. The operator
-      decided in general to prefer upstream fixes (log line 56); this specific plugin case is not in the log. On
-      2026-10-29 the published `@foldkit/vite-plugin` 0.29.0 imports `SecureRandom` from `effect/crypto` (its
-      dist/index.js line 2) and Effect 4.1.0 exports `effect/crypto`; the repository has not tried it, and STATE.md
-      line 13 plans to re-enable the plugin then. The operator must confirm, and decide when to try it.
+    status: decided
     source:
       - log:56
       - foldkit-flow:AGENTS.md:64
       - foldkit-flow:STATE.md:13
       - foldkit-flow:docs/specs/0000-development-lifecycle.md:104
+      - log:118
     canvas: [key-partners]
     links:
       constrains: [comp-flow-example-app]
@@ -675,14 +630,10 @@ elements:
     statement: >-
       Spec 0001 records that real Chromium runs found defects that unit tests missed: the connect gesture, the minimap,
       teardown, reconnect ends and the lazy cache.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:docs/specs/0001-first-felt-journey.md:130
       - pr:foldkit-flow#4
-    rationale: >-
-      Spec 0001 (line 130) lists five defects the journey found and one performance defect, all fixed before the
-      merge. The PR round-1 review also reports its own run of the journey (12 of 12 passed); that is a statement on
-      the PR, not an observation made while writing this model. If the defects hold, they support keeping the browser
-      journey as a standing gate. The operator must confirm.
+      - log:118
     links:
       supports: [goal-flow-browser-proof]

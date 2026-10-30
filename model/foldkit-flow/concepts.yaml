@@ -5,17 +5,13 @@ elements:
     statement: >-
       A Flow is one node-based graph canvas inside a Foldkit application. It holds the nodes, edges, viewport and
       selection, and it lives in the application's Model.
-    status: proposed
+    status: decided
     source:
       - log:48
       - foldkit-flow:README.md:3
       - foldkit-flow:README.md:24
       - foldkit-flow:packages/flow/src/model.ts:14-29
-    rationale: >-
-      The log decides only a node-based graph UI for Foldkit (line 48). README line 24 says the Flow is a Foldkit
-      Submodel whose graph lives in the application's Model, and model.ts lines 14 to 29 define its fields: nodes,
-      edges, viewport and attribution. Selection is a flag on each node and edge. The operator must confirm the
-      concept.
+      - log:118
     attributes:
       - id
       - nodes
@@ -82,14 +78,12 @@ elements:
     title: Handle
     statement: >-
       A handle is a connection point on a node. A person drags from one handle to another to make a connection.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:README.md:3
       - foldkit-flow:README.md:43
       - foldkit-flow:packages/flow/src/types.ts:33-38
-    rationale: >-
-      The README names handles (line 3) and shows one declared on a node (line 43). types.ts lines 33 to 38 define a
-      handle by id, kind (source or target) and side. The operator must confirm the vocabulary.
+      - log:118
     attributes:
       - id
       - kind (source or target)
@@ -103,14 +97,11 @@ elements:
     statement: >-
       A connection is a pair of handles that a person joins with a gesture. The application's check accepts or refuses
       it, and the application turns an accepted one into an edge.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:README.md:53-54
       - foldkit-flow:packages/flow/src/types.ts:81-89
-    rationale: >-
-      types.ts lines 81 to 89 define a connection as the two ends of an edge that is about to exist. README lines 53
-      and 54 say the application adds the edge when it receives `Connected`. So a connection (a gesture result)
-      differs from an edge (graph data). The operator must confirm.
+      - log:118
     relations:
       - { type: relates, to: concept-flow-handle, label: from a source handle to a target handle }
       - { type: relates, to: concept-flow-edge, label: becomes, multiplicity: zero or one }
@@ -121,17 +112,13 @@ elements:
     statement: >-
       A parent node contains child nodes. A child positions relative to its parent and may be clamped inside it. A
       Scene holding States is one example.
-    status: proposed
+    status: decided
     source:
       - log:19
       - foldkit-flow:README.md:45
       - foldkit-flow:README.md:66
       - foldkit-flow:packages/flow/src/types.ts:52-54
-    rationale: >-
-      The log says a Scene is a compound state that groups States (line 19). The library builds parent nodes for that
-      shape: a node with `parentId` is a child whose position is relative to its parent (README line 45), and
-      `isClampedToParent` keeps it inside (README line 66; types.ts line 52). No line names the node kind as a flow
-      concept. The operator must confirm.
+      - log:118
     attributes:
       - children
       - clamp to parent
@@ -144,15 +131,12 @@ elements:
     statement: >-
       The viewport is the visible part of the canvas, given by an offset and a zoom. Pan and zoom change it and touch no
       node.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:README.md:3
       - foldkit-flow:README.md:82
       - foldkit-flow:packages/flow/src/types.ts:10-14
-    rationale: >-
-      The README names pan and zoom (line 3) and says they change only the viewport element's transform (line 82).
-      types.ts lines 10 to 14 define the viewport as x, y and zoom, and model.ts line 28 holds it in the Model. The
-      operator must confirm.
+      - log:118
     attributes:
       - x offset
       - y offset
@@ -166,15 +150,12 @@ elements:
     statement: >-
       The selection is the set of nodes and edges the person has picked by click, box or key. Delete, move and clear
       act on it.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:README.md:3
       - foldkit-flow:README.md:66
       - foldkit-flow:packages/flow/src/selection.ts:5-7
-    rationale: >-
-      The README names selecting with a box (line 3) and lists click, Shift-click and box selection (line 66).
-      Selection is a `selected` flag on each node and edge (selection.ts lines 5 to 7), and `UpdatedSelection` reports
-      it (message.ts line 79). The operator must confirm.
+      - log:118
     relations:
       - { type: part-of, to: concept-flow-flow, multiplicity: one to one }
 
@@ -220,13 +201,11 @@ elements:
     statement: >-
       A Mount is a Foldkit construct that runs work when an element appears and cleans up when it goes. The library
       uses Mounts to own its controllers.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:AGENTS.md:63
       - foldkit-flow:packages/flow/src/mounts.ts:34-39
-    rationale: >-
-      Mount is a Foldkit term, used here as AGENTS.md uses it. mounts.ts lines 34 to 39 say each xyflow controller is
-      created and destroyed by a Mount. The operator must confirm that it belongs in the model.
+      - log:118
     relations:
       - { type: relates, to: concept-flow-controller, label: owns the lifetime of, multiplicity: one to one }
 
@@ -236,14 +215,12 @@ elements:
     statement: >-
       A controller is an xyflow object that handles one kind of interaction: pan and zoom, node drag, handle
       connection or the minimap.
-    status: proposed
+    status: decided
     source:
       - foldkit-flow:README.md:86
       - foldkit-flow:AGENTS.md:63
       - foldkit-flow:packages/flow/src/xyflow.ts:7-20
-    rationale: >-
-      The README lists xyflow's controllers (line 86). xyflow.ts lines 7 to 20 name the four the library calls:
-      XYPanZoom, XYDrag, XYMinimap and the handle gesture XYHandle.onPointerDown. The operator must confirm.
+      - log:118
     relations:
       - { type: relates, to: concept-flow-flow, label: acts on }
 

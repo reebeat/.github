@@ -6,11 +6,8 @@ elements:
     statement: >-
       The value stream of the product family: an author declares a story, tsukuri builds the artifact, the author
       reviews it, and the audience receives it.
-    status: proposed
-    rationale: >-
-      The operator describes declaring and building (log lines 7 and 11). The review and audience steps that complete the
-      stream are inferred; the operator should confirm them.
-    source: [log:7, log:11]
+    status: decided
+    source: [log:7, log:11, log:118]
     links:
       serves: [goal-org-vision]
 
@@ -51,11 +48,8 @@ elements:
     statement: >-
       The author reviews the plan and the artifact, and checks them against the source. They edit the story and build
       again, or approve the result.
-    status: proposed
-    rationale: >-
-      The tsukuri README describes a reviewable Plan and a check command, but the decision log does not describe an
-      author's review step; the operator should confirm it as a step of the value stream.
-    source: [tsukuri:README.md:3, tsukuri:README.md:12-18]
+    status: decided
+    source: [tsukuri:README.md:3, tsukuri:README.md:12-18, log:118]
     links:
       part-of: [process-org-create-and-deliver]
       next: [process-org-deliver-artifact, process-org-declare-story]
@@ -68,11 +62,8 @@ elements:
     statement: >-
       The artifact reaches its audience as a video, a presentation deck or a website, in a variant that fits the
       audience, for example with captions, reduced motion or another language.
-    status: proposed
-    rationale: >-
-      The operator names the audiences and the artifact types (log lines 32, 36 and 37) but does not describe a delivery
-      step; the step and the examples of variants are inferred.
-    source: [log:32, log:36, log:37]
+    status: decided
+    source: [log:32, log:36, log:37, log:118]
     links:
       part-of: [process-org-create-and-deliver]
       serves: [goal-org-accessible-artifacts, goal-org-interactive-multimedia]
@@ -83,9 +74,8 @@ elements:
     title: The audience watches, hears or interacts
     statement: >-
       Learners and viewers consume the artifact. In a dynamic artifact they step through it and raise events by interacting.
-    status: proposed
-    rationale: The audience is outside the project; the step is inferred from the interactive artifact decisions.
-    source: [log:36, log:37]
+    status: decided
+    source: [log:36, log:37, log:118]
 
   - id: process-org-ship-change
     kind: process
@@ -94,11 +84,8 @@ elements:
     statement: >-
       Every change follows spec, then code, then pull request, one to one. It passes CI and a recorded independent review
       round before the guarded script merges it.
-    status: proposed
-    rationale: >-
-      Spec 0000 of tsukuri and studio, whose headers say the operator decided them, set this road. The operator's
-      decision log does not repeat the sequence, so the operator should confirm it as the road for every repository.
-    source: [tsukuri:AGENTS.md:9-17, studio:AGENTS.md:17]
+    status: decided
+    source: [tsukuri:AGENTS.md:9-17, studio:AGENTS.md:17, log:118]
     links:
       serves: [goal-org-correctness-by-construction]
       uses: [resource-github-org]

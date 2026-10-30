@@ -144,11 +144,8 @@ elements:
     statement: >-
       Why the products exist, what they must do and what is still open is written in one model. Every element cites a
       source, and CI fails when the model contradicts itself.
-    status: proposed
-    rationale: >-
-      The operator asked for this model in the session of 2026-10-29. The request is not a line of the decision log, so
-      the goal waits for the operator to confirm it.
-    source: [log:3]
+    status: decided
+    source: [log:3, log:118]
     canvas: [key-activities]
 
   - id: problem-org-imperative-tools
@@ -281,11 +278,8 @@ elements:
     statement: >-
       One declared interaction can become an agent function, a web control, a visible-cursor action in a video and a deck
       step. Authors do not write each surface by hand.
-    status: proposed
-    rationale: >-
-      Proposed in comments on issue 19. The operator's log states the interaction model (lines 37 to 39) but not this
-      slogan or the capability negotiation it needs.
-    source: [log:37-39, "issue:tsukuri#19@6503203735"]
+    status: decided
+    source: [log:37-39, "issue:tsukuri#19@6503203735", log:118]
     links:
       supports: [goal-org-interactive-multimedia]
 
@@ -295,11 +289,8 @@ elements:
     statement: >-
       Captions, audio description, reduced motion and language variants can be derived from the declared story, instead
       of being made by hand for each audience.
-    status: proposed
-    rationale: >-
-      The operator names accessibility as the project's power (log line 10). That derived variants beat hand-made ones
-      is an inference from issue 12, not an operator statement.
-    source: [log:10, "issue:tsukuri#12"]
+    status: decided
+    source: [log:10, "issue:tsukuri#12", log:118]
     links:
       supports: [goal-org-accessible-artifacts]
 

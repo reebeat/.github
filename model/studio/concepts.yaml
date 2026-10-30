@@ -19,12 +19,8 @@ elements:
       - preview frame at that time
     relations:
       - {type: part-of, to: concept-studio-lens, label: present in every lens}
-    status: proposed
-    rationale: >-
-      Spec plan: the lenses note states it as design. Whether the playhead is shared between collaborators is open.
-      The operator should confirm that the preview, playhead and agent panel are always present, and whether the playhead is
-      shared.
-    source: [studio:docs/design/lenses.md:9, studio:docs/design/lenses.md:108]
+    status: decided
+    source: [studio:docs/design/lenses.md:9, studio:docs/design/lenses.md:108, log:118]
 
   - id: concept-studio-tier
     kind: concept
@@ -35,12 +31,8 @@ elements:
     attributes:
       - cost driver (browser, always-on server, inference, render minutes)
       - tier (free or paid)
-    status: proposed
-    rationale: >-
-      Spec plan: the lenses note and spec 0001 state this rule in general. The operator decided a free tier for basic
-      features and paid premium features such as multiplayer collaboration and integrated AI agents (log:43). The operator
-      must confirm the general rule.
-    source: [log:43, studio:docs/design/lenses.md:15, studio:docs/specs/0001-first-felt-journey.md:125]
+    status: decided
+    source: [log:43, studio:docs/design/lenses.md:15, studio:docs/specs/0001-first-felt-journey.md:125, log:118]
 
   - id: concept-studio-keyed-document
     kind: concept
@@ -70,7 +62,7 @@ elements:
     relations:
       - {type: relates, to: concept-studio-loro-update, label: describes the edit of}
     status: decided
-    source: [record:studio:docs/specs/0001-first-felt-journey.md:172]
+    source: [record:studio:docs/specs/0001-first-felt-journey.md:172, log:118]
 
   - id: concept-studio-revision
     kind: concept
@@ -82,11 +74,8 @@ elements:
       - SHA-256 of the projected IR text
     relations:
       - {type: relates, to: concept-studio-keyed-document, label: projected from}
-    status: proposed
-    rationale: >-
-      Spec plan: spec 0001 defines baseRevision this way and spec 0002 keeps it for merge. The operator has not decided it.
-      The operator should confirm the revision rule.
-    source: [studio:docs/specs/0001-first-felt-journey.md:88, studio:docs/specs/0002-collaboration-spike.md:129]
+    status: decided
+    source: [studio:docs/specs/0001-first-felt-journey.md:88, studio:docs/specs/0002-collaboration-spike.md:129, log:118]
 
   - id: concept-studio-document-port
     kind: concept
@@ -94,7 +83,7 @@ elements:
     statement: >-
       Loro sits behind a ten-method document port.
     status: decided
-    source: [record:studio:docs/specs/0002-collaboration-spike.md:198]
+    source: [record:studio:docs/specs/0002-collaboration-spike.md:198, log:118]
 
   - id: concept-studio-validation-gate
     kind: concept
@@ -114,7 +103,7 @@ elements:
     relations:
       - {type: relates, to: concept-studio-validation-gate, label: offered after a refusal}
     status: decided
-    source: [record:studio:docs/specs/0002-collaboration-spike.md:198]
+    source: [record:studio:docs/specs/0002-collaboration-spike.md:198, log:118]
 
   - id: concept-studio-suggestion
     kind: concept
@@ -186,12 +175,8 @@ elements:
       A take is one recording of a Line. A Line can have several takes, and the author picks the best one.
     relations:
       - {type: part-of, to: concept-studio-deck-view}
-    status: proposed
-    rationale: >-
-      Spec plan: the lenses note describes takes, a teleprompter and word alignment. The operator log names cut narration
-      pieces, not takes.
-      The operator should confirm the take model.
-    source: [studio:docs/design/lenses.md:38, log:45]
+    status: decided
+    source: [studio:docs/design/lenses.md:38, log:45, log:118]
 
   - id: concept-studio-narration-piece
     kind: concept
@@ -246,9 +231,5 @@ elements:
       - entry id and spec
       - how to observe
       - broken when
-    status: proposed
-    rationale: >-
-      Observed in the repository: spec 0003 defines it. The operator assigned a verification skill but did not define the
-      map.
-      The operator should confirm the feature map as the way to keep the verify skill true.
-    source: [studio:docs/specs/0003-review-and-verify-skills.md:14, studio:.agents/skills/verify-studio/features/README.md:3-5]
+    status: decided
+    source: [studio:docs/specs/0003-review-and-verify-skills.md:14, studio:.agents/skills/verify-studio/features/README.md:3-5, log:118]

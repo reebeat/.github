@@ -36,16 +36,13 @@ elements:
     statement: >-
       Pure code that parses a Fountain screenplay into a Story, runs the identity diff, builds the Plan, schedules the
       Timeline from aligned words, and prints the review text. It has no browser, ffmpeg, reveal.js or Node built-in.
-    status: proposed
-    rationale: >-
-      Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
-      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
-      log:62, so confirm them.
+    status: decided
     source:
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:239
       - tsukuri:packages/core/src/index.ts:1-2
       - tsukuri:packages/core/package.json:5
       - tsukuri:docs/design/open-core-boundary.md:39
+      - log:118
     links:
       part-of: [comp-tsukuri-product, comp-org-layer-model, comp-org-layer-plan]
       depends-on: [comp-org-effect, resource-tsukuri-fountain-format]
@@ -61,14 +58,11 @@ elements:
     title: subtitles, WebVTT and SubRip writers
     statement: >-
       Pure code that writes the narration of a scheduled Plan as WebVTT and SubRip, and reads WebVTT back into cues.
-    status: proposed
-    rationale: >-
-      Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
-      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
-      log:62, so confirm them.
+    status: decided
     source:
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:240
       - tsukuri:packages/subtitles/src/index.ts:1-2
+      - log:118
     links:
       part-of: [comp-tsukuri-product, comp-org-layer-plan]
       depends-on: [comp-org-effect, comp-tsukuri-core]
@@ -85,14 +79,11 @@ elements:
     statement: >-
       Pure rules that return diagnostics for a Plan: every absolute time needs a reason, contrast, and agreement of
       fragments with effects. The cross-reference checks live in the core, not here.
-    status: proposed
-    rationale: >-
-      Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
-      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
-      log:62, so confirm them.
+    status: decided
     source:
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:241
       - tsukuri:packages/lint/src/index.ts:1-4
+      - log:118
     links:
       part-of: [comp-tsukuri-product, comp-org-layer-plan]
       depends-on: [comp-org-effect, comp-tsukuri-core]
@@ -110,15 +101,12 @@ elements:
     statement: >-
       The seven Effect service tags with their request types, tagged errors, the one cache key and the one selection
       registry. It also ships the contract suites and the offline stand-ins. This is the plugin seam.
-    status: proposed
-    rationale: >-
-      Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
-      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
-      log:62, so confirm them.
+    status: decided
     source:
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:242
       - tsukuri:packages/services/src/index.ts:1-3
       - tsukuri:packages/services/package.json:22
+      - log:118
     canvas: [key-resources]
     links:
       part-of: [comp-tsukuri-product, comp-org-layer-build]
@@ -141,14 +129,11 @@ elements:
     statement: >-
       One Effect program over the seven services, from the story to a finished build directory, with the manifest schema. It
       names no model, browser, binary or directory.
-    status: proposed
-    rationale: >-
-      Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
-      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
-      log:62, so confirm them.
+    status: decided
     source:
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:243
       - tsukuri:packages/pipeline/src/index.ts:1-2
+      - log:118
     links:
       part-of: [comp-tsukuri-product, comp-org-layer-build]
       depends-on: [comp-org-effect, comp-tsukuri-core, comp-tsukuri-services, comp-tsukuri-subtitles]
@@ -165,14 +150,11 @@ elements:
     title: speech-kokoro, local speech synthesis
     statement: >-
       The SpeechSynthesizer adapter on `kokoro-js`. It runs locally, declares no egress, and has a silent stand-in.
-    status: proposed
-    rationale: >-
-      Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
-      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
-      log:62, so confirm them.
+    status: decided
     source:
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:244
       - tsukuri:packages/speech-kokoro/src/index.ts:1
+      - log:118
     links:
       part-of: [comp-tsukuri-product, comp-org-layer-build]
       depends-on: [comp-org-effect, comp-tsukuri-services, resource-tsukuri-kokoro-model]
@@ -189,14 +171,11 @@ elements:
     statement: >-
       The WordAligner adapter on whisper.cpp. It gives word times for the narration, runs locally, and has an even-spread
       stand-in.
-    status: proposed
-    rationale: >-
-      Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
-      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
-      log:62, so confirm them.
+    status: decided
     source:
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:245
       - tsukuri:packages/align-whisper/src/index.ts:1
+      - log:118
     links:
       part-of: [comp-tsukuri-product, comp-org-layer-build]
       depends-on:
@@ -218,14 +197,11 @@ elements:
     statement: >-
       The SoundLibrary adapter that synthesises `pop`, `whoosh` and `ding` in TypeScript. It uses no recorded sample, so
       nothing needs attribution.
-    status: proposed
-    rationale: >-
-      Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
-      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
-      log:62, so confirm them.
+    status: decided
     source:
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:246
       - tsukuri:docs/design/third-party.md:78
+      - log:118
     links:
       part-of: [comp-tsukuri-product, comp-org-layer-build]
       depends-on: [comp-org-effect, comp-tsukuri-core, comp-tsukuri-services]
@@ -242,14 +218,11 @@ elements:
     statement: >-
       The Renderer adapter that turns a scheduled Plan into a reveal.js page. It declares the renderer's lifecycle timing,
       reads and checks a written page, and never parses a screenplay.
-    status: proposed
-    rationale: >-
-      Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
-      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
-      log:62, so confirm them.
+    status: decided
     source:
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:247
       - tsukuri:packages/render-reveal/src/index.ts:1-4
+      - log:118
     canvas: [key-resources]
     links:
       part-of: [comp-tsukuri-product, comp-org-layer-plan]
@@ -272,14 +245,11 @@ elements:
     statement: >-
       The FrameCapturer adapter. It opens the Deck in Chromium under a virtual clock, steps it to the scheduled frames,
       seeks animations and takes one screenshot per frame.
-    status: proposed
-    rationale: >-
-      Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
-      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
-      log:62, so confirm them.
+    status: decided
     source:
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:248
       - tsukuri:packages/capture-chromium/src/index.ts:1-2
+      - log:118
     links:
       part-of: [comp-tsukuri-product, comp-org-layer-build]
       depends-on:
@@ -300,14 +270,11 @@ elements:
     statement: >-
       The Encoder adapter on ffmpeg: lossless audio, the mix, the mux and the media probes that verify uses. It runs ffmpeg
       as a separate process.
-    status: proposed
-    rationale: >-
-      Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
-      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
-      log:62, so confirm them.
+    status: decided
     source:
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:249
       - tsukuri:packages/encode-ffmpeg/src/index.ts:1-2
+      - log:118
     links:
       part-of: [comp-tsukuri-product, comp-org-layer-build]
       depends-on: [comp-org-effect, comp-tsukuri-services, resource-tsukuri-ffmpeg]
@@ -324,14 +291,11 @@ elements:
     statement: >-
       The AssetCache adapter on a directory. It stores files by content key, writes the provenance record last, and checks
       each file's hash when it reads.
-    status: proposed
-    rationale: >-
-      Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
-      that the cache is content-addressed (spec 0001 line 234), not this adapter, its free mark or its layer. The layer is
-      inferred from log:62, so confirm them.
+    status: decided
     source:
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:250
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:261
+      - log:118
     links:
       part-of: [comp-tsukuri-product, comp-org-layer-build]
       depends-on: [comp-org-effect, comp-tsukuri-services]
@@ -349,14 +313,11 @@ elements:
     statement: >-
       The checks of the falsifiers on a build directory, the table that prints their verdicts and the exit code. It reads
       the written files and the source only. `compareBuilds` checks determinism.
-    status: proposed
-    rationale: >-
-      Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
-      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
-      log:62, so confirm them.
+    status: decided
     source:
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:251
       - tsukuri:packages/verify/src/index.ts:1-2
+      - log:118
     links:
       part-of: [comp-tsukuri-product, comp-org-layer-build]
       depends-on:
@@ -382,15 +343,12 @@ elements:
     statement: >-
       The `tsukuri` command with `plan`, `lint`, `build`, `check` and `journey`. It is the only place that chooses and
       composes adapters.
-    status: proposed
-    rationale: >-
-      Observed in the repository: spec 0001's package layout and the package source show this role. The operator decided
-      the three categories (spec 0001 line 234), not this package, its free mark or its layer. The layer is inferred from
-      log:62, so confirm them.
+    status: decided
     source:
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:252
       - tsukuri:packages/cli/src/cli.ts:70
       - tsukuri:packages/cli/package.json:17-28
+      - log:118
     canvas: [channels]
     links:
       part-of: [comp-tsukuri-product, comp-org-layer-build]
@@ -419,13 +377,11 @@ elements:
     statement: >-
       The scripts in `tools/quality`: the tier gate, the exception registry check, the Effect family check, the licence
       gate and the grammar generator. Together with the format and lint rules they make up `bun run ready`.
-    status: proposed
-    rationale: >-
-      Observed in the repository: spec 0000 and AGENTS.md list these tools. The operator has not decided this collection or
-      its free mark, so confirm them.
+    status: decided
     source:
       - tsukuri:docs/specs/0000-development-lifecycle.md:9
       - tsukuri:AGENTS.md:26-42
+      - log:118
     links:
       part-of: [comp-tsukuri-product]
       depends-on: [comp-org-effect]
@@ -441,15 +397,12 @@ elements:
     statement: >-
       A planned integration package. It turns the resolved statechart into XState machine data and reads back a total order
       of generated events through a tsukuri-owned service. XState is its only dependency.
-    status: proposed
-    rationale: >-
-      Spec 0007 names this package as the recommendation, and the operator decided that XState sits in an integration
-      package behind a service (log:26, spec 0007 line 620). The package does not exist at the pinned commit, and its spec,
-      0005, is not written. Its name and tier come from the spike.
+    status: decided
     source:
       - log:26
       - tsukuri:docs/specs/0007-scxml-persistent-ir-spike.md:591
       - tsukuri:docs/specs/0007-scxml-persistent-ir-spike.md:620
+      - log:118
     links:
       part-of: [comp-tsukuri-product, comp-org-layer-plan]
       depends-on: [comp-org-xstate, comp-org-effect, comp-tsukuri-services]
@@ -487,13 +440,11 @@ elements:
     statement: >-
       The Plan with the Timeline and the source hash, as canonical JSON. Two equal Plans are byte-equal. The renderers and
       the verifier read it, and nothing else reaches them.
-    status: proposed
-    rationale: >-
-      Spec plan: spec 0001 sets out plan.json as the one renderer input. The operator has not decided the canonical JSON
-      form, so confirm it.
+    status: decided
     source:
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:74
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:90
+      - log:118
     links:
       part-of: [comp-tsukuri-product]
       serves: [goal-tsukuri-screenplay-first]
@@ -505,13 +456,11 @@ elements:
     statement: >-
       The record of one build: the source hash, each adapter with its egress and settings, and the provenance of every
       cached asset. It is written last, and `check` refuses a directory without a valid one.
-    status: proposed
-    rationale: >-
-      Spec plan: spec 0001 sets out the manifest fields and the write order. The operator decided that the output manifest
-      records provenance (spec 0001 line 234), so confirm the rest.
+    status: decided
     source:
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:263
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:224
+      - log:118
     links:
       part-of: [comp-tsukuri-product]
       realizes: [isgoal-tsukuri-visible-provenance]
@@ -524,13 +473,11 @@ elements:
     statement: >-
       The reveal.js presentation with its assets, the Inter font and each package's licence beside them. Narration is in the
       speaker notes.
-    status: proposed
-    rationale: >-
-      Spec plan: the README and spec 0001 describe the Deck output, and the third-party audit lists its assets. The
-      operator has not decided this bundle, so confirm it.
+    status: decided
     source:
       - tsukuri:README.md:5
       - tsukuri:docs/design/third-party.md:44
+      - log:118
     links:
       part-of: [comp-tsukuri-product]
       serves: [goal-tsukuri-deck-and-video]
@@ -541,12 +488,10 @@ elements:
     title: the MP4 Video artifact
     statement: >-
       The narrated MP4 with WebVTT subtitles and chapter marks, built from the same Plan as the Deck.
-    status: proposed
-    rationale: >-
-      Spec plan: the README and spec 0001 describe the MP4 with subtitles and chapters. The operator has not decided every
-      detail, so confirm it.
+    status: decided
     source:
       - tsukuri:README.md:6
+      - log:118
     links:
       part-of: [comp-tsukuri-product]
       serves: [goal-tsukuri-deck-and-video, goal-tsukuri-accessible-artifacts]
@@ -558,12 +503,10 @@ elements:
     statement: >-
       The document of the screenplay grammar, generated from the grammar schema. A test fails when it differs from its
       generator and parses every example in it.
-    status: proposed
-    rationale: >-
-      Spec plan: spec 0002 sets out the generated grammar document and its test. The operator picked the effects syntax,
-      not this arrangement, so confirm it.
+    status: decided
     source:
       - tsukuri:docs/grammar/effects.md:3
+      - log:118
     links:
       part-of: [comp-tsukuri-product]
       serves: [goal-tsukuri-explicit-source]
@@ -575,13 +518,11 @@ elements:
     statement: >-
       The GitHub Actions workflow `checks`. It installs the pinned devenv and the locked dependencies, then runs each root
       gate as its own step.
-    status: proposed
-    rationale: >-
-      Observed in the repository: the workflow file sets these steps. The operator has not decided the exact workflow, so
-      confirm it.
+    status: decided
     source:
       - tsukuri:.github/workflows/checks.yml:15
       - tsukuri:.github/workflows/checks.yml:30-33
+      - log:118
     links:
       part-of: [comp-tsukuri-product]
       serves: [goal-tsukuri-correct-by-construction]
@@ -593,12 +534,10 @@ elements:
     statement: >-
       The `review-pr` skill with its round-recording and guarded-merge scripts, and the `pr-create` skill that fixes the
       eight sections of the report.
-    status: proposed
-    rationale: >-
-      Observed in the repository: spec 0000 names these skills and scripts. The operator has not decided them, so confirm
-      them.
+    status: decided
     source:
       - tsukuri:docs/specs/0000-development-lifecycle.md:52
+      - log:118
     links:
       part-of: [comp-tsukuri-product]
       serves: [goal-tsukuri-correct-by-construction]
@@ -610,13 +549,11 @@ elements:
     statement: >-
       The JSON registry of every registered suppression, with its reason, alternatives, owner, versions and retirement
       trigger.
-    status: proposed
-    rationale: >-
-      Observed in the repository: spec 0000 and AGENTS.md describe the registry. The operator has not decided its fields,
-      so confirm it.
+    status: decided
     source:
       - tsukuri:docs/specs/0000-development-lifecycle.md:44
       - tsukuri:AGENTS.md:46
+      - log:118
     links:
       part-of: [comp-tsukuri-quality-gates]
       serves: [goal-tsukuri-correct-by-construction]
@@ -648,12 +585,10 @@ elements:
     statement: >-
       Each outside runtime is reached through a service with a contract, so an adapter can be swapped without changing
       the core, the program or the screenplay.
-    status: proposed
-    rationale: >-
-      Spec plan: design R3 says pieces can be replaced one by one. The operator accepted R3 as a whole, so confirm this
-      goal.
+    status: decided
     source:
       - tsukuri:docs/design/keyframe-engine.md:1220
+      - log:118
     links:
       serves: [goal-tsukuri-plugin-sdk]
 
@@ -662,11 +597,10 @@ elements:
     title: The system can prove what it built
     statement: >-
       The system checks a build from its written files and records which adapters, settings and assets made it.
-    status: proposed
-    rationale: >-
-      Spec plan: spec 0001 sets out the output-side verification. The operator has not decided this goal, so confirm it.
+    status: decided
     source:
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:142
+      - log:118
     links:
       serves: [goal-tsukuri-verified-output]
 
@@ -679,6 +613,7 @@ elements:
     source:
       - record:tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:235
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:263
+      - log:118
     links:
       serves: [goal-tsukuri-visible-egress]
 
@@ -688,14 +623,12 @@ elements:
     statement: >-
       The system gives a text source, one documented grammar and errors that name the line and the nearest valid form, so
       an agent can write and repair stories without guessing.
-    status: proposed
-    rationale: >-
-      Spec 0002 says people and agents guess wrong at positional rules and rates an effects table best for agents. The
-      operator decided that users can bring their own agents (log:43) but has not stated this as a system goal.
+    status: decided
     source:
       - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:11
       - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:116
       - log:43
+      - log:118
     links:
       serves: [goal-tsukuri-explicit-source, goal-tsukuri-plugin-sdk]
 
@@ -708,14 +641,12 @@ elements:
     statement: >-
       `tsukuri plan` prints every Scene, Element, effect and identity decision, with the written intent and the resolved
       frame. It needs no audio and no browser, and two runs are equal.
-    status: proposed
-    rationale: >-
-      Spec plan: spec 0001 and spec 0002 set out `tsukuri plan` and its output. The compiler is free (open-core-boundary
-      line 39), but the operator has not decided each field or this feature's mark, so confirm them.
+    status: decided
     source:
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:28
       - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:123
       - tsukuri:docs/design/open-core-boundary.md:39
+      - log:118
     links:
       serves: [goal-tsukuri-deck-and-video]
 
@@ -727,14 +658,12 @@ elements:
     statement: >-
       The Deck is a reveal.js page. Narration is in the speaker notes, show and focus effects are fragments in time order,
       and sounds ride with the step or slide they are anchored to.
-    status: proposed
-    rationale: >-
-      Spec plan: spec 0001 and the README set out the Deck. The operator decided only that sounds ride along (spec 0002
-      line 161), and has not decided this feature's free mark, so confirm them.
+    status: decided
     source:
       - tsukuri:README.md:5
       - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:162
       - tsukuri:docs/design/open-core-boundary.md:39
+      - log:118
     links:
       serves: [goal-tsukuri-deck-and-video]
 
@@ -746,13 +675,11 @@ elements:
     statement: >-
       The Video is the same page captured frame by frame on a controlled clock, muxed with narration, sound effects, WebVTT
       subtitles and chapter marks.
-    status: proposed
-    rationale: >-
-      Spec plan: spec 0001 and the README set out the Video. The operator has not decided every detail or this feature's
-      free mark, so confirm them.
+    status: decided
     source:
       - tsukuri:README.md:6
       - tsukuri:docs/design/open-core-boundary.md:39
+      - log:118
     links:
       serves: [goal-tsukuri-deck-and-video]
 
@@ -784,14 +711,12 @@ elements:
     statement: >-
       `tsukuri check` reads a written build and the source, gives one verdict per falsifier, and reports for every effect
       where it was resolved and where the video and audio show it.
-    status: proposed
-    rationale: >-
-      Spec plan: spec 0001 and the README set out `tsukuri check` and its output. The operator has not decided each detail
-      or this feature's free mark, so confirm them.
+    status: decided
     source:
       - tsukuri:README.md:8
       - tsukuri:README.md:18
       - tsukuri:docs/design/open-core-boundary.md:39
+      - log:118
     links:
       serves: [goal-tsukuri-verified-output]
 
@@ -802,13 +727,11 @@ elements:
     title: Lint a story and say the fix
     statement: >-
       `tsukuri lint` prints every problem with its line and the fix, and lists every absolute time.
-    status: proposed
-    rationale: >-
-      Spec plan: spec 0002 sets out `tsukuri lint`. The operator has not decided each diagnostic or this feature's free
-      mark, so confirm them.
+    status: decided
     source:
       - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:123
       - tsukuri:packages/cli/src/cli.ts:118
+      - log:118
     links:
       serves: [goal-tsukuri-explicit-source]
 
@@ -820,13 +743,11 @@ elements:
     statement: >-
       A config file beside the story or a flag names one adapter per service. A flag wins over the file, local adapters are
       the default, and no choice is part of the screenplay.
-    status: proposed
-    rationale: >-
-      Observed in the repository: the README and the selection registry describe this behaviour. The operator decided that
-      selection is explicit configuration at the composition root (spec 0001 line 234), not these details, so confirm them.
+    status: decided
     source:
       - tsukuri:README.md:23
       - tsukuri:packages/services/src/selection.ts:18-26
+      - log:118
     links:
       serves: [goal-tsukuri-plugin-sdk, goal-tsukuri-correct-by-construction]
 
@@ -839,15 +760,12 @@ elements:
       Each Line's audio and word times are cached under a key made from its narration text and the adapter settings. A cache
       hit loads no model. A miss fails and names the Line unless the build is refreshing, or the narrator is the silent
       stand-in, which fills a miss without the flag.
-    status: proposed
-    rationale: >-
-      Spec plan and observed in the repository: spec 0001 sets out the speech cache and its key, and
-      packages/cli/src/build.ts:26-31 at the pinned commit adds the silent stand-in exception. The operator has not decided
-      those details or this feature's free mark, so confirm them.
+    status: decided
     source:
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:78
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:261
       - tsukuri:packages/cli/src/build.ts:26-31
+      - log:118
     links:
       serves: [goal-tsukuri-reproducible-builds, goal-tsukuri-incremental-builds]
 
@@ -858,13 +776,11 @@ elements:
     title: One command runs the whole road
     statement: >-
       `tsukuri journey` builds a story, checks it, builds it again and compares the two builds.
-    status: proposed
-    rationale: >-
-      Observed in the repository: the `journey` command and AGENTS.md describe it. The operator has not decided the
-      command or its free mark, so confirm them.
+    status: decided
     source:
       - tsukuri:AGENTS.md:42
       - tsukuri:packages/cli/src/journey.ts:1-3
+      - log:118
     links:
       serves: [goal-tsukuri-verified-output, goal-tsukuri-reproducible-builds]
 
@@ -876,13 +792,11 @@ elements:
     statement: >-
       Each Renderer declares, as plain data, when an Element's motion starts and ends and its easing. The schedule reads it
       to place frames, and the check observes it in the output.
-    status: proposed
-    rationale: >-
-      Spec plan: design R4 and spec 0002 set out the lifecycle declaration. The operator has not decided each field or this
-      feature's free mark, so confirm them.
+    status: decided
     source:
       - tsukuri:docs/design/keyframe-engine.md:1259
       - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:34
+      - log:118
     links:
       serves: [goal-tsukuri-event-timing, goal-tsukuri-multi-renderer]
 
@@ -896,6 +810,7 @@ elements:
     status: decided
     source:
       - record:tsukuri:docs/specs/0007-scxml-persistent-ir-spike.md:616-620
+      - log:118
     links:
       serves: [goal-tsukuri-statechart-model]
 
@@ -926,11 +841,8 @@ elements:
       The compiler generates SDH captions from narration and sound metadata, audio description from Element tags and state
       changes, a transcript, an accessible Deck, and a reduced-motion variant that uses cuts or crossfades. It checks
       rendered frames for flashes and for contrast.
-    status: proposed
-    rationale: >-
-      Issue #12 proposes it. The operator decided the audiences (log:32), but every threshold in the issue is noted from
-      memory and must be checked against its source in the spec.
-    source: ["issue:tsukuri#12", "log:32"]
+    status: decided
+    source: ["issue:tsukuri#12", "log:32", log:118]
     refs: ["issue:tsukuri#12"]
     links:
       serves: [goal-tsukuri-accessible-artifacts]
@@ -1039,9 +951,8 @@ elements:
     statement: >-
       Lint rules read the semantic tags on Elements and check the four principles. Each threshold is set from its primary
       source before the rule is built.
-    status: proposed
-    rationale: "Issue #8 proposes it and says it follows specs 0004 to 0006. The operator has not decided it."
-    source: ["issue:tsukuri#8"]
+    status: decided
+    source: ["issue:tsukuri#8", log:118]
     refs: ["issue:tsukuri#8"]
     links:
       serves: [goal-tsukuri-teaching-lint]
@@ -1054,11 +965,8 @@ elements:
     statement: >-
       A release stages only built JavaScript, types, docs and the licence, enforces peer ranges for unstable Effect APIs,
       requires clean checks, and publishes by trusted publishing with provenance.
-    status: proposed
-    rationale: >-
-      Read from the body of PR #18, which was open at the pinned commit and has since merged (see the tracker). The operator
-      decided to publish pre-releases (log:49), so confirm the release details.
-    source: ["pr:tsukuri#18", "log:49"]
+    status: decided
+    source: ["pr:tsukuri#18", "log:49", log:118]
     refs: ["pr:tsukuri#18"]
     links:
       serves: [goal-tsukuri-npm-publication]
@@ -1086,9 +994,8 @@ elements:
     statement: >-
       The exception gate recognises both `@effect-diagnostics` and `@effect-diagnostics-next-line`, has a negative control,
       and every existing directive is registered.
-    status: proposed
-    rationale: "Issue #14 proposes it. It is a gap in a gate, not a decided feature."
-    source: ["issue:tsukuri#14"]
+    status: decided
+    source: ["issue:tsukuri#14", log:118]
     refs: ["issue:tsukuri#14"]
     links:
       serves: [goal-tsukuri-correct-by-construction]
@@ -1101,9 +1008,8 @@ elements:
     statement: >-
       `devEngines.packageManager` names the exact Bun version of devenv, and a check shows that both report the same
       revision. Both are bumped together.
-    status: proposed
-    rationale: "Issue #15 proposes it as the working fix."
-    source: ["issue:tsukuri#15"]
+    status: decided
+    source: ["issue:tsukuri#15", log:118]
     refs: ["issue:tsukuri#15"]
     links:
       serves: [goal-tsukuri-reproducible-builds]
@@ -1143,13 +1049,11 @@ elements:
       A viewer who cannot hear opens the Video and reads the WebVTT subtitles. The check confirms one cue per Line with
       text equal to the narration. A viewer who prefers reduced motion gets a variant with cuts or crossfades, which is
       planned and not built.
-    status: proposed
-    rationale: >-
-      Spec plan: spec 0001 sets out the subtitle and notes check. The operator decided the audiences (log:32), not this
-      acceptance scenario, and the variants are tracked in issue #12, so confirm it.
+    status: decided
     source:
       - log:32
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:146-148
+      - log:118
     refs: ["issue:tsukuri#12"]
     links:
       serves: [goal-tsukuri-accessible-artifacts]
@@ -1166,13 +1070,11 @@ elements:
       A story has a sound anchored to the start of a transition. After a build, the check measures the first changed frame
       and the sound onset in the files. The check passes when both are within one frame. Shifting one effect by three frames
       makes it fail and name the effect.
-    status: proposed
-    rationale: >-
-      Spec plan: spec 0001 and spec 0002 set out the one-frame tolerance. The operator has not decided the threshold, so
-      confirm it.
+    status: decided
     source:
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:146
       - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:129
+      - log:118
     links:
       serves: [goal-tsukuri-event-timing, goal-tsukuri-verified-output]
 
@@ -1187,13 +1089,11 @@ elements:
     scenario: >-
       A contributor makes the core import the services package. `bun run check:tiers` fails and names the edge. Adding a
       directory under `packages/` that is in no tier also fails.
-    status: proposed
-    rationale: >-
-      Observed in the repository: the tier gate and AGENTS.md describe this check. The operator decided the direction of
-      dependency (spec 0001 line 234), not the gate, so confirm it.
+    status: decided
     source:
       - tsukuri:AGENTS.md:35
       - tsukuri:tools/quality/tiers.ts:41-48
+      - log:118
     links:
       serves: [goal-tsukuri-correct-by-construction]
 
@@ -1209,13 +1109,11 @@ elements:
       A plugin author writes a hosted speech adapter. It must pass the speech contract suite. Selecting it by name builds
       the story, and the manifest lists the adapter and what it sends out. Without its credential the build fails and
       falls back to nothing.
-    status: proposed
-    rationale: >-
-      Observed in the repository: AGENTS.md describes adding an adapter. The operator decided plugins are supported and
-      every adapter passes a contract suite, but the adapter shape is marked proposed, so confirm this scenario.
+    status: decided
     source:
       - tsukuri:docs/design/open-core-boundary.md:24
       - tsukuri:AGENTS.md:65
+      - log:118
     links:
       serves: [goal-tsukuri-plugin-sdk]
 
@@ -1230,13 +1128,11 @@ elements:
     scenario: >-
       A contributor adds a package to `bun.lock` without recording its licence. `bun run test` fails and names the package.
       Adding a GPL package fails too.
-    status: proposed
-    rationale: >-
-      Spec plan: spec 0008 sets out the licence gate and its allowlist. The operator decided Apache-2.0 (log:44), not the
-      gate, so confirm it.
+    status: decided
     source:
       - tsukuri:docs/specs/0008-apache-2-licence.md:42
       - tsukuri:AGENTS.md:31
+      - log:118
     links:
       serves: [goal-tsukuri-apache-licence]
 
@@ -1251,12 +1147,11 @@ elements:
     scenario: >-
       An author writes the old `[[next]]` cue. The parser stops, names the line and shows the form to use instead. A
       person who rewrote a story from the messages alone built and checked it.
-    status: proposed
-    rationale: >-
-      Spec plan: spec 0002 sets out the error format. The operator has not decided it, so confirm it.
+    status: decided
     source:
       - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:18
       - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:191
+      - log:118
     links:
       serves: [goal-tsukuri-explicit-source]
 
@@ -1271,13 +1166,11 @@ elements:
     scenario: >-
       A developer deletes one speech cache entry and builds without refreshing. The build stops with a cache-miss error
       that names the Line. The output directory holds no partial build.
-    status: proposed
-    rationale: >-
-      Spec plan: spec 0001 falsifier F12 sets out the three failure cases. The operator has not decided them, so confirm
-      it.
+    status: decided
     source:
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:157
       - tsukuri:packages/pipeline/src/buildProgram.ts:9-11
+      - log:118
     links:
       serves: [goal-tsukuri-correct-by-construction]
 
@@ -1292,13 +1185,11 @@ elements:
     scenario: >-
       A test adapter needs a credential from the environment. Without it the build fails and names the requirement and
       writes nothing. With it, a canary value never appears in any written file.
-    status: proposed
-    rationale: >-
-      Spec plan: design R3 rule 3 and spec 0001 set out the credential handling. The operator has not decided it, so
-      confirm it.
+    status: decided
     source:
       - tsukuri:docs/design/keyframe-engine.md:1242
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:263
+      - log:118
     links:
       serves: [goal-tsukuri-visible-egress]
 

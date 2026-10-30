@@ -7,14 +7,12 @@ elements:
     statement: >-
       A creator or an agent writes one Fountain screenplay: Scenes with explicit ids, Elements, an effects block and
       narration dialogue.
-    status: proposed
-    rationale: >-
-      Spec plan: spec 0001 and the screenplay-first revision describe this step. The operator decided that the source is
-      one Fountain file, not the effects-block syntax or the explicit-id rules, so confirm the detail.
+    status: decided
     source:
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:213
       - tsukuri:README.md:3
       - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:61-80
+      - log:118
     canvas: [key-activities]
     links:
       serves: [goal-tsukuri-screenplay-first]
@@ -34,6 +32,7 @@ elements:
       - tsukuri:README.md:23
       - tsukuri:AGENTS.md:63
       - tsukuri:packages/services/src/selection.ts:1-4
+      - log:118
     links:
       serves: [goal-tsukuri-correct-by-construction, goal-tsukuri-visible-egress]
       uses: [concept-tsukuri-selection]
@@ -46,13 +45,11 @@ elements:
     statement: >-
       A thin adapter turns the Fountain tokens into a decoded Story. Anything the vocabulary does not define fails with its
       line number.
-    status: proposed
-    rationale: >-
-      Spec plan: spec 0001 sets out the parser adapter and the closed vocabulary. The operator has not decided each error
-      and line-number rule, so confirm the detail.
+    status: decided
     source:
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:32
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:64-66
+      - log:118
     canvas: [key-activities]
     links:
       serves: [goal-tsukuri-explicit-source]
@@ -67,14 +64,12 @@ elements:
     statement: >-
       The compiler runs the identity diff and the reference checks over the Story and writes the Plan. `tsukuri plan`
       prints it and needs no audio and no browser.
-    status: proposed
-    rationale: >-
-      Spec plan: the design names the Plan as a stage and `tsukuri plan` as its output. The operator has not decided the
-      exact compilation steps, so confirm them.
+    status: decided
     source:
       - tsukuri:docs/design/keyframe-engine.md:1112
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:28
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:66
+      - log:118
     canvas: [key-activities]
     links:
       serves: [goal-tsukuri-deck-and-video, goal-tsukuri-statechart-model]
@@ -89,13 +84,11 @@ elements:
     statement: >-
       A person or an agent reads the Plan before any media is built. It shows every Element, effect and identity decision,
       with the author's intent and the resolved frame.
-    status: proposed
-    rationale: >-
-      Spec plan: the design and spec 0002 describe a reviewer reading the Plan before media is built. The operator has not
-      decided this review step or the fields it lists, so confirm it.
+    status: decided
     source:
       - tsukuri:docs/design/keyframe-engine.md:1112
       - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:123
+      - log:118
     links:
       serves: [goal-tsukuri-deck-and-video, goal-tsukuri-verified-output]
       uses: [concept-tsukuri-plan]
@@ -108,15 +101,12 @@ elements:
       For each Line the build looks in the content-addressed cache. On a hit no model loads. On a miss it synthesises
       speech and aligns the words only when refreshing, or always for the silent stand-in narrator, and it stops if the
       match is below 0.9. Without refreshing, a real narrator's miss fails.
-    status: proposed
-    rationale: >-
-      Spec plan and observed in the repository: spec 0001 sets out the cache lookup, the miss rule and the 0.9 threshold.
-      packages/cli/src/build.ts:26-31 at the pinned commit refills a miss when refreshing, or always for the `silent`
-      stand-in. The operator has not decided those details, so confirm them and the stand-in exception.
+    status: decided
     source:
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:78
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:261
       - tsukuri:packages/cli/src/build.ts:26-31
+      - log:118
     canvas: [key-activities]
     links:
       serves: [goal-tsukuri-reproducible-builds, goal-tsukuri-incremental-builds]
@@ -131,13 +121,11 @@ elements:
     statement: >-
       The schedule places every Line, effect, step and slide change at an integer frame, from the aligned words and the
       renderer's declared lifecycle.
-    status: proposed
-    rationale: >-
-      Spec plan: spec 0002 describes the schedule stage. The operator picked the effects syntax, not the integer-frame
-      scheduling, so confirm the detail.
+    status: decided
     source:
       - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:34
       - tsukuri:packages/core/src/schedule.ts:1-8
+      - log:118
     canvas: [key-activities]
     links:
       serves: [goal-tsukuri-event-timing]
@@ -152,14 +140,12 @@ elements:
     statement: >-
       The renderer turns the scheduled Plan into a reveal.js page: narration as speaker notes, show and focus effects as
       fragments in time order, and sounds that ride with a step or a slide.
-    status: proposed
-    rationale: >-
-      Spec plan: the operator decided only that sounds ride along in the Deck (spec 0002 line 161). The rest of the Deck
-      rendering comes from the README and spec 0001, so confirm it.
+    status: decided
     source:
       - tsukuri:docs/specs/0002-explicit-anchors-and-syntax.md:162
       - tsukuri:README.md:5
       - tsukuri:packages/pipeline/src/buildProgram.ts:5-7
+      - log:118
     canvas: [key-activities]
     links:
       serves: [goal-tsukuri-deck-and-video]
@@ -173,13 +159,11 @@ elements:
     title: Capture the frames
     statement: >-
       Chromium opens the Deck under a virtual clock, steps it to the scheduled frames and takes one screenshot per frame.
-    status: proposed
-    rationale: >-
-      Spec plan: spec 0001 and the README describe capture in Chromium on a virtual clock. The operator has not decided
-      the one-screenshot-per-frame mechanism, so confirm it.
+    status: decided
     source:
       - tsukuri:README.md:6
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:86
+      - log:118
     canvas: [key-activities]
     links:
       serves: [goal-tsukuri-reproducible-builds, goal-tsukuri-deck-and-video]
@@ -193,13 +177,11 @@ elements:
     statement: >-
       The encoder mixes narration at each Line's start and each sound at its fire frame, then writes the MP4 with WebVTT
       subtitles, chapters, a title and the source hash.
-    status: proposed
-    rationale: >-
-      Spec plan: spec 0001 and the README describe the mix, subtitles, chapters, title and source hash. The operator has
-      not decided these details, so confirm them.
+    status: decided
     source:
       - tsukuri:README.md:6
       - tsukuri:packages/pipeline/src/buildProgram.ts:5-7
+      - log:118
     canvas: [key-activities]
     links:
       serves: [goal-tsukuri-deck-and-video, goal-tsukuri-accessible-artifacts]
@@ -214,13 +196,11 @@ elements:
     statement: >-
       The build writes `build.json` last, with each adapter, its egress, its settings and the provenance of every cached
       asset, and then renames the partial directory in one step.
-    status: proposed
-    rationale: >-
-      Spec plan: spec 0001 describes the manifest and the final rename. The operator decided that the output manifest
-      records provenance, not the write order, so confirm the detail.
+    status: decided
     source:
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:263
       - tsukuri:packages/pipeline/src/buildProgram.ts:9-11
+      - log:118
     links:
       serves: [goal-tsukuri-visible-egress, goal-tsukuri-verified-output]
       next: [process-tsukuri-verify-build]
@@ -232,13 +212,11 @@ elements:
     statement: >-
       `tsukuri check` reads the written files and the source and gives one verdict per falsifier: effect timing, subtitles,
       notes, fragments, source hash, transitions, narration, chapters and provenance.
-    status: proposed
-    rationale: >-
-      Spec plan: spec 0001 lists the falsifiers that `tsukuri check` reports. The operator has not decided the complete
-      list, so confirm it.
+    status: decided
     source:
       - tsukuri:README.md:18
       - tsukuri:docs/specs/0001-release-1-screenplay-to-deck-and-video.md:142
+      - log:118
     canvas: [key-activities]
     links:
       serves: [goal-tsukuri-verified-output]
@@ -250,13 +228,11 @@ elements:
     statement: >-
       `tsukuri journey` builds a story, checks the build, builds it again and compares the two for determinism. The first
       failure stops it.
-    status: proposed
-    rationale: >-
-      Observed in the repository: the `journey` command and AGENTS.md describe this sequence. The operator has not decided
-      the command, so confirm it.
+    status: decided
     source:
       - tsukuri:packages/cli/src/journey.ts:1-3
       - tsukuri:AGENTS.md:42
+      - log:118
     links:
       serves: [goal-tsukuri-reproducible-builds, goal-tsukuri-verified-output]
       requires: [process-tsukuri-verify-build]
@@ -270,13 +246,11 @@ elements:
       A plugin author adds the package to its tier row, implements the service's Layer with its info and its
       unavailable error, runs the contract suite, wires the name into the selection tables, and adds the package to the
       lint and dead-code configs.
-    status: proposed
-    rationale: >-
-      Observed in the repository: AGENTS.md lists these five steps. The operator decided that every adapter passes a
-      contract suite, not the checklist, so confirm it.
+    status: decided
     source:
       - tsukuri:AGENTS.md:65
       - tsukuri:docs/design/keyframe-engine.md:1225
+      - log:118
     links:
       serves: [goal-tsukuri-plugin-sdk]
       uses: [concept-tsukuri-contract-suite, concept-tsukuri-adapter]
@@ -288,13 +262,11 @@ elements:
     statement: >-
       A contributor writes or picks a spec, branches as `feat/NNNN-slug`, commits under the hooks, pushes, and opens one
       pull request with the report. CI runs the same gates as `bun run ready`.
-    status: proposed
-    rationale: >-
-      Spec plan: spec 0000 lists this road. Its header shows the operator accepted the spec as a whole, but not each step,
-      so confirm the detail.
+    status: decided
     source:
       - tsukuri:docs/specs/0000-development-lifecycle.md:13-21
       - tsukuri:AGENTS.md:13-16
+      - log:118
     links:
       part-of: [process-org-ship-change]
       serves: [goal-tsukuri-correct-by-construction]
@@ -307,13 +279,11 @@ elements:
     statement: >-
       Independent reviewers judge the plan, the code and their agreement. A fixer addresses findings. The lead records each
       round on the pull request with its verdict. A pass means no open finding of medium or above and green CI.
-    status: proposed
-    rationale: >-
-      Spec plan: spec 0000 describes the reviewer roles and the pass rule. The operator has not decided each detail, so
-      confirm it.
+    status: decided
     source:
       - tsukuri:docs/specs/0000-development-lifecycle.md:75
       - tsukuri:docs/specs/0000-development-lifecycle.md:79
+      - log:118
     links:
       part-of: [process-org-ship-change]
       serves: [goal-tsukuri-correct-by-construction]
@@ -326,14 +296,12 @@ elements:
     statement: >-
       The merge script refuses without a passing recorded round on the current head and a green CI run. Branch protection
       requires a pull request and the `checks` status, with no force push.
-    status: proposed
-    rationale: >-
-      Spec plan: spec 0000 describes the merge script and branch protection. The operator has not decided each condition,
-      so confirm it.
+    status: decided
     source:
       - tsukuri:docs/specs/0000-development-lifecycle.md:23
       - tsukuri:docs/specs/0000-development-lifecycle.md:100-101
       - tsukuri:AGENTS.md:20
+      - log:118
     links:
       part-of: [process-org-ship-change]
       serves: [goal-tsukuri-correct-by-construction]
@@ -346,12 +314,8 @@ elements:
       A release stages the built JavaScript, types, docs and licence of seven packages: core, subtitles, lint, services,
       pipeline, sounds-synth and render-reveal. It checks every tarball and publishes with trusted publishing and a
       provenance attestation. The CLI and the other runtime adapters are left out.
-    status: proposed
-    rationale: >-
-      Read from the body of PR #18. It was not part of the pinned commit and has since merged, as the tracker shows. The
-      model does not observe a real publish, the trusted-publisher match or a first live release, and the operator must
-      provision the npm and GitHub environment.
-    source: ["pr:tsukuri#18", "log:49"]
+    status: decided
+    source: ["pr:tsukuri#18", "log:49", log:118]
     refs: ["pr:tsukuri#18"]
     canvas: [channels]
     links:
@@ -367,13 +331,11 @@ elements:
     statement: >-
       On every pull request and every push to main, the workflow installs the pinned devenv and the locked dependencies, and
       then runs each gate as its own step.
-    status: proposed
-    rationale: >-
-      Observed in the repository: the workflow file sets these triggers and steps. The operator has not decided the exact
-      workflow, so confirm it.
+    status: decided
     source:
       - tsukuri:.github/workflows/checks.yml:6-9
       - tsukuri:.github/workflows/checks.yml:15
+      - log:118
     links:
       next: [process-tsukuri-review-round]
 
@@ -383,11 +345,8 @@ elements:
     statement: >-
       GitHub issues an OIDC identity to the release workflow, and npm matches it to the trusted publisher and records a
       provenance attestation for each package.
-    status: proposed
-    rationale: >-
-      Described in PR #18. The OIDC exchange, the trusted-publisher match and the first live release are not yet observed,
-      and the operator must provision the npm and GitHub environment.
-    source: ["pr:tsukuri#18"]
+    status: decided
+    source: ["pr:tsukuri#18", log:118]
     refs: ["pr:tsukuri#18"]
 
   - id: extproc-tsukuri-model-download
@@ -396,12 +355,10 @@ elements:
     statement: >-
       The Kokoro model is downloaded by `kokoro-js` on first use. The whisper model file is downloaded by the user. Neither
       is stored in the repository.
-    status: proposed
-    rationale: >-
-      Observed in the repository: the third-party audit describes the model downloads. The operator has not decided this
-      arrangement, so confirm it.
+    status: decided
     source:
       - tsukuri:docs/design/third-party.md:71-72
+      - log:118
     links:
       next: [process-tsukuri-speech-stage]
 
@@ -411,10 +368,8 @@ elements:
     statement: >-
       GitHub rejects a direct push to main, requires a pull request and the `checks` status, and forbids force push and
       deletion. Administrators are included.
-    status: proposed
-    rationale: >-
-      Observed in the repository: spec 0000 and AGENTS.md describe these settings. The operator has not decided each
-      setting, and the live state is not read here, so confirm it.
+    status: decided
     source:
       - tsukuri:docs/specs/0000-development-lifecycle.md:53
       - tsukuri:AGENTS.md:20
+      - log:118

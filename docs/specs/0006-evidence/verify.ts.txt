@@ -1,0 +1,47 @@
+// Evidence for spec 0006 (kept as .txt so it is not linted as source). Run from the repository root:
+//   cp docs/specs/0006-evidence/verify.ts.txt verify.tmp.ts && BASE=origin/main bun verify.tmp.ts; rm verify.tmp.ts
+// Compares the model at BASE with the working tree and prints the census; exits 1 when a claim of the spec fails.
+import { execFileSync } from "node:child_process";
+import { readFileSync, readdirSync, statSync } from "node:fs";
+
+const base = process.env["BASE"] ?? "origin/main";
+type El = { id: string; status: string; source: string[]; rationale?: string; [k: string]: unknown };
+const load = (read: (path: string) => string, list: () => string[]): Map<string, El> => {
+  const out = new Map<string, El>();
+  for (const path of list()) for (const e of (Bun.YAML.parse(read(path)) as { elements?: El[] }).elements ?? []) out.set(e.id, e);
+  return out;
+};
+const modelFiles = readdirSync("model").filter((s) => statSync(`model/${s}`).isDirectory()).flatMap((s) => readdirSync(`model/${s}`).map((f) => `model/${s}/${f}`));
+const before = load((p) => execFileSync("git", ["show", `${base}:${p}`], { encoding: "utf8", maxBuffer: 1 << 28 }), () =>
+  execFileSync("git", ["ls-tree", "-r", "--name-only", base, "model"], { encoding: "utf8" }).split("\n").filter((p) => /^model\/[^/]+\/[^/]+\.yaml$/.test(p)));
+const after = load((p) => readFileSync(p, "utf8"), () => modelFiles);
+const advised = new Set((Bun.YAML.parse(execFileSync("git", ["show", `${base}:model/triage.yaml`], { encoding: "utf8" })) as { advice: { id: string }[] }).advice.map((a) => a.id));
+const recordOnly = new Set([...before.values()].filter((e) => e.status === "decided" && !e.source.some((s) => s.startsWith("log:"))).map((e) => e.id));
+
+const problems: string[] = [];
+const moved: Record<string, number> = {};
+let sourceOnly = 0;
+for (const [id, b] of before) {
+  const a = after.get(id);
+  if (a === undefined) { problems.push(`${id}: removed`); continue; }
+  const { status: bs, source: bsrc, rationale: _br, ...brest } = b;
+  const { status: as, source: asrc, rationale: _ar, ...arest } = a;
+  if (JSON.stringify(brest) !== JSON.stringify(arest)) problems.push(`${id}: a field other than status, source and rationale changed`);
+  if (advised.has(id)) {
+    moved[`${bs} -> ${as}`] = (moved[`${bs} -> ${as}`] ?? 0) + 1;
+    if (as !== "decided") problems.push(`${id}: advised but ${as}`);
+    if (JSON.stringify(asrc) !== JSON.stringify([...bsrc, "log:118"])) problems.push(`${id}: source is not the old source plus log:118`);
+    if (a.rationale !== undefined) problems.push(`${id}: still has a rationale`);
+  } else if (recordOnly.has(id)) {
+    sourceOnly++;
+    if (as !== "decided" || JSON.stringify(asrc) !== JSON.stringify([...bsrc, "log:118"]) || a.rationale !== b.rationale) problems.push(`${id}: a records-only element changed more than its source`);
+  } else if (JSON.stringify(b) !== JSON.stringify(a)) problems.push(`${id}: changed but neither advised nor records-only`);
+}
+for (const id of after.keys()) if (!before.has(id)) problems.push(`${id}: added`);
+const triageAfter = (Bun.YAML.parse(readFileSync("model/triage.yaml", "utf8")) as { advice: unknown[] }).advice.length;
+if (triageAfter !== 0) problems.push(`triage.yaml still has ${triageAfter} entries`);
+const census: Record<string, number> = {};
+for (const e of after.values()) census[e.status] = (census[e.status] ?? 0) + 1;
+console.log(JSON.stringify({ base, advised: advised.size, moved, recordsOnlyRatified: sourceOnly, expectedRecordsOnly: recordOnly.size, statusesAfter: census, problems: problems.length }, null, 1));
+for (const p of problems.slice(0, 20)) console.log(`  ${p}`);
+process.exit(problems.length === 0 && sourceOnly === 34 && advised.size === 342 ? 0 : 1);
