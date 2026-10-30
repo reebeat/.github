@@ -2,9 +2,10 @@
 // `record:` line says "decided" or "operator", an `absent:` file is really absent. With `show`, prints the cited text for
 // a human or a reviewer agent to judge. Not part of CI (CI has no checkouts); run it where the repositories are.
 import { Array as Arr, Effect, Option, Schema, String as Str } from "effect";
-import { ChildProcess, ChildProcessSpawner } from "effect/process";
+import { ChildProcessSpawner } from "effect/process";
 import { TaggedError as TaggedErrorClass } from "effect/Schema";
 
+import { gitIn } from "./git.ts";
 import { filterSome } from "./model.ts";
 import type { Model } from "./model.ts";
 import { parseSource } from "./refs.ts";
@@ -30,7 +31,7 @@ export const gitShow = Effect.fn("gitShow")(function* gitShow(
   const spawner = yield* ChildProcessSpawner.ChildProcessSpawner;
 
   const git = (...args: readonly string[]) =>
-    spawner.exitCode(ChildProcess.make("git", ["-C", checkout, ...args]));
+    spawner.exitCode(gitIn(checkout, args));
 
   const hasCommit = yield* git("cat-file", "-e", `${sha}^{commit}`);
 
@@ -44,9 +45,7 @@ export const gitShow = Effect.fn("gitShow")(function* gitShow(
 
   return hasPath === 0
     ? Option.some(
-        yield* spawner.string(
-          ChildProcess.make("git", ["-C", checkout, "show", `${sha}:${path}`])
-        )
+        yield* spawner.string(gitIn(checkout, ["show", `${sha}:${path}`]))
       )
     : Option.none<string>();
 });

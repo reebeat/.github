@@ -3,7 +3,7 @@
   "ignoreDependencies": ["@effect/language-service", "vite"],
   "workspaces": {
     "tools/intent": {
-      "entry": ["src/cli.ts", "test/**/*.test.ts"],
+      "entry": ["src/cli.ts", "test/**/*.test.ts", "test/underHook.ts"],
       "project": ["src/**/*.ts", "test/**/*.ts"]
     }
   },
